@@ -47,6 +47,60 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
  item.append(main);where.append(item);
  for(const child of s.children)appendSelection(where,child,depth+1,unmatchedOnly);
 }
+// The roster is a view of the parsed data, not a second army parser.
+ // Unit order follows the original input, including duplicate unit instances.
+function renderRoster(army){
+ const holder=$('roster');holder.replaceChildren();
+ const sectionById=new Map(army.sections.map(s=>[s.id,s]));
+ let lastSection=undefined,sectionIndex=0;
+ for(const unit of army.units){
+  const sectionId=unit.sectionId??null;
+  if(sectionId!==lastSection){
+   const section=sectionById.get(sectionId);
+   const heading=make('h3','roster-heading',section?.name??'Uncategorised');
+   const count=army.units.filter(u=>(u.sectionId??null)===sectionId).length;
+   heading.append(make('span','roster-section-count',count+' entries'));
+   holder.append(heading);
+   sectionIndex=0;
+   lastSection=sectionId;
+  }
+  sectionIndex++;
+  const card=make('article','roster-entry');
+  const top=make('div','roster-entry-head');
+  top.append(make('span','roster-number',String(sectionIndex)+'.'));
+  const unitName=unit.quantity?.value==null?unit.name:unit.quantity.value+'× '+unit.name;
+  top.append(make('strong','roster-name',unitName));
+  top.append(make('span','roster-cost',points(unit.reportedPoints?.value)));
+  card.append(top);
+  const entries=[];
+  // Group consecutive selections by source line; model groups retain their own lines.
+  for(const selection of unit.selections??[]){
+   const last=entries[entries.length-1];
+   if(last?.type==='selections' && last.line===selection.line)last.items.push(selection.raw);
+   else entries.push({type:'selections',line:selection.line,items:[selection.raw]});
+  }
+  for(const group of unit.modelGroups??[]){
+   entries.push({type:'group',line:group.line,raw:group.raw,
+    name:group.name,quantity:group.quantity,options:(group.selections??[]).map(s=>s.raw)});
+  }
+  entries.sort((a,b)=>(a.line??0)-(b.line??0));
+  if(entries.length){
+   const details=make('div','roster-entry-details');
+   for(const entry of entries){
+    if(entry.type==='selections'){
+     details.append(make('div','roster-options',entry.items.join(' · ')));
+    }else{
+     const groupText=entry.raw?.trim()||entry.quantity+'× '+entry.name;
+     const groupRow=make('div','roster-group',groupText);
+     details.append(groupRow);
+     // Source group text already includes its own options; don't repeat them.
+    }
+   }
+   card.append(details);
+  }
+  holder.append(card);
+ }
+}
 function render(){
  if(!current)return;
  $('result').hidden=false;$('armyTitle').textContent=label(current.army.name)||'Unnamed army';
@@ -63,6 +117,7 @@ function render(){
  $('rawText').textContent=displaySource.text;
  $('encodedPanel').hidden=displaySource.encoding!=='percent-encoded';
  $('encodedText').textContent=displaySource.encoding==='percent-encoded'?current.originalText:'';
+ renderRoster(current);
  const unitHolder=$('units');unitHolder.replaceChildren();const only=$('unmatchedOnly').checked;
  const sections=[...current.sections.map(s=>({id:s.id,name:s.name,points:s.reportedPoints.value})),{id:null,name:'Uncategorised',points:null}];
  for(const sec of sections){
