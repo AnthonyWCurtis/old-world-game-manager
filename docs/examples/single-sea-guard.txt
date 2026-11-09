@@ -1,0 +1,19 @@
+===
+Test [387 pts]
+Warhammer: The Old World, High Elf Realms, Sea Guard Garrison, Combined Arms
+===
+
+++ Core Units [387 pts] ++
+
+33 Lothern Sea Guard [387 pts]
+- Hand weapons
+- Thrusting spears
+- Warbows
+- Light armour
+- Sea Master (champion)
+- Standard bearer [Razor Standard]
+- Musician
+
+---
+Created with "Old World Builder"
+[https://old-world-builder.com]

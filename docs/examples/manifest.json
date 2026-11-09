@@ -1,0 +1,78 @@
+[
+  {
+    "id": "single-sea-guard",
+    "label": "Single Lothern Sea Guard"
+  },
+  {
+    "id": "owb-regular",
+    "label": "OWB · Regular text"
+  },
+  {
+    "id": "owb-compact",
+    "label": "OWB · Compact text"
+  },
+  {
+    "id": "owb-minimalist",
+    "label": "OWB · Minimalist"
+  },
+  {
+    "id": "owb-regular-discord",
+    "label": "OWB · Regular Discord"
+  },
+  {
+    "id": "owb-compact-discord",
+    "label": "OWB · Compact Discord"
+  },
+  {
+    "id": "owb-minimalist-discord",
+    "label": "OWB · Minimalist Discord"
+  },
+  {
+    "id": "ingude-simple",
+    "label": "Ingude · Simple"
+  },
+  {
+    "id": "ingude-compact",
+    "label": "Ingude · Compact"
+  },
+  {
+    "id": "ingude-markdown",
+    "label": "Ingude · Markdown"
+  },
+  {
+    "id": "nr-tow",
+    "label": "New Recruit · TOW"
+  },
+  {
+    "id": "nr-nr",
+    "label": "New Recruit · NR"
+  },
+  {
+    "id": "nr-simple",
+    "label": "New Recruit · Simple"
+  },
+  {
+    "id": "bb-compact",
+    "label": "Old World Rankings · Compact"
+  },
+  {
+    "id": "bb-detailed",
+    "label": "Old World Rankings · Detailed"
+  },
+  {
+    "id": "bb-tournament",
+    "label": "Old World Rankings · Tournament"
+  },
+  {
+    "id": "wood-elves",
+    "label": "Wood Elves"
+  },
+  {
+    "id": "warriors-chaos",
+    "label": "Warriors of Chaos"
+  },
+  {
+    "id": "barrow-kingdoms",
+    "label": "Tomb Kings · Barrow Kingdoms"
+  }
+]

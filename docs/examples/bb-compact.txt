@@ -1,0 +1,29 @@
+Player: Example Player
+Marks Orges - High Elf Realms - Sea Guard Garrison (2599 Points)
+
+Characters:
+Ishaya Vess: Heavy armour, Shield, Hand weapon, Warbows, General, Mathlann's Ire (170 pts)
+Storm Weaver: Hand weapon, Level 3 Wizard, Elementalism, On foot, Scroll of Invocation, Lore Familiar (205 pts)
+Sea Guard Garrison Commander: Battle Standard Bearer, Longbow, Heavy Armour (replace light), Ruby Ring of Ruin, Banner of Confidence, Charmed Shield, Hunter's Scorn, Sea Guard (202 pts)
+Sea Guard Garrison Commander: Warbow, Heavy Armour (replace light), Reaver Bow, Charmed Shield, Elixir of Power, Sea Guard (153 pts)
+Sea Guard Garrison Commander: Warbow, Heavy Armour (replace light), Lothern Skycutter, Eagle-eye Bolt Thrower, Charmed Shield, Seed of Rebirth, Bow of the Seafarer, Sea Guard (283 pts)
+Mage: Hand weapon, Level 1 Wizard, Illusion, On foot, Sea Guard (80 pts)
+Mage: Hand weapon, Level 1 Wizard, High Magic, On foot, Sea Guard (80 pts)
+
+Core:
+Lothern Sea Guard (32): Light armour, Thrusting spears, Warbows, Full Command, Shields, Veterans, Drilled, The Loremaster's Cloak, Razor Standard (466 pts)
+Ship's Company (16): Hand weapons, Warbows, Light Armour (160 pts)
+Ship's Company (16): Hand weapons, Warbows, Light Armour (160 pts)
+Ship's Company (16): Hand weapons, Warbows, Light Armour (160 pts)
+
+Special:
+Eagle-Claw Bolt Thrower: Light armour, Repeater Bolt Thrower (70 pts)
+Eagle-Claw Bolt Thrower: Light armour, Repeater Bolt Thrower (70 pts)
+Eagle-Claw Bolt Thrower: Light armour, Repeater Bolt Thrower (70 pts)
+Eagle-Claw Bolt Thrower: Light armour, Repeater Bolt Thrower (70 pts)
+Lothern Skycutters: Cavalry spears, Ambushers (100 pts)
+Lothern Skycutters: Cavalry spears, Ambushers (100 pts)
+
+Total: 2599 / 2600 pts
+
+Built with Battle Builder · https://oldworldrankings.com

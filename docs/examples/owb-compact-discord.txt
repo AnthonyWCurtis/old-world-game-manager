@@ -1,0 +1,39 @@
+### Characters [1173 pts]
+- Ishaya Vess [170 pts]
+ -# (Hand weapon, Mathlann's Ire, Warbow, Heavy armour, Shield, General)
+- Storm Weaver [205 pts]
+ -# (Hand weapon, Wizard [Level 3 Wizard], On foot, Scroll of Invocation, Lore Familiar, Elementalism)
+- Sea Guard Garrison Commander [283 pts]
+ -# (Hand weapon, Warbow, Heavy armour, Lothern Skycutter [Eagle-Eye Bolt Thrower], Charmed Shield, Seed of Rebirth, Bow of the Seafarer)
+- Sea Guard Garrison Commander [202 pts]
+ -# (Hand weapon, Longbow, Heavy armour, Battle Standard Bearer [Banner of Confidence], On foot, Ruby Ring of Ruin, Charmed Shield, Hunter's Scorn)
+- Sea Guard Garrison Commander [153 pts]
+ -# (Hand weapon, Warbow, Heavy armour, On foot, Charmed Shield, Elixir of Power, Reaver Bow)
+- Mage [80 pts]
+ -# (Hand weapon, Wizard [Level 1 Wizard], On foot, High Magic)
+- Mage [80 pts]
+ -# (Hand weapon, Wizard [Level 1 Wizard], On foot, Illusion)
+### Core Units [916 pts]
+- 16 Ship's Company [160 pts]
+ -# (Hand weapons, Warbows, Light armour)
+- 32 Lothern Sea Guard [466 pts]
+ -# (Hand weapons, Thrusting spears, Warbows, Light armour, Shields, Veteran, Drilled, Sea Master (champion) [The Loremaster's Cloak], Standard bearer [Razor Standard], Musician)
+- 16 Ship's Company [160 pts]
+ -# (Hand weapons, Warbows, Light armour)
+- 13 Ship's Company [130 pts]
+ -# (Hand weapons, Warbows, Light armour)
+### Special Units [510 pts]
+- Eagle-Claw Bolt Thrower [70 pts]
+ -# (Repeater Bolt Thrower, Hand weapons, Light armour)
+- Eagle-Claw Bolt Thrower [70 pts]
+ -# (Repeater Bolt Thrower, Hand weapons, Light armour)
+- Eagle-Claw Bolt Thrower [70 pts]
+ -# (Repeater Bolt Thrower, Hand weapons, Light armour)
+- Eagle-Claw Bolt Thrower [70 pts]
+ -# (Repeater Bolt Thrower, Hand weapons, Light armour)
+- Lothern Skycutter [115 pts]
+ -# (Cavalry spears, Shortbows, Wicked claws (Swiftfeather Roc), Eagle-Eye Bolt Thrower)
+- Lothern Skycutter [115 pts]
+ -# (Cavalry spears, Shortbows, Wicked claws (Swiftfeather Roc), Eagle-Eye Bolt Thrower)
+
+*Created with "Old World Builder"* - https://old-world-builder.com

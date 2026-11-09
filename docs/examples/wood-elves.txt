@@ -1,0 +1,29 @@
+===
+Wood Elf Realms [748 pts]
+Warhammer: The Old World, Wood Elf Realms, Battle March
+===
+++ Characters [230 pts] ++
+Waystalker [95 pts]
+- Hand weapon
+- General
+- A Resplendence of Luminescents
+Shadowdancer [135 pts]
+- Spear of Loec
+- Level 1 Wizard
+- An Annoyance of Netlings
+- Illusion
+++ Core Units [240 pts] ++
+20 Glade Guard [240 pts]
+- Hand weapon
+- Asrai longbows
+- Swiftshiver Shards
+++ Special Units [128 pts] ++
+8 Wardancers [128 pts]
+- Hand weapon
+++ Rare Units [150 pts] ++
+8 Waywatchers [150 pts]
+- Hand weapon
+- Asrai longbows
+- Arcane Bodkins
+- Sentinel
+Created with "Old World Builder"

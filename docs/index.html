@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Old World Game Manager · Browser Edition v0.1</title>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.1</span></div></header>
+<main class="wrap">
+ <h1>Import army list</h1>
+ <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts. Nothing is checked for army legality.</p>
+ <section class="panel">
+  <label for="sourceText" class="section-label">Paste exported list</label>
+  <textarea id="sourceText" spellcheck="false" placeholder="Paste a full army list here…" aria-label="Army list text"></textarea>
+  <div class="example-row"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
+  <div class="controls">
+   <div class="selectwrap"><label for="format">Format</label><select id="format"><option value="auto">Auto-detect</option>
+    <optgroup label="Old World Builder"><option value="old-world-builder:regular-text">Regular text</option><option value="old-world-builder:compact-text">Compact text</option><option value="old-world-builder:minimalist-text">Minimalist text</option><option value="old-world-builder:regular-discord">Regular Discord / Markdown</option><option value="old-world-builder:compact-discord">Compact Discord / Markdown</option><option value="old-world-builder:minimalist-discord">Minimalist Discord / Markdown</option></optgroup>
+    <optgroup label="Ingude"><option value="ingude:simple-text">Simple text</option><option value="ingude:compact">Compact</option><option value="ingude:markdown">Markdown</option></optgroup>
+    <optgroup label="New Recruit"><option value="new-recruit:tow">TOW</option><option value="new-recruit:nr">NR</option><option value="new-recruit:simple">Simple</option></optgroup>
+    <optgroup label="Old World Rankings"><option value="battle-builder:compact">Compact</option><option value="battle-builder:detailed">Detailed</option><option value="battle-builder:tournament">Tournament</option></optgroup>
+   </select></div>
+   <button id="parseBtn" class="primary">Analyse import</button>
+   <button id="saveBtn" disabled>Save on this device</button>
+   <button id="jsonBtn" disabled>Export JSON</button>
+  </div>
+  <p class="muted small" id="help">Your pasted army never leaves this browser. Reference matching uses a deliberately limited starter catalogue; it is not a complete verified rules database. Unmatched does not mean invalid.</p>
+  <div id="error" class="error" hidden role="alert"></div>
+ </section>
+ <section class="result" id="result" hidden>
+  <div class="panel">
+   <div class="line"><h2 id="armyTitle">Imported army</h2><span class="status" id="formatLabel"></span></div>
+   <p id="armyMeta" class="muted"></p>
+   <div id="metrics" class="metrics"></div>
+   <div class="line"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
+   <div id="diagnostics"></div>
+  </div>
+  <section class="panel">
+   <div class="line"><h2>Unit-by-unit results</h2><label class="checkfilter"><input type="checkbox" id="unmatchedOnly"> Unmatched only</label></div>
+   <p class="muted small">Green = linked to the starter reference catalogue. Amber = parsed but not linked yet. A linked name is not independent verification of all its rules. This does not assess legality.</p>
+   <div id="units"></div>
+  </section>
+  <details class="panel raw"><summary>Original pasted list</summary><pre id="rawText"></pre></details>
+ </section>
+ <section class="panel saved"><div class="line"><h2>Saved imports</h2><div><button id="backupBtn" class="smallbtn" type="button">Backup all JSON</button> <button id="refreshBtn" class="smallbtn" type="button">Refresh</button></div></div>
+  <p class="muted small">Stored in this browser on this device (IndexedDB), not on GitHub. Export JSON backups if you want to keep or move them. Private Browsing or clearing website data may erase them.</p>
+  <div id="savedList"></div>
+ </section>
+</main>
+<footer class="wrap footer">V0.1 focuses only on import structure, provenance and catalogue matching. No legality or gameplay calculations.</footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+Player: Example Player
+Marks Orges - High Elf Realms - Sea Guard Garrison (2599/2600)
+
+170 - Ishaya Vess, General, Mathlann's Ire
+205 - Storm Weaver, Level 3 Wizard, Elementalism, On foot, Scroll of Invocation, Lore Familiar
+202 - Sea Guard Garrison Commander, Battle Standard Bearer, Longbow, Heavy Armour (replace light), Ruby Ring of Ruin, Banner of Confidence, Charmed Shield, Hunter's Scorn, Sea Guard
+153 - Sea Guard Garrison Commander, Warbow, Heavy Armour (replace light), Reaver Bow, Charmed Shield, Elixir of Power, Sea Guard
+283 - Sea Guard Garrison Commander, Warbow, Heavy Armour (replace light), Lothern Skycutter, Eagle-eye Bolt Thrower, Charmed Shield, Seed of Rebirth, Bow of the Seafarer, Sea Guard
+80 - Mage, Hand weapon, Level 1 Wizard, Illusion, On foot, Sea Guard
+80 - Mage, Hand weapon, Level 1 Wizard, High Magic, On foot, Sea Guard
+466 - 32 Lothern Sea Guard, Full Command, Shields, Veterans, Drilled, The Loremaster's Cloak, Razor Standard
+160 - 16 Ship's Company, Warbows, Light Armour
+160 - 16 Ship's Company, Warbows, Light Armour
+160 - 16 Ship's Company, Warbows, Light Armour
+70 - Eagle-Claw Bolt Thrower
+70 - Eagle-Claw Bolt Thrower
+70 - Eagle-Claw Bolt Thrower
+70 - Eagle-Claw Bolt Thrower
+100 - Lothern Skycutters, Ambushers
+100 - Lothern Skycutters, Ambushers
+
+Built with Battle Builder · https://oldworldrankings.com

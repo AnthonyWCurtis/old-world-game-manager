@@ -1,0 +1,41 @@
+===
+Warriors of Chaos [749 pts]
+Warhammer: The Old World, Warriors of Chaos, Battle March
+===
+++ Characters [135 pts] ++
+Exalted Sorcerer [135 pts]
+- Hand weapon
+- Light armour
+- Mark of Chaos [Mark of Nurgle]
+- Wizard [Level 1 Wizard]
+- General
+- On foot
+- Enchanting Aura
+- Battle Magic
+++ Core Units [330 pts] ++
+6 Forsaken [114 pts]
+- Mutated weapons (Hand weapons)
+- Heavy armour
+- Forsaken by Khorne
+11 Chaos Warriors [216 pts]
+- Halberds
+- Heavy armour
+- Shields
+- Mark of Chaos [Mark of Nurgle]
+- Champion
+- Standard bearer
+- Musician
+- Enhanced Reflexes
+++ Special Units [114 pts] ++
+3 Chaos Ogres [114 pts]
+- Great weapons
+- Heavy armour
+- Mark of Chaos Undivided
+- Mark of Nurgle
+++ Rare Units [170 pts] ++
+Gigantic Spawn of Chaos [170 pts]
+- Slashing talons
+- Gnashing maws
+- Heavy armour (Scaly skin)
+- Gigantic Spawn of Nurgle
+Created with "Old World Builder"

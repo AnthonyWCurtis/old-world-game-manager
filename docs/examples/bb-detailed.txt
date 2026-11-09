@@ -1,0 +1,113 @@
+Player: Example Player
+Marks Orges - High Elf Realms - Sea Guard Garrison (2599 Points)
+
+CHARACTERS:
+Ishaya Vess (170 pts)
+  • Armour: Heavy armour, Shield
+  • Equipment: Hand weapon, Warbows
+  • General: General
+  • Mathlann's Ire (0 pts)
+
+Storm Weaver (205 pts)
+  • Equipment: Hand weapon
+  • Wizard: Level 3 Wizard
+  • Lore of Magic: Elementalism
+  • Mount: On foot
+  • Scroll of Invocation (30 pts)
+  • Lore Familiar (30 pts)
+
+Sea Guard Garrison Commander (202 pts)
+  • Battle Standard Bearer: Battle Standard Bearer
+  • Missile Weapon: Longbow
+  • Armour: Heavy Armour (replace light)
+  • Ruby Ring of Ruin (35 pts)
+  • Banner of Confidence (20 pts)
+  • Charmed Shield (5 pts)
+  • Hunter's Scorn (20 pts)
+  • Sea Guard (0 pts)
+
+Sea Guard Garrison Commander (153 pts)
+  • Missile Weapon: Warbow
+  • Armour: Heavy Armour (replace light)
+  • Reaver Bow (40 pts)
+  • Charmed Shield (5 pts)
+  • Elixir of Power (15 pts)
+  • Sea Guard (0 pts)
+
+Sea Guard Garrison Commander (283 pts)
+  • Missile Weapon: Warbow
+  • Armour: Heavy Armour (replace light)
+  • Mount: Lothern Skycutter
+  • Unit Options: Eagle-eye Bolt Thrower
+  • Charmed Shield (5 pts)
+  • Seed of Rebirth (20 pts)
+  • Bow of the Seafarer (50 pts)
+  • Sea Guard (0 pts)
+
+Mage (80 pts)
+  • Equipment: Hand weapon
+  • Wizard: Level 1 Wizard
+  • Lore of Magic: Illusion
+  • Mount: On foot
+  • Sea Guard (0 pts)
+
+Mage (80 pts)
+  • Equipment: Hand weapon
+  • Wizard: Level 1 Wizard
+  • Lore of Magic: High Magic
+  • Mount: On foot
+  • Sea Guard (0 pts)
+
+CORE:
+Lothern Sea Guard (32) (466 pts)
+  • Armour: Light armour, Shields
+  • Weapons: Thrusting spears, Warbows
+  • Command: Full Command
+  • Unit Options: Veterans
+  • Special Rules: Drilled
+  • The Loremaster's Cloak (25 pts)
+  • Razor Standard (40 pts)
+
+Ship's Company (16) (160 pts)
+  • Weapons: Hand weapons
+  • Weapon: Warbows
+  • Equipment: Light Armour
+
+Ship's Company (16) (160 pts)
+  • Weapons: Hand weapons
+  • Weapon: Warbows
+  • Equipment: Light Armour
+
+Ship's Company (16) (160 pts)
+  • Weapons: Hand weapons
+  • Weapon: Warbows
+  • Equipment: Light Armour
+
+SPECIAL:
+Eagle-Claw Bolt Thrower (70 pts)
+  • Armour: Light armour
+  • Equipment: Repeater Bolt Thrower
+
+Eagle-Claw Bolt Thrower (70 pts)
+  • Armour: Light armour
+  • Equipment: Repeater Bolt Thrower
+
+Eagle-Claw Bolt Thrower (70 pts)
+  • Armour: Light armour
+  • Equipment: Repeater Bolt Thrower
+
+Eagle-Claw Bolt Thrower (70 pts)
+  • Armour: Light armour
+  • Equipment: Repeater Bolt Thrower
+
+Lothern Skycutters (100 pts)
+  • Equipment: Cavalry spears
+  • Unit Options: Ambushers
+
+Lothern Skycutters (100 pts)
+  • Equipment: Cavalry spears
+  • Unit Options: Ambushers
+
+Total: 2599 / 2600 pts
+
+Built with Battle Builder · https://oldworldrankings.com
