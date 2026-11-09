@@ -71,3 +71,23 @@ test('Referenced roster fields are linked without treating source reference as l
     for (const sourceUrl of check.sourceUrls) assert.equal(new URL(sourceUrl).origin, source);
   }
 });
+
+test('Published reference-record manifest discovers the Ishaya record without guessing paths', () => {
+  const manifest = JSON.parse(readFileSync(
+    new URL('../docs/reference-records/manifest.json', import.meta.url), 'utf8'
+  ));
+  assert.equal(manifest.schemaVersion, 1);
+  assert.equal(manifest.sourceOrigin, source);
+  assert.equal(manifest.records.length, 1);
+  const item = manifest.records[0];
+  assert.equal(item.id, record.id);
+  assert.equal(item.name, record.name);
+  assert.equal(item.faction, record.faction);
+  assert.equal(item.sourceUrl, record.source.url);
+  assert.equal(item.verificationStatus, record.source.verificationStatus);
+  assert.equal(item.verifiedOn, record.source.verifiedOn);
+  const file = JSON.parse(readFileSync(
+    new URL('../docs/reference-records/' + item.path, import.meta.url), 'utf8'
+  ));
+  assert.deepEqual(file, record);
+});
