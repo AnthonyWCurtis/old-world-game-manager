@@ -60,3 +60,12 @@
 .paste-recovery[hidden]{display:none}
 .paste-recovery p{font-size:13px;line-height:1.6;margin:0 0 10px}
 .paste-recovery button{font-size:13px;min-height:38px;white-space:normal;text-align:left}
+
+/* Copyable unmatched-reference diagnostics, with explicit mobile clipboard fallback. */
+.unmatched-debug-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.unmatched-debug-actions button{min-height:42px;white-space:normal;text-align:center}
+.unmatched-debug-actions button:disabled{opacity:.6;cursor:not-allowed}
+.unmatched-debug-actions span{flex:1;min-width:180px}
+.debug-explanation{margin:7px 0 0}
+.debug-fallback{width:100%;min-height:140px;margin-top:10px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;line-height:1.5;resize:vertical;white-space:pre;overflow:auto}
+.debug-fallback[hidden]{display:none}
