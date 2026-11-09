@@ -38,17 +38,18 @@ jobs:
                       print('  ', probe, re.sub(r'\s+',' ',m.group(0)[:450]))
           PY
 
-      - name: Inspect HTML structure of one permitted unit page
+      - name: Inspect HTML structure of Silver Helms unit source
         shell: bash
         run: |
           python3 - <<'PY'
           import re
           from urllib.request import urlopen, Request
-          req=Request('https://tow.whfb.app/unit/night-goblin-oddnob',headers={'Origin':'https://anthonywcurtis.github.io','User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/605.1.15 Version/18.6 Safari/605.1.15'})
+          req=Request('https://tow.whfb.app/unit/silver-helms',headers={'Origin':'https://anthonywcurtis.github.io','User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/605.1.15 Version/18.6 Safari/605.1.15'})
           with urlopen(req,timeout=15) as r:
             html=r.read().decode('utf-8','replace')
             print('Status',r.status,'bytes',len(html),'CORS',r.headers.get('access-control-allow-origin'))
-          for pattern in ('<main','<table','Cost:','Night Goblin Oddnob'):
+          for pattern in ('<main','<table','unit-profile-table','<thead','High Helm','High Helm (champion)','Cost:','Silver Helms'):
             m=re.search(re.escape(pattern),html,re.I)
             print(pattern, repr(html[max(0,m.start()-120):m.start()+850] if m else 'NOT FOUND'))
+          print('Table class patterns:', re.findall(r'<table[^>]*>',html,re.I)[:8])
           PY
