@@ -28,6 +28,7 @@ test('Published names from the real unit URL match High Helm in all three units'
  const oldWeak={[url]:{url,schemaVersion:1,models:[]}};
  const combined=mergeUnitProfiles(filtered,oldWeak);
  assert.equal(combined[url].models.length,3);
+ const initialUnmatched=army.stats.unmatchedSelections;
  const change=applyProfileReferences(army,combined);
  assert.equal(change.added,3);
  for(const helm of army.units.filter(u=>u.name==='Silver Helms')){
@@ -37,7 +38,7 @@ test('Published names from the real unit URL match High Helm in all three units'
   assert.equal(high.reference.source,'unit-profile');
  }
  assert.deepEqual(army.units.map(u=>[u.name,u.reportedPoints.value]),before);
- assert.equal(army.stats.unmatchedSelections,8); // original unlinked choices may remain
+ assert.equal(army.stats.unmatchedSelections,initialUnmatched-3); // only these three were resolved
 });
 test('Only source-extracted, URL-matching records can mark a selection as matched',()=>{
  const army=parseArmy(fixture);
@@ -46,4 +47,16 @@ test('Only source-extracted, URL-matching records can mark a selection as matche
  const wrong={url:'https://example.com/other',source:'tow.whfb.app',verificationStatus:'source-extracted',models};
  assert.deepEqual(selectPublishedUnitProfiles(army,{...base,profiles:{[url]:fake}}),{});
  assert.deepEqual(selectPublishedUnitProfiles(army,{...base,profiles:{[url]:wrong}}),{});
+});
+
+test('Published snapshot contains the actual Silver Helms champion sourced from TOW',()=>{
+ const snapshot=JSON.parse(readFileSync(new URL('../docs/source-profiles.json',import.meta.url),'utf8'));
+ assert.equal(snapshot.sourceOrigin,'https://tow.whfb.app');
+ const profile=snapshot.profiles[url];
+ assert.ok(profile,'Silver Helms data must be present in the generated source snapshot');
+ assert.equal(profile.verificationStatus,'source-extracted');
+ assert.ok(profile.sourceCheckedAt);
+ assert.deepEqual(profile.models.map(m=>m.name),[
+  'Silver Helm','High Helm','Barded Elven Steed'
+ ]);
 });
