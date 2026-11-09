@@ -159,10 +159,12 @@ export function detectFormat(text, forced) {
     else if (exporter === 'new-recruit') {
         if (l.some(v => /^#\s*\+\+\s/.test(v)) || l.some(v => /^##\s+(Characters|Core|Rare|Special)/i.test(v)))
             layout = 'nr';
-        else if (l.some(v => /^•\s*\d+x\s/.test(v)))
-            layout = 'simple';
-        else if (l.some(v => /^\d+\s+-\s+/.test(v)))
+        // Points-first unit headings take precedence over indented model
+        // bullets: TOW exports may contain both in the same roster.
+        else if (l.some(v => /^\d[\d,]*\s+-\s+\S/.test(v)))
             layout = 'tow';
+        else if (l.some(v => /^•\s*\d+\s*[x×]\s/i.test(v)))
+            layout = 'simple';
     }
     else if (exporter === 'battle-builder') {
         if (l.some(v => /^\s*•\s/.test(v)))
