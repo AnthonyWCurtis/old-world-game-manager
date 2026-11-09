@@ -43,7 +43,11 @@ test('Public config does not grant the browser write access to GitHub',()=>{
  assert.equal(validateReportingConfig({enabled:true,endpoint:'http://worker.example/report',turnstileSiteKey:'TEST_SITE_KEY'}),null);
  assert.ok(validateReportingConfig({enabled:true,endpoint:'https://worker.example.workers.dev/report',turnstileSiteKey:'TEST_SITE_KEY'}));
  const websiteConfig=JSON.parse(read('../docs/report-config.json'));
- assert.equal(websiteConfig.enabled,false,'Website stays disabled until owner provides a private backend');
+ // Public website configuration may be off during initial setup, or enabled
+ // after the owner deploys their private Worker. Neither case exposes secrets.
+ assert.equal(typeof websiteConfig.enabled,'boolean');
+ if(websiteConfig.enabled)assert.ok(validateReportingConfig(websiteConfig));
+ else assert.equal(validateReportingConfig(websiteConfig),null);
  const file=read('../worker/unmatched-report-worker.mjs');
  assert.ok(file.includes('env.GITHUB_TOKEN'));
  assert.ok(file.includes('env.TURNSTILE_SECRET'));
