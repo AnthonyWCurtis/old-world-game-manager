@@ -1,0 +1,37 @@
+name: Build High Elf reference index
+on:
+  push:
+    branches:
+      - feat/high-elf-index-20261109
+    paths:
+      - 'scripts/build-high-elf-reference-index.mjs'
+      - '.github/workflows/build-high-elf-reference-index.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: high-elf-index-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Extract public High Elf unit profiles
+        run: node --check scripts/build-high-elf-reference-index.mjs && node scripts/build-high-elf-reference-index.mjs
+      - name: Commit source-derived index (never overwrite manually reviewed entries)
+        run: |
+          git config user.name "old-world-source-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/reference-records/
+          if git diff --cached --quiet; then
+            echo "No index changes."
+          else
+            git commit -m "Index High Elf Realms source unit pages with provenance"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin HEAD:"$GITHUB_REF_NAME"
+          fi

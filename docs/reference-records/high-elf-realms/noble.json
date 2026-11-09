@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:noble",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/noble",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Noble",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Character Units",
+  "modelProfiles": [
+    {
+      "name": "Noble",
+      "characteristics": {
+        "M": 5,
+        "WS": 6,
+        "BS": 6,
+        "S": 4,
+        "T": 3,
+        "W": 2,
+        "I": 5,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "costDescription": "70 points",
+  "unitCategory": "Character",
+  "troopTypeDescription": "Regular Infantry Character",
+  "baseSizeDescription": "25 x 25 mm",
+  "unitSizeDescription": "1",
+  "pageLinkedReferences": [
+    {
+      "name": "Hand weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "url": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Additional hand weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Cavalry spear",
+      "url": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Great weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/great-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Halberd",
+      "url": "https://tow.whfb.app/weapons-of-war/halberd",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Lance",
+      "url": "https://tow.whfb.app/weapons-of-war/lance",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Longbow",
+      "url": "https://tow.whfb.app/weapons-of-war/longbow",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Bow of Avelorn",
+      "url": "https://tow.whfb.app/weapons-of-war/bow-of-avelorn",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "url": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Heavy armour",
+      "url": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Full plate armour",
+      "url": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Elven Steed",
+      "url": "https://tow.whfb.app/unit/elven-steed",
+      "kind": "unit"
+    },
+    {
+      "name": "Barded Elven Steed",
+      "url": "https://tow.whfb.app/unit/barded-elven-steed",
+      "kind": "unit"
+    },
+    {
+      "name": "Tiranoc Chariot",
+      "url": "https://tow.whfb.app/unit/tiranoc-chariot",
+      "kind": "unit"
+    },
+    {
+      "name": "Griffon",
+      "url": "https://tow.whfb.app/unit/griffon-high-elves",
+      "kind": "unit"
+    },
+    {
+      "name": "Great Eagle",
+      "url": "https://tow.whfb.app/unit/great-eagle-mount",
+      "kind": "unit"
+    },
+    {
+      "name": "Chracian Hunter",
+      "url": "https://tow.whfb.app/magic-item/chracian-hunter",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Lion Chariot",
+      "url": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+      "kind": "unit"
+    },
+    {
+      "name": "Sea Guard",
+      "url": "https://tow.whfb.app/magic-item/sea-guard",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Lothern Skycutter",
+      "url": "https://tow.whfb.app/unit/lothern-skycutter",
+      "kind": "unit"
+    },
+    {
+      "name": "Blood of Caledor",
+      "url": "https://tow.whfb.app/magic-item/blood-of-caledor",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Sun Dragon",
+      "url": "https://tow.whfb.app/unit/sun-dragon",
+      "kind": "unit"
+    },
+    {
+      "name": "Anointed of Asuryan",
+      "url": "https://tow.whfb.app/magic-item/anointed-of-asuryan",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Flamespyre Phoenix",
+      "url": "https://tow.whfb.app/unit/flamespyre-phoenix-mount",
+      "kind": "unit"
+    },
+    {
+      "name": "Frostheart Phoenix",
+      "url": "https://tow.whfb.app/unit/frostheart-phoenix-mount",
+      "kind": "unit"
+    },
+    {
+      "name": "Ithilmar Weapons",
+      "url": "https://tow.whfb.app/special-rules/ithilmar-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "url": "https://tow.whfb.app/special-rules/strike-first",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}

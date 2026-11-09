@@ -93,10 +93,10 @@ test('Character special rules and mount-only exceptions remain scoped to the cor
 test('Korhil is discoverable in the static reference manifest alongside Ishaya', () => {
   assert.equal(manifest.schemaVersion, 1);
   assert.equal(manifest.sourceOrigin, source);
-  assert.equal(manifest.records.length, 2);
+  assert.equal(manifest.records.length, 45);
   const ids = manifest.records.map(item => item.id);
   assert.equal(new Set(ids).size, ids.length);
-  assert.deepEqual(ids, ['unit:ishaya-vess', 'unit:korhil-lionmane']);
+  assert.deepEqual(ids.slice(0, 2), ['unit:ishaya-vess', 'unit:korhil-lionmane']);
   const entry = manifest.records.find(item => item.id === record.id);
   assert.equal(entry.path, 'high-elf-realms/korhil-lionmane.json');
   assert.equal(entry.sourceUrl, record.source.url);

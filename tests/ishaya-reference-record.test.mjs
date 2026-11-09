@@ -78,7 +78,7 @@ test('Published reference-record manifest discovers the Ishaya record without gu
   ));
   assert.equal(manifest.schemaVersion, 1);
   assert.equal(manifest.sourceOrigin, source);
-  assert.equal(manifest.records.length, 2);
+  assert.equal(manifest.records.length, 45);
   const item = manifest.records.find(entry => entry.id === record.id);
   assert.ok(item, 'Ishaya must remain discoverable as additional records are added');
   assert.equal(item.id, record.id);

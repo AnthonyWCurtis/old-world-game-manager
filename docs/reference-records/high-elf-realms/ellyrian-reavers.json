@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:ellyrian-reavers",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/ellyrian-reavers",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Ellyrian Reavers",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Cavalry Units",
+  "modelProfiles": [
+    {
+      "name": "Ellyrian Reaver",
+      "characteristics": {
+        "M": null,
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Harbinger",
+      "characteristics": {
+        "M": null,
+        "WS": 4,
+        "BS": 5,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 2,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Elven Steed",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": null,
+        "S": 3,
+        "T": null,
+        "W": null,
+        "I": 4,
+        "A": 1,
+        "Ld": null
+      }
+    }
+  ],
+  "costDescription": "16 points per model",
+  "unitCategory": "Cavalry",
+  "troopTypeDescription": "Light Cavalry",
+  "baseSizeDescription": "30 x 60 mm",
+  "unitSizeDescription": "5+",
+  "pageLinkedReferences": [
+    {
+      "name": "Hand weapons",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "cavalry spears",
+      "url": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "url": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shortbows",
+      "url": "https://tow.whfb.app/weapons-of-war/shortbow",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Scouts",
+      "url": "https://tow.whfb.app/special-rules/scouts",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "url": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fast Cavalry",
+      "url": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "url": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}

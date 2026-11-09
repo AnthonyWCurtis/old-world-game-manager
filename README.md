@@ -30,6 +30,14 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## High Elf Realms reference records (v0.4 groundwork)
+
+The public [High Elf Realms army index](https://tow.whfb.app/army/high-elf-realms) now has **all 45 unit entries** represented in the static [reference manifest](docs/reference-records/manifest.json). The 43 units beyond Ishaya Vess and Korhil Lionmane have machine-extracted point descriptions, profile rows and page reference links where available. The two named characters retain their separately reviewed detailed reference records.
+
+**Important verification distinction:** a `source-extracted` record has grounded page data but is **not a verified full equipment/upgrade/rule assignment**. Links occurring on a unit page are collected as `pageLinkedReferences`, without assuming that an item is equipped or a special rule automatically applies. Full parent-specific option matching still needs the next stage of the reference engine.
+
+The [source-record documentation](docs/reference-records/README.md) describes the status levels, data shape and scheduled/manual extraction script. The current browser importer does not yet use these records to improve match statuses; this work prepares the v0.4 reference database rather than changing v0.3.3's importer.
+
 ## Source references and caching
 
 The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.

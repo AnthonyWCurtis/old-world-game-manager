@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:chieftains-chariot",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/chieftains-chariot",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Chieftain's Chariot",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Chariot Units",
+  "modelProfiles": [
+    {
+      "name": "Chieftain's Chariot",
+      "characteristics": {
+        "M": null,
+        "WS": null,
+        "BS": null,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": null,
+        "A": null,
+        "Ld": null
+      }
+    },
+    {
+      "name": "Charioteer (x1)",
+      "characteristics": {
+        "M": null,
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": null,
+        "W": null,
+        "I": 4,
+        "A": 1,
+        "Ld": null
+      }
+    },
+    {
+      "name": "Chracian Lion (x2)",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": null,
+        "S": 4,
+        "T": null,
+        "W": null,
+        "I": 4,
+        "A": 2,
+        "Ld": null
+      }
+    }
+  ],
+  "costDescription": "105 points",
+  "unitCategory": "Chariot",
+  "troopTypeDescription": "Heavy Chariot",
+  "baseSizeDescription": "50 x 100 mm",
+  "unitSizeDescription": "1",
+  "pageLinkedReferences": [
+    {
+      "name": "Hand weapons",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Chracian great blade",
+      "url": "https://tow.whfb.app/weapons-of-war/chracian-great-blade",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Armour Bane (1, Chracian Lions only)",
+      "url": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "url": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "url": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "url": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "url": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6, Chieftain's Chariot only)",
+      "url": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "url": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}

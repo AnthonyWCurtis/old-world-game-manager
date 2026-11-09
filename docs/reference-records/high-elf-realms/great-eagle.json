@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:great-eagle",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/great-eagle",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Great Eagle",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Monster Units",
+  "modelProfiles": [
+    {
+      "name": "Great Eagle",
+      "characteristics": {
+        "M": 2,
+        "WS": 5,
+        "BS": 0,
+        "S": 4,
+        "T": 4,
+        "W": 3,
+        "I": 4,
+        "A": 3,
+        "Ld": 6
+      }
+    }
+  ],
+  "costDescription": "60 points",
+  "unitCategory": "Monster",
+  "troopTypeDescription": "Monstrous Creature",
+  "baseSizeDescription": "50 x 50 mm",
+  "unitSizeDescription": "1",
+  "pageLinkedReferences": [
+    {
+      "name": "Wicked claws",
+      "url": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "serrated maw",
+      "url": "https://tow.whfb.app/weapons-of-war/serrated-maw",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Close Order",
+      "url": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "url": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "url": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (1)",
+      "url": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "url": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}

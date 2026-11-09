@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'docs/parser.js'
+      - 'docs/reference-records/**'
+      - 'scripts/build-high-elf-reference-index.mjs'
       - 'docs/catalog.js'
       - 'docs/live-source.js'
       - 'docs/app.js'
@@ -15,6 +17,8 @@ on:
   pull_request:
     paths:
       - 'docs/parser.js'
+      - 'docs/reference-records/**'
+      - 'scripts/build-high-elf-reference-index.mjs'
       - 'docs/catalog.js'
       - 'docs/live-source.js'
       - 'docs/app.js'
@@ -34,4 +38,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs
+      - run: node --check scripts/build-high-elf-reference-index.mjs && node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs

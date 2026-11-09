@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:star-dragon",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/star-dragon",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Star Dragon",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Monster Units",
+  "modelProfiles": [
+    {
+      "name": "Star Dragon",
+      "characteristics": {
+        "M": 6,
+        "WS": 7,
+        "BS": null,
+        "S": 7,
+        "T": "(+3)",
+        "W": "(+6)",
+        "I": 2,
+        "A": 6,
+        "Ld": null
+      }
+    }
+  ],
+  "costDescription": "+290 points",
+  "unitCategory": "Monster",
+  "troopTypeDescription": "Behemoth",
+  "baseSizeDescription": "60 x 100 mm",
+  "unitSizeDescription": "1",
+  "pageLinkedReferences": [
+    {
+      "name": "Wicked claws",
+      "url": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "dragon fire",
+      "url": "https://tow.whfb.app/weapons-of-war/dragon-fire",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "url": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Close Order",
+      "url": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "url": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "url": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6+1)",
+      "url": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "url": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "url": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}
