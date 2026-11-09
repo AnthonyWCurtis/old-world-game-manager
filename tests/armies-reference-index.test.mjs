@@ -145,7 +145,7 @@ test('Known faction and unit titles resolve only to their matching page type',()
  assert.equal(matchArmyIndexReference('High Elf Realms','unit',armies.entries),null);
 });
 
-test('Summary and fourth-collection registry agree with the source snapshot',()=>{
+test('Summary and canonical global armies collection agree with the source snapshot',()=>{
  assert.equal(summary.schemaVersion,1);
  assert.equal(summary.sourceUrl,SITEMAP_URL);
  assert.equal(summary.checkedAt,armies.source.checkedAt);
@@ -155,11 +155,18 @@ test('Summary and fourth-collection registry agree with the source snapshot',()=
  assert.ok(summary.sampleEntries.some(e=>e.name==='High Elf Realms'&&e.kind==='army'));
  assert.ok(summary.sampleEntries.some(e=>e.name==='Ishaya Vess'&&e.kind==='unit'));
  assert.deepEqual(collections.collections.map(e=>e.id),[
-  'high-elf-realms-units','rules-sitemap','magic-sitemap','armies-sitemap'
+  'rules-sitemap','magic-sitemap','armies-sitemap'
  ]);
  const record=collections.collections.find(e=>e.id==='armies-sitemap');
  assert.equal(record.path,'armies-index.json');
  assert.equal(record.sourceUrl,SITEMAP_URL);
+ assert.deepEqual(record.detailManifests.map(e=>e.path),['manifest.json']);
+ const overlay=record.detailManifests[0];
+ assert.equal(overlay.sourceArmyUrl,SOURCE_ORIGIN+'/army/high-elf-realms');
+ assert.equal(new Set(highElves.records.map(e=>e.sourceUrl)).size,45);
+ const globallyIndexed=new Set(armies.entries.filter(e=>e.kind==='unit').map(e=>e.url));
+ for(const highElf of highElves.records) assert.ok(globallyIndexed.has(highElf.sourceUrl));
+ assert.ok(!collections.collections.some(e=>e.id==='high-elf-realms-units'));
 });
 
 test('Assembled sitemap preserves provenance without asserting faction affiliation',()=>{
