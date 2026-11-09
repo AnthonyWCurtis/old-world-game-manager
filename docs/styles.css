@@ -69,3 +69,11 @@
 .debug-explanation{margin:7px 0 0}
 .debug-fallback{width:100%;min-height:140px;margin-top:10px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;line-height:1.5;resize:vertical;white-space:pre;overflow:auto}
 .debug-fallback[hidden]{display:none}
+
+/* Source-link status: amber means unit found, but one or more options remain unlinked. */
+.tag.partial{color:#895100;background:#ffe6af;border:1px solid #e4ad49}
+.roster-partial{border-left:3px solid #e4ad49;padding-left:9px}
+.debug-report-container{margin-top:8px}
+.debug-report-container button:not([hidden]){display:block;margin-bottom:7px}
+.debug-report-container button[hidden]{display:none}
+.debug-report-container textarea:not([hidden]){display:block}
