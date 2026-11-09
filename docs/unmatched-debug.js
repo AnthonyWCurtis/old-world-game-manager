@@ -78,7 +78,7 @@ export function formatUnmatchedDebug(army,{appVersion='unknown'}={}){
    say('Original text',record.raw)
   );
   if(record.type==='selection'){
-   lines.push(say('Unit heading',record.unitHeading));
+   // Do not copy all other, already-matched upgrades from the unit heading.
    if(record.groupName)lines.push('Model group: '+record.groupQuantity+'× '+record.groupName+
       ' (line '+shown(record.groupLine)+')');
    if(record.groupRaw)lines.push(say('Model group source',record.groupRaw));
