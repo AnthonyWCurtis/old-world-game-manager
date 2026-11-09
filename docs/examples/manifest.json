@@ -86,5 +86,9 @@
   {
     "id": "nr-tow-footer",
     "label": "New Recruit · TOW with version footer"
+  },
+  {
+    "id": "owb-minimalist-nicknames",
+    "label": "OWB · Minimalist with unit nicknames"
   }
 ]
