@@ -1,0 +1,63 @@
+Warhammer: The Old World — Unmatched Source Reference Report
+Report ID: 3f621230-14c2-4b20-982f-49d3373e7841
+Submitted: 2026-11-09T18:58:59.798Z
+Export format: old-world-builder / minimalist-text
+Faction: Chaos Dwarfs
+Unmatched entries: 9
+
+Each item is an unmatched source reference, not a declaration of invalid army composition.
+No player name, original army list, IP address or matched selections included.
+
+[1] SELECTION: Wizard
+  Parent unit: Sorcerer-Prophet
+  Kind: wizard-level
+  Source line: 4
+  Parent unit reference: https://tow.whfb.app/unit/sorcerer-prophet
+
+[2] SELECTION: Level 3 Wizard
+  Parent unit: Sorcerer-Prophet
+  Kind: wizard-level
+  Source line: 4
+  Parent unit reference: https://tow.whfb.app/unit/sorcerer-prophet
+
+[3] SELECTION: 'Bale Taurus
+  Parent unit: Sorcerer-Prophet
+  Kind: option
+  Source line: 4
+  Parent unit reference: https://tow.whfb.app/unit/sorcerer-prophet
+
+[4] SELECTION: Ranged weapon
+  Parent unit: Hobgoblin Khan
+  Kind: option
+  Source line: 6
+  Parent unit reference: https://tow.whfb.app/unit/hobgoblin-khan
+
+[5] SELECTION: Standard bearer
+  Parent unit: Infernal Guard
+  Kind: command
+  Source line: 7
+  Parent unit reference: https://tow.whfb.app/unit/infernal-guard
+
+[6] SELECTION: Full Command
+  Parent unit: Infernal Guard
+  Kind: command
+  Source line: 7
+  Parent unit reference: https://tow.whfb.app/unit/infernal-guard
+
+[7] SELECTION: Musician
+  Parent unit: Hobgoblin Cutthroats
+  Kind: command
+  Source line: 8
+  Parent unit reference: https://tow.whfb.app/unit/hobgoblin-cutthroats
+
+[8] SELECTION: Musician
+  Parent unit: Hobgoblin Cutthroats
+  Kind: command
+  Source line: 9
+  Parent unit reference: https://tow.whfb.app/unit/hobgoblin-cutthroats
+
+[9] SELECTION: Musician
+  Parent unit: Hobgoblin Wolf Riders
+  Kind: command
+  Source line: 13
+  Parent unit reference: https://tow.whfb.app/unit/hobgoblin-wolf-riders
