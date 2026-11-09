@@ -1,5 +1,6 @@
 import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.3';
 import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
+import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0.2.7';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.6';
 const $=id=>document.getElementById(id);
 let current=null;
@@ -256,6 +257,43 @@ async function refreshCurrentSource(force=false){
   if(active())$('sourceRefreshBtn').disabled=false;
  }
 }
+function syncUnmatchedDebug(){
+ const unmatched=collectUnmatched(current);
+ const button=$('copyUnmatchedBtn');
+ button.disabled=!unmatched.length;
+ button.textContent=unmatched.length?'Copy unmatched debug ('+unmatched.length+')':'No unmatched references';
+}
+async function copyUnmatchedDebug(){
+ if(!current)return;
+ const records=collectUnmatched(current);
+ if(!records.length)return;
+ const text=formatUnmatchedDebug(current,{appVersion:'0.2.7'});
+ const feedback=$('copyUnmatchedStatus');
+ const fallback=$('unmatchedDebugFallback');
+ fallback.hidden=true;
+ fallback.value='';
+ try {
+  if(navigator.clipboard?.writeText){
+   await navigator.clipboard.writeText(text);
+  }else{
+   fallback.value=text;
+   fallback.hidden=false;
+   fallback.focus();
+   fallback.select();
+   fallback.setSelectionRange(0,fallback.value.length);
+   if(!document.execCommand?.('copy'))throw Error('Clipboard operation blocked');
+   fallback.hidden=true;
+  }
+  feedback.textContent='Copied '+records.length+' unmatched reference'+(records.length===1?'':'s')+' — paste into ChatGPT.';
+ }catch{
+  fallback.value=text;
+  fallback.hidden=false;
+  fallback.focus();
+  fallback.select();
+  fallback.setSelectionRange(0,fallback.value.length);
+  feedback.textContent='Automatic copy unavailable. Select and copy the debug text below.';
+ }
+}
 function render(){
  if(!current)return;
  $('result').hidden=false;$('armyTitle').textContent=label(current.army.name)||'Unnamed army';
@@ -265,6 +303,7 @@ function render(){
  const m=$('metrics');m.replaceChildren();for(const [value,title] of [[current.stats.unitCount,'Unit instances'],[current.stats.selectionCount,'Selections (incl. nested)'],[current.stats.matchedSelections,'Matched selections'],[current.stats.unmatchedSelections,'Unmatched selections']]){
   const d=make('div','metric'),v=make('strong','',value),t=make('span','',title);d.append(v,t);m.append(d);
  }
+ syncUnmatchedDebug();
  const diag=$('diagnostics');diag.replaceChildren();$('diagnosticCount').textContent=`${current.diagnostics.length} messages`;
  if(!current.diagnostics.length)diag.append(make('p','muted small','No structural warnings. This does not mean all reference data is matched.'));
  for(const d of current.diagnostics)diag.append(make('div','notice',`${d.severity.toUpperCase()} · ${d.code}${d.line?' · line '+d.line:''}: ${d.message}`));
@@ -310,6 +349,7 @@ $('parseBtn').addEventListener('click',async()=>{
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
+$('copyUnmatchedBtn').addEventListener('click',()=>void copyUnmatchedDebug());
 $('sourceRefreshBtn').addEventListener('click',()=>void refreshCurrentSource(true));
 $('saveBtn').addEventListener('click',async()=>{
  showError('');if(!current)return;
