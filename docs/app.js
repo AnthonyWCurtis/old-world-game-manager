@@ -1,4 +1,5 @@
 import { parseArmy, normalizeImportText } from './parser.js?v=0.1.4';
+import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges } from './live-source.js?v=0.2.0';
 const $=id=>document.getElementById(id);
 let current=null;
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
@@ -101,6 +102,62 @@ function renderRoster(army){
   holder.append(card);
  }
 }
+let sourceJob=0;
+function sourceStatus(message){
+ const p=$('sourceStatus');
+ if(p)p.textContent=message;
+}
+async function refreshCurrentSource(force=false){
+ const army=current;
+ if(!army)return;
+ const job=++sourceJob;
+ $('sourceRefreshBtn').disabled=true;
+ sourceStatus('Reading previously cached references…');
+ const active=()=>current===army&&job===sourceJob;
+ try{
+  const cached=await loadCachedIndexes();
+  if(!active())return;
+  if(cached.entries.length){
+   applyIndexedReferences(army,cached.entries);
+   render();
+   sourceStatus('Showing '+cached.indexCount+' cached source indexes. Checking for updates…');
+  }else{
+   sourceStatus('No cached source indexes yet. Checking tow.whfb.app…');
+  }
+  const latest=await refreshIndexes({force});
+  if(!active())return;
+  if(latest.entries.length){
+   const stats=applyIndexedReferences(army,latest.entries);
+   render();
+   const stamped=latest.lastChecked?new Date(latest.lastChecked).toLocaleString():'unknown time';
+   sourceStatus('Linked '+army.stats.matchedUnits+'/'+army.stats.unitCount+' units and '+
+     army.stats.matchedSelections+'/'+army.stats.selectionCount+' selections. '+
+     (latest.networkCount?latest.networkCount+' source indexes refreshed. ':'Cached indexes reused. ')+
+     'Last index check: '+stamped+'.'+
+     (latest.errors.length?' Some sources unavailable: '+latest.errors.join('; ')+'.':'')+
+     ' Checking individual pages for changes…');
+  }else{
+   sourceStatus('Live source indexes unavailable. Existing reviewed links and imported roster are preserved. '+
+     (latest.errors.length?latest.errors.join('; '):''));
+  }
+  const pages=await checkPageChanges(army,{force,maxPages:12});
+  if(!active())return;
+  const changes=pages.changed.length?
+    pages.changed.length+' source page(s) changed since the previous check. Review at tow.whfb.app: '+
+      pages.changed.map(url=>new URL(url).pathname).join(', ')+'. ':
+    'No changes detected among the pages checked. ';
+  const checked=pages.checked+' page(s) checked; '+pages.total+' unique references in roster. ';
+  sourceStatus(changes+checked+
+    (pages.pending?pages.pending+' more due; these will be checked on another import. ':'')+
+    (pages.errors.length?pages.errors.length+' page check(s) failed; cached data retained. ':'')+
+    'Last check '+new Date().toLocaleTimeString()+'. Source matching does not validate rules or army legality.');
+ }catch(error){
+  if(active())sourceStatus('Source refresh failed: '+(error?.message||error)+
+    '. Your imported roster and cached references remain available.');
+ }finally{
+  if(active())$('sourceRefreshBtn').disabled=false;
+ }
+}
 function render(){
  if(!current)return;
  $('result').hidden=false;$('armyTitle').textContent=label(current.army.name)||'Unnamed army';
@@ -139,10 +196,11 @@ function render(){
 }
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());render();$('result').scrollIntoView({behavior:'smooth'});}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
+$('sourceRefreshBtn').addEventListener('click',()=>void refreshCurrentSource(true));
 $('saveBtn').addEventListener('click',async()=>{
  showError('');if(!current)return;
  try{const row={id:crypto.randomUUID(),created_at:new Date().toISOString(),title:current.army.name.value,exporter:current.format.exporter,layout:current.format.layout,original_text:current.originalText,result:current};await storeOne(row);render();await refresh();alert('Saved in this browser on this device.');}catch(e){showError(e.message);}
@@ -150,7 +208,7 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;$('sourceText').value=loaded.original_text;$('format').value='auto';render();$('result').scrollIntoView();}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;$('sourceText').value=loaded.original_text;$('format').value='auto';render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
