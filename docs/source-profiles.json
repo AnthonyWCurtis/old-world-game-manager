@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "sourceOrigin": "https://tow.whfb.app",
+  "generatedAt": "2026-11-09T18:01:42.469Z",
+  "note": "Names only, from allowed public unit pages. No army legality or option points inferred.",
+  "profiles": {
+    "https://tow.whfb.app/unit/archmage": {
+      "url": "https://tow.whfb.app/unit/archmage",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Archmage"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/bray-shaman": {
+      "url": "https://tow.whfb.app/unit/bray-shaman",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Bray-Shaman"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/chaos-ogres": {
+      "url": "https://tow.whfb.app/unit/chaos-ogres",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chaos Ogre"
+        },
+        {
+          "name": "Champion"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/chaos-warhounds": {
+      "url": "https://tow.whfb.app/unit/chaos-warhounds",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chaos Warhound"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/chaos-warriors": {
+      "url": "https://tow.whfb.app/unit/chaos-warriors",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chaos Warrior"
+        },
+        {
+          "name": "Champion"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/doombull": {
+      "url": "https://tow.whfb.app/unit/doombull",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Doombull"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/eagle-claw-bolt-thrower": {
+      "url": "https://tow.whfb.app/unit/eagle-claw-bolt-thrower",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Eagle-Claw Bolt Thrower"
+        },
+        {
+          "name": "Sea Guard Crew"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/exalted-sorcerer": {
+      "url": "https://tow.whfb.app/unit/exalted-sorcerer",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Exalted Sorcerer"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/forsaken": {
+      "url": "https://tow.whfb.app/unit/forsaken",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Forsaken"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/ghorgon": {
+      "url": "https://tow.whfb.app/unit/ghorgon",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ghorgon"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/gigantic-spawn-of-chaos": {
+      "url": "https://tow.whfb.app/unit/gigantic-spawn-of-chaos",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Gigantic Spawn"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/glade-guard": {
+      "url": "https://tow.whfb.app/unit/glade-guard",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Glade Guard"
+        },
+        {
+          "name": "Lord's Bowman"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/gor-herd": {
+      "url": "https://tow.whfb.app/unit/gor-herd",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Gor"
+        },
+        {
+          "name": "True-horn"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/great-bray-shaman": {
+      "url": "https://tow.whfb.app/unit/great-bray-shaman",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Great Bray-Shaman"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/handmaiden-of-the-everqueen": {
+      "url": "https://tow.whfb.app/unit/handmaiden-of-the-everqueen",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Handmaiden of the Everqueen"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/harpies": {
+      "url": "https://tow.whfb.app/unit/harpies",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Harpy"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/herdstone": {
+      "url": "https://tow.whfb.app/unit/herdstone",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Herdstone"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/high-priest": {
+      "url": "https://tow.whfb.app/unit/high-priest",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "High Priest"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/ishaya-vess": {
+      "url": "https://tow.whfb.app/unit/ishaya-vess",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ishaya Vess"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/lothern-sea-guard": {
+      "url": "https://tow.whfb.app/unit/lothern-sea-guard",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Sea Guard"
+        },
+        {
+          "name": "Sea Master"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/lothern-skycutter": {
+      "url": "https://tow.whfb.app/unit/lothern-skycutter",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Lothern Skycutter"
+        },
+        {
+          "name": "Sea Guard Crew (x3)"
+        },
+        {
+          "name": "Swiftfeather Roc (x1)"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/mage": {
+      "url": "https://tow.whfb.app/unit/mage",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Mage"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/necrolith-colossus": {
+      "url": "https://tow.whfb.app/unit/necrolith-colossus",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Necrolith Colossus"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/primal-warherd": {
+      "url": "https://tow.whfb.app/unit/primal-warherd",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Gor"
+        },
+        {
+          "name": "Ungor"
+        },
+        {
+          "name": "Foe-render"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/prince": {
+      "url": "https://tow.whfb.app/unit/prince",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Prince"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/sea-guard-garrison-commander": {
+      "url": "https://tow.whfb.app/unit/sea-guard-garrison-commander",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Sea Guard Garrison Commander"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/ships-company": {
+      "url": "https://tow.whfb.app/unit/ships-company",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ship's Company"
+        },
+        {
+          "name": "Midshipman"
+        },
+        {
+          "name": "Bosun"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/silver-helms": {
+      "url": "https://tow.whfb.app/unit/silver-helms",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Silver Helm"
+        },
+        {
+          "name": "High Helm"
+        },
+        {
+          "name": "Barded Elven Steed"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/sisters-of-avelorn": {
+      "url": "https://tow.whfb.app/unit/sisters-of-avelorn",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Sister of Avelorn"
+        },
+        {
+          "name": "High Sister"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/skeleton-chariots": {
+      "url": "https://tow.whfb.app/unit/skeleton-chariots",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chariot"
+        },
+        {
+          "name": "Skeletal Crew (x2)"
+        },
+        {
+          "name": "Master Charioteer"
+        },
+        {
+          "name": "Skeletal Steed (x2)"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/skeleton-skirmishers": {
+      "url": "https://tow.whfb.app/unit/skeleton-skirmishers",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Skeleton Skirmisher"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/storm-weaver": {
+      "url": "https://tow.whfb.app/unit/storm-weaver",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Storm Weaver"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/tomb-prince": {
+      "url": "https://tow.whfb.app/unit/tomb-prince",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Tomb Prince"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/ungor-herd": {
+      "url": "https://tow.whfb.app/unit/ungor-herd",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ungor"
+        },
+        {
+          "name": "Half-horn"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/wargor": {
+      "url": "https://tow.whfb.app/unit/wargor",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-09T18:01:42.469Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Wargor"
+        }
+      ],
+      "wizardLevels": []
+    }
+  }
+}
