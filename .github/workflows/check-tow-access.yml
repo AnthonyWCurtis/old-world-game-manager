@@ -27,12 +27,12 @@ jobs:
           from urllib.request import Request, urlopen
           import re
           base='https://tow.whfb.app'
-          for p in ('/sitemap/armies','/sitemap/rules','/sitemap/magic-items'):
+          for p in ('/sitemap/armies','/sitemap/rules','/sitemap/magic','/sitemap/magic-items'):
               req=Request(base+p, headers={'User-Agent':'OldWorldGameManager/0.1 (source index metadata check)','Origin':'https://anthonywcurtis.github.io'})
               with urlopen(req, timeout=15) as r:
                   html=r.read().decode('utf-8','replace')
                   print(p, 'STATUS',r.status,'CORS',r.headers.get('access-control-allow-origin'),'BYTES',len(html))
-              for probe in ('night-goblin-oddnob','goblin-bolt-throwa','talisman-of-protection','ambushers'):
+              for probe in ('night-goblin-oddnob','goblin-bolt-throwa','talisman-of-protection','ambushers','waaagh-magic','accursed-mirror'):
                   m=re.search(r'<a[^>]*href="[^"]*'+re.escape(probe)+r'[^"]*"[^>]*>.*?</a>',html,re.I|re.S)
                   if m:
                       print('  ', probe, re.sub(r'\s+',' ',m.group(0)[:450]))
