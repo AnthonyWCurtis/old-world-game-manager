@@ -74,5 +74,17 @@
   {
     "id": "barrow-kingdoms",
     "label": "Tomb Kings · Barrow Kingdoms"
+  },
+  {
+    "id": "nr-tow-wrapped",
+    "label": "New Recruit · TOW with wrapped upgrades"
+  },
+  {
+    "id": "nr-tow-model-groups",
+    "label": "New Recruit · TOW with model groups"
+  },
+  {
+    "id": "nr-tow-footer",
+    "label": "New Recruit · TOW with version footer"
   }
 ]
