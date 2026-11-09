@@ -26,3 +26,10 @@
  .roster-name{font-size:14px}
  .roster-cost{font-size:12px}
 }
+
+/* Live, cache-first provenance status (does not change original army data). */
+.source-panel{border-left:3px solid #5e87a4}
+.source-panel h2{font-size:17px}
+.source-panel p{margin-bottom:0}
+.source-status{font-size:13px;line-height:1.65;color:var(--text);background:var(--subtle);border:1px solid var(--border);border-radius:7px;padding:11px;overflow-wrap:anywhere}
+@media(max-width:650px){.source-panel .line{align-items:start}.source-panel button{min-height:40px}}
