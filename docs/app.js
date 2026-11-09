@@ -1,4 +1,4 @@
-import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.3.1';
+import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.3.2';
 import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
 import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0.2.7';
 import { wireReportUI } from './report-ui.js?v=0.3.0';
@@ -302,7 +302,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.3.1'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.3.2'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -324,7 +324,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.3.1'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.3.2'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
