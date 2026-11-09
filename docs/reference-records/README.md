@@ -1,12 +1,13 @@
 # Reference database collections (v0.4 data foundation)
 
-The Game Manager maintains three source-linked, independently refreshable reference indices from **https://tow.whfb.app**. The [collection registry](collections.json) lists the paths used to discover these static datasets.
+The Game Manager maintains four source-linked, independently refreshable reference indices from **https://tow.whfb.app**. The [collection registry](collections.json) lists the paths used to discover these static datasets.
 
 | Collection | Data | Source | Summary |
 | --- | --- | --- | --- |
 | [Armies](armies-index.json) | 19 army URLs and 581 global unit URLs | [Armies sitemap](https://tow.whfb.app/sitemap/armies) | [Summary](armies-summary.json) |
 | [Rules](rules-index.json) | 1,833 source-linked references, including 652 special-rule pages | [Rules sitemap](https://tow.whfb.app/sitemap/rules) | [Summary](rules-summary.json) |
 | [Magic](magic-index.json) | 29 magic lores, 139 spells and 2 magic guidance pages | [Magic sitemap](https://tow.whfb.app/sitemap/magic) | [Summary](magic-summary.json) |
+| [Magic Items & Abilities](magic-items-index.json) | 71 type/guidance pages and 768 individual item/ability pages | [Magic Items sitemap](https://tow.whfb.app/sitemap/magic-items) | [Summary](magic-items-summary.json) |
 
 The counts above are from the **9 November 2026** source snapshots and may change when the upstream site changes. Some URLs appear in more than one sitemap; deduplicate by exact URL when combining collections rather than adding counts across indices.
 
@@ -26,6 +27,14 @@ The controlled importer `scripts/build-armies-reference-index.mjs` makes one bou
 All three collections retain `verificationStatus: source-indexed`. This means a title and URL were located in a source sitemap; it does **not** mean gameplay rules, army legality, point values, option availability or spell eligibility have been verified.
 
 The GitHub Actions refresh workflows run weekly or manually, updating these separate datasets only after sanity checks. The current v0.3.3 browser importer **does not yet read these static collection files** to improve match statuses.
+
+## Magic Items and Abilities index
+
+The public [Magic Items (and Abilities) sitemap](https://tow.whfb.app/sitemap/magic-items) has two distinct sections: **Type Index** and **Item(/Ability) Index**. The 9 November 2026 snapshot contains **71 type or guidance links** (`/magic-items/…`) and **768 individual item or ability links** (`/magic-item/…`), for 839 unique source URLs and no ambiguous names.
+
+This collection is broader than magical equipment: it also links abilities, gifts, honours, runes and faction-specific magic item sections. We preserve the source label, its section, exact URL, source date and `verificationStatus: source-indexed`. A trailing asterisk in a label is retained for display and ignored for conservative exact-name lookup (for example, `Charmed Shield*` matches `Charmed Shield`). The separate [Magic](magic-index.json) collection holds **spell and lore** references; the two must not be conflated.
+
+The bounded `scripts/build-magic-items-reference-index.mjs` performs one public sitemap request. Its weekly/manual GitHub Actions refresh rejects untrusted URLs, unexpected index sizes and suspicious shrinkage, preserving the last successful snapshot. All item page effects, costs and who may select them remain **unverified** until separately checked against their source pages. The existing browser importer does not yet consume these new reference collections.
 
 ## Source provenance
 
