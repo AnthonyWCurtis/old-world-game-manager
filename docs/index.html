@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.2.9</title>
-<link rel="stylesheet" href="./styles.css?v=0.2.9">
-<script type="module" src="./app.js?v=0.2.9"></script>
+<title>Old World Game Manager · Browser Edition v0.3.0</title>
+<link rel="stylesheet" href="./styles.css?v=0.3.0">
+<script type="module" src="./app.js?v=0.3.0"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.9</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.3.0</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines and model groups. Nothing is checked for army legality.</p>
@@ -47,6 +47,7 @@
    <div id="metrics" class="metrics"></div>
    <div class="unmatched-debug-actions">
     <button id="copyUnmatchedBtn" class="smallbtn" type="button" disabled>Copy unmatched debug</button>
+    <button id="reportUnmatchedBtn" class="smallbtn" type="button" disabled>Report unmatched</button>
     <span id="copyUnmatchedStatus" class="muted small" role="status" aria-live="polite"></span>
    </div>
    <p class="muted small debug-explanation">Copies unmatched unit and selection names, source lines, and parent unit details for troubleshooting. Does not copy your full army list.</p>
@@ -54,6 +55,16 @@
     <button id="selectUnmatchedBtn" type="button" class="smallbtn" hidden>Select report text</button>
     <textarea id="unmatchedDebugFallback" class="debug-fallback" aria-label="Unmatched debug text for manual copying" readonly hidden></textarea>
    </div>
+   <div id="reportUnmatchedPanel" class="report-form" hidden>
+    <strong>Send missing references to the project owner</strong>
+    <p id="reportUnmatchedCount" class="small"></p>
+    <p class="muted small">This report will be public on GitHub. It contains unmatched reference names, parent unit names, source lines and optional faction — not your full army list or player name. You do not need a GitHub account.</p>
+    <label class="small"><input type="checkbox" id="reportUnmatchedConsent"> I agree to publish these unmatched reference details.</label>
+    <div id="reportCaptcha" class="report-captcha"></div>
+    <button id="submitUnmatchedBtn" class="smallbtn" type="button" disabled>Submit report</button>
+    <a id="reportSavedLink" href="#" target="_blank" rel="noopener noreferrer" hidden>View saved report on GitHub</a>
+   </div>
+   <p id="reportUnmatchedStatus" class="muted small" role="status" aria-live="polite"></p>
    <div class="line"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
    <div id="diagnostics"></div>
   </div>
