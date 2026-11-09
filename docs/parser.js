@@ -173,7 +173,8 @@ export function detectFormat(text, forced) {
             layout = 'compact';
     }
     const version = s.match(/Created with\s+newrecruit\.eu\s+v([\d.]+)/i)?.[1] ?? null;
-    let confidence = layout === 'unknown' ? 'low' : evidence.length ? 'high' : 'medium';
+    // Structural recognition is useful but does not prove an exporter's identity.
+    let confidence = layout === 'unknown' ? 'low' : evidence.includes('exporter attribution') ? 'high' : 'medium';
     if (forced) {
         exporter = forced.exporter;
         layout = forced.layout;
