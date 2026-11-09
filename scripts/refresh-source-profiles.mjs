@@ -22,7 +22,7 @@ const normalized=s=>String(s||'').normalize('NFKC').replace(/\s+/g,' ').trim();
 const decodeHtml=s=>String(s||'')
  .replace(/&#(?:x([0-9a-f]+)|([0-9]+));/gi,(_,h,n)=>String.fromCodePoint(parseInt(h||n,h?16:10)))
  .replace(/&(?:nbsp|amp|lt|gt|quot|apos);/gi,x=>({
- '&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'})[x.toLowerCase()]||x);
+ '&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'"})[x.toLowerCase()]||x);
 const clean=s=>normalized(decodeHtml(String(s||'').replace(/<[^>]*>/g,' ')));
 function safeUrl(href){
  try{
