@@ -64,12 +64,73 @@ test('Audited references have concrete source URLs and scoped proof when needed'
   assert.equal(new Set(CATALOGUE.map(x => x.id)).size, CATALOGUE.length, 'Catalogue IDs must be unique');
 });
 
-test('All 19 supplied example fixtures continue to parse', () => {
+test('All 22 supplied example fixtures continue to parse', () => {
   const manifest = JSON.parse(readFileSync(new URL('../docs/examples/manifest.json', import.meta.url), 'utf8'));
-  assert.equal(manifest.length, 19);
+  assert.equal(manifest.length, 22);
   for (const {id} of manifest) {
     const result = parseArmy(read(id));
     assert.ok(result.units.length > 0, id + ' should parse units');
     assert.equal(result.stats.unparsedLines, 0, id + ' should have no unparsed lines');
   }
+});
+
+test('Headerless TOW points-first entries preserve wrapped upgrades', () => {
+  const parsed = parseArmy(read('nr-tow-wrapped'));
+  assert.equal(parsed.format.exporter, 'new-recruit');
+  assert.equal(parsed.format.layout, 'tow');
+  assert.equal(parsed.format.confidence, 'medium');
+  assert.equal(parsed.army.player.value, 'Example Player');
+  assert.equal(parsed.units.length, 13);
+  assert.equal(parsed.army.derivedPoints.value, 2000);
+  assert.equal(parsed.army.reportedPoints.value, null);
+  assert.equal(parsed.army.limitPoints.value, null);
+  assert.equal(parsed.stats.unparsedLines, 0);
+  const doombull = parsed.units[1];
+  assert.equal(doombull.name, 'Doombull');
+  assert.equal(doombull.reportedPoints.value, 360);
+  assert.equal(doombull.line, 4);
+  assert.ok(doombull.selections.some(s => s.raw === 'Scimitar of Skultar'));
+  assert.ok(doombull.selections.some(s => s.raw === 'Full Plate Chaos Armour'));
+  assert.ok(doombull.selections.some(s => s.raw === 'Icon Of Fortitude'));
+  assert.ok(parsed.units[2].selections.some(s => s.raw === 'Scourge of the Burdened'));
+  assert.ok(parsed.units[3].selections.some(s => s.raw === 'Vitriolic Totem'));
+  assert.ok(parsed.units[5].selections.some(s => s.raw === 'Standard Bearer'));
+  assert.ok(!parsed.units[1].selections.some(s => s.raw === 'Scimitar'));
+});
+
+test('Headerless TOW model groups use comma-separated upgrades', () => {
+  const parsed = parseArmy(read('nr-tow-model-groups'));
+  assert.equal(parsed.format.layout, 'tow');
+  assert.equal(parsed.army.player.value, 'Country - Example Player (Roster)');
+  assert.equal(parsed.units.length, 15);
+  assert.equal(parsed.army.derivedPoints.value, 2000);
+  assert.equal(parsed.stats.unparsedLines, 0);
+  assert.equal(parsed.stats.modelGroupCount, 2);
+  const unit = parsed.units.find(u => u.name === 'Primal Warherds');
+  assert.ok(unit);
+  assert.equal(unit.quantity.value, 21);
+  assert.equal(unit.modelGroups.length, 2);
+  assert.deepEqual(unit.modelGroups.map(g => ({name:g.name,quantity:g.quantity})),
+    [{name:'Gor',quantity:11},{name:'Ungor',quantity:10}]);
+  assert.deepEqual(unit.modelGroups[0].selections.map(s => s.raw),
+    ['Additional Hand Weapon']);
+  assert.deepEqual(unit.modelGroups[1].selections.map(s => s.raw),
+    ['Thrusting Spear', 'Foe-render', 'Great Weapon', 'Standard Bearer', 'Musician']);
+  assert.equal(unit.selections[0].name, 'Ambushers');
+  assert.equal(parsed.units.filter(u => u.name === 'Harpies').length, 2);
+});
+
+test('Attributed New Recruit TOW maintains original duplicate units', () => {
+  const parsed = parseArmy(read('nr-tow-footer'));
+  assert.equal(parsed.format.exporter, 'new-recruit');
+  assert.equal(parsed.format.layout, 'tow');
+  assert.equal(parsed.format.confidence, 'high');
+  assert.equal(parsed.format.version, '37.17');
+  assert.equal(parsed.stats.unitCount, 9);
+  assert.equal(parsed.army.derivedPoints.value, 1979);
+  assert.equal(parsed.stats.unparsedLines, 0);
+  assert.equal(parsed.units.filter(u => u.name === 'Silver Helms').length, 3);
+  assert.deepEqual(parsed.units.filter(u => u.name === 'Silver Helms').map(u=>u.quantity.value), [6,6,6]);
+  assert.equal(parsed.units.filter(u => u.name === 'Lothern Skycutters').length, 2);
+  assert.equal(parsed.units.filter(u => u.name === 'Sisters of Avelorn').length, 2);
 });
