@@ -66,7 +66,20 @@ export const CATALOGUE = [
     { id: 'option:sg-standard-bearer', name: 'Standard bearer', type: 'option', url: 'https://tow.whfb.app/unit/lothern-sea-guard', parentUnit: 'Lothern Sea Guard' },
     { id: 'option:sg-musician', name: 'Musician', type: 'option', url: 'https://tow.whfb.app/unit/lothern-sea-guard', parentUnit: 'Lothern Sea Guard' },
     { id: 'option:sg-shields', name: 'Shields', type: 'option', url: 'https://tow.whfb.app/unit/lothern-sea-guard', parentUnit: 'Lothern Sea Guard' },
-    { id: 'option:sg-veteran', name: 'Veteran', type: 'option', url: 'https://tow.whfb.app/unit/lothern-sea-guard', parentUnit: 'Lothern Sea Guard', aliases: ['Veterans'] }
+    { id: 'option:sg-veteran', name: 'Veteran', type: 'option', url: 'https://tow.whfb.app/unit/lothern-sea-guard', parentUnit: 'Lothern Sea Guard', aliases: ['Veterans'] },
+    { id: 'equipment:shield', name: 'Shield', type: 'equipment', url: 'https://tow.whfb.app/weapons-of-war/shield', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'role:general', name: 'General', type: 'role', url: 'https://tow.whfb.app/characters/selecting-your-general', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'item:mathlanns-ire', name: 'Mathlann\'s Ire', type: 'item', url: 'https://tow.whfb.app/magic-item/mathlanns-ire', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'wizard-level:storm-weaver-3', name: 'Level 3 Wizard', type: 'wizard-level', url: 'https://tow.whfb.app/magic/levels-of-wizardry', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Storm Weaver', scopeEvidenceUrl: 'https://tow.whfb.app/unit/storm-weaver' },
+    { id: 'role:battle-standard-bearer', name: 'Battle Standard Bearer', type: 'role', url: 'https://tow.whfb.app/characters/the-battle-standard-bearer-model', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/warhammer-armies/sea-guard-garrison' },
+    { id: 'equipment:longbow', name: 'Longbow', type: 'equipment', url: 'https://tow.whfb.app/weapons-of-war/longbow', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'honour:sea-guard-commander', name: 'Sea Guard', type: 'honour', url: 'https://tow.whfb.app/magic-item/sea-guard', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Sea Guard Garrison Commander' },
+    { id: 'honour:sea-guard-mage', name: 'Sea Guard', type: 'honour', url: 'https://tow.whfb.app/magic-item/sea-guard', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Mage', scopeEvidenceUrl: 'https://tow.whfb.app/unit/mage' },
+    { id: 'mount:lothern-skycutter-garrison-commander', name: 'Lothern Skycutter', type: 'mount', url: 'https://tow.whfb.app/unit/lothern-skycutter', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Sea Guard Garrison Commander', scopeEvidenceUrl: 'https://tow.whfb.app/unit/sea-guard-garrison-commander' },
+    { id: 'wizard-level:mage-1', name: 'Level 1 Wizard', type: 'wizard-level', url: 'https://tow.whfb.app/magic/levels-of-wizardry', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Mage', scopeEvidenceUrl: 'https://tow.whfb.app/unit/mage' },
+    { id: 'command:full-command-lothern', name: 'Full Command', type: 'command', url: 'https://tow.whfb.app/command-groups', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Lothern Sea Guard', scopeEvidenceUrl: 'https://tow.whfb.app/unit/lothern-sea-guard' },
+    { id: 'equipment:repeater-bolt-thrower-eagle-claw', name: 'Repeater Bolt Thrower', type: 'equipment', url: 'https://tow.whfb.app/war-machines/bolt-throwers', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Eagle-Claw Bolt Thrower', scopeEvidenceUrl: 'https://tow.whfb.app/unit/eagle-claw-bolt-thrower' },
+    { id: 'rule:ambushers', name: 'Ambushers', type: 'rule', url: 'https://tow.whfb.app/special-rules/ambushers', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' }
 ];
 const normalize = (s) => s.toLowerCase().replace(/\u2019/g, "'").replace(/\s+/g, ' ').trim();
 export function findReference(label, kind, parentUnit) {
