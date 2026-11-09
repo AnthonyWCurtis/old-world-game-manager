@@ -77,3 +77,15 @@
 .debug-report-container button:not([hidden]){display:block;margin-bottom:7px}
 .debug-report-container button[hidden]{display:none}
 .debug-report-container textarea:not([hidden]){display:block}
+
+/* Anonymous unmatched-reference reporting (GitHub user account not required). */
+.report-form{margin-top:11px;padding:13px;border:1px solid var(--border);border-radius:9px;background:var(--subtle);display:grid;gap:9px}
+.report-form[hidden]{display:none}
+.report-form strong{font-size:14px}
+.report-form p{margin:0}
+.report-form label{display:flex;gap:8px;align-items:start}
+.report-form input[type=checkbox]{margin-top:4px;flex-shrink:0}
+.report-captcha{min-height:38px;max-width:100%}
+.report-form button{justify-self:start;min-height:40px}
+.report-form a{font-size:13px;overflow-wrap:anywhere}
+#reportUnmatchedStatus{min-height:0;overflow-wrap:anywhere}
