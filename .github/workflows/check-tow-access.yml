@@ -21,3 +21,21 @@ jobs:
           curl -sSI --max-time 12 -H 'Origin: https://anthonywcurtis.github.io' https://tow.whfb.app/unit/night-goblin-oddnob | grep -iE '^(HTTP/|access-control-|content-type:|etag:|last-modified:|location:|cache-control:)' || true
           echo "=== Public API probe HEAD ==="
           curl -sSI --max-time 12 -H 'Origin: https://anthonywcurtis.github.io' https://tow.whfb.app/api/ | grep -iE '^(HTTP/|access-control-|content-type:|location:)' || true
+
+      - name: Confirm permitted sitemap structure (index pages only)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from urllib.request import Request, urlopen
+          import re
+          base='https://tow.whfb.app'
+          for p in ('/sitemap/armies','/sitemap/rules','/sitemap/magic-items'):
+              req=Request(base+p, headers={'User-Agent':'OldWorldGameManager/0.1 (source index metadata check)','Origin':'https://anthonywcurtis.github.io'})
+              with urlopen(req, timeout=15) as r:
+                  html=r.read().decode('utf-8','replace')
+                  print(p, 'STATUS',r.status,'CORS',r.headers.get('access-control-allow-origin'),'BYTES',len(html))
+              for probe in ('night-goblin-oddnob','goblin-bolt-throwa','talisman-of-protection','ambushers'):
+                  m=re.search(r'<a[^>]*href="[^"]*'+re.escape(probe)+r'[^"]*"[^>]*>.*?</a>',html,re.I|re.S)
+                  if m:
+                      print('  ', probe, re.sub(r'\s+',' ',m.group(0)[:450]))
+          PY
