@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-summary",
+  "sourceUrl": "https://tow.whfb.app/sitemap/armies",
+  "checkedAt": "2026-11-09T21:28:21.476Z",
+  "verificationStatus": "source-indexed",
+  "armies": 19,
+  "units": 581,
+  "entries": 600,
+  "ambiguousNames": 0,
+  "sections": [
+    {
+      "name": "Army Index",
+      "count": 19
+    },
+    {
+      "name": "Unit Index",
+      "count": 581
+    }
+  ],
+  "sampleEntries": [
+    {
+      "name": "Chaos Dwarfs",
+      "kind": "army",
+      "url": "https://tow.whfb.app/army/chaos-dwarfs"
+    },
+    {
+      "name": "Grand Cathay",
+      "kind": "army",
+      "url": "https://tow.whfb.app/army/grand-cathay"
+    },
+    {
+      "name": "High Elf Realms",
+      "kind": "army",
+      "url": "https://tow.whfb.app/army/high-elf-realms"
+    },
+    {
+      "name": "Daemonsmith Sorcerer",
+      "kind": "unit",
+      "url": "https://tow.whfb.app/unit/daemonsmith-sorcerer"
+    },
+    {
+      "name": "Ishaya Vess",
+      "kind": "unit",
+      "url": "https://tow.whfb.app/unit/ishaya-vess"
+    },
+    {
+      "name": "Korhil Lionmane",
+      "kind": "unit",
+      "url": "https://tow.whfb.app/unit/korhil-lionmane"
+    },
+    {
+      "name": "White Lions of Chrace",
+      "kind": "unit",
+      "url": "https://tow.whfb.app/unit/white-lions-of-chrace"
+    }
+  ]
+}

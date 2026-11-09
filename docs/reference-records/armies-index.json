@@ -1,0 +1,6032 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-index",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/sitemap/armies",
+    "checkedAt": "2026-11-09T21:28:21.476Z",
+    "verificationStatus": "source-indexed",
+    "sourceVersion": null,
+    "method": "single bounded public HTML sitemap fetch; army and unit titles/URLs only"
+  },
+  "scope": "Army pages and unit pages in the public Armies sitemap; no implied unit-to-army membership",
+  "counts": {
+    "armies": 19,
+    "units": 581,
+    "entries": 600,
+    "ambiguousNames": 0
+  },
+  "sections": [
+    {
+      "name": "Army Index",
+      "count": 19
+    },
+    {
+      "name": "Unit Index",
+      "count": 581
+    }
+  ],
+  "entries": [
+    {
+      "id": "army-ref:/army/beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "url": "https://tow.whfb.app/army/beastmen-brayherds",
+      "path": "/army/beastmen-brayherds",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "url": "https://tow.whfb.app/army/chaos-dwarfs",
+      "path": "/army/chaos-dwarfs",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "url": "https://tow.whfb.app/army/daemons-of-chaos",
+      "path": "/army/daemons-of-chaos",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/dark-elves",
+      "name": "Dark Elves",
+      "url": "https://tow.whfb.app/army/dark-elves",
+      "path": "/army/dark-elves",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "url": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "path": "/army/dwarfen-mountain-holds",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/empire-of-man",
+      "name": "Empire of Man",
+      "url": "https://tow.whfb.app/army/empire-of-man",
+      "path": "/army/empire-of-man",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/grand-cathay",
+      "name": "Grand Cathay",
+      "url": "https://tow.whfb.app/army/grand-cathay",
+      "path": "/army/grand-cathay",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/high-elf-realms",
+      "name": "High Elf Realms",
+      "url": "https://tow.whfb.app/army/high-elf-realms",
+      "path": "/army/high-elf-realms",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "url": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "path": "/army/kingdom-of-bretonnia",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/lizardmen",
+      "name": "Lizardmen",
+      "url": "https://tow.whfb.app/army/lizardmen",
+      "path": "/army/lizardmen",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "url": "https://tow.whfb.app/army/ogre-kingdoms",
+      "path": "/army/ogre-kingdoms",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "url": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "path": "/army/orc-and-goblin-tribes",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/realms-of-men",
+      "name": "Realms of Men",
+      "url": "https://tow.whfb.app/army/realms-of-men",
+      "path": "/army/realms-of-men",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/regiments-of-renown",
+      "name": "Regiments of Renown",
+      "url": "https://tow.whfb.app/army/regiments-of-renown",
+      "path": "/army/regiments-of-renown",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/skaven",
+      "name": "Skaven",
+      "url": "https://tow.whfb.app/army/skaven",
+      "path": "/army/skaven",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "url": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "path": "/army/tomb-kings-of-khemri",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/vampire-counts",
+      "name": "Vampire Counts",
+      "url": "https://tow.whfb.app/army/vampire-counts",
+      "path": "/army/vampire-counts",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "url": "https://tow.whfb.app/army/warriors-of-chaos",
+      "path": "/army/warriors-of-chaos",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/army/wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "url": "https://tow.whfb.app/army/wood-elf-realms",
+      "path": "/army/wood-elf-realms",
+      "kind": "army",
+      "section": "Army Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/abyssal-terror",
+      "name": "Abyssal Terror",
+      "url": "https://tow.whfb.app/unit/abyssal-terror",
+      "path": "/unit/abyssal-terror",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ancient-stegadon",
+      "name": "Ancient Stegadon",
+      "url": "https://tow.whfb.app/unit/ancient-stegadon",
+      "path": "/unit/ancient-stegadon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/anvil-of-doom",
+      "name": "Anvil of Doom",
+      "url": "https://tow.whfb.app/unit/anvil-of-doom",
+      "path": "/unit/anvil-of-doom",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/arachnarok-spider",
+      "name": "Arachnarok Spider",
+      "url": "https://tow.whfb.app/unit/arachnarok-spider",
+      "path": "/unit/arachnarok-spider",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/araloth-lord-of-talsyn",
+      "name": "Araloth, Lord of Talsyn",
+      "url": "https://tow.whfb.app/unit/araloth-lord-of-talsyn",
+      "path": "/unit/araloth-lord-of-talsyn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/arch-necrotect",
+      "name": "Arch Necrotect",
+      "url": "https://tow.whfb.app/unit/arch-necrotect",
+      "path": "/unit/arch-necrotect",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/archmage",
+      "name": "Archmage",
+      "url": "https://tow.whfb.app/unit/archmage",
+      "path": "/unit/archmage",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/aspiring-champion",
+      "name": "Aspiring Champion",
+      "url": "https://tow.whfb.app/unit/aspiring-champion",
+      "path": "/unit/aspiring-champion",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/astromancer",
+      "name": "Astromancer",
+      "url": "https://tow.whfb.app/unit/astromancer",
+      "path": "/unit/astromancer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/badlands-ogre-bulls",
+      "name": "Badlands Ogre Bulls",
+      "url": "https://tow.whfb.app/unit/badlands-ogre-bulls",
+      "path": "/unit/badlands-ogre-bulls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/baggage-carts",
+      "name": "Baggage Carts",
+      "url": "https://tow.whfb.app/unit/baggage-carts",
+      "path": "/unit/baggage-carts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bale-taurus",
+      "name": "Bale Taurus",
+      "url": "https://tow.whfb.app/unit/bale-taurus",
+      "path": "/unit/bale-taurus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/barded-elven-steed",
+      "name": "Barded Elven Steed",
+      "url": "https://tow.whfb.app/unit/barded-elven-steed",
+      "path": "/unit/barded-elven-steed",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/barded-pegasus",
+      "name": "Barded Pegasus",
+      "url": "https://tow.whfb.app/unit/barded-pegasus",
+      "path": "/unit/barded-pegasus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/barded-skeletal-steed",
+      "name": "Barded Skeletal Steed",
+      "url": "https://tow.whfb.app/unit/barded-skeletal-steed",
+      "path": "/unit/barded-skeletal-steed",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/barded-warhorse",
+      "name": "Barded Warhorse",
+      "url": "https://tow.whfb.app/unit/barded-warhorse",
+      "path": "/unit/barded-warhorse",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/baron",
+      "name": "Baron",
+      "url": "https://tow.whfb.app/unit/baron",
+      "path": "/unit/baron",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bastiladon",
+      "name": "Bastiladon",
+      "url": "https://tow.whfb.app/unit/bastiladon",
+      "path": "/unit/bastiladon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bat-swarms",
+      "name": "Bat Swarms",
+      "url": "https://tow.whfb.app/unit/bat-swarms",
+      "path": "/unit/bat-swarms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/battle-pilgrims",
+      "name": "Battle Pilgrims",
+      "url": "https://tow.whfb.app/unit/battle-pilgrims",
+      "path": "/unit/battle-pilgrims",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bear-of-loren",
+      "name": "Bear of Loren",
+      "url": "https://tow.whfb.app/unit/bear-of-loren",
+      "path": "/unit/bear-of-loren",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/beast-keeper",
+      "name": "Beast Keeper",
+      "url": "https://tow.whfb.app/unit/beast-keeper",
+      "path": "/unit/beast-keeper",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/beastlord",
+      "name": "Beastlord",
+      "url": "https://tow.whfb.app/unit/beastlord",
+      "path": "/unit/beastlord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/beasts-of-nurgle",
+      "name": "Beasts of Nurgle",
+      "url": "https://tow.whfb.app/unit/beasts-of-nurgle",
+      "path": "/unit/beasts-of-nurgle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bestigor-herd",
+      "name": "Bestigor Herd",
+      "url": "https://tow.whfb.app/unit/bestigor-herd",
+      "path": "/unit/bestigor-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-ark-corsairs",
+      "name": "Black Ark Corsairs",
+      "url": "https://tow.whfb.app/unit/black-ark-corsairs",
+      "path": "/unit/black-ark-corsairs",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-coach",
+      "name": "Black Coach",
+      "url": "https://tow.whfb.app/unit/black-coach",
+      "path": "/unit/black-coach",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-dragon",
+      "name": "Black Dragon",
+      "url": "https://tow.whfb.app/unit/black-dragon",
+      "path": "/unit/black-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-guard-of-naggarond",
+      "name": "Black Guard of Naggarond",
+      "url": "https://tow.whfb.app/unit/black-guard-of-naggarond",
+      "path": "/unit/black-guard-of-naggarond",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-knights",
+      "name": "Black Knights",
+      "url": "https://tow.whfb.app/unit/black-knights",
+      "path": "/unit/black-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-orc-bigboss",
+      "name": "Black Orc Bigboss",
+      "url": "https://tow.whfb.app/unit/black-orc-bigboss",
+      "path": "/unit/black-orc-bigboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-orc-boar-chariot",
+      "name": "Black Orc Boar Chariot",
+      "url": "https://tow.whfb.app/unit/black-orc-boar-chariot",
+      "path": "/unit/black-orc-boar-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-orc-mob",
+      "name": "Black Orc Mob",
+      "url": "https://tow.whfb.app/unit/black-orc-mob",
+      "path": "/unit/black-orc-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/black-orc-warboss",
+      "name": "Black Orc Warboss",
+      "url": "https://tow.whfb.app/unit/black-orc-warboss",
+      "path": "/unit/black-orc-warboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/blood-knights",
+      "name": "Blood Knights",
+      "url": "https://tow.whfb.app/unit/blood-knights",
+      "path": "/unit/blood-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/blood-throne-of-khorne",
+      "name": "Blood Throne of Khorne",
+      "url": "https://tow.whfb.app/unit/blood-throne-of-khorne",
+      "path": "/unit/blood-throne-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bloodcrushers-of-khorne",
+      "name": "Bloodcrushers of Khorne",
+      "url": "https://tow.whfb.app/unit/bloodcrushers-of-khorne",
+      "path": "/unit/bloodcrushers-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bloodletters-of-khorne",
+      "name": "Bloodletters of Khorne",
+      "url": "https://tow.whfb.app/unit/bloodletters-of-khorne",
+      "path": "/unit/bloodletters-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bloodthirster",
+      "name": "Bloodthirster",
+      "url": "https://tow.whfb.app/unit/bloodthirster",
+      "path": "/unit/bloodthirster",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bloodwrack-medusa",
+      "name": "Bloodwrack Medusa",
+      "url": "https://tow.whfb.app/unit/bloodwrack-medusa",
+      "path": "/unit/bloodwrack-medusa",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bloodwrack-shrine",
+      "name": "Bloodwrack Shrine",
+      "url": "https://tow.whfb.app/unit/bloodwrack-shrine",
+      "path": "/unit/bloodwrack-shrine",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/blue-horrors-of-tzeentch",
+      "name": "Blue Horrors of Tzeentch",
+      "url": "https://tow.whfb.app/unit/blue-horrors-of-tzeentch",
+      "path": "/unit/blue-horrors-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bolt-thrower",
+      "name": "Bolt Thrower",
+      "url": "https://tow.whfb.app/unit/bolt-thrower",
+      "path": "/unit/bolt-thrower",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bonegrinder-giant",
+      "name": "Bonegrinder Giant",
+      "url": "https://tow.whfb.app/unit/bonegrinder-giant",
+      "path": "/unit/bonegrinder-giant",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/border-princes-bombard",
+      "name": "Border Princes Bombard",
+      "url": "https://tow.whfb.app/unit/border-princes-bombard",
+      "path": "/unit/border-princes-bombard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/border-princes-brigands",
+      "name": "Border Princes Brigands",
+      "url": "https://tow.whfb.app/unit/border-princes-brigands",
+      "path": "/unit/border-princes-brigands",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/border-princes-mortar",
+      "name": "Border Princes Mortar",
+      "url": "https://tow.whfb.app/unit/border-princes-mortar",
+      "path": "/unit/border-princes-mortar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/border-princes-organ-gun",
+      "name": "Border Princes Organ Gun",
+      "url": "https://tow.whfb.app/unit/border-princes-organ-gun",
+      "path": "/unit/border-princes-organ-gun",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/branchwraith",
+      "name": "Branchwraith",
+      "url": "https://tow.whfb.app/unit/branchwraith",
+      "path": "/unit/branchwraith",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bray-shaman",
+      "name": "Bray-Shaman",
+      "url": "https://tow.whfb.app/unit/bray-shaman",
+      "path": "/unit/bray-shaman",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bretonnian-warhorse",
+      "name": "Bretonnian Warhorse",
+      "url": "https://tow.whfb.app/unit/bretonnian-warhorse",
+      "path": "/unit/bretonnian-warhorse",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/brimstone-horrors-of-tzeentch",
+      "name": "Brimstone Horrors of Tzeentch",
+      "url": "https://tow.whfb.app/unit/brimstone-horrors-of-tzeentch",
+      "path": "/unit/brimstone-horrors-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/brotherhood-of-grimnir",
+      "name": "Brotherhood of Grimnir",
+      "url": "https://tow.whfb.app/unit/brotherhood-of-grimnir",
+      "path": "/unit/brotherhood-of-grimnir",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bruiser",
+      "name": "Bruiser",
+      "url": "https://tow.whfb.app/unit/bruiser",
+      "path": "/unit/bruiser",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bull-centaur-renders",
+      "name": "Bull Centaur Renders",
+      "url": "https://tow.whfb.app/unit/bull-centaur-renders",
+      "path": "/unit/bull-centaur-renders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/bull-centaur-taurruk",
+      "name": "Bull Centaur Taur'ruk",
+      "url": "https://tow.whfb.app/unit/bull-centaur-taurruk",
+      "path": "/unit/bull-centaur-taurruk",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/burlok-damminson",
+      "name": "Burlok Damminson",
+      "url": "https://tow.whfb.app/unit/burlok-damminson",
+      "path": "/unit/burlok-damminson",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/burning-chariot-of-tzeentch",
+      "name": "Burning Chariot of Tzeentch",
+      "url": "https://tow.whfb.app/unit/burning-chariot-of-tzeentch",
+      "path": "/unit/burning-chariot-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/butcher",
+      "name": "Butcher",
+      "url": "https://tow.whfb.app/unit/butcher",
+      "path": "/unit/butcher",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cairn-wraith",
+      "name": "Cairn Wraith",
+      "url": "https://tow.whfb.app/unit/cairn-wraith",
+      "path": "/unit/cairn-wraith",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cannon",
+      "name": "Cannon",
+      "url": "https://tow.whfb.app/unit/cannon",
+      "path": "/unit/cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/captain-of-the-empire",
+      "name": "Captain of the Empire",
+      "url": "https://tow.whfb.app/unit/captain-of-the-empire",
+      "path": "/unit/captain-of-the-empire",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/carnosaur",
+      "name": "Carnosaur",
+      "url": "https://tow.whfb.app/unit/carnosaur",
+      "path": "/unit/carnosaur",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/carrion",
+      "name": "Carrion",
+      "url": "https://tow.whfb.app/unit/carrion",
+      "path": "/unit/carrion",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/casket-of-souls",
+      "name": "Casket of Souls",
+      "url": "https://tow.whfb.app/unit/casket-of-souls",
+      "path": "/unit/casket-of-souls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cathayan-grand-cannon",
+      "name": "Cathayan Grand Cannon",
+      "url": "https://tow.whfb.app/unit/cathayan-grand-cannon",
+      "path": "/unit/cathayan-grand-cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cathayan-horse",
+      "name": "Cathayan Horse",
+      "url": "https://tow.whfb.app/unit/cathayan-horse",
+      "path": "/unit/cathayan-horse",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cathayan-sentinel",
+      "name": "Cathayan Sentinel",
+      "url": "https://tow.whfb.app/unit/cathayan-sentinel",
+      "path": "/unit/cathayan-sentinel",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cathayan-warhorse",
+      "name": "Cathayan Warhorse",
+      "url": "https://tow.whfb.app/unit/cathayan-warhorse",
+      "path": "/unit/cathayan-warhorse",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cauldron-of-blood",
+      "name": "Cauldron of Blood",
+      "url": "https://tow.whfb.app/unit/cauldron-of-blood",
+      "path": "/unit/cauldron-of-blood",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/centigor-herd",
+      "name": "Centigor Herd",
+      "url": "https://tow.whfb.app/unit/centigor-herd",
+      "path": "/unit/centigor-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chameleon-skinks",
+      "name": "Chameleon Skinks",
+      "url": "https://tow.whfb.app/unit/chameleon-skinks",
+      "path": "/unit/chameleon-skinks",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/champion-of-ruin",
+      "name": "Champion of Ruin",
+      "url": "https://tow.whfb.app/unit/champion-of-ruin",
+      "path": "/unit/champion-of-ruin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-chariot",
+      "name": "Chaos Chariot",
+      "url": "https://tow.whfb.app/unit/chaos-chariot",
+      "path": "/unit/chaos-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-cultists",
+      "name": "Chaos Cultists",
+      "url": "https://tow.whfb.app/unit/chaos-cultists",
+      "path": "/unit/chaos-cultists",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-dragon",
+      "name": "Chaos Dragon",
+      "url": "https://tow.whfb.app/unit/chaos-dragon",
+      "path": "/unit/chaos-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-furies",
+      "name": "Chaos Furies",
+      "url": "https://tow.whfb.app/unit/chaos-furies",
+      "path": "/unit/chaos-furies",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-giant",
+      "name": "Chaos Giant",
+      "url": "https://tow.whfb.app/unit/chaos-giant",
+      "path": "/unit/chaos-giant",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-knights",
+      "name": "Chaos Knights",
+      "url": "https://tow.whfb.app/unit/chaos-knights",
+      "path": "/unit/chaos-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-lord",
+      "name": "Chaos Lord",
+      "url": "https://tow.whfb.app/unit/chaos-lord",
+      "path": "/unit/chaos-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-marauders",
+      "name": "Chaos Marauders",
+      "url": "https://tow.whfb.app/unit/chaos-marauders",
+      "path": "/unit/chaos-marauders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-ogres",
+      "name": "Chaos Ogres",
+      "url": "https://tow.whfb.app/unit/chaos-ogres",
+      "path": "/unit/chaos-ogres",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-spawn",
+      "name": "Chaos Spawn",
+      "url": "https://tow.whfb.app/unit/chaos-spawn",
+      "path": "/unit/chaos-spawn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-steed",
+      "name": "Chaos Steed",
+      "url": "https://tow.whfb.app/unit/chaos-steed",
+      "path": "/unit/chaos-steed",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-trolls",
+      "name": "Chaos Trolls",
+      "url": "https://tow.whfb.app/unit/chaos-trolls",
+      "path": "/unit/chaos-trolls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-warhound-handler",
+      "name": "Chaos Warhound Handler",
+      "url": "https://tow.whfb.app/unit/chaos-warhound-handler",
+      "path": "/unit/chaos-warhound-handler",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-warhounds",
+      "name": "Chaos Warhounds",
+      "url": "https://tow.whfb.app/unit/chaos-warhounds",
+      "path": "/unit/chaos-warhounds",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chaos-warriors",
+      "name": "Chaos Warriors",
+      "url": "https://tow.whfb.app/unit/chaos-warriors",
+      "path": "/unit/chaos-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chapter-master",
+      "name": "Chapter Master",
+      "url": "https://tow.whfb.app/unit/chapter-master",
+      "path": "/unit/chapter-master",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chariot-of-tzeentch",
+      "name": "Chariot of Tzeentch",
+      "url": "https://tow.whfb.app/unit/chariot-of-tzeentch",
+      "path": "/unit/chariot-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chieftain-of-ruin",
+      "name": "Chieftain of Ruin",
+      "url": "https://tow.whfb.app/unit/chieftain-of-ruin",
+      "path": "/unit/chieftain-of-ruin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chieftains-chariot",
+      "name": "Chieftain's Chariot",
+      "url": "https://tow.whfb.app/unit/chieftains-chariot",
+      "path": "/unit/chieftains-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chimera",
+      "name": "Chimera",
+      "url": "https://tow.whfb.app/unit/chimera",
+      "path": "/unit/chimera",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chosen-chaos-chariot",
+      "name": "Chosen Chaos Chariot",
+      "url": "https://tow.whfb.app/unit/chosen-chaos-chariot",
+      "path": "/unit/chosen-chaos-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chosen-chaos-knights",
+      "name": "Chosen Chaos Knights",
+      "url": "https://tow.whfb.app/unit/chosen-chaos-knights",
+      "path": "/unit/chosen-chaos-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chosen-chaos-warriors",
+      "name": "Chosen Chaos Warriors",
+      "url": "https://tow.whfb.app/unit/chosen-chaos-warriors",
+      "path": "/unit/chosen-chaos-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chracian-chieftain",
+      "name": "Chracian Chieftain",
+      "url": "https://tow.whfb.app/unit/chracian-chieftain",
+      "path": "/unit/chracian-chieftain",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/chracian-woodsmen",
+      "name": "Chracian Woodsmen",
+      "url": "https://tow.whfb.app/unit/chracian-woodsmen",
+      "path": "/unit/chracian-woodsmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/clanrats",
+      "name": "Clanrats",
+      "url": "https://tow.whfb.app/unit/clanrats",
+      "path": "/unit/clanrats",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cockatrice",
+      "name": "Cockatrice",
+      "url": "https://tow.whfb.app/unit/cockatrice",
+      "path": "/unit/cockatrice",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cold-one-chariot",
+      "name": "Cold One Chariot",
+      "url": "https://tow.whfb.app/unit/cold-one-chariot",
+      "path": "/unit/cold-one-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cold-one-dark-elves",
+      "name": "Cold One (Dark Elves)",
+      "url": "https://tow.whfb.app/unit/cold-one-dark-elves",
+      "path": "/unit/cold-one-dark-elves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cold-one-knights",
+      "name": "Cold One Knights",
+      "url": "https://tow.whfb.app/unit/cold-one-knights",
+      "path": "/unit/cold-one-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cold-one-lizardmen",
+      "name": "Cold One (Lizardmen)",
+      "url": "https://tow.whfb.app/unit/cold-one-lizardmen",
+      "path": "/unit/cold-one-lizardmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cold-one-riders",
+      "name": "Cold One Riders",
+      "url": "https://tow.whfb.app/unit/cold-one-riders",
+      "path": "/unit/cold-one-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/common-troll-mob",
+      "name": "Common Troll Mob",
+      "url": "https://tow.whfb.app/unit/common-troll-mob",
+      "path": "/unit/common-troll-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/corpse-cart",
+      "name": "Corpse Cart",
+      "url": "https://tow.whfb.app/unit/corpse-cart",
+      "path": "/unit/corpse-cart",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/coven-throne",
+      "name": "Coven Throne",
+      "url": "https://tow.whfb.app/unit/coven-throne",
+      "path": "/unit/coven-throne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/crane-gunner-teams",
+      "name": "Crane Gunner Teams",
+      "url": "https://tow.whfb.app/unit/crane-gunner-teams",
+      "path": "/unit/crane-gunner-teams",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/crypt-ghouls",
+      "name": "Crypt Ghouls",
+      "url": "https://tow.whfb.app/unit/crypt-ghouls",
+      "path": "/unit/crypt-ghouls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/crypt-horrors",
+      "name": "Crypt Horrors",
+      "url": "https://tow.whfb.app/unit/crypt-horrors",
+      "path": "/unit/crypt-horrors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cult-magister",
+      "name": "Cult Magister",
+      "url": "https://tow.whfb.app/unit/cult-magister",
+      "path": "/unit/cult-magister",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/cygor",
+      "name": "Cygor",
+      "url": "https://tow.whfb.app/unit/cygor",
+      "path": "/unit/cygor",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemon-prince-daemons-of-chaos",
+      "name": "Daemon Prince (Daemons of Chaos)",
+      "url": "https://tow.whfb.app/unit/daemon-prince-daemons-of-chaos",
+      "path": "/unit/daemon-prince-daemons-of-chaos",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemon-prince-warriors-of-chaos",
+      "name": "Daemon Prince (Warriors of Chaos)",
+      "url": "https://tow.whfb.app/unit/daemon-prince-warriors-of-chaos",
+      "path": "/unit/daemon-prince-warriors-of-chaos",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemon-slayer",
+      "name": "Daemon Slayer",
+      "url": "https://tow.whfb.app/unit/daemon-slayer",
+      "path": "/unit/daemon-slayer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonettes-of-slaanesh",
+      "name": "Daemonettes of Slaanesh",
+      "url": "https://tow.whfb.app/unit/daemonettes-of-slaanesh",
+      "path": "/unit/daemonettes-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonic-herald-of-khorne",
+      "name": "Daemonic Herald of Khorne",
+      "url": "https://tow.whfb.app/unit/daemonic-herald-of-khorne",
+      "path": "/unit/daemonic-herald-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonic-herald-of-nurgle",
+      "name": "Daemonic Herald of Nurgle",
+      "url": "https://tow.whfb.app/unit/daemonic-herald-of-nurgle",
+      "path": "/unit/daemonic-herald-of-nurgle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonic-herald-of-slaanesh",
+      "name": "Daemonic Herald of Slaanesh",
+      "url": "https://tow.whfb.app/unit/daemonic-herald-of-slaanesh",
+      "path": "/unit/daemonic-herald-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonic-herald-of-tzeentch",
+      "name": "Daemonic Herald of Tzeentch",
+      "url": "https://tow.whfb.app/unit/daemonic-herald-of-tzeentch",
+      "path": "/unit/daemonic-herald-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonic-mount",
+      "name": "Daemonic Mount",
+      "url": "https://tow.whfb.app/unit/daemonic-mount",
+      "path": "/unit/daemonic-mount",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/daemonsmith-sorcerer",
+      "name": "Daemonsmith Sorcerer",
+      "url": "https://tow.whfb.app/unit/daemonsmith-sorcerer",
+      "path": "/unit/daemonsmith-sorcerer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/damsel",
+      "name": "Damsel",
+      "url": "https://tow.whfb.app/unit/damsel",
+      "path": "/unit/damsel",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-elf-dreadlord",
+      "name": "Dark Elf Dreadlord",
+      "url": "https://tow.whfb.app/unit/dark-elf-dreadlord",
+      "path": "/unit/dark-elf-dreadlord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-elf-master",
+      "name": "Dark Elf Master",
+      "url": "https://tow.whfb.app/unit/dark-elf-master",
+      "path": "/unit/dark-elf-master",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-elf-shades",
+      "name": "Dark Elf Shades",
+      "url": "https://tow.whfb.app/unit/dark-elf-shades",
+      "path": "/unit/dark-elf-shades",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-elf-warriors",
+      "name": "Dark Elf Warriors",
+      "url": "https://tow.whfb.app/unit/dark-elf-warriors",
+      "path": "/unit/dark-elf-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-pegasus",
+      "name": "Dark Pegasus",
+      "url": "https://tow.whfb.app/unit/dark-pegasus",
+      "path": "/unit/dark-pegasus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-riders",
+      "name": "Dark Riders",
+      "url": "https://tow.whfb.app/unit/dark-riders",
+      "path": "/unit/dark-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dark-steed",
+      "name": "Dark Steed",
+      "url": "https://tow.whfb.app/unit/dark-steed",
+      "path": "/unit/dark-steed",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/death-hag",
+      "name": "Death Hag",
+      "url": "https://tow.whfb.app/unit/death-hag",
+      "path": "/unit/death-hag",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/deathshrieker-rocket-launcher",
+      "name": "Deathshrieker Rocket Launcher",
+      "url": "https://tow.whfb.app/unit/deathshrieker-rocket-launcher",
+      "path": "/unit/deathshrieker-rocket-launcher",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/deepwood-hound",
+      "name": "Deepwood Hound",
+      "url": "https://tow.whfb.app/unit/deepwood-hound",
+      "path": "/unit/deepwood-hound",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/deepwood-scouts",
+      "name": "Deepwood Scouts",
+      "url": "https://tow.whfb.app/unit/deepwood-scouts",
+      "path": "/unit/deepwood-scouts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/demigryph",
+      "name": "Demigryph",
+      "url": "https://tow.whfb.app/unit/demigryph",
+      "path": "/unit/demigryph",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/demigryph-knights",
+      "name": "Demigryph Knights",
+      "url": "https://tow.whfb.app/unit/demigryph-knights",
+      "path": "/unit/demigryph-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dire-wolves",
+      "name": "Dire Wolves",
+      "url": "https://tow.whfb.app/unit/dire-wolves",
+      "path": "/unit/dire-wolves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/disc-of-tzeentch",
+      "name": "Disc of Tzeentch",
+      "url": "https://tow.whfb.app/unit/disc-of-tzeentch",
+      "path": "/unit/disc-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/doom-diver-catapult",
+      "name": "Doom Diver Catapult",
+      "url": "https://tow.whfb.app/unit/doom-diver-catapult",
+      "path": "/unit/doom-diver-catapult",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/doombull",
+      "name": "Doombull",
+      "url": "https://tow.whfb.app/unit/doombull",
+      "path": "/unit/doombull",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/doomfire-warlocks",
+      "name": "Doomfire Warlocks",
+      "url": "https://tow.whfb.app/unit/doomfire-warlocks",
+      "path": "/unit/doomfire-warlocks",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/doomseeker",
+      "name": "Doomseeker",
+      "url": "https://tow.whfb.app/unit/doomseeker",
+      "path": "/unit/doomseeker",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/doomwheel",
+      "name": "Doomwheel",
+      "url": "https://tow.whfb.app/unit/doomwheel",
+      "path": "/unit/doomwheel",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dragon-mage",
+      "name": "Dragon Mage",
+      "url": "https://tow.whfb.app/unit/dragon-mage",
+      "path": "/unit/dragon-mage",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dragon-ogre-shaggoth",
+      "name": "Dragon Ogre Shaggoth",
+      "url": "https://tow.whfb.app/unit/dragon-ogre-shaggoth",
+      "path": "/unit/dragon-ogre-shaggoth",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dragon-ogres",
+      "name": "Dragon Ogres",
+      "url": "https://tow.whfb.app/unit/dragon-ogres",
+      "path": "/unit/dragon-ogres",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dragon-princes",
+      "name": "Dragon Princes",
+      "url": "https://tow.whfb.app/unit/dragon-princes",
+      "path": "/unit/dragon-princes",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dragon-slayer",
+      "name": "Dragon Slayer",
+      "url": "https://tow.whfb.app/unit/dragon-slayer",
+      "path": "/unit/dragon-slayer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dreadquake-mortar",
+      "name": "Dreadquake Mortar",
+      "url": "https://tow.whfb.app/unit/dreadquake-mortar",
+      "path": "/unit/dreadquake-mortar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dryads",
+      "name": "Dryads",
+      "url": "https://tow.whfb.app/unit/dryads",
+      "path": "/unit/dryads",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/duke",
+      "name": "Duke",
+      "url": "https://tow.whfb.app/unit/duke",
+      "path": "/unit/duke",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dwarf-cart",
+      "name": "Dwarf Cart",
+      "url": "https://tow.whfb.app/unit/dwarf-cart",
+      "path": "/unit/dwarf-cart",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/dwarf-warriors",
+      "name": "Dwarf Warriors",
+      "url": "https://tow.whfb.app/unit/dwarf-warriors",
+      "path": "/unit/dwarf-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/eagle-claw-bolt-thrower",
+      "name": "Eagle-Claw Bolt Thrower",
+      "url": "https://tow.whfb.app/unit/eagle-claw-bolt-thrower",
+      "path": "/unit/eagle-claw-bolt-thrower",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ellyrian-reavers",
+      "name": "Ellyrian Reavers",
+      "url": "https://tow.whfb.app/unit/ellyrian-reavers",
+      "path": "/unit/ellyrian-reavers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/elven-archers",
+      "name": "Elven Archers",
+      "url": "https://tow.whfb.app/unit/elven-archers",
+      "path": "/unit/elven-archers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/elven-spearmen",
+      "name": "Elven Spearmen",
+      "url": "https://tow.whfb.app/unit/elven-spearmen",
+      "path": "/unit/elven-spearmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/elven-steed",
+      "name": "Elven Steed",
+      "url": "https://tow.whfb.app/unit/elven-steed",
+      "path": "/unit/elven-steed",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-archers",
+      "name": "Empire Archers",
+      "url": "https://tow.whfb.app/unit/empire-archers",
+      "path": "/unit/empire-archers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-engineer",
+      "name": "Empire Engineer",
+      "url": "https://tow.whfb.app/unit/empire-engineer",
+      "path": "/unit/empire-engineer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-greatswords",
+      "name": "Empire Greatswords",
+      "url": "https://tow.whfb.app/unit/empire-greatswords",
+      "path": "/unit/empire-greatswords",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-knights",
+      "name": "Empire Knights",
+      "url": "https://tow.whfb.app/unit/empire-knights",
+      "path": "/unit/empire-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-road-wardens",
+      "name": "Empire Road Wardens",
+      "url": "https://tow.whfb.app/unit/empire-road-wardens",
+      "path": "/unit/empire-road-wardens",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-steam-tank",
+      "name": "Empire Steam Tank",
+      "url": "https://tow.whfb.app/unit/empire-steam-tank",
+      "path": "/unit/empire-steam-tank",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-war-wagon",
+      "name": "Empire War Wagon",
+      "url": "https://tow.whfb.app/unit/empire-war-wagon",
+      "path": "/unit/empire-war-wagon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/empire-warhorse",
+      "name": "Empire Warhorse",
+      "url": "https://tow.whfb.app/unit/empire-warhorse",
+      "path": "/unit/empire-warhorse",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/engineer",
+      "name": "Engineer",
+      "url": "https://tow.whfb.app/unit/engineer",
+      "path": "/unit/engineer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/engineer-sapper",
+      "name": "Engineer Sapper",
+      "url": "https://tow.whfb.app/unit/engineer-sapper",
+      "path": "/unit/engineer-sapper",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/enraged-troll",
+      "name": "Enraged Troll",
+      "url": "https://tow.whfb.app/unit/enraged-troll",
+      "path": "/unit/enraged-troll",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/eternal-guard",
+      "name": "Eternal Guard",
+      "url": "https://tow.whfb.app/unit/eternal-guard",
+      "path": "/unit/eternal-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/exalted-champion",
+      "name": "Exalted Champion",
+      "url": "https://tow.whfb.app/unit/exalted-champion",
+      "path": "/unit/exalted-champion",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/exalted-seeker-chariot-of-slaanesh",
+      "name": "Exalted Seeker Chariot of Slaanesh",
+      "url": "https://tow.whfb.app/unit/exalted-seeker-chariot-of-slaanesh",
+      "path": "/unit/exalted-seeker-chariot-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/exalted-sorcerer",
+      "name": "Exalted Sorcerer",
+      "url": "https://tow.whfb.app/unit/exalted-sorcerer",
+      "path": "/unit/exalted-sorcerer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/fanatic",
+      "name": "Fanatic",
+      "url": "https://tow.whfb.app/unit/fanatic",
+      "path": "/unit/fanatic",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/fell-bats",
+      "name": "Fell Bats",
+      "url": "https://tow.whfb.app/unit/fell-bats",
+      "path": "/unit/fell-bats",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/field-trebuchet",
+      "name": "Field Trebuchet",
+      "url": "https://tow.whfb.app/unit/field-trebuchet",
+      "path": "/unit/field-trebuchet",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/fiends-of-slaanesh",
+      "name": "Fiends of Slaanesh",
+      "url": "https://tow.whfb.app/unit/fiends-of-slaanesh",
+      "path": "/unit/fiends-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/fire-rain-rocket-battery",
+      "name": "Fire Rain Rocket Battery",
+      "url": "https://tow.whfb.app/unit/fire-rain-rocket-battery",
+      "path": "/unit/fire-rain-rocket-battery",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/firebelly",
+      "name": "Firebelly",
+      "url": "https://tow.whfb.app/unit/firebelly",
+      "path": "/unit/firebelly",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flagellants",
+      "name": "Flagellants",
+      "url": "https://tow.whfb.app/unit/flagellants",
+      "path": "/unit/flagellants",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flame-cannon",
+      "name": "Flame Cannon",
+      "url": "https://tow.whfb.app/unit/flame-cannon",
+      "path": "/unit/flame-cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flamers-of-tzeentch",
+      "name": "Flamers of Tzeentch",
+      "url": "https://tow.whfb.app/unit/flamers-of-tzeentch",
+      "path": "/unit/flamers-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flamespyre-phoenix",
+      "name": "Flamespyre Phoenix",
+      "url": "https://tow.whfb.app/unit/flamespyre-phoenix",
+      "path": "/unit/flamespyre-phoenix",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flamespyre-phoenix-mount",
+      "name": "Flamespyre Phoenix (Mount)",
+      "url": "https://tow.whfb.app/unit/flamespyre-phoenix-mount",
+      "path": "/unit/flamespyre-phoenix-mount",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/flesh-hounds-of-khorne",
+      "name": "Flesh Hounds of Khorne",
+      "url": "https://tow.whfb.app/unit/flesh-hounds-of-khorne",
+      "path": "/unit/flesh-hounds-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/forest-cat",
+      "name": "Forest Cat",
+      "url": "https://tow.whfb.app/unit/forest-cat",
+      "path": "/unit/forest-cat",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/forest-dragon",
+      "name": "Forest Dragon",
+      "url": "https://tow.whfb.app/unit/forest-dragon",
+      "path": "/unit/forest-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/forsaken",
+      "name": "Forsaken",
+      "url": "https://tow.whfb.app/unit/forsaken",
+      "path": "/unit/forsaken",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/free-company-militia",
+      "name": "Free Company Militia",
+      "url": "https://tow.whfb.app/unit/free-company-militia",
+      "path": "/unit/free-company-militia",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/freeblade-knights",
+      "name": "Freeblade Knights",
+      "url": "https://tow.whfb.app/unit/freeblade-knights",
+      "path": "/unit/freeblade-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/frostheart-phoenix",
+      "name": "Frostheart Phoenix",
+      "url": "https://tow.whfb.app/unit/frostheart-phoenix",
+      "path": "/unit/frostheart-phoenix",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/frostheart-phoenix-mount",
+      "name": "Frostheart Phoenix (Mount)",
+      "url": "https://tow.whfb.app/unit/frostheart-phoenix-mount",
+      "path": "/unit/frostheart-phoenix-mount",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/frydaal-the-chainmaker",
+      "name": "Frydaal The Chainmaker",
+      "url": "https://tow.whfb.app/unit/frydaal-the-chainmaker",
+      "path": "/unit/frydaal-the-chainmaker",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/galrauch",
+      "name": "Galrauch",
+      "url": "https://tow.whfb.app/unit/galrauch",
+      "path": "/unit/galrauch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gate-keeper",
+      "name": "Gate Keeper",
+      "url": "https://tow.whfb.app/unit/gate-keeper",
+      "path": "/unit/gate-keeper",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gate-master",
+      "name": "Gate Master",
+      "url": "https://tow.whfb.app/unit/gate-master",
+      "path": "/unit/gate-master",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/general-hans-von-loewenhacke",
+      "name": "General Hans von Löwenhacke",
+      "url": "https://tow.whfb.app/unit/general-hans-von-loewenhacke",
+      "path": "/unit/general-hans-von-loewenhacke",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/general-of-the-empire",
+      "name": "General of the Empire",
+      "url": "https://tow.whfb.app/unit/general-of-the-empire",
+      "path": "/unit/general-of-the-empire",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ghorgon",
+      "name": "Ghorgon",
+      "url": "https://tow.whfb.app/unit/ghorgon",
+      "path": "/unit/ghorgon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ghorros-warhoof",
+      "name": "Ghorros Warhoof",
+      "url": "https://tow.whfb.app/unit/ghorros-warhoof",
+      "path": "/unit/ghorros-warhoof",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/giant",
+      "name": "Giant",
+      "url": "https://tow.whfb.app/unit/giant",
+      "path": "/unit/giant",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/giant-cave-squig",
+      "name": "Giant Cave Squig",
+      "url": "https://tow.whfb.app/unit/giant-cave-squig",
+      "path": "/unit/giant-cave-squig",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/giant-rats",
+      "name": "Giant Rats",
+      "url": "https://tow.whfb.app/unit/giant-rats",
+      "path": "/unit/giant-rats",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/giant-wolf",
+      "name": "Giant Wolf",
+      "url": "https://tow.whfb.app/unit/giant-wolf",
+      "path": "/unit/giant-wolf",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gigantic-spawn-of-chaos",
+      "name": "Gigantic Spawn of Chaos",
+      "url": "https://tow.whfb.app/unit/gigantic-spawn-of-chaos",
+      "path": "/unit/gigantic-spawn-of-chaos",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gigantic-spider",
+      "name": "Gigantic Spider",
+      "url": "https://tow.whfb.app/unit/gigantic-spider",
+      "path": "/unit/gigantic-spider",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/glade-captain",
+      "name": "Glade Captain",
+      "url": "https://tow.whfb.app/unit/glade-captain",
+      "path": "/unit/glade-captain",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/glade-guard",
+      "name": "Glade Guard",
+      "url": "https://tow.whfb.app/unit/glade-guard",
+      "path": "/unit/glade-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/glade-lord",
+      "name": "Glade Lord",
+      "url": "https://tow.whfb.app/unit/glade-lord",
+      "path": "/unit/glade-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/glade-riders",
+      "name": "Glade Riders",
+      "url": "https://tow.whfb.app/unit/glade-riders",
+      "path": "/unit/glade-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gnoblar-fighters",
+      "name": "Gnoblar Fighters",
+      "url": "https://tow.whfb.app/unit/gnoblar-fighters",
+      "path": "/unit/gnoblar-fighters",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gnoblar-scraplauncher",
+      "name": "Gnoblar Scraplauncher",
+      "url": "https://tow.whfb.app/unit/gnoblar-scraplauncher",
+      "path": "/unit/gnoblar-scraplauncher",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gnoblar-trappers",
+      "name": "Gnoblar Trappers",
+      "url": "https://tow.whfb.app/unit/gnoblar-trappers",
+      "path": "/unit/gnoblar-trappers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-bigboss",
+      "name": "Goblin Bigboss",
+      "url": "https://tow.whfb.app/unit/goblin-bigboss",
+      "path": "/unit/goblin-bigboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-bolt-throwa",
+      "name": "Goblin Bolt Throwa",
+      "url": "https://tow.whfb.app/unit/goblin-bolt-throwa",
+      "path": "/unit/goblin-bolt-throwa",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-hewer",
+      "name": "Goblin-Hewer",
+      "url": "https://tow.whfb.app/unit/goblin-hewer",
+      "path": "/unit/goblin-hewer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-mob",
+      "name": "Goblin Mob",
+      "url": "https://tow.whfb.app/unit/goblin-mob",
+      "path": "/unit/goblin-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-oddgit",
+      "name": "Goblin Oddgit",
+      "url": "https://tow.whfb.app/unit/goblin-oddgit",
+      "path": "/unit/goblin-oddgit",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-oddnob",
+      "name": "Goblin Oddnob",
+      "url": "https://tow.whfb.app/unit/goblin-oddnob",
+      "path": "/unit/goblin-oddnob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-rock-lobber",
+      "name": "Goblin Rock Lobber",
+      "url": "https://tow.whfb.app/unit/goblin-rock-lobber",
+      "path": "/unit/goblin-rock-lobber",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-spider-rider-mob",
+      "name": "Goblin Spider Rider Mob",
+      "url": "https://tow.whfb.app/unit/goblin-spider-rider-mob",
+      "path": "/unit/goblin-spider-rider-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-warboss",
+      "name": "Goblin Warboss",
+      "url": "https://tow.whfb.app/unit/goblin-warboss",
+      "path": "/unit/goblin-warboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-wolf-chariot",
+      "name": "Goblin Wolf Chariot",
+      "url": "https://tow.whfb.app/unit/goblin-wolf-chariot",
+      "path": "/unit/goblin-wolf-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/goblin-wolf-rider-mob",
+      "name": "Goblin Wolf Rider Mob",
+      "url": "https://tow.whfb.app/unit/goblin-wolf-rider-mob",
+      "path": "/unit/goblin-wolf-rider-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gor-herd",
+      "name": "Gor Herd",
+      "url": "https://tow.whfb.app/unit/gor-herd",
+      "path": "/unit/gor-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gorebeast-chariot",
+      "name": "Gorebeast Chariot",
+      "url": "https://tow.whfb.app/unit/gorebeast-chariot",
+      "path": "/unit/gorebeast-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gorebull",
+      "name": "Gorebull",
+      "url": "https://tow.whfb.app/unit/gorebull",
+      "path": "/unit/gorebull",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gorger",
+      "name": "Gorger",
+      "url": "https://tow.whfb.app/unit/gorger",
+      "path": "/unit/gorger",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/grail-knights",
+      "name": "Grail Knights",
+      "url": "https://tow.whfb.app/unit/grail-knights",
+      "path": "/unit/grail-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/grand-master",
+      "name": "Grand Master",
+      "url": "https://tow.whfb.app/unit/grand-master",
+      "path": "/unit/grand-master",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/grave-guard",
+      "name": "Grave Guard",
+      "url": "https://tow.whfb.app/unit/grave-guard",
+      "path": "/unit/grave-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-bray-shaman",
+      "name": "Great Bray-Shaman",
+      "url": "https://tow.whfb.app/unit/great-bray-shaman",
+      "path": "/unit/great-bray-shaman",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-cannon",
+      "name": "Great Cannon",
+      "url": "https://tow.whfb.app/unit/great-cannon",
+      "path": "/unit/great-cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-eagle",
+      "name": "Great Eagle",
+      "url": "https://tow.whfb.app/unit/great-eagle",
+      "path": "/unit/great-eagle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-eagle-mount",
+      "name": "Great Eagle (Mount)",
+      "url": "https://tow.whfb.app/unit/great-eagle-mount",
+      "path": "/unit/great-eagle-mount",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-stag",
+      "name": "Great Stag",
+      "url": "https://tow.whfb.app/unit/great-stag",
+      "path": "/unit/great-stag",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-taurus",
+      "name": "Great Taurus",
+      "url": "https://tow.whfb.app/unit/great-taurus",
+      "path": "/unit/great-taurus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/great-unclean-one",
+      "name": "Great Unclean One",
+      "url": "https://tow.whfb.app/unit/great-unclean-one",
+      "path": "/unit/great-unclean-one",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/the-green-knight",
+      "name": "The Green Knight",
+      "url": "https://tow.whfb.app/unit/the-green-knight",
+      "path": "/unit/the-green-knight",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/grey-seer",
+      "name": "Grey Seer",
+      "url": "https://tow.whfb.app/unit/grey-seer",
+      "path": "/unit/grey-seer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/griffon-empire",
+      "name": "Griffon (Empire)",
+      "url": "https://tow.whfb.app/unit/griffon-empire",
+      "path": "/unit/griffon-empire",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/griffon-high-elves",
+      "name": "Griffon (High Elves)",
+      "url": "https://tow.whfb.app/unit/griffon-high-elves",
+      "path": "/unit/griffon-high-elves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/grudge-thrower",
+      "name": "Grudge Thrower",
+      "url": "https://tow.whfb.app/unit/grudge-thrower",
+      "path": "/unit/grudge-thrower",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/guardians-of-talsyn",
+      "name": "Guardians of Talsyn",
+      "url": "https://tow.whfb.app/unit/guardians-of-talsyn",
+      "path": "/unit/guardians-of-talsyn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gutter-runners",
+      "name": "Gutter Runners",
+      "url": "https://tow.whfb.app/unit/gutter-runners",
+      "path": "/unit/gutter-runners",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gyrobomber",
+      "name": "Gyrobomber",
+      "url": "https://tow.whfb.app/unit/gyrobomber",
+      "path": "/unit/gyrobomber",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/gyrocopter",
+      "name": "Gyrocopter",
+      "url": "https://tow.whfb.app/unit/gyrocopter",
+      "path": "/unit/gyrocopter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hammerers",
+      "name": "Hammerers",
+      "url": "https://tow.whfb.app/unit/hammerers",
+      "path": "/unit/hammerers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/handmaiden-of-the-everqueen",
+      "name": "Handmaiden of the Everqueen",
+      "url": "https://tow.whfb.app/unit/handmaiden-of-the-everqueen",
+      "path": "/unit/handmaiden-of-the-everqueen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/har-ganeth-executioners",
+      "name": "Har Ganeth Executioners",
+      "url": "https://tow.whfb.app/unit/har-ganeth-executioners",
+      "path": "/unit/har-ganeth-executioners",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/harald-gemunsen",
+      "name": "Harald Gemunsen",
+      "url": "https://tow.whfb.app/unit/harald-gemunsen",
+      "path": "/unit/harald-gemunsen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/harbinger-of-doom",
+      "name": "Harbinger of Doom",
+      "url": "https://tow.whfb.app/unit/harbinger-of-doom",
+      "path": "/unit/harbinger-of-doom",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/harpies",
+      "name": "Harpies",
+      "url": "https://tow.whfb.app/unit/harpies",
+      "path": "/unit/harpies",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/helblaster-volley-gun",
+      "name": "Helblaster Volley Gun",
+      "url": "https://tow.whfb.app/unit/helblaster-volley-gun",
+      "path": "/unit/helblaster-volley-gun",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hell-pit-abomination",
+      "name": "Hell Pit Abomination",
+      "url": "https://tow.whfb.app/unit/hell-pit-abomination",
+      "path": "/unit/hell-pit-abomination",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hellcannon",
+      "name": "Hellcannon",
+      "url": "https://tow.whfb.app/unit/hellcannon",
+      "path": "/unit/hellcannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hellflayer-of-slaanesh",
+      "name": "Hellflayer of Slaanesh",
+      "url": "https://tow.whfb.app/unit/hellflayer-of-slaanesh",
+      "path": "/unit/hellflayer-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/helstorm-rocket-battery",
+      "name": "Helstorm Rocket Battery",
+      "url": "https://tow.whfb.app/unit/helstorm-rocket-battery",
+      "path": "/unit/helstorm-rocket-battery",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/herdstone",
+      "name": "Herdstone",
+      "url": "https://tow.whfb.app/unit/herdstone",
+      "path": "/unit/herdstone",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hexwraiths",
+      "name": "Hexwraiths",
+      "url": "https://tow.whfb.app/unit/hexwraiths",
+      "path": "/unit/hexwraiths",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/high-beastmaster",
+      "name": "High Beastmaster",
+      "url": "https://tow.whfb.app/unit/high-beastmaster",
+      "path": "/unit/high-beastmaster",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/high-priest",
+      "name": "High Priest",
+      "url": "https://tow.whfb.app/unit/high-priest",
+      "path": "/unit/high-priest",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/high-priest-of-ulric",
+      "name": "High Priest of Ulric",
+      "url": "https://tow.whfb.app/unit/high-priest-of-ulric",
+      "path": "/unit/high-priest-of-ulric",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hippogryph",
+      "name": "Hippogryph",
+      "url": "https://tow.whfb.app/unit/hippogryph",
+      "path": "/unit/hippogryph",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hireling-outriders",
+      "name": "Hireling Outriders",
+      "url": "https://tow.whfb.app/unit/hireling-outriders",
+      "path": "/unit/hireling-outriders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hobgoblin-bolt-thrower",
+      "name": "Hobgoblin Bolt Thrower",
+      "url": "https://tow.whfb.app/unit/hobgoblin-bolt-thrower",
+      "path": "/unit/hobgoblin-bolt-thrower",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hobgoblin-cutthroats",
+      "name": "Hobgoblin Cutthroats",
+      "url": "https://tow.whfb.app/unit/hobgoblin-cutthroats",
+      "path": "/unit/hobgoblin-cutthroats",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hobgoblin-khan",
+      "name": "Hobgoblin Khan",
+      "url": "https://tow.whfb.app/unit/hobgoblin-khan",
+      "path": "/unit/hobgoblin-khan",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hobgoblin-wolf-riders",
+      "name": "Hobgoblin Wolf Riders",
+      "url": "https://tow.whfb.app/unit/hobgoblin-wolf-riders",
+      "path": "/unit/hobgoblin-wolf-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/hunter",
+      "name": "Hunter",
+      "url": "https://tow.whfb.app/unit/hunter",
+      "path": "/unit/hunter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/imperial-dwarf-mercenaries",
+      "name": "Imperial Dwarf Mercenaries",
+      "url": "https://tow.whfb.app/unit/imperial-dwarf-mercenaries",
+      "path": "/unit/imperial-dwarf-mercenaries",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/imperial-griffon",
+      "name": "Imperial Griffon",
+      "url": "https://tow.whfb.app/unit/imperial-griffon",
+      "path": "/unit/imperial-griffon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/imperial-ogres",
+      "name": "Imperial Ogres",
+      "url": "https://tow.whfb.app/unit/imperial-ogres",
+      "path": "/unit/imperial-ogres",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/infernal-castellan",
+      "name": "Infernal Castellan",
+      "url": "https://tow.whfb.app/unit/infernal-castellan",
+      "path": "/unit/infernal-castellan",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/infernal-guard",
+      "name": "Infernal Guard",
+      "url": "https://tow.whfb.app/unit/infernal-guard",
+      "path": "/unit/infernal-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/infernal-ironsworn",
+      "name": "Infernal Ironsworn",
+      "url": "https://tow.whfb.app/unit/infernal-ironsworn",
+      "path": "/unit/infernal-ironsworn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/infernal-seneschal",
+      "name": "Infernal Seneschal",
+      "url": "https://tow.whfb.app/unit/infernal-seneschal",
+      "path": "/unit/infernal-seneschal",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/inner-circle-knights",
+      "name": "Inner Circle Knights",
+      "url": "https://tow.whfb.app/unit/inner-circle-knights",
+      "path": "/unit/inner-circle-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/iron-daemon",
+      "name": "Iron Daemon",
+      "url": "https://tow.whfb.app/unit/iron-daemon",
+      "path": "/unit/iron-daemon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/iron-hail-gunners",
+      "name": "Iron Hail Gunners",
+      "url": "https://tow.whfb.app/unit/iron-hail-gunners",
+      "path": "/unit/iron-hail-gunners",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ironblaster",
+      "name": "Ironblaster",
+      "url": "https://tow.whfb.app/unit/ironblaster",
+      "path": "/unit/ironblaster",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ironbreakers",
+      "name": "Ironbreakers",
+      "url": "https://tow.whfb.app/unit/ironbreakers",
+      "path": "/unit/ironbreakers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/irondrakes",
+      "name": "Irondrakes",
+      "url": "https://tow.whfb.app/unit/irondrakes",
+      "path": "/unit/irondrakes",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ironguts",
+      "name": "Ironguts",
+      "url": "https://tow.whfb.app/unit/ironguts",
+      "path": "/unit/ironguts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ishaya-vess",
+      "name": "Ishaya Vess",
+      "url": "https://tow.whfb.app/unit/ishaya-vess",
+      "path": "/unit/ishaya-vess",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/jabberslythe",
+      "name": "Jabberslythe",
+      "url": "https://tow.whfb.app/unit/jabberslythe",
+      "path": "/unit/jabberslythe",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/jade-lancers",
+      "name": "Jade Lancers",
+      "url": "https://tow.whfb.app/unit/jade-lancers",
+      "path": "/unit/jade-lancers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/jade-warriors",
+      "name": "Jade Warriors",
+      "url": "https://tow.whfb.app/unit/jade-warriors",
+      "path": "/unit/jade-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/juggernaut-of-khorne",
+      "name": "Juggernaut of Khorne",
+      "url": "https://tow.whfb.app/unit/juggernaut-of-khorne",
+      "path": "/unit/juggernaut-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/jungle-swarms",
+      "name": "Jungle Swarms",
+      "url": "https://tow.whfb.app/unit/jungle-swarms",
+      "path": "/unit/jungle-swarms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/kdaai-fireborn",
+      "name": "K'daai Fireborn",
+      "url": "https://tow.whfb.app/unit/kdaai-fireborn",
+      "path": "/unit/kdaai-fireborn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/keeper-of-secrets",
+      "name": "Keeper of Secrets",
+      "url": "https://tow.whfb.app/unit/keeper-of-secrets",
+      "path": "/unit/keeper-of-secrets",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/khainite-assassin",
+      "name": "Khainite Assassin",
+      "url": "https://tow.whfb.app/unit/khainite-assassin",
+      "path": "/unit/khainite-assassin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/kharibdyss",
+      "name": "Kharibdyss",
+      "url": "https://tow.whfb.app/unit/kharibdyss",
+      "path": "/unit/kharibdyss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/khemrian-warsphinx",
+      "name": "Khemrian Warsphinx",
+      "url": "https://tow.whfb.app/unit/khemrian-warsphinx",
+      "path": "/unit/khemrian-warsphinx",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/kiknik-toofsnatcha",
+      "name": "Kiknik Toofsnatcha",
+      "url": "https://tow.whfb.app/unit/kiknik-toofsnatcha",
+      "path": "/unit/kiknik-toofsnatcha",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/king",
+      "name": "King",
+      "url": "https://tow.whfb.app/unit/king",
+      "path": "/unit/king",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/knights-errant",
+      "name": "Knights Errant",
+      "url": "https://tow.whfb.app/unit/knights-errant",
+      "path": "/unit/knights-errant",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/knights-of-the-realm-on-foot",
+      "name": "Knights of the Realm on Foot",
+      "url": "https://tow.whfb.app/unit/knights-of-the-realm-on-foot",
+      "path": "/unit/knights-of-the-realm-on-foot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/korhil-lionmane",
+      "name": "Korhil Lionmane",
+      "url": "https://tow.whfb.app/unit/korhil-lionmane",
+      "path": "/unit/korhil-lionmane",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/kralmaw-the-prophet-of-ruin",
+      "name": "Kralmaw, the Prophet of Ruin",
+      "url": "https://tow.whfb.app/unit/kralmaw-the-prophet-of-ruin",
+      "path": "/unit/kralmaw-the-prophet-of-ruin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/kroxigor",
+      "name": "Kroxigor",
+      "url": "https://tow.whfb.app/unit/kroxigor",
+      "path": "/unit/kroxigor",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lady-elisse-duchaard",
+      "name": "Lady Élisse Duchaard",
+      "url": "https://tow.whfb.app/unit/lady-elisse-duchaard",
+      "path": "/unit/lady-elisse-duchaard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lammasu",
+      "name": "Lammasu",
+      "url": "https://tow.whfb.app/unit/lammasu",
+      "path": "/unit/lammasu",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/leadbelchers",
+      "name": "Leadbelchers",
+      "url": "https://tow.whfb.app/unit/leadbelchers",
+      "path": "/unit/leadbelchers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lector-of-sigmar",
+      "name": "Lector of Sigmar",
+      "url": "https://tow.whfb.app/unit/lector-of-sigmar",
+      "path": "/unit/lector-of-sigmar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lion-chariot-of-chrace",
+      "name": "Lion Chariot of Chrace",
+      "url": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+      "path": "/unit/lion-chariot-of-chrace",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lion-guard",
+      "name": "Lion Guard",
+      "url": "https://tow.whfb.app/unit/lion-guard",
+      "path": "/unit/lion-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/longbeards",
+      "name": "Longbeards",
+      "url": "https://tow.whfb.app/unit/longbeards",
+      "path": "/unit/longbeards",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lord-magistrate",
+      "name": "Lord Magistrate",
+      "url": "https://tow.whfb.app/unit/lord-magistrate",
+      "path": "/unit/lord-magistrate",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lord-of-change",
+      "name": "Lord of Change",
+      "url": "https://tow.whfb.app/unit/lord-of-change",
+      "path": "/unit/lord-of-change",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lothern-sea-guard",
+      "name": "Lothern Sea Guard",
+      "url": "https://tow.whfb.app/unit/lothern-sea-guard",
+      "path": "/unit/lothern-sea-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/lothern-skycutter",
+      "name": "Lothern Skycutter",
+      "url": "https://tow.whfb.app/unit/lothern-skycutter",
+      "path": "/unit/lothern-skycutter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mage",
+      "name": "Mage",
+      "url": "https://tow.whfb.app/unit/mage",
+      "path": "/unit/mage",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/magma-cannon",
+      "name": "Magma Cannon",
+      "url": "https://tow.whfb.app/unit/magma-cannon",
+      "path": "/unit/magma-cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/maneaters",
+      "name": "Maneaters",
+      "url": "https://tow.whfb.app/unit/maneaters",
+      "path": "/unit/maneaters",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mangler-squigs",
+      "name": "Mangler Squigs",
+      "url": "https://tow.whfb.app/unit/mangler-squigs",
+      "path": "/unit/mangler-squigs",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/manticore-dark-elves",
+      "name": "Manticore (Dark Elves)",
+      "url": "https://tow.whfb.app/unit/manticore-dark-elves",
+      "path": "/unit/manticore-dark-elves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/manticore-warriors-of-chaos",
+      "name": "Manticore (Warriors of Chaos)",
+      "url": "https://tow.whfb.app/unit/manticore-warriors-of-chaos",
+      "path": "/unit/manticore-warriors-of-chaos",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/marauder-horsemen",
+      "name": "Marauder Horsemen",
+      "url": "https://tow.whfb.app/unit/marauder-horsemen",
+      "path": "/unit/marauder-horsemen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/marauder-tribe-berserkers",
+      "name": "Marauder Tribe Berserkers",
+      "url": "https://tow.whfb.app/unit/marauder-tribe-berserkers",
+      "path": "/unit/marauder-tribe-berserkers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/marauder-tribe-chieftain",
+      "name": "Marauder Tribe Chieftain",
+      "url": "https://tow.whfb.app/unit/marauder-tribe-chieftain",
+      "path": "/unit/marauder-tribe-chieftain",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/marauder-tribe-huscarls",
+      "name": "Marauder Tribe Huscarls",
+      "url": "https://tow.whfb.app/unit/marauder-tribe-huscarls",
+      "path": "/unit/marauder-tribe-huscarls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/master-assassin",
+      "name": "Master Assassin",
+      "url": "https://tow.whfb.app/unit/master-assassin",
+      "path": "/unit/master-assassin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/master-mage",
+      "name": "Master Mage",
+      "url": "https://tow.whfb.app/unit/master-mage",
+      "path": "/unit/master-mage",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/master-moulder",
+      "name": "Master Moulder",
+      "url": "https://tow.whfb.app/unit/master-moulder",
+      "path": "/unit/master-moulder",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/master-necromancer",
+      "name": "Master Necromancer",
+      "url": "https://tow.whfb.app/unit/master-necromancer",
+      "path": "/unit/master-necromancer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/men-at-arms",
+      "name": "Men-at-Arms",
+      "url": "https://tow.whfb.app/unit/men-at-arms",
+      "path": "/unit/men-at-arms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/merwyrm",
+      "name": "Merwyrm",
+      "url": "https://tow.whfb.app/unit/merwyrm",
+      "path": "/unit/merwyrm",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/miao-ying",
+      "name": "Miao Ying",
+      "url": "https://tow.whfb.app/unit/miao-ying",
+      "path": "/unit/miao-ying",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/miners",
+      "name": "Miners",
+      "url": "https://tow.whfb.app/unit/miners",
+      "path": "/unit/miners",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/minotaur-herd",
+      "name": "Minotaur Herd",
+      "url": "https://tow.whfb.app/unit/minotaur-herd",
+      "path": "/unit/minotaur-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/moon-dragon",
+      "name": "Moon Dragon",
+      "url": "https://tow.whfb.app/unit/moon-dragon",
+      "path": "/unit/moon-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mortar",
+      "name": "Mortar",
+      "url": "https://tow.whfb.app/unit/mortar",
+      "path": "/unit/mortar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mortis-engine",
+      "name": "Mortis Engine",
+      "url": "https://tow.whfb.app/unit/mortis-engine",
+      "path": "/unit/mortis-engine",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mortuary-priest",
+      "name": "Mortuary Priest",
+      "url": "https://tow.whfb.app/unit/mortuary-priest",
+      "path": "/unit/mortuary-priest",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mounted-knights-of-the-realm",
+      "name": "Mounted Knights of the Realm",
+      "url": "https://tow.whfb.app/unit/mounted-knights-of-the-realm",
+      "path": "/unit/mounted-knights-of-the-realm",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mounted-yeomen",
+      "name": "Mounted Yeomen",
+      "url": "https://tow.whfb.app/unit/mounted-yeomen",
+      "path": "/unit/mounted-yeomen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/mournfang-cavalry",
+      "name": "Mournfang Cavalry",
+      "url": "https://tow.whfb.app/unit/mournfang-cavalry",
+      "path": "/unit/mournfang-cavalry",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nasty-skulker",
+      "name": "Nasty Skulker",
+      "url": "https://tow.whfb.app/unit/nasty-skulker",
+      "path": "/unit/nasty-skulker",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necrolith-bone-dragon",
+      "name": "Necrolith Bone Dragon",
+      "url": "https://tow.whfb.app/unit/necrolith-bone-dragon",
+      "path": "/unit/necrolith-bone-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necrolith-colossus",
+      "name": "Necrolith Colossus",
+      "url": "https://tow.whfb.app/unit/necrolith-colossus",
+      "path": "/unit/necrolith-colossus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necromantic-acolyte",
+      "name": "Necromantic Acolyte",
+      "url": "https://tow.whfb.app/unit/necromantic-acolyte",
+      "path": "/unit/necromantic-acolyte",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necropolis-knights",
+      "name": "Necropolis Knights",
+      "url": "https://tow.whfb.app/unit/necropolis-knights",
+      "path": "/unit/necropolis-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necroserpents",
+      "name": "Necroserpents",
+      "url": "https://tow.whfb.app/unit/necroserpents",
+      "path": "/unit/necroserpents",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necrosphinx",
+      "name": "Necrosphinx",
+      "url": "https://tow.whfb.app/unit/necrosphinx",
+      "path": "/unit/necrosphinx",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/necrotect",
+      "name": "Necrotect",
+      "url": "https://tow.whfb.app/unit/necrotect",
+      "path": "/unit/necrotect",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nekaph",
+      "name": "Nekaph",
+      "url": "https://tow.whfb.app/unit/nekaph",
+      "path": "/unit/nekaph",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-bigboss",
+      "name": "Night Goblin Bigboss",
+      "url": "https://tow.whfb.app/unit/night-goblin-bigboss",
+      "path": "/unit/night-goblin-bigboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-mob",
+      "name": "Night Goblin Mob",
+      "url": "https://tow.whfb.app/unit/night-goblin-mob",
+      "path": "/unit/night-goblin-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-oddgit",
+      "name": "Night Goblin Oddgit",
+      "url": "https://tow.whfb.app/unit/night-goblin-oddgit",
+      "path": "/unit/night-goblin-oddgit",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-oddnob",
+      "name": "Night Goblin Oddnob",
+      "url": "https://tow.whfb.app/unit/night-goblin-oddnob",
+      "path": "/unit/night-goblin-oddnob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-squig-herd",
+      "name": "Night Goblin Squig Herd",
+      "url": "https://tow.whfb.app/unit/night-goblin-squig-herd",
+      "path": "/unit/night-goblin-squig-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-squig-hopper-mob",
+      "name": "Night Goblin Squig Hopper Mob",
+      "url": "https://tow.whfb.app/unit/night-goblin-squig-hopper-mob",
+      "path": "/unit/night-goblin-squig-hopper-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-goblin-warboss",
+      "name": "Night Goblin Warboss",
+      "url": "https://tow.whfb.app/unit/night-goblin-warboss",
+      "path": "/unit/night-goblin-warboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/night-runners",
+      "name": "Night Runners",
+      "url": "https://tow.whfb.app/unit/night-runners",
+      "path": "/unit/night-runners",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nightmare",
+      "name": "Nightmare",
+      "url": "https://tow.whfb.app/unit/nightmare",
+      "path": "/unit/nightmare",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/noble",
+      "name": "Noble",
+      "url": "https://tow.whfb.app/unit/noble",
+      "path": "/unit/noble",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nuln-state-missile-troops",
+      "name": "Nuln State Missile Troops",
+      "url": "https://tow.whfb.app/unit/nuln-state-missile-troops",
+      "path": "/unit/nuln-state-missile-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nuln-state-troops",
+      "name": "Nuln State Troops",
+      "url": "https://tow.whfb.app/unit/nuln-state-troops",
+      "path": "/unit/nuln-state-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nuln-swordsmen",
+      "name": "Nuln Swordsmen",
+      "url": "https://tow.whfb.app/unit/nuln-swordsmen",
+      "path": "/unit/nuln-swordsmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nuln-veteran-state-troops",
+      "name": "Nuln Veteran State Troops",
+      "url": "https://tow.whfb.app/unit/nuln-veteran-state-troops",
+      "path": "/unit/nuln-veteran-state-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/nurglings",
+      "name": "Nurglings",
+      "url": "https://tow.whfb.app/unit/nurglings",
+      "path": "/unit/nurglings",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ogdruz-swampdigga",
+      "name": "Ogdruz Swampdigga",
+      "url": "https://tow.whfb.app/unit/ogdruz-swampdigga",
+      "path": "/unit/ogdruz-swampdigga",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ogre-bulls",
+      "name": "Ogre Bulls",
+      "url": "https://tow.whfb.app/unit/ogre-bulls",
+      "path": "/unit/ogre-bulls",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ogre-loader",
+      "name": "Ogre Loader",
+      "url": "https://tow.whfb.app/unit/ogre-loader",
+      "path": "/unit/ogre-loader",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-bigboss",
+      "name": "Orc Bigboss",
+      "url": "https://tow.whfb.app/unit/orc-bigboss",
+      "path": "/unit/orc-bigboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-boar-boy-mob",
+      "name": "Orc Boar Boy Mob",
+      "url": "https://tow.whfb.app/unit/orc-boar-boy-mob",
+      "path": "/unit/orc-boar-boy-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-boar-chariot",
+      "name": "Orc Boar Chariot",
+      "url": "https://tow.whfb.app/unit/orc-boar-chariot",
+      "path": "/unit/orc-boar-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-bully",
+      "name": "Orc Bully",
+      "url": "https://tow.whfb.app/unit/orc-bully",
+      "path": "/unit/orc-bully",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-mob",
+      "name": "Orc Mob",
+      "url": "https://tow.whfb.app/unit/orc-mob",
+      "path": "/unit/orc-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-warboss",
+      "name": "Orc Warboss",
+      "url": "https://tow.whfb.app/unit/orc-warboss",
+      "path": "/unit/orc-warboss",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-weirdboy",
+      "name": "Orc Weirdboy",
+      "url": "https://tow.whfb.app/unit/orc-weirdboy",
+      "path": "/unit/orc-weirdboy",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orc-weirdnob",
+      "name": "Orc Weirdnob",
+      "url": "https://tow.whfb.app/unit/orc-weirdnob",
+      "path": "/unit/orc-weirdnob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/organ-gun",
+      "name": "Organ Gun",
+      "url": "https://tow.whfb.app/unit/organ-gun",
+      "path": "/unit/organ-gun",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/orion-the-king-in-the-woods",
+      "name": "Orion, the King in the Woods",
+      "url": "https://tow.whfb.app/unit/orion-the-king-in-the-woods",
+      "path": "/unit/orion-the-king-in-the-woods",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/outcast-wizard",
+      "name": "Outcast Wizard",
+      "url": "https://tow.whfb.app/unit/outcast-wizard",
+      "path": "/unit/outcast-wizard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/outriders",
+      "name": "Outriders",
+      "url": "https://tow.whfb.app/unit/outriders",
+      "path": "/unit/outriders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/packmaster",
+      "name": "Packmaster",
+      "url": "https://tow.whfb.app/unit/packmaster",
+      "path": "/unit/packmaster",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/paladin",
+      "name": "Paladin",
+      "url": "https://tow.whfb.app/unit/paladin",
+      "path": "/unit/paladin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/palanquin-of-nurgle",
+      "name": "Palanquin of Nurgle",
+      "url": "https://tow.whfb.app/unit/palanquin-of-nurgle",
+      "path": "/unit/palanquin-of-nurgle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/peasant-bowmen",
+      "name": "Peasant Bowmen",
+      "url": "https://tow.whfb.app/unit/peasant-bowmen",
+      "path": "/unit/peasant-bowmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/peasant-levy",
+      "name": "Peasant Levy",
+      "url": "https://tow.whfb.app/unit/peasant-levy",
+      "path": "/unit/peasant-levy",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/pegasus",
+      "name": "Pegasus",
+      "url": "https://tow.whfb.app/unit/pegasus",
+      "path": "/unit/pegasus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/pegasus-knights",
+      "name": "Pegasus Knights",
+      "url": "https://tow.whfb.app/unit/pegasus-knights",
+      "path": "/unit/pegasus-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/phoenix-guard",
+      "name": "Phoenix Guard",
+      "url": "https://tow.whfb.app/unit/phoenix-guard",
+      "path": "/unit/phoenix-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/pink-horrors-of-tzeentch",
+      "name": "Pink Horrors of Tzeentch",
+      "url": "https://tow.whfb.app/unit/pink-horrors-of-tzeentch",
+      "path": "/unit/pink-horrors-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/pistoliers",
+      "name": "Pistoliers",
+      "url": "https://tow.whfb.app/unit/pistoliers",
+      "path": "/unit/pistoliers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plague-censer-bearers",
+      "name": "Plague Censer Bearers",
+      "url": "https://tow.whfb.app/unit/plague-censer-bearers",
+      "path": "/unit/plague-censer-bearers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plague-drones-of-nurgle",
+      "name": "Plague Drones of Nurgle",
+      "url": "https://tow.whfb.app/unit/plague-drones-of-nurgle",
+      "path": "/unit/plague-drones-of-nurgle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plague-furnace",
+      "name": "Plague Furnace",
+      "url": "https://tow.whfb.app/unit/plague-furnace",
+      "path": "/unit/plague-furnace",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plague-monks",
+      "name": "Plague Monks",
+      "url": "https://tow.whfb.app/unit/plague-monks",
+      "path": "/unit/plague-monks",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plague-priest",
+      "name": "Plague Priest",
+      "url": "https://tow.whfb.app/unit/plague-priest",
+      "path": "/unit/plague-priest",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plaguebearers-of-nurgle",
+      "name": "Plaguebearers of Nurgle",
+      "url": "https://tow.whfb.app/unit/plaguebearers-of-nurgle",
+      "path": "/unit/plaguebearers-of-nurgle",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/plagueclaw-catapult",
+      "name": "Plagueclaw Catapult",
+      "url": "https://tow.whfb.app/unit/plagueclaw-catapult",
+      "path": "/unit/plagueclaw-catapult",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/poisoned-wind-globadiers",
+      "name": "Poisoned Wind Globadiers",
+      "url": "https://tow.whfb.app/unit/poisoned-wind-globadiers",
+      "path": "/unit/poisoned-wind-globadiers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/preyton",
+      "name": "Preyton",
+      "url": "https://tow.whfb.app/unit/preyton",
+      "path": "/unit/preyton",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/priest-of-sigmar",
+      "name": "Priest of Sigmar",
+      "url": "https://tow.whfb.app/unit/priest-of-sigmar",
+      "path": "/unit/priest-of-sigmar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/priest-of-ulric",
+      "name": "Priest of Ulric",
+      "url": "https://tow.whfb.app/unit/priest-of-ulric",
+      "path": "/unit/priest-of-ulric",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/primal-warherd",
+      "name": "Primal Warherd",
+      "url": "https://tow.whfb.app/unit/primal-warherd",
+      "path": "/unit/primal-warherd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/primal-warhounds",
+      "name": "Primal Warhounds",
+      "url": "https://tow.whfb.app/unit/primal-warhounds",
+      "path": "/unit/primal-warhounds",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/prince",
+      "name": "Prince",
+      "url": "https://tow.whfb.app/unit/prince",
+      "path": "/unit/prince",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/prince-apophas",
+      "name": "Prince Apophas",
+      "url": "https://tow.whfb.app/unit/prince-apophas",
+      "path": "/unit/prince-apophas",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/prince-ulthers-dragon-company",
+      "name": "Prince Ulther's Dragon Company",
+      "url": "https://tow.whfb.app/unit/prince-ulthers-dragon-company",
+      "path": "/unit/prince-ulthers-dragon-company",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/prophetess",
+      "name": "Prophetess",
+      "url": "https://tow.whfb.app/unit/prophetess",
+      "path": "/unit/prophetess",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/quarrellers",
+      "name": "Quarrellers",
+      "url": "https://tow.whfb.app/unit/quarrellers",
+      "path": "/unit/quarrellers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/questing-knights",
+      "name": "Questing Knights",
+      "url": "https://tow.whfb.app/unit/questing-knights",
+      "path": "/unit/questing-knights",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/rangers",
+      "name": "Rangers",
+      "url": "https://tow.whfb.app/unit/rangers",
+      "path": "/unit/rangers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/rat-ogres",
+      "name": "Rat Ogres",
+      "url": "https://tow.whfb.app/unit/rat-ogres",
+      "path": "/unit/rat-ogres",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/rat-swarms",
+      "name": "Rat Swarms",
+      "url": "https://tow.whfb.app/unit/rat-swarms",
+      "path": "/unit/rat-swarms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/razordon-pack",
+      "name": "Razordon Pack",
+      "url": "https://tow.whfb.app/unit/razordon-pack",
+      "path": "/unit/razordon-pack",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/razorgor-chariot",
+      "name": "Razorgor Chariot",
+      "url": "https://tow.whfb.app/unit/razorgor-chariot",
+      "path": "/unit/razorgor-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/razorgor-herd",
+      "name": "Razorgor Herd",
+      "url": "https://tow.whfb.app/unit/razorgor-herd",
+      "path": "/unit/razorgor-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/reaper-bolt-thrower",
+      "name": "Reaper Bolt Thrower",
+      "url": "https://tow.whfb.app/unit/reaper-bolt-thrower",
+      "path": "/unit/reaper-bolt-thrower",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/renegade-captain",
+      "name": "Renegade Captain",
+      "url": "https://tow.whfb.app/unit/renegade-captain",
+      "path": "/unit/renegade-captain",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/renegade-prince",
+      "name": "Renegade Prince",
+      "url": "https://tow.whfb.app/unit/renegade-prince",
+      "path": "/unit/renegade-prince",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/repeater-crossbowmen",
+      "name": "Repeater Crossbowmen",
+      "url": "https://tow.whfb.app/unit/repeater-crossbowmen",
+      "path": "/unit/repeater-crossbowmen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ripperdactyl",
+      "name": "Ripperdactyl",
+      "url": "https://tow.whfb.app/unit/ripperdactyl",
+      "path": "/unit/ripperdactyl",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ripperdactyl-riders",
+      "name": "Ripperdactyl Riders",
+      "url": "https://tow.whfb.app/unit/ripperdactyl-riders",
+      "path": "/unit/ripperdactyl-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/river-troll-mob",
+      "name": "River Troll Mob",
+      "url": "https://tow.whfb.app/unit/river-troll-mob",
+      "path": "/unit/river-troll-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/royal-clan-warriors",
+      "name": "Royal Clan Warriors",
+      "url": "https://tow.whfb.app/unit/royal-clan-warriors",
+      "path": "/unit/royal-clan-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/royal-herald",
+      "name": "Royal Herald",
+      "url": "https://tow.whfb.app/unit/royal-herald",
+      "path": "/unit/royal-herald",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/royal-pegasus",
+      "name": "Royal Pegasus",
+      "url": "https://tow.whfb.app/unit/royal-pegasus",
+      "path": "/unit/royal-pegasus",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/runelord",
+      "name": "Runelord",
+      "url": "https://tow.whfb.app/unit/runelord",
+      "path": "/unit/runelord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/runesmith",
+      "name": "Runesmith",
+      "url": "https://tow.whfb.app/unit/runesmith",
+      "path": "/unit/runesmith",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sabretusk-pack",
+      "name": "Sabretusk Pack",
+      "url": "https://tow.whfb.app/unit/sabretusk-pack",
+      "path": "/unit/sabretusk-pack",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/salamander-pack",
+      "name": "Salamander Pack",
+      "url": "https://tow.whfb.app/unit/salamander-pack",
+      "path": "/unit/salamander-pack",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/saurus-oldblood",
+      "name": "Saurus Oldblood",
+      "url": "https://tow.whfb.app/unit/saurus-oldblood",
+      "path": "/unit/saurus-oldblood",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/saurus-scar-veteran",
+      "name": "Saurus Scar-Veteran",
+      "url": "https://tow.whfb.app/unit/saurus-scar-veteran",
+      "path": "/unit/saurus-scar-veteran",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/saurus-warriors",
+      "name": "Saurus Warriors",
+      "url": "https://tow.whfb.app/unit/saurus-warriors",
+      "path": "/unit/saurus-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/scourgerunner-chariot",
+      "name": "Scourgerunner Chariot",
+      "url": "https://tow.whfb.app/unit/scourgerunner-chariot",
+      "path": "/unit/scourgerunner-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/scout-gyrocopter",
+      "name": "Scout Gyrocopter",
+      "url": "https://tow.whfb.app/unit/scout-gyrocopter",
+      "path": "/unit/scout-gyrocopter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/screamers-of-tzeentch",
+      "name": "Screamers of Tzeentch",
+      "url": "https://tow.whfb.app/unit/screamers-of-tzeentch",
+      "path": "/unit/screamers-of-tzeentch",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/screaming-bell",
+      "name": "Screaming Bell",
+      "url": "https://tow.whfb.app/unit/screaming-bell",
+      "path": "/unit/screaming-bell",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/screaming-skull-catapult",
+      "name": "Screaming Skull Catapult",
+      "url": "https://tow.whfb.app/unit/screaming-skull-catapult",
+      "path": "/unit/screaming-skull-catapult",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sea-guard-garrison-commander",
+      "name": "Sea Guard Garrison Commander",
+      "url": "https://tow.whfb.app/unit/sea-guard-garrison-commander",
+      "path": "/unit/sea-guard-garrison-commander",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/seeker-chariot-of-slaanesh",
+      "name": "Seeker Chariot of Slaanesh",
+      "url": "https://tow.whfb.app/unit/seeker-chariot-of-slaanesh",
+      "path": "/unit/seeker-chariot-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/seekers-of-slaanesh",
+      "name": "Seekers of Slaanesh",
+      "url": "https://tow.whfb.app/unit/seekers-of-slaanesh",
+      "path": "/unit/seekers-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sellsword-infantry",
+      "name": "Sellsword Infantry",
+      "url": "https://tow.whfb.app/unit/sellsword-infantry",
+      "path": "/unit/sellsword-infantry",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sepulchral-stalkers",
+      "name": "Sepulchral Stalkers",
+      "url": "https://tow.whfb.app/unit/sepulchral-stalkers",
+      "path": "/unit/sepulchral-stalkers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sergeant-at-arms",
+      "name": "Sergeant-at-Arms",
+      "url": "https://tow.whfb.app/unit/sergeant-at-arms",
+      "path": "/unit/sergeant-at-arms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/settra-the-imperishable",
+      "name": "Settra the Imperishable",
+      "url": "https://tow.whfb.app/unit/settra-the-imperishable",
+      "path": "/unit/settra-the-imperishable",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/shadow-warriors",
+      "name": "Shadow Warriors",
+      "url": "https://tow.whfb.app/unit/shadow-warriors",
+      "path": "/unit/shadow-warriors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/shadowdancer",
+      "name": "Shadowdancer",
+      "url": "https://tow.whfb.app/unit/shadowdancer",
+      "path": "/unit/shadowdancer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/shieldbearers",
+      "name": "Shieldbearers",
+      "url": "https://tow.whfb.app/unit/shieldbearers",
+      "path": "/unit/shieldbearers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ships-company",
+      "name": "Ship's Company",
+      "url": "https://tow.whfb.app/unit/ships-company",
+      "path": "/unit/ships-company",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/shugengan-general",
+      "name": "Shugengan General",
+      "url": "https://tow.whfb.app/unit/shugengan-general",
+      "path": "/unit/shugengan-general",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/shugengan-lord",
+      "name": "Shugengan Lord",
+      "url": "https://tow.whfb.app/unit/shugengan-lord",
+      "path": "/unit/shugengan-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/silver-helms",
+      "name": "Silver Helms",
+      "url": "https://tow.whfb.app/unit/silver-helms",
+      "path": "/unit/silver-helms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sir-cecil-gastonne",
+      "name": "Sir Cecil Gastonne",
+      "url": "https://tow.whfb.app/unit/sir-cecil-gastonne",
+      "path": "/unit/sir-cecil-gastonne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sisters-of-avelorn",
+      "name": "Sisters of Avelorn",
+      "url": "https://tow.whfb.app/unit/sisters-of-avelorn",
+      "path": "/unit/sisters-of-avelorn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sisters-of-slaughter",
+      "name": "Sisters of Slaughter",
+      "url": "https://tow.whfb.app/unit/sisters-of-slaughter",
+      "path": "/unit/sisters-of-slaughter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sisters-of-the-thorn",
+      "name": "Sisters of the Thorn",
+      "url": "https://tow.whfb.app/unit/sisters-of-the-thorn",
+      "path": "/unit/sisters-of-the-thorn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skaven-chieftain",
+      "name": "Skaven Chieftain",
+      "url": "https://tow.whfb.app/unit/skaven-chieftain",
+      "path": "/unit/skaven-chieftain",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skaven-warlord",
+      "name": "Skaven Warlord",
+      "url": "https://tow.whfb.app/unit/skaven-warlord",
+      "path": "/unit/skaven-warlord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeletal-steed-tomb-kings",
+      "name": "Skeletal Steed (Tomb Kings)",
+      "url": "https://tow.whfb.app/unit/skeletal-steed-tomb-kings",
+      "path": "/unit/skeletal-steed-tomb-kings",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeletal-steed-vampire-counts",
+      "name": "Skeletal Steed (Vampire Counts)",
+      "url": "https://tow.whfb.app/unit/skeletal-steed-vampire-counts",
+      "path": "/unit/skeletal-steed-vampire-counts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-archers",
+      "name": "Skeleton Archers",
+      "url": "https://tow.whfb.app/unit/skeleton-archers",
+      "path": "/unit/skeleton-archers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-cavalry-cohort",
+      "name": "Skeleton Cavalry Cohort",
+      "url": "https://tow.whfb.app/unit/skeleton-cavalry-cohort",
+      "path": "/unit/skeleton-cavalry-cohort",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-chariot",
+      "name": "Skeleton Chariot",
+      "url": "https://tow.whfb.app/unit/skeleton-chariot",
+      "path": "/unit/skeleton-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-chariots",
+      "name": "Skeleton Chariots",
+      "url": "https://tow.whfb.app/unit/skeleton-chariots",
+      "path": "/unit/skeleton-chariots",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-horse-archers",
+      "name": "Skeleton Horse Archers",
+      "url": "https://tow.whfb.app/unit/skeleton-horse-archers",
+      "path": "/unit/skeleton-horse-archers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-horsemen",
+      "name": "Skeleton Horsemen",
+      "url": "https://tow.whfb.app/unit/skeleton-horsemen",
+      "path": "/unit/skeleton-horsemen",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-infantry-cohort",
+      "name": "Skeleton Infantry Cohort",
+      "url": "https://tow.whfb.app/unit/skeleton-infantry-cohort",
+      "path": "/unit/skeleton-infantry-cohort",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-skirmishers",
+      "name": "Skeleton Skirmishers",
+      "url": "https://tow.whfb.app/unit/skeleton-skirmishers",
+      "path": "/unit/skeleton-skirmishers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-warriors-tomb-kings",
+      "name": "Skeleton Warriors (Tomb Kings)",
+      "url": "https://tow.whfb.app/unit/skeleton-warriors-tomb-kings",
+      "path": "/unit/skeleton-warriors-tomb-kings",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skeleton-warriors-vampire-counts",
+      "name": "Skeleton Warriors (Vampire Counts)",
+      "url": "https://tow.whfb.app/unit/skeleton-warriors-vampire-counts",
+      "path": "/unit/skeleton-warriors-vampire-counts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skin-wolves",
+      "name": "Skin Wolves",
+      "url": "https://tow.whfb.app/unit/skin-wolves",
+      "path": "/unit/skin-wolves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skink-chief",
+      "name": "Skink Chief",
+      "url": "https://tow.whfb.app/unit/skink-chief",
+      "path": "/unit/skink-chief",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skink-priest",
+      "name": "Skink Priest",
+      "url": "https://tow.whfb.app/unit/skink-priest",
+      "path": "/unit/skink-priest",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skink-skirmishers",
+      "name": "Skink Skirmishers",
+      "url": "https://tow.whfb.app/unit/skink-skirmishers",
+      "path": "/unit/skink-skirmishers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/skull-cannon-of-khorne",
+      "name": "Skull Cannon of Khorne",
+      "url": "https://tow.whfb.app/unit/skull-cannon-of-khorne",
+      "path": "/unit/skull-cannon-of-khorne",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sky-lantern",
+      "name": "Sky Lantern",
+      "url": "https://tow.whfb.app/unit/sky-lantern",
+      "path": "/unit/sky-lantern",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/slann-mage-priest",
+      "name": "Slann Mage-Priest",
+      "url": "https://tow.whfb.app/unit/slann-mage-priest",
+      "path": "/unit/slann-mage-priest",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/slaughtermaster",
+      "name": "Slaughtermaster",
+      "url": "https://tow.whfb.app/unit/slaughtermaster",
+      "path": "/unit/slaughtermaster",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/slayers",
+      "name": "Slayers",
+      "url": "https://tow.whfb.app/unit/slayers",
+      "path": "/unit/slayers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sneaky-gits",
+      "name": "Sneaky Gits",
+      "url": "https://tow.whfb.app/unit/sneaky-gits",
+      "path": "/unit/sneaky-gits",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/snotling-mob",
+      "name": "Snotling Mob",
+      "url": "https://tow.whfb.app/unit/snotling-mob",
+      "path": "/unit/snotling-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/snotling-pump-wagon",
+      "name": "Snotling Pump Wagon",
+      "url": "https://tow.whfb.app/unit/snotling-pump-wagon",
+      "path": "/unit/snotling-pump-wagon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sorcerer-lord",
+      "name": "Sorcerer Lord",
+      "url": "https://tow.whfb.app/unit/sorcerer-lord",
+      "path": "/unit/sorcerer-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sorcerer-prophet",
+      "name": "Sorcerer-Prophet",
+      "url": "https://tow.whfb.app/unit/sorcerer-prophet",
+      "path": "/unit/sorcerer-prophet",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sorceress",
+      "name": "Sorceress",
+      "url": "https://tow.whfb.app/unit/sorceress",
+      "path": "/unit/sorceress",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/soul-grinder",
+      "name": "Soul Grinder",
+      "url": "https://tow.whfb.app/unit/soul-grinder",
+      "path": "/unit/soul-grinder",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/spellsinger",
+      "name": "Spellsinger",
+      "url": "https://tow.whfb.app/unit/spellsinger",
+      "path": "/unit/spellsinger",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/spellweaver",
+      "name": "Spellweaver",
+      "url": "https://tow.whfb.app/unit/spellweaver",
+      "path": "/unit/spellweaver",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/spirit-hosts",
+      "name": "Spirit Hosts",
+      "url": "https://tow.whfb.app/unit/spirit-hosts",
+      "path": "/unit/spirit-hosts",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/squires",
+      "name": "Squires",
+      "url": "https://tow.whfb.app/unit/squires",
+      "path": "/unit/squires",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/star-dragon",
+      "name": "Star Dragon",
+      "url": "https://tow.whfb.app/unit/star-dragon",
+      "path": "/unit/star-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/state-missile-troops",
+      "name": "State Missile Troops",
+      "url": "https://tow.whfb.app/unit/state-missile-troops",
+      "path": "/unit/state-missile-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/state-troops",
+      "name": "State Troops",
+      "url": "https://tow.whfb.app/unit/state-troops",
+      "path": "/unit/state-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/steed-of-slaanesh",
+      "name": "Steed of Slaanesh",
+      "url": "https://tow.whfb.app/unit/steed-of-slaanesh",
+      "path": "/unit/steed-of-slaanesh",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/stegadon",
+      "name": "Stegadon",
+      "url": "https://tow.whfb.app/unit/stegadon",
+      "path": "/unit/stegadon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/stone-troll-mob",
+      "name": "Stone Troll Mob",
+      "url": "https://tow.whfb.app/unit/stone-troll-mob",
+      "path": "/unit/stone-troll-mob",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/stonehorn",
+      "name": "Stonehorn",
+      "url": "https://tow.whfb.app/unit/stonehorn",
+      "path": "/unit/stonehorn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/stonehorn-riders",
+      "name": "Stonehorn Riders",
+      "url": "https://tow.whfb.app/unit/stonehorn-riders",
+      "path": "/unit/stonehorn-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/storm-weaver",
+      "name": "Storm Weaver",
+      "url": "https://tow.whfb.app/unit/storm-weaver",
+      "path": "/unit/storm-weaver",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/stormvermin",
+      "name": "Stormvermin",
+      "url": "https://tow.whfb.app/unit/stormvermin",
+      "path": "/unit/stormvermin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/strategist",
+      "name": "Strategist",
+      "url": "https://tow.whfb.app/unit/strategist",
+      "path": "/unit/strategist",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/strigoi-ghoul-king",
+      "name": "Strigoi Ghoul King",
+      "url": "https://tow.whfb.app/unit/strigoi-ghoul-king",
+      "path": "/unit/strigoi-ghoul-king",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sun-dragon",
+      "name": "Sun Dragon",
+      "url": "https://tow.whfb.app/unit/sun-dragon",
+      "path": "/unit/sun-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/supreme-astromancer",
+      "name": "Supreme Astromancer",
+      "url": "https://tow.whfb.app/unit/supreme-astromancer",
+      "path": "/unit/supreme-astromancer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/supreme-sorceress",
+      "name": "Supreme Sorceress",
+      "url": "https://tow.whfb.app/unit/supreme-sorceress",
+      "path": "/unit/supreme-sorceress",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/swordmasters-of-hoeth",
+      "name": "Swordmasters of Hoeth",
+      "url": "https://tow.whfb.app/unit/swordmasters-of-hoeth",
+      "path": "/unit/swordmasters-of-hoeth",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/sylvan-boar",
+      "name": "Sylvan Boar",
+      "url": "https://tow.whfb.app/unit/sylvan-boar",
+      "path": "/unit/sylvan-boar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/temple-guard",
+      "name": "Temple Guard",
+      "url": "https://tow.whfb.app/unit/temple-guard",
+      "path": "/unit/temple-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/terradon",
+      "name": "Terradon",
+      "url": "https://tow.whfb.app/unit/terradon",
+      "path": "/unit/terradon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/terradon-riders",
+      "name": "Terradon Riders",
+      "url": "https://tow.whfb.app/unit/terradon-riders",
+      "path": "/unit/terradon-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/terrorgheist",
+      "name": "Terrorgheist",
+      "url": "https://tow.whfb.app/unit/terrorgheist",
+      "path": "/unit/terrorgheist",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/terrorgheist-mount",
+      "name": "Terrorgheist (Mount)",
+      "url": "https://tow.whfb.app/unit/terrorgheist-mount",
+      "path": "/unit/terrorgheist-mount",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/teutogen-guard",
+      "name": "Teutogen Guard",
+      "url": "https://tow.whfb.app/unit/teutogen-guard",
+      "path": "/unit/teutogen-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/thane",
+      "name": "Thane",
+      "url": "https://tow.whfb.app/unit/thane",
+      "path": "/unit/thane",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/thorgrim-ulleksson",
+      "name": "Thorgrim Ulleksson",
+      "url": "https://tow.whfb.app/unit/thorgrim-ulleksson",
+      "path": "/unit/thorgrim-ulleksson",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/thunderers",
+      "name": "Thunderers",
+      "url": "https://tow.whfb.app/unit/thunderers",
+      "path": "/unit/thunderers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/thundertusk",
+      "name": "Thundertusk",
+      "url": "https://tow.whfb.app/unit/thundertusk",
+      "path": "/unit/thundertusk",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/thundertusk-riders",
+      "name": "Thundertusk Riders",
+      "url": "https://tow.whfb.app/unit/thundertusk-riders",
+      "path": "/unit/thundertusk-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tiranoc-chariot",
+      "name": "Tiranoc Chariot",
+      "url": "https://tow.whfb.app/unit/tiranoc-chariot",
+      "path": "/unit/tiranoc-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-banshee",
+      "name": "Tomb Banshee",
+      "url": "https://tow.whfb.app/unit/tomb-banshee",
+      "path": "/unit/tomb-banshee",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-guard",
+      "name": "Tomb Guard",
+      "url": "https://tow.whfb.app/unit/tomb-guard",
+      "path": "/unit/tomb-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-guard-chariots",
+      "name": "Tomb Guard Chariots",
+      "url": "https://tow.whfb.app/unit/tomb-guard-chariots",
+      "path": "/unit/tomb-guard-chariots",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-king",
+      "name": "Tomb King",
+      "url": "https://tow.whfb.app/unit/tomb-king",
+      "path": "/unit/tomb-king",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-prince",
+      "name": "Tomb Prince",
+      "url": "https://tow.whfb.app/unit/tomb-prince",
+      "path": "/unit/tomb-prince",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-scorpion",
+      "name": "Tomb Scorpion",
+      "url": "https://tow.whfb.app/unit/tomb-scorpion",
+      "path": "/unit/tomb-scorpion",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tomb-swarms",
+      "name": "Tomb Swarms",
+      "url": "https://tow.whfb.app/unit/tomb-swarms",
+      "path": "/unit/tomb-swarms",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tree-kin",
+      "name": "Tree Kin",
+      "url": "https://tow.whfb.app/unit/tree-kin",
+      "path": "/unit/tree-kin",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/treeman",
+      "name": "Treeman",
+      "url": "https://tow.whfb.app/unit/treeman",
+      "path": "/unit/treeman",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/treemen-ancient",
+      "name": "Treeman Ancient",
+      "url": "https://tow.whfb.app/unit/treemen-ancient",
+      "path": "/unit/treemen-ancient",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/troglodon",
+      "name": "Troglodon",
+      "url": "https://tow.whfb.app/unit/troglodon",
+      "path": "/unit/troglodon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/troll-hag",
+      "name": "Troll Hag",
+      "url": "https://tow.whfb.app/unit/troll-hag",
+      "path": "/unit/troll-hag",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tuskgor-chariot",
+      "name": "Tuskgor Chariot",
+      "url": "https://tow.whfb.app/unit/tuskgor-chariot",
+      "path": "/unit/tuskgor-chariot",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/tyrant",
+      "name": "Tyrant",
+      "url": "https://tow.whfb.app/unit/tyrant",
+      "path": "/unit/tyrant",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ungor-herd",
+      "name": "Ungor Herd",
+      "url": "https://tow.whfb.app/unit/ungor-herd",
+      "path": "/unit/ungor-herd",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ungor-ravagers",
+      "name": "Ungor Ravagers",
+      "url": "https://tow.whfb.app/unit/ungor-ravagers",
+      "path": "/unit/ungor-ravagers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ungrim-ironfist",
+      "name": "Ungrim Ironfist",
+      "url": "https://tow.whfb.app/unit/ungrim-ironfist",
+      "path": "/unit/ungrim-ironfist",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/unicorn",
+      "name": "Unicorn",
+      "url": "https://tow.whfb.app/unit/unicorn",
+      "path": "/unit/unicorn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/ushabti",
+      "name": "Ushabti",
+      "url": "https://tow.whfb.app/unit/ushabti",
+      "path": "/unit/ushabti",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/vampire-count",
+      "name": "Vampire Count",
+      "url": "https://tow.whfb.app/unit/vampire-count",
+      "path": "/unit/vampire-count",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/vampire-thrall",
+      "name": "Vampire Thrall",
+      "url": "https://tow.whfb.app/unit/vampire-thrall",
+      "path": "/unit/vampire-thrall",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/vargheists",
+      "name": "Vargheists",
+      "url": "https://tow.whfb.app/unit/vargheists",
+      "path": "/unit/vargheists",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/varghulf",
+      "name": "Varghulf",
+      "url": "https://tow.whfb.app/unit/varghulf",
+      "path": "/unit/varghulf",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/venerable-ushabti",
+      "name": "Venerable Ushabti",
+      "url": "https://tow.whfb.app/unit/venerable-ushabti",
+      "path": "/unit/venerable-ushabti",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/veteran-freeblades",
+      "name": "Veteran Freeblades",
+      "url": "https://tow.whfb.app/unit/veteran-freeblades",
+      "path": "/unit/veteran-freeblades",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/veteran-sellswords",
+      "name": "Veteran Sellswords",
+      "url": "https://tow.whfb.app/unit/veteran-sellswords",
+      "path": "/unit/veteran-sellswords",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/veteran-state-troops",
+      "name": "Veteran State Troops",
+      "url": "https://tow.whfb.app/unit/veteran-state-troops",
+      "path": "/unit/veteran-state-troops",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wandering-mercenaries",
+      "name": "Wandering Mercenaries",
+      "url": "https://tow.whfb.app/unit/wandering-mercenaries",
+      "path": "/unit/wandering-mercenaries",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/war-altar-of-sigmar",
+      "name": "War Altar of Sigmar",
+      "url": "https://tow.whfb.app/unit/war-altar-of-sigmar",
+      "path": "/unit/war-altar-of-sigmar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/war-boar",
+      "name": "War Boar",
+      "url": "https://tow.whfb.app/unit/war-boar",
+      "path": "/unit/war-boar",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/war-hydra",
+      "name": "War Hydra",
+      "url": "https://tow.whfb.app/unit/war-hydra",
+      "path": "/unit/war-hydra",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/war-lions",
+      "name": "War Lions",
+      "url": "https://tow.whfb.app/unit/war-lions",
+      "path": "/unit/war-lions",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wardancers",
+      "name": "Wardancers",
+      "url": "https://tow.whfb.app/unit/wardancers",
+      "path": "/unit/wardancers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warden-of-talsyn",
+      "name": "Warden of Talsyn",
+      "url": "https://tow.whfb.app/unit/warden-of-talsyn",
+      "path": "/unit/warden-of-talsyn",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wargor",
+      "name": "Wargor",
+      "url": "https://tow.whfb.app/unit/wargor",
+      "path": "/unit/wargor",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhawk",
+      "name": "Warhawk",
+      "url": "https://tow.whfb.app/unit/warhawk",
+      "path": "/unit/warhawk",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhawk-riders",
+      "name": "Warhawk Riders",
+      "url": "https://tow.whfb.app/unit/warhawk-riders",
+      "path": "/unit/warhawk-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhoof",
+      "name": "Warhoof",
+      "url": "https://tow.whfb.app/unit/warhoof",
+      "path": "/unit/warhoof",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhorse-bretonnia",
+      "name": "Warhorse (Bretonnia)",
+      "url": "https://tow.whfb.app/unit/warhorse-bretonnia",
+      "path": "/unit/warhorse-bretonnia",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhorse-realms-of-men",
+      "name": "Warhorse (Realms of Men)",
+      "url": "https://tow.whfb.app/unit/warhorse-realms-of-men",
+      "path": "/unit/warhorse-realms-of-men",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warhorse-warriors-of-chaos",
+      "name": "Warhorse (Warriors of Chaos)",
+      "url": "https://tow.whfb.app/unit/warhorse-warriors-of-chaos",
+      "path": "/unit/warhorse-warriors-of-chaos",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warlock-engineer",
+      "name": "Warlock Engineer",
+      "url": "https://tow.whfb.app/unit/warlock-engineer",
+      "path": "/unit/warlock-engineer",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warp-lightning-cannon",
+      "name": "Warp Lightning Cannon",
+      "url": "https://tow.whfb.app/unit/warp-lightning-cannon",
+      "path": "/unit/warp-lightning-cannon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warped-gors",
+      "name": "Warped Gors",
+      "url": "https://tow.whfb.app/unit/warped-gors",
+      "path": "/unit/warped-gors",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warpfire-dragon",
+      "name": "Warpfire Dragon",
+      "url": "https://tow.whfb.app/unit/warpfire-dragon",
+      "path": "/unit/warpfire-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/warplock-jezzails",
+      "name": "Warplock Jezzails",
+      "url": "https://tow.whfb.app/unit/warplock-jezzails",
+      "path": "/unit/warplock-jezzails",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/waystalker",
+      "name": "Waystalker",
+      "url": "https://tow.whfb.app/unit/waystalker",
+      "path": "/unit/waystalker",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/waywatchers",
+      "name": "Waywatchers",
+      "url": "https://tow.whfb.app/unit/waywatchers",
+      "path": "/unit/waywatchers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/weapon-team",
+      "name": "Weapon Team",
+      "url": "https://tow.whfb.app/unit/weapon-team",
+      "path": "/unit/weapon-team",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/white-lions-of-chrace",
+      "name": "White Lions of Chrace",
+      "url": "https://tow.whfb.app/unit/white-lions-of-chrace",
+      "path": "/unit/white-lions-of-chrace",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wight-king",
+      "name": "Wight King",
+      "url": "https://tow.whfb.app/unit/wight-king",
+      "path": "/unit/wight-king",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wight-lord",
+      "name": "Wight Lord",
+      "url": "https://tow.whfb.app/unit/wight-lord",
+      "path": "/unit/wight-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wild-riders",
+      "name": "Wild Riders",
+      "url": "https://tow.whfb.app/unit/wild-riders",
+      "path": "/unit/wild-riders",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wildwood-rangers",
+      "name": "Wildwood Rangers",
+      "url": "https://tow.whfb.app/unit/wildwood-rangers",
+      "path": "/unit/wildwood-rangers",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/winged-warsphinx",
+      "name": "Winged Warsphinx",
+      "url": "https://tow.whfb.app/unit/winged-warsphinx",
+      "path": "/unit/winged-warsphinx",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/witch-elves",
+      "name": "Witch Elves",
+      "url": "https://tow.whfb.app/unit/witch-elves",
+      "path": "/unit/witch-elves",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/witch-hunter",
+      "name": "Witch Hunter",
+      "url": "https://tow.whfb.app/unit/witch-hunter",
+      "path": "/unit/witch-hunter",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wizard-lord",
+      "name": "Wizard Lord",
+      "url": "https://tow.whfb.app/unit/wizard-lord",
+      "path": "/unit/wizard-lord",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wood-elf-beast-pack",
+      "name": "Wood Elf Beast Pack",
+      "url": "https://tow.whfb.app/unit/wood-elf-beast-pack",
+      "path": "/unit/wood-elf-beast-pack",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/wyvern",
+      "name": "Wyvern",
+      "url": "https://tow.whfb.app/unit/wyvern",
+      "path": "/unit/wyvern",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/yeomen-guard",
+      "name": "Yeomen Guard",
+      "url": "https://tow.whfb.app/unit/yeomen-guard",
+      "path": "/unit/yeomen-guard",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/yhetees",
+      "name": "Yhetees",
+      "url": "https://tow.whfb.app/unit/yhetees",
+      "path": "/unit/yhetees",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/zombie-dragon",
+      "name": "Zombie Dragon",
+      "url": "https://tow.whfb.app/unit/zombie-dragon",
+      "path": "/unit/zombie-dragon",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "army-ref:/unit/zombies",
+      "name": "Zombies",
+      "url": "https://tow.whfb.app/unit/zombies",
+      "path": "/unit/zombies",
+      "kind": "unit",
+      "section": "Unit Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    }
+  ],
+  "ambiguousNames": []
+}
