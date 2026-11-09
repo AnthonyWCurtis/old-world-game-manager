@@ -1,8 +1,24 @@
-# High Elf Realms reference records (v0.4 data foundation)
+# Reference database collections (v0.4 data foundation)
 
 This directory contains source-linked unit reference records for future Game Manager matching and gameplay features. The source of truth is exclusively https://tow.whfb.app. **Record coverage is not the same as full option/rules verification.**
 
 The complete High Elf Realms index currently contains **45 distinct units** in eight source categories. Two named character records (Ishaya Vess and Korhil Lionmane) have been individually reviewed; 43 additional records were generated from their public unit pages by a bounded, deterministic extractor.
+
+## Collections
+
+The [collection registry](collections.json) lists the independent reference datasets:
+
+- [High Elf Realms units](manifest.json): 45 unit URLs with individual JSON records (2 manually reviewed, 43 source-extracted).
+- [Rules/reference sitemap](rules-index.json): **1,833 unique reference-page URLs** from [tow.whfb.app/sitemap/rules](https://tow.whfb.app/sitemap/rules), spanning 32 sitemap section links and 31 URL categories on 9 November 2026. See the compact [rules summary](rules-summary.json) for current counts.
+- Some sitemap entries are gameplay rules, others are equipment, magic, army lists, or other indexed topics. Do not classify everything as a universal special rule.
+
+## Rules sitemap indexing
+
+`scripts/build-rules-reference-index.mjs` performs one bounded HTML request to the publicly accessible rules sitemap and retains only the published labels and exact links. The GitHub Actions workflow refreshes this collection weekly (and can be triggered manually), checking that the sitemap has plausible coverage before replacing the previous index.
+
+Each entry carries `verificationStatus: source-indexed`: its URL and label came directly from the sitemap, but **the text and interpretation of the target page have not been reviewed**. The collection records ambiguous labels with multiple possible pages; they must not be auto-assigned without context. No rule text is mirrored, invented or inferred by the index builder.
+
+This collection is independent of the 45 unit records. The browser importer in v0.3.3 has not yet been integrated with this static index; building the data source is the first step toward reliable automatic matching.
 
 ## Current High Elf Realms records
 - `high-elf-realms/ishaya-vess.json`: Ishaya Vess, fixed profile, equipment, linked magic weapon and seven special rules.
