@@ -50,6 +50,14 @@ The public [Magic sitemap](https://tow.whfb.app/sitemap/magic) is now stored in 
 
 This is a **title-and-link index**, not a rules-text or spell-effects extractor. Spell costs, casting values, lore eligibility and active spell effects must be sourced and verified separately before gameplay calculations. The bounded weekly/manual source refresh retains the previous snapshot on incomplete results. The current v0.3.3 browser importer does not yet consume the new static magic index.
 
+## Global Armies sitemap references (v0.4 groundwork)
+
+The public [Armies sitemap](https://tow.whfb.app/sitemap/armies) is now indexed in [armies-index.json](docs/reference-records/armies-index.json), with a [source summary](docs/reference-records/armies-summary.json) and a fourth [collection registry entry](docs/reference-records/collections.json). The initial 9 November 2026 extract contains **600 unique pages**: **19 armies** and **581 units**.
+
+This global index captures **names, page types and actual source URLs only**. It does **not** assert that an indexed unit belongs to a certain army, can be purchased in a particular composition, or has legal points/options. All 45 High Elf unit URLs appear in the new global index, while their existing reviewed/extracted detail records remain separate. The snapshot refreshes through a weekly/manual GitHub Action.
+
+The browser importer remains v0.3.3 and is not yet connected to the new static reference collections. Subsequent matching work must use source evidence for parent-specific upgrades and preserve unmatched status when the global index lacks a unique match.
+
 ## Source references and caching
 
 The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.
