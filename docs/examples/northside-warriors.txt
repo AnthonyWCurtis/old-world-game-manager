@@ -1,0 +1,88 @@
+===
+Northside Warriors [2099 pts]
+Warhammer: The Old World, Chaos Dwarfs, Renegade (v1.5.2.2), Grand Melee + Combined Arms
+===
+
+++ Characters [815 pts] ++
+
+Black Orc Warboss [339 pts]
+- Great weapon
+- Full plate armour
+- Wyvern
+- Trollhide Trousers
+- Talisman of Protection
+
+Despot [391 pts]
+- Great weapon
+- Heavy armour
+- Shield
+- General
+- Bale Taurus
+- Armour of Destiny
+- Mantle of Stone
+
+Daemonsmith Sorcerer [85 pts]
+- Hand weapon
+- Heavy armour
+- Wizard [Level 1 Wizard]
+- On foot
+- Dark Magic
+
+++ Core Units [534 pts] ++
+
+15 Black Orc Mob [310 pts]
+- Hand weapon
+- Full plate armour
+- Stubborn
+- Veteran
+- 15x Shields
+- 11x Great weapon
+- Boss [Obsidian Lodestone]
+- Standard bearer [Monster Hunter's Tapestry]
+- Musician
+
+10 Infernal Guard [146 pts]
+- Fireglaives
+- Blackshard armour
+- Heavy armour
+- Shield
+- Veteran
+- Deathmask (champion)
+
+13 Hobgoblin Cutthroats [39 pts]
+- Hand weapons
+- Shortbows
+
+13 Hobgoblin Cutthroats [39 pts]
+- Hand weapons
+- Shortbows
+
+++ Special Units [750 pts] ++
+
+Iron Daemon [275 pts]
+- Steam Cannonade
+- Hand weapons
+
+Deathshrieker Rocket Launcher [110 pts]
+- Demolition Rockets
+- Infernal Incendiaries
+- Hand weapons
+- Light armour
+
+Deathshrieker Rocket Launcher [110 pts]
+- Demolition Rockets
+- Infernal Incendiaries
+- Hand weapons
+- Light armour
+
+3 Bull Centaur Renders [195 pts]
+- Hand weapons
+- Great weapons
+- Light armour
+- Shield
+- Ba'hal
+- Standard bearer
+
+10 Sneaky Gits [60 pts]
+- Two hand weapons
+- Throwing weapons
