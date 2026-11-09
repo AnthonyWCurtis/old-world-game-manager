@@ -151,7 +151,7 @@ test('Magic summary and collection registry preserve counts and provenance',()=>
  assert.equal(record.path,'magic-index.json');
  assert.equal(record.sourceUrl,SITEMAP_URL);
 });
-test('Assembled magic records retain timestamp and don't claim verified spell content',()=>{
+test('Assembled magic records retain timestamp without claiming verified spell content',()=>{
  const record=assembleMagicIndex(sampleHtml(),'2026-11-09T21:00:00.000Z');
  assert.equal(record.source.checkedAt,'2026-11-09T21:00:00.000Z');
  assert.equal(record.counts.entries,138);
