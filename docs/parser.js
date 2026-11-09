@@ -75,7 +75,25 @@ function parseUnitHead(s, expectCost = true) {
     const v = parseTrailingCost(stripped);
     if (expectCost && v.points === null)
         return null;
-    let name = v.name, qty = null;
+    let name = v.name, qty = null, nickname = null;
+    // Some exporters place a user-defined nickname before the actual
+    // unit name: "'ORMO' 22 Hobgoblin Cutthroats".
+    // Only remove a fully quoted LEADING label followed by a separate
+    // unit/quantity. Do not strip apostrophes in real names or equipment.
+    const closingQuote = { "'": "'", '"': '"', '‘': '’', '“': '”' }[name[0]];
+    if (closingQuote) {
+        for (let end = 1; end < name.length - 1; end++) {
+            if (name[end] !== closingQuote || !/\s/.test(name[end + 1]))
+                continue;
+            const label = name.slice(1, end).trim();
+            const remainder = name.slice(end + 1).trim();
+            if (label && remainder) {
+                nickname = label;
+                name = remainder;
+            }
+            break;
+        }
+    }
     const pm = name.match(/^(.*?)\s+\((\d+)\)$/);
     if (pm) {
         name = pm[1].trim();
@@ -90,7 +108,7 @@ function parseUnitHead(s, expectCost = true) {
     }
     if (!name || /^\+|^\#/.test(name))
         return null;
-    return { name, quantity: qty, points: v.points };
+    return { name, nickname, quantity: qty, points: v.points };
 }
 /** Old World Rankings on iOS can copy the complete roster as URI-escaped text.
  * Decode only convincing encoded multi-line rosters, not arbitrary URLs or pasted names.
@@ -337,7 +355,7 @@ function newSection(result, name, pts, line) {
 }
 function newUnit(result, h, raw, line, section) {
     const r = referenceFor(h.name, '', true);
-    const unit = { id: `u${result.units.length + 1}`, name: h.name, rawHeading: raw, line, sectionId: section?.id ?? null, quantity: h.quantity === null ? unknown() : explicit(h.quantity, line), reportedPoints: h.points === null ? unknown() : explicit(h.points, line), reference: r, matchStatus: r ? 'matched' : 'unmatched', selections: [], modelGroups: [] };
+    const unit = { id: `u${result.units.length + 1}`, name: h.name, nickname: h.nickname ?? null, rawHeading: raw, line, sectionId: section?.id ?? null, quantity: h.quantity === null ? unknown() : explicit(h.quantity, line), reportedPoints: h.points === null ? unknown() : explicit(h.points, line), reference: r, matchStatus: r ? 'matched' : 'unmatched', selections: [], modelGroups: [] };
     result.units.push(unit);
     if (section)
         section.unitIds.push(unit.id);
