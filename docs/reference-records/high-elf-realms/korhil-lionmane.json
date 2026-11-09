@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:korhil-lionmane",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/korhil-lionmane",
+    "verificationStatus": "verified-on-tow",
+    "verifiedOn": "2026-11-09",
+    "sourceVersion": null,
+    "method": "manual comparison of unit page and directly linked equipment, magic item, mount and special rule pages"
+  },
+  "name": "Korhil Lionmane",
+  "faction": "High Elf Realms",
+  "category": "Named Character",
+  "troopTypes": [
+    "Named Character",
+    "Heavy Infantry"
+  ],
+  "characteristics": {
+    "M": 5,
+    "WS": 7,
+    "BS": 5,
+    "S": 4,
+    "T": 3,
+    "W": 3,
+    "I": 6,
+    "A": 4,
+    "Ld": 9
+  },
+  "baseSizeMm": {
+    "width": 25,
+    "depth": 25
+  },
+  "unitSize": 1,
+  "points": 175,
+  "configuration": {
+    "fixed": false,
+    "equipmentFixed": true,
+    "availableOptions": [
+      {
+        "name": "Chieftain's Chariot",
+        "kind": "mount",
+        "pointsDelta": 105,
+        "sourceUrl": "https://tow.whfb.app/unit/chieftains-chariot",
+        "mountProfileId": "mount:chieftains-chariot"
+      }
+    ],
+    "availabilitySummary": "May be included in a High Elf Realms army composition list that offers White Lions of Chrace. Must be fielded as presented, except for the expressly listed optional Chieftain's Chariot.",
+    "sourceUrl": "https://tow.whfb.app/unit/korhil-lionmane"
+  },
+  "equipment": [
+    {
+      "name": "Hand weapon",
+      "kind": "combat-weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "profile": {
+        "range": "Combat",
+        "strength": "S",
+        "armourPiercing": 0
+      }
+    },
+    {
+      "name": "Chayal",
+      "kind": "magic-weapon",
+      "url": "https://tow.whfb.app/magic-item/chayal",
+      "profile": {
+        "range": "Combat",
+        "strength": "S+2",
+        "armourPiercing": -3
+      },
+      "summary": "May re-roll natural rolls of 1 To Hit made during the Combat phase."
+    },
+    {
+      "name": "The Pelt of Charandis",
+      "kind": "enchanted-item",
+      "url": "https://tow.whfb.app/magic-item/the-pelt-of-charandis",
+      "effects": {
+        "armourValueImprovementInCombat": 1,
+        "armourValueImprovementAgainstNonMagicalShooting": 2,
+        "armourValueMinimum": "2+",
+        "regeneration": "5+"
+      },
+      "summary": "Improves armour value in combat and against non-magical shooting, and grants Regeneration (5+)."
+    },
+    {
+      "name": "Heavy armour",
+      "kind": "armour",
+      "url": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "profile": {
+        "armourValue": "5+"
+      }
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Elven Reflexes",
+      "url": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "summary": "Korhil (not his mount) gains +1 Initiative, to a maximum of 10, in the first round of combat."
+    },
+    {
+      "name": "Furious Charge",
+      "url": "https://tow.whfb.app/special-rules/furious-charge",
+      "summary": "Korhil gains +1 Attack in a turn when he charged 3 inches or more; this does not apply to his mount.",
+      "appliesTo": "Korhil, not mount"
+    },
+    {
+      "name": "Mighty Constitution",
+      "url": "https://tow.whfb.app/special-rules/mighty-constitution",
+      "summary": "Korhil gains +1 Strength in a turn when he charged 3 inches or more and is immune to Poisoned Attacks; To Wound rolls still occur normally."
+    },
+    {
+      "name": "Move Through Cover",
+      "url": "https://tow.whfb.app/special-rules/move-through-cover",
+      "summary": "Korhil ignores difficult/dangerous terrain Movement modifiers and may re-roll 1s on Dangerous Terrain tests; this rule does not apply to his mount.",
+      "appliesTo": "Korhil, not mount"
+    },
+    {
+      "name": "Stubborn",
+      "url": "https://tow.whfb.app/special-rules/stubborn",
+      "summary": "A qualifying Stubborn unit can forgo its first Break test and Fall Back in Good Order. A Stubborn character cannot use it while joined to a non-Stubborn unit."
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "summary": "May re-roll failed Panic tests from heavy casualties or a friendly unit fleeing through."
+    }
+  ],
+  "mountProfiles": [
+    {
+      "id": "mount:chieftains-chariot",
+      "name": "Chieftain's Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/chieftains-chariot",
+      "points": 105,
+      "category": "Chariot",
+      "troopType": "Heavy Chariot",
+      "baseSizeMm": {
+        "width": 50,
+        "depth": 100
+      },
+      "unitSize": 1,
+      "armourValue": "4+",
+      "components": [
+        {
+          "name": "Chieftain's Chariot",
+          "quantity": 1,
+          "characteristics": {
+            "S": 5,
+            "T": 4,
+            "W": 3
+          }
+        },
+        {
+          "name": "Charioteer",
+          "quantity": 1,
+          "characteristics": {
+            "WS": 5,
+            "BS": 4,
+            "S": 4,
+            "I": 4,
+            "A": 1
+          }
+        },
+        {
+          "name": "Chracian Lion",
+          "quantity": 2,
+          "characteristics": {
+            "M": 8,
+            "WS": 5,
+            "S": 4,
+            "I": 4,
+            "A": 2
+          }
+        }
+      ],
+      "equipment": [
+        {
+          "appliesTo": "Charioteer",
+          "name": "Hand weapon",
+          "url": "https://tow.whfb.app/weapons-of-war/hand-weapon"
+        },
+        {
+          "appliesTo": "Charioteer",
+          "name": "Chracian great blade",
+          "url": "https://tow.whfb.app/weapons-of-war/chracian-great-blade",
+          "profile": {
+            "range": "Combat",
+            "strength": "S+2",
+            "armourPiercing": -3
+          }
+        },
+        {
+          "appliesTo": "Chracian Lion",
+          "name": "Claws and fangs (counts as hand weapon)",
+          "url": "https://tow.whfb.app/weapons-of-war/hand-weapon"
+        }
+      ],
+      "specialRules": [
+        {
+          "name": "Armour Bane (1, Chracian Lions only)",
+          "url": "https://tow.whfb.app/special-rules/armour-bane",
+          "summary": "Natural 6 To Wound improves Armour Piercing by 1; Chracian Lions only.",
+          "appliesTo": "Chracian Lions"
+        },
+        {
+          "name": "Close Order",
+          "url": "https://tow.whfb.app/special-rules/close-order",
+          "summary": "The unit may adopt Close Order formation."
+        },
+        {
+          "name": "Elven Reflexes",
+          "url": "https://tow.whfb.app/special-rules/elven-reflexes",
+          "summary": "Applies to the model with the rule, not its mount; do not assign the benefit to the whole chariot indiscriminately."
+        },
+        {
+          "name": "Fear",
+          "url": "https://tow.whfb.app/special-rules/fear",
+          "summary": "Enemy units may face Leadership checks or To Hit penalties in the rule's specified circumstances."
+        },
+        {
+          "name": "First Charge",
+          "url": "https://tow.whfb.app/special-rules/first-charge",
+          "summary": "On this unit's first successful charge of the game, its charge target is Disrupted until the end of that turn's Combat phase."
+        },
+        {
+          "name": "Impact Hits (D6, Chieftain's Chariot only)",
+          "url": "https://tow.whfb.app/special-rules/impact-hits",
+          "summary": "D6 Impact Hits from the chariot component only, on a charge of at least 3 inches while in base contact.",
+          "appliesTo": "Chieftain's Chariot"
+        },
+        {
+          "name": "Stubborn",
+          "url": "https://tow.whfb.app/special-rules/stubborn",
+          "summary": "May Fall Back in Good Order rather than taking the first qualifying Break test; subject to restrictions."
+        },
+        {
+          "name": "Valour of Ages",
+          "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+          "summary": "May re-roll certain failed Panic tests."
+        }
+      ]
+    }
+  ],
+  "interpretationChecks": [
+    {
+      "topic": "Foot armour and pelt",
+      "summary": "Heavy armour 5+ becomes 4+ in combat and 3+ versus non-magical shooting before other modifiers; no pelt armour improvement is specified for magical shooting.",
+      "sourceUrls": [
+        "https://tow.whfb.app/weapons-of-war/heavy-armour",
+        "https://tow.whfb.app/magic-item/the-pelt-of-charandis"
+      ],
+      "status": "derived"
+    },
+    {
+      "topic": "Regeneration",
+      "summary": "The Pelt grants Korhil Regeneration (5+). This is a separate recovery roll, not an armour-value improvement.",
+      "sourceUrls": [
+        "https://tow.whfb.app/magic-item/the-pelt-of-charandis",
+        "https://tow.whfb.app/special-rules/regeneration"
+      ],
+      "status": "source-derived"
+    },
+    {
+      "topic": "Chayal on charge",
+      "summary": "With Korhil's base Strength 4, Chayal is Strength 6 normally; Mighty Constitution makes it Strength 7 during a qualifying charge turn.",
+      "sourceUrls": [
+        "https://tow.whfb.app/unit/korhil-lionmane",
+        "https://tow.whfb.app/magic-item/chayal",
+        "https://tow.whfb.app/special-rules/mighty-constitution"
+      ],
+      "status": "derived"
+    },
+    {
+      "topic": "Korhil-only charging rules",
+      "summary": "The Korhil unit page explicitly excludes the chariot mount from Furious Charge and Move Through Cover.",
+      "sourceUrls": [
+        "https://tow.whfb.app/unit/korhil-lionmane",
+        "https://tow.whfb.app/special-rules/furious-charge",
+        "https://tow.whfb.app/special-rules/move-through-cover"
+      ],
+      "status": "source-derived"
+    },
+    {
+      "topic": "Mounted configuration",
+      "summary": "The optional Chieftain's Chariot costs 105 additional points and has separately listed models, attacks and rules; do not overwrite Korhil's foot profile with the chariot's component values.",
+      "sourceUrls": [
+        "https://tow.whfb.app/unit/korhil-lionmane",
+        "https://tow.whfb.app/unit/chieftains-chariot"
+      ],
+      "status": "source-derived"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}
