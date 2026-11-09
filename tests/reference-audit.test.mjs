@@ -64,9 +64,9 @@ test('Audited references have concrete source URLs and scoped proof when needed'
   assert.equal(new Set(CATALOGUE.map(x => x.id)).size, CATALOGUE.length, 'Catalogue IDs must be unique');
 });
 
-test('All 23 supplied example fixtures continue to parse', () => {
+test('All 24 supplied example fixtures continue to parse', () => {
   const manifest = JSON.parse(readFileSync(new URL('../docs/examples/manifest.json', import.meta.url), 'utf8'));
-  assert.equal(manifest.length, 23);
+  assert.equal(manifest.length, 24);
   for (const {id} of manifest) {
     const result = parseArmy(read(id));
     assert.ok(result.units.length > 0, id + ' should parse units');
