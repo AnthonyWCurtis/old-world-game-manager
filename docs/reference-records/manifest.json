@@ -9,7 +9,8 @@
       "path": "high-elf-realms/ishaya-vess.json",
       "sourceUrl": "https://tow.whfb.app/unit/ishaya-vess",
       "verificationStatus": "verified-on-tow",
-      "verifiedOn": "2026-11-09"
+      "verifiedOn": "2026-11-09",
+      "sourceCategory": "Named Character Units"
     },
     {
       "id": "unit:korhil-lionmane",
@@ -18,7 +19,438 @@
       "path": "high-elf-realms/korhil-lionmane.json",
       "sourceUrl": "https://tow.whfb.app/unit/korhil-lionmane",
       "verificationStatus": "verified-on-tow",
-      "verifiedOn": "2026-11-09"
+      "verifiedOn": "2026-11-09",
+      "sourceCategory": "Named Character Units"
+    },
+    {
+      "id": "unit:archmage",
+      "name": "Archmage",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/archmage.json",
+      "sourceUrl": "https://tow.whfb.app/unit/archmage",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:chracian-chieftain",
+      "name": "Chracian Chieftain",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/chracian-chieftain.json",
+      "sourceUrl": "https://tow.whfb.app/unit/chracian-chieftain",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:dragon-mage",
+      "name": "Dragon Mage",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/dragon-mage.json",
+      "sourceUrl": "https://tow.whfb.app/unit/dragon-mage",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:handmaiden-of-the-everqueen",
+      "name": "Handmaiden of the Everqueen",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/handmaiden-of-the-everqueen.json",
+      "sourceUrl": "https://tow.whfb.app/unit/handmaiden-of-the-everqueen",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:mage",
+      "name": "Mage",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/mage.json",
+      "sourceUrl": "https://tow.whfb.app/unit/mage",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:noble",
+      "name": "Noble",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/noble.json",
+      "sourceUrl": "https://tow.whfb.app/unit/noble",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:prince",
+      "name": "Prince",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/prince.json",
+      "sourceUrl": "https://tow.whfb.app/unit/prince",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:sea-guard-garrison-commander",
+      "name": "Sea Guard Garrison Commander",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/sea-guard-garrison-commander.json",
+      "sourceUrl": "https://tow.whfb.app/unit/sea-guard-garrison-commander",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:storm-weaver",
+      "name": "Storm Weaver",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/storm-weaver.json",
+      "sourceUrl": "https://tow.whfb.app/unit/storm-weaver",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Character Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:barded-elven-steed",
+      "name": "Barded Elven Steed",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/barded-elven-steed.json",
+      "sourceUrl": "https://tow.whfb.app/unit/barded-elven-steed",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:elven-steed",
+      "name": "Elven Steed",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/elven-steed.json",
+      "sourceUrl": "https://tow.whfb.app/unit/elven-steed",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:flamespyre-phoenix-mount",
+      "name": "Flamespyre Phoenix (Mount)",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/flamespyre-phoenix-mount.json",
+      "sourceUrl": "https://tow.whfb.app/unit/flamespyre-phoenix-mount",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:frostheart-phoenix-mount",
+      "name": "Frostheart Phoenix (Mount)",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/frostheart-phoenix-mount.json",
+      "sourceUrl": "https://tow.whfb.app/unit/frostheart-phoenix-mount",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:great-eagle-mount",
+      "name": "Great Eagle (Mount)",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/great-eagle-mount.json",
+      "sourceUrl": "https://tow.whfb.app/unit/great-eagle-mount",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:unicorn",
+      "name": "Unicorn",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/unicorn.json",
+      "sourceUrl": "https://tow.whfb.app/unit/unicorn",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Mount Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:chracian-woodsmen",
+      "name": "Chracian Woodsmen",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/chracian-woodsmen.json",
+      "sourceUrl": "https://tow.whfb.app/unit/chracian-woodsmen",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:elven-archers",
+      "name": "Elven Archers",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/elven-archers.json",
+      "sourceUrl": "https://tow.whfb.app/unit/elven-archers",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:elven-spearmen",
+      "name": "Elven Spearmen",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/elven-spearmen.json",
+      "sourceUrl": "https://tow.whfb.app/unit/elven-spearmen",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:lion-guard",
+      "name": "Lion Guard",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/lion-guard.json",
+      "sourceUrl": "https://tow.whfb.app/unit/lion-guard",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:lothern-sea-guard",
+      "name": "Lothern Sea Guard",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/lothern-sea-guard.json",
+      "sourceUrl": "https://tow.whfb.app/unit/lothern-sea-guard",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:phoenix-guard",
+      "name": "Phoenix Guard",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/phoenix-guard.json",
+      "sourceUrl": "https://tow.whfb.app/unit/phoenix-guard",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:shadow-warriors",
+      "name": "Shadow Warriors",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/shadow-warriors.json",
+      "sourceUrl": "https://tow.whfb.app/unit/shadow-warriors",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:ships-company",
+      "name": "Ship's Company",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/ships-company.json",
+      "sourceUrl": "https://tow.whfb.app/unit/ships-company",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:sisters-of-avelorn",
+      "name": "Sisters of Avelorn",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/sisters-of-avelorn.json",
+      "sourceUrl": "https://tow.whfb.app/unit/sisters-of-avelorn",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:swordmasters-of-hoeth",
+      "name": "Swordmasters of Hoeth",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/swordmasters-of-hoeth.json",
+      "sourceUrl": "https://tow.whfb.app/unit/swordmasters-of-hoeth",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:white-lions-of-chrace",
+      "name": "White Lions of Chrace",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/white-lions-of-chrace.json",
+      "sourceUrl": "https://tow.whfb.app/unit/white-lions-of-chrace",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Infantry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:dragon-princes",
+      "name": "Dragon Princes",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/dragon-princes.json",
+      "sourceUrl": "https://tow.whfb.app/unit/dragon-princes",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Cavalry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:ellyrian-reavers",
+      "name": "Ellyrian Reavers",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/ellyrian-reavers.json",
+      "sourceUrl": "https://tow.whfb.app/unit/ellyrian-reavers",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Cavalry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:silver-helms",
+      "name": "Silver Helms",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/silver-helms.json",
+      "sourceUrl": "https://tow.whfb.app/unit/silver-helms",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Cavalry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:war-lions",
+      "name": "War Lions",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/war-lions.json",
+      "sourceUrl": "https://tow.whfb.app/unit/war-lions",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Cavalry Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:chieftains-chariot",
+      "name": "Chieftain's Chariot",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/chieftains-chariot.json",
+      "sourceUrl": "https://tow.whfb.app/unit/chieftains-chariot",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Chariot Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:lion-chariot-of-chrace",
+      "name": "Lion Chariot of Chrace",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/lion-chariot-of-chrace.json",
+      "sourceUrl": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Chariot Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:lothern-skycutter",
+      "name": "Lothern Skycutter",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/lothern-skycutter.json",
+      "sourceUrl": "https://tow.whfb.app/unit/lothern-skycutter",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Chariot Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:tiranoc-chariot",
+      "name": "Tiranoc Chariot",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/tiranoc-chariot.json",
+      "sourceUrl": "https://tow.whfb.app/unit/tiranoc-chariot",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Chariot Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:flamespyre-phoenix",
+      "name": "Flamespyre Phoenix",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/flamespyre-phoenix.json",
+      "sourceUrl": "https://tow.whfb.app/unit/flamespyre-phoenix",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:frostheart-phoenix",
+      "name": "Frostheart Phoenix",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/frostheart-phoenix.json",
+      "sourceUrl": "https://tow.whfb.app/unit/frostheart-phoenix",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:great-eagle",
+      "name": "Great Eagle",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/great-eagle.json",
+      "sourceUrl": "https://tow.whfb.app/unit/great-eagle",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:griffon-high-elves",
+      "name": "Griffon (High Elves)",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/griffon-high-elves.json",
+      "sourceUrl": "https://tow.whfb.app/unit/griffon-high-elves",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:merwyrm",
+      "name": "Merwyrm",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/merwyrm.json",
+      "sourceUrl": "https://tow.whfb.app/unit/merwyrm",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:moon-dragon",
+      "name": "Moon Dragon",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/moon-dragon.json",
+      "sourceUrl": "https://tow.whfb.app/unit/moon-dragon",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:star-dragon",
+      "name": "Star Dragon",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/star-dragon.json",
+      "sourceUrl": "https://tow.whfb.app/unit/star-dragon",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:sun-dragon",
+      "name": "Sun Dragon",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/sun-dragon.json",
+      "sourceUrl": "https://tow.whfb.app/unit/sun-dragon",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "Monster Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
+    },
+    {
+      "id": "unit:eagle-claw-bolt-thrower",
+      "name": "Eagle-Claw Bolt Thrower",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/eagle-claw-bolt-thrower.json",
+      "sourceUrl": "https://tow.whfb.app/unit/eagle-claw-bolt-thrower",
+      "verificationStatus": "source-extracted",
+      "sourceCategory": "War Machine Units",
+      "sourceCheckedAt": "2026-11-09T19:56:35.677Z"
     }
   ]
 }

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:lion-chariot-of-chrace",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+    "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
+    "verificationStatus": "source-extracted",
+    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "sourceVersion": null,
+    "method": "automated, limited public HTML extraction"
+  },
+  "name": "Lion Chariot of Chrace",
+  "faction": "High Elf Realms",
+  "sourceCategory": "Chariot Units",
+  "modelProfiles": [
+    {
+      "name": "Lion Chariot",
+      "characteristics": {
+        "M": null,
+        "WS": null,
+        "BS": null,
+        "S": 5,
+        "T": 4,
+        "W": 4,
+        "I": null,
+        "A": null,
+        "Ld": null
+      }
+    },
+    {
+      "name": "Lion Charioteer (x2)",
+      "characteristics": {
+        "M": null,
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": null,
+        "W": null,
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "War Lion (x2)",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": null,
+        "S": 4,
+        "T": null,
+        "W": null,
+        "I": 4,
+        "A": 2,
+        "Ld": null
+      }
+    }
+  ],
+  "costDescription": "125 points",
+  "unitCategory": "Chariot Troop Type : Heavy Chariot",
+  "troopTypeDescription": null,
+  "baseSizeDescription": "50 x 100 mm",
+  "unitSizeDescription": "1 Armour Value: 4+ Lion Charioteers: Hand weapons and Chracian great blade",
+  "pageLinkedReferences": [
+    {
+      "name": "Hand weapons",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Chracian great blades",
+      "url": "https://tow.whfb.app/weapons-of-war/chracian-great-blade",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Close Order",
+      "url": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "url": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "url": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "url": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6)",
+      "url": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lion Cloak",
+      "url": "https://tow.whfb.app/special-rules/lion-cloak",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "url": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}
