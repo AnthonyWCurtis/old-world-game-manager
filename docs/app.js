@@ -260,6 +260,9 @@ async function refreshCurrentSource(force=false){
 function syncUnmatchedDebug(){
  const unmatched=collectUnmatched(current);
  const button=$('copyUnmatchedBtn');
+ $('copyUnmatchedStatus').textContent='';
+ $('unmatchedDebugFallback').hidden=true;
+ $('unmatchedDebugFallback').value='';
  button.disabled=!unmatched.length;
  button.textContent=unmatched.length?'Copy unmatched debug ('+unmatched.length+')':'No unmatched references';
 }
