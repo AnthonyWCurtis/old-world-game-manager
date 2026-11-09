@@ -1,4 +1,4 @@
-import { findReference } from './catalog.js';
+import { findReference } from './catalog.js?v=0.1.4';
 const unknown = () => ({ value: null, origin: 'unknown', line: null });
 const explicit = (value, line) => ({ value, origin: 'explicit', line });
 const trim = (s) => s.replace(/\s+/g, ' ').trim();
