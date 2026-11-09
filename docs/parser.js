@@ -132,6 +132,12 @@ export function detectFormat(text, forced) {
             exporter = 'new-recruit';
         else if (l.some(v => /^Player:\s*/i.test(v)))
             exporter = 'battle-builder';
+        else if (l.filter(v => /^\d[\d,]*\s+-\s+\S/.test(v)).length >= 2) {
+            // Points-first text without a footer uses the same TOW grammar.
+            // No particular exporter is proven, so retain medium confidence.
+            exporter = 'new-recruit';
+            evidence.push('points-first line structure (exporter not confirmed)');
+        }
     }
     let layout = 'unknown';
     if (exporter === 'old-world-builder') {
@@ -343,19 +349,21 @@ function addUnitOrDiagnostic(result, raw, line, section, requireCost = true) {
     return newUnit(result, h, raw, line, section);
 }
 function parseBulletGroup(result, unit, raw, line) {
-    const m = raw.match(/^•\s*(\d+)x\s+(.+)$/);
+    const m = raw.match(/^•\s*(\d+)\s*[x×]\s+(.+)$/i);
     if (!m)
         return false;
     const n = Number(m[1]);
     const text = m[2].trim();
-    const colon = topLevelLastColon(text);
-    const core = (colon < 0 ? text : text.slice(0, colon)).trim();
+    // New Recruit TOW uses "• 11x Gor, Additional Hand Weapon", while
+    // other exports may use "• 11x Gor: Additional Hand Weapon".
+    const segments = splitTopLevel(text);
+    const first = segments.shift() || '';
+    const colon = topLevelLastColon(first);
+    const core = (colon < 0 ? first : first.slice(0, colon)).trim();
     const parts = parseTrailingCost(core);
+    const options = (colon < 0 ? [] : [first.slice(colon + 1).trim()]).concat(segments).filter(Boolean);
     const group = { id: `g${unit.id}-${unit.modelGroups.length + 1}`, name: parts.name, quantity: n, line, pointsPerModel: parts.points, selections: [], raw };
-    if (colon >= 0) {
-        const opts = splitTopLevel(text.slice(colon + 1).trim());
-        group.selections = opts.map(s => createSelection(s, line, unit.name, undefined, group.id));
-    }
+    group.selections = options.map(s => createSelection(s, line, unit.name, undefined, group.id));
     unit.modelGroups.push(group);
     return true;
 }
@@ -446,13 +454,49 @@ function finish(result) {
         result.diagnostics.unshift({ severity: 'warning', code: 'UNDETECTED_FORMAT', line: null, message: 'Format could not be determined. Select the exporter and layout manually.' });
     return result;
 }
+
+/** Preserve first source line number while joining soft-wrapped TOW entries.
+ * An unindented points-first heading or a model-group bullet starts a new
+ * logical record; following non-heading lines belong to that record only
+ * until a blank line, footer, metadata line, or next record.
+ */
+function joinWrappedTowLines(rawLines) {
+    const out = [];
+    let active = null;
+    for (let i = 0; i < rawLines.length; i++) {
+        const raw = rawLines[i], line = i + 1, trimmed = raw.trim();
+        const isUnit = /^\d[\d,]*\s+-\s+\S/.test(trimmed);
+        const isGroup = /^•\s*\d+\s*[x×]\s+/i.test(trimmed);
+        if (isUnit || isGroup) {
+            active = { text: raw, line };
+            out.push(active);
+            continue;
+        }
+        if (!trimmed) {
+            out.push({ text: raw, line });
+            active = null;
+            continue;
+        }
+        if (active && !/^(?:Created with|Built with|Player:|Total:|Warhammer:|\+\+|#)/i.test(trimmed)
+            && !/^•/.test(trimmed)) {
+            active.text += ' ' + trimmed;
+            continue;
+        }
+        out.push({ text: raw, line });
+        active = null;
+    }
+    return out;
+}
 /** Pure deterministic parser; does not perform legality checks, points verification or network calls. */
 export function parseArmy(text, override) {
     counter = 0;
     const originalText = text;
     const normalized = normalizeImportText(text);
-    const lines = normalized.text.replace(/\r\n?/g, '\n').split('\n');
+    const originalLines = normalized.text.replace(/\r\n?/g, '\n').split('\n');
     const format = detectFormat(normalized.text, override);
+    const lines = format.exporter === 'new-recruit' && format.layout === 'tow'
+        ? joinWrappedTowLines(originalLines)
+        : originalLines.map((text, i) => ({ text, line: i + 1 }));
     const result = { schemaVersion: 1, format, originalText, inputEncoding: normalized.encoding,
         army: { name: unknown(), faction: unknown(), composition: unknown(), gameFormat: unknown(), player: unknown(), reportedPoints: unknown(), limitPoints: unknown(), derivedPoints: unknown() },
         sections: [], units: [], diagnostics: [], stats: { unitCount: 0, selectionCount: 0, modelGroupCount: 0, matchedUnits: 0, matchedSelections: 0, unmatchedSelections: 0, unmatchedUnits: 0, unparsedLines: 0 } };
@@ -463,7 +507,7 @@ export function parseArmy(text, override) {
     const kind = format.exporter;
     const isOwb = kind === 'old-world-builder', isIngude = kind === 'ingude', isNR = kind === 'new-recruit', isBattle = kind === 'battle-builder';
     for (let i = 0; i < lines.length; i++) {
-        const raw = lines[i], s = raw.trim(), ln = i + 1;
+        const raw = lines[i].text, s = raw.trim(), ln = lines[i].line;
         if (!s || /^={3,}$/.test(s) || s === '---')
             continue;
         if (/(?:Created with|Built with)/i.test(s) && (/Old World Builder|newrecruit\.eu|Ingude|Battle Builder/i.test(s)))
@@ -509,6 +553,14 @@ export function parseArmy(text, override) {
             continue;
         if (parseSourceMeta(s, ln, result, (isOwb || isIngude) && state === 'header' && section === null && unit === null && result.army.name.value === null)) {
             // Ignore heading resets when an actual unit heading is already open? Only supported on metadata lines.
+            continue;
+        }
+        // Unlabelled points-first exports sometimes begin with a player or
+        // team heading. Preserve it verbatim; don't infer a faction or country.
+        if (isNR && format.layout === 'tow' && state === 'header' && section === null &&
+            result.units.length === 0 && result.army.player.value === null &&
+            !/^\d[\d,]*\s+-\s+\S/.test(s) && !/^•/.test(s)) {
+            result.army.player = explicit(s, ln);
             continue;
         }
         if (isIngude && /^\*[^*]+\*$/.test(s) && !/^\*Created/.test(s)) {
