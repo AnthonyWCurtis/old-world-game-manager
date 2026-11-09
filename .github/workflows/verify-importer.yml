@@ -4,6 +4,7 @@ on:
     paths:
       - 'docs/parser.js'
       - 'docs/catalog.js'
+      - 'docs/live-source.js'
       - 'docs/examples/**'
       - 'tests/**'
       - '.github/workflows/verify-importer.yml'
@@ -11,6 +12,7 @@ on:
     paths:
       - 'docs/parser.js'
       - 'docs/catalog.js'
+      - 'docs/live-source.js'
       - 'docs/examples/**'
       - 'tests/**'
       - '.github/workflows/verify-importer.yml'
@@ -24,4 +26,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/reference-audit.test.mjs
+      - run: node --test tests/*.test.mjs
