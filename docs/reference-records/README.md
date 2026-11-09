@@ -11,6 +11,7 @@ The [collection registry](collections.json) lists the independent reference data
 - [High Elf Realms units](manifest.json): 45 unit URLs with individual JSON records (2 manually reviewed, 43 source-extracted).
 - [Rules/reference sitemap](rules-index.json): **1,833 unique reference-page URLs** from [tow.whfb.app/sitemap/rules](https://tow.whfb.app/sitemap/rules), spanning 32 sitemap section links and 31 URL categories on 9 November 2026. See the compact [rules summary](rules-summary.json) for current counts.
 - [Magic lore and spell sitemap](magic-index.json): **170 unique source URLs** from [tow.whfb.app/sitemap/magic](https://tow.whfb.app/sitemap/magic): 29 lore pages, 139 spell pages and 2 magic guidance/reference pages. [Magic summary](magic-summary.json) records counts, source time and selected examples.
+- [Global Armies sitemap](armies-index.json): **600 unique source URLs** from [tow.whfb.app/sitemap/armies](https://tow.whfb.app/sitemap/armies), split into 19 army pages and 581 unit pages (9 November 2026 snapshot). [Armies summary](armies-summary.json) records the counts and representative links.
 - Some sitemap entries are gameplay rules, others are equipment, magic, army lists, or other indexed topics. Do not classify everything as a universal special rule.
 
 ## Rules sitemap indexing
@@ -28,6 +29,16 @@ This collection is independent of the 45 unit records. The browser importer in v
 The two guidance pages, **Spell Categories (Lores)** and **Spells & Spell Generation**, are identified separately from actual magic lores. A magic link is *not evidence* that a particular wizard can select a spell, that a spell has the effect described in an external army list, or that spell generation is legal.
 
 A bounded GitHub Action refreshes the index weekly or on demand, preserves the previous snapshot if new data appears incomplete, and records any ambiguous names rather than making an unsafe guess. The static collection is discoverable through [collections.json](collections.json) but is **not yet wired into the browser's live matching engine**. Pages shared by this sitemap and the rules sitemap should eventually be deduplicated by exact URL when their indices are combined.
+
+## Global Armies sitemap indexing
+
+`scripts/build-armies-reference-index.mjs` retrieves the public [Armies Sitemap](https://tow.whfb.app/sitemap/armies) using **one bounded HTML request**. It explicitly splits the `Army Index` into `/army/…` references and the `Unit Index` into `/unit/…` references. The initial snapshot indexed 19 army pages and 581 unit pages, with 0 ambiguous titles. The exact source link, label, section and `verificationStatus: source-indexed` are stored for each item.
+
+**Important:** the globally alphabetical Unit Index does **not** tell us which factions can field a particular unit. An indexed unit name is not an army-list allowance, an availability check, a configuration upgrade or a points/legality verification. This global index complements, rather than replaces, the existing 45 source-extracted / individually reviewed High Elf unit records. All 45 source URLs occur in the global index, but their detailed records remain unchanged.
+
+`matchArmyIndexReference(name, kind, entries)` resolves only a unique, normalized exact name of the requested kind (`army` or `unit`); ambiguous names return no automatic match. This title and URL collection does not mirror unit statistics or profile text.
+
+The GitHub Action refreshes the snapshot weekly or on demand. Truncated HTML, missing section headings, unsafe/unexpected URL paths and severe reductions in source coverage abort the update so the last successful dataset is retained. The static collection is discoverable from [collections.json](collections.json) but **not yet loaded by the live v0.3.3 browser matcher**.
 
 ## Current High Elf Realms records
 - `high-elf-realms/ishaya-vess.json`: Ishaya Vess, fixed profile, equipment, linked magic weapon and seven special rules.
