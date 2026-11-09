@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.2.7</title>
-<link rel="stylesheet" href="./styles.css?v=0.2.7">
-<script type="module" src="./app.js?v=0.2.7"></script>
+<title>Old World Game Manager · Browser Edition v0.2.8</title>
+<link rel="stylesheet" href="./styles.css?v=0.2.8">
+<script type="module" src="./app.js?v=0.2.8"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.7</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.8</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines and model groups. Nothing is checked for army legality.</p>
@@ -50,7 +50,10 @@
     <span id="copyUnmatchedStatus" class="muted small" role="status" aria-live="polite"></span>
    </div>
    <p class="muted small debug-explanation">Copies unmatched unit and selection names, source lines, and parent unit details for troubleshooting. Does not copy your full army list.</p>
-   <textarea id="unmatchedDebugFallback" class="debug-fallback" aria-label="Unmatched debug text for manual copying" readonly hidden></textarea>
+   <div class="debug-report-container">
+    <button id="selectUnmatchedBtn" type="button" class="smallbtn" hidden>Select report text</button>
+    <textarea id="unmatchedDebugFallback" class="debug-fallback" aria-label="Unmatched debug text for manual copying" readonly hidden></textarea>
+   </div>
    <div class="line"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
    <div id="diagnostics"></div>
   </div>
