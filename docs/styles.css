@@ -33,3 +33,10 @@
 .source-panel p{margin-bottom:0}
 .source-status{font-size:13px;line-height:1.65;color:var(--text);background:var(--subtle);border:1px solid var(--border);border-radius:7px;padding:11px;overflow-wrap:anywhere}
 @media(max-width:650px){.source-panel .line{align-items:start}.source-panel button{min-height:40px}}
+
+.roster-base-profile{background:#f3f7fa;border-left:3px solid #7893aa;border-radius:4px;margin:9px 0 0 34px;padding:9px 11px;font-size:12px;line-height:1.7;color:var(--text)}
+.roster-base-profile strong{font-weight:700}
+.roster-statline{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.roster-stat-meta{color:var(--muted)}
+.roster-source-link{font-size:12px;color:#145b99}
+@media(max-width:650px){.roster-base-profile{margin-left:28px}}
