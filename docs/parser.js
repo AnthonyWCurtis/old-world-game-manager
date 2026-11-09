@@ -138,6 +138,15 @@ export function detectFormat(text, forced) {
     const footerIngude = /Created with\s+(?:\[)?Ingude/i.test(s);
     const footerNR = /Created with\s+newrecruit\.eu/i.test(s);
     const footerBattle = /Built with Battle Builder/i.test(s);
+    // The same sectioned, hyphen-bullet grammar is emitted by more than one
+    // builder. Recognise its structure even when no exporter footer exists.
+    // Exporter attribution is represented separately by the evidence list:
+    // an inferred parser family must never be displayed as a confirmed builder.
+    const sectionIndex = l.findIndex(v => /^\+\+\s+(?:Characters?|Core(?: Units)?|Special(?: Units)?|Rare(?: Units)?|Allies|Mercenaries|Lords|Heroes)\s+\[\d[\d,]*\s*pts\]\s+\+\+$/i.test(v));
+    const sectionedBulletRoster = sectionIndex >= 0 &&
+        l.some(v => /^Warhammer:\s*The Old World,/i.test(v) || /^={3,}$/.test(v)) &&
+        l.slice(sectionIndex + 1).some(v => /^(?![-+#])(?:\d+\s+)?[^\[\]]+?\s+\[\d[\d,]*\s*pts\]\s*$/i.test(v)) &&
+        l.slice(sectionIndex + 1).some(v => /^-\s+[^#\s]/.test(v));
     let exporter = footerOwb ? 'old-world-builder' : footerIngude ? 'ingude' : footerNR ? 'new-recruit' : footerBattle ? 'battle-builder' : 'unknown';
     if (exporter !== 'unknown')
         evidence.push('exporter attribution');
@@ -150,6 +159,12 @@ export function detectFormat(text, forced) {
             exporter = 'new-recruit';
         else if (l.some(v => /^Player:\s*/i.test(v)))
             exporter = 'battle-builder';
+        else if (sectionedBulletRoster) {
+            // Use the compatible regular-text parser without claiming this
+            // ambiguous, footerless roster came from Old World Builder.
+            exporter = 'old-world-builder';
+            evidence.push('sectioned bullet-list structure (exporter not confirmed)');
+        }
         else if (l.filter(v => /^\d[\d,]*\s+-\s+\S/.test(v)).length >= 2) {
             // Points-first text without a footer uses the same TOW grammar.
             // No particular exporter is proven, so retain medium confidence.
@@ -215,7 +230,7 @@ function classify(name) {
         return 'magic-lore';
     if (/^(on foot)$/.test(n))
         return 'mount-state';
-    if (/(dragon|skycutter|chariot|steed|eagle|griffon|horse|roc)/.test(n))
+    if (/(dragon|skycutter|chariot|steed|eagle|griffon|horse|roc|wyvern|bale taurus)/.test(n))
         return 'mount-or-component';
     if (/^(full command|musician|standard bearer|champion|high helm|sea master|sentinel|high sister|master charioteer|master of arms|master of horse)$/.test(n))
         return 'command';
@@ -288,7 +303,9 @@ function parseSourceMeta(line, lineNum, result, allowArmyHeading) {
         const rest = vals.slice(2);
         if (rest.length) {
             const last = rest[rest.length - 1];
-            if (gameFormats.some(x => norm(x) === norm(last))) {
+            // Some exports combine a scenario label with a known game format,
+            // e.g. "Grand Melee + Combined Arms". Keep the exact label.
+            if (last.split(/\s+\+\s+/).some(part => gameFormats.some(x => norm(x) === norm(part)))) {
                 a.gameFormat = explicit(last, lineNum);
                 rest.pop();
             }
