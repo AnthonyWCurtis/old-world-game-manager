@@ -78,6 +78,7 @@ export function wireReportUI(getArmy){
    if(!panel.hidden&&widgetId===null){
     widgetId=turnstile.render(captcha,{
      sitekey:config.turnstileSiteKey,
+     action:'unmatched_report',
      callback:value=>{token=value;updateSubmit();},
      'expired-callback':()=>{token='';updateSubmit();},
      'error-callback':()=>{token='';showStatus('Verification failed. Retry the challenge.');updateSubmit();}
