@@ -119,16 +119,16 @@ test('Summary and indexed source counts are internally consistent',()=>{
  assert.ok(summary.sampleEntries.some(e=>e.name==='Drilled'&&e.url===SOURCE_ORIGIN+'/special-rules/drilled'));
 });
 
-test('Collection registry makes High Elves and rules separately discoverable',()=>{
+test('Collection registry exposes rules, magic and global armies without a duplicate High Elf collection',()=>{
  const collections=JSON.parse(readFileSync(new URL('collections.json',root),'utf8'));
  assert.equal(collections.schemaVersion,1);
  assert.equal(collections.sourceOrigin,SOURCE_ORIGIN);
- assert.deepEqual(collections.collections.map(e=>e.id),['high-elf-realms-units','rules-sitemap','magic-sitemap','armies-sitemap']);
+ assert.deepEqual(collections.collections.map(e=>e.id),['rules-sitemap','magic-sitemap','armies-sitemap']);
  for(const item of collections.collections){
   const other=JSON.parse(readFileSync(new URL(item.path,root),'utf8'));
   assert.equal(other.sourceOrigin||other.source.origin,SOURCE_ORIGIN);
  }
- assert.equal(collections.collections[1].path,'rules-index.json');
+ assert.equal(collections.collections[0].path,'rules-index.json');
 });
 
 test('Assembled index preserves checked-at date and does not infer rules text or legality',()=>{
