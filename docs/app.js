@@ -1,10 +1,12 @@
 import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.3';
 import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
 import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0.2.7';
+import { wireReportUI } from './report-ui.js?v=0.3.0';
 import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatchState } from './match-status.js?v=0.2.8';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.2.9';
 const $=id=>document.getElementById(id);
 let current=null;
+const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
@@ -343,6 +345,7 @@ async function copyUnmatchedDebug(){
 }
 function render(){
  if(!current)return;
+ anonymousReports.refresh();
  $('result').hidden=false;$('armyTitle').textContent=label(current.army.name)||'Unnamed army';
  $('formatLabel').textContent=`${current.format.exporter} · ${current.format.layout} · ${current.format.confidence} confidence`;
  const fields=[['Faction',current.army.faction],['Composition',current.army.composition],['Game format',current.army.gameFormat],['Player',current.army.player],['Imported total',current.army.reportedPoints],['Calculated sum',current.army.derivedPoints],['Points limit',current.army.limitPoints]];
