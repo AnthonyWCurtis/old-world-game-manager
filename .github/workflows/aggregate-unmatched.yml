@@ -4,6 +4,7 @@ on:
     paths:
       - 'reports/unmatched/report-*.txt'
       - 'scripts/aggregate-unmatched.mjs'
+      - 'docs/catalog.js'
       - '.github/workflows/aggregate-unmatched.yml'
   workflow_dispatch:
 permissions:
