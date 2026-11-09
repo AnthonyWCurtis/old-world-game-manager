@@ -149,7 +149,13 @@ function renderRoster(army){
   const unitName=unit.quantity?.value==null?unit.name:unit.quantity.value+'× '+unit.name;
   const name=make('strong','roster-name',unitName);
   if(matchState==='partial')name.title='Some selections lack source references';
-  top.append(name);
+  if(unit.nickname){
+   const labelled=make('span','roster-name-group');
+   labelled.append(name,make('span','roster-nickname','Nickname: '+unit.nickname));
+   top.append(labelled);
+  }else{
+   top.append(name);
+  }
   top.append(make('span','roster-cost',points(unit.reportedPoints?.value)));
   card.append(top);
   const entries=[];
@@ -369,7 +375,10 @@ function render(){
   if(!uList.length)continue;
   unitHolder.append(make('h3','section-heading',`${sec.name} · ${all.length} entries${sec.points!=null?' · '+points(sec.points):''}`));
   for(const u of uList){
-   const d=make('details','unit');const summary=make('summary');const left=make('div','unit-top');left.append(badge(unitMatchState(u)));left.append(make('span','',u.quantity.value==null?u.name:`${u.quantity.value}× ${u.name}`));
+   const d=make('details','unit');const summary=make('summary');const left=make('div','unit-top');left.append(badge(unitMatchState(u)));const displayName=make('span','',u.quantity.value==null?u.name:`${u.quantity.value}× ${u.name}`);
+   if(u.nickname)displayName.title='Nickname: '+u.nickname;
+   left.append(displayName);
+   if(u.nickname)left.append(make('span','unit-nickname', '“'+u.nickname+'”'));
    const right=make('div','unit-right',points(u.reportedPoints.value));summary.append(left,right);d.append(summary);
    const body=make('div','unit-body');body.append(make('p','muted small',`Source line ${u.line} · quantity ${u.quantity.origin} · ${u.matchStatus} reference`));
    if(u.reference){const a=make('a','small','Open unit reference ↗');a.href=u.reference.url;a.target='_blank';a.rel='noopener noreferrer';body.append(a);}
