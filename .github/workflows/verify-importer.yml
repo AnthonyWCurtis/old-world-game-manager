@@ -1,0 +1,27 @@
+name: Verify army importer
+on:
+  push:
+    paths:
+      - 'docs/parser.js'
+      - 'docs/catalog.js'
+      - 'docs/examples/**'
+      - 'tests/**'
+      - '.github/workflows/verify-importer.yml'
+  pull_request:
+    paths:
+      - 'docs/parser.js'
+      - 'docs/catalog.js'
+      - 'docs/examples/**'
+      - 'tests/**'
+      - '.github/workflows/verify-importer.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/reference-audit.test.mjs
