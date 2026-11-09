@@ -1,8 +1,12 @@
-# Enable anonymous unmatched-reference reports
+# Anonymous unmatched-reference reports — deployed and owner setup
 
 The Game Manager website is hosted on GitHub Pages. GitHub Pages is **read-only** and cannot safely save GitHub files directly from a visitor's browser. This integration uses a small Cloudflare Worker to accept public submissions and privately write text files to this repository. Players **never need a GitHub account**.
 
-## One-time setup for the repository owner
+**Current status (9 November 2026):** Deployed and verified end-to-end. The live Worker is `https://old-world-unmatched-reports.oldworldcompanion.workers.dev`; the [public reporting configuration](docs/report-config.json) is enabled. One real submission was accepted and aggregated. **Do not repeat setup unless recovering, changing providers or rotating credentials.**
+
+These steps are retained for future recovery or a fresh deployment.
+
+## One-time setup for a new Worker
 
 1. Create or sign into a **Cloudflare** account. Set up a **Turnstile** widget for the hostname `anthonywcurtis.github.io`. Copy the public **site key** and the private **secret key**. The widget's action is `unmatched_report`.
 2. In GitHub, create a **fine-grained personal access token** restricted to the repository `AnthonyWCurtis/old-world-game-manager` with **Contents: Read and write**. Never put this token into public files, GitHub Pages, or client JavaScript.
@@ -33,7 +37,7 @@ The Game Manager website is hosted on GitHub Pages. GitHub Pages is **read-only*
 ## Where the files appear
 
 - **Individual reports:** `reports/unmatched/report-*.txt`. Only unmatched names, parent unit names, source line, optional faction, and source URLs; *not* full lists, player names, or tokens.
-- **Combined report to copy into ChatGPT:** [reports/unmatched/ALL_UNMATCHED.txt](../reports/unmatched/ALL_UNMATCHED.txt). The [aggregation workflow](../.github/workflows/aggregate-unmatched.yml) regenerates it following a report commit and groups repeated names by parent unit with occurrence counts. It can also be run manually under GitHub Actions.
+- **Combined report to copy into ChatGPT:** [reports/unmatched/ALL_UNMATCHED.txt](reports/unmatched/ALL_UNMATCHED.txt). The [aggregation workflow](.github/workflows/aggregate-unmatched.yml) rebuilds it after reports or reviewed-catalogue changes. It groups repeated unresolved names by parent unit, excludes entries since linked by verified source references, and counts resolved historical occurrences; original report files remain unchanged. It can also be run manually under GitHub Actions.
 - **Status:** The app confirms success only after GitHub accepts the file. If submission fails, players can still use the existing **Copy unmatched debug** feature.
 
-**Limitations:** The Worker requires an owner-controlled Cloudflare deployment and GitHub token; I have not configured or deployed those services on your behalf. Until configured, the public website's reporting button remains disabled and shows that setup is required. Turnstile and rate limiting reduce spam but do not eliminate it. Report files are public on GitHub.
+**Ongoing requirements:** Maintain the Cloudflare Worker, Turnstile keys and server-side GitHub write token (which may expire). If the token expires or Worker is disabled, submissions will fail until restored. Turnstile and rate limiting reduce spam but cannot eliminate it. Reports remain publicly visible. Never publish private credentials.
