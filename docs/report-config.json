@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "endpoint": "",
-  "turnstileSiteKey": ""
+  "enabled": true,
+  "endpoint": "https://old-world-unmatched-reports.oldworldcompanion.workers.dev/report",
+  "turnstileSiteKey": "0x4AAAAAAF6U8DEVhy9dSWw5"
 }
