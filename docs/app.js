@@ -1,4 +1,4 @@
-import { parseArmy, normalizeImportText } from './parser.js?v=0.1.1';
+import { parseArmy, normalizeImportText } from './parser.js?v=0.1.4';
 const $=id=>document.getElementById(id);
 let current=null;
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
