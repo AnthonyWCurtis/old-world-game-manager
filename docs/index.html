@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.2.3</title>
-<link rel="stylesheet" href="./styles.css?v=0.2.3">
-<script type="module" src="./app.js?v=0.2.3"></script>
+<title>Old World Game Manager · Browser Edition v0.2.4</title>
+<link rel="stylesheet" href="./styles.css?v=0.2.4">
+<script type="module" src="./app.js?v=0.2.4"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.3</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.4</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines and model groups. Nothing is checked for army legality.</p>
@@ -15,13 +15,20 @@
   <label for="sourceText" class="section-label">Paste exported list</label>
   <textarea id="sourceText" spellcheck="false" placeholder="Paste a full army list here…" aria-label="Army list text"></textarea>
   <div class="example-row"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
-  <div class="controls">
-   <div class="selectwrap"><label for="format">Format</label><select id="format"><option value="auto">Auto-detect</option>
+  <div class="format-detection" id="formatDetection" data-state="empty" role="status" aria-live="polite" aria-atomic="true">
+   <strong id="detectedFormat">Paste an army list to detect its format</strong>
+   <span id="formatDetails" class="format-detection-details">The builder and export layout will appear here.</span>
+  </div>
+  <details class="manual-format"><summary>Format not right? Choose manually</summary>
+   <label for="format">Override detected format</label>
+   <select id="format"><option value="auto">Use automatic detection</option>
     <optgroup label="Old World Builder"><option value="old-world-builder:regular-text">Regular text</option><option value="old-world-builder:compact-text">Compact text</option><option value="old-world-builder:minimalist-text">Minimalist text</option><option value="old-world-builder:regular-discord">Regular Discord / Markdown</option><option value="old-world-builder:compact-discord">Compact Discord / Markdown</option><option value="old-world-builder:minimalist-discord">Minimalist Discord / Markdown</option></optgroup>
     <optgroup label="Ingude"><option value="ingude:simple-text">Simple text</option><option value="ingude:compact">Compact</option><option value="ingude:markdown">Markdown</option></optgroup>
     <optgroup label="New Recruit"><option value="new-recruit:tow">TOW</option><option value="new-recruit:nr">NR</option><option value="new-recruit:simple">Simple</option></optgroup>
     <optgroup label="Old World Rankings"><option value="battle-builder:compact">Compact</option><option value="battle-builder:detailed">Detailed</option><option value="battle-builder:tournament">Tournament</option></optgroup>
-   </select></div>
+   </select>
+  </details>
+  <div class="controls">
    <button id="parseBtn" class="primary">Analyse import</button>
    <button id="saveBtn" disabled>Save on this device</button>
    <button id="jsonBtn" disabled>Export JSON</button>
