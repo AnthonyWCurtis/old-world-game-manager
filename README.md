@@ -38,6 +38,12 @@ The public [High Elf Realms army index](https://tow.whfb.app/army/high-elf-realm
 
 The [source-record documentation](docs/reference-records/README.md) describes the status levels, data shape and scheduled/manual extraction script. The current browser importer does not yet use these records to improve match statuses; this work prepares the v0.4 reference database rather than changing v0.3.3's importer.
 
+## Rules sitemap reference collection (v0.4 groundwork)
+
+The public [rules sitemap](https://tow.whfb.app/sitemap/rules) is now indexed in the static [rules-reference dataset](docs/reference-records/rules-index.json), with [summary and category counts](docs/reference-records/rules-summary.json). The first retrieval on 9 November 2026 contained **1,833 unique URLs**, including **652 special-rules pages**, across 31 path categories and 32 section links. The [collection registry](docs/reference-records/collections.json) makes this and the 45 High Elf unit records separately discoverable.
+
+This is a URL-and-title index only: `source-indexed` means the sitemap contained the link, **not** that its rules text was parsed, validated, or implemented. Some entries are magic, weapons, war machines and army references rather than universal special rules. Ambiguous titles are flagged instead of guessed. A bounded GitHub Action can refresh the list weekly. The live browser matcher does not yet consume these newly generated records.
+
 ## Source references and caching
 
 The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.
