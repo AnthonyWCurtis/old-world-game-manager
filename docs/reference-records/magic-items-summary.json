@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-summary",
+  "sourceUrl": "https://tow.whfb.app/sitemap/magic-items",
+  "checkedAt": "2026-11-09T21:51:11.222Z",
+  "verificationStatus": "source-indexed",
+  "types": 71,
+  "itemsAndAbilities": 768,
+  "entries": 839,
+  "ambiguousNames": 0,
+  "sections": [
+    {
+      "name": "Type Index",
+      "count": 71
+    },
+    {
+      "name": "Item(/Ability) Index",
+      "count": 768
+    }
+  ],
+  "sampleEntries": [
+    {
+      "name": "Elven Honours",
+      "kind": "type",
+      "url": "https://tow.whfb.app/magic-items/elven-honours"
+    },
+    {
+      "name": "High Elf Realms Magic Items",
+      "kind": "type",
+      "url": "https://tow.whfb.app/magic-items/high-elf-realms-magic-items"
+    },
+    {
+      "name": "Magic Weapons",
+      "kind": "type",
+      "url": "https://tow.whfb.app/magic-items/magic-weapons"
+    },
+    {
+      "name": "Charmed Shield*",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/charmed-shield"
+    },
+    {
+      "name": "Chayal",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/chayal"
+    },
+    {
+      "name": "Lore Familiar",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/lore-familiar"
+    },
+    {
+      "name": "Mathlann's Ire",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/mathlanns-ire"
+    },
+    {
+      "name": "The Pelt of Charandis",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/the-pelt-of-charandis"
+    },
+    {
+      "name": "Reaver Bow",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/reaver-bow"
+    },
+    {
+      "name": "Ruby Ring of Ruin",
+      "kind": "item-or-ability",
+      "url": "https://tow.whfb.app/magic-item/ruby-ring-of-ruin"
+    }
+  ]
+}
