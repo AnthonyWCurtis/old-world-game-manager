@@ -1,4 +1,4 @@
-import { parseArmy } from './parser.js?v=0.1.1';
+import { parseArmy, normalizeImportText } from './parser.js?v=0.1.1';
 const $=id=>document.getElementById(id);
 let current=null;
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
@@ -59,7 +59,10 @@ function render(){
  const diag=$('diagnostics');diag.replaceChildren();$('diagnosticCount').textContent=`${current.diagnostics.length} messages`;
  if(!current.diagnostics.length)diag.append(make('p','muted small','No structural warnings. This does not mean all reference data is matched.'));
  for(const d of current.diagnostics)diag.append(make('div','notice',`${d.severity.toUpperCase()} · ${d.code}${d.line?' · line '+d.line:''}: ${d.message}`));
- $('rawText').textContent=current.originalText;
+ const displaySource=normalizeImportText(current.originalText);
+ $('rawText').textContent=displaySource.text;
+ $('encodedPanel').hidden=displaySource.encoding!=='percent-encoded';
+ $('encodedText').textContent=displaySource.encoding==='percent-encoded'?current.originalText:'';
  const unitHolder=$('units');unitHolder.replaceChildren();const only=$('unmatchedOnly').checked;
  const sections=[...current.sections.map(s=>({id:s.id,name:s.name,points:s.reportedPoints.value})),{id:null,name:'Uncategorised',points:null}];
  for(const sec of sections){
