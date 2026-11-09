@@ -1,0 +1,15 @@
+Chaos Dwarfs FHv1 [1999 pts]
+Warhammer: The Old World, Chaos Dwarfs, Grand Melee + Combined Arms
+
+'Żółty Sorcerer' Sorcerer-Prophet, Heavy armour, Wizard [Level 3 Wizard], General, 'Bale Taurus, Armour of Destiny, Mantle of Stone, Daemonology - 455
+'Black Orc Boss' Black Orc Warboss, Great weapon, Full plate armour, Wyvern, Talisman of Protection, Trollhide Trousers, Elixir of Power, 'Eadbuttin' 'At - 369
+'Wolf Khan' Hobgoblin Khan, Great weapon, Ranged weapon [Throwing weapons], Giant Wolf - 59
+'Infernal Guard A' 16 Infernal Guard, Heavy armour, Shield, Drilled, Deathmask (champion) [Ring of Doom], Standard bearer [Ashen Banner], Full Command - 281
+'ORMO' 22 Hobgoblin Cutthroats, Shields, Boss (champion), Musician - 78
+'ORMO' 22 Hobgoblin Cutthroats, Shields, Boss (champion), Musician - 78
+'ZOMO' 5 Black Orc Mob, Full plate armour, 3x Shields - 63
+'Ursus' Iron Daemon, Steam Cannonade - 275
+'Bizon' Iron Daemon, Steam Cannonade - 275
+'Janosikowe Zbóje' 5 Hobgoblin Wolf Riders, Cavalry Spears, Light armour, Shields, Musician - 66
+---
+Created with "Old World Builder"
