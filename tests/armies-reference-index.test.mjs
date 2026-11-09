@@ -143,7 +143,7 @@ test('Summary and canonical global armies collection agree with the source snaps
  assert.ok(summary.sampleEntries.some(e=>e.name==='High Elf Realms'&&e.kind==='army'));
  assert.ok(summary.sampleEntries.some(e=>e.name==='Ishaya Vess'&&e.kind==='unit'));
  assert.deepEqual(collections.collections.map(e=>e.id),[
-  'rules-sitemap','magic-sitemap','armies-sitemap'
+  'rules-sitemap','magic-sitemap','armies-sitemap','magic-items-sitemap'
  ]);
  const record=collections.collections.find(e=>e.id==='armies-sitemap');
  assert.equal(record.path,'armies-index.json');

@@ -123,7 +123,7 @@ test('Collection registry exposes rules, magic and global armies without a dupli
  const collections=JSON.parse(readFileSync(new URL('collections.json',root),'utf8'));
  assert.equal(collections.schemaVersion,1);
  assert.equal(collections.sourceOrigin,SOURCE_ORIGIN);
- assert.deepEqual(collections.collections.map(e=>e.id),['rules-sitemap','magic-sitemap','armies-sitemap']);
+ assert.deepEqual(collections.collections.map(e=>e.id),['rules-sitemap','magic-sitemap','armies-sitemap','magic-items-sitemap']);
  for(const item of collections.collections){
   const other=JSON.parse(readFileSync(new URL(item.path,root),'utf8'));
   assert.equal(other.sourceOrigin||other.source.origin,SOURCE_ORIGIN);

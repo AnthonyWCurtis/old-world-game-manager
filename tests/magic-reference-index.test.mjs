@@ -146,7 +146,7 @@ test('Magic summary and collection registry preserve counts and provenance',()=>
  assert.deepEqual(summary.sections,magic.sections);
  const collections=JSON.parse(readFileSync(new URL('collections.json',root),'utf8'));
  assert.deepEqual(collections.collections.map(x=>x.id),
-  ['rules-sitemap','magic-sitemap','armies-sitemap']);
+  ['rules-sitemap','magic-sitemap','armies-sitemap','magic-items-sitemap']);
  const record=collections.collections.find(x=>x.id==='magic-sitemap');
  assert.equal(record.path,'magic-index.json');
  assert.equal(record.sourceUrl,SITEMAP_URL);

@@ -6,6 +6,7 @@ on:
       - 'docs/reference-records/**'
       - 'scripts/build-rules-reference-index.mjs'
       - 'scripts/build-magic-reference-index.mjs'
+      - 'scripts/build-magic-items-reference-index.mjs'
       - 'scripts/build-armies-reference-index.mjs'
       - 'docs/catalog.js'
       - 'docs/live-source.js'
@@ -22,6 +23,7 @@ on:
       - 'docs/reference-records/**'
       - 'scripts/build-rules-reference-index.mjs'
       - 'scripts/build-magic-reference-index.mjs'
+      - 'scripts/build-magic-items-reference-index.mjs'
       - 'scripts/build-armies-reference-index.mjs'
       - 'docs/catalog.js'
       - 'docs/live-source.js'
@@ -42,4 +44,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check scripts/build-rules-reference-index.mjs && node --check scripts/build-magic-reference-index.mjs && node --check scripts/build-armies-reference-index.mjs && node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs
+      - run: node --check scripts/build-rules-reference-index.mjs && node --check scripts/build-magic-reference-index.mjs && node --check scripts/build-magic-items-reference-index.mjs && node --check scripts/build-armies-reference-index.mjs && node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs
