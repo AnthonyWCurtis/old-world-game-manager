@@ -49,6 +49,33 @@ test('Live index is additive, preserves points, selections and source text',()=>
 });
 test('Only permitted public indexes are requested, not API paths',()=>{
  assert.deepEqual(INDEX_SOURCES.map(s=>s.path),[
-  '/sitemap/armies','/sitemap/magic-items','/sitemap/rules'
+  '/sitemap/armies','/sitemap/magic-items','/sitemap/magic','/sitemap/rules'
  ]);
+});
+
+test('Magic sitemaps link spells and lores without guessing unrelated names',()=>{
+ const entries=[
+   {name:'Waaagh! Magic',url:'https://tow.whfb.app/the-lores-of-magic/waaagh-magic',kind:'lore'},
+   {name:'Elementalism',url:'https://tow.whfb.app/the-lores-of-magic/elementalism',kind:'lore'},
+   {name:'Accursed Mirror',url:'https://tow.whfb.app/spell/accursed-mirror',kind:'spell'}
+ ];
+ assert.equal(findIndexedReference('Lore of Waaagh! Magic',false,entries)?.url,'https://tow.whfb.app/the-lores-of-magic/waaagh-magic');
+ assert.equal(findIndexedReference('Elementalism',false,entries)?.type,'lore');
+ assert.equal(findIndexedReference('Accursed Mirror',false,entries)?.type,'spell');
+ assert.equal(findIndexedReference('Unknown spell',false,entries),null);
+ assert.equal(findIndexedReference('Lore of Unconfirmed Magic',false,entries),null);
+});
+test('Magic references remain separate from imported roster contents',()=>{
+ const army=parseArmy(read('bb-compact'));
+ const before=JSON.stringify({
+   army:army.army,sections:army.sections,
+   items:army.units.map(u=>({name:u.name,points:u.reportedPoints,selected:u.selections.map(s=>s.raw)}))
+ });
+ const refs=[{name:'Elementalism',kind:'lore',url:'https://tow.whfb.app/the-lores-of-magic/elementalism'}];
+ applyIndexedReferences(army,refs);
+ const after=JSON.stringify({
+   army:army.army,sections:army.sections,
+   items:army.units.map(u=>({name:u.name,points:u.reportedPoints,selected:u.selections.map(s=>s.raw)}))
+ });
+ assert.equal(after,before);
 });
