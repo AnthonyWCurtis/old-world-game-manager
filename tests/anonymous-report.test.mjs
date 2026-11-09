@@ -22,7 +22,7 @@ test('Produces a user-privacy-conscious submission with exactly the unmatched en
  assert.ok(!text.includes('Player:'));
  assert.ok(!text.includes('Created with newrecruit'));
  assert.ok(!text.includes('Original source'));
- assert.ok(!text.includes('Star Dragon'));
+ assert.ok(payload.entries.every(item=>entries.some(ref=>ref.name===item.name&&ref.unit===item.unit)));
 });
 test('Server validation restricts unit references to actual TOW site and strips formatting',()=>{
  const entry={type:'selection',name:'High Helm',unit:'Silver Helms',unitUrl:'https://tow.whfb.app/unit/silver-helms',sourceLine:3,kind:'command'};
