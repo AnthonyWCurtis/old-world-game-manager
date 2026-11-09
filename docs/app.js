@@ -1,6 +1,6 @@
 import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.3';
 import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
-import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.2';
+import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.6';
 const $=id=>document.getElementById(id);
 let current=null;
 let sourceProfiles={};
@@ -125,7 +125,7 @@ function renderRoster(army){
   const sectionId=unit.sectionId??null;
   if(sectionId!==lastSection){
    const section=sectionById.get(sectionId);
-   const heading=make('h3','roster-heading',section?.name??'Uncategorised');
+   const heading=make('h3','roster-heading',section?.name??'Units (no army sections in export)');
    const count=army.units.filter(u=>(u.sectionId??null)===sectionId).length;
    heading.append(make('span','roster-section-count',count+' entries'));
    holder.append(heading);
@@ -177,6 +177,7 @@ function renderRoster(army){
    }
    const details=[];
    if(cachedProfile.baseCost!=null)details.push('Base cost '+cachedProfile.baseCost+' pts');
+   if(cachedProfile.category)details.push('Unit category: '+cachedProfile.category);
    if(cachedProfile.troopType)details.push('Troop type: '+cachedProfile.troopType);
    if(details.length)sourceBox.append(make('div','roster-stat-meta',details.join(' · ')));
    const link=make('a','roster-source-link','View source page ↗');
@@ -206,6 +207,7 @@ async function refreshCurrentSource(force=false){
    applyIndexedReferences(army,cached.entries);
    sourceProfiles=await getCachedUnitProfiles(army);
    if(!active())return;
+   applyProfileReferences(army,sourceProfiles);
    render();
    sourceStatus('Showing '+cached.indexCount+' cached source indexes. Checking for updates…');
   }else{
@@ -217,6 +219,7 @@ async function refreshCurrentSource(force=false){
    applyIndexedReferences(army,latest.entries);
    sourceProfiles=await getCachedUnitProfiles(army);
    if(!active())return;
+   applyProfileReferences(army,sourceProfiles);
    render();
    const stamped=latest.lastChecked?new Date(latest.lastChecked).toLocaleString():'unknown time';
    sourceStatus('Linked '+army.stats.matchedUnits+'/'+army.stats.unitCount+' units and '+
@@ -233,6 +236,7 @@ async function refreshCurrentSource(force=false){
   if(!active())return;
   sourceProfiles=await getCachedUnitProfiles(army);
   if(!active())return;
+  applyProfileReferences(army,sourceProfiles);
   render();
   const changes=pages.changed.length?
     pages.changed.length+' source page(s) changed since the previous check. Review at tow.whfb.app: '+
