@@ -280,6 +280,39 @@ export function extractSemanticLabels(element,prefix=''){
  if(prefix && label.toLowerCase().startsWith(prefix.toLowerCase()))label=label.slice(prefix.length).trim();
  return label||null;
 }
+/** Same-origin, CI-extracted unit-model name fallback when direct browser CORS is denied.
+ * Select by exact verified unit URL and never synthesize new source references.
+ * Browser also attempts live source checks independently on each imported army.
+ */
+export function selectPublishedUnitProfiles(army,snapshot){
+ const profiles=snapshot?.profiles||{}, out={};
+ if(snapshot?.schemaVersion!==2||snapshot?.sourceOrigin!==SOURCE_ORIGIN)return out;
+ for(const unit of army?.units||[]){
+  const url=unit.reference?.url;
+  const entry=url&&profiles[url];
+  if(entry?.url===url&&entry?.source==='tow.whfb.app'&&
+    entry?.verificationStatus==='source-extracted'&&
+    Array.isArray(entry.models)&&entry.models.length){
+    out[url]=entry;
+  }
+ }
+ return out;
+}
+export async function getPublishedUnitProfiles(army){
+ const response=await fetch('./source-profiles.json?v=0.2.9',{cache:'no-cache',credentials:'omit'});
+ if(!response.ok)throw Error('No published TOW source snapshot');
+ const payload=await response.json();
+ return selectPublishedUnitProfiles(army,payload);
+}
+export function mergeUnitProfiles(published,cached){
+ const profiles={...published};
+ for(const [url,entry] of Object.entries(cached||{})){
+  const existing=profiles[url];
+  if(!existing||((entry.models||[]).length>=(existing.models||[]).length))
+    profiles[url]=entry;
+ }
+ return profiles;
+}
 export async function getCachedUnitProfiles(army){
   const urls=[...new Set((army.units||[]).map(u=>u.reference?.url).filter(Boolean))];
   const pairs=await Promise.all(urls.map(async url=>[url,(await cacheGet('page:'+url))?.profile||null]));
