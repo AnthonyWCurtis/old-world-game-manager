@@ -1,7 +1,8 @@
 import { parseArmy, normalizeImportText } from './parser.js?v=0.1.4';
-import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges } from './live-source.js?v=0.2.0';
+import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.0';
 const $=id=>document.getElementById(id);
 let current=null;
+let sourceProfiles={};
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
@@ -99,6 +100,24 @@ function renderRoster(army){
    }
    card.append(details);
   }
+  const cachedProfile=sourceProfiles[unit.reference?.url];
+  if(cachedProfile?.models?.length){
+   const sourceBox=make('div','roster-base-profile');
+   const head=make('strong','', 'TOW source characteristics (base profile; upgrades not applied)');
+   sourceBox.append(head);
+   for(const model of cachedProfile.models.slice(0,4)){
+    const entries=Object.entries(model.characteristics||{}).map(([k,v])=>k+' '+v).join(' · ');
+    sourceBox.append(make('div','roster-statline',model.name+' — '+entries));
+   }
+   const details=[];
+   if(cachedProfile.baseCost!=null)details.push('Base cost '+cachedProfile.baseCost+' pts');
+   if(cachedProfile.troopType)details.push('Troop type: '+cachedProfile.troopType);
+   if(details.length)sourceBox.append(make('div','roster-stat-meta',details.join(' · ')));
+   const link=make('a','roster-source-link','View source page ↗');
+   link.href=cachedProfile.url;link.target='_blank';link.rel='noopener noreferrer';
+   sourceBox.append(link);
+   card.append(sourceBox);
+  }
   holder.append(card);
  }
 }
@@ -119,6 +138,8 @@ async function refreshCurrentSource(force=false){
   if(!active())return;
   if(cached.entries.length){
    applyIndexedReferences(army,cached.entries);
+   sourceProfiles=await getCachedUnitProfiles(army);
+   if(!active())return;
    render();
    sourceStatus('Showing '+cached.indexCount+' cached source indexes. Checking for updates…');
   }else{
@@ -127,7 +148,9 @@ async function refreshCurrentSource(force=false){
   const latest=await refreshIndexes({force});
   if(!active())return;
   if(latest.entries.length){
-   const stats=applyIndexedReferences(army,latest.entries);
+   applyIndexedReferences(army,latest.entries);
+   sourceProfiles=await getCachedUnitProfiles(army);
+   if(!active())return;
    render();
    const stamped=latest.lastChecked?new Date(latest.lastChecked).toLocaleString():'unknown time';
    sourceStatus('Linked '+army.stats.matchedUnits+'/'+army.stats.unitCount+' units and '+
@@ -142,12 +165,16 @@ async function refreshCurrentSource(force=false){
   }
   const pages=await checkPageChanges(army,{force,maxPages:12});
   if(!active())return;
+  sourceProfiles=await getCachedUnitProfiles(army);
+  if(!active())return;
+  render();
   const changes=pages.changed.length?
     pages.changed.length+' source page(s) changed since the previous check. Review at tow.whfb.app: '+
       pages.changed.map(url=>new URL(url).pathname).join(', ')+'. ':
-    'No changes detected among the pages checked. ';
+    (pages.checked?'No changes detected among the pages checked. ':'Recent cached page checks reused. ');
   const checked=pages.checked+' page(s) checked; '+pages.total+' unique references in roster. ';
-  sourceStatus(changes+checked+
+  sourceStatus('Linked '+army.stats.matchedUnits+'/'+army.stats.unitCount+' units and '+
+    army.stats.matchedSelections+'/'+army.stats.selectionCount+' selections. '+changes+checked+
     (pages.pending?pages.pending+' more due; these will be checked on another import. ':'')+
     (pages.errors.length?pages.errors.length+' page check(s) failed; cached data retained. ':'')+
     'Last check '+new Date().toLocaleTimeString()+'. Source matching does not validate rules or army legality.');
@@ -196,7 +223,7 @@ function render(){
 }
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());sourceProfiles={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -208,7 +235,7 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;$('sourceText').value=loaded.original_text;$('format').value='auto';render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};$('sourceText').value=loaded.original_text;$('format').value='auto';render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
