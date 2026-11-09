@@ -54,3 +54,9 @@
 .manual-format>summary{cursor:pointer;color:var(--muted);font-size:12px;max-width:max-content}
 .manual-format label{display:block;margin:10px 0 5px;font-size:12px;color:var(--muted);font-weight:600}
 .manual-format select{max-width:370px}
+
+/* A complete copy of our own page must never look like a valid roster. */
+.paste-recovery{margin:9px 0 0;padding:12px;border:1px solid #e5b9b9;border-radius:8px;background:#fff6f6}
+.paste-recovery[hidden]{display:none}
+.paste-recovery p{font-size:13px;line-height:1.6;margin:0 0 10px}
+.paste-recovery button{font-size:13px;min-height:38px;white-space:normal;text-align:left}
