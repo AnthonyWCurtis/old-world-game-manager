@@ -1,0 +1,40 @@
+name: Archive unmatched army-list reports
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: old-world-unmatched-issue-reports
+  cancel-in-progress: false
+
+jobs:
+  save-unmatched:
+    if: ${{ startsWith(github.event.issue.title, '[Unmatched report] ') && !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out main repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate issue and create text reports
+        run: node scripts/store-unmatched-issue.mjs
+      - name: Save reports in GitHub directory
+        run: |
+          git config user.name "old-world-report-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add reports/unmatched
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "Archive unmatched source report from GitHub issue #${{ github.event.issue.number }}"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
