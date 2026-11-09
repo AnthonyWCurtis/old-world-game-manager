@@ -58,7 +58,7 @@ test('Structured profile extraction keeps variant/mount modifiers, missing cells
  assert.equal(details.unitCategory,'Cavalry');
  assert.equal(details.troopTypeDescription,'Heavy Cavalry');
  assert.equal(details.baseSizeDescription,'30 x 60 mm');
- assert.equal(details.unitSizeDescription,'5+ Hand weapon Valour of Ages Fake'); // field is deliberately unverified raw section
+ assert.equal(details.unitSizeDescription,'5+');
  assert.ok(details.pageLinkedReferences.some(e=>e.kind==='weapons-of-war'&&e.name==='Hand weapon'));
  assert.ok(details.pageLinkedReferences.some(e=>e.kind==='special-rules'&&e.name==='Valour of Ages'));
  assert.ok(!details.pageLinkedReferences.some(e=>e.name==='Fake'));
