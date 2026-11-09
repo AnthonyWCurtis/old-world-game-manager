@@ -11,8 +11,10 @@ export const INDEX_SOURCES = [
   {path:'/sitemap/magic', type:'magic'},
   {path:'/sitemap/rules', type:'rules'}
 ];
-const MAX_AGE = 6*60*60*1000;
-const PAGE_AGE = 24*60*60*1000;
+// Respect source traffic: cached results display immediately, indexes revalidate
+// after 15 minutes, and detailed unit/rule pages after an hour.
+const MAX_AGE = 15*60*1000;
+const PAGE_AGE = 60*60*1000;
 const DB_NAME='old-world-manager-source-cache';
 const STORE='records';
 const fallback = new Map();
