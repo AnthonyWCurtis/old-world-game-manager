@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.1.5</title>
-<link rel="stylesheet" href="./styles.css?v=0.1.5">
-<script type="module" src="./app.js?v=0.1.5"></script>
+<title>Old World Game Manager · Browser Edition v0.2.0</title>
+<link rel="stylesheet" href="./styles.css?v=0.2.0">
+<script type="module" src="./app.js?v=0.2.0"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.1.5</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.2.0</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts. Nothing is checked for army legality.</p>
@@ -37,6 +37,11 @@
    <div class="line"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
    <div id="diagnostics"></div>
   </div>
+  <section class="panel source-panel" aria-label="Live rules source status">
+   <div class="line"><h2>Live source references</h2><button id="sourceRefreshBtn" type="button" class="smallbtn">Check for updates now</button></div>
+   <p class="muted small">Loads cached source links first, then rechecks public indexes and selected pages on tow.whfb.app. This refreshes reference links and detects page changes; it does not automatically change your imported points, equipment or rules. Cached information remains available if offline.</p>
+   <p id="sourceStatus" class="source-status" role="status" aria-live="polite">Import or open an army to check the source.</p>
+  </section>
   <section class="panel">
    <div class="line"><h2>Army roster</h2><span class="muted small">Original list order</span></div>
    <p class="muted small">Units appear in the order they were exported, with their equipment and upgrades displayed beneath each entry. Repeated units stay separate.</p>
