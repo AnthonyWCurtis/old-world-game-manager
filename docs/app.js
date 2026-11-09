@@ -1,4 +1,4 @@
-import { parseArmy, normalizeImportText } from './parser.js?v=0.2.3';
+import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.3';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.2';
 const $=id=>document.getElementById(id);
 let current=null;
@@ -7,6 +7,56 @@ const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.c
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
 const sourceOverride=()=>{const val=$('format').value;if(val==='auto')return null;const [exporter,layout]=val.split(':');return {exporter,layout};};
+const friendlyExporters={
+ 'new-recruit':'New Recruit','old-world-builder':'Old World Builder',
+ 'ingude':'Ingude','battle-builder':'Old World Rankings'
+};
+const friendlyLayouts={
+ 'tow':'TOW','nr':'NR','simple':'Simple','simple-text':'Simple text',
+ 'regular-text':'Regular text','compact-text':'Compact text',
+ 'minimalist-text':'Minimalist text','regular-discord':'Regular Discord / Markdown',
+ 'compact-discord':'Compact Discord / Markdown','minimalist-discord':'Minimalist Discord / Markdown',
+ 'markdown':'Markdown','compact':'Compact','detailed':'Detailed','tournament':'Tournament'
+};
+function updateFormatDetection(){
+ const text=$('sourceText').value;
+ const outer=$('formatDetection'),title=$('detectedFormat'),details=$('formatDetails');
+ const value=$('format').value;
+ if(!text.trim()){
+  outer.dataset.state='empty';
+  title.textContent='Paste an army list to detect its format';
+  details.textContent='The builder and export layout will appear here.';
+  return;
+ }
+ // A manual selection is never represented as automatic detection.
+ if(value!=='auto'){
+  const [exporter,layout]=value.split(':');
+  outer.dataset.state='manual';
+  title.textContent='Manual: '+(friendlyExporters[exporter]||exporter)+' · '+(friendlyLayouts[layout]||layout);
+  details.textContent='Format selected manually — automatic detection is overridden.';
+  return;
+ }
+ try{
+  const format=detectFormat(text);
+  if(format.exporter==='unknown'||format.layout==='unknown'){
+   outer.dataset.state='unrecognised';
+   title.textContent='✕ Format not recognised';
+   details.textContent='No supported builder and layout combination found. Check the paste or choose a format manually.';
+   return;
+  }
+  const confirmed=format.evidence.includes('exporter attribution');
+  const name=friendlyExporters[format.exporter]||format.exporter;
+  const layout=friendlyLayouts[format.layout]||format.layout;
+  outer.dataset.state='detected';
+  title.textContent='✓ '+name+(confirmed?'':'-style')+' · '+layout+' detected';
+  details.textContent=confirmed?'Builder identified from its export attribution.':
+   'Layout recognised from the text; the builder is not explicitly confirmed.';
+ }catch(e){
+  outer.dataset.state='unrecognised';
+  title.textContent='✕ Format not recognised';
+  details.textContent='The pasted text could not be analysed. Check the list or choose a format manually.';
+ }
+}
 const DBNAME = 'old-world-game-manager-imports';
 const STORE = 'snapshots';
 function openDB(){
@@ -222,6 +272,8 @@ function render(){
  }
  $('saveBtn').disabled=false;$('jsonBtn').disabled=false;
 }
+$('sourceText').addEventListener('input',updateFormatDetection);
+$('format').addEventListener('change',updateFormatDetection);
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
  try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());sourceProfiles={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
@@ -236,16 +288,17 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};$('sourceText').value=loaded.original_text;$('format').value='auto';render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};$('sourceText').value=loaded.original_text;$('format').value='auto';updateFormatDetection();render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
 $('exampleBtn').addEventListener('click',async()=>{
  const id=$('examples').value;if(!id)return;
- try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';current=null;$('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
+ try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';updateFormatDetection();current=null;$('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
  catch(e){showError(e.message);}
 });
 fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load sample manifest');return r.json();}).then(items=>{for(const item of items){const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label;$('examples').append(opt);}}).catch(e=>showError(e.message));
 $('refreshBtn').addEventListener('click' ,()=>refresh().catch(e=>showError(e.message)));
 $('backupBtn').addEventListener('click',async()=>{try{const rows=await readAll();if(!rows.length)throw Error('No saved snapshots to back up yet.');downloadJSON('old-world-game-manager-backup.json',{schemaVersion:1,exportedAt:new Date().toISOString(),snapshots:rows});}catch(e){showError(e.message);}});
+updateFormatDetection();
 refresh().catch(e=>showError(e.message));
