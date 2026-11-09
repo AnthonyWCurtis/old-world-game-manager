@@ -1,6 +1,7 @@
 import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
 import {join,resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {findReference} from '../docs/catalog.js';
 
 export function parseSubmittedReport(text){
  const raw=String(text||'').slice(0,12000);
@@ -27,9 +28,18 @@ export function parseSubmittedReport(text){
 }
 export function consolidate(reports){
  const all=new Map();
- let occurrences=0;
+ let occurrences=0,archivedOccurrences=0,resolvedOccurrences=0;
  for(const report of reports){
   for(const item of parseSubmittedReport(report.content)){
+   archivedOccurrences++;
+   // Historical report files are immutable. Show only names that still
+   // lack a *reviewed catalogue* reference, so repaired issues disappear
+   // from the current copy-paste queue without losing the audit trail.
+   const reference=findReference(item.name,item.type==='UNIT'?'unit':'selection',item.unit);
+   if(reference){
+    resolvedOccurrences++;
+    continue;
+   }
    occurrences++;
    const key=[item.type,item.name.toLowerCase(),item.unit.toLowerCase(),item.url].join('|');
    if(!all.has(key))all.set(key,{...item,occurrences:0,files:new Set()});
@@ -45,10 +55,12 @@ export function consolidate(reports){
   'These are unresolved source references, not invalid army selections.',
   'Distinct missing references: '+sorted.length,
   'Unmatched occurrences: '+occurrences,
+  'Previously reported and now source-linked: '+resolvedOccurrences,
+  'Archived occurrences (including resolved): '+archivedOccurrences,
   'Report files: '+reports.length,
   ''
  ];
- if(!sorted.length)lines.push('No unmatched reports yet.');
+ if(!sorted.length)lines.push(reports.length?'No unresolved catalogue references remain in archived reports. Original reports are retained as history.':'No unmatched reports yet.');
  for(const item of sorted){
   lines.push(item.name+' ('+item.type+')',
    '  Parent unit: '+item.unit,
