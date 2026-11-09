@@ -24,14 +24,7 @@
       "type": "source-reference-index",
       "path": "armies-index.json",
       "sourceUrl": "https://tow.whfb.app/sitemap/armies",
-      "description": "19 army index pages and 581 global unit pages; names and URLs only, not unit-to-faction membership",
-      "detailManifests": [
-        {
-          "path": "manifest.json",
-          "sourceArmyUrl": "https://tow.whfb.app/army/high-elf-realms",
-          "description": "45 additional High Elf unit profiles, indexed by exact source URL; two manually reviewed and 43 source-extracted"
-        }
-      ]
+      "description": "19 army index pages and 581 global unit pages; names and URLs only, not unit-to-faction membership"
     }
   ]
 }
