@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "sourceOrigin": "https://tow.whfb.app",
+  "records": [
+    {
+      "id": "unit:ishaya-vess",
+      "name": "Ishaya Vess",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/ishaya-vess.json",
+      "sourceUrl": "https://tow.whfb.app/unit/ishaya-vess",
+      "verificationStatus": "verified-on-tow",
+      "verifiedOn": "2026-11-09"
+    }
+  ]
+}
