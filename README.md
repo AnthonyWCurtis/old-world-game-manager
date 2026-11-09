@@ -44,6 +44,12 @@ The public [rules sitemap](https://tow.whfb.app/sitemap/rules) is now indexed in
 
 This is a URL-and-title index only: `source-indexed` means the sitemap contained the link, **not** that its rules text was parsed, validated, or implemented. Some entries are magic, weapons, war machines and army references rather than universal special rules. Ambiguous titles are flagged instead of guessed. A bounded GitHub Action can refresh the list weekly. The live browser matcher does not yet consume these newly generated records.
 
+## Magic lore and spell reference collection (v0.4 groundwork)
+
+The public [Magic sitemap](https://tow.whfb.app/sitemap/magic) is now stored in [magic-index.json](docs/reference-records/magic-index.json) with a [compact summary](docs/reference-records/magic-summary.json). The 9 November 2026 snapshot contains **170 unique source links**: **29 magic lores, 139 spells and 2 guidance pages**. The [collection registry](docs/reference-records/collections.json) makes Magic, Rules and High Elf unit records individually discoverable.
+
+This is a **title-and-link index**, not a rules-text or spell-effects extractor. Spell costs, casting values, lore eligibility and active spell effects must be sourced and verified separately before gameplay calculations. The bounded weekly/manual source refresh retains the previous snapshot on incomplete results. The current v0.3.3 browser importer does not yet consume the new static magic index.
+
 ## Source references and caching
 
 The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.
