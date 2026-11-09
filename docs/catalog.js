@@ -79,7 +79,27 @@ export const CATALOGUE = [
     { id: 'wizard-level:mage-1', name: 'Level 1 Wizard', type: 'wizard-level', url: 'https://tow.whfb.app/magic/levels-of-wizardry', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Mage', scopeEvidenceUrl: 'https://tow.whfb.app/unit/mage' },
     { id: 'command:full-command-lothern', name: 'Full Command', type: 'command', url: 'https://tow.whfb.app/command-groups', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Lothern Sea Guard', scopeEvidenceUrl: 'https://tow.whfb.app/unit/lothern-sea-guard' },
     { id: 'equipment:repeater-bolt-thrower-eagle-claw', name: 'Repeater Bolt Thrower', type: 'equipment', url: 'https://tow.whfb.app/war-machines/bolt-throwers', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', parentUnit: 'Eagle-Claw Bolt Thrower', scopeEvidenceUrl: 'https://tow.whfb.app/unit/eagle-claw-bolt-thrower' },
-    { id: 'rule:ambushers', name: 'Ambushers', type: 'rule', url: 'https://tow.whfb.app/special-rules/ambushers', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' }
+    { id: 'rule:ambushers', name: 'Ambushers', type: 'rule', url: 'https://tow.whfb.app/special-rules/ambushers', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    // Chaos Dwarfs submitted-list audit: exact unit profile pages confirmed on tow.whfb.app.
+    { id: 'unit:sorcerer-prophet', name: 'Sorcerer-Prophet', type: 'unit', url: 'https://tow.whfb.app/unit/sorcerer-prophet', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:black-orc-warboss', name: 'Black Orc Warboss', type: 'unit', url: 'https://tow.whfb.app/unit/black-orc-warboss', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:hobgoblin-khan', name: 'Hobgoblin Khan', type: 'unit', url: 'https://tow.whfb.app/unit/hobgoblin-khan', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:infernal-guard', name: 'Infernal Guard', type: 'unit', url: 'https://tow.whfb.app/unit/infernal-guard', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:hobgoblin-cutthroats', name: 'Hobgoblin Cutthroats', type: 'unit', url: 'https://tow.whfb.app/unit/hobgoblin-cutthroats', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:black-orc-mob', name: 'Black Orc Mob', type: 'unit', url: 'https://tow.whfb.app/unit/black-orc-mob', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:iron-daemon', name: 'Iron Daemon', type: 'unit', url: 'https://tow.whfb.app/unit/iron-daemon', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    { id: 'unit:hobgoblin-wolf-riders', name: 'Hobgoblin Wolf Riders', type: 'unit', url: 'https://tow.whfb.app/unit/hobgoblin-wolf-riders', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09' },
+    // Parent-scoped mappings avoid accidentally asserting that all units may take
+    // generic command options or OWB equipment categories. Source links prove
+    // reference identity, not roster legality or points values.
+    { id: 'wizard:sorcerer-prophet', name: 'Wizard', type: 'wizard-level', url: 'https://tow.whfb.app/magic/wizards', parentUnit: 'Sorcerer-Prophet', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/unit/sorcerer-prophet' },
+    { id: 'wizard-level:sorcerer-prophet-3', name: 'Level 3 Wizard', type: 'wizard-level', url: 'https://tow.whfb.app/magic/levels-of-wizardry', parentUnit: 'Sorcerer-Prophet', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/unit/sorcerer-prophet' },
+    { id: 'mount:bale-taurus-sorcerer-prophet', name: 'Bale Taurus', aliases: ["'Bale Taurus"], type: 'mount', url: 'https://tow.whfb.app/unit/bale-taurus', parentUnit: 'Sorcerer-Prophet', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/unit/sorcerer-prophet' },
+    { id: 'option:hobgoblin-khan-ranged-weapon-label', name: 'Ranged weapon', type: 'option', url: 'https://tow.whfb.app/unit/hobgoblin-khan', parentUnit: 'Hobgoblin Khan', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/weapons-of-war/throwing-weapons', note: 'Old World Builder generic equipment field; the unit profile specifically carries throwing weapons.' },
+    { id: 'command:infernal-guard-standard-bearer', name: 'Standard bearer', type: 'command', url: 'https://tow.whfb.app/unit/infernal-guard', parentUnit: 'Infernal Guard', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/command-groups/standard-bearers' },
+    { id: 'command:infernal-guard-full-command', name: 'Full Command', type: 'command', url: 'https://tow.whfb.app/command-groups', parentUnit: 'Infernal Guard', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/unit/infernal-guard' },
+    { id: 'command:hobgoblin-cutthroats-musician', name: 'Musician', type: 'command', url: 'https://tow.whfb.app/unit/hobgoblin-cutthroats', parentUnit: 'Hobgoblin Cutthroats', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/command-groups/musicians' },
+    { id: 'command:hobgoblin-wolf-riders-musician', name: 'Musician', type: 'command', url: 'https://tow.whfb.app/unit/hobgoblin-wolf-riders', parentUnit: 'Hobgoblin Wolf Riders', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-09', scopeEvidenceUrl: 'https://tow.whfb.app/command-groups/musicians' },
 ];
 const normalize = (s) => s.toLowerCase().replace(/\u2019/g, "'").replace(/\s+/g, ' ').trim();
 export function findReference(label, kind, parentUnit) {
