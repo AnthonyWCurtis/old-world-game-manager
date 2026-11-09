@@ -17,6 +17,14 @@
       "path": "rules-index.json",
       "sourceUrl": "https://tow.whfb.app/sitemap/rules",
       "description": "Sitemap-linked reference titles and URLs, not independently verified rules interpretations"
+    },
+    {
+      "id": "magic-sitemap",
+      "name": "Magic lores and spells",
+      "type": "source-reference-index",
+      "path": "magic-index.json",
+      "sourceUrl": "https://tow.whfb.app/sitemap/magic",
+      "description": "29 magic lores, 139 individual spell pages and two magic guidance pages; names and source links only"
     }
   ]
 }
