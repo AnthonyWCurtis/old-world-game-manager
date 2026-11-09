@@ -92,8 +92,28 @@ function parseUnitHead(s, expectCost = true) {
         return null;
     return { name, quantity: qty, points: v.points };
 }
+/** Old World Rankings on iOS can copy the complete roster as URI-escaped text.
+ * Decode only convincing encoded multi-line rosters, not arbitrary URLs or pasted names.
+ * The original input remains untouched in the saved import snapshot.
+ */
+export function normalizeImportText(text) {
+    if (typeof text !== 'string') return { text, encoding: 'plain' };
+    const candidate = text.trim();
+    // Links, short URLs and ordinary text aren't decoded as army rosters.
+    if (/^https?:\/\//i.test(candidate) || !/%0a|%0d/i.test(candidate) || !/%20|%3a/i.test(candidate))
+        return { text, encoding: 'plain' };
+    try {
+        const decoded = decodeURIComponent(candidate);
+        if (decoded !== candidate && /\n/.test(decoded) &&
+            /(?:^|\n)\s*(?:player\s*:|characters\s*:|core\s*:|special\s*:|rare\s*:|built with battle builder|created with)/im.test(decoded))
+            return { text: decoded, encoding: 'percent-encoded' };
+    } catch {
+        // Invalid %-escapes are preserved and handled by normal diagnostics.
+    }
+    return { text, encoding: 'plain' };
+}
 export function detectFormat(text, forced) {
-    const s = text.replace(/\r\n/g, '\n');
+    const s = normalizeImportText(text).text.replace(/\r\n/g, '\n');
     const l = s.split('\n').map(x => x.trim());
     const evidence = [];
     const footerOwb = /Created with\s+["“]Old World Builder/i.test(s);
@@ -430,11 +450,14 @@ function finish(result) {
 export function parseArmy(text, override) {
     counter = 0;
     const originalText = text;
-    const lines = text.replace(/\r\n?/g, '\n').split('\n');
-    const format = detectFormat(text, override);
-    const result = { schemaVersion: 1, format, originalText,
+    const normalized = normalizeImportText(text);
+    const lines = normalized.text.replace(/\r\n?/g, '\n').split('\n');
+    const format = detectFormat(normalized.text, override);
+    const result = { schemaVersion: 1, format, originalText, inputEncoding: normalized.encoding,
         army: { name: unknown(), faction: unknown(), composition: unknown(), gameFormat: unknown(), player: unknown(), reportedPoints: unknown(), limitPoints: unknown(), derivedPoints: unknown() },
         sections: [], units: [], diagnostics: [], stats: { unitCount: 0, selectionCount: 0, modelGroupCount: 0, matchedUnits: 0, matchedSelections: 0, unmatchedSelections: 0, unmatchedUnits: 0, unparsedLines: 0 } };
+    if (normalized.encoding === 'percent-encoded')
+        result.diagnostics.push({ severity: 'info', code: 'URL_ENCODED_ROSTER_DECODED', line: null, message: 'Decoded URL-encoded list text for importing. The original clipboard text is preserved.' });
     let section = null, unit = null;
     let state = 'header';
     const kind = format.exporter;
