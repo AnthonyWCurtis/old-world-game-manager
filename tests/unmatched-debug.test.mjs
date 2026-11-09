@@ -10,7 +10,7 @@ const selection=(name,line,status='unmatched',options={})=>({
  children:options.children||[],reference:status==='matched'?{url:'https://tow.whfb.app/example'}:null
 });
 test('Copies unmatched selections only, preserving unit, source line and original option',()=>{
- const army=parseArmy(example('nr-tow-footer'));
+ const army=parseArmy(example('nr-nr'));
  for(const unit of army.units){
   unit.matchStatus='matched';
   for(const s of unit.selections)s.matchStatus='matched';
@@ -22,22 +22,23 @@ test('Copies unmatched selections only, preserving unit, source line and origina
  const helm=army.units.find(u=>u.name==='Silver Helms');
  const archmage=army.units.find(u=>u.name==='Archmage');
  archmage.selections.find(s=>s.name==='Wizard Level 3').matchStatus='unmatched';
- helm.modelGroups[1].selections[1].matchStatus='unmatched';
- helm.modelGroups[1].selections[1].children[0].matchStatus='unmatched';
+ helm.modelGroups[3].selections.find(s=>s.name==='High Helm').matchStatus='unmatched';
+ const sister=army.units.find(u=>u.name==='Sisters of Avelorn');
+ sister.modelGroups[1].selections.find(s=>s.name==='High Sister').children[0].matchStatus='unmatched';
  const out=collectUnmatched(army);
  assert.equal(out.length,3);
  assert.equal(out.filter(e=>e.type==='selection').length,3);
  assert.equal(out[0].unit,'Archmage');
  assert.equal(out[1].unit,'Silver Helms');
  assert.equal(out[1].groupQuantity,1);
- assert.ok(out[2].parentSelection);
+ assert.equal(out[2].parentSelection,'High Sister');
  const debug=formatUnmatchedDebug(army,{appVersion:'0.2.7'});
  assert.ok(debug.includes('Unmatched selections: 3'));
  assert.ok(debug.includes('Wizard Level 3'));
  assert.ok(debug.includes('Source line: 5'));
  assert.ok(debug.includes('Parent unit: Silver Helms'));
  assert.ok(debug.includes('Model group: 1× Silver Helm'));
- assert.ok(debug.includes('Nested under: High Helm'));
+ assert.ok(debug.includes('Nested under: High Sister'));
  assert.ok(debug.includes('Game Manager: v0.2.7'));
  assert.ok(!debug.includes('Player:'));
  assert.ok(!debug.includes('Created with newrecruit.eu'));
