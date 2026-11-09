@@ -59,7 +59,7 @@ function sourceUrl(url) {
 }
 function normal(s) {
   return String(s||'').normalize('NFKC').toLowerCase().replace(/[‘’]/g,"'")
-    .replace(/\s+/g,' ').trim();
+    .replace(/\s+/g,' ').trim().replace(/\*+$/,'').trim();
 }
 function aliases(name) {
   const n=normal(name).replace(/^\d+\s*[×x]\s+/i,'');
@@ -191,13 +191,48 @@ export function applyIndexedReferences(army, entries){
       }
     }
   }
-  const units=army.units, selections=units.flatMap(u=>
-    walk(u.selections||[]).concat((u.modelGroups||[]).flatMap(g=>walk(g.selections||[]))));
-  army.stats.matchedUnits=units.filter(u=>u.matchStatus==='matched').length;
-  army.stats.unmatchedUnits=units.length-army.stats.matchedUnits;
-  army.stats.matchedSelections=selections.filter(s=>s.matchStatus==='matched').length;
-  army.stats.unmatchedSelections=selections.length-army.stats.matchedSelections;
+  recountReferences(army);
   return {added};
+}
+/** Recount reference links only, never change imported units or reported points. */
+function recountReferences(army){
+ const units=army.units, selections=units.flatMap(u=>
+  walk(u.selections||[]).concat((u.modelGroups||[]).flatMap(g=>walk(g.selections||[]))));
+ army.stats.matchedUnits=units.filter(u=>u.matchStatus==='matched').length;
+ army.stats.unmatchedUnits=units.length-army.stats.matchedUnits;
+ army.stats.matchedSelections=selections.filter(s=>s.matchStatus==='matched').length;
+ army.stats.unmatchedSelections=selections.length-army.stats.matchedSelections;
+}
+/** An identified unit's published profile is evidence for model names / wizard levels.
+ * It is NOT an assertion that a purchased option, army category or points are legal. */
+export function applyProfileReferences(army, profiles){
+ if(!army?.units||!profiles)return {added:0};
+ let added=0;
+ for(const unit of army.units){
+  const profile=profiles[unit.reference?.url];
+  if(!profile)continue;
+  const namedModels=new Set((profile.models||[]).map(m=>normal(m.name)));
+  const wizardLevels=new Set(profile.wizardLevels||[]);
+  const selections=walk(unit.selections||[]).concat((unit.modelGroups||[]).flatMap(g=>walk(g.selections||[])));
+  for(const selection of selections){
+   if(selection.reference && selection.reference.source!=='unit-profile')continue;
+   const name=normal(selection.name);
+   const wizard=name.match(/^wizard level\s+([1-4])$/i);
+   const evidence=namedModels.has(name)?'model':
+    (wizard&&wizardLevels.has(Number(wizard[1]))?'wizard-level':null);
+   if(evidence){
+    if(selection.matchStatus!=='matched')added++;
+    selection.reference={id:'source-profile:'+new URL(profile.url).pathname+':'+name,
+      url:profile.url,name:selection.name,type:evidence,source:'unit-profile'};
+    selection.matchStatus='matched';
+   } else if(selection.reference?.source==='unit-profile'&&profile.schemaVersion>=2){
+    selection.reference=null;
+    selection.matchStatus='unmatched';
+   }
+  }
+ }
+ recountReferences(army);
+ return {added};
 }
 /**
  * Extract only explicitly structured unit details; never infer army-specific upgrades
@@ -227,10 +262,27 @@ export function parseUnitProfile(html,url) {
   }
   const costText=main?.querySelector('.unit-profile__details--points')?.textContent||'';
   const baseCostMatch=costText.match(/\bCost:\s*(\d[\d,]*)\s*points?\b/i);
+  const category=extractSemanticLabels(main?.querySelector('.unit-profile__details--unit-category'),'Unit Category:');
+  const troopType=extractSemanticLabels(main?.querySelector('.unit-profile__details--troop-type'),'Troop Type:');
+  const bodyText=(main?.textContent||'').replace(/\s+/g,' ');
+  const wizardLevels=new Set();
+  for(const m of bodyText.matchAll(/\bLevel\s+([1-4])\s+Wizard\b|\bWizard\s+Level\s+([1-4])\b/gi))
+    wizardLevels.add(Number(m[1]||m[2]));
+  return {schemaVersion:2,title,url,models,baseCost:baseCostMatch?Number(baseCostMatch[1].replace(/,/g,'')):null,
+    category,troopType,wizardLevels:[...wizardLevels]};
+}
+/** Preserves separators when TOW uses multiple inline links for troop types. */
+export function extractSemanticLabels(element,prefix=''){
+ if(!element)return null;
+ const anchors=[...element.querySelectorAll('a')].map(a=>(a.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean);
+ if(anchors.length>1)return anchors.join(' / ');
+ return (element.textContent||'').replace(/\s+/g,' ').replace(new RegExp('^'+prefix.replace(/[.*+?^${}()|[\]\\]/g,'\\  const costText=main?.querySelector('.unit-profile__details--points')?.textContent||'';
+  const baseCostMatch=costText.match(/\bCost:\s*(\d[\d,]*)\s*points?\b/i);
   const category=main?.querySelector('.unit-profile__details--unit-category')?.textContent?.replace(/^Unit Category:\s*/i,'').trim()||null;
   const troopType=main?.querySelector('.unit-profile__details--troop-type')?.textContent?.replace(/^Troop Type:\s*/i,'').trim()||null;
   return {title,url,models,baseCost:baseCostMatch?Number(baseCostMatch[1].replace(/,/g,'')):null,
-    category,troopType};
+    category,troopType};')+'\\s*','i'),'').trim()||null;
+}
 }
 export async function getCachedUnitProfiles(army){
   const urls=[...new Set((army.units||[]).map(u=>u.reference?.url).filter(Boolean))];
@@ -257,7 +309,8 @@ export async function checkPageChanges(army,{force=false,maxPages=12}={}){
     }
   const unique=[...new Set(refs.map(sourceUrl).filter(Boolean))];
   const records=await Promise.all(unique.map(async url=>({url,previous:await cacheGet('page:'+url)})));
-  const due=records.filter(r=>force||!r.previous?.checkedAt||Date.now()-r.previous.checkedAt>=PAGE_AGE);
+  const due=records.filter(r=>force||!r.previous?.checkedAt||Date.now()-r.previous.checkedAt>=PAGE_AGE||
+    (new URL(r.url).pathname.startsWith('/unit/')&&r.previous.profile?.schemaVersion!==2));
   let checked=0,changed=[],errors=[];
   // Serial, low-volume checks to respect the source site's resources.
   for(const {url,previous} of due.slice(0,maxPages)){
