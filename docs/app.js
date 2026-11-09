@@ -177,6 +177,7 @@ async function refreshCurrentSource(force=false){
     army.stats.matchedSelections+'/'+army.stats.selectionCount+' selections. '+changes+checked+
     (pages.pending?pages.pending+' more due; these will be checked on another import. ':'')+
     (pages.errors.length?pages.errors.length+' page check(s) failed; cached data retained. ':'')+
+    (latest.errors.length?'Some source indexes could not be refreshed; cached indexes retained. ':'')+
     'Last check '+new Date().toLocaleTimeString()+'. Source matching does not validate rules or army legality.');
  }catch(error){
   if(active())sourceStatus('Source refresh failed: '+(error?.message||error)+
