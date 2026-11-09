@@ -3,14 +3,6 @@
   "sourceOrigin": "https://tow.whfb.app",
   "collections": [
     {
-      "id": "high-elf-realms-units",
-      "name": "High Elf Realms units",
-      "type": "unit-reference-collection",
-      "path": "manifest.json",
-      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
-      "description": "45 High Elf unit pages; two manually reviewed detail records and 43 source-extracted profiles"
-    },
-    {
       "id": "rules-sitemap",
       "name": "Rules and reference sitemap",
       "type": "source-reference-index",
@@ -32,7 +24,14 @@
       "type": "source-reference-index",
       "path": "armies-index.json",
       "sourceUrl": "https://tow.whfb.app/sitemap/armies",
-      "description": "19 army index pages and 581 global unit pages; names and URLs only, not unit-to-faction membership"
+      "description": "19 army index pages and 581 global unit pages; names and URLs only, not unit-to-faction membership",
+      "detailManifests": [
+        {
+          "path": "manifest.json",
+          "sourceArmyUrl": "https://tow.whfb.app/army/high-elf-realms",
+          "description": "45 additional High Elf unit profiles, indexed by exact source URL; two manually reviewed and 43 source-extracted"
+        }
+      ]
     }
   ]
 }
