@@ -89,3 +89,9 @@
 .report-form button{justify-self:start;min-height:40px}
 .report-form a{font-size:13px;overflow-wrap:anywhere}
 #reportUnmatchedStatus{min-height:0;overflow-wrap:anywhere}
+
+/* User-assigned unit nicknames are display-only; catalog lookup uses the actual unit type. */
+.roster-name-group{display:flex;flex-direction:column;gap:1px;min-width:0}
+.roster-nickname{font-size:12px;font-weight:500;color:var(--muted);overflow-wrap:anywhere}
+.unit-nickname{font-size:11px;line-height:1.35;color:var(--muted);font-weight:500;overflow-wrap:anywhere}
+@media(max-width:650px){.unit-top{flex-wrap:wrap}}
