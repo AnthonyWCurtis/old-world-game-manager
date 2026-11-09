@@ -32,5 +32,6 @@ jobs:
             echo "No source changes."
           else
             git commit -m "Refresh cached TOW unit model references with provenance"
+            git pull --rebase origin main
             git push
           fi
