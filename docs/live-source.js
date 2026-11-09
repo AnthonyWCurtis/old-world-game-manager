@@ -8,6 +8,7 @@ export const SOURCE_ORIGIN = 'https://tow.whfb.app';
 export const INDEX_SOURCES = [
   {path:'/sitemap/armies', type:'unit'},
   {path:'/sitemap/magic-items', type:'item'},
+  {path:'/sitemap/magic', type:'magic'},
   {path:'/sitemap/rules', type:'rules'}
 ];
 const MAX_AGE = 6*60*60*1000;
@@ -15,7 +16,7 @@ const PAGE_AGE = 24*60*60*1000;
 const DB_NAME='old-world-manager-source-cache';
 const STORE='records';
 const fallback = new Map();
-const allowedPaths = /^\/(?:unit\/|magic-item\/|weapons-of-war\/|special-rules\/|the-lores-of-magic\/|command-groups(?:\/|$)|war-machines\/|magic\/|characters\/)/i;
+const allowedPaths = /^\/(?:unit\/|magic-item\/|weapons-of-war\/|special-rules\/|the-lores-of-magic\/|spell\/|command-groups(?:\/|$)|war-machines\/|magic\/|characters\/)/i;
 
 function cacheDB(){
   return new Promise((resolve,reject)=>{
@@ -72,10 +73,14 @@ export function parseIndexHtml(html,source) {
   for(const link of doc.querySelectorAll('a[href]')){
     const url=sourceUrl(link.getAttribute('href'));
     if(!url)continue;
-    const kind=new URL(url).pathname.startsWith('/unit/')?'unit':
-      new URL(url).pathname.startsWith('/magic-item/')?'item':'rule';
+    const pathname=new URL(url).pathname;
+    const kind=pathname.startsWith('/unit/')?'unit':
+      pathname.startsWith('/magic-item/')?'item':
+      pathname.startsWith('/spell/')?'spell':
+      pathname.startsWith('/the-lores-of-magic/')?'lore':'rule';
     if(source.type==='unit'&&kind!=='unit')continue;
     if(source.type==='item'&&kind!=='item')continue;
+    if(source.type==='magic'&&kind!=='spell'&&kind!=='lore')continue;
     if(source.type==='rules'&&kind!=='rule')continue;
     const name=(link.textContent||'').replace(/\s+/g,' ').trim();
     if(!name || name.length>130 || seen.has(url))continue;
@@ -143,6 +148,18 @@ export function findIndexedReference(name,isUnit,entries) {
         source:'live-index', name:r.name};
     }
     if(unique.size>1)return null; // ambiguous -> never guess
+  }
+  // Battle Builder prefixes the generic Waaagh! Magic lore with "Lore of".
+  // Match only a unique lore title when an exact match was not found.
+  const normalized=normal(name);
+  if(!isUnit&&normalized.startsWith('lore of ')){
+    const nameWithoutPrefix=normalized.slice('lore of '.length);
+    const lores=new Map(entries.filter(e=>e.kind==='lore'&&normal(e.name)===nameWithoutPrefix).map(e=>[e.url,e]));
+    if(lores.size===1){
+      const r=[...lores.values()][0];
+      return {id:'indexed:'+new URL(r.url).pathname,url:r.url,type:r.kind,
+        source:'live-index',name:r.name};
+    }
   }
   return null;
 }
