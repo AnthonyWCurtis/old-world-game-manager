@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/lion-guard",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -45,10 +45,10 @@
     }
   ],
   "costDescription": "17 points per model",
-  "unitCategory": "Infantry Troop Type : Heavy Infantry",
-  "troopTypeDescription": null,
+  "unitCategory": "Infantry",
+  "troopTypeDescription": "Heavy Infantry",
   "baseSizeDescription": "25 x 25 mm",
-  "unitSizeDescription": "5+ Hand weapons , Chracian great blades and heavy armour Any unit may: Upg",
+  "unitSizeDescription": "5+",
   "pageLinkedReferences": [
     {
       "name": "Hand weapons",

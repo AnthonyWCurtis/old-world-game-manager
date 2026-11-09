@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/tiranoc-chariot",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -59,10 +59,10 @@
     }
   ],
   "costDescription": "75 points per model",
-  "unitCategory": "Chariot Troop Type : Light Chariot",
-  "troopTypeDescription": null,
+  "unitCategory": "Chariot",
+  "troopTypeDescription": "Light Chariot",
   "baseSizeDescription": "50 x 100 mm",
-  "unitSizeDescription": "1-4 Armour Value: 5+ Tiranoc Charioteers: Hand weapons , cavalry spears an",
+  "unitSizeDescription": "1-4",
   "pageLinkedReferences": [
     {
       "name": "Hand weapons",

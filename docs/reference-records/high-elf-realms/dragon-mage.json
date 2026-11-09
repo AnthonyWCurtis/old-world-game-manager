@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/dragon-mage",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -45,10 +45,10 @@
     }
   ],
   "costDescription": "275 points",
-  "unitCategory": "Character Troop Type : Behemoth Character",
-  "troopTypeDescription": null,
+  "unitCategory": "Character",
+  "troopTypeDescription": "Behemoth Character",
   "baseSizeDescription": "60 x 100 mm",
-  "unitSizeDescription": "1 Dragon Mage: Hand weapon and light armour Sun Dragon: Wicked claws , dragon fire and dra",
+  "unitSizeDescription": "1",
   "pageLinkedReferences": [
     {
       "name": "Hand weapon",

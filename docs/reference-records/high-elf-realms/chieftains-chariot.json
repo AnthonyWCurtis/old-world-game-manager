@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/chieftains-chariot",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -59,10 +59,10 @@
     }
   ],
   "costDescription": "105 points",
-  "unitCategory": "Chariot Troop Type : Heavy Chariot",
-  "troopTypeDescription": null,
+  "unitCategory": "Chariot",
+  "troopTypeDescription": "Heavy Chariot",
   "baseSizeDescription": "50 x 100 mm",
-  "unitSizeDescription": "1 Armour Value: 4+ Charioteers: Hand weapons and Chracian great blade Char",
+  "unitSizeDescription": "1",
   "pageLinkedReferences": [
     {
       "name": "Hand weapons",

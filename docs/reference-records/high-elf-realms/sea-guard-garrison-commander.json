@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/sea-guard-garrison-commander",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -31,10 +31,10 @@
     }
   ],
   "costDescription": "90 points",
-  "unitCategory": "Character Troop Type : Regular Infantry Character",
-  "troopTypeDescription": null,
+  "unitCategory": "Character",
+  "troopTypeDescription": "Regular Infantry Character",
   "baseSizeDescription": "25 x 25 mm",
-  "unitSizeDescription": "1 Hand weapon , warbow and light armour",
+  "unitSizeDescription": "1",
   "pageLinkedReferences": [
     {
       "name": "Hand weapon",

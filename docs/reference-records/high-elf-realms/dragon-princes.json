@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/dragon-princes",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -59,10 +59,10 @@
     }
   ],
   "costDescription": "37 points per model",
-  "unitCategory": "Cavalry Troop Type : Heavy Cavalry",
-  "troopTypeDescription": null,
+  "unitCategory": "Cavalry",
+  "troopTypeDescription": "Heavy Cavalry",
   "baseSizeDescription": "30 x 60 mm",
-  "unitSizeDescription": "3+ Dragon Princes: Hand weapons , lances , full plate armour and shields B",
+  "unitSizeDescription": "3+",
   "pageLinkedReferences": [
     {
       "name": "Hand weapons",

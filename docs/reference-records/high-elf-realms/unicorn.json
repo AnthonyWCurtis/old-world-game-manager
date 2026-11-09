@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/unicorn",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -31,10 +31,10 @@
     }
   ],
   "costDescription": "+35 points",
-  "unitCategory": "Mount Troop Type : Monstrous Cavalry",
-  "troopTypeDescription": null,
+  "unitCategory": "Mount",
+  "troopTypeDescription": "Monstrous Cavalry",
   "baseSizeDescription": "40 x 60 mm",
-  "unitSizeDescription": "1 Hooves and horn (counts as a hand weapon ) Armour Bane (2, Unicorn only)",
+  "unitSizeDescription": "1",
   "pageLinkedReferences": [
     {
       "name": "hand weapon",

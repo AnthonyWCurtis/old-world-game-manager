@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/elven-steed",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -31,10 +31,10 @@
     }
   ],
   "costDescription": "+14 points",
-  "unitCategory": "Mount Troop Type : Light Cavalry",
-  "troopTypeDescription": null,
+  "unitCategory": "Mount",
+  "troopTypeDescription": "Light Cavalry",
   "baseSizeDescription": "30 x 60 mm",
-  "unitSizeDescription": "1 Hooves (counts as a hand weapon ) Fast Cavalry Swiftstride Switch Index",
+  "unitSizeDescription": "1",
   "pageLinkedReferences": [
     {
       "name": "hand weapon",

@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/ellyrian-reavers",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -59,10 +59,10 @@
     }
   ],
   "costDescription": "16 points per model",
-  "unitCategory": "Cavalry Troop Type : Light Cavalry",
-  "troopTypeDescription": null,
+  "unitCategory": "Cavalry",
+  "troopTypeDescription": "Light Cavalry",
   "baseSizeDescription": "30 x 60 mm",
-  "unitSizeDescription": "5+ Elyrian Reavers: Hand weapons , cavalry spears and light armour Elven S",
+  "unitSizeDescription": "5+",
   "pageLinkedReferences": [
     {
       "name": "Hand weapons",

@@ -7,7 +7,7 @@
     "url": "https://tow.whfb.app/unit/war-lions",
     "armyIndexUrl": "https://tow.whfb.app/army/high-elf-realms",
     "verificationStatus": "source-extracted",
-    "checkedAt": "2026-11-09T19:56:35.677Z",
+    "checkedAt": "2026-11-09T19:59:17.269Z",
     "sourceVersion": null,
     "method": "automated, limited public HTML extraction"
   },
@@ -31,10 +31,10 @@
     }
   ],
   "costDescription": "18 points per model",
-  "unitCategory": "Cavalry Troop Type : War Beast",
-  "troopTypeDescription": null,
+  "unitCategory": "Cavalry",
+  "troopTypeDescription": "War Beast",
   "baseSizeDescription": "30 x 60 mm",
-  "unitSizeDescription": "2-6 Claws and fangs (counts as hand weapons ) Cleaving Blow Fear Move Thro",
+  "unitSizeDescription": "2-6",
   "pageLinkedReferences": [
     {
       "name": "hand weapons",
