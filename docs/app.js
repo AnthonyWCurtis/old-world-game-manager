@@ -1,4 +1,4 @@
-import { parseArmy, normalizeImportText } from './parser.js?v=0.1.4';
+import { parseArmy, normalizeImportText } from './parser.js?v=0.2.3';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.2';
 const $=id=>document.getElementById(id);
 let current=null;
