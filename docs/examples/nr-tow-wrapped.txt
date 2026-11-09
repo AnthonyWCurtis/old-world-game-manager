@@ -1,0 +1,19 @@
+Example Player
+
+125 - Bray-Shaman, Wizard Level 2, Daemonology, Lore Familiar
+360 - Doombull, Shield, Gnarled Hide, Gouge-tusks, General, Scimitar
+of Skultar, Full Plate Chaos Armour, Icon Of Fortitude
+270 - Great Bray-Shaman, Wizard Level 4, Elementalism, Jagged Dagger,
+Scourge of the Burdened, Chalice of Dark Rain
+206 - Wargor, Heavy Armour, Shield, Slug-skin, Battle Standard Bearer,
+Vitriolic Totem, Pelt of the Dark Young
+75 - 10 Chaos Warhounds, Poisoned Attacks, Vanguard
+231 - 27 Gor Herds, Additional Hand Weapon, True-horn, Great Weapon,
+Standard Bearer, Magic Standard, Monster Hunter's Tapestry, Musician
+47 - 5 Gor Herds, Additional Hand Weapon, Ambushers, True-horn, Great Weapon
+47 - 5 Gor Herds, Additional Hand Weapon, Ambushers, True-horn, Great Weapon
+82 - 14 Ungor Herds, Shortbow, Half-horn, Musician
+57 - 10 Ungor Herds, Shortbow, Half-horn
+100 - Herdstone
+245 - Ghorgon
+155 - Gigantic Spawn of Chaos, Gigantic Spawn of Tzeentch
