@@ -21,6 +21,26 @@ test('Marks Orges retains all 17 unit instances, costs and selections', () => {
   assert.deepEqual(remaining.map(s => s.name), ['On foot', 'On foot', 'On foot']);
 });
 
+test('Imported units preserve the source roster order and repeat instances', () => {
+  const result = parseArmy(read('bb-compact'));
+  assert.deepEqual(result.units.map(u => u.name), [
+    'Ishaya Vess', 'Storm Weaver',
+    'Sea Guard Garrison Commander', 'Sea Guard Garrison Commander',
+    'Sea Guard Garrison Commander', 'Mage', 'Mage',
+    'Lothern Sea Guard', "Ship's Company", "Ship's Company", "Ship's Company",
+    'Eagle-Claw Bolt Thrower', 'Eagle-Claw Bolt Thrower',
+    'Eagle-Claw Bolt Thrower', 'Eagle-Claw Bolt Thrower',
+    'Lothern Skycutters', 'Lothern Skycutters'
+  ]);
+  assert.deepEqual(result.units.map(u => result.sections.find(s => s.id === u.sectionId)?.name), [
+    ...Array(7).fill('Characters'), ...Array(4).fill('Core'), ...Array(6).fill('Special')
+  ]);
+  assert.deepEqual(result.units.slice(7, 11).map(u => u.quantity.value), [32, 16, 16, 16]);
+  assert.deepEqual(result.units.slice(2, 5).map(u => u.reportedPoints.value), [202, 153, 283]);
+  assert.ok(result.units[7].selections.map(s => s.raw).includes('Full Command'));
+  assert.equal(result.units[0].selections.at(-1).raw, "Mathlann's Ire");
+});
+
 test('Only exact and parent-scoped references are linked', () => {
   assert.equal(findReference('Sea Guard', 'selection', 'Mage')?.url, 'https://tow.whfb.app/magic-item/sea-guard');
   assert.equal(findReference('Sea Guard', 'selection', 'Sea Guard Garrison Commander')?.url, 'https://tow.whfb.app/magic-item/sea-guard');
