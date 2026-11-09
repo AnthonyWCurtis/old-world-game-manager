@@ -1,0 +1,23 @@
+name: Check TOW source access
+on:
+  push:
+    paths:
+      - '.github/workflows/check-tow-access.yml'
+permissions:
+  contents: read
+jobs:
+  check-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check robots and browser access headers (no scraping)
+        shell: bash
+        run: |
+          set -u
+          echo "=== ROBOTS (HTTP code and robots text only) ==="
+          curl -L --max-time 12 -sS -w '\nHTTP: %{http_code}\n' https://tow.whfb.app/robots.txt | head -c 3500 || true
+          echo
+          echo "=== HTML page HEAD with our Pages origin ==="
+          curl -sSI --max-time 12 -H 'Origin: https://anthonywcurtis.github.io' https://tow.whfb.app/unit/night-goblin-oddnob | grep -iE '^(HTTP/|access-control-|content-type:|etag:|last-modified:|location:|cache-control:)' || true
+          echo "=== Public API probe HEAD ==="
+          curl -sSI --max-time 12 -H 'Origin: https://anthonywcurtis.github.io' https://tow.whfb.app/api/ | grep -iE '^(HTTP/|access-control-|content-type:|location:)' || true
