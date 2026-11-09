@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-summary",
+  "sourceUrl": "https://tow.whfb.app/sitemap/rules",
+  "checkedAt": "2026-11-09T21:11:21.663Z",
+  "verificationStatus": "source-indexed",
+  "sections": 32,
+  "entries": 1833,
+  "ambiguousNames": 1,
+  "categories": {
+    "battle-march": 45,
+    "battlefield-terrain": 37,
+    "campaign-battles": 12,
+    "characters": 46,
+    "command-groups": 25,
+    "forming-units": 6,
+    "general-principles": 17,
+    "magic": 60,
+    "magic-items": 71,
+    "matched-play": 71,
+    "model-and-unit-facing": 2,
+    "model-profiles": 27,
+    "movement-in-detail": 60,
+    "narrative-battles": 37,
+    "overview-of-the-game": 6,
+    "removing-casualties": 5,
+    "special-rules": 652,
+    "the-combat-phase": 86,
+    "the-lores-of-magic": 31,
+    "the-movement-phase": 19,
+    "the-psychology-of-war": 7,
+    "the-shooting-phase": 41,
+    "the-strategy-phase": 8,
+    "the-turn-sequence": 5,
+    "troop-types-at-a-glance": 3,
+    "troop-types-in-detail": 40,
+    "unusual-formations": 25,
+    "war-machines": 18,
+    "warhammer-armies": 79,
+    "warhammer-battles": 27,
+    "weapons-of-war": 265
+  },
+  "sampleEntries": [
+    {
+      "name": "Armour Bane (X)",
+      "url": "https://tow.whfb.app/special-rules/armour-bane",
+      "categoryPath": "special-rules"
+    },
+    {
+      "name": "Drilled",
+      "url": "https://tow.whfb.app/special-rules/drilled",
+      "categoryPath": "special-rules"
+    },
+    {
+      "name": "Naval Discipline",
+      "url": "https://tow.whfb.app/special-rules/naval-discipline",
+      "categoryPath": "special-rules"
+    },
+    {
+      "name": "Regeneration (X+)",
+      "url": "https://tow.whfb.app/special-rules/regeneration",
+      "categoryPath": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "url": "https://tow.whfb.app/special-rules/strike-first",
+      "categoryPath": "special-rules"
+    }
+  ]
+}
