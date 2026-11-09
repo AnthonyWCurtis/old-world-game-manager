@@ -276,13 +276,9 @@ export function extractSemanticLabels(element,prefix=''){
  if(!element)return null;
  const anchors=[...element.querySelectorAll('a')].map(a=>(a.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean);
  if(anchors.length>1)return anchors.join(' / ');
- return (element.textContent||'').replace(/\s+/g,' ').replace(new RegExp('^'+prefix.replace(/[.*+?^${}()|[\]\\]/g,'\\  const costText=main?.querySelector('.unit-profile__details--points')?.textContent||'';
-  const baseCostMatch=costText.match(/\bCost:\s*(\d[\d,]*)\s*points?\b/i);
-  const category=main?.querySelector('.unit-profile__details--unit-category')?.textContent?.replace(/^Unit Category:\s*/i,'').trim()||null;
-  const troopType=main?.querySelector('.unit-profile__details--troop-type')?.textContent?.replace(/^Troop Type:\s*/i,'').trim()||null;
-  return {title,url,models,baseCost:baseCostMatch?Number(baseCostMatch[1].replace(/,/g,'')):null,
-    category,troopType};')+'\\s*','i'),'').trim()||null;
-}
+ let label=(element.textContent||'').replace(/\s+/g,' ').trim();
+ if(prefix && label.toLowerCase().startsWith(prefix.toLowerCase()))label=label.slice(prefix.length).trim();
+ return label||null;
 }
 export async function getCachedUnitProfiles(army){
   const urls=[...new Set((army.units||[]).map(u=>u.reference?.url).filter(Boolean))];
