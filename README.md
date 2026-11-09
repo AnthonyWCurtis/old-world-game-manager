@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.3.1** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.3.2** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -28,7 +28,7 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder.
 
-The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.2 adds verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
 ## Source references and caching
 
@@ -66,18 +66,18 @@ Parent unit reference: https://tow.whfb.app/unit/silver-helms
 
 The debug report does not include the complete original list or player identity. Repeated unmatched selections may appear separately so each source occurrence can be diagnosed.
 
-## Anonymous unmatched reporting to GitHub — setup required
+## Anonymous unmatched reporting to GitHub — live
 
-A separate **Report unmatched** workflow is being added so **players do not need GitHub accounts**. The prepared design is:
+The **Report unmatched** workflow is live and was verified with a real submission on 9 November 2026. **Players do not need GitHub accounts.** The process is:
 
 1. A player imports a roster and selects **Report unmatched**.
 2. They review the fields to be published, explicitly agree, complete anti-spam verification and submit.
 3. A private Cloudflare Worker validates the request and writes a short text report into [`reports/unmatched/`](reports/unmatched/).
 4. A GitHub Action rebuilds [`ALL_UNMATCHED.txt`](reports/unmatched/ALL_UNMATCHED.txt), grouping repeated missing names so the project owner can copy them for review.
 
-**Important: This feature is NOT active yet.** The public [reporting configuration](docs/report-config.json) currently has `enabled: false`. The repository owner must deploy the Worker, configure a restricted GitHub write token and Cloudflare Turnstile, and enable the endpoint. Until then, **Report unmatched** is unavailable; **Copy unmatched debug** remains usable. Reports will be publicly visible in this repository once submission is enabled.
+**Live status:** [reporting is enabled](docs/report-config.json) through a Cloudflare Worker with private repository credentials and Turnstile verification. The [first saved report](reports/unmatched/report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt) and [successful aggregation](reports/unmatched/ALL_UNMATCHED.txt) confirm delivery. Archived reports remain public as history; the consolidated file now excludes entries linked by reviewed catalogue references while counting historical resolutions.
 
-See **[ANONYMOUS_REPORTING_SETUP.md](ANONYMOUS_REPORTING_SETUP.md)** for the one-time setup. **Never** put GitHub tokens or Turnstile secret keys in files under `docs/` or in client-side JavaScript.
+See **[ANONYMOUS_REPORTING_SETUP.md](ANONYMOUS_REPORTING_SETUP.md)** for owner-only maintenance and recovery instructions. **Never** put GitHub tokens or Turnstile secret keys in files under `docs/` or in client-side JavaScript.
 
 ## Privacy and local storage
 
@@ -100,7 +100,7 @@ Test/example rosters stored in the repository use anonymised or placeholder play
 | [`docs/unmatched-debug.js`](docs/unmatched-debug.js) | Unmatched-only debug report generation |
 | [`docs/report-ui.js`](docs/report-ui.js) and [`docs/report-submission.js`](docs/report-submission.js) | Optional public reporting UI and submission client |
 | [`worker/`](worker/) | Optional server-side anonymous report receiver; private secrets belong in its deployment environment |
-| [`reports/unmatched/`](reports/unmatched/) | Public submitted text files and consolidated missing-reference list, once reporting is enabled |
+| [`reports/unmatched/`](reports/unmatched/) | Public submitted reports retained as history, plus the consolidated current unresolved-review list |
 | [`scripts/`](scripts/) | Source metadata generation and report aggregation |
 | [`tests/`](tests/) | Automated parser, matching, status, reporting and regression tests |
 | [`docs/examples/`](docs/examples/) | Test army-list fixtures across exporters and layouts |
