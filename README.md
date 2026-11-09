@@ -50,6 +50,14 @@ This global index captures **names, page types and actual source URLs only**. It
 
 The browser importer remains v0.3.3 and is not yet connected to the new static reference collections. Subsequent matching work must use source evidence for parent-specific upgrades and preserve unmatched status when the global index lacks a unique match.
 
+## Magic Items & Abilities sitemap collection (v0.4 groundwork)
+
+The public [Magic Items (and Abilities) sitemap](https://tow.whfb.app/sitemap/magic-items) is indexed separately in [magic-items-index.json](docs/reference-records/magic-items-index.json), with [counts and sample references](docs/reference-records/magic-items-summary.json). Its first source extraction on 9 November 2026 found **839 unique pages**: **71 type/guidance links** and **768 item/ability links**. The [collection registry](docs/reference-records/collections.json) now lists four collections: Rules, Magic, Armies and Magic Items & Abilities.
+
+This is an index of **published names, source URLs and sections**, including faction item categories, runes, gifts, honours and abilities. It does not verify item point costs, item rules, upgrade permissions, army eligibility or legal configurations. Item names carrying a source asterisk are preserved and can be matched without that trailing marker. A limited GitHub Actions workflow refreshes the index weekly or on demand, checking for partial or unsafe source data.
+
+The v0.3.3 browser importer is unchanged; it does not yet use the newly generated static collections for its reference statuses.
+
 ## Source references and caching
 
 The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.
