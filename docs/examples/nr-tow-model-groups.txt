@@ -1,0 +1,18 @@
+Country - Example Player (Roster)
+160 - Bray-Shaman, Wizard Level 2, Daemonology, Spelleater Axe, Lore Familiar
+100 - Bray-Shaman, Wizard Level 1, Daemonology, Ruby Ring of Ruin
+65 - Bray-Shaman, Wizard Level 1, Daemonology
+210 - Great Bray-Shaman, Wizard Level 4, Elementalism, Tome Of Spellcraft
+335 - Great Bray-Shaman, Gnarled Hide, Slug-skin, General, Wizard Level 3, Elementalism, The Black Maul, Full Plate Chaos Armour
+123 - Wargor, Great Weapon, Heavy Armour, Battle Standard Bearer, Vitriolic Totem, Charmed Shield
+350 - 44 Gor Herds, Additional Hand Weapon, True-horn, Great Weapon, Standard Bearer, Magic Standard, Monster Hunter's Tapestry, Musician
+128 - 13 Gor Herds, Additional Hand Weapon, True-horn, Great Weapon, Scourge of the Burdened, Musician
+42 - 5 Gor Herds, Additional Hand Weapon, Roaming Warbands, True-horn, Great Weapon
+42 - 5 Gor Herds, Additional Hand Weapon, Roaming Warbands, True-horn, Great Weapon
+175 - 21 Primal Warherds, Ambushers 
+  • 11x Gor, Additional Hand Weapon 
+  • 10x Ungor, Thrusting Spear, Foe-render, Great Weapon, Standard Bearer, Musician
+60 - 12 Ungor Herds, Shortbow
+55 - 5 Harpies
+55 - 5 Harpies
+100 - Herdstone
