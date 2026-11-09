@@ -180,6 +180,44 @@ export function applyIndexedReferences(army, entries){
   army.stats.unmatchedSelections=selections.length-army.stats.matchedSelections;
   return {added};
 }
+/**
+ * Extract only explicitly structured unit details; never infer army-specific upgrades
+ * or treat source base cost as the cost of the imported unit configuration.
+ */
+export function parseUnitProfile(html,url) {
+  if(!new URL(url).pathname.startsWith('/unit/'))return null;
+  if(typeof DOMParser==='undefined')throw Error('HTML parser unavailable');
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const main=doc.querySelector('main');
+  const title=(main?.querySelector('h1')?.textContent||'').replace(/\s+/g,' ').trim();
+  if(!title)return null;
+  const tables=[...doc.querySelectorAll('table.unit-profile-table')];
+  const models=[];
+  const labels=['M','WS','BS','S','T','W','I','A','Ld'];
+  for(const table of tables){
+    const heads=[...table.querySelectorAll('thead th')].map(x=>(x.textContent||'').trim());
+    if(!labels.every(label=>heads.includes(label)))continue;
+    for(const tr of table.querySelectorAll('tbody tr')){
+      const cells=[...tr.querySelectorAll('td')].map(x=>(x.textContent||'').replace(/\s+/g,' ').trim());
+      if(cells.length!==heads.length)continue;
+      const characteristics={};
+      for(const key of labels)characteristics[key]=cells[heads.indexOf(key)];
+      const name=cells[0];
+      if(name&&Object.values(characteristics).some(Boolean))models.push({name,characteristics});
+    }
+  }
+  const costText=main?.querySelector('.unit-profile__details--points')?.textContent||'';
+  const baseCostMatch=costText.match(/\bCost:\s*(\d[\d,]*)\s*points?\b/i);
+  const category=main?.querySelector('.unit-profile__details--unit-category')?.textContent?.replace(/^Unit Category:\s*/i,'').trim()||null;
+  const troopType=main?.querySelector('.unit-profile__details--troop-type')?.textContent?.replace(/^Troop Type:\s*/i,'').trim()||null;
+  return {title,url,models,baseCost:baseCostMatch?Number(baseCostMatch[1].replace(/,/g,'')):null,
+    category,troopType};
+}
+export async function getCachedUnitProfiles(army){
+  const urls=[...new Set((army.units||[]).map(u=>u.reference?.url).filter(Boolean))];
+  const pairs=await Promise.all(urls.map(async url=>[url,(await cacheGet('page:'+url))?.profile||null]));
+  return Object.fromEntries(pairs.filter(([url,profile])=>!!profile));
+}
 async function pageFingerprint(html){
   const doc=new DOMParser().parseFromString(html,'text/html');
   const base=doc.querySelector('main')||doc.body;
@@ -210,8 +248,10 @@ export async function checkPageChanges(army,{force=false,maxPages=12}={}){
       if(!hash)throw Error('Could not derive a stable page fingerprint');
       const isChanged=!!previous?.fingerprint&&previous.fingerprint!==hash;
       if(isChanged)changed.push(url);
+      const profile=new URL(url).pathname.startsWith('/unit/')?parseUnitProfile(html,url):null;
       await cachePut({key:'page:'+url,url,fingerprint:hash,checkedAt:Date.now(),
-        lastChanged:isChanged?Date.now():previous?.lastChanged||null});
+        lastChanged:isChanged?Date.now():previous?.lastChanged||null,
+        profile:profile||previous?.profile||null});
       checked++;
     }catch(error){errors.push(new URL(url).pathname+': '+(error?.message||error));}
   }
