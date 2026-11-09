@@ -123,7 +123,7 @@ test('Collection registry makes High Elves and rules separately discoverable',()
  const collections=JSON.parse(readFileSync(new URL('collections.json',root),'utf8'));
  assert.equal(collections.schemaVersion,1);
  assert.equal(collections.sourceOrigin,SOURCE_ORIGIN);
- assert.deepEqual(collections.collections.map(e=>e.id),['high-elf-realms-units','rules-sitemap']);
+ assert.deepEqual(collections.collections.map(e=>e.id),['high-elf-realms-units','rules-sitemap','magic-sitemap']);
  for(const item of collections.collections){
   const other=JSON.parse(readFileSync(new URL(item.path,root),'utf8'));
   assert.equal(other.sourceOrigin||other.source.origin,SOURCE_ORIGIN);

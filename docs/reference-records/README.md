@@ -10,6 +10,7 @@ The [collection registry](collections.json) lists the independent reference data
 
 - [High Elf Realms units](manifest.json): 45 unit URLs with individual JSON records (2 manually reviewed, 43 source-extracted).
 - [Rules/reference sitemap](rules-index.json): **1,833 unique reference-page URLs** from [tow.whfb.app/sitemap/rules](https://tow.whfb.app/sitemap/rules), spanning 32 sitemap section links and 31 URL categories on 9 November 2026. See the compact [rules summary](rules-summary.json) for current counts.
+- [Magic lore and spell sitemap](magic-index.json): **170 unique source URLs** from [tow.whfb.app/sitemap/magic](https://tow.whfb.app/sitemap/magic): 29 lore pages, 139 spell pages and 2 magic guidance/reference pages. [Magic summary](magic-summary.json) records counts, source time and selected examples.
 - Some sitemap entries are gameplay rules, others are equipment, magic, army lists, or other indexed topics. Do not classify everything as a universal special rule.
 
 ## Rules sitemap indexing
@@ -19,6 +20,14 @@ The [collection registry](collections.json) lists the independent reference data
 Each entry carries `verificationStatus: source-indexed`: its URL and label came directly from the sitemap, but **the text and interpretation of the target page have not been reviewed**. The collection records ambiguous labels with multiple possible pages; they must not be auto-assigned without context. No rule text is mirrored, invented or inferred by the index builder.
 
 This collection is independent of the 45 unit records. The browser importer in v0.3.3 has not yet been integrated with this static index; building the data source is the first step toward reliable automatic matching.
+
+## Magic sitemap indexing
+
+`scripts/build-magic-reference-index.mjs` retrieves the public magic sitemap in a single bounded request. It separates the **Magic Lore Index** from the **Spell Index**, identifying 29 lore pages, two non-lore guidance pages and 139 spell pages in the 9 November 2026 snapshot. All titles and URLs originate from the sitemap; entries have `verificationStatus: source-indexed`.
+
+The two guidance pages, **Spell Categories (Lores)** and **Spells & Spell Generation**, are identified separately from actual magic lores. A magic link is *not evidence* that a particular wizard can select a spell, that a spell has the effect described in an external army list, or that spell generation is legal.
+
+A bounded GitHub Action refreshes the index weekly or on demand, preserves the previous snapshot if new data appears incomplete, and records any ambiguous names rather than making an unsafe guess. The static collection is discoverable through [collections.json](collections.json) but is **not yet wired into the browser's live matching engine**. Pages shared by this sitemap and the rules sitemap should eventually be deduplicated by exact URL when their indices are combined.
 
 ## Current High Elf Realms records
 - `high-elf-realms/ishaya-vess.json`: Ishaya Vess, fixed profile, equipment, linked magic weapon and seven special rules.

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-summary",
+  "sourceUrl": "https://tow.whfb.app/sitemap/magic",
+  "checkedAt": "2026-11-09T21:20:08.536Z",
+  "verificationStatus": "source-indexed",
+  "loreSection": 31,
+  "spellSection": 139,
+  "lores": 29,
+  "spells": 139,
+  "magicReferences": 2,
+  "entries": 170,
+  "ambiguousNames": 0,
+  "sections": [
+    {
+      "name": "Magic Lore Index",
+      "count": 31
+    },
+    {
+      "name": "Spell Index",
+      "count": 139
+    }
+  ],
+  "sampleEntries": [
+    {
+      "name": "Elementalism",
+      "kind": "lore",
+      "url": "https://tow.whfb.app/the-lores-of-magic/elementalism"
+    },
+    {
+      "name": "High Magic",
+      "kind": "lore",
+      "url": "https://tow.whfb.app/the-lores-of-magic/high-magic"
+    },
+    {
+      "name": "Illusion",
+      "kind": "lore",
+      "url": "https://tow.whfb.app/the-lores-of-magic/illusion"
+    },
+    {
+      "name": "Drain Magic",
+      "kind": "spell",
+      "url": "https://tow.whfb.app/spell/drain-magic"
+    },
+    {
+      "name": "Earthen Ramparts",
+      "kind": "spell",
+      "url": "https://tow.whfb.app/spell/earthen-ramparts"
+    },
+    {
+      "name": "Glittering Robe",
+      "kind": "spell",
+      "url": "https://tow.whfb.app/spell/glittering-robe"
+    },
+    {
+      "name": "Plague of Rust",
+      "kind": "spell",
+      "url": "https://tow.whfb.app/spell/plague-of-rust"
+    },
+    {
+      "name": "Travel Mystical Pathway",
+      "kind": "spell",
+      "url": "https://tow.whfb.app/spell/travel-mystical-pathway"
+    }
+  ]
+}
