@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "recordType": "unit",
+  "id": "unit:ishaya-vess",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/unit/ishaya-vess",
+    "verificationStatus": "verified-on-tow",
+    "verifiedOn": "2026-11-09",
+    "sourceVersion": null,
+    "method": "manual comparison of unit page and directly linked reference pages"
+  },
+  "name": "Ishaya Vess",
+  "faction": "High Elf Realms",
+  "category": "Named Character",
+  "troopTypes": [
+    "Named Character",
+    "Regular Infantry"
+  ],
+  "characteristics": {
+    "M": 5,
+    "WS": 7,
+    "BS": 7,
+    "S": 4,
+    "T": 3,
+    "W": 3,
+    "I": 7,
+    "A": 3,
+    "Ld": 9
+  },
+  "baseSizeMm": {
+    "width": 25,
+    "depth": 25
+  },
+  "unitSize": 1,
+  "points": 170,
+  "configuration": {
+    "fixed": true,
+    "availableOptions": [],
+    "availabilitySummary": "May be taken in a High Elf Realms army composition list that offers Lothern Sea Guard. The unit page requires the presented configuration.",
+    "sourceUrl": "https://tow.whfb.app/unit/ishaya-vess"
+  },
+  "equipment": [
+    {
+      "name": "Hand weapon",
+      "kind": "combat-weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "profile": {
+        "range": "Combat",
+        "strength": "S",
+        "armourPiercing": 0
+      }
+    },
+    {
+      "name": "Heavy armour",
+      "kind": "armour",
+      "url": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "profile": {
+        "armourValue": "5+"
+      }
+    },
+    {
+      "name": "Shield",
+      "kind": "armour",
+      "url": "https://tow.whfb.app/weapons-of-war/shield",
+      "profile": {
+        "armourValueImprovement": 1
+      }
+    },
+    {
+      "name": "Mathlann's Ire",
+      "kind": "magic-weapon",
+      "url": "https://tow.whfb.app/magic-item/mathlanns-ire",
+      "profile": {
+        "range": "Combat",
+        "strength": "S+1",
+        "armourPiercing": -2
+      },
+      "summary": "In combat, one successful enemy To Hit roll against the wielder must be re-rolled."
+    },
+    {
+      "name": "Warbow",
+      "kind": "missile-weapon",
+      "url": "https://tow.whfb.app/weapons-of-war/warbow",
+      "profile": {
+        "rangeInches": 24,
+        "strength": "S",
+        "armourPiercing": 0
+      }
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Commanding Voice",
+      "url": "https://tow.whfb.app/special-rules/commanding-voice",
+      "summary": "Command range 12 inches, or 15 inches when serving as General."
+    },
+    {
+      "name": "Ithilmar Weapons",
+      "url": "https://tow.whfb.app/special-rules/ithilmar-weapons",
+      "summary": "Re-roll natural To Hit rolls of 1 when fighting with a single non-magical hand weapon; does not apply to the magic weapon."
+    },
+    {
+      "name": "Naval Discipline",
+      "url": "https://tow.whfb.app/special-rules/naval-discipline",
+      "summary": "A qualifying Lothern Sea Guard unit can Stand & Shoot and then redress ranks when charged, subject to listed restrictions."
+    },
+    {
+      "name": "Rallying Cry",
+      "url": "https://tow.whfb.app/special-rules/rallying-cry",
+      "summary": "A character not engaged in combat may nominate a fleeing friendly unit within Command range for an additional Rally test in the Command sub-phase."
+    },
+    {
+      "name": "Strike First",
+      "url": "https://tow.whfb.app/special-rules/strike-first",
+      "summary": "Sets Initiative to 10 during combat before other modifiers; Strike Last cancels it."
+    },
+    {
+      "name": "Precision Strikes",
+      "url": "https://tow.whfb.app/special-rules/precision-strikes",
+      "summary": "Improves Armour Piercing by 1 for weapons of the Lothern Sea Guard unit that Ishaya joins."
+    },
+    {
+      "name": "Valour of Ages",
+      "url": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "summary": "Allows re-rolls of failed Panic tests caused by heavy casualties or a friendly unit fleeing through."
+    }
+  ],
+  "interpretationChecks": [
+    {
+      "topic": "Heavy armour and shield",
+      "summary": "Combined 4+ armour value before other modifiers.",
+      "sourceUrls": [
+        "https://tow.whfb.app/weapons-of-war/heavy-armour",
+        "https://tow.whfb.app/weapons-of-war/shield"
+      ],
+      "status": "derived"
+    },
+    {
+      "topic": "Mathlann's Ire",
+      "summary": "Its Strength is 5 for Ishaya's base Strength 4; Ithilmar Weapons does not apply to it.",
+      "sourceUrls": [
+        "https://tow.whfb.app/unit/ishaya-vess",
+        "https://tow.whfb.app/magic-item/mathlanns-ire",
+        "https://tow.whfb.app/special-rules/ithilmar-weapons"
+      ],
+      "status": "derived"
+    },
+    {
+      "topic": "Precision Strikes",
+      "summary": "The bonus applies to the joined Lothern Sea Guard unit, not automatically to Ishaya herself.",
+      "sourceUrls": [
+        "https://tow.whfb.app/special-rules/precision-strikes"
+      ],
+      "status": "source-derived"
+    }
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false
+}
