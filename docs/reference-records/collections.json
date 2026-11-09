@@ -3,14 +3,6 @@
   "sourceOrigin": "https://tow.whfb.app",
   "collections": [
     {
-      "id": "high-elf-realms-units",
-      "name": "High Elf Realms units",
-      "type": "unit-reference-collection",
-      "path": "manifest.json",
-      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
-      "description": "45 High Elf unit pages; two manually reviewed detail records and 43 source-extracted profiles"
-    },
-    {
       "id": "rules-sitemap",
       "name": "Rules and reference sitemap",
       "type": "source-reference-index",
