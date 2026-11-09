@@ -67,7 +67,7 @@ function render(){
   if(!uList.length)continue;
   unitHolder.append(make('h3','section-heading',`${sec.name} · ${all.length} entries${sec.points!=null?' · '+points(sec.points):''}`));
   for(const u of uList){
-   const d=make('details','unit');const summary=make('summary');const left=make('div','unit-top');left.append(badge(u.matchStatus==='matched'));left.append(make('span','',`${u.quantity.value??'?'}× ${u.name}`));
+   const d=make('details','unit');const summary=make('summary');const left=make('div','unit-top');left.append(badge(u.matchStatus==='matched'));left.append(make('span','',u.quantity.value==null?u.name:`${u.quantity.value}× ${u.name}`));
    const right=make('div','unit-right',points(u.reportedPoints.value));summary.append(left,right);d.append(summary);
    const body=make('div','unit-body');body.append(make('p','muted small',`Source line ${u.line} · quantity ${u.quantity.origin} · ${u.matchStatus} reference`));
    if(u.reference){const a=make('a','small','Open unit reference ↗');a.href=u.reference.url;a.target='_blank';a.rel='noopener noreferrer';body.append(a);}
