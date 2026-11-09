@@ -81,12 +81,15 @@ export function parsePageProfile(html){
  return rows;
 }
 function valueBetween(text,label,next){
- const start=text.indexOf(label);
- if(start<0)return null;
- const remainder=text.slice(start+label.length);
- const end=next.map(x=>remainder.indexOf(x)).filter(n=>n>=0);
- const part=remainder.slice(0,end.length?Math.min(...end):75).trim();
- return part.slice(0,90)||null;
+  // Handle headings rendered as "Troop Type :" as well as "Troop Type:".
+  const pattern=value=>new RegExp(value.replace(/:$/,'').replace(/\s+/g,'\\s+')+'\\s*:\\s*','i');
+  const match=pattern(label).exec(text);
+  if(!match)return null;
+  const remainder=text.slice(match.index+match[0].length);
+  const ends=next.map(x=>pattern(x).exec(remainder)?.index)
+    .filter(n=>Number.isInteger(n)&&n>=0);
+  const part=remainder.slice(0,ends.length?Math.min(...ends):75).trim();
+  return part.slice(0,90)||null;
 }
 export function parseUnitPage(html){
  const visible=clean(noScripts(html));
@@ -104,7 +107,7 @@ export function parseUnitPage(html){
   unitCategory:valueBetween(visible,'Unit Category:',['Troop Type:','Base Size:']),
   troopTypeDescription:valueBetween(visible,'Troop Type:',['Base Size:','Unit Size:']),
   baseSizeDescription:valueBetween(visible,'Base Size:',['Unit Size:']),
-  unitSizeDescription:valueBetween(visible,'Unit Size:',['Cost:','May be','May take']),
+  unitSizeDescription:valueBetween(visible,'Unit Size:',['Cost:','May be','May take'])?.match(/^(\d[\d,]*\s*-\s*\d[\d,]*|\d[\d,]*\+?)/)?.[1]||null,
   // Merely mentioned by page: no claim that a linked option is purchased,
   // a rule is innate, or another character is entitled to the same upgrade.
   pageLinkedReferences:unique
