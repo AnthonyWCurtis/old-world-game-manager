@@ -55,7 +55,7 @@ test('Only exact and parent-scoped references are linked', () => {
 
 test('Audited references have concrete source URLs and scoped proof when needed', () => {
   const additions = CATALOGUE.filter(r => r.verifiedOn === '2026-11-09');
-  assert.equal(additions.length, 13);
+  assert.equal(additions.length, 29);
   for (const r of additions) {
     assert.equal(r.sourceStatus, 'verified-on-tow');
     assert.match(r.url, /^https:\/\/tow\.whfb\.app\//);
