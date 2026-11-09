@@ -2,7 +2,7 @@ import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.
 import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
 import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0.2.7';
 import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatchState } from './match-status.js?v=0.2.8';
-import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.6';
+import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.2.9';
 const $=id=>document.getElementById(id);
 let current=null;
 let sourceProfiles={};
@@ -211,11 +211,19 @@ async function refreshCurrentSource(force=false){
  sourceStatus('Reading previously cached references…');
  const active=()=>current===army&&job===sourceJob;
  try{
+  // Public pages without browser CORS are read from the last GitHub Actions
+  // source snapshot. Matching remains scoped to the unit's actual source URL.
+  const published=await getPublishedUnitProfiles(army).catch(()=>({}));
+  if(!active())return;
+  sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
+  if(!active())return;
+  applyProfileReferences(army,sourceProfiles);
+  render();
   const cached=await loadCachedIndexes();
   if(!active())return;
   if(cached.entries.length){
    applyIndexedReferences(army,cached.entries);
-   sourceProfiles=await getCachedUnitProfiles(army);
+   sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
    if(!active())return;
    applyProfileReferences(army,sourceProfiles);
    render();
@@ -227,7 +235,7 @@ async function refreshCurrentSource(force=false){
   if(!active())return;
   if(latest.entries.length){
    applyIndexedReferences(army,latest.entries);
-   sourceProfiles=await getCachedUnitProfiles(army);
+   sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
    if(!active())return;
    applyProfileReferences(army,sourceProfiles);
    render();
@@ -244,7 +252,7 @@ async function refreshCurrentSource(force=false){
   }
   const pages=await checkPageChanges(army,{force,maxPages:12});
   if(!active())return;
-  sourceProfiles=await getCachedUnitProfiles(army);
+  sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
   if(!active())return;
   applyProfileReferences(army,sourceProfiles);
   render();
@@ -286,7 +294,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.2.8'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.2.9'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -308,7 +316,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.2.8'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.2.9'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
