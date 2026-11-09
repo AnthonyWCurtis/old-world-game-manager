@@ -10,6 +10,15 @@
       "sourceUrl": "https://tow.whfb.app/unit/ishaya-vess",
       "verificationStatus": "verified-on-tow",
       "verifiedOn": "2026-11-09"
+    },
+    {
+      "id": "unit:korhil-lionmane",
+      "name": "Korhil Lionmane",
+      "faction": "High Elf Realms",
+      "path": "high-elf-realms/korhil-lionmane.json",
+      "sourceUrl": "https://tow.whfb.app/unit/korhil-lionmane",
+      "verificationStatus": "verified-on-tow",
+      "verifiedOn": "2026-11-09"
     }
   ]
 }
