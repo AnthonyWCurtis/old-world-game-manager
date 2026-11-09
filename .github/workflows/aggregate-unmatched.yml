@@ -1,0 +1,38 @@
+name: Consolidate anonymous unmatched reports
+on:
+  push:
+    paths:
+      - 'reports/unmatched/report-*.txt'
+      - 'scripts/aggregate-unmatched.mjs'
+      - '.github/workflows/aggregate-unmatched.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: unmatched-report-aggregate
+  cancel-in-progress: false
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild the consolidated report
+        run: node scripts/aggregate-unmatched.mjs
+      - name: Save ALL_UNMATCHED.txt to main
+        run: |
+          git config user.name "old-world-report-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add reports/unmatched/ALL_UNMATCHED.txt
+          if git diff --cached --quiet; then
+            echo "No consolidated changes."
+          else
+            git commit -m "Update consolidated unmatched reference report"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
