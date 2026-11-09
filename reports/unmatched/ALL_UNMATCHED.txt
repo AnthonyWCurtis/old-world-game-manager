@@ -1,8 +1,62 @@
 Warhammer: The Old World — ALL UNMATCHED REFERENCES
 Collected from anonymous reports submitted by players.
 These are unresolved source references, not invalid army selections.
-Distinct missing references: 0
-Unmatched occurrences: 0
-Report files: 0
+Distinct missing references: 8
+Unmatched occurrences: 9
+Report files: 1
 
-No unmatched reports yet.
+'Bale Taurus (SELECTION)
+  Parent unit: Sorcerer-Prophet
+  Kind: option
+  Parent source: https://tow.whfb.app/unit/sorcerer-prophet
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Full Command (SELECTION)
+  Parent unit: Infernal Guard
+  Kind: command
+  Parent source: https://tow.whfb.app/unit/infernal-guard
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Level 3 Wizard (SELECTION)
+  Parent unit: Sorcerer-Prophet
+  Kind: wizard-level
+  Parent source: https://tow.whfb.app/unit/sorcerer-prophet
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Musician (SELECTION)
+  Parent unit: Hobgoblin Cutthroats
+  Kind: command
+  Parent source: https://tow.whfb.app/unit/hobgoblin-cutthroats
+  Occurrences: 2
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Musician (SELECTION)
+  Parent unit: Hobgoblin Wolf Riders
+  Kind: command
+  Parent source: https://tow.whfb.app/unit/hobgoblin-wolf-riders
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Ranged weapon (SELECTION)
+  Parent unit: Hobgoblin Khan
+  Kind: option
+  Parent source: https://tow.whfb.app/unit/hobgoblin-khan
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Standard bearer (SELECTION)
+  Parent unit: Infernal Guard
+  Kind: command
+  Parent source: https://tow.whfb.app/unit/infernal-guard
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
+
+Wizard (SELECTION)
+  Parent unit: Sorcerer-Prophet
+  Kind: wizard-level
+  Parent source: https://tow.whfb.app/unit/sorcerer-prophet
+  Occurrences: 1
+  Report files: report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt
