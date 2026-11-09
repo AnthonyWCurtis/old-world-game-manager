@@ -1,0 +1,1735 @@
+{
+  "schemaVersion": 1,
+  "collectionType": "source-reference-index",
+  "source": {
+    "origin": "https://tow.whfb.app",
+    "url": "https://tow.whfb.app/sitemap/magic",
+    "checkedAt": "2026-11-09T21:20:08.536Z",
+    "verificationStatus": "source-indexed",
+    "sourceVersion": null,
+    "method": "single bounded public HTML sitemap fetch; titles and URLs only"
+  },
+  "scope": "Magic lore pages, magic guidance pages and spell pages listed by the source sitemap",
+  "counts": {
+    "loreSection": 31,
+    "spellSection": 139,
+    "lores": 29,
+    "spells": 139,
+    "magicReferences": 2,
+    "entries": 170,
+    "ambiguousNames": 0
+  },
+  "sections": [
+    {
+      "name": "Magic Lore Index",
+      "count": 31
+    },
+    {
+      "name": "Spell Index",
+      "count": 139
+    }
+  ],
+  "entries": [
+    {
+      "id": "magic-ref:/the-lores-of-magic/battle-magic",
+      "name": "Battle Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/battle-magic",
+      "path": "/the-lores-of-magic/battle-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/daemonology",
+      "name": "Daemonology",
+      "url": "https://tow.whfb.app/the-lores-of-magic/daemonology",
+      "path": "/the-lores-of-magic/daemonology",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/dark-magic",
+      "name": "Dark Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/dark-magic",
+      "path": "/the-lores-of-magic/dark-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/elementalism",
+      "name": "Elementalism",
+      "url": "https://tow.whfb.app/the-lores-of-magic/elementalism",
+      "path": "/the-lores-of-magic/elementalism",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/high-magic",
+      "name": "High Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/high-magic",
+      "path": "/the-lores-of-magic/high-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/illusion",
+      "name": "Illusion",
+      "url": "https://tow.whfb.app/the-lores-of-magic/illusion",
+      "path": "/the-lores-of-magic/illusion",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-athel-loren",
+      "name": "Lore of Athel Loren",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-athel-loren",
+      "path": "/the-lores-of-magic/lore-of-athel-loren",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-beasts",
+      "name": "Lore of Beasts",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-beasts",
+      "path": "/the-lores-of-magic/lore-of-beasts",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-chaos",
+      "name": "Lore of Chaos",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-chaos",
+      "path": "/the-lores-of-magic/lore-of-chaos",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-daemons",
+      "name": "Lore of Daemons",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-daemons",
+      "path": "/the-lores-of-magic/lore-of-daemons",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-gork",
+      "name": "Lore of Gork",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-gork",
+      "path": "/the-lores-of-magic/lore-of-gork",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-hashut",
+      "name": "Lore of Hashut",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-hashut",
+      "path": "/the-lores-of-magic/lore-of-hashut",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-lustria",
+      "name": "Lore of Lustria",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-lustria",
+      "path": "/the-lores-of-magic/lore-of-lustria",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-mork",
+      "name": "Lore of Mork",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-mork",
+      "path": "/the-lores-of-magic/lore-of-mork",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-naggaroth",
+      "name": "Lore of Naggaroth",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-naggaroth",
+      "path": "/the-lores-of-magic/lore-of-naggaroth",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-nehekhara",
+      "name": "Lore of Nehekhara",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-nehekhara",
+      "path": "/the-lores-of-magic/lore-of-nehekhara",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-primal-magic",
+      "name": "Lore of Primal Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-primal-magic",
+      "path": "/the-lores-of-magic/lore-of-primal-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-saphery",
+      "name": "Lore of Saphery",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-saphery",
+      "path": "/the-lores-of-magic/lore-of-saphery",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-the-great-maw",
+      "name": "Lore of the Great Maw",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-the-great-maw",
+      "path": "/the-lores-of-magic/lore-of-the-great-maw",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-the-horned-rat",
+      "name": "Lore of the Horned Rat",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-the-horned-rat",
+      "path": "/the-lores-of-magic/lore-of-the-horned-rat",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-the-lady",
+      "name": "Lore of the Lady",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-the-lady",
+      "path": "/the-lores-of-magic/lore-of-the-lady",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands",
+      "name": "Lore of the Shadowlands",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-the-shadowlands",
+      "path": "/the-lores-of-magic/lore-of-the-shadowlands",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-the-wilds",
+      "name": "Lore of the Wilds",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-the-wilds",
+      "path": "/the-lores-of-magic/lore-of-the-wilds",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-troll-magic",
+      "name": "Lore of Troll Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-troll-magic",
+      "path": "/the-lores-of-magic/lore-of-troll-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-undeath",
+      "name": "Lore of Undeath",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-undeath",
+      "path": "/the-lores-of-magic/lore-of-undeath",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-yang",
+      "name": "Lore of Yang",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-yang",
+      "path": "/the-lores-of-magic/lore-of-yang",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/lore-of-yin",
+      "name": "Lore of Yin",
+      "url": "https://tow.whfb.app/the-lores-of-magic/lore-of-yin",
+      "path": "/the-lores-of-magic/lore-of-yin",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/necromancy",
+      "name": "Necromancy",
+      "url": "https://tow.whfb.app/the-lores-of-magic/necromancy",
+      "path": "/the-lores-of-magic/necromancy",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/spell-categories-lores",
+      "name": "Spell Categories (Lores)",
+      "url": "https://tow.whfb.app/the-lores-of-magic/spell-categories-lores",
+      "path": "/the-lores-of-magic/spell-categories-lores",
+      "kind": "magic-reference",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/spells-and-spell-generation",
+      "name": "Spells & Spell Generation",
+      "url": "https://tow.whfb.app/the-lores-of-magic/spells-and-spell-generation",
+      "path": "/the-lores-of-magic/spells-and-spell-generation",
+      "kind": "magic-reference",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/the-lores-of-magic/waaagh-magic",
+      "name": "Waaagh! Magic",
+      "url": "https://tow.whfb.app/the-lores-of-magic/waaagh-magic",
+      "path": "/the-lores-of-magic/waaagh-magic",
+      "kind": "lore",
+      "section": "Magic Lore Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/accursed-mirror",
+      "name": "Accursed Mirror",
+      "url": "https://tow.whfb.app/spell/accursed-mirror",
+      "path": "/spell/accursed-mirror",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/acidic-bile",
+      "name": "Acidic Bile",
+      "url": "https://tow.whfb.app/spell/acidic-bile",
+      "path": "/spell/acidic-bile",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/acquiescence",
+      "name": "Acquiescence",
+      "url": "https://tow.whfb.app/spell/acquiescence",
+      "path": "/spell/acquiescence",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/ancestral-warriors",
+      "name": "Ancestral Warriors",
+      "url": "https://tow.whfb.app/spell/ancestral-warriors",
+      "path": "/spell/ancestral-warriors",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/apotheosis",
+      "name": "Apotheosis",
+      "url": "https://tow.whfb.app/spell/apotheosis",
+      "path": "/spell/apotheosis",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/arcane-urgency",
+      "name": "Arcane Urgency",
+      "url": "https://tow.whfb.app/spell/arcane-urgency",
+      "path": "/spell/arcane-urgency",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/ariels-blessing",
+      "name": "Ariel's Blessing",
+      "url": "https://tow.whfb.app/spell/ariels-blessing",
+      "path": "/spell/ariels-blessing",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/bad-moon-rizin",
+      "name": "Bad Moon Rizin'",
+      "url": "https://tow.whfb.app/spell/bad-moon-rizin",
+      "path": "/spell/bad-moon-rizin",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/battle-lust",
+      "name": "Battle Lust",
+      "url": "https://tow.whfb.app/spell/battle-lust",
+      "path": "/spell/battle-lust",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/big-smartz",
+      "name": "Big Smartz",
+      "url": "https://tow.whfb.app/spell/big-smartz",
+      "path": "/spell/big-smartz",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/black-horror",
+      "name": "Black Horror",
+      "url": "https://tow.whfb.app/spell/black-horror",
+      "path": "/spell/black-horror",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/blackened-bolts",
+      "name": "Blackened Bolts",
+      "url": "https://tow.whfb.app/spell/blackened-bolts",
+      "path": "/spell/blackened-bolts",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/blue-fire",
+      "name": "Blue Fire",
+      "url": "https://tow.whfb.app/spell/blue-fire",
+      "path": "/spell/blue-fire",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/brain-bursta",
+      "name": "Brain Bursta",
+      "url": "https://tow.whfb.app/spell/brain-bursta",
+      "path": "/spell/brain-bursta",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/burning-gaze",
+      "name": "Burning Gaze",
+      "url": "https://tow.whfb.app/spell/burning-gaze",
+      "path": "/spell/burning-gaze",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/cacophonic-hymn",
+      "name": "Cacophonic Hymn",
+      "url": "https://tow.whfb.app/spell/cacophonic-hymn",
+      "path": "/spell/cacophonic-hymn",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/call-of-the-wild",
+      "name": "Call of the Wild",
+      "url": "https://tow.whfb.app/spell/call-of-the-wild",
+      "path": "/spell/call-of-the-wild",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/chains-of-darkness",
+      "name": "Chains of Darkness",
+      "url": "https://tow.whfb.app/spell/chains-of-darkness",
+      "path": "/spell/chains-of-darkness",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/cloud-of-corruption",
+      "name": "Cloud of Corruption",
+      "url": "https://tow.whfb.app/spell/cloud-of-corruption",
+      "path": "/spell/cloud-of-corruption",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/column-of-crystal",
+      "name": "Column of Crystal",
+      "url": "https://tow.whfb.app/spell/column-of-crystal",
+      "path": "/spell/column-of-crystal",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/confounding-convocation",
+      "name": "Confounding Convocation",
+      "url": "https://tow.whfb.app/spell/confounding-convocation",
+      "path": "/spell/confounding-convocation",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/constellation-of-the-dragon",
+      "name": "Constellation of the Dragon",
+      "url": "https://tow.whfb.app/spell/constellation-of-the-dragon",
+      "path": "/spell/constellation-of-the-dragon",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/corporeal-unmaking",
+      "name": "Corporeal Unmaking",
+      "url": "https://tow.whfb.app/spell/corporeal-unmaking",
+      "path": "/spell/corporeal-unmaking",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/courage-of-aenarion",
+      "name": "Courage of Aenarion",
+      "url": "https://tow.whfb.app/spell/courage-of-aenarion",
+      "path": "/spell/courage-of-aenarion",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/crawling-mists",
+      "name": "Crawling Mists",
+      "url": "https://tow.whfb.app/spell/crawling-mists",
+      "path": "/spell/crawling-mists",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/curse-of-arrow-attraction",
+      "name": "Curse of Arrow Attraction",
+      "url": "https://tow.whfb.app/spell/curse-of-arrow-attraction",
+      "path": "/spell/curse-of-arrow-attraction",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/curse-of-cowardly-flight",
+      "name": "Curse of Cowardly Flight",
+      "url": "https://tow.whfb.app/spell/curse-of-cowardly-flight",
+      "path": "/spell/curse-of-cowardly-flight",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/curse-of-hashut",
+      "name": "Curse of Hashut",
+      "url": "https://tow.whfb.app/spell/curse-of-hashut",
+      "path": "/spell/curse-of-hashut",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/curse-of-years",
+      "name": "Curse of Years",
+      "url": "https://tow.whfb.app/spell/curse-of-years",
+      "path": "/spell/curse-of-years",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/cursing-word",
+      "name": "Cursing Word",
+      "url": "https://tow.whfb.app/spell/cursing-word",
+      "path": "/spell/cursing-word",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/daemonic-familiars",
+      "name": "Daemonic Familiars",
+      "url": "https://tow.whfb.app/spell/daemonic-familiars",
+      "path": "/spell/daemonic-familiars",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/daemonic-vessel",
+      "name": "Daemonic Vessel",
+      "url": "https://tow.whfb.app/spell/daemonic-vessel",
+      "path": "/spell/daemonic-vessel",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/daemonic-vigour",
+      "name": "Daemonic Vigour",
+      "url": "https://tow.whfb.app/spell/daemonic-vigour",
+      "path": "/spell/daemonic-vigour",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/deathly-cabal",
+      "name": "Deathly Cabal",
+      "url": "https://tow.whfb.app/spell/deathly-cabal",
+      "path": "/spell/deathly-cabal",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/devolve",
+      "name": "Devolve",
+      "url": "https://tow.whfb.app/spell/devolve",
+      "path": "/spell/devolve",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/djafs-incantation-of-cursed-blades",
+      "name": "Djaf's Incantation of Cursed Blades",
+      "url": "https://tow.whfb.app/spell/djafs-incantation-of-cursed-blades",
+      "path": "/spell/djafs-incantation-of-cursed-blades",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/doombolt",
+      "name": "Doombolt",
+      "url": "https://tow.whfb.app/spell/doombolt",
+      "path": "/spell/doombolt",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/drain-magic",
+      "name": "Drain Magic",
+      "url": "https://tow.whfb.app/spell/drain-magic",
+      "path": "/spell/drain-magic",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/durthus-wrath",
+      "name": "Durthu's Wrath",
+      "url": "https://tow.whfb.app/spell/durthus-wrath",
+      "path": "/spell/durthus-wrath",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/the-dwellers-below",
+      "name": "The Dwellers Below",
+      "url": "https://tow.whfb.app/spell/the-dwellers-below",
+      "path": "/spell/the-dwellers-below",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/earthen-ramparts",
+      "name": "Earthen Ramparts",
+      "url": "https://tow.whfb.app/spell/earthen-ramparts",
+      "path": "/spell/earthen-ramparts",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/ere-we-go",
+      "name": "'Ere We Go!",
+      "url": "https://tow.whfb.app/spell/ere-we-go",
+      "path": "/spell/ere-we-go",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/evil-sun-shinin",
+      "name": "Evil Sun Shinin'",
+      "url": "https://tow.whfb.app/spell/evil-sun-shinin",
+      "path": "/spell/evil-sun-shinin",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fiery-convocation",
+      "name": "Fiery Convocation",
+      "url": "https://tow.whfb.app/spell/fiery-convocation",
+      "path": "/spell/fiery-convocation",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fireball",
+      "name": "Fireball",
+      "url": "https://tow.whfb.app/spell/fireball",
+      "path": "/spell/fireball",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fist-of-gork-or-mork",
+      "name": "Fist of Gork (or Mork)",
+      "url": "https://tow.whfb.app/spell/fist-of-gork-or-mork",
+      "path": "/spell/fist-of-gork-or-mork",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/flames-of-hashut",
+      "name": "Flames of Hashut",
+      "url": "https://tow.whfb.app/spell/flames-of-hashut",
+      "path": "/spell/flames-of-hashut",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/flaming-sword",
+      "name": "Flaming Sword",
+      "url": "https://tow.whfb.app/spell/flaming-sword",
+      "path": "/spell/flaming-sword",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fleshy-abundance",
+      "name": "Fleshy Abundance",
+      "url": "https://tow.whfb.app/spell/fleshy-abundance",
+      "path": "/spell/fleshy-abundance",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/flock-of-doom-beastmen",
+      "name": "Flock of Doom (Beastmen)",
+      "url": "https://tow.whfb.app/spell/flock-of-doom-beastmen",
+      "path": "/spell/flock-of-doom-beastmen",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/flock-of-doom-wood-elves",
+      "name": "Flock of Doom (Wood Elves)",
+      "url": "https://tow.whfb.app/spell/flock-of-doom-wood-elves",
+      "path": "/spell/flock-of-doom-wood-elves",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/foetid-whirlpool",
+      "name": "Foetid Whirlpool",
+      "url": "https://tow.whfb.app/spell/foetid-whirlpool",
+      "path": "/spell/foetid-whirlpool",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/foot-of-gork-or-mork",
+      "name": "Foot of Gork (or Mork)",
+      "url": "https://tow.whfb.app/spell/foot-of-gork-or-mork",
+      "path": "/spell/foot-of-gork-or-mork",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/forest-walker",
+      "name": "Forest Walker",
+      "url": "https://tow.whfb.app/spell/forest-walker",
+      "path": "/spell/forest-walker",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fury-of-athel-loren",
+      "name": "Fury of Athel Loren",
+      "url": "https://tow.whfb.app/spell/fury-of-athel-loren",
+      "path": "/spell/fury-of-athel-loren",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fury-of-khaine",
+      "name": "Fury of Khaine",
+      "url": "https://tow.whfb.app/spell/fury-of-khaine",
+      "path": "/spell/fury-of-khaine",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/fury-of-the-beast",
+      "name": "Fury of the Beast",
+      "url": "https://tow.whfb.app/spell/fury-of-the-beast",
+      "path": "/spell/fury-of-the-beast",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/gathering-darkness",
+      "name": "Gathering Darkness",
+      "url": "https://tow.whfb.app/spell/gathering-darkness",
+      "path": "/spell/gathering-darkness",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/gaze-of-gork",
+      "name": "Gaze of Gork",
+      "url": "https://tow.whfb.app/spell/gaze-of-gork",
+      "path": "/spell/gaze-of-gork",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/gift-of-mutation",
+      "name": "Gift of Mutation",
+      "url": "https://tow.whfb.app/spell/gift-of-mutation",
+      "path": "/spell/gift-of-mutation",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/glittering-robe",
+      "name": "Glittering Robe",
+      "url": "https://tow.whfb.app/spell/glittering-robe",
+      "path": "/spell/glittering-robe",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/great-bastion",
+      "name": "Great Bastion",
+      "url": "https://tow.whfb.app/spell/great-bastion",
+      "path": "/spell/great-bastion",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/hammerhand",
+      "name": "Hammerhand",
+      "url": "https://tow.whfb.app/spell/hammerhand",
+      "path": "/spell/hammerhand",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/hand-of-khaine",
+      "name": "Hand of Khaine",
+      "url": "https://tow.whfb.app/spell/hand-of-khaine",
+      "path": "/spell/hand-of-khaine",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/hand-of-mork-or-gork",
+      "name": "Hand of Mork (or Gork)",
+      "url": "https://tow.whfb.app/spell/hand-of-mork-or-gork",
+      "path": "/spell/hand-of-mork-or-gork",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/hellish-vigour",
+      "name": "Hellish Vigour",
+      "url": "https://tow.whfb.app/spell/hellish-vigour",
+      "path": "/spell/hellish-vigour",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/hidden-pathways",
+      "name": "Hidden Pathways",
+      "url": "https://tow.whfb.app/spell/hidden-pathways",
+      "path": "/spell/hidden-pathways",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/in-the-gloaming-wildwood",
+      "name": "In the Gloaming Wildwood",
+      "url": "https://tow.whfb.app/spell/in-the-gloaming-wildwood",
+      "path": "/spell/in-the-gloaming-wildwood",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/infernal-gateway",
+      "name": "Infernal Gateway",
+      "url": "https://tow.whfb.app/spell/infernal-gateway",
+      "path": "/spell/infernal-gateway",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/itchy-nuisance",
+      "name": "Itchy Nuisance",
+      "url": "https://tow.whfb.app/spell/itchy-nuisance",
+      "path": "/spell/itchy-nuisance",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/khsars-incantation-of-the-desert-wind",
+      "name": "Khsar's Incantation of the Desert Wind",
+      "url": "https://tow.whfb.app/spell/khsars-incantation-of-the-desert-wind",
+      "path": "/spell/khsars-incantation-of-the-desert-wind",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/the-ladys-gift",
+      "name": "The Lady's Gift",
+      "url": "https://tow.whfb.app/spell/the-ladys-gift",
+      "path": "/spell/the-ladys-gift",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/the-ladys-wrath",
+      "name": "The Lady's Wrath",
+      "url": "https://tow.whfb.app/spell/the-ladys-wrath",
+      "path": "/spell/the-ladys-wrath",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/light-of-death",
+      "name": "Light of Death",
+      "url": "https://tow.whfb.app/spell/light-of-death",
+      "path": "/spell/light-of-death",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/light-of-protection",
+      "name": "Light of Protection",
+      "url": "https://tow.whfb.app/spell/light-of-protection",
+      "path": "/spell/light-of-protection",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/maelstrom-of-chaos",
+      "name": "Maelstrom of Chaos",
+      "url": "https://tow.whfb.app/spell/maelstrom-of-chaos",
+      "path": "/spell/maelstrom-of-chaos",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/mantle-of-ghorok",
+      "name": "Mantle of Ghorok",
+      "url": "https://tow.whfb.app/spell/mantle-of-ghorok",
+      "path": "/spell/mantle-of-ghorok",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/miasmic-mirage",
+      "name": "Miasmic Mirage",
+      "url": "https://tow.whfb.app/spell/miasmic-mirage",
+      "path": "/spell/miasmic-mirage",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/might-of-heaven-and-earth",
+      "name": "Might of Heaven & Earth",
+      "url": "https://tow.whfb.app/spell/might-of-heaven-and-earth",
+      "path": "/spell/might-of-heaven-and-earth",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/mind-razor",
+      "name": "Mind Razor",
+      "url": "https://tow.whfb.app/spell/mind-razor",
+      "path": "/spell/mind-razor",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/monsoon",
+      "name": "Monsoon",
+      "url": "https://tow.whfb.app/spell/monsoon",
+      "path": "/spell/monsoon",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/morks-curse",
+      "name": "Mork’s Curse",
+      "url": "https://tow.whfb.app/spell/morks-curse",
+      "path": "/spell/morks-curse",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/neath-the-shaden-wodespan",
+      "name": "'Neath The Shaden Wodespan",
+      "url": "https://tow.whfb.app/spell/neath-the-shaden-wodespan",
+      "path": "/spell/neath-the-shaden-wodespan",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/oaken-shield",
+      "name": "Oaken Shield",
+      "url": "https://tow.whfb.app/spell/oaken-shield",
+      "path": "/spell/oaken-shield",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/phantasmagoria",
+      "name": "Phantasmagoria",
+      "url": "https://tow.whfb.app/spell/phantasmagoria",
+      "path": "/spell/phantasmagoria",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/pillar-of-fire",
+      "name": "Pillar of Fire",
+      "url": "https://tow.whfb.app/spell/pillar-of-fire",
+      "path": "/spell/pillar-of-fire",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/pink-fire",
+      "name": "Pink Fire",
+      "url": "https://tow.whfb.app/spell/pink-fire",
+      "path": "/spell/pink-fire",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/plague-of-rust",
+      "name": "Plague of Rust",
+      "url": "https://tow.whfb.app/spell/plague-of-rust",
+      "path": "/spell/plague-of-rust",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/plague-wind",
+      "name": "Plague Wind",
+      "url": "https://tow.whfb.app/spell/plague-wind",
+      "path": "/spell/plague-wind",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/primordial-gloom",
+      "name": "Primordial Gloom",
+      "url": "https://tow.whfb.app/spell/primordial-gloom",
+      "path": "/spell/primordial-gloom",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/raise-dead",
+      "name": "Raise Dead",
+      "url": "https://tow.whfb.app/spell/raise-dead",
+      "path": "/spell/raise-dead",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/rapid-regeneration",
+      "name": "Rapid Regeneration",
+      "url": "https://tow.whfb.app/spell/rapid-regeneration",
+      "path": "/spell/rapid-regeneration",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/ravenous-recourse",
+      "name": "Ravenous Recourse",
+      "url": "https://tow.whfb.app/spell/ravenous-recourse",
+      "path": "/spell/ravenous-recourse",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/rune-of-haste-and-urgency",
+      "name": "Rune of Haste & Urgency",
+      "url": "https://tow.whfb.app/spell/rune-of-haste-and-urgency",
+      "path": "/spell/rune-of-haste-and-urgency",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/rune-of-hearth-and-home",
+      "name": "Rune of Hearth & Home",
+      "url": "https://tow.whfb.app/spell/rune-of-hearth-and-home",
+      "path": "/spell/rune-of-hearth-and-home",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/rune-of-oath-and-steel",
+      "name": "Rune of Oath & Steel",
+      "url": "https://tow.whfb.app/spell/rune-of-oath-and-steel",
+      "path": "/spell/rune-of-oath-and-steel",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/rune-of-wrath-and-ruin",
+      "name": "Rune of Wrath & Ruin",
+      "url": "https://tow.whfb.app/spell/rune-of-wrath-and-ruin",
+      "path": "/spell/rune-of-wrath-and-ruin",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/sapping-blight",
+      "name": "Sapping Blight",
+      "url": "https://tow.whfb.app/spell/sapping-blight",
+      "path": "/spell/sapping-blight",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/shadowed-assailants",
+      "name": "Shadowed Assailants",
+      "url": "https://tow.whfb.app/spell/shadowed-assailants",
+      "path": "/spell/shadowed-assailants",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/shield-of-saphery",
+      "name": "Shield of Saphery",
+      "url": "https://tow.whfb.app/spell/shield-of-saphery",
+      "path": "/spell/shield-of-saphery",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/shimmering-dragon",
+      "name": "Shimmering Dragon",
+      "url": "https://tow.whfb.app/spell/shimmering-dragon",
+      "path": "/spell/shimmering-dragon",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/skitterleap",
+      "name": "Skitterleap",
+      "url": "https://tow.whfb.app/spell/skitterleap",
+      "path": "/spell/skitterleap",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/soul-eater",
+      "name": "Soul Eater",
+      "url": "https://tow.whfb.app/spell/soul-eater",
+      "path": "/spell/soul-eater",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spectral-doppelganger",
+      "name": "Spectral Doppelganger",
+      "url": "https://tow.whfb.app/spell/spectral-doppelganger",
+      "path": "/spell/spectral-doppelganger",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spectral-steed",
+      "name": "Spectral Steed",
+      "url": "https://tow.whfb.app/spell/spectral-steed",
+      "path": "/spell/spectral-steed",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spirit-leech",
+      "name": "Spirit Leech",
+      "url": "https://tow.whfb.app/spell/spirit-leech",
+      "path": "/spell/spirit-leech",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spirits-of-wind-and-shadow",
+      "name": "Spirits of Wind & Shadow",
+      "url": "https://tow.whfb.app/spell/spirits-of-wind-and-shadow",
+      "path": "/spell/spirits-of-wind-and-shadow",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spiritual-vortex",
+      "name": "Spiritual Vortex",
+      "url": "https://tow.whfb.app/spell/spiritual-vortex",
+      "path": "/spell/spiritual-vortex",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/spiteful-torrent",
+      "name": "Spiteful Torrent",
+      "url": "https://tow.whfb.app/spell/spiteful-torrent",
+      "path": "/spell/spiteful-torrent",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/steed-of-shadows",
+      "name": "Steed of Shadows",
+      "url": "https://tow.whfb.app/spell/steed-of-shadows",
+      "path": "/spell/steed-of-shadows",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/storm-call",
+      "name": "Storm Call",
+      "url": "https://tow.whfb.app/spell/storm-call",
+      "path": "/spell/storm-call",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/the-storm-dragons-fury",
+      "name": "The Storm Dragon's Fury",
+      "url": "https://tow.whfb.app/spell/the-storm-dragons-fury",
+      "path": "/spell/the-storm-dragons-fury",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/storm-of-ash",
+      "name": "Storm of Ash",
+      "url": "https://tow.whfb.app/spell/storm-of-ash",
+      "path": "/spell/storm-of-ash",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/strangleroot",
+      "name": "Strangleroot",
+      "url": "https://tow.whfb.app/spell/strangleroot",
+      "path": "/spell/strangleroot",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/stream-of-corruption",
+      "name": "Stream of Corruption",
+      "url": "https://tow.whfb.app/spell/stream-of-corruption",
+      "path": "/spell/stream-of-corruption",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/summon-elemental-spirit",
+      "name": "Summon Elemental Spirit",
+      "url": "https://tow.whfb.app/spell/summon-elemental-spirit",
+      "path": "/spell/summon-elemental-spirit",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/the-summoning",
+      "name": "The Summoning",
+      "url": "https://tow.whfb.app/spell/the-summoning",
+      "path": "/spell/the-summoning",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/swirling-mists",
+      "name": "Swirling Mists",
+      "url": "https://tow.whfb.app/spell/swirling-mists",
+      "path": "/spell/swirling-mists",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/tempest",
+      "name": "Tempest",
+      "url": "https://tow.whfb.app/spell/tempest",
+      "path": "/spell/tempest",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/toothcracker",
+      "name": "Toothcracker",
+      "url": "https://tow.whfb.app/spell/toothcracker",
+      "path": "/spell/toothcracker",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/torrent-of-filth",
+      "name": "Torrent of Filth",
+      "url": "https://tow.whfb.app/spell/torrent-of-filth",
+      "path": "/spell/torrent-of-filth",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/travel-mystical-pathway",
+      "name": "Travel Mystical Pathway",
+      "url": "https://tow.whfb.app/spell/travel-mystical-pathway",
+      "path": "/spell/travel-mystical-pathway",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/tree-singing",
+      "name": "Tree Singing",
+      "url": "https://tow.whfb.app/spell/tree-singing",
+      "path": "/spell/tree-singing",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/troll-brainz",
+      "name": "Troll Brainz",
+      "url": "https://tow.whfb.app/spell/troll-brainz",
+      "path": "/spell/troll-brainz",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/trollguts",
+      "name": "Trollguts",
+      "url": "https://tow.whfb.app/spell/trollguts",
+      "path": "/spell/trollguts",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/unquiet-spirits",
+      "name": "Unquiet Spirits",
+      "url": "https://tow.whfb.app/spell/unquiet-spirits",
+      "path": "/spell/unquiet-spirits",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/usekhps-incantation-of-desiccation",
+      "name": "Usekhp's Incantation of Desiccation",
+      "url": "https://tow.whfb.app/spell/usekhps-incantation-of-desiccation",
+      "path": "/spell/usekhps-incantation-of-desiccation",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/vanhals-danse-macabre",
+      "name": "Vanhal's Danse Macabre",
+      "url": "https://tow.whfb.app/spell/vanhals-danse-macabre",
+      "path": "/spell/vanhals-danse-macabre",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/vauls-unmaking",
+      "name": "Vaul's Unmaking",
+      "url": "https://tow.whfb.app/spell/vauls-unmaking",
+      "path": "/spell/vauls-unmaking",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/veil-of-gloom",
+      "name": "Veil of Gloom",
+      "url": "https://tow.whfb.app/spell/veil-of-gloom",
+      "path": "/spell/veil-of-gloom",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/viletide",
+      "name": "Viletide",
+      "url": "https://tow.whfb.app/spell/viletide",
+      "path": "/spell/viletide",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/vindictive-glare",
+      "name": "Vindictive Glare",
+      "url": "https://tow.whfb.app/spell/vindictive-glare",
+      "path": "/spell/vindictive-glare",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/vortex-of-chaos",
+      "name": "Vortex of Chaos",
+      "url": "https://tow.whfb.app/spell/vortex-of-chaos",
+      "path": "/spell/vortex-of-chaos",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/vortex-of-darkness",
+      "name": "Vortex of Darkness",
+      "url": "https://tow.whfb.app/spell/vortex-of-darkness",
+      "path": "/spell/vortex-of-darkness",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/walk-between-worlds",
+      "name": "Walk Between Worlds",
+      "url": "https://tow.whfb.app/spell/walk-between-worlds",
+      "path": "/spell/walk-between-worlds",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/warp-lightning",
+      "name": "Warp Lightning",
+      "url": "https://tow.whfb.app/spell/warp-lightning",
+      "path": "/spell/warp-lightning",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/wind-blast",
+      "name": "Wind Blast",
+      "url": "https://tow.whfb.app/spell/wind-blast",
+      "path": "/spell/wind-blast",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/winds-of-chaos",
+      "name": "Winds of Chaos",
+      "url": "https://tow.whfb.app/spell/winds-of-chaos",
+      "path": "/spell/winds-of-chaos",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    },
+    {
+      "id": "magic-ref:/spell/word-of-pain",
+      "name": "Word of Pain",
+      "url": "https://tow.whfb.app/spell/word-of-pain",
+      "path": "/spell/word-of-pain",
+      "kind": "spell",
+      "section": "Spell Index",
+      "verificationStatus": "source-indexed",
+      "alternateNames": []
+    }
+  ],
+  "ambiguousNames": []
+}
