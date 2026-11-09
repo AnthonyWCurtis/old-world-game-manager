@@ -88,7 +88,7 @@ async function verifyTurnstile(token,secret,ip){
  });
  if(!res.ok)return false;
  const result=await res.json();
- return result.success===true;
+ return result.success===true && result.hostname==='anthonywcurtis.github.io' && result.action==='unmatched_report';
 }
 const encodeBase64=text=>{
  const bytes=new TextEncoder().encode(text);
@@ -106,7 +106,7 @@ export default {
    return new Response(null,{status:204,headers:cors(allowed)});
   if(request.method!=='POST'||new URL(request.url).pathname!=='/report')
    return response({ok:false,error:'Not found'},404,allowed);
-  if(!env.GITHUB_TOKEN||!env.TURNSTILE_SECRET)
+  if(!env.GITHUB_TOKEN||!env.TURNSTILE_SECRET||!env.REPORT_RATE_LIMITER)
    return response({ok:false,error:'Reporting is not configured'},503,allowed);
   if(!/^application\/json(?:\s*;|$)/i.test(request.headers.get('Content-Type')||''))
    return response({ok:false,error:'JSON required'},415,allowed);
@@ -123,13 +123,10 @@ export default {
     request.headers.get('CF-Connecting-IP'));
    if(!isHuman)
     return response({ok:false,error:'Verification failed; please try again'},400,allowed);
-   // A deployment may bind a Cloudflare native rate limiter; Turnstile is
-   // mandatory even if no such binding is configured.
-   if(env.REPORT_RATE_LIMITER){
-    const identifier=request.headers.get('CF-Connecting-IP')||'unknown';
-    const limit=await env.REPORT_RATE_LIMITER.limit({key:identifier});
-    if(!limit.success)return response({ok:false,error:'Too many reports; try later'},429,allowed);
-   }
+   // Rate limit is mandatory, independent of Turnstile.
+   const identifier=request.headers.get('CF-Connecting-IP')||'unknown';
+   const limit=await env.REPORT_RATE_LIMITER.limit({key:identifier});
+   if(!limit.success)return response({ok:false,error:'Too many reports; try later'},429,allowed);
    const now=new Date().toISOString();
    const id=crypto.randomUUID();
    const name='report-'+now.replace(/[:.]/g,'').replace(/-/g,'')+'-'+id+'.txt';
