@@ -5,3 +5,24 @@
 
 .example-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.example-row select{min-width:230px;max-width:370px;width:auto;flex:1}
 @media(max-width:650px){.example-row select{width:100%;max-width:none}}
+
+/* Army roster: readable source-order view on iPhone and desktop. */
+.roster-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 0;padding:9px 0;border-bottom:2px solid var(--border);font-size:16px}
+.roster-section-count{font-size:12px;font-weight:500;color:var(--muted)}
+.roster-entry{padding:12px 0;border-bottom:1px solid #e8ecf0}
+.roster-entry-head{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:baseline}
+.roster-number{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.roster-name{font-size:15px;overflow-wrap:anywhere}
+.roster-cost{font-size:13px;color:var(--accent);font-weight:700;white-space:nowrap}
+.roster-entry-details{margin:5px 0 0 36px;overflow-wrap:anywhere;color:var(--muted);font-size:13px;line-height:1.6}
+.roster-options + .roster-options,.roster-group + .roster-options{margin-top:4px}
+.roster-group{margin:5px 0 0 9px;padding-left:10px;border-left:2px solid var(--border)}
+.technical>summary{cursor:pointer;font-weight:700;font-size:17px}
+.technical-controls{margin-top:12px}
+.technical-controls p{flex:1;min-width:225px;margin:0}
+@media(max-width:650px){
+ .roster-entry-head{grid-template-columns:23px minmax(0,1fr) auto;gap:7px}
+ .roster-entry-details{margin-left:30px}
+ .roster-name{font-size:14px}
+ .roster-cost{font-size:12px}
+}
