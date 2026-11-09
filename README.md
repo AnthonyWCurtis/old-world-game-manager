@@ -1,32 +1,131 @@
-# Warhammer: The Old World — Game Manager (v0.1)
+# Warhammer: The Old World — Game Manager
 
-A mobile-friendly **army-list importer**, built to run entirely in the browser on GitHub Pages.
+A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Status:** Browser edition files are under `/docs` on the `main` branch. GitHub Pages must be enabled in repository settings using **Deploy from a branch → main → /docs → Save**.
+**Browser edition: v0.3.0** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
-Once published: https://anthonywcurtis.github.io/old-world-game-manager/
+> **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
-## Supported pasted-list formats
+## Quick start
 
-- **Old World Builder:** regular, compact, minimalist, and their Discord/Markdown variants (6)
-- **Ingude:** simple text, compact, Markdown (3)
-- **New Recruit:** TOW, NR, simple (3)
-- **Old World Rankings / Battle Builder:** compact, detailed, tournament (3)
+1. Open the [Game Manager website](https://anthonywcurtis.github.io/old-world-game-manager/).
+2. Paste an exported army list into **Paste exported list**, or load one of the 22 supplied test examples.
+3. Check the detected builder and layout shown in green. An unrecognised format is shown in red; **Format not right? Choose manually** provides a manual override. A layout can be recognised without the builder's identity being confirmed.
+4. Select **Analyse import**. The roster and original order appear immediately. Live-source reference checks then run without replacing the imported selections or points.
+5. Expand **Reference matching and import details** to investigate individual unmatched references. Use **Unmatched only** to filter the details.
+6. Use **Save on this device**, **Export JSON**, or **Backup all JSON** if you want to keep the results.
 
-The importer auto-detects the source where possible, preserves the exact original paste, keeps separate unit instances and model groups, and shows ambiguous or unmatched entries. A starter reference catalogue provides links to tow.whfb.app where available.
+When an entire previously rendered Game Manager page is accidentally pasted instead of a source list, the app warns against importing the duplicate content and can offer to recover one identifiable, clean export.
 
-## Privacy and storage
+## Supported army-list exports
 
-Pasted lists are processed locally in the browser, not uploaded to GitHub. Saved imports use **IndexedDB** on the same browser/device and are not synced. Use **Export JSON** or **Backup all JSON** regularly. Clearing browser data may remove saved armies.
+| Builder | Layouts |
+| --- | --- |
+| **Old World Builder (OWB)** | Regular text, compact text, minimalist text; regular, compact, and minimalist Discord/Markdown |
+| **Ingude** | Simple text, compact, Markdown |
+| **New Recruit** | TOW, NR, Simple |
+| **Old World Rankings / Battle Builder** | Compact, detailed, tournament |
 
-Publicly committed sample rosters have identifying player names replaced by placeholders. Do not commit personal roster data to the public repository.
+**15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder.
 
-## Scope
+The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
-Version 0.1 focuses on parsing, storage and reference matching. **No legality checks or combat calculations.** An unmatched reference does not mean a selection is illegal.
+## Source references and caching
 
-## GitHub Pages setup
+The sole intended rules/reference source is **[tow.whfb.app](https://tow.whfb.app)**. The app uses a small local starter catalogue plus source-discovered references; **it does not yet maintain a complete, verified rules database**.
 
-Open [Settings → Pages](https://github.com/AnthonyWCurtis/old-world-game-manager/settings/pages), select **Deploy from a branch**, then **main**, then **/docs**, and save. The website may take a few minutes to appear.
+The public reference indexes used are:
 
-The site is static HTML, CSS and JavaScript; it requires no server, SQLite, Node.js, or build step to run.
+- [Armies](https://tow.whfb.app/sitemap/armies)
+- [Rules](https://tow.whfb.app/sitemap/rules)
+- [Magic](https://tow.whfb.app/sitemap/magic)
+- [Magic items](https://tow.whfb.app/sitemap/magic-items)
+
+Reference links cached in the browser can display immediately. The app attempts to recheck stale public indexes after **15 minutes** and relevant source pages after **one hour**, in limited batches. **Check for updates now** requests a manual refresh. Some pages may be unreachable because of browser cross-origin restrictions or network errors; cached data is retained when checks fail. The repository also includes [source-extracted unit-profile metadata](docs/source-profiles.json) as a fallback for certain model names and champion upgrades.
+
+Published unit characteristics are **base profiles**, not automatically recalculated for mounts, equipment, spells or upgrades. Source-page changes may be flagged for review, but imported point values and options are never silently overwritten.
+
+### Reference status colours
+
+- **Green — Matched:** The unit or selection has an identified source reference. For a unit to appear fully matched, its nested selections must also be matched.
+- **Amber — Partially matched / Unmatched:** A unit may be identified while one or more of its upgrades remain unlinked. Individual unmatched options are also highlighted.
+- An unmatched reference means **not yet linked**, not **invalid**. Source matching does not perform legality checks.
+
+## Debugging missing references
+
+After importing, the **Copy unmatched debug** button gathers only currently unmatched units/selections and their diagnostic context (parent unit, source lines, reference links and nested model groups). Its report can be pasted into ChatGPT for investigation. The report is also displayed on the page, with **Select report text** as a fallback when browser clipboard access is blocked.
+
+Example of a reported missing source reference:
+
+```text
+SELECTION: High Helm
+Parent unit: Silver Helms
+Source line: 3
+Parent unit reference: https://tow.whfb.app/unit/silver-helms
+```
+
+The debug report does not include the complete original list or player identity. Repeated unmatched selections may appear separately so each source occurrence can be diagnosed.
+
+## Anonymous unmatched reporting to GitHub — setup required
+
+A separate **Report unmatched** workflow is being added so **players do not need GitHub accounts**. The prepared design is:
+
+1. A player imports a roster and selects **Report unmatched**.
+2. They review the fields to be published, explicitly agree, complete anti-spam verification and submit.
+3. A private Cloudflare Worker validates the request and writes a short text report into [`reports/unmatched/`](reports/unmatched/).
+4. A GitHub Action rebuilds [`ALL_UNMATCHED.txt`](reports/unmatched/ALL_UNMATCHED.txt), grouping repeated missing names so the project owner can copy them for review.
+
+**Important: This feature is NOT active yet.** The public [reporting configuration](docs/report-config.json) currently has `enabled: false`. The repository owner must deploy the Worker, configure a restricted GitHub write token and Cloudflare Turnstile, and enable the endpoint. Until then, **Report unmatched** is unavailable; **Copy unmatched debug** remains usable. Reports will be publicly visible in this repository once submission is enabled.
+
+See **[ANONYMOUS_REPORTING_SETUP.md](ANONYMOUS_REPORTING_SETUP.md)** for the one-time setup. **Never** put GitHub tokens or Turnstile secret keys in files under `docs/` or in client-side JavaScript.
+
+## Privacy and local storage
+
+- **Pasted army lists** are parsed in the browser and are not automatically uploaded.
+- **Saved imports** use IndexedDB on the current browser/device only; they are not synchronized with GitHub or other devices. Private Browsing, storage cleanup or clearing website data can erase them.
+- **Export JSON** and **Backup all JSON** produce local downloads for portability and safekeeping.
+- **Reference checks** request public source pages from `tow.whfb.app`.
+- **Optional anonymous reports**, if enabled and explicitly submitted, publish only unmatched reference context, not the original roster or player name. Because the repository is public, users must approve this before submitting.
+
+Test/example rosters stored in the repository use anonymised or placeholder player details. Do not commit real players' personal army lists without their permission.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| [`docs/`](docs/) | Static HTML, CSS, JavaScript and public website assets |
+| [`docs/parser.js`](docs/parser.js) | Army-list detection, parsing and normalization |
+| [`docs/catalog.js`](docs/catalog.js) | Limited curated reference catalogue |
+| [`docs/live-source.js`](docs/live-source.js) | Public sitemap discovery, source profiles, local reference cache and refresh checks |
+| [`docs/unmatched-debug.js`](docs/unmatched-debug.js) | Unmatched-only debug report generation |
+| [`docs/report-ui.js`](docs/report-ui.js) and [`docs/report-submission.js`](docs/report-submission.js) | Optional public reporting UI and submission client |
+| [`worker/`](worker/) | Optional server-side anonymous report receiver; private secrets belong in its deployment environment |
+| [`reports/unmatched/`](reports/unmatched/) | Public submitted text files and consolidated missing-reference list, once reporting is enabled |
+| [`scripts/`](scripts/) | Source metadata generation and report aggregation |
+| [`tests/`](tests/) | Automated parser, matching, status, reporting and regression tests |
+| [`docs/examples/`](docs/examples/) | Test army-list fixtures across exporters and layouts |
+| [`.github/workflows/`](.github/workflows/) | Automated checks, reference refresh and GitHub Pages/report aggregation workflows |
+
+## Development and testing
+
+The core website is **static HTML, CSS and JavaScript**; no application backend or database server is needed to run an import. Node.js is used for repository tests and support scripts. The optional anonymous reporting service is a separate Cloudflare Worker.
+
+From the repository root:
+
+```bash
+node --check docs/app.js
+node --check docs/live-source.js
+node --test tests/*.test.mjs
+```
+
+GitHub Actions runs automated checks on relevant changes. **A passing run is required before treating changes as verified**; check the [latest workflow results](https://github.com/AnthonyWCurtis/old-world-game-manager/actions/workflows/verify-importer.yml), as not every in-progress change may have passed.
+
+### GitHub Pages
+
+The live site is [anthonywcurtis.github.io/old-world-game-manager](https://anthonywcurtis.github.io/old-world-game-manager/).
+
+In [Settings → Pages](https://github.com/AnthonyWCurtis/old-world-game-manager/settings/pages), the site can be published from the `main` branch's `/docs` folder (or an existing configured Pages deployment workflow). No Node.js or server process is required to serve those files.
+
+## Out of scope
+
+Army-list legality validation, independent rules-based point verification, melee/shooting simulation, and full automatic rules interpretation are **not implemented** here. This importer is separate from the Unit vs Unit Calculator and the Sea Guard Garrison Battle Companion projects.
