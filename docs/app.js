@@ -1,4 +1,5 @@
 import { parseArmy, normalizeImportText, detectFormat } from './parser.js?v=0.2.3';
+import { isGameManagerPageText, extractArmyFromPage } from './import-guard.js?v=0.2.5';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, checkPageChanges, getCachedUnitProfiles } from './live-source.js?v=0.2.2';
 const $=id=>document.getElementById(id);
 let current=null;
@@ -22,10 +23,25 @@ function updateFormatDetection(){
  const text=$('sourceText').value;
  const outer=$('formatDetection'),title=$('detectedFormat'),details=$('formatDetails');
  const value=$('format').value;
+ $('pasteRecovery').hidden=true;
  if(!text.trim()){
   outer.dataset.state='empty';
   title.textContent='Paste an army list to detect its format';
   details.textContent='The builder and export layout will appear here.';
+  return;
+ }
+ // Imported page text may still contain a valid exporter footer, but
+ // must not be shown as a green detected army or parsed as one.
+ if(isGameManagerPageText(text)){
+  outer.dataset.state='unrecognised';
+  title.textContent='✕ Game Manager page pasted — not an army export';
+  details.textContent='The pasted text contains the previous app screen and its results. Importing the whole page would duplicate units and points.';
+  const candidate=extractArmyFromPage(text);
+  $('pasteRecovery').hidden=false;
+  $('extractListBtn').disabled=!candidate;
+  $('extractListBtn').textContent=candidate?
+    'Use the '+candidate.unitCount+'-unit army list found inside':
+    'No single clean army list found';
   return;
  }
  // A manual selection is never represented as automatic detection.
@@ -274,9 +290,19 @@ function render(){
 }
 $('sourceText').addEventListener('input',updateFormatDetection);
 $('format').addEventListener('change',updateFormatDetection);
+$('extractListBtn').addEventListener('click',()=>{
+ const extracted=extractArmyFromPage($('sourceText').value);
+ if(!extracted){showError('Could not identify a single clean export. Copy only the army list from your builder.');return;}
+ $('sourceText').value=extracted.text;
+ $('format').value='auto';
+ current=null;sourceProfiles={};
+ $('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;
+ showError('');updateFormatDetection();
+ $('sourceText').focus();
+});
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); current=parseArmy(input,sourceOverride());sourceProfiles={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());sourceProfiles={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
