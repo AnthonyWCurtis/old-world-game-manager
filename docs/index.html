@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.4.6</title>
-<link rel="stylesheet" href="./styles.css?v=0.4.6">
-<script type="module" src="./app.js?v=0.4.6"></script>
+<title>Old World Game Manager · Browser Edition v0.4.7</title>
+<link rel="stylesheet" href="./styles.css?v=0.4.7">
+<script type="module" src="./app.js?v=0.4.7"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.4.6</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.4.7</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines, model groups and quoted unit nicknames. Nothing is checked for army legality.</p>
@@ -45,6 +45,15 @@
    <div class="line"><h2 id="armyTitle">Imported army</h2><span class="status" id="formatLabel"></span></div>
    <p id="armyMeta" class="muted"></p>
    <div id="metrics" class="metrics"></div>
+   <div class="roster-launch">
+    <div class="roster-launch-copy">
+     <strong>Army roster ready</strong>
+     <span>See every unit, model count, imported points and published characteristics in a cleaner view.</span>
+    </div>
+    <button id="viewRosterBtn" class="roster-view-btn" type="button">
+     <span>View Army Roster</span><span aria-hidden="true">→</span>
+    </button>
+   </div>
    <div class="unmatched-debug-actions">
     <button id="copyUnmatchedBtn" class="smallbtn" type="button" disabled>Copy unmatched debug</button>
     <button id="reportUnmatchedBtn" class="smallbtn" type="button" disabled>Report unmatched</button>
