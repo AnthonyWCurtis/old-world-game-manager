@@ -251,3 +251,8 @@
  .game-section-header h2{font-size:18px}
  .game-character-group,.game-regiments-group{width:100%;max-width:100%}
 }
+
+/* Keep quick save reachable when the screen is narrow. */
+.army-screen-toolbar{flex-wrap:wrap}
+.game-screen-save{background:#e8cf93;color:#243c4e;font-weight:750;border-color:#c7aa6e}
+.game-screen-save:hover{background:#f6dfab}
