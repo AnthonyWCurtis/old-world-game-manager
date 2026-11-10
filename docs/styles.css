@@ -126,3 +126,106 @@
 
 /* Informational fields are source-list descriptors, not linked rules. */
 .tag.info{background:#e8edf2;color:#405769;border:1px solid #c8d4df}
+
+/* v0.5.0: distinct full-page army roster, optimized for phone portrait. */
+[hidden]{display:none!important}
+.army-roster-launch{display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(110deg,#16334f,#285778);border:1px solid #345d79;border-radius:15px;padding:18px 20px;margin:20px 0 0;color:#fff;box-shadow:0 5px 17px rgba(20,50,75,.14)}
+.army-launch-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.army-launch-text strong{font-size:18px;letter-spacing:-.025em}
+.army-launch-text>span:last-child{color:#dbe9f2;font-size:13px}
+.army-launch-eyebrow{font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:#e7cf93}
+.army-launch-button{border:1px solid #e8cb8a;background:#e9c985;color:#182b3b;padding:13px 20px;min-height:48px;border-radius:10px;white-space:nowrap;font-size:15px;font-weight:800;box-shadow:0 2px 0 rgba(0,0,0,.14)}
+.army-launch-button:hover:not(:disabled){background:#f5dba1}
+.army-launch-button span{padding-left:8px}
+.army-screen{padding-bottom:24px}
+.army-screen-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;padding-top:20px}
+.army-back-button{background:#fff;color:#234866;min-height:44px;padding:9px 15px;border:1px solid #cad6e0;border-radius:9px}
+.army-back-button span{margin-right:4px;font-size:18px}
+.army-screen-mode{font-size:11px;letter-spacing:.15em;font-weight:800;color:#62798a}
+.army-screen-hero{background:linear-gradient(125deg,#18344d,#276082);color:#fff;padding:24px 27px 26px;border-radius:16px;margin-top:16px;box-shadow:0 5px 16px rgba(16,53,74,.14)}
+.army-screen-hero h1{font-size:clamp(25px,4vw,35px);line-height:1.15;margin:6px 0 4px;overflow-wrap:anywhere}
+.army-screen-kicker{margin:0;color:#efcd8f;letter-spacing:.13em;font-size:11px;font-weight:850;text-transform:uppercase}
+.army-screen-faction{margin:0;color:#d8e9f2;font-size:14px}
+.army-summary-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+.army-summary-metric{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.19);border-radius:10px;padding:11px 12px;min-width:0}
+.army-summary-metric strong{display:block;font-size:21px;font-variant-numeric:tabular-nums;line-height:1.2}
+.army-summary-metric span{display:block;font-size:11px;color:#d4e6f0;margin-top:4px}
+.army-screen-data-status{color:#34546c;font-size:12px;min-height:17px;margin:12px 2px}
+.army-roster-quality{background:#fff9e9;border-left:3px solid #c1a25d;border-radius:7px;color:#6f5430;padding:10px 13px;font-size:12px;margin:12px 0 20px}
+.army-section-heading{display:flex;align-items:center;gap:9px;flex-wrap:wrap;border-bottom:2px solid #ccd7e2;padding:7px 0;margin:25px 0 12px}
+.army-section-heading h2{font-size:17px;color:#203e56;margin:0 auto 0 0}
+.army-section-heading>span{font-size:11px;color:#607486;background:#edf2f6;border-radius:30px;padding:4px 9px;font-weight:650}
+.army-section-heading .army-section-points{background:transparent}
+.army-unit-card{border:1px solid #d6e0e8;background:#fff;border-radius:13px;margin:12px 0;overflow:hidden;box-shadow:0 2px 9px rgba(27,50,73,.045);min-width:0}
+.army-unit-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f3f7fa;padding:16px 18px}
+.army-unit-identity{display:flex;gap:12px;align-items:flex-start;min-width:0;flex:1}
+.army-unit-index{display:flex;align-items:center;justify-content:center;flex-shrink:0;height:34px;width:34px;background:#254b68;color:white;border-radius:8px;font-size:12px;font-weight:800}
+.army-unit-names{min-width:0}
+.army-unit-names h3{margin:0;font-size:17px;line-height:1.35;overflow-wrap:anywhere;color:#182e42}
+.army-unit-nickname{font-size:12px;display:block;color:#6d7b89}
+.army-unit-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:5px}
+.army-model-number{font-size:12px;color:#416378;font-weight:750}
+.army-quantity-note{font-size:11px;color:#698193}
+.army-unit-points{text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
+.army-unit-points strong{display:block;font-size:19px;color:#203d56;line-height:1.3}
+.army-unit-points span{font-size:10px;color:#627789}
+.army-unit-card-body{padding:13px 18px 16px;min-width:0}
+.army-profile-caption{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:7px}
+.army-profile-caption strong{font-size:13px}
+.army-profile-caption span{font-size:11px;color:#698091}
+.army-profile-scroll{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border:1px solid #dce4eb;border-radius:8px}
+.army-profile-scroll:focus-visible{outline:2px solid #2d658b;outline-offset:2px}
+.army-profile-table{border-collapse:separate;border-spacing:0;min-width:620px;width:100%;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.army-profile-table th,.army-profile-table td{padding:8px 10px;border-right:1px solid #e6ecf1;border-bottom:1px solid #e6ecf1;text-align:center}
+.army-profile-table tr:last-child>*{border-bottom:0}
+.army-profile-table tr>*:last-child{border-right:0}
+.army-profile-table thead th{font-weight:800;color:#4d6173;background:#eaf0f5;font-size:11px}
+.army-profile-table tr>th:first-child{text-align:left;min-width:115px;position:sticky;left:0;background:#f6f9fb;white-space:normal}
+.army-profile-table thead th:first-child{z-index:1;background:#eaf0f5}
+.army-profile-table tbody th{font-weight:700;color:#213b51}
+.army-profile-table tbody tr:nth-child(even){background:#fcfdff}
+.army-unit-source-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;color:#667b8a;font-size:11px;margin-top:9px}
+.army-source-status{font-size:10px;color:#906521}
+.army-import-selections h4{font-size:12px;color:#334e61;text-transform:uppercase;letter-spacing:.06em;margin:15px 0 7px}
+.army-selection-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0}
+.army-selection-list li{background:#eef3f6;border:1px solid #e0e8ee;border-radius:6px;padding:5px 8px;font-size:12px;overflow-wrap:anywhere;max-width:100%}
+.army-selection-list .army-selection-nested{background:#f7f3e9;border-color:#e9dfcc}
+.army-selection-list .army-selection-nested::before{content:"↳ ";color:#99753d}
+.army-selection-list .army-selection-informational{background:#f4f5f6;color:#607182}
+.army-selection-informational small{margin-left:6px;color:#617588}
+.army-quiet{font-size:12px;color:#748493;margin:0}
+.army-model-group{margin-top:9px;padding:9px 10px;border-left:3px solid #aec4d6;background:#f7fafb;border-radius:6px;font-size:12px}
+.army-model-group>strong{font-size:12px}
+.army-model-group>span{color:#718494}
+.army-model-group .army-selection-list{margin-top:6px}
+.army-unit-source-details{margin-top:14px;border-top:1px solid #e5ebf0;padding-top:9px}
+.army-unit-source-details summary{cursor:pointer;color:#2b5b80;font-size:12px;font-weight:750;min-height:32px}
+.army-unit-source-body{padding:6px 0 2px}
+.army-ref-group{margin-bottom:9px}
+.army-ref-group>strong{font-size:12px}
+.army-ref-items{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.army-ref-pill{border-radius:5px;background:#edf4f8;padding:3px 7px;font-size:11px;color:#255777;text-decoration:none}
+.army-ref-pill:hover{text-decoration:underline}
+.army-unit-footer{margin-top:12px}
+.army-source-link{color:#1c587f;font-weight:700;font-size:12px}
+.army-profile-missing{padding:12px;border-radius:7px;background:#f2f5f8;font-size:12px;color:#496174}
+.army-profile-missing strong{display:block}
+.army-profile-missing p{margin:4px 0 0}
+.army-screen-bottom{margin-top:25px;display:flex;justify-content:center}
+@media(max-width:650px){
+ .army-roster-launch{flex-direction:column;align-items:stretch;padding:16px;gap:12px}
+ .army-launch-button{width:100%}
+ .army-screen-hero{padding:20px 16px}
+ .army-summary-metrics{gap:6px}
+ .army-summary-metric{padding:9px 7px}
+ .army-summary-metric strong{font-size:18px}
+ .army-summary-metric span{font-size:10px}
+ .army-unit-head{padding:12px 11px;align-items:flex-start}
+ .army-unit-card-body{padding:11px}
+ .army-unit-identity{gap:8px}
+ .army-unit-index{height:30px;width:30px}
+ .army-unit-names h3{font-size:15px}
+ .army-unit-points strong{font-size:16px}
+ .army-unit-points span{font-size:9px}
+ .army-section-heading h2{font-size:15px}
+}
