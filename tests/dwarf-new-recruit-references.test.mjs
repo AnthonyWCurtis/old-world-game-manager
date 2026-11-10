@@ -158,7 +158,7 @@ test('Game Manager v0.4.6 loads source-backed dwarf references with fresh browse
  const app=readFileSync(new URL('app.js',root),'utf8');
  assert.match(html,/Browser Edition v0\.4\.7/);
  assert.match(html,/app\.js\?v=0\.4\.7/);
- assert.match(app,/unit-selection-matcher\.js\?v=0\.4\.7/);
+ assert.match(app,/unit-selection-matcher\.js\?v=0\.4\.6/);
  assert.match(app,/appVersion:'0\.4\.7'/);
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
 });
