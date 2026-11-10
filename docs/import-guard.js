@@ -5,7 +5,7 @@
  * Recovery is explicit and only offered when one complete, clean export can
  * be identified between page controls. No faction/unit names are hardcoded.
  */
-import {detectFormat, parseArmy} from './parser.js?v=0.2.3';
+import {detectFormat, parseArmy} from './parser.js?v=0.4.2';
 
 const sourceLines = text => String(text||'').replace(/\r\n?/g,'\n').split('\n');
 const isExportField = line => /^Paste exported list$/i.test(line);
