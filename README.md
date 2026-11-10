@@ -30,6 +30,16 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4.5 — Shadow Warriors champion reference
+
+The High Elf Realms `The Warriors Of Ulthuan` 586-point Old World Builder debug report had one unmatched selection: `Shadow Walker` under `Shadow Warriors`.
+
+The [published Shadow Warriors unit page](https://tow.whfb.app/unit/shadow-warriors) lists the **Shadow-walker** champion profile and the explicit `Any unit may upgrade one model to a Shadow-walker (champion) (+6 points per unit)` option. The exporter drops the hyphen, so matching now normalizes hyphenated champion names and accepts this exact published `Any unit may` introduction **only within the corresponding parent unit's model profiles and options**.
+
+The source link goes to the original Shadow Warriors unit page, not to an invented champion page. The imported roster's unit points, selections and reported 586-point total remain untouched; reference matching is not a rules-legality or pricing check.
+
+Regression tests cover the positive alias, mismatched parent units, missing model profiles/upgrades, spoofed source URLs and the previously verified Glade Guard champion alias. Mobile browser testing confirms the original single unmatched reference now disappears after the source data loads.
+
 ## v0.4.4 — Winter Muster Mage wizard references
 
 The High Elf Realms `Winter Muster` 750-point Old World Builder debug report contained two source-free selections under the Mage:
