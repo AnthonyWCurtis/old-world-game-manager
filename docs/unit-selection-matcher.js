@@ -89,6 +89,46 @@ function directCommand(record,selection){
  return matched.length===1?matched[0]:null;
 }
 /**
+ * "Full Command" is an exporter shorthand, not an independent source item.
+ * Require exactly one champion, standard bearer and musician source option
+ * together on this parent. The imported selection itself stays unchanged.
+ */
+function publishedFullCommand(record,selection){
+ if(normalized(selection.name)!=='full command')return null;
+ const candidates=[];
+ for(const group of record.upgradeGroups||[]){
+  const options=group.options||[];
+  const component=kind=>{
+   const matches=[];
+   for(const option of options){
+    const description=String(option.description||'');
+    const match=kind==='champion'
+     ?description.match(/^upgrade one model to an?\s+(.+?)\s*\(champion\)\s*\(\+(\d+) points? per unit\)$/i)
+     :description.match(/^upgrade one model to an?\s+(standard bearer|musician)\s*\(\+(\d+) points? per unit\)$/i);
+    if(!match)continue;
+    const label=match[1];
+    if(kind!=='champion'&&normalized(label)!==kind)continue;
+    if(kind==='champion'){
+     const title=value=>normalized(value).replace(/['’]/g,'')
+       .replace(/[-‐-‒–—]/g,' ').replace(/\s+/g,' ').trim();
+     if(record.modelProfiles.filter(m=>title(m.name)===title(label)).length!==1)continue;
+    }
+    const amount=Number(match[2]);
+    if(!Number.isSafeInteger(amount)||amount<0||
+       option.points?.amount!==amount||option.points?.basis!=='per_unit')continue;
+    matches.push({name:label,points:amount,sourceOptionId:option.id});
+   }
+   return matches.length===1?matches[0]:null;
+  };
+  const champion=component('champion');
+  const standard=component('standard bearer');
+  const musician=component('musician');
+  if(champion&&standard&&musician)candidates.push([champion,standard,musician]);
+ }
+ return candidates.length===1?{components:candidates[0]}:null;
+}
+
+/**
  * A model-specific equipment choice from the actual unit's Options section.
  * "9x Additional hand weapon" identifies a *reference* to the unit's option,
  * not proof that nine models may take it or a validation of paid points.
@@ -166,7 +206,7 @@ function optionalWizardLevelOption(record,selection){
  if(!m)return null;
  const level=Number(m[1]);
  const hits=(record.upgradeGroups||[]).flatMap(g=>g.options||[]).filter(o=>
-  new RegExp('^May be a Level '+level+' Wizard\\s*\\(\\+\\d+ points?\\)','i')
+  new RegExp('^(?:May be|Be) a Level '+level+' Wizard\\s*\\(\\+\\d+ points?\\)','i')
    .test(String(o.description||'')));
  return hits.length===1?{level,option:hits[0]}:null;
 }
@@ -212,6 +252,16 @@ function referenceForSelection(unit,record,selection){
    name:selection.name,url,type:'command',source:'unit-scoped-data',
    verificationStatus:'source-extracted',evidence:'published-command-upgrade',
    note:'This unit page lists the command option; selection legality and costs are not verified.'};
+ }
+ const fullCommand=publishedFullCommand(record,selection);
+ if(fullCommand){
+  return {id:'unit-scoped:'+record.id+':full-command',
+   name:selection.name,url,type:'command',source:'unit-scoped-data',
+   verificationStatus:'source-extracted',evidence:'published-full-command',
+   sourceCommandComponents:fullCommand.components,
+   note:'The parent unit lists '+fullCommand.components.map(c=>
+     c.name+' (+'+c.points+' points)').join(', ')+
+     '. This is a combined reference only; roster costs and legality have not been independently checked.'};
  }
  const modelGear=modelCountEquipmentOption(record,selection);
  if(modelGear){
