@@ -1,6 +1,6 @@
-import {collectUnmatched} from './unmatched-debug.js?v=0.2.7';
+import {collectUnmatched} from './unmatched-debug.js?v=0.4.2';
 import {prepareAnonymousReport,loadReportingConfig,submitAnonymousReport}
- from './report-submission.js?v=0.3.0';
+ from './report-submission.js?v=0.4.2';
 
 /**
  * Public reporting flow without requiring visitors to sign in to GitHub.
