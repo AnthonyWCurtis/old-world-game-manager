@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.4.1** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.4.2** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -30,6 +30,12 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4.2 — Informational mount-state placeholders
+
+**On foot** is a descriptive field from an imported army list, **not** a purchasable rule, item or upgrade. It now appears in the roster with a neutral **Information** badge, retains its exact source text and line, and has **no invented source URL**. The app excludes these entries from matched and unmatched reference counts and debug reports, showing their number separately as **Informational entries**. Other unfamiliar selections still require a source match.
+
+The same treatment works across all supported exporters, not only for Noble, and old saved imports are normalised when opened without changing their models, selections or points. An "On foot" entry does **not** verify that the model may or may not purchase a mount; legality remains outside the importer. The v0.4.1 rule-like default-on-foot heuristic has been removed.
+
 ## v0.4.1 — Parent-scoped selection reference matching
 
 Source-extracted unit details now resolve an imported selection **only when the matched parent unit's source data supplies the evidence**, without editing the source list or assuming legality.
@@ -39,7 +45,7 @@ Source-extracted unit details now resolve an imported selection **only when the 
 - **Archmage wizard entries**: Wizard and the baseline Level 3 Wizard are supported by the reviewed [Archmage unit page](https://tow.whfb.app/unit/archmage); Level 4 Wizard additionally requires its specifically listed +30-point upgrade in the source-backed unit data.
 - **On foot**: recognised as a source-backed *default unmounted character state* only when the parent profile is a regular-infantry character with explicitly optional mounts and no contradictory mount selection. This is not a purchasable item or legality validation.
 
-The High Elf debug example with 16 previously unmatched selections now has regression coverage for all 16. Ambiguous or unavailable options stay unmatched, while previously reviewed/manual references retain precedence. The app's matched tick indicates a **reference identification**, never that army construction or point values have been confirmed.
+The original High Elf debug example contains 13 genuine source-reference matches plus three source-free On foot descriptors, all covered by regression tests. Ambiguous or unavailable options stay unmatched, while previously reviewed/manual references retain precedence. The app's matched tick indicates a **reference identification**, never that army construction or point values have been confirmed.
 
 A copied debug report marked `Game Manager: v0.3.2` is from an older browser build: refresh the deployed site to v0.4.1 and run the import again to produce a current report.
 
