@@ -10,6 +10,7 @@ import {isInformationalSelection,applyInformationalPlaceholders} from './selecti
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.6';
 import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.1';
 import {restoreStoredImport} from './army-state.js';
+import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -544,3 +545,4 @@ if(window.location.hash==='#army-roster'&&!current)
  history.replaceState(null,'',window.location.pathname+window.location.search+'#import');
 showPageForHash();
 refresh().catch(e=>showError(e.message));
+void registerOfflineSupport();
