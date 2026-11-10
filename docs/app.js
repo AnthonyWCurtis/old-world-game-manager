@@ -6,6 +6,7 @@ import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatch
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.2.9';
 import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
+import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.1';
 const $=id=>document.getElementById(id);
 let current=null;
@@ -114,7 +115,7 @@ function downloadJSON(filename,contents){
 const points=n=>n==null?'—':Number(n).toLocaleString('en-GB')+' pts';
 const label=(f)=>f?.value==null?'Unknown':f.value;
 function badge(state){
- const states={matched:['tag','✓ Matched'],partial:['tag partial','! Partially matched'],unmatched:['tag amb','! Unmatched']};
+ const states={matched:['tag','✓ Matched'],partial:['tag partial','! Partially matched'],unmatched:['tag amb','! Unmatched'],informational:['tag info','i Information']};
  const [cls,text]=states[state]||states.unmatched;
  return make('span',cls,text);
 }
@@ -124,6 +125,7 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
  item.append(badge(selectionMatchState(s)));
  const main=make('div','selection-main');const top=make('div','selection-name',s.raw);const small=make('div','selection-kind',`${s.kind}${s.owner?(s.owner.startsWith('g')?' · model group':' · attached to '+s.owner):''} · source line ${s.line}`);main.append(top,small);
  if(s.reference){const a=make('a','',`Source: tow.whfb.app`);a.href=s.reference.url;a.target='_blank';a.rel='noopener noreferrer';main.append(a);}
+ if(isInformationalSelection(s))main.append(make('div','muted small','Descriptive mount state only — no rule or source reference needed.'));
  if(s.reference?.source==='unit-scoped-data'&&s.reference.note)main.append(make('div','muted small',s.reference.note));
  item.append(main);where.append(item);
  for(const child of s.children)appendSelection(where,child,depth+1,unmatchedOnly);
@@ -343,7 +345,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.1'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.2'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -365,7 +367,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.4.1'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.2'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
@@ -397,7 +399,7 @@ function render(){
  $('formatLabel').textContent=`${current.format.exporter} · ${current.format.layout} · ${current.format.confidence} confidence`;
  const fields=[['Faction',current.army.faction],['Composition',current.army.composition],['Game format',current.army.gameFormat],['Player',current.army.player],['Imported total',current.army.reportedPoints],['Calculated sum',current.army.derivedPoints],['Points limit',current.army.limitPoints]];
  $('armyMeta').textContent=fields.map(([k,f])=>`${k}: ${k.toLowerCase().includes('total')||k.toLowerCase().includes('sum')||k.toLowerCase().includes('limit')?points(f.value):label(f)}`).join('  ·  ');
- const m=$('metrics');m.replaceChildren();for(const [value,title] of [[current.stats.unitCount,'Unit instances'],[current.stats.selectionCount,'Selections (incl. nested)'],[current.stats.matchedSelections,'Matched selections'],[current.stats.unmatchedSelections,'Unmatched selections']]){
+ const m=$('metrics');m.replaceChildren();for(const [value,title] of [[current.stats.unitCount,'Unit instances'],[current.stats.selectionCount,'Selections (incl. nested)'],[current.stats.matchedSelections,'Matched selections'],[current.stats.unmatchedSelections,'Unmatched selections'],[current.stats.informationalSelections||0,'Informational entries']]){
   const d=make('div','metric'),v=make('strong','',value),t=make('span','',title);d.append(v,t);m.append(d);
  }
  syncUnmatchedDebug();
@@ -445,7 +447,7 @@ $('extractListBtn').addEventListener('click',()=>{
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());sourceProfiles={};unitDataRecords={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);sourceProfiles={};unitDataRecords={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -459,7 +461,7 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};unitDataRecords={};$('sourceText').value=loaded.original_text;$('format').value='auto';updateFormatDetection();render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;applyInformationalPlaceholders(current);sourceProfiles={};unitDataRecords={};$('sourceText').value=loaded.original_text;$('format').value='auto';updateFormatDetection();render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
