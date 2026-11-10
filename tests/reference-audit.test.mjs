@@ -15,10 +15,14 @@ test('Marks Orges retains all 17 unit instances, costs and selections', () => {
   assert.equal(result.army.limitPoints.value, 2600);
   assert.equal(result.stats.selectionCount, 74);
   assert.equal(result.stats.matchedSelections, 71);
-  assert.equal(result.stats.unmatchedSelections, 3);
+  assert.equal(result.stats.unmatchedSelections, 0);
+  assert.equal(result.stats.informationalSelections, 3);
   assert.equal(result.stats.unparsedLines, 0);
   const remaining = flatten(result).filter(s => s.matchStatus === 'unmatched');
-  assert.deepEqual(remaining.map(s => s.name), ['On foot', 'On foot', 'On foot']);
+  assert.deepEqual(remaining, []);
+  const descriptors = flatten(result).filter(s => s.matchStatus === 'informational');
+  assert.deepEqual(descriptors.map(s => s.name), ['On foot', 'On foot', 'On foot']);
+  assert.ok(descriptors.every(s => s.reference === null));
 });
 
 test('Imported units preserve the source roster order and repeat instances', () => {
