@@ -124,6 +124,7 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
  item.append(badge(selectionMatchState(s)));
  const main=make('div','selection-main');const top=make('div','selection-name',s.raw);const small=make('div','selection-kind',`${s.kind}${s.owner?(s.owner.startsWith('g')?' · model group':' · attached to '+s.owner):''} · source line ${s.line}`);main.append(top,small);
  if(s.reference){const a=make('a','',`Source: tow.whfb.app`);a.href=s.reference.url;a.target='_blank';a.rel='noopener noreferrer';main.append(a);}
+ if(s.reference?.source==='unit-scoped-data'&&s.reference.note)main.append(make('div','muted small',s.reference.note));
  item.append(main);where.append(item);
  for(const child of s.children)appendSelection(where,child,depth+1,unmatchedOnly);
 }
