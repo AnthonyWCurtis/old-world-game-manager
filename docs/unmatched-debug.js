@@ -4,10 +4,11 @@
  *
  * This is a snapshot of the in-memory army AFTER cached/live matching updates.
  */
+import {isInformationalSelection} from './selection-information.js?v=0.4.2';
 const shown = value => value===null||value===undefined||value===''?'Unknown':String(value);
 const count = value => Number.isFinite(value)?value:'?';
 const say = (label,value) => label+': '+shown(value);
-const unmatched = entry => entry?.matchStatus !== 'matched';
+const unmatched = entry => !isInformationalSelection(entry) && entry?.matchStatus !== 'matched';
 const nested = entry => Array.isArray(entry?.children)?entry.children:[];
 
 export function collectUnmatched(army){

@@ -43,7 +43,7 @@ function prepare(entries){
  }};
  return {army,records};
 }
-test('All 16 supplied unmatched selections now have uniquely scoped parent-page evidence',()=>{
+test('16 original entries resolve as 13 source links and 3 informational On foot descriptors',()=>{
  id=0;
  // The debug specifies two Archmages, one default Level 3 and one upgraded Level 4.
  const entries=[
@@ -68,16 +68,21 @@ test('All 16 supplied unmatched selections now have uniquely scoped parent-page 
  const {army,records}=prepare(entries);
  const old=JSON.stringify(army.units.map(u=>({selections:u.selections,
   reportedPoints:u.reportedPoints})));
- assert.equal(collectUnmatched(army).length,16);
+ assert.equal(collectUnmatched(army).length,13);
  const result=applySourceScopedSelectionReferences(army,records);
- assert.equal(result.added,16);
- assert.equal(army.stats.matchedSelections,16);
+ assert.equal(result.added,13);
+ assert.equal(army.stats.matchedSelections,13);
+ assert.equal(army.stats.informationalSelections,3);
  assert.equal(army.stats.unmatchedSelections,0);
  assert.equal(collectUnmatched(army).length,0);
  const matched=army.units.flatMap(u=>u.selections.flatMap(s=>[s,...s.children]));
- assert.ok(matched.every(s=>s.reference?.source==='unit-scoped-data'));
- assert.ok(matched.every(s=>s.reference.url.startsWith('https://tow.whfb.app/')));
- assert.equal(army.units[0].selections[0].reference.evidence,'unmounted-character-default');
+ const references=matched.filter(s=>s.name!=='On foot');
+ const descriptors=matched.filter(s=>s.name==='On foot');
+ assert.equal(references.length,13);
+ assert.equal(descriptors.length,3);
+ assert.ok(references.every(s=>s.reference?.source==='unit-scoped-data'));
+ assert.ok(references.every(s=>s.reference.url.startsWith('https://tow.whfb.app/')));
+ assert.ok(descriptors.every(s=>s.reference===null&&s.matchStatus==='informational'));
  assert.equal(army.units[1].selections[0].children[0].reference.evidence,'source-page-default-wizard-level');
  assert.equal(army.units[2].selections[0].children[0].reference.evidence,'published-wizard-upgrade');
  assert.equal(army.units[6].selections[0].reference.url,'https://tow.whfb.app/weapons-of-war/sword-of-hoeth');
@@ -86,7 +91,7 @@ test('All 16 supplied unmatched selections now have uniquely scoped parent-page 
  assert.equal(army.stats.matchedUnits,8);
  const repeat=applySourceScopedSelectionReferences(army,records);
  assert.equal(repeat.added,0);
- assert.equal(army.stats.matchedSelections,16);
+ assert.equal(army.stats.matchedSelections,13);
  // Selection raw text, kind, children and exported numeric points remain intact.
  assert.deepEqual(army.units.map(u=>u.selections.flatMap(s=>[s,...s.children]).map(s=>s.raw)),
   JSON.parse(old).map(u=>u.selections.flatMap(s=>[s,...s.children]).map(s=>s.raw)));
@@ -106,14 +111,17 @@ test('Wizard default/upgrade have individually verified source evidence and pare
  const n=unit('noble',[s4]);
  assert.equal(findSourceScopedSelectionReference(n,noble,s4),null);
 });
-test('On foot must be a sourced unmounted character state, not a fictional purchasable mount',()=>{
+test('On foot is a generic informational placeholder and never a made-up source reference',()=>{
  const onFoot=selection('On foot','mount-state');
  const noble=unit('noble',[onFoot]);
- const found=findSourceScopedSelectionReference(noble,profiles.noble,onFoot);
- assert.equal(found.url,'https://tow.whfb.app/unit/noble');
- assert.equal(found.type,'mount-state');
- assert.equal(found.evidence,'unmounted-character-default');
- assert.match(found.note,/not an upgrade/);
+ assert.equal(findSourceScopedSelectionReference(noble,profiles.noble,onFoot),null);
+ const {army,records}=prepare([['noble',[onFoot]]]);
+ applySourceScopedSelectionReferences(army,records);
+ assert.equal(onFoot.matchStatus,'informational');
+ assert.equal(onFoot.reference,null);
+ assert.equal(army.stats.informationalSelections,1);
+ assert.equal(army.stats.unmatchedSelections,0);
+ assert.equal(collectUnmatched(army).length,0);
  const horse=selection('Elven Steed','mount-or-component');
  const contradiction=unit('noble',[onFoot,horse]);
  assert.equal(findSourceScopedSelectionReference(contradiction,profiles.noble,onFoot),null);
@@ -166,6 +174,6 @@ test('Published unit matcher is wired after shard loading and reports correct ve
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
  assert.ok(app.indexOf('unitDataRecords=result.records;')<
   app.indexOf('applySourceScopedSelectionReferences(army,unitDataRecords)'));
- assert.match(app,/appVersion:'0\.4\.1'/);
- assert.match(html,/Browser Edition v0\.4\.1/);
+ assert.match(app,/appVersion:'0\.4\.2'/);
+ assert.match(html,/Browser Edition v0\.4\.2/);
 });

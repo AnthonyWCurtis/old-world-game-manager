@@ -123,3 +123,6 @@
 .unit-data-warnings ul{margin:5px 0;padding-left:20px}
 .unit-data-warnings li{margin:4px 0}
 @media(max-width:600px){.unit-data-summary{align-items:flex-start}.unit-data-status{width:100%}.unit-data-body{padding-left:9px;padding-right:9px}}
+
+/* Informational fields are source-list descriptors, not linked rules. */
+.tag.info{background:#e8edf2;color:#405769;border:1px solid #c8d4df}

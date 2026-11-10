@@ -29,9 +29,26 @@ try{
  await page.locator('#sourceRefreshBtn').click();
  await page.waitForTimeout(700);
  assert.equal(await panel.locator('table.unit-data-stats tbody tr').count(),2);
+ // Descriptive mount-state entries remain in the roster but are not source matches.
+ await page.locator('#examples').selectOption('owb-regular');
+ await page.locator('#exampleBtn').click();
+ await page.locator('#parseBtn').click();
+ await page.locator('#units .tag.info').first().waitFor({state:'attached',timeout:10000});
+ assert.equal(await page.locator('#units .tag.info').count(),5);
+ const descriptive=await page.locator('#units .selection:has(> .tag.info)').evaluateAll(
+   nodes=>nodes.map(n=>({text:n.querySelector('.selection-name')?.textContent||'',
+    links:n.querySelectorAll('a').length})));
+ assert.equal(descriptive.length,5);
+ assert.ok(descriptive.every(x=>x.text==='On foot'&&x.links===0));
+ const metrics=await page.locator('#metrics').innerText();
+ assert.match(metrics,/Informational entries/);
+ assert.match(await page.locator('#armyMeta').innerText(),/2,599/);
+ await page.locator('#copyUnmatchedBtn').click();
+ const debug=await page.locator('#unmatchedDebugFallback').inputValue();
+ assert.ok(!debug.includes('SELECTION: On foot'));
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: source-backed Sea Guard details, points untouched, 2 profiles, no global overflow.');
+ console.log('Mobile browser passed: Sea Guard profiles and 5 On foot informational labels, no fake source links or global overflow.');
 }finally{await browser.close();}

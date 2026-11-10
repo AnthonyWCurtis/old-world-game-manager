@@ -1,7 +1,9 @@
-/** Reference badge state; an identified unit is only fully matched when all options are linked. */
+/** Reference badge state; descriptive mount-state labels are neither links nor errors. */
+import {isInformationalSelection} from './selection-information.js?v=0.4.2';
+
 export const hasUnmatchedSelection = selection =>
- selection?.matchStatus !== 'matched' ||
- (selection.children||[]).some(hasUnmatchedSelection);
+ (!isInformationalSelection(selection) && selection?.matchStatus !== 'matched') ||
+ (selection?.children||[]).some(hasUnmatchedSelection);
 
 export const unitHasUnmatched = unit =>
  unit?.matchStatus !== 'matched' ||
@@ -13,6 +15,8 @@ export function unitMatchState(unit){
  return unitHasUnmatched(unit)?'partial':'matched';
 }
 export function selectionMatchState(selection){
+ if(isInformationalSelection(selection))
+  return (selection.children||[]).some(hasUnmatchedSelection)?'partial':'informational';
  if(selection?.matchStatus !== 'matched')return 'unmatched';
  return hasUnmatchedSelection(selection)?'partial':'matched';
 }
