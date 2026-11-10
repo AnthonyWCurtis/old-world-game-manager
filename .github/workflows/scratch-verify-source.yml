@@ -1,0 +1,36 @@
+name: Scratch source access and unit HTML structure check
+on:
+  push:
+    branches: [scratch/independent-all-units-json-20261110]
+    paths: ['.github/workflows/scratch-verify-source.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -q requests beautifulsoup4 lxml
+      - name: Check robots and real unit structure
+        run: |
+          python - <<'PY'
+          import requests
+          from bs4 import BeautifulSoup
+          s=requests.Session()
+          s.headers.update({'User-Agent':'IndependentOldWorldReferenceExporter/0.1 (private research)'})
+          for url in ['https://tow.whfb.app/robots.txt','https://tow.whfb.app/sitemap/armies','https://tow.whfb.app/unit/lothern-sea-guard']:
+              try:
+                  r=s.get(url,timeout=25)
+                  print('SOURCE',url,r.status_code,len(r.content),r.headers.get('Content-Type',''))
+                  if url.endswith('robots.txt'):print('ROBOTS CONTENT',r.text[:2200].replace('\n',' / '))
+                  if url.endswith('lothern-sea-guard') and r.ok:
+                      soup=BeautifulSoup(r.text,'lxml')
+                      print('TITLE',soup.title.get_text(' ',strip=True) if soup.title else None)
+                      print('HTML FEATURES', [(k,len(soup.select(k))) for k in ['table.unit-profile-table','main','[class*="unit-profile__details"]','[class*="options"]','[class*="special-rule"]','[class*="equipment"]']])
+                      for x in soup.select('[class*="unit-profile__details"]')[:20]:
+                          print('DETAIL',x.get('class'),x.get_text(' ',strip=True)[:200])
+              except Exception as e:print('ERROR',url,str(e)[:250])
+          PY
