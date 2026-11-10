@@ -172,10 +172,16 @@ export async function getUnitDetails(army,index,{fetcher=fetch}={}){
  const pairs=army.units.map(unit=>({unit,entry:findIndexedUnit(unit,index)}))
   .filter(({entry})=>!!entry);
  const shards=[...new Set(pairs.map(p=>p.entry.shard))];
- const loaded=await Promise.all(shards.map(async id=>{
-  try{return {id,value:await getShard(index,id,fetcher)};}
-  catch(e){return {id,error:String(e?.message||e)};}
- }));
+ const queue=[...shards],loaded=[];
+ // Limit simultaneous shard requests on mobile/Safari and poor connections.
+ const workers=Array.from({length:Math.min(4,queue.length)},async()=>{
+  while(queue.length){
+   const id=queue.shift();
+   try{loaded.push({id,value:await getShard(index,id,fetcher)});}
+   catch(e){loaded.push({id,error:String(e?.message||e)});}
+  }
+ });
+ await Promise.all(workers);
  const byShard=new Map(loaded.filter(x=>x.value).map(x=>[x.id,x.value]));
  const errors=loaded.filter(x=>x.error).map(x=>x.id+': '+x.error);
  const records={};
