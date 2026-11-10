@@ -32,5 +32,10 @@ jobs:
                       print('HTML FEATURES', [(k,len(soup.select(k))) for k in ['table.unit-profile-table','main','[class*="unit-profile__details"]','[class*="options"]','[class*="special-rule"]','[class*="equipment"]']])
                       for x in soup.select('[class*="unit-profile__details"]')[:20]:
                           print('DETAIL',x.get('class'),x.get_text(' ',strip=True)[:200])
+                      opts=soup.select_one('.unit-profile__details--option')
+                      print('OPTIONS HTML',str(opts)[:6500] if opts else 'MISSING')
+                      for tag in soup.find_all(string=True):
+                          if 'Last update' in tag or 'Forces of Fantasy' in tag:
+                              print('META NODE',tag.parent.name,tag.parent.get('class'),str(tag)[:160])
               except Exception as e:print('ERROR',url,str(e)[:250])
           PY
