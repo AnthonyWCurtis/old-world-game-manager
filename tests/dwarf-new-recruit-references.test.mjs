@@ -141,8 +141,8 @@ test('Standard Runes only resolves from exact, unique, published allowance and l
   options:g.options.filter(o=>!o.description.startsWith('Purchase Standard runes'))}));
  assert.equal(match(missing),null);
  const twice=structuredClone(irondrakes);
- twice.upgradeGroups.find(g=>g.options.some(o=>o.description.startsWith('Purchase Standard runes')))
-  .options.push(structuredClone(option));
+ const runesGroup=twice.upgradeGroups.find(g=>g.options.some(o=>o.description.startsWith('Purchase Standard runes')));
+ runesGroup.options.push(structuredClone(runesGroup.options.find(o=>o.description.startsWith('Purchase Standard runes'))));
  assert.equal(match(twice),null);
  assert.equal(match(irondrakes,parent,{...runes,name:'Weapon Runes'}),null);
  const other={...parent,reference:{url:cannon.source.sourceUrl}};
