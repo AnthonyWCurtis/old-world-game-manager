@@ -45,6 +45,16 @@ jobs:
                           print('PAGE PROPS KEYS',list(props))
                           entry=props.get('entry',{})
                           print('ENTRY KEYS',[(k,type(v).__name__,(len(v) if isinstance(v,(list,dict)) else '') ) for k,v in entry.items()])
+                          fields=entry.get('fields',{})
+                          for k,v in fields.items():
+                              if isinstance(v,list):print('FIELD STRUCT',k,'list',len(v),[str(x)[:450] for x in v[:2]])
+                              elif isinstance(v,dict):
+                                  print('FIELD STRUCT',k,'dict keys',list(v)[:16])
+                                  print('FIELD PREVIEW',k,json.dumps(v,ensure_ascii=False)[:1200])
+                              else:print('FIELD STRUCT',k,repr(v)[:250])
+                          print('SYS ENTRY',json.dumps(entry.get('sys',{}),ensure_ascii=False)[:1800])
+                          print('CROSS REF TYPE',type(props.get('crossReference')).__name__)
+
                           for k,v in entry.items():
                               if isinstance(v,dict):print('ENTRY SUBKEYS',k,[(a,type(b).__name__) for a,b in list(v.items())[:25]])
                               elif isinstance(v,list): print('ENTRY LIST HEAD',k,[str(z)[:180] for z in v[:2]])
