@@ -20,6 +20,7 @@ const APP_SHELL=[
  './army-roster-page.js',
  './game-screen-model.js',
  './army-state.js',
+ './offline.js',
  './catalog.js',
  './examples/manifest.json'
 ];
