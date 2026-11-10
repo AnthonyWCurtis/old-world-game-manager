@@ -30,6 +30,18 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4.3 — Wood Elf source-scoped selection references
+
+The Wood Elf Realms 748-point unmatched-reference report highlighted five options. Three now receive source-backed references **only when the imported parent unit matches the actual source page**:
+
+- `Shadowdancer → Level 1 Wizard`: exact parent option `May be a Level 1 Wizard (+35 points)`; not an automatically active wizard level.
+- `Glade Guard → Lord's Bowmen`: source-checked plural alias for the singular `Lord's Bowman` model profile **and** an explicit champion upgrade on the same unit page.
+- `Wardancers → 9x Additional hand weapon`: strips a positive model-count prefix *only for matching*, and links to the exact weapon referenced in the parent unit's per-model equipment options. The original `9x` text and roster points remain unchanged; quantity legality is not evaluated.
+
+**The Briar-bow** (Waystalker) and **The Kinbands of Modryn** (Glade Guard) remain unmatched because neither selection has an identified reference in the current [tow.whfb.app](https://tow.whfb.app) unit pages and indexed Magic Items source. The browser does not guess an item URL, an army-composition restriction or purchase eligibility.
+
+All changes are reference matching only; no points, list legality or rule effects are recalculated. Full import and mobile browser regression tests cover the three supported matches and two intentionally unresolved selections.
+
 ## v0.4.2 — Informational mount-state placeholders
 
 **On foot** is a descriptive field from an imported army list, **not** a purchasable rule, item or upgrade. It now appears in the roster with a neutral **Information** badge, retains its exact source text and line, and has **no invented source URL**. The app excludes these entries from matched and unmatched reference counts and debug reports, showing their number separately as **Informational entries**. Other unfamiliar selections still require a source match.
