@@ -31,6 +31,7 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
+ await page.locator('.game-character-card').first().waitFor({state:'attached',timeout:10000});
  assert.ok(await page.locator('.game-character-card').count()>0);
  assert.ok(await page.locator('#gameRegiments .army-unit-card').count()>0);
  await page.locator('#gameScreenJumpCharacters').click();
