@@ -9,7 +9,7 @@ const normalized=value=>String(value||'').normalize('NFKC').toLowerCase()
   .replace(/\s+/g,' ').trim();
 
 export function isInformationalSelection(selection){
- return selection?.kind==='mount-state'&&normalized(selection.name)==='on foot';
+ return normalized(selection?.name)==='on foot';
 }
 
 const walk=items=>(items||[]).flatMap(x=>[x,...walk(x.children||[])]);
