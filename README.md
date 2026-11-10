@@ -30,6 +30,17 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4.6 — New Recruit Dwarf source references
+
+A v0.4.5 New Recruit TOW debug reported 13 units, 2,500 imported points and two unmatched selections. Both now resolve using **only the individual parent unit's existing published JSON**:
+
+- **Rangers → Ol Deadeye** matches the [Ol' Deadeye champion](https://tow.whfb.app/unit/rangers) by normalising the omitted apostrophe **for champion titles only**. The Rangers profile and exact `Upgrade one model to an Ol' Deadeye (champion) (+6 points per unit)` option must both exist.
+- **Irondrakes → Standard Runes** matches the parent's published `Purchase Standard runes up to a total of 50 points` option and links to the actual [Standard Runes category](https://tow.whfb.app/magic-items/standard-runes). The JSON also preserves the `0-1 unit per 1,000 points may:` restriction in the reference note. Parent source link, unique category link, matching cap and exact option description are mandatory.
+
+This is **reference identification only**. Identifying the Standard Runes category does **not** mean a particular rune is selected, a standard bearer is confirmed, an allowance is legal in a given army, or any points have been recalculated. The imported 2,500-point value remains untouched.
+
+A synthetic 13-unit, 2,500-point New Recruit fixture recreates the two reported selections at source lines 7 and 14 for regression and mobile browser testing. It is not a reconstruction of the user's complete unshared original roster.
+
 ## v0.4.5 — Shadow Warriors champion reference
 
 The High Elf Realms `The Warriors Of Ulthuan` 586-point Old World Builder debug report had one unmatched selection: `Shadow Walker` under `Shadow Warriors`.
