@@ -33,7 +33,23 @@ jobs:
                       for x in soup.select('[class*="unit-profile__details"]')[:20]:
                           print('DETAIL',x.get('class'),x.get_text(' ',strip=True)[:200])
                       opts=soup.select_one('.unit-profile__details--option')
-                      print('OPTIONS HTML',str(opts)[:6500] if opts else 'MISSING')
+                      print('OPTIONS HTML',str(opts)[:1400] if opts else 'MISSING')
+                      import json
+                      for script in soup.find_all('script'):
+                          raw=script.string or script.get_text()
+                          if not raw or '"pageProps"' not in raw[:2000]:continue
+                          try: p=json.loads(raw)
+                          except Exception:continue
+                          if 'props' not in p:continue
+                          props=p.get('props',{}).get('pageProps',{})
+                          print('PAGE PROPS KEYS',list(props))
+                          entry=props.get('entry',{})
+                          print('ENTRY KEYS',[(k,type(v).__name__,(len(v) if isinstance(v,(list,dict)) else '') ) for k,v in entry.items()])
+                          for k,v in entry.items():
+                              if isinstance(v,dict):print('ENTRY SUBKEYS',k,[(a,type(b).__name__) for a,b in list(v.items())[:25]])
+                              elif isinstance(v,list): print('ENTRY LIST HEAD',k,[str(z)[:180] for z in v[:2]])
+                              else:print('ENTRY FIELD',k,repr(v)[:120])
+                          break
                       for tag in soup.find_all(string=True):
                           if 'Last update' in tag or 'Forces of Fantasy' in tag:
                               print('META NODE',tag.parent.name,tag.parent.get('class'),str(tag)[:160])
