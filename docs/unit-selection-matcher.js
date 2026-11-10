@@ -75,6 +75,59 @@ function directCommand(record,selection){
  });
  return matched.length===1?matched[0]:null;
 }
+/**
+ * A model-specific equipment choice from the actual unit's Options section.
+ * "9x Additional hand weapon" identifies a *reference* to the unit's option,
+ * not proof that nine models may take it or a validation of paid points.
+ */
+function modelCountEquipmentOption(record,selection){
+ const m=String(selection.name||'').trim().match(/^([1-9]\d*)\s*[x×]\s+(.+)$/i);
+ if(!m)return null;
+ const quantity=Number(m[1]),name=normalized(m[2]);
+ if(!Number.isSafeInteger(quantity)||quantity<1||!name)return null;
+ const hits=[];
+ for(const group of record.upgradeGroups||[]){
+  if(!/^any model in the unit may take one of the following:/i.test(group.eligibilityClause||''))continue;
+  for(const option of group.options||[]){
+   if(option.points?.basis!=='per_model')continue;
+   for(const ref of option.linkedReferences||[]){
+    if(safeRef(ref)&&normalized(ref.name)===name)hits.push({ref,option});
+   }
+  }
+ }
+ return hits.length===1?{...hits[0],quantity}:null;
+}
+
+/**
+ * Some exporters pluralise champion titles (Lord's Bowmen) while the source
+ * profile and unit upgrade both use the singular (Lord's Bowman).
+ * An exact champion title *and* an explicit upgrade are mandatory.
+ */
+function publishedChampionOption(record,selection){
+ const provided=normalized(selection.name);
+ if(!provided)return null;
+ const canonical=provided.endsWith('bowmen')?
+  provided.slice(0,-'bowmen'.length)+'bowman':provided;
+ if(!record.modelProfiles?.some(m=>normalized(m.name)===canonical))return null;
+ const matching=(record.upgradeGroups||[]).flatMap(g=>g.options||[]).filter(o=>{
+  const m=String(o.description||'').match(
+   /^upgrade one model to an?\s+(.+?)\s*\(champion\)\s*\(\+\d+ points? per unit\)/i);
+  return m && normalized(m[1])===canonical;
+ });
+ return matching.length===1?{option:matching[0],sourceName:canonical}:null;
+}
+
+/** Require an explicit paid Wizard level option on this exact source unit. */
+function optionalWizardLevelOption(record,selection){
+ const m=normalized(selection.name).match(/^level ([1-4]) wizard$/);
+ if(!m)return null;
+ const level=Number(m[1]);
+ const hits=(record.upgradeGroups||[]).flatMap(g=>g.options||[]).filter(o=>
+  new RegExp('^May be a Level '+level+' Wizard\\s*\\(\\+\\d+ points?\\)','i')
+   .test(String(o.description||'')));
+ return hits.length===1?{level,option:hits[0]}:null;
+}
+
 function wizardEvidence(record,selection){
  const fact=SOURCE_VERIFIED_WIZARDS[record.id];
  if(!fact||fact.sourceUrl!==record.source.sourceUrl)return null;
@@ -113,6 +166,32 @@ function referenceForSelection(unit,record,selection){
    name:selection.name,url,type:'command',source:'unit-scoped-data',
    verificationStatus:'source-extracted',evidence:'published-command-upgrade',
    note:'This unit page lists the command option; selection legality and costs are not verified.'};
+ }
+ const modelGear=modelCountEquipmentOption(record,selection);
+ if(modelGear){
+  return {id:'unit-scoped:'+record.id+':model-gear:'+normalized(modelGear.ref.name),
+   name:selection.name,url:modelGear.ref.sourceUrl,type:'equipment',
+   source:'unit-scoped-data',parentSourceUrl:url,
+   verificationStatus:'source-extracted',evidence:'per-model-equipment-option',
+   sourceQuantity:modelGear.quantity,
+   note:'The unit page lists this per-model equipment option. The imported count ('+
+    modelGear.quantity+') and paid points have not been verified.'};
+ }
+ const champion=publishedChampionOption(record,selection);
+ if(champion){
+  return {id:'unit-scoped:'+record.id+':champion:'+champion.sourceName,
+   name:selection.name,url,type:'command',source:'unit-scoped-data',
+   verificationStatus:'source-extracted',evidence:'published-champion-upgrade',
+   note:'The parent unit lists the '+champion.option.description+
+    '. Champion eligibility and points are not independently verified.'};
+ }
+ const optionalWizard=optionalWizardLevelOption(record,selection);
+ if(optionalWizard){
+  return {id:'unit-scoped:'+record.id+':wizard-level:'+optionalWizard.level,
+   name:selection.name,url,type:'wizard-level',source:'unit-scoped-data',
+   verificationStatus:'source-extracted',evidence:'published-wizard-upgrade',
+   note:'The unit page lists '+optionalWizard.option.description+
+    '. This is an optional upgrade, not a default wizard level.'};
  }
  const wizard=wizardEvidence(record,selection);
  if(wizard){

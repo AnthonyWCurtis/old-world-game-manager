@@ -174,6 +174,6 @@ test('Published unit matcher is wired after shard loading and reports correct ve
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
  assert.ok(app.indexOf('unitDataRecords=result.records;')<
   app.indexOf('applySourceScopedSelectionReferences(army,unitDataRecords)'));
- assert.match(app,/appVersion:'0\.4\.2'/);
- assert.match(html,/Browser Edition v0\.4\.2/);
+ assert.match(app,/appVersion:'0\.4\.3'/);
+ assert.match(html,/Browser Edition v0\.4\.3/);
 });

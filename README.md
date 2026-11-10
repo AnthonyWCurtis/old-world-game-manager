@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.4.2** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.4.3** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -29,6 +29,18 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder. Footerless regular text with a sectioned, hyphen-bullet structure uses the compatible parser without claiming a confirmed builder.
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+
+## v0.4.3 — Wood Elf source-scoped selection references
+
+The Wood Elf Realms 748-point unmatched-reference report highlighted five options. Three now receive source-backed references **only when the imported parent unit matches the actual source page**:
+
+- `Shadowdancer → Level 1 Wizard`: exact parent option `May be a Level 1 Wizard (+35 points)`; not an automatically active wizard level.
+- `Glade Guard → Lord's Bowmen`: source-checked plural alias for the singular `Lord's Bowman` model profile **and** an explicit champion upgrade on the same unit page.
+- `Wardancers → 9x Additional hand weapon`: strips a positive model-count prefix *only for matching*, and links to the exact weapon referenced in the parent unit's per-model equipment options. The original `9x` text and roster points remain unchanged; quantity legality is not evaluated.
+
+**The Briar-bow** (Waystalker) and **The Kinbands of Modryn** (Glade Guard) remain unmatched because neither selection has an identified reference in the current [tow.whfb.app](https://tow.whfb.app) unit pages and indexed Magic Items source. The browser does not guess an item URL, an army-composition restriction or purchase eligibility.
+
+All changes are reference matching only; no points, list legality or rule effects are recalculated. Full import and mobile browser regression tests cover the three supported matches and two intentionally unresolved selections.
 
 ## v0.4.2 — Informational mount-state placeholders
 
