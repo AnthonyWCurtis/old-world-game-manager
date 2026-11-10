@@ -30,6 +30,17 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4.4 — Winter Muster Mage wizard references
+
+The High Elf Realms `Winter Muster` 750-point Old World Builder debug report contained two source-free selections under the Mage:
+
+- `Wizard` — the [Mage source page](https://tow.whfb.app/unit/mage) explicitly identifies the Mage as a **Level 1 Wizard** by default.
+- `Level 2 Wizard` — the same Mage page expressly lists `Be a Level 2 Wizard +30 points` as an optional upgrade.
+
+v0.4.4 maps both to the Mage's unit source URL, keeping their distinct roles and the original nested selection structure. The upgraded level only matches if that exact level is also listed in the **parent Mage's published options**. Unsupported levels or unrelated character profiles stay unmatched; the previously verified Archmage and Shadowdancer behaviour is retained.
+
+**No points or army legality are recalculated.** The original report's 750-point total stays unchanged. A source match confirms identification, not whether the upgrade is legal or correctly costed in a specific roster.
+
 ## v0.4.3 — Wood Elf source-scoped selection references
 
 The Wood Elf Realms 748-point unmatched-reference report highlighted five options. Three now receive source-backed references **only when the imported parent unit matches the actual source page**:
