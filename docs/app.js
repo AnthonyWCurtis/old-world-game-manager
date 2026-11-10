@@ -8,6 +8,7 @@ import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.6';
+import {buildRosterSnapshot,ROSTER_SESSION_KEY,IMPORT_RESTORE_KEY} from './army-roster-snapshot.js?v=0.4.7';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -345,7 +346,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.6'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.7'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -367,7 +368,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.4.6'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.7'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
@@ -450,6 +451,19 @@ $('parseBtn').addEventListener('click',async()=>{
  try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);sourceProfiles={};unitDataRecords={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
+$('viewRosterBtn').addEventListener('click',()=>{
+ if(!current)return;
+ showError('');
+ try{
+  const snapshot=buildRosterSnapshot(current);
+  // Same-tab storage only: no raw army text or private details in URLs.
+  sessionStorage.setItem(ROSTER_SESSION_KEY,JSON.stringify(snapshot));
+  sessionStorage.setItem(IMPORT_RESTORE_KEY,JSON.stringify(current));
+  window.location.assign('./army-roster.html');
+ }catch(error){
+  showError('Could not open Army Roster: '+String(error?.message||error)+'. The imported list is unchanged.');
+ }
+});
 $('unmatchedOnly').addEventListener('change',render);
 $('copyUnmatchedBtn').addEventListener('click',()=>void copyUnmatchedDebug());
 $('selectUnmatchedBtn').addEventListener('click',selectUnmatchedText);
@@ -473,5 +487,28 @@ $('exampleBtn').addEventListener('click',async()=>{
 fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load sample manifest');return r.json();}).then(items=>{for(const item of items){const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label;$('examples').append(opt);}}).catch(e=>showError(e.message));
 $('refreshBtn').addEventListener('click' ,()=>refresh().catch(e=>showError(e.message)));
 $('backupBtn').addEventListener('click',async()=>{try{const rows=await readAll();if(!rows.length)throw Error('No saved snapshots to back up yet.');downloadJSON('old-world-game-manager-backup.json',{schemaVersion:1,exportedAt:new Date().toISOString(),snapshots:rows});}catch(e){showError(e.message);}});
+function restoreFromRoster(){
+ if(new URLSearchParams(window.location.search).get('restore')!=='roster')return;
+ try{
+  const raw=sessionStorage.getItem(IMPORT_RESTORE_KEY);
+  const army=JSON.parse(raw);
+  if(army?.schemaVersion!==1||!Array.isArray(army.units)||!army.units.length||
+     typeof army.originalText!=='string'||!army.army||!army.stats)
+   throw Error('The previous import is no longer available in this browser tab.');
+  current=army;
+  applyInformationalPlaceholders(current);
+  $('sourceText').value=current.originalText;
+  $('format').value='auto';
+  updateFormatDetection();
+  render();
+  void refreshCurrentSource(false);
+ }catch(error){
+  showError('Could not restore the previous import: '+String(error?.message||error)+'. Paste or open your saved army again.');
+ }finally{
+  // Do not leave an ephemeral navigation flag in the address bar.
+  window.history.replaceState(null,'',window.location.pathname+window.location.hash);
+ }
+}
 updateFormatDetection();
+restoreFromRoster();
 refresh().catch(e=>showError(e.message));
