@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.4.6** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.4.7** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -29,6 +29,23 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder. Footerless regular text with a sectioned, hyphen-bullet structure uses the compatible parser without claiming a confirmed builder.
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+
+## v0.4.7 — Dedicated mobile-friendly Army Roster page
+
+After successfully importing an army, choose the prominent gold **View Army Roster →** button directly below the import summary to open [the dedicated roster view](docs/army-roster.html).
+
+The separate page shows:
+- The **army name and faction**, imported points, number of unit entries, sum of **known** model counts and number of published model profiles.
+- Numbered, sectioned unit cards in the **original import order**, including repeated copies of the same unit.
+- Each unit's actual imported **quantity**, **points**, selected upgrades and model groups. When the exporter does not supply a model count it shows **Model count not supplied**, rather than inventing one.
+- All model profiles available from the **version-pinned 581-unit JSON source library**, each with the nine published characteristics `M WS BS S T W I A Ld` in a three-column mobile-friendly grid.
+- Optional source equipment and special-rule details, a unit search field and a Print / Save PDF control.
+
+Use **Back to importer** on the roster page to restore your current parsed import, including its original text and source diagnostics. The handoff and return state use **same-tab browser session storage**, not a shareable URL and not a new automatically saved army. Your original list does not leave the device. If the tab is closed or browser site data is cleared, revisit a previously saved import or paste your list again.
+
+The roster page loads only the JSON shards needed by the selected units and can reuse previously cached source data when offline. Units whose profiles are not available remain visible with their imported counts and points intact.
+
+**No combat/rules calculations are performed.** Published characteristics represent the base profiles; imported magic, equipment, buffs, unit restrictions and upgrades do not automatically change their numbers. The independent source database remains a separate, untouched, version-pinned master snapshot.
 
 ## v0.4.6 — New Recruit Dwarf source references
 
