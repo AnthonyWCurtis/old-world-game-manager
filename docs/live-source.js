@@ -4,6 +4,7 @@
  * Sitemap links are references, NOT proof of army legality or verified rules.
  * Only URL/name metadata and page fingerprints are stored locally, not rules text.
  */
+import {isInformationalSelection,recountReferenceStats} from './selection-information.js?v=0.4.2';
 export const SOURCE_ORIGIN = 'https://tow.whfb.app';
 export const INDEX_SOURCES = [
   {path:'/sitemap/armies', type:'unit'},
@@ -181,6 +182,7 @@ export function applyIndexedReferences(army, entries){
     }
     const selections=walk(u.selections||[]).concat((u.modelGroups||[]).flatMap(g=>walk(g.selections||[])));
     for(const s of selections){
+      if(isInformationalSelection(s)){s.reference=null;s.matchStatus='informational';continue;}
       if(s.reference && s.reference.source!=='live-index')continue;
       const ref=findIndexedReference(s.name,false,entries);
       if(ref){
@@ -195,14 +197,8 @@ export function applyIndexedReferences(army, entries){
   return {added};
 }
 /** Recount reference links only, never change imported units or reported points. */
-function recountReferences(army){
- const units=army.units, selections=units.flatMap(u=>
-  walk(u.selections||[]).concat((u.modelGroups||[]).flatMap(g=>walk(g.selections||[]))));
- army.stats.matchedUnits=units.filter(u=>u.matchStatus==='matched').length;
- army.stats.unmatchedUnits=units.length-army.stats.matchedUnits;
- army.stats.matchedSelections=selections.filter(s=>s.matchStatus==='matched').length;
- army.stats.unmatchedSelections=selections.length-army.stats.matchedSelections;
-}
+function recountReferences(army){recountReferenceStats(army);}
+
 /** An identified unit's published profile is evidence for model names / wizard levels.
  * It is NOT an assertion that a purchased option, army category or points are legal. */
 export function applyProfileReferences(army, profiles){
@@ -215,6 +211,7 @@ export function applyProfileReferences(army, profiles){
   const wizardLevels=new Set(profile.wizardLevels||[]);
   const selections=walk(unit.selections||[]).concat((unit.modelGroups||[]).flatMap(g=>walk(g.selections||[])));
   for(const selection of selections){
+   if(isInformationalSelection(selection)){selection.reference=null;selection.matchStatus='informational';continue;}
    if(selection.reference && selection.reference.source!=='unit-profile')continue;
    const name=normal(selection.name);
    const wizard=name.match(/^wizard level\s+([1-4])$/i);
