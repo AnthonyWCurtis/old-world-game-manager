@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:necroserpents",
+  "name": "Necroserpents",
+  "nameSingular": "Necroserpent",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/necroserpents",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3zX2zCmszhHtzftXW7N88G",
+    "sourceUpdatedAt": "2024-03-30T18:34:18.479Z",
+    "sourceRevision": 4,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 March 30",
+    "publicationCitation": "Arcane Journal: Tomb Kings of Khemri, p. 44",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "c068fef3abdc499dc89e841ca957f39fddbbe62914ffa173bf9be84e0183f985"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "2+"
+  },
+  "basePoints": {
+    "amount": 38,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "38 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Necroserpent",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": 0,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Poisoned Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/poisoned-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Tomb Kings of Khemri",
+      "sourceEntryId": "1KvuPgjpewIHVM8lSW3DHM",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 44,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

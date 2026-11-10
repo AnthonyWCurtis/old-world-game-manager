@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:grail-knights",
+  "name": "Grail Knights",
+  "nameSingular": "Grail Knight",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/grail-knights",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "78GU7B2k3odZcyKSYFv8ds",
+    "sourceUpdatedAt": "2024-02-23T16:17:49.428Z",
+    "sourceRevision": 1,
+    "publishedVersion": 15,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Forces of Fantasy, p. 97",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "ea2da5955019e3b0bd796bd451fd473e44101daaf3198fee1d96acaeb8daa491"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "3+"
+  },
+  "basePoints": {
+    "amount": 38,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "38 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Grail Knight",
+      "characteristics": {
+        "M": "-",
+        "WS": 6,
+        "BS": 2,
+        "S": 4,
+        "T": 4,
+        "W": 1,
+        "I": 5,
+        "A": 2,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Grail Guardian",
+      "characteristics": {
+        "M": "-",
+        "WS": 6,
+        "BS": 2,
+        "S": 4,
+        "T": 4,
+        "W": 1,
+        "I": 5,
+        "A": 3,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Bretonnian Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "lances",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/lance",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shields",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blessings of the Lady",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-lady",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Finest Warhorses",
+      "sourceUrl": "https://tow.whfb.app/special-rules/finest-warhorses",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lance Formation",
+      "sourceUrl": "https://tow.whfb.app/special-rules/lance-formation",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Living Saints",
+      "sourceUrl": "https://tow.whfb.app/special-rules/living-saints",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Grail Vow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-grail-vow",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Grail Guardian (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Upgrade one model to a musician (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Purchase a magic standard worth up to 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "A Grail Guardian may take:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "A single Knightly Virtue",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Knightly Virtue",
+              "sourceUrl": "https://tow.whfb.app/magic-items/knightly-virtues",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 97,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

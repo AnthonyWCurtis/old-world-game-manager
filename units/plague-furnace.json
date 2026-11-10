@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:plague-furnace",
+  "name": "Plague Furnace",
+  "nameSingular": "Plague Furnace",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/plague-furnace",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "nEql6itD79mjuofwKtpoa",
+    "sourceUpdatedAt": "2024-02-28T21:15:12.024Z",
+    "sourceRevision": 2,
+    "publishedVersion": 22,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Skaven, p. 16",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "892f37a3e47d02d75ce0e63d402fccae8dbcbe415f2e5afc7d7d1550e554c8d8"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 170,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+170 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Plague Furnace",
+      "characteristics": {
+        "M": 2,
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Plague Monk Crew (x3)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 2,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Billowing Death",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/billowing-death",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Dragged Along",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dragged-along",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Frenzy",
+      "sourceUrl": "https://tow.whfb.app/special-rules/frenzy",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Great Censer",
+      "sourceUrl": "https://tow.whfb.app/special-rules/great-censer",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Poisoned Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/poisoned-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scurrying Masses",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scurrying-masses",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 16,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, armourValue, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

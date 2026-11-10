@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warhawk",
+  "name": "Warhawk",
+  "nameSingular": "Warhawk",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warhawk",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4Q2rmFL6k4f4lG6kLslshO",
+    "sourceUpdatedAt": "2024-02-24T03:21:56.151Z",
+    "sourceRevision": 1,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2024 February 24",
+    "publicationCitation": "Forces of Fantasy, p. 127",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "60d328ff9df575dc90ca39e60fbdc0e50c2c2e795c74b983bb892afe9c047573"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 30,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+30 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warhawk",
+      "characteristics": {
+        "M": 2,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "(+1)",
+        "W": "-",
+        "I": 4,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Evasive",
+      "sourceUrl": "https://tow.whfb.app/special-rules/evasive",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Feigned Flight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/feigned-flight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 127,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

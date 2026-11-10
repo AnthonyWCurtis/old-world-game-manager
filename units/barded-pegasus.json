@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:barded-pegasus",
+  "name": "Barded Pegasus",
+  "nameSingular": "Barded Pegasus",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/barded-pegasus",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6pRApiBU3SdKn5NX6Y5EMy",
+    "sourceUpdatedAt": "2026-07-10T15:03:58.069Z",
+    "sourceRevision": 2,
+    "publishedVersion": 14,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Forces of Fantasy, p. 90",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "dc442431b42b01bfdb2e092303cf7acf7f13c880d2aa0c966c3df8bef11ffa5c"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "40 x 60 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 30,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+30 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Barded Pegasus",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "(+1)",
+        "I": 4,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 90,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

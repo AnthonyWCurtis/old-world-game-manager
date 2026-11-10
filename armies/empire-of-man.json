@@ -1,0 +1,256 @@
+{
+  "id": "army:empire-of-man",
+  "name": "Empire of Man",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7BS03u65NyXvCbQbJad5jj",
+    "sourceUpdatedAt": "2024-02-22T17:39:30.897Z",
+    "sourceRevision": 7,
+    "publishedVersion": 15,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "26cad573fc4af5ac9f1a6ffbfe852c4fa47fe33dd8af3015bdd8913ea4d31d6c"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:general-hans-von-loewenhacke",
+      "name": "General Hans von Löwenhacke",
+      "sourceUrl": "https://tow.whfb.app/unit/general-hans-von-loewenhacke"
+    },
+    {
+      "unitId": "unit:harald-gemunsen",
+      "name": "Harald Gemunsen",
+      "sourceUrl": "https://tow.whfb.app/unit/harald-gemunsen"
+    },
+    {
+      "unitId": "unit:captain-of-the-empire",
+      "name": "Captain of the Empire",
+      "sourceUrl": "https://tow.whfb.app/unit/captain-of-the-empire"
+    },
+    {
+      "unitId": "unit:chapter-master",
+      "name": "Chapter Master",
+      "sourceUrl": "https://tow.whfb.app/unit/chapter-master"
+    },
+    {
+      "unitId": "unit:empire-engineer",
+      "name": "Empire Engineer",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-engineer"
+    },
+    {
+      "unitId": "unit:general-of-the-empire",
+      "name": "General of the Empire",
+      "sourceUrl": "https://tow.whfb.app/unit/general-of-the-empire"
+    },
+    {
+      "unitId": "unit:grand-master",
+      "name": "Grand Master",
+      "sourceUrl": "https://tow.whfb.app/unit/grand-master"
+    },
+    {
+      "unitId": "unit:harbinger-of-doom",
+      "name": "Harbinger of Doom",
+      "sourceUrl": "https://tow.whfb.app/unit/harbinger-of-doom"
+    },
+    {
+      "unitId": "unit:high-priest-of-ulric",
+      "name": "High Priest of Ulric",
+      "sourceUrl": "https://tow.whfb.app/unit/high-priest-of-ulric"
+    },
+    {
+      "unitId": "unit:lector-of-sigmar",
+      "name": "Lector of Sigmar",
+      "sourceUrl": "https://tow.whfb.app/unit/lector-of-sigmar"
+    },
+    {
+      "unitId": "unit:master-mage",
+      "name": "Master Mage",
+      "sourceUrl": "https://tow.whfb.app/unit/master-mage"
+    },
+    {
+      "unitId": "unit:priest-of-sigmar",
+      "name": "Priest of Sigmar",
+      "sourceUrl": "https://tow.whfb.app/unit/priest-of-sigmar"
+    },
+    {
+      "unitId": "unit:priest-of-ulric",
+      "name": "Priest of Ulric",
+      "sourceUrl": "https://tow.whfb.app/unit/priest-of-ulric"
+    },
+    {
+      "unitId": "unit:witch-hunter",
+      "name": "Witch Hunter",
+      "sourceUrl": "https://tow.whfb.app/unit/witch-hunter"
+    },
+    {
+      "unitId": "unit:wizard-lord",
+      "name": "Wizard Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/wizard-lord"
+    },
+    {
+      "unitId": "unit:barded-warhorse",
+      "name": "Barded Warhorse",
+      "sourceUrl": "https://tow.whfb.app/unit/barded-warhorse"
+    },
+    {
+      "unitId": "unit:demigryph",
+      "name": "Demigryph",
+      "sourceUrl": "https://tow.whfb.app/unit/demigryph"
+    },
+    {
+      "unitId": "unit:empire-warhorse",
+      "name": "Empire Warhorse",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-warhorse"
+    },
+    {
+      "unitId": "unit:pegasus",
+      "name": "Pegasus",
+      "sourceUrl": "https://tow.whfb.app/unit/pegasus"
+    },
+    {
+      "unitId": "unit:empire-archers",
+      "name": "Empire Archers",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-archers"
+    },
+    {
+      "unitId": "unit:empire-greatswords",
+      "name": "Empire Greatswords",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-greatswords"
+    },
+    {
+      "unitId": "unit:flagellants",
+      "name": "Flagellants",
+      "sourceUrl": "https://tow.whfb.app/unit/flagellants"
+    },
+    {
+      "unitId": "unit:free-company-militia",
+      "name": "Free Company Militia",
+      "sourceUrl": "https://tow.whfb.app/unit/free-company-militia"
+    },
+    {
+      "unitId": "unit:imperial-ogres",
+      "name": "Imperial Ogres",
+      "sourceUrl": "https://tow.whfb.app/unit/imperial-ogres"
+    },
+    {
+      "unitId": "unit:nuln-state-missile-troops",
+      "name": "Nuln State Missile Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/nuln-state-missile-troops"
+    },
+    {
+      "unitId": "unit:nuln-state-troops",
+      "name": "Nuln State Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/nuln-state-troops"
+    },
+    {
+      "unitId": "unit:nuln-swordsmen",
+      "name": "Nuln Swordsmen",
+      "sourceUrl": "https://tow.whfb.app/unit/nuln-swordsmen"
+    },
+    {
+      "unitId": "unit:nuln-veteran-state-troops",
+      "name": "Nuln Veteran State Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/nuln-veteran-state-troops"
+    },
+    {
+      "unitId": "unit:state-missile-troops",
+      "name": "State Missile Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/state-missile-troops"
+    },
+    {
+      "unitId": "unit:state-troops",
+      "name": "State Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/state-troops"
+    },
+    {
+      "unitId": "unit:teutogen-guard",
+      "name": "Teutogen Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/teutogen-guard"
+    },
+    {
+      "unitId": "unit:veteran-state-troops",
+      "name": "Veteran State Troops",
+      "sourceUrl": "https://tow.whfb.app/unit/veteran-state-troops"
+    },
+    {
+      "unitId": "unit:demigryph-knights",
+      "name": "Demigryph Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/demigryph-knights"
+    },
+    {
+      "unitId": "unit:empire-knights",
+      "name": "Empire Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-knights"
+    },
+    {
+      "unitId": "unit:empire-road-wardens",
+      "name": "Empire Road Wardens",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-road-wardens"
+    },
+    {
+      "unitId": "unit:inner-circle-knights",
+      "name": "Inner Circle Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/inner-circle-knights"
+    },
+    {
+      "unitId": "unit:outriders",
+      "name": "Outriders",
+      "sourceUrl": "https://tow.whfb.app/unit/outriders"
+    },
+    {
+      "unitId": "unit:pistoliers",
+      "name": "Pistoliers",
+      "sourceUrl": "https://tow.whfb.app/unit/pistoliers"
+    },
+    {
+      "unitId": "unit:empire-steam-tank",
+      "name": "Empire Steam Tank",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-steam-tank"
+    },
+    {
+      "unitId": "unit:empire-war-wagon",
+      "name": "Empire War Wagon",
+      "sourceUrl": "https://tow.whfb.app/unit/empire-war-wagon"
+    },
+    {
+      "unitId": "unit:war-altar-of-sigmar",
+      "name": "War Altar of Sigmar",
+      "sourceUrl": "https://tow.whfb.app/unit/war-altar-of-sigmar"
+    },
+    {
+      "unitId": "unit:griffon-empire",
+      "name": "Griffon (Empire)",
+      "sourceUrl": "https://tow.whfb.app/unit/griffon-empire"
+    },
+    {
+      "unitId": "unit:imperial-griffon",
+      "name": "Imperial Griffon",
+      "sourceUrl": "https://tow.whfb.app/unit/imperial-griffon"
+    },
+    {
+      "unitId": "unit:great-cannon",
+      "name": "Great Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/great-cannon"
+    },
+    {
+      "unitId": "unit:helblaster-volley-gun",
+      "name": "Helblaster Volley Gun",
+      "sourceUrl": "https://tow.whfb.app/unit/helblaster-volley-gun"
+    },
+    {
+      "unitId": "unit:helstorm-rocket-battery",
+      "name": "Helstorm Rocket Battery",
+      "sourceUrl": "https://tow.whfb.app/unit/helstorm-rocket-battery"
+    },
+    {
+      "unitId": "unit:mortar",
+      "name": "Mortar",
+      "sourceUrl": "https://tow.whfb.app/unit/mortar"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

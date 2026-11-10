@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cygor",
+  "name": "Cygor",
+  "nameSingular": "Cygor",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cygor",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5b9VIjRq13TyjFwagozpxg",
+    "sourceUpdatedAt": "2026-07-10T18:16:12.358Z",
+    "sourceRevision": 3,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Ravening Hordes, p. 107",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "8bce4eb437a38ab915cd5833712ff099f7b0f4dbe67c3387c1b76a1419ab1022"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 205,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "205 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Cygor",
+      "characteristics": {
+        "M": 7,
+        "WS": 2,
+        "BS": 1,
+        "S": 6,
+        "T": 6,
+        "W": 6,
+        "I": 3,
+        "A": 4,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hurl attack",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hurl-attack",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ghostsight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ghostsight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Soul-eater",
+      "sourceUrl": "https://tow.whfb.app/special-rules/soul-eater",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Timmm-berrr!",
+      "sourceUrl": "https://tow.whfb.app/special-rules/timmm-berrr",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Beastmen Brayherds",
+      "sourceEntryId": "68Th1VPl0Hk9PLF624NAyR",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 107,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+      "status": "source-listed"
+    }
+  ]
+}

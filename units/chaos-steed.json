@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:chaos-steed",
+  "name": "Chaos Steed",
+  "nameSingular": "Chaos Steed",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/chaos-steed",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1U59u7IueU9py2qqAGCIqK",
+    "sourceUpdatedAt": "2024-09-22T17:43:53.016Z",
+    "sourceRevision": 4,
+    "publishedVersion": 18,
+    "displayedUpdatedAt": "Last update: 2024 September 22",
+    "publicationCitation": "Ravening Hordes, p. 59",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "38b560217b2b89aed7c6fddcfda29e55d93c5d74fb3fc4fa4c1b8f40526e1e8f"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 16,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+16 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Chaos Steed",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 59,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

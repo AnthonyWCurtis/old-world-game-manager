@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:abyssal-terror",
+  "name": "Abyssal Terror",
+  "nameSingular": "Abyssal Terror",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/abyssal-terror",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6S12n5r2VF67Pu4ZVEARpb",
+    "sourceUpdatedAt": "2024-02-29T19:03:37.262Z",
+    "sourceRevision": 1,
+    "publishedVersion": 18,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Vampire Counts, p. 22",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "c667cf2ac1896d52ce03a9a70c438e1a85454234b058764ac36c029134596e3d"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 120,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+120 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Abyssal Terror",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": "-",
+        "S": 5,
+        "T": "(+1)",
+        "W": "(+4)",
+        "I": 2,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "poisonous tail",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/poisonous-tail",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 22,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

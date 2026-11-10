@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:black-guard-of-naggarond",
+  "name": "Black Guard of Naggarond",
+  "nameSingular": "Black Guard",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/black-guard-of-naggarond",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5yDAD0bWSUCfYIkKInEJ6l",
+    "sourceUpdatedAt": "2024-02-27T23:59:25.636Z",
+    "sourceRevision": 2,
+    "publishedVersion": 22,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Dark Elves, p. 10",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3d2371c6476f5ddf3b4da2ba1f537a1b495cdba8e2706f85ef718b050cf73d70"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "10+"
+  },
+  "basePoints": {
+    "amount": 15,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "15 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Black Guard",
+      "characteristics": {
+        "M": 5,
+        "WS": 5,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 5,
+        "A": 1,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Tower Master",
+      "characteristics": {
+        "M": 5,
+        "WS": 5,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 5,
+        "A": 2,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "dread halberds",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/dread-halberd",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Eternal Hatred",
+      "sourceUrl": "https://tow.whfb.app/special-rules/eternal-hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (High Elves)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Martial Prowess",
+      "sourceUrl": "https://tow.whfb.app/special-rules/martial-prowess",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Drilled",
+      "sourceUrl": "https://tow.whfb.app/special-rules/drilled",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Tower Master (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Upgrade one model to a musician (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Have the Drilled special rule (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Drilled",
+              "sourceUrl": "https://tow.whfb.app/special-rules/drilled",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:5",
+          "description": "Purchase a magic standard worth up to 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "A Tower Master may purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Dark Elves",
+      "sourceEntryId": "4z8TnCYVKA7KbHJ8I5Dgd9",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 10,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dark-elves",
+      "name": "Dark Elves",
+      "sourceUrl": "https://tow.whfb.app/army/dark-elves",
+      "status": "source-listed"
+    }
+  ]
+}

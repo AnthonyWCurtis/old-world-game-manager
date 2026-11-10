@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:skink-chief",
+  "name": "Skink Chief",
+  "nameSingular": "Skink Chief",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/skink-chief",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "55SaPLaF8VAsSobCdwxwW5",
+    "sourceUpdatedAt": "2024-04-11T18:52:57.772Z",
+    "sourceRevision": 5,
+    "publishedVersion": 29,
+    "displayedUpdatedAt": "Last update: 2024 April 11",
+    "publicationCitation": "Lizardmen, p. 4",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "fb2e63cb62e3c1944af273feb82f676a1c86e93bdf67ae41072a236841a973ef"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 45,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "45 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Skink Chief",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": 5,
+        "S": 4,
+        "T": 3,
+        "W": 2,
+        "I": 6,
+        "A": 3,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Aquatic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/aquatic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cold Blooded",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cold-blooded",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Poisoned Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/poisoned-attacks",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Blowpipe",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/blowpipe",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "A Skink Chief may take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Cavalry spear (if appropriately mounted) (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cavalry spear",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Blowpipe (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Blowpipe",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/blowpipe",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Javelins (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Javelins",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/javelin",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "A Skink Chief may take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Terradon (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Terradon",
+              "sourceUrl": "https://tow.whfb.app/unit/terradon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Ripperdactyl (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Ripperdactyl",
+              "sourceUrl": "https://tow.whfb.app/unit/ripperdactyl",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:3",
+          "description": "Stegadon (+215 points)",
+          "points": {
+            "amount": 215,
+            "basis": "unspecified",
+            "sourceText": "(+215 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Stegadon",
+              "sourceUrl": "https://tow.whfb.app/unit/stegadon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "May purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Lizardmen",
+      "sourceEntryId": "2MXlrRaUDtVqoAug52n9ZX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 4,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:lizardmen",
+      "name": "Lizardmen",
+      "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+      "status": "source-listed"
+    }
+  ]
+}

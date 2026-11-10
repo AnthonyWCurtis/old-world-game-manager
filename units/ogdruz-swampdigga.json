@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ogdruz-swampdigga",
+  "name": "Ogdruz Swampdigga",
+  "nameSingular": "Ogdruz Swampdigga",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ogdruz-swampdigga",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "69TO0m3TfnGA8J8OioWt5X",
+    "sourceUpdatedAt": "2024-11-18T13:25:20.529Z",
+    "sourceRevision": 2,
+    "publishedVersion": 28,
+    "displayedUpdatedAt": "Last update: 2024 November 18",
+    "publicationCitation": "Arcane Journal: Orc & Goblin Tribes, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b0923874f7e76ce47efb687a021400a09dddef6e3ead15d81269223f5e81c174"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "30 x 30 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 30
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 195,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "195 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ogdruz Swampdigga",
+      "characteristics": {
+        "M": 4,
+        "WS": 4,
+        "BS": 2,
+        "S": 4,
+        "T": 5,
+        "W": 3,
+        "I": 4,
+        "A": 2,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Bog-wood Staff",
+      "sourceUrl": "https://tow.whfb.app/magic-item/bog-wood-staff",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Trollhide Shawl",
+      "sourceUrl": "https://tow.whfb.app/magic-item/trollhide-shawl",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Lore Familiar",
+      "sourceUrl": "https://tow.whfb.app/magic-item/lore-familiar",
+      "kind": "magic-item"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Choppas",
+      "sourceUrl": "https://tow.whfb.app/special-rules/choppas",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Da Troll Calla",
+      "sourceUrl": "https://tow.whfb.app/special-rules/da-troll-calla",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ignore Goblin Panic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ignore-goblin-panic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Protect Da Boss",
+      "sourceUrl": "https://tow.whfb.app/special-rules/protect-da-boss",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Syphoned Strength",
+      "sourceUrl": "https://tow.whfb.app/special-rules/syphoned-strength",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Orc & Goblin Tribes",
+      "sourceEntryId": "72MsAgl2zXIcBaW6ZjIYDd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "magicOverride": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, magicOverride, magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

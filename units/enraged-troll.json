@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:enraged-troll",
+  "name": "Enraged Troll",
+  "nameSingular": "Enraged Troll",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/enraged-troll",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7rV3KLs9WCvLdpERbzcklD",
+    "sourceUpdatedAt": "2026-08-13T18:59:18.851Z",
+    "sourceRevision": 1,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2026 August 13",
+    "publicationCitation": "Battle March: General's Companion, p. 40",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "fb08a74b785abff6d720b8729494f5f6e15283d670715cfbdbb0c11459868422"
+  },
+  "classification": {
+    "unitCategory": [],
+    "troopType": [
+      "Monstrous Infantry"
+    ],
+    "baseSize": "40 x 40mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 40
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": null,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": null
+  },
+  "modelProfiles": [
+    {
+      "name": "Enraged Troll",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 1,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 10,
+        "A": 3,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Troll vomit",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/troll-vomit",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Flammable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/flammable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Battle March: General's Companion",
+      "sourceEntryId": "5IJ04rZDgiuVbXkzHrmPr9",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 40,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [
+    "No page cost description"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": []
+}

@@ -1,0 +1,206 @@
+{
+  "id": "army:daemons-of-chaos",
+  "name": "Daemons of Chaos",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6hFMTVwOVTMPdjCnmMVHMC",
+    "sourceUpdatedAt": "2024-09-26T12:55:24.853Z",
+    "sourceRevision": 9,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "d1442d4061c2377424ea1066afb34b28cc2c832e6aad587eafc30cb241cb1083"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:bloodthirster",
+      "name": "Bloodthirster",
+      "sourceUrl": "https://tow.whfb.app/unit/bloodthirster"
+    },
+    {
+      "unitId": "unit:daemon-prince-daemons-of-chaos",
+      "name": "Daemon Prince (Daemons of Chaos)",
+      "sourceUrl": "https://tow.whfb.app/unit/daemon-prince-daemons-of-chaos"
+    },
+    {
+      "unitId": "unit:daemonic-herald-of-khorne",
+      "name": "Daemonic Herald of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonic-herald-of-khorne"
+    },
+    {
+      "unitId": "unit:daemonic-herald-of-nurgle",
+      "name": "Daemonic Herald of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonic-herald-of-nurgle"
+    },
+    {
+      "unitId": "unit:daemonic-herald-of-slaanesh",
+      "name": "Daemonic Herald of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonic-herald-of-slaanesh"
+    },
+    {
+      "unitId": "unit:daemonic-herald-of-tzeentch",
+      "name": "Daemonic Herald of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonic-herald-of-tzeentch"
+    },
+    {
+      "unitId": "unit:great-unclean-one",
+      "name": "Great Unclean One",
+      "sourceUrl": "https://tow.whfb.app/unit/great-unclean-one"
+    },
+    {
+      "unitId": "unit:keeper-of-secrets",
+      "name": "Keeper of Secrets",
+      "sourceUrl": "https://tow.whfb.app/unit/keeper-of-secrets"
+    },
+    {
+      "unitId": "unit:lord-of-change",
+      "name": "Lord of Change",
+      "sourceUrl": "https://tow.whfb.app/unit/lord-of-change"
+    },
+    {
+      "unitId": "unit:disc-of-tzeentch",
+      "name": "Disc of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/disc-of-tzeentch"
+    },
+    {
+      "unitId": "unit:juggernaut-of-khorne",
+      "name": "Juggernaut of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/juggernaut-of-khorne"
+    },
+    {
+      "unitId": "unit:palanquin-of-nurgle",
+      "name": "Palanquin of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/unit/palanquin-of-nurgle"
+    },
+    {
+      "unitId": "unit:steed-of-slaanesh",
+      "name": "Steed of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/steed-of-slaanesh"
+    },
+    {
+      "unitId": "unit:beasts-of-nurgle",
+      "name": "Beasts of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/unit/beasts-of-nurgle"
+    },
+    {
+      "unitId": "unit:bloodletters-of-khorne",
+      "name": "Bloodletters of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/bloodletters-of-khorne"
+    },
+    {
+      "unitId": "unit:blue-horrors-of-tzeentch",
+      "name": "Blue Horrors of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/blue-horrors-of-tzeentch"
+    },
+    {
+      "unitId": "unit:brimstone-horrors-of-tzeentch",
+      "name": "Brimstone Horrors of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/brimstone-horrors-of-tzeentch"
+    },
+    {
+      "unitId": "unit:chaos-furies",
+      "name": "Chaos Furies",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-furies"
+    },
+    {
+      "unitId": "unit:daemonettes-of-slaanesh",
+      "name": "Daemonettes of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonettes-of-slaanesh"
+    },
+    {
+      "unitId": "unit:flamers-of-tzeentch",
+      "name": "Flamers of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/flamers-of-tzeentch"
+    },
+    {
+      "unitId": "unit:nurglings",
+      "name": "Nurglings",
+      "sourceUrl": "https://tow.whfb.app/unit/nurglings"
+    },
+    {
+      "unitId": "unit:pink-horrors-of-tzeentch",
+      "name": "Pink Horrors of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/pink-horrors-of-tzeentch"
+    },
+    {
+      "unitId": "unit:plaguebearers-of-nurgle",
+      "name": "Plaguebearers of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/unit/plaguebearers-of-nurgle"
+    },
+    {
+      "unitId": "unit:bloodcrushers-of-khorne",
+      "name": "Bloodcrushers of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/bloodcrushers-of-khorne"
+    },
+    {
+      "unitId": "unit:fiends-of-slaanesh",
+      "name": "Fiends of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/fiends-of-slaanesh"
+    },
+    {
+      "unitId": "unit:flesh-hounds-of-khorne",
+      "name": "Flesh Hounds of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/flesh-hounds-of-khorne"
+    },
+    {
+      "unitId": "unit:plague-drones-of-nurgle",
+      "name": "Plague Drones of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/unit/plague-drones-of-nurgle"
+    },
+    {
+      "unitId": "unit:screamers-of-tzeentch",
+      "name": "Screamers of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/screamers-of-tzeentch"
+    },
+    {
+      "unitId": "unit:seekers-of-slaanesh",
+      "name": "Seekers of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/seekers-of-slaanesh"
+    },
+    {
+      "unitId": "unit:blood-throne-of-khorne",
+      "name": "Blood Throne of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/blood-throne-of-khorne"
+    },
+    {
+      "unitId": "unit:burning-chariot-of-tzeentch",
+      "name": "Burning Chariot of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/burning-chariot-of-tzeentch"
+    },
+    {
+      "unitId": "unit:chariot-of-tzeentch",
+      "name": "Chariot of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/unit/chariot-of-tzeentch"
+    },
+    {
+      "unitId": "unit:exalted-seeker-chariot-of-slaanesh",
+      "name": "Exalted Seeker Chariot of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/exalted-seeker-chariot-of-slaanesh"
+    },
+    {
+      "unitId": "unit:hellflayer-of-slaanesh",
+      "name": "Hellflayer of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/hellflayer-of-slaanesh"
+    },
+    {
+      "unitId": "unit:seeker-chariot-of-slaanesh",
+      "name": "Seeker Chariot of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/unit/seeker-chariot-of-slaanesh"
+    },
+    {
+      "unitId": "unit:skull-cannon-of-khorne",
+      "name": "Skull Cannon of Khorne",
+      "sourceUrl": "https://tow.whfb.app/unit/skull-cannon-of-khorne"
+    },
+    {
+      "unitId": "unit:soul-grinder",
+      "name": "Soul Grinder",
+      "sourceUrl": "https://tow.whfb.app/unit/soul-grinder"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

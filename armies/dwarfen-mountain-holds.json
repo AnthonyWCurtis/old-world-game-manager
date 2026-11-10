@@ -1,0 +1,206 @@
+{
+  "id": "army:dwarfen-mountain-holds",
+  "name": "Dwarfen Mountain Holds",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "23vuW2RsmlAD76xnw2GANe",
+    "sourceUpdatedAt": "2024-02-21T22:24:13.262Z",
+    "sourceRevision": 6,
+    "publishedVersion": 12,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3217d13f5d78c5a40cf29960013061d594c77d37158b79168960d5830e4278a6"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:burlok-damminson",
+      "name": "Burlok Damminson",
+      "sourceUrl": "https://tow.whfb.app/unit/burlok-damminson"
+    },
+    {
+      "unitId": "unit:thorgrim-ulleksson",
+      "name": "Thorgrim Ulleksson",
+      "sourceUrl": "https://tow.whfb.app/unit/thorgrim-ulleksson"
+    },
+    {
+      "unitId": "unit:ungrim-ironfist",
+      "name": "Ungrim Ironfist",
+      "sourceUrl": "https://tow.whfb.app/unit/ungrim-ironfist"
+    },
+    {
+      "unitId": "unit:anvil-of-doom",
+      "name": "Anvil of Doom",
+      "sourceUrl": "https://tow.whfb.app/unit/anvil-of-doom"
+    },
+    {
+      "unitId": "unit:daemon-slayer",
+      "name": "Daemon Slayer",
+      "sourceUrl": "https://tow.whfb.app/unit/daemon-slayer"
+    },
+    {
+      "unitId": "unit:dragon-slayer",
+      "name": "Dragon Slayer",
+      "sourceUrl": "https://tow.whfb.app/unit/dragon-slayer"
+    },
+    {
+      "unitId": "unit:engineer",
+      "name": "Engineer",
+      "sourceUrl": "https://tow.whfb.app/unit/engineer"
+    },
+    {
+      "unitId": "unit:engineer-sapper",
+      "name": "Engineer Sapper",
+      "sourceUrl": "https://tow.whfb.app/unit/engineer-sapper"
+    },
+    {
+      "unitId": "unit:king",
+      "name": "King",
+      "sourceUrl": "https://tow.whfb.app/unit/king"
+    },
+    {
+      "unitId": "unit:runelord",
+      "name": "Runelord",
+      "sourceUrl": "https://tow.whfb.app/unit/runelord"
+    },
+    {
+      "unitId": "unit:runesmith",
+      "name": "Runesmith",
+      "sourceUrl": "https://tow.whfb.app/unit/runesmith"
+    },
+    {
+      "unitId": "unit:thane",
+      "name": "Thane",
+      "sourceUrl": "https://tow.whfb.app/unit/thane"
+    },
+    {
+      "unitId": "unit:shieldbearers",
+      "name": "Shieldbearers",
+      "sourceUrl": "https://tow.whfb.app/unit/shieldbearers"
+    },
+    {
+      "unitId": "unit:brotherhood-of-grimnir",
+      "name": "Brotherhood of Grimnir",
+      "sourceUrl": "https://tow.whfb.app/unit/brotherhood-of-grimnir"
+    },
+    {
+      "unitId": "unit:doomseeker",
+      "name": "Doomseeker",
+      "sourceUrl": "https://tow.whfb.app/unit/doomseeker"
+    },
+    {
+      "unitId": "unit:dwarf-warriors",
+      "name": "Dwarf Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/dwarf-warriors"
+    },
+    {
+      "unitId": "unit:hammerers",
+      "name": "Hammerers",
+      "sourceUrl": "https://tow.whfb.app/unit/hammerers"
+    },
+    {
+      "unitId": "unit:imperial-dwarf-mercenaries",
+      "name": "Imperial Dwarf Mercenaries",
+      "sourceUrl": "https://tow.whfb.app/unit/imperial-dwarf-mercenaries"
+    },
+    {
+      "unitId": "unit:ironbreakers",
+      "name": "Ironbreakers",
+      "sourceUrl": "https://tow.whfb.app/unit/ironbreakers"
+    },
+    {
+      "unitId": "unit:irondrakes",
+      "name": "Irondrakes",
+      "sourceUrl": "https://tow.whfb.app/unit/irondrakes"
+    },
+    {
+      "unitId": "unit:longbeards",
+      "name": "Longbeards",
+      "sourceUrl": "https://tow.whfb.app/unit/longbeards"
+    },
+    {
+      "unitId": "unit:miners",
+      "name": "Miners",
+      "sourceUrl": "https://tow.whfb.app/unit/miners"
+    },
+    {
+      "unitId": "unit:quarrellers",
+      "name": "Quarrellers",
+      "sourceUrl": "https://tow.whfb.app/unit/quarrellers"
+    },
+    {
+      "unitId": "unit:rangers",
+      "name": "Rangers",
+      "sourceUrl": "https://tow.whfb.app/unit/rangers"
+    },
+    {
+      "unitId": "unit:royal-clan-warriors",
+      "name": "Royal Clan Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/royal-clan-warriors"
+    },
+    {
+      "unitId": "unit:slayers",
+      "name": "Slayers",
+      "sourceUrl": "https://tow.whfb.app/unit/slayers"
+    },
+    {
+      "unitId": "unit:thunderers",
+      "name": "Thunderers",
+      "sourceUrl": "https://tow.whfb.app/unit/thunderers"
+    },
+    {
+      "unitId": "unit:gyrobomber",
+      "name": "Gyrobomber",
+      "sourceUrl": "https://tow.whfb.app/unit/gyrobomber"
+    },
+    {
+      "unitId": "unit:gyrocopter",
+      "name": "Gyrocopter",
+      "sourceUrl": "https://tow.whfb.app/unit/gyrocopter"
+    },
+    {
+      "unitId": "unit:scout-gyrocopter",
+      "name": "Scout Gyrocopter",
+      "sourceUrl": "https://tow.whfb.app/unit/scout-gyrocopter"
+    },
+    {
+      "unitId": "unit:dwarf-cart",
+      "name": "Dwarf Cart",
+      "sourceUrl": "https://tow.whfb.app/unit/dwarf-cart"
+    },
+    {
+      "unitId": "unit:bolt-thrower",
+      "name": "Bolt Thrower",
+      "sourceUrl": "https://tow.whfb.app/unit/bolt-thrower"
+    },
+    {
+      "unitId": "unit:cannon",
+      "name": "Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/cannon"
+    },
+    {
+      "unitId": "unit:flame-cannon",
+      "name": "Flame Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/flame-cannon"
+    },
+    {
+      "unitId": "unit:goblin-hewer",
+      "name": "Goblin-Hewer",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-hewer"
+    },
+    {
+      "unitId": "unit:grudge-thrower",
+      "name": "Grudge Thrower",
+      "sourceUrl": "https://tow.whfb.app/unit/grudge-thrower"
+    },
+    {
+      "unitId": "unit:organ-gun",
+      "name": "Organ Gun",
+      "sourceUrl": "https://tow.whfb.app/unit/organ-gun"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

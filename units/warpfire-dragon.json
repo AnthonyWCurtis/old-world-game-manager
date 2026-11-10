@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warpfire-dragon",
+  "name": "Warpfire Dragon",
+  "nameSingular": "Warpfire Dragon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warpfire-dragon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1LvTcPq0OBncfE5wJrFqUM",
+    "sourceUpdatedAt": "2025-01-13T19:29:02.306Z",
+    "sourceRevision": 4,
+    "publishedVersion": 35,
+    "displayedUpdatedAt": "Last update: 2025 January 13",
+    "publicationCitation": "Arcane Journal: Warriors of Chaos, p. 44",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0c92a2238ddb552d1063d57ed623a174184b86c4d414ef0716891de718fee892"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 375,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "375 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warpfire Dragon",
+      "characteristics": {
+        "M": 6,
+        "WS": 6,
+        "BS": 0,
+        "S": 6,
+        "T": 6,
+        "W": 6,
+        "I": 3,
+        "A": 5,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Warpfire Blast",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warpfire-blast",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Explosive Demise",
+      "sourceUrl": "https://tow.whfb.app/special-rules/explosive-demise",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Chaos",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-chaos",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Chaos",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-chaos",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Chaos Undivided",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-chaos-undivided",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warpfire Aura",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warpfire-aura",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "A Warpfire Dragon may be a Wizard:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Level 1 (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Level 2 (+60 points)",
+          "points": {
+            "amount": 60,
+            "basis": "unspecified",
+            "sourceText": "(+60 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Warriors of Chaos",
+      "sourceEntryId": "6nXmblqucGpHTaICnwBr3n",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 44,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

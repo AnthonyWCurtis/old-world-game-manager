@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:chieftains-chariot",
+  "name": "Chieftain's Chariot",
+  "nameSingular": "Chieftain's Chariot",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/chieftains-chariot",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5Q0iHDNpIjohmcltkKIw5q",
+    "sourceUpdatedAt": "2025-03-07T20:49:30.781Z",
+    "sourceRevision": 2,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2025 March 07",
+    "publicationCitation": "Arcane Journal: High Elf Realms, p. 38",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3e28eff6eb93d27cdd674b464412450c501ce85b44fd9528b4b02672ddcc900d"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 105,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "105 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Chieftain's Chariot",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Charioteer (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 1,
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Chracian Lion (x2)",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Chracian great blade",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/chracian-great-blade",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Chracian Lions only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6, Chieftain's Chariot only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: High Elf Realms",
+      "sourceEntryId": "73GE8yQGVszrewP5aLYLDf",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 38,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

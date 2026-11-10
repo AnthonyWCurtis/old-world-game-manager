@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:glade-captain",
+  "name": "Glade Captain",
+  "nameSingular": "Glade Captain",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/glade-captain",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "bFJon66bpFdqSoKSiARxA",
+    "sourceUpdatedAt": "2024-04-11T18:58:29.099Z",
+    "sourceRevision": 3,
+    "publishedVersion": 8,
+    "displayedUpdatedAt": "Last update: 2024 April 11",
+    "publicationCitation": "Forces of Fantasy, p. 120",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "1d3b803c91deb04e10cfb9d25ba3217be3c2586bc6d543e4ccb10efbf1b27ddf"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 70,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "70 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Glade Captain",
+      "characteristics": {
+        "M": 5,
+        "WS": 6,
+        "BS": 6,
+        "S": 4,
+        "T": 3,
+        "W": 2,
+        "I": 5,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Asrai longbow",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/asrai-longbow",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "The Arrow of Kurnous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-arrow-of-kurnous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Evasive",
+      "sourceUrl": "https://tow.whfb.app/special-rules/evasive",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Flee",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-flee",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ignores Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ignores-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "sourceUrl": "https://tow.whfb.app/special-rules/strike-first",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Arcane Bodkins",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hagbane Tips",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Moonfire Shot",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Swiftshiver Shards",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Trueflight Arrows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Cavalry spear (if appropriately mounted) (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cavalry spear",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "May take one of the following types of enchanted arrows:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Arcane bodkins (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Arcane bodkins",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Hagbane tips (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hagbane tips",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:3",
+          "description": "Moonfire shot (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Moonfire shot",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:4",
+          "description": "Swiftshiver shards (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Swiftshiver shards",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:5",
+          "description": "Trueflight arrows (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Trueflight arrows",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "Elven Steed (+14 points)",
+          "points": {
+            "amount": 14,
+            "basis": "unspecified",
+            "sourceText": "(+14 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Elven Steed",
+              "sourceUrl": "https://tow.whfb.app/unit/elven-steed",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:2",
+          "description": "Great Stag (+50 points)",
+          "points": {
+            "amount": 50,
+            "basis": "unspecified",
+            "sourceText": "(+50 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great Stag",
+              "sourceUrl": "https://tow.whfb.app/unit/great-stag",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:3",
+          "description": "Warhawk (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Warhawk",
+              "sourceUrl": "https://tow.whfb.app/unit/warhawk",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:4",
+          "description": "Great Eagle (+60 points)",
+          "points": {
+            "amount": 60,
+            "basis": "unspecified",
+            "sourceText": "(+60 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great Eagle",
+              "sourceUrl": "https://tow.whfb.app/unit/great-eagle-mount",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "May take Forest Spites up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [
+            {
+              "name": "Forest Spites",
+              "sourceUrl": "https://tow.whfb.app/magic-items/forest-spites",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:6",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:6:1",
+          "description": "A Glade Captain may purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 120,
+  "unmappedSourceFields": {
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:frydaal-the-chainmaker",
+  "name": "Frydaal The Chainmaker",
+  "nameSingular": "Frydaal The Chainmaker",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/frydaal-the-chainmaker",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6ArxbFP3zSNUUqbQc9N9R6",
+    "sourceUpdatedAt": "2024-09-22T17:23:43.780Z",
+    "sourceRevision": 1,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2024 September 22",
+    "publicationCitation": "Arcane Journal: Warriors of Chaos, p. 35",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "fcb809207617ed1601b72601a3a50c91feef77331b565a7f4205a8d61b556623"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Named Character"
+    ],
+    "baseSize": "30 x 30 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 30
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 235,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "235 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Frydaal The Chainmaker",
+      "characteristics": {
+        "M": 4,
+        "WS": 6,
+        "BS": 3,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 5,
+        "A": 4,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Storm's Wrath",
+      "sourceUrl": "https://tow.whfb.app/magic-item/storms-wrath",
+      "kind": "magic-item"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Chainmaker",
+      "sourceUrl": "https://tow.whfb.app/special-rules/chainmaker",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Chaos Armour (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/chaos-armour-warriors-of-chaos",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Commander & Captain",
+      "sourceUrl": "https://tow.whfb.app/special-rules/commander-and-captain",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ensorcelled Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ensorcelled-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gaze of the Gods",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gaze-of-the-gods",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Chaos Undivided",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-chaos-undivided",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Peerless Raider",
+      "sourceUrl": "https://tow.whfb.app/special-rules/peerless-raider",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Warriors of Chaos",
+      "sourceEntryId": "6nXmblqucGpHTaICnwBr3n",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 35,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

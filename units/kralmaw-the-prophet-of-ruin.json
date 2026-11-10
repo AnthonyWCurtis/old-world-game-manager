@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:kralmaw-the-prophet-of-ruin",
+  "name": "Kralmaw, the Prophet of Ruin",
+  "nameSingular": "Kralmaw, the Prophet of Ruin",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/kralmaw-the-prophet-of-ruin",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2UwtE4NDgyRgKNul0AVERD",
+    "sourceUpdatedAt": "2025-06-20T13:47:22.269Z",
+    "sourceRevision": 3,
+    "publishedVersion": 28,
+    "displayedUpdatedAt": "Last update: 2025 June 20",
+    "publicationCitation": "Arcane Journal: Beastmen Brayherds, p. 35",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "99ee55e2ef6ee9d8151d441ae172f46f75213a326ef448ff09e0f11ca0c652de"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "30 x 30 mm (Kralmaw), 25 x 25 mm (Leering Spirit marker)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 245,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "245 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Kralmaw, the Prophet of Ruin",
+      "characteristics": {
+        "M": 5,
+        "WS": 3,
+        "BS": 3,
+        "S": 4,
+        "T": 5,
+        "W": 4,
+        "I": 3,
+        "A": 2,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Grisly Totem",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/grisly-totem",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Braystaff",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/braystaff",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Future Sight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/future-sight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gaze of the Gods",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gaze-of-the-gods",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Leering Spirit",
+      "sourceUrl": "https://tow.whfb.app/special-rules/leering-spirit",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Beasts",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-beasts",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Mark of Chaos Undivided",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-chaos-undivided",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Primal Fury",
+      "sourceUrl": "https://tow.whfb.app/special-rules/primal-fury",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Beastmen Brayherds",
+      "sourceEntryId": "5RAIcEQBxfDNCHRXvHVdCo",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Beastmen Brayherds",
+      "sourceEntryId": "68Th1VPl0Hk9PLF624NAyR",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 35,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+      "status": "source-listed"
+    }
+  ]
+}

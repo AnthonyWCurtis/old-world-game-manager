@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warhorse-bretonnia",
+  "name": "Warhorse (Bretonnia)",
+  "nameSingular": "Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warhorse-bretonnia",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "57YB7IOXz8IHeICX1gsnQ9",
+    "sourceUpdatedAt": "2026-01-29T17:16:59.720Z",
+    "sourceRevision": 3,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Forces of Fantasy, p. 89",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "49ee9ac1dd17ebeea8288fa9eb9193c1352a756b1caf7ed98d9055b6358f9dcc"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "25 x 50 mm (min), 30 x 60 mm (max)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 12,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+12 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 89,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

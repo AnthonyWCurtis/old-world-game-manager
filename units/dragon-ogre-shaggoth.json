@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:dragon-ogre-shaggoth",
+  "name": "Dragon Ogre Shaggoth",
+  "nameSingular": "Shaggoth",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/dragon-ogre-shaggoth",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4W73kMAnMQJ8wiIUG4fv8U",
+    "sourceUpdatedAt": "2024-03-02T20:31:02.923Z",
+    "sourceRevision": 3,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2024 March 02",
+    "publicationCitation": "Ravening Hordes, p. 104",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "406338625d82ae6c1e547854b9e21c7d51306f97898eb85ea9edc13e4c974315"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 75 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 75
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 225,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "225 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Shaggoth",
+      "characteristics": {
+        "M": 7,
+        "WS": 6,
+        "BS": 2,
+        "S": 6,
+        "T": 5,
+        "W": 6,
+        "I": 4,
+        "A": 5,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armoured Hide (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ensorcelled Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ensorcelled-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Storm Call",
+      "sourceUrl": "https://tow.whfb.app/special-rules/storm-call",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Quickening Storm",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-quickening-storm",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May replace light armour with heavy armour (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            },
+            {
+              "name": "heavy armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "May take Chaos Mutations up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [
+            {
+              "name": "Chaos Mutations",
+              "sourceUrl": "https://tow.whfb.app/magic-items/chaos-mutations",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "May purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Beastmen Brayherds",
+      "sourceEntryId": "68Th1VPl0Hk9PLF624NAyR",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 104,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+      "status": "source-listed"
+    }
+  ]
+}

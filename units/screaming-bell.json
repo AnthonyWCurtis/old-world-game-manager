@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:screaming-bell",
+  "name": "Screaming Bell",
+  "nameSingular": "Screaming Bell",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/screaming-bell",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6RmFxXzjL8ON3t6sqxZwEQ",
+    "sourceUpdatedAt": "2024-02-28T21:15:33.699Z",
+    "sourceRevision": 2,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Skaven, p. 15",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b77136570a032dbe605f8735821f30aee8bf3fb3d373594771017b8c379e0f72"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 185,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+185 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Screaming Bell",
+      "characteristics": {
+        "M": 2,
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Rat Ogre Crew (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 5,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 3,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2, Rat Ogre only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Blessings of the Horned Rat",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-horned-rat",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Dragged Along",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dragged-along",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scurrying Masses",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scurrying-masses",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Tolling the Bell",
+      "sourceUrl": "https://tow.whfb.app/special-rules/tolling-the-bell",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 15,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, armourValue, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

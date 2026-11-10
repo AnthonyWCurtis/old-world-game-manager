@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:black-coach",
+  "name": "Black Coach",
+  "nameSingular": "Black Coach",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/black-coach",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7zB61xpF9w4sE1WRE2Jke5",
+    "sourceUpdatedAt": "2024-03-03T05:28:28.416Z",
+    "sourceRevision": 2,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 March 03",
+    "publicationCitation": "Vampire Counts, p. 19",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "4fe7a2c6fbc10111c4e4083b29a61ba4e33295574ea9da18173acaedaabe8e86"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 205,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "205 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Black Coach",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 6,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Wraith (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 2,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Nightmares (x2)",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Spectral scythe",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/spectral-scythe-black-coach",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Spectral Coach",
+      "sourceUrl": "https://tow.whfb.app/special-rules/spectral-coach",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 19,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

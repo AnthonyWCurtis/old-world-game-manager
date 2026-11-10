@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:duke",
+  "name": "Duke",
+  "nameSingular": "Duke",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/duke",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4oRVKoNDgn8areyLkZ9ShT",
+    "sourceUpdatedAt": "2026-01-29T00:47:29.177Z",
+    "sourceRevision": 6,
+    "publishedVersion": 35,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Forces of Fantasy, p. 86",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "41b68c59000225e3840e6e6465529a77e8d685f774404792d0928863525343bd"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 175,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "175 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Duke",
+      "characteristics": {
+        "M": 4,
+        "WS": 7,
+        "BS": 3,
+        "S": 5,
+        "T": 4,
+        "W": 4,
+        "I": 5,
+        "A": 5,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blessings of the Lady",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-lady",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Grail Vow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-grail-vow",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Morning star (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Morning star",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/morning-star",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Lance (if appropriately mounted) (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Lance",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/lance",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Bretonnian Warhorse (+16 points)",
+          "points": {
+            "amount": 16,
+            "basis": "unspecified",
+            "sourceText": "(+16 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Bretonnian Warhorse",
+              "sourceUrl": "https://tow.whfb.app/unit/bretonnian-warhorse",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Barded Pegasus (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Barded Pegasus",
+              "sourceUrl": "https://tow.whfb.app/unit/barded-pegasus",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:3",
+          "description": "Royal Pegasus (+70 points)",
+          "points": {
+            "amount": 70,
+            "basis": "unspecified",
+            "sourceText": "(+70 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Royal Pegasus",
+              "sourceUrl": "https://tow.whfb.app/unit/royal-pegasus",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:4",
+          "description": "Hippogryph (+120 points)",
+          "points": {
+            "amount": 120,
+            "basis": "unspecified",
+            "sourceText": "(+120 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hippogryph",
+              "sourceUrl": "https://tow.whfb.app/unit/hippogryph",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "May take a single Knightly Virtue",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Knightly Virtue",
+              "sourceUrl": "https://tow.whfb.app/magic-items/knightly-virtues",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "A Duke may purchase magic items up to a total of 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 86,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

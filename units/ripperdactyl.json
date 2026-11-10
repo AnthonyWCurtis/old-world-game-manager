@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ripperdactyl",
+  "name": "Ripperdactyl",
+  "nameSingular": "Ripperdactyl",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ripperdactyl",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4Qwm4gniJ8c5KhjwecjwPK",
+    "sourceUpdatedAt": "2024-02-28T01:30:40.771Z",
+    "sourceRevision": 1,
+    "publishedVersion": 11,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Lizardmen, p. 5",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0cb0221d0e3f69fc9fe1fe09a89ef7d4d85bd10d479b79b475a48be111656195"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "40 x 40 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 40
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 35,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+35 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ripperdactyl",
+      "characteristics": {
+        "M": 2,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "(+1)",
+        "W": "(+1)",
+        "I": 2,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cleaving Blow (Ripperdactyl only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cleaving-blow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge (Ripperdactyl only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impetuous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impetuous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Toad Rage",
+      "sourceUrl": "https://tow.whfb.app/special-rules/toad-rage",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Lizardmen",
+      "sourceEntryId": "2MXlrRaUDtVqoAug52n9ZX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 5,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:lizardmen",
+      "name": "Lizardmen",
+      "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+      "status": "source-listed"
+    }
+  ]
+}

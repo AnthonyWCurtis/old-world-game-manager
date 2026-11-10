@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:bretonnian-warhorse",
+  "name": "Bretonnian Warhorse",
+  "nameSingular": "Bretonnian Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/bretonnian-warhorse",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2KKBTT8NfYbsZA50ggXPom",
+    "sourceUpdatedAt": "2024-02-23T14:04:02.413Z",
+    "sourceRevision": 1,
+    "publishedVersion": 18,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Forces of Fantasy, p. 89",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "ed6026c8aa00aef72671511dd52d64651e1ac0902ee3fad1799abe8b4283c2b9"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 16,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+16 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Bretonnian Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Finest Warhorses",
+      "sourceUrl": "https://tow.whfb.app/special-rules/finest-warhorses",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 89,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

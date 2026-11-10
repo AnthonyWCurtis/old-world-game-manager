@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ironblaster",
+  "name": "Ironblaster",
+  "nameSingular": "Ironblaster",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ironblaster",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7wqszPFdvZQcHbYIK9fVSl",
+    "sourceUpdatedAt": "2024-02-28T19:17:19.058Z",
+    "sourceRevision": 1,
+    "publishedVersion": 44,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Ogre Kingdoms, p. 13",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "af52c02d6361d214b054c028de157a3394bac7cfc394757004ea5a44b6a8594b"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 185,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "185 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ironblaster",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Leadbelcher (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 3,
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 3,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Gnoblar Scrapper (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 3,
+        "S": 2,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Rhinox (x1)",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": "-",
+        "S": 5,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Cannon of the Sky-titans",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/cannon-of-the-sky-titans",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "throwing weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/throwing-weapons",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2, Rhinox only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ogre Kingdoms",
+      "sourceEntryId": "3JD4LIC7fWtUyvk0HdGlnp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 13,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:exalted-seeker-chariot-of-slaanesh",
+  "name": "Exalted Seeker Chariot of Slaanesh",
+  "nameSingular": "Exalted Seeker Chariot",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/exalted-seeker-chariot-of-slaanesh",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4DUyYyp0AB4tzjnEYxdnCc",
+    "sourceUpdatedAt": "2024-02-27T01:32:01.712Z",
+    "sourceRevision": 2,
+    "publishedVersion": 17,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Daemons of Chaos, p. 17",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "2ca4c06cc315526b915d4e8b8d8801305cf0b4b325aca777126d203acd7ec1e6"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "100 x 150 mm",
+    "baseSizeMm": {
+      "width": 100,
+      "depth": 150
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 185,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+185"
+  },
+  "modelProfiles": [
+    {
+      "name": "Exalted Seeker Chariot",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 4,
+        "T": 4,
+        "W": 6,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Daemonette Crew (x3)",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 5,
+        "A": 1,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Steed of Slaanesh (x4)",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 5,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Piercing claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/piercing-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Steed of Slaanesh only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemonic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemons of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-slaanesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Poisoned Attacks (Steed of Slaanesh only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/poisoned-attacks",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Daemons of Chaos",
+      "sourceEntryId": "6hFMTVwOVTMPdjCnmMVHMC",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 17,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, armourValue, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

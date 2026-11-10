@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:flagellants",
+  "name": "Flagellants",
+  "nameSingular": "Flagellant",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/flagellants",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1o4FKNbry9zBjEARQ2cbMR",
+    "sourceUpdatedAt": "2026-01-29T00:41:49.120Z",
+    "sourceRevision": 3,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Forces of Fantasy, p. 61",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "880bc6354c78e669765371cfbe2ce36a7ba9c285ebaa8ce05d95fec935384889"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 13,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "13 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Flagellant",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 2,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Prophet of Doom",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 2,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 3,
+        "A": 2,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "flails",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/flail",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fanatical Zeal",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fanatical-zeal",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Feel No Pain",
+      "sourceUrl": "https://tow.whfb.app/special-rules/feel-no-pain",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impetuous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impetuous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (all enemies)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Prophet of Doom (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 61,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    }
+  ]
+}

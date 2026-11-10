@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:lion-chariot-of-chrace",
+  "name": "Lion Chariot of Chrace",
+  "nameSingular": "Lion Chariot",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2rJMfUdargvfWwByceqFIe",
+    "sourceUpdatedAt": "2024-10-03T17:22:23.696Z",
+    "sourceRevision": 3,
+    "publishedVersion": 29,
+    "displayedUpdatedAt": "Last update: 2024 October 03",
+    "publicationCitation": "Forces of Fantasy, p. 171",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "16abc378b17e6892262a4c94bfdc0b36725ba2063c538998bb5de3131424bc53"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 125,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "125 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Lion Chariot",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 4,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Lion Charioteer (x2)",
+      "characteristics": {
+        "M": "-",
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "War Lion (x2)",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Chracian great blades",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/chracian-great-blade",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lion Cloak",
+      "sourceUrl": "https://tow.whfb.app/special-rules/lion-cloak",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 171,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:orion-the-king-in-the-woods",
+  "name": "Orion, the King in the Woods",
+  "nameSingular": "Orion, the King in the Woods",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/orion-the-king-in-the-woods",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "14bYaDT0RHZTQ8iH09J4f9",
+    "sourceUpdatedAt": "2026-07-10T16:19:00.341Z",
+    "sourceRevision": 11,
+    "publishedVersion": 71,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Arcane Journal: Wood Elf Realms, p. 34",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "146bdca85036ad77d5eb757b3b207ff6371b0e935e6dcca7ae232367bc101a5c"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Monstrous Infantry",
+      "Named Character"
+    ],
+    "baseSize": "50 x 50 mm (Orion), 25 x 50mm (Hounds of Orion)",
+    "baseSizeMm": null,
+    "unitSize": "3*"
+  },
+  "basePoints": {
+    "amount": 405,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "405 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Orion, the King in the Woods",
+      "characteristics": {
+        "M": 9,
+        "WS": 8,
+        "BS": 6,
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": 8,
+        "A": 5,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Cloak of Isha",
+      "sourceUrl": "https://tow.whfb.app/magic-item/cloak-of-isha",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Hawks Talon",
+      "sourceUrl": "https://tow.whfb.app/magic-item/hawks-talon",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Horn of the Wild Hunt",
+      "sourceUrl": "https://tow.whfb.app/magic-item/horn-of-the-wild-hunt",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Spear of Kurnous",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-spear-of-kurnous",
+      "kind": "magic-item"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Frenzy",
+      "sourceUrl": "https://tow.whfb.app/special-rules/frenzy",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order*",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Stomp Attacks (D3+2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "sourceUrl": "https://tow.whfb.app/special-rules/strike-first",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Wood Elf Realms",
+      "sourceEntryId": "1vXLcORxeI2EugRZsMZAam",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 34,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "additionalEntries": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, magicItem, bodyBefore, bodyAfter, additionalEntries"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

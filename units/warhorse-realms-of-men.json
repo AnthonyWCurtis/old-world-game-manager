@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warhorse-realms-of-men",
+  "name": "Warhorse (Realms of Men)",
+  "nameSingular": "Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warhorse-realms-of-men",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "KjLjK9e7v93DEsW4ulsQi",
+    "sourceUpdatedAt": "2025-10-30T01:38:34.320Z",
+    "sourceRevision": 2,
+    "publishedVersion": 11,
+    "displayedUpdatedAt": "Last update: 2025 October 30",
+    "publicationCitation": "Arcane Journal: The War of Settra's Fury, p. 38",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "bb048f76df3b55eba891207287c9447336f3b9bfb92d6ccb3d0abe31c817c0ba"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 12,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+12 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The War of Settra's Fury",
+      "sourceEntryId": "6ThvhyraTU3WRtbyeBjTsv",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Realms of Men",
+      "sourceEntryId": "6xHs6glQ4tS6lpeAKSluI1",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 38,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:realms-of-men",
+      "name": "Realms of Men",
+      "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+      "status": "source-listed"
+    }
+  ]
+}

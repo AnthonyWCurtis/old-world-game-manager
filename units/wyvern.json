@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:wyvern",
+  "name": "Wyvern",
+  "nameSingular": "Wyvern",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/wyvern",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "oxkMmnzbks2hoBN7PfyUO",
+    "sourceUpdatedAt": "2024-02-24T03:52:44.534Z",
+    "sourceRevision": 8,
+    "publishedVersion": 40,
+    "displayedUpdatedAt": "Last update: 2024 February 24",
+    "publicationCitation": "Ravening Hordes, p. 35",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "2b4412c29dad984adf2596c0ee6bb4745724c51e663850b9142c385ad0bc1c52"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 130,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+130 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Wyvern",
+      "characteristics": {
+        "M": 4,
+        "WS": 5,
+        "BS": "-",
+        "S": 6,
+        "T": "(+1)",
+        "W": "(+4)",
+        "I": 3,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "venomous tail",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/venomous-tail",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 35,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:skeletal-steed-vampire-counts",
+  "name": "Skeletal Steed (Vampire Counts)",
+  "nameSingular": "Skeletal Steed",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/skeletal-steed-vampire-counts",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "YlWhd1cjBzYPRj6TLpizH",
+    "sourceUpdatedAt": "2024-03-03T05:12:10.634Z",
+    "sourceRevision": 3,
+    "publishedVersion": 15,
+    "displayedUpdatedAt": "Last update: 2024 March 03",
+    "publicationCitation": "Vampire Counts, p. 8",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "db46bd74e63703a5cbf1619bf8ae7be853392556a1bc047b5f0ce70624aacd8b"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 14,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+14 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Skeletal Steed",
+      "characteristics": {
+        "M": 7,
+        "WS": 2,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 8,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

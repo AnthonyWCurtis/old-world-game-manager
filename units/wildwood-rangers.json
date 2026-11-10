@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:wildwood-rangers",
+  "name": "Wildwood Rangers",
+  "nameSingular": "Wildwood Ranger",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/wildwood-rangers",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1QaP1Sg4v3R76rv1qmVYUv",
+    "sourceUpdatedAt": "2024-03-01T21:11:12.251Z",
+    "sourceRevision": 4,
+    "publishedVersion": 22,
+    "displayedUpdatedAt": "Last update: 2024 March 01",
+    "publicationCitation": "Forces of Fantasy, p. 130",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "aa7f4b8bbbc35738e4b7f3b404c7155f44d91a9befebdb96587d0038374577c8"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 14,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "14 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Wildwood Ranger",
+      "characteristics": {
+        "M": 5,
+        "WS": 5,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 1,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Wildwood Warden",
+      "characteristics": {
+        "M": 5,
+        "WS": 5,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 2,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "ranger's glaives",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/rangers-glaive",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Guardians of the Wildwood",
+      "sourceUrl": "https://tow.whfb.app/special-rules/guardians-of-the-wildwood",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "The entire unit may take shields (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shields",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Upgrade one model to a Wildwood Warden (champion) (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Upgrade one model to a standard bearer (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "Upgrade one model to a musician (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:4",
+          "description": "Purchase a magic standard worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "A Wildwood Warden may purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 130,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:gnoblar-scraplauncher",
+  "name": "Gnoblar Scraplauncher",
+  "nameSingular": "Scraplauncher",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/gnoblar-scraplauncher",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5eqhcZY8xPj56AUn0xtts2",
+    "sourceUpdatedAt": "2024-02-28T19:22:37.551Z",
+    "sourceRevision": 2,
+    "publishedVersion": 11,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Ogre Kingdoms, p. 14",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "994df0ceb71a631a93db872fbf3e2824cbbf54f5510a45a0efe68cd365ef2da5"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 140,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "140 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Scraplauncher",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 5,
+        "W": 5,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Gnoblar Scrapper (x7)",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 3,
+        "S": 2,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Rhinox (x1)",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": "-",
+        "S": 5,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Scraplauncher catapult",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/scraplauncher-catapult",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "throwing weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/throwing-weapons",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2, Rhinox only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ogre Kingdoms",
+      "sourceEntryId": "3JD4LIC7fWtUyvk0HdGlnp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 14,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+      "status": "source-listed"
+    }
+  ]
+}

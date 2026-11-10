@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:border-princes-mortar",
+  "name": "Border Princes Mortar",
+  "nameSingular": "Mortar",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/border-princes-mortar",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "17k8yIOHNwshtGPOiZexpP",
+    "sourceUpdatedAt": "2025-10-30T13:38:24.524Z",
+    "sourceRevision": 1,
+    "publishedVersion": 6,
+    "displayedUpdatedAt": "Last update: 2025 October 30",
+    "publicationCitation": "Arcane Journal: The War of Settra's Fury, p. 42",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b6e6a5106a7e1e214d68117420676d24017c012e2aeec95cee2cda68a55367f5"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 75 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 90,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "90 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Mortar",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 7,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Gun Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Mortar",
+      "sourceUrl": "https://tow.whfb.app/war-machines/mortars",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Levies",
+      "sourceUrl": "https://tow.whfb.app/special-rules/levies",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The War of Settra's Fury",
+      "sourceEntryId": "6ThvhyraTU3WRtbyeBjTsv",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Realms of Men",
+      "sourceEntryId": "6xHs6glQ4tS6lpeAKSluI1",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 42,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:realms-of-men",
+      "name": "Realms of Men",
+      "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+      "status": "source-listed"
+    }
+  ]
+}

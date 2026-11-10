@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:carrion",
+  "name": "Carrion",
+  "nameSingular": "Carrion",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/carrion",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5GgrEXtMkVoQvVGybGACBH",
+    "sourceUpdatedAt": "2024-03-02T21:05:04.885Z",
+    "sourceRevision": 2,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2024 March 02",
+    "publicationCitation": "Ravening Hordes, p. 136",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "047631486379558087ada3b9bc82baab0c805b58f53563672da11f2598deff07"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Monstrous Infantry"
+    ],
+    "baseSize": "40 x 40 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 40
+    },
+    "unitSize": "2+"
+  },
+  "basePoints": {
+    "amount": 27,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "27 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Carrion",
+      "characteristics": {
+        "M": 2,
+        "WS": 3,
+        "BS": 0,
+        "S": 4,
+        "T": 4,
+        "W": 2,
+        "I": 3,
+        "A": 3,
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 136,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

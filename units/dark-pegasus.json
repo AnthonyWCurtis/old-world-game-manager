@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:dark-pegasus",
+  "name": "Dark Pegasus",
+  "nameSingular": "Dark Pegasus",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/dark-pegasus",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1B4n1CKv7y90fOeU3xcymK",
+    "sourceUpdatedAt": "2024-02-27T16:20:43.601Z",
+    "sourceRevision": 1,
+    "publishedVersion": 14,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Dark Elves, p. 9",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "f85a38bc1b978bb4b902734cb79829fd1b9bd4ba03b08acb8c4d44ed36222d66"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "40 x 60 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 35,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+35 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Dark Pegasus",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "(+1)",
+        "I": 4,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Dark Pegasus only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Dark Elves",
+      "sourceEntryId": "4z8TnCYVKA7KbHJ8I5Dgd9",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 9,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dark-elves",
+      "name": "Dark Elves",
+      "sourceUrl": "https://tow.whfb.app/army/dark-elves",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:iron-daemon",
+  "name": "Iron Daemon",
+  "nameSingular": "Iron Daemon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/iron-daemon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6wHw6Aq1zDgaaOUNrvpqz8",
+    "sourceUpdatedAt": "2024-03-02T23:16:52.775Z",
+    "sourceRevision": 2,
+    "publishedVersion": 33,
+    "displayedUpdatedAt": "Last update: 2024 March 02",
+    "publicationCitation": "Chaos Dwarfs, p. 10",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "08645c1c25e5e5989dbfa0da784ce5ac260f3ddc7f40174e641309016cb66b3a"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 275,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "275 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Iron Daemon",
+      "characteristics": {
+        "M": 5,
+        "WS": "-",
+        "BS": "-",
+        "S": 8,
+        "T": 7,
+        "W": 7,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Chaos Dwarf Crew (x3)",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Steam Cannonade",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/steam-cannonade",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Carriage Hauler",
+      "sourceUrl": "https://tow.whfb.app/special-rules/carriage-hauler",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Grinding Wheels",
+      "sourceUrl": "https://tow.whfb.app/special-rules/grinding-wheels",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lumbering Destruction",
+      "sourceUrl": "https://tow.whfb.app/special-rules/lumbering-destruction",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Hellbound",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hellbound",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skullcracker",
+      "sourceUrl": "https://tow.whfb.app/special-rules/skullcracker",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May have the Hellbound special rule (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hellbound",
+              "sourceUrl": "https://tow.whfb.app/special-rules/hellbound",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May replace its Steam Cannonade with a Skullcracker (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Steam Cannonade",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/steam-cannonade",
+              "kind": "weapons-of-war"
+            },
+            {
+              "name": "Skullcracker",
+              "sourceUrl": "https://tow.whfb.app/special-rules/skullcracker",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Chaos Dwarfs",
+      "sourceEntryId": "16C5HyddNU5gZuimUArREX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 10,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+      "status": "source-listed"
+    }
+  ]
+}

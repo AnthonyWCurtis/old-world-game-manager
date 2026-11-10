@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:unicorn",
+  "name": "Unicorn",
+  "nameSingular": "Unicorn",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/unicorn",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5tKwNGF0vY0Y9Si8tpgx5j",
+    "sourceUpdatedAt": "2025-03-07T20:54:04.958Z",
+    "sourceRevision": 6,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2025 March 07",
+    "publicationCitation": "Forces of Fantasy, p. 90 & 127",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "4d3d3b83754e4a38b3a44e27541206c7eef79f64202e62b1ba13353dfcf72aae"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "40 x 60 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 35,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+35 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Unicorn",
+      "characteristics": {
+        "M": 10,
+        "WS": 4,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "(+1)",
+        "I": 5,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2, Unicorn only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Beguiling Aura",
+      "sourceUrl": "https://tow.whfb.app/special-rules/beguiling-aura",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 90,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "additionalReferences": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "pageReferenceOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, additionalReferences, pageReferenceOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    },
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    },
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

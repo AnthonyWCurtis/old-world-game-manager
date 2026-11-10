@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:prince-apophas",
+  "name": "Prince Apophas",
+  "nameSingular": "Prince Apophas",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/prince-apophas",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3OA8XACIeMOyKNU3Vd3U7U",
+    "sourceUpdatedAt": "2024-02-21T14:41:35.348Z",
+    "sourceRevision": 1,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2024 February 21",
+    "publicationCitation": "Arcane Journal: Tomb Kings of Khemri, p. 39",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "fd39ea3a1ba46f2ef9d8fc4dcaa4f4475ffbcc94436f39a425d63e4983534e0b"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 130,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "130 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Prince Apophas",
+      "characteristics": {
+        "M": 4,
+        "WS": 4,
+        "BS": 3,
+        "S": 4,
+        "T": 3,
+        "W": 4,
+        "I": 1,
+        "A": 5,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "swarming mass",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/swarming-mass",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Khopesh",
+      "sourceUrl": "https://tow.whfb.app/special-rules/khopesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Loner",
+      "sourceUrl": "https://tow.whfb.app/special-rules/loner",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scarab Prince",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scarab-prince",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Usirian's Reaper",
+      "sourceUrl": "https://tow.whfb.app/special-rules/usirians-reaper",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Tomb Kings of Khemri",
+      "sourceEntryId": "1KvuPgjpewIHVM8lSW3DHM",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 39,
+  "unmappedSourceFields": {
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

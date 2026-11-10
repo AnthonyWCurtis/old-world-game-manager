@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ungrim-ironfist",
+  "name": "Ungrim Ironfist",
+  "nameSingular": "Ungrim Ironfist",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ungrim-ironfist",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4C8RwHCnGbJXyPdvsquuMt",
+    "sourceUpdatedAt": "2024-08-09T18:58:07.086Z",
+    "sourceRevision": 1,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2024 August 09",
+    "publicationCitation": "Arcane Journal: Dwarfen Mountain Holds, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "105afad39338563ca87e8049b01b239c336699af58c3e04ec1fc41b7c9ddae93"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 315,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "315 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ungrim Ironfist",
+      "characteristics": {
+        "M": 3,
+        "WS": 9,
+        "BS": 4,
+        "S": 4,
+        "T": 6,
+        "W": 3,
+        "I": 5,
+        "A": 4,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Axe of Dargo",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-axe-of-dargo",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Slayer Crown",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-slayer-crown",
+      "kind": "magic-item"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Deathblow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/deathblow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gromril Armour",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gromril-armour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "King of the Slayer Hold",
+      "sourceUrl": "https://tow.whfb.app/special-rules/king-of-the-slayer-hold",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Slayer",
+      "sourceUrl": "https://tow.whfb.app/special-rules/slayer",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Dwarfen Mountain Holds",
+      "sourceEntryId": "7rAcNiHVaNPZLcYek2wB8V",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Dwarfen Mountain Holds",
+      "sourceEntryId": "23vuW2RsmlAD76xnw2GANe",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:dark-steed",
+  "name": "Dark Steed",
+  "nameSingular": "Dark Steed",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/dark-steed",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6cm95BVa5Uo8RZt03rE1mL",
+    "sourceUpdatedAt": "2024-02-27T16:14:47.932Z",
+    "sourceRevision": 1,
+    "publishedVersion": 6,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Dark Elves, p. 8",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "d4fb9e3722533fd43d6b4e2af14f6c9dea5f0abcdcd06425fe2ac59b43a2b97e"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 14,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+14 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Dark Steed",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Dark Elves",
+      "sourceEntryId": "4z8TnCYVKA7KbHJ8I5Dgd9",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 8,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dark-elves",
+      "name": "Dark Elves",
+      "sourceUrl": "https://tow.whfb.app/army/dark-elves",
+      "status": "source-listed"
+    }
+  ]
+}

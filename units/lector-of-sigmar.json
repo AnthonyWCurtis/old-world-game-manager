@@ -1,0 +1,290 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:lector-of-sigmar",
+  "name": "Lector of Sigmar",
+  "nameSingular": "Lector of Sigmar",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/lector-of-sigmar",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "07mUs0zgdggyzaibhBH1t",
+    "sourceUpdatedAt": "2026-01-29T00:34:44.172Z",
+    "sourceRevision": 4,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Forces of Fantasy, p. 52",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "23786de11aa1aae356ed8cd030f1076b2feb724cdf099525ff6c37dc5ab3023c"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 110,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "110 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Lector of Sigmar",
+      "characteristics": {
+        "M": 4,
+        "WS": 5,
+        "BS": 3,
+        "S": 4,
+        "T": 4,
+        "W": 3,
+        "I": 5,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Prayers of Sigmar",
+      "sourceUrl": "https://tow.whfb.app/special-rules/prayers-of-sigmar",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "May replace light armour with heavy armour (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            },
+            {
+              "name": "heavy armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "Barded Warhorse (+16 points)",
+          "points": {
+            "amount": 16,
+            "basis": "unspecified",
+            "sourceText": "(+16 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Barded Warhorse",
+              "sourceUrl": "https://tow.whfb.app/unit/barded-warhorse",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:2",
+          "description": "Empire Warhorse (+12 points)",
+          "points": {
+            "amount": 12,
+            "basis": "unspecified",
+            "sourceText": "(+12 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Empire Warhorse",
+              "sourceUrl": "https://tow.whfb.app/unit/empire-warhorse",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:3",
+          "description": "0-1 War Altar of Sigmar (+135 points)",
+          "points": {
+            "amount": 135,
+            "basis": "unspecified",
+            "sourceText": "(+135 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "War Altar of Sigmar",
+              "sourceUrl": "https://tow.whfb.app/unit/war-altar-of-sigmar",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "A Lector of Sigmar may purchase magic items up to a total of 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 52,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:general-hans-von-loewenhacke",
+  "name": "General Hans von Löwenhacke",
+  "nameSingular": "General Hans von Löwenhacke",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/general-hans-von-loewenhacke",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "40sx7v3XeSYkVchoNZHiK7",
+    "sourceUpdatedAt": "2026-01-29T17:13:02.563Z",
+    "sourceRevision": 2,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Arcane Journal: Empire of Man, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "c6a18f06c7578e4bae34337f2637f86a0583d39a7d504c26c03c08477db00801"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 190,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "190 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "General Hans von Löwenhacke",
+      "characteristics": {
+        "M": 4,
+        "WS": 6,
+        "BS": 5,
+        "S": 4,
+        "T": 4,
+        "W": 3,
+        "I": 4,
+        "A": 4,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Judgement",
+      "sourceUrl": "https://tow.whfb.app/magic-item/judgement",
+      "kind": "magic-item"
+    },
+    {
+      "name": "the Griffon Helm",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-griffon-helm",
+      "kind": "magic-item"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "\"Hold the Line!\"",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hold-the-line",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mercenary Commander",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mercenary-commander",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strategic Mastery",
+      "sourceUrl": "https://tow.whfb.app/special-rules/strategic-mastery",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Empire of Man",
+      "sourceEntryId": "1aumYbXwKOOQ9fHDW57AkC",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    }
+  ]
+}

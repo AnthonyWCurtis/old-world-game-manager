@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:bear-of-loren",
+  "name": "Bear of Loren",
+  "nameSingular": "Bear of Loren",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/bear-of-loren",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1kSNTOiaIQuFjjxZ21WHwI",
+    "sourceUpdatedAt": "2025-06-17T17:29:28.362Z",
+    "sourceRevision": 2,
+    "publishedVersion": 10,
+    "displayedUpdatedAt": "Last update: 2025 June 17",
+    "publicationCitation": "Arcane Journal: Wood Elf Realms, p. 41",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3383f7b0a6d9e1ae94e973eff1ac82f99122473caad2782b19465c1ec3b07c08"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "War Beast"
+    ],
+    "baseSize": "25 x 50 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 50
+    },
+    "unitSize": null
+  },
+  "basePoints": {
+    "amount": 20,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "20 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Bear of Loren",
+      "characteristics": {
+        "M": 5,
+        "WS": 4,
+        "BS": "-",
+        "S": 4,
+        "T": 4,
+        "W": 2,
+        "I": 3,
+        "A": 2,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cleaving Blow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cleaving-blow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Motley Crew",
+      "sourceUrl": "https://tow.whfb.app/special-rules/motley-crew",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Run with the Pack",
+      "sourceUrl": "https://tow.whfb.app/special-rules/run-with-the-pack",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Wood Elf Realms",
+      "sourceEntryId": "1vXLcORxeI2EugRZsMZAam",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 41,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

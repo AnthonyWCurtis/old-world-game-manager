@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:fanatic",
+  "name": "Fanatic",
+  "nameSingular": "Fanatic",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/fanatic",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7IhsCf236opCLrjlygCdis",
+    "sourceUpdatedAt": "2024-02-20T02:50:11.993Z",
+    "sourceRevision": 2,
+    "publishedVersion": 14,
+    "displayedUpdatedAt": "Last update: 2024 February 20",
+    "publicationCitation": "Ravening Hordes, p. 26",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b8f8e3683a9ae15e7e9d785a821aa038dfd9082b9c0c549920112511397d58d4"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 mm (round base)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 25,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+25 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Fanatic",
+      "characteristics": {
+        "M": "*",
+        "WS": "*",
+        "BS": "*",
+        "S": 5,
+        "T": 3,
+        "W": 1,
+        "I": 5,
+        "A": "*",
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Fanatic ball & chain",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/fanatic-ball-and-chain",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Release the Fanatics!",
+      "sourceUrl": "https://tow.whfb.app/special-rules/release-the-fanatics",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 26,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

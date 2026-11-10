@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:giant-wolf",
+  "name": "Giant Wolf",
+  "nameSingular": "Giant Wolf",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/giant-wolf",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3CD4uPVsozjUYPw1G7S9l0",
+    "sourceUpdatedAt": "2024-02-26T14:01:59.900Z",
+    "sourceRevision": 2,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Chaos Dwarfs, p. 5",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "663ae46685fb3f6f5e901ebae14e752ee22742d89f9b7e540872d32a35066bac"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "25 x 50 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 10,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+10 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Giant Wolf",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Chariot Runners",
+      "sourceUrl": "https://tow.whfb.app/special-rules/chariot-runners",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Flee",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-flee",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Chaos Dwarfs",
+      "sourceEntryId": "16C5HyddNU5gZuimUArREX",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 5,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "additionalReferences": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, additionalReferences"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+      "status": "source-listed"
+    },
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

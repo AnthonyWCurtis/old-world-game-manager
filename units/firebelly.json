@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:firebelly",
+  "name": "Firebelly",
+  "nameSingular": "Firebelly",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/firebelly",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4xoCduK8NUNpFuXC4Cx9Lv",
+    "sourceUpdatedAt": "2024-02-28T16:48:49.936Z",
+    "sourceRevision": 1,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Ogre Kingdoms, p. 6",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "414b1e851dbdf5dc171528a79c13f80ecf3aeefa92c22a98d986dc5535054195"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Monstrous Infantry",
+      "Character"
+    ],
+    "baseSize": "40 x 40 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 40
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 110,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "110 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Firebelly",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 2,
+        "S": 4,
+        "T": 5,
+        "W": 4,
+        "I": 2,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "flaming breath",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/flaming-breath-ogre-kingdoms",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Blessings of the Volcano God",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-volcano-god",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Flaming Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/flaming-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ogre Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ogre-charge",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May take a great weapon (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May be a Level 2 Wizard (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "May purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Ogre Kingdoms",
+      "sourceEntryId": "3JD4LIC7fWtUyvk0HdGlnp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 6,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+      "status": "source-listed"
+    }
+  ]
+}

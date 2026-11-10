@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:battle-pilgrims",
+  "name": "Battle Pilgrims",
+  "nameSingular": "Battle Pilgrim",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/battle-pilgrims",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4Stj12fY3IJ9iHlNB4tTzW",
+    "sourceUpdatedAt": "2026-07-10T16:45:44.473Z",
+    "sourceRevision": 5,
+    "publishedVersion": 28,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Forces of Fantasy, p. 94",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3582a0e072abe2a5a0ca28d4aaa3e0513a47ccf9a495aaf205320d846ff1c171"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Heavy Infantry"
+    ],
+    "baseSize": "25 x 25 mm (Battle Pilgrims), 50 x 75 mm (Grail Reliquae)",
+    "baseSizeMm": null,
+    "unitSize": "5-30 Battle Pilgrims/0-1 Grail Reliquae"
+  },
+  "basePoints": {
+    "amount": 6,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "6 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Battle Pilgrim",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Grail Reliquae",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 6,
+        "I": 3,
+        "A": 6,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shields",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blessings of the Lady (Grail Reliquae)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-lady",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Grail Reliquae",
+      "sourceUrl": "https://tow.whfb.app/special-rules/grail-reliquae",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (all enemies)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Levies",
+      "sourceUrl": "https://tow.whfb.app/special-rules/levies",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Peasantry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/peasantry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Retinue of the Saints (Grail Reliquae)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/retinue-of-the-saints",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Grail Reliquae",
+      "sourceUrl": "https://tow.whfb.app/special-rules/grail-reliquae",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 94,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [
+    "Option rich text present but hierarchy not extracted"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

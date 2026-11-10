@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:herdstone",
+  "name": "Herdstone",
+  "nameSingular": "Herdstone",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/herdstone",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "224bZu0HQdS4YFWEha5bNc",
+    "sourceUpdatedAt": "2025-06-20T23:48:50.035Z",
+    "sourceRevision": 5,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2025 June 20",
+    "publicationCitation": "Arcane Journal: Beastmen Brayherds, p. 43",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "e7c1a98291c7578394b0e228b614db9f1e25b47f6b7ba69bb699c39735680dac"
+  },
+  "classification": {
+    "unitCategory": [],
+    "troopType": [],
+    "baseSize": "No more than 6\" at its widest point",
+    "baseSizeMm": null,
+    "unitSize": "0-1"
+  },
+  "basePoints": {
+    "amount": 100,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "100 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Herdstone",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": "-",
+        "W": "-",
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [],
+  "startingRules": [
+    {
+      "name": "Herdstones",
+      "sourceUrl": "https://tow.whfb.app/special-rules/herdstones",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Beastmen Brayherds",
+      "sourceEntryId": "5RAIcEQBxfDNCHRXvHVdCo",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Beastmen Brayherds",
+      "sourceEntryId": "68Th1VPl0Hk9PLF624NAyR",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 43,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "No confidently scoped starting equipment links",
+    "Unmapped source fields present: costOverride, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+      "status": "source-listed"
+    }
+  ]
+}

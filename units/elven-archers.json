@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:elven-archers",
+  "name": "Elven Archers",
+  "nameSingular": "Elven Archer",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/elven-archers",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "10yoMlqXFl07xGPLQrgSMB",
+    "sourceUpdatedAt": "2026-07-10T15:53:23.072Z",
+    "sourceRevision": 2,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Forces of Fantasy, p. 161",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "2f9e7e8e4e66c5ffbf5ffd109cc6e5e24bc6e9009bf4e5414e8049f3eb9d1748"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 9,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "9 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Elven Archer",
+      "characteristics": {
+        "M": 5,
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Sentinel",
+      "characteristics": {
+        "M": 5,
+        "WS": 4,
+        "BS": 5,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "longbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/longbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Detachment",
+      "sourceUrl": "https://tow.whfb.app/warhammer-armies/detachment-special-rules",
+      "kind": "warhammer-armies"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Veteran",
+      "sourceUrl": "https://tow.whfb.app/special-rules/veteran",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Sentinel (champion) (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Upgrade one model to a musician (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Any unit of Elven Archers may take light armour (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "0-1 unit of Elven Archers per 1,000 points may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Replace the Valour of Ages special rule with Veteran (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Valour of Ages",
+              "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+              "kind": "special-rules"
+            },
+            {
+              "name": "Veteran",
+              "sourceUrl": "https://tow.whfb.app/special-rules/veteran",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Purchase a magic standard worth up to 25 points",
+          "points": null,
+          "magicItemPointsCap": 25,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 161,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

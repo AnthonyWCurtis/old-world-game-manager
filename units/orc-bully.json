@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:orc-bully",
+  "name": "Orc Bully",
+  "nameSingular": "Orc Bully",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/orc-bully",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3K6veJqM2BoVZX9xRLNwHv",
+    "sourceUpdatedAt": "2024-11-18T14:19:56.681Z",
+    "sourceRevision": 4,
+    "publishedVersion": 17,
+    "displayedUpdatedAt": "Last update: 2024 November 18",
+    "publicationCitation": "Ravening Hordes, p. 41",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "da584ab292da227573be710f972acbb54106eb715e3562c5a3ce83f7677d8c26"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "30 x 30 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 30
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 10,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+10 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Orc Bully",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 3,
+        "A": 2,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "whip",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/whip",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Bully",
+      "sourceUrl": "https://tow.whfb.app/special-rules/bully",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Choppas",
+      "sourceUrl": "https://tow.whfb.app/special-rules/choppas",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 41,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "additionalEntries": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, additionalEntries"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

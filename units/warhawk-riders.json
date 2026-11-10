@@ -1,0 +1,335 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warhawk-riders",
+  "name": "Warhawk Riders",
+  "nameSingular": "Warhawk Rider",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warhawk-riders",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1wZWIjtCegK6kw4iMmqyR5",
+    "sourceUpdatedAt": "2026-07-10T15:50:00.204Z",
+    "sourceRevision": 3,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Forces of Fantasy, p. 137",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0fa443411cd8acd6977aec5ad37a5b16068a9783b97426ead759696dd6c43628"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "3+"
+  },
+  "basePoints": {
+    "amount": 41,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "41 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warhawk Rider",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 4,
+        "W": 2,
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Wind Rider",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 5,
+        "S": 3,
+        "T": 4,
+        "W": 2,
+        "I": 4,
+        "A": 2,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Warhawk",
+      "characteristics": {
+        "M": 2,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "cavalry spears",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Asrai longbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/asrai-longbow",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Evasive",
+      "sourceUrl": "https://tow.whfb.app/special-rules/evasive",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Feigned Flight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/feigned-flight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Flee",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-flee",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Arcane Bodkins",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hagbane Tips",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Moonfire Shot",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Swiftshiver Shards",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Trueflight Arrows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may take one of the following types of enchanted arrows:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Arcane bodkins (+2 points per model)",
+          "points": {
+            "amount": 2,
+            "basis": "per_model",
+            "sourceText": "(+2 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Arcane bodkins",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Hagbane tips (+2 points per model)",
+          "points": {
+            "amount": 2,
+            "basis": "per_model",
+            "sourceText": "(+2 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hagbane tips",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Moonfire shot (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Moonfire shot",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Swiftshiver shards (+2 points per model)",
+          "points": {
+            "amount": 2,
+            "basis": "per_model",
+            "sourceText": "(+2 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Swiftshiver shards",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:5",
+          "description": "Trueflight arrows (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Trueflight arrows",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Any unit may upgrade one model to a Wind Rider (champion) (+8 points per unit)",
+          "points": {
+            "amount": 8,
+            "basis": "per_unit",
+            "sourceText": "(+8 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "A Wind Rider may purchase magic items up to a total of 25 points",
+          "points": null,
+          "magicItemPointsCap": 25,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 137,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

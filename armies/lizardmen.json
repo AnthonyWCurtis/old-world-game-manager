@@ -1,0 +1,141 @@
+{
+  "id": "army:lizardmen",
+  "name": "Lizardmen",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2MXlrRaUDtVqoAug52n9ZX",
+    "sourceUpdatedAt": "2024-09-26T12:55:30.328Z",
+    "sourceRevision": 10,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "d990c5a70dd6d20298e7453aeee4a774d853ba640204046b968f644413a860aa"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:saurus-oldblood",
+      "name": "Saurus Oldblood",
+      "sourceUrl": "https://tow.whfb.app/unit/saurus-oldblood"
+    },
+    {
+      "unitId": "unit:saurus-scar-veteran",
+      "name": "Saurus Scar-Veteran",
+      "sourceUrl": "https://tow.whfb.app/unit/saurus-scar-veteran"
+    },
+    {
+      "unitId": "unit:skink-chief",
+      "name": "Skink Chief",
+      "sourceUrl": "https://tow.whfb.app/unit/skink-chief"
+    },
+    {
+      "unitId": "unit:skink-priest",
+      "name": "Skink Priest",
+      "sourceUrl": "https://tow.whfb.app/unit/skink-priest"
+    },
+    {
+      "unitId": "unit:slann-mage-priest",
+      "name": "Slann Mage-Priest",
+      "sourceUrl": "https://tow.whfb.app/unit/slann-mage-priest"
+    },
+    {
+      "unitId": "unit:cold-one-lizardmen",
+      "name": "Cold One (Lizardmen)",
+      "sourceUrl": "https://tow.whfb.app/unit/cold-one-lizardmen"
+    },
+    {
+      "unitId": "unit:ripperdactyl",
+      "name": "Ripperdactyl",
+      "sourceUrl": "https://tow.whfb.app/unit/ripperdactyl"
+    },
+    {
+      "unitId": "unit:terradon",
+      "name": "Terradon",
+      "sourceUrl": "https://tow.whfb.app/unit/terradon"
+    },
+    {
+      "unitId": "unit:chameleon-skinks",
+      "name": "Chameleon Skinks",
+      "sourceUrl": "https://tow.whfb.app/unit/chameleon-skinks"
+    },
+    {
+      "unitId": "unit:jungle-swarms",
+      "name": "Jungle Swarms",
+      "sourceUrl": "https://tow.whfb.app/unit/jungle-swarms"
+    },
+    {
+      "unitId": "unit:kroxigor",
+      "name": "Kroxigor",
+      "sourceUrl": "https://tow.whfb.app/unit/kroxigor"
+    },
+    {
+      "unitId": "unit:razordon-pack",
+      "name": "Razordon Pack",
+      "sourceUrl": "https://tow.whfb.app/unit/razordon-pack"
+    },
+    {
+      "unitId": "unit:salamander-pack",
+      "name": "Salamander Pack",
+      "sourceUrl": "https://tow.whfb.app/unit/salamander-pack"
+    },
+    {
+      "unitId": "unit:saurus-warriors",
+      "name": "Saurus Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/saurus-warriors"
+    },
+    {
+      "unitId": "unit:skink-skirmishers",
+      "name": "Skink Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unit/skink-skirmishers"
+    },
+    {
+      "unitId": "unit:temple-guard",
+      "name": "Temple Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/temple-guard"
+    },
+    {
+      "unitId": "unit:cold-one-riders",
+      "name": "Cold One Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/cold-one-riders"
+    },
+    {
+      "unitId": "unit:ripperdactyl-riders",
+      "name": "Ripperdactyl Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/ripperdactyl-riders"
+    },
+    {
+      "unitId": "unit:terradon-riders",
+      "name": "Terradon Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/terradon-riders"
+    },
+    {
+      "unitId": "unit:ancient-stegadon",
+      "name": "Ancient Stegadon",
+      "sourceUrl": "https://tow.whfb.app/unit/ancient-stegadon"
+    },
+    {
+      "unitId": "unit:bastiladon",
+      "name": "Bastiladon",
+      "sourceUrl": "https://tow.whfb.app/unit/bastiladon"
+    },
+    {
+      "unitId": "unit:carnosaur",
+      "name": "Carnosaur",
+      "sourceUrl": "https://tow.whfb.app/unit/carnosaur"
+    },
+    {
+      "unitId": "unit:stegadon",
+      "name": "Stegadon",
+      "sourceUrl": "https://tow.whfb.app/unit/stegadon"
+    },
+    {
+      "unitId": "unit:troglodon",
+      "name": "Troglodon",
+      "sourceUrl": "https://tow.whfb.app/unit/troglodon"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

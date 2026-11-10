@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:skeleton-horse-archers",
+  "name": "Skeleton Horse Archers",
+  "nameSingular": "Skeleton Horse Archer",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/skeleton-horse-archers",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6qOukX0sz4HjLq930O9uEA",
+    "sourceUpdatedAt": "2024-02-21T21:11:21.875Z",
+    "sourceRevision": 4,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2024 February 21",
+    "publicationCitation": "Ravening Hordes, p. 138",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "f0e97c75f71cfec66ae76c09ec678d34d735667196283359c01855ed0e739347"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "25 x 50 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 50
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 11,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "11 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Skeleton Horse Archer",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Master of Horse",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Skeletal Steed",
+      "characteristics": {
+        "M": 8,
+        "WS": 2,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "warbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Arrows of Asaph",
+      "sourceUrl": "https://tow.whfb.app/special-rules/arrows-of-asaph",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Reserve Move",
+      "sourceUrl": "https://tow.whfb.app/special-rules/reserve-move",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scouts",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scouts",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Chariot Runners",
+      "sourceUrl": "https://tow.whfb.app/special-rules/chariot-runners",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "The entire unit may take light armour (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Upgrade one model to a Master of Horse (champion) (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Upgrade one model to a standard bearer (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "Upgrade one model to a musician (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:4",
+          "description": "Have the Chariot Runners special rule (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Chariot Runners",
+              "sourceUrl": "https://tow.whfb.app/special-rules/chariot-runners",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 138,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

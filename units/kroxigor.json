@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:kroxigor",
+  "name": "Kroxigor",
+  "nameSingular": "Kroxigor",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/kroxigor",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "71jm5d6jiCxhZPV2foFQ08",
+    "sourceUpdatedAt": "2024-02-28T02:52:05.826Z",
+    "sourceRevision": 1,
+    "publishedVersion": 20,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Lizardmen, p. 8",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "375d35bafc16d2a15e6ce03c833b7f042d88b036affa9d2a6a06090677f0e475"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Monstrous Infantry"
+    ],
+    "baseSize": "40 x 40 mm",
+    "baseSizeMm": {
+      "width": 40,
+      "depth": 40
+    },
+    "unitSize": "3+"
+  },
+  "basePoints": {
+    "amount": 49,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "49 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Kroxigor",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 0,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Ancient",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 0,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 3,
+        "A": 4,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Great weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Aquatic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/aquatic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cold Blooded",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cold-blooded",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmish Screen",
+      "sourceUrl": "https://tow.whfb.app/special-rules/skirmish-screen",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Any unit may upgrade one model to an Ancient (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Lizardmen",
+      "sourceEntryId": "2MXlrRaUDtVqoAug52n9ZX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 8,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:lizardmen",
+      "name": "Lizardmen",
+      "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+      "status": "source-listed"
+    }
+  ]
+}

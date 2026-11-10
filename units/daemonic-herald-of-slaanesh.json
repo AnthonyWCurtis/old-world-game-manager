@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:daemonic-herald-of-slaanesh",
+  "name": "Daemonic Herald of Slaanesh",
+  "nameSingular": "Herald of Slaanesh",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/daemonic-herald-of-slaanesh",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7nPyS7oIjoRMgowRG2APa0",
+    "sourceUpdatedAt": "2024-02-27T00:55:14.760Z",
+    "sourceRevision": 1,
+    "publishedVersion": 17,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Daemons of Chaos, p. 14",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "69d30931d9b54b532425bd66067b4e89a6bca60aa9477b1785ee170761809054"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 85,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "85 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Herald of Slaanesh",
+      "characteristics": {
+        "M": 6,
+        "WS": 6,
+        "BS": 4,
+        "S": 4,
+        "T": 3,
+        "W": 2,
+        "I": 6,
+        "A": 3,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Piercing claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/piercing-claws",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Daemonic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemon of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-slaanesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Infernal Favour (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/infernal-favour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Daemons",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-daemons",
+      "kind": "the-lores-of-magic"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May be a:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Level 1 Wizard (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Level 2 Wizard (+60 points)",
+          "points": {
+            "amount": 60,
+            "basis": "unspecified",
+            "sourceText": "(+60 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May be mounted on a:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Steed of Slaanesh (+16 points)",
+          "points": {
+            "amount": 16,
+            "basis": "unspecified",
+            "sourceText": "(+16 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Steed of Slaanesh",
+              "sourceUrl": "https://tow.whfb.app/unit/steed-of-slaanesh",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Seeker Chariot (+100 points)",
+          "points": {
+            "amount": 100,
+            "basis": "unspecified",
+            "sourceText": "(+100 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Seeker Chariot",
+              "sourceUrl": "https://tow.whfb.app/unit/seeker-chariot-of-slaanesh",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "Exalted Seeker Chariot (+185 points)",
+          "points": {
+            "amount": 185,
+            "basis": "unspecified",
+            "sourceText": "(+185 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Exalted Seeker Chariot",
+              "sourceUrl": "https://tow.whfb.app/unit/exalted-seeker-chariot-of-slaanesh",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "May purchase Daemonic Gifts up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [
+            {
+              "name": "Daemonic Gifts",
+              "sourceUrl": "https://tow.whfb.app/magic-items/daemonic-gifts-and-icons",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Daemons of Chaos",
+      "sourceEntryId": "6hFMTVwOVTMPdjCnmMVHMC",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 14,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

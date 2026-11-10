@@ -1,0 +1,423 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:hireling-outriders",
+  "name": "Hireling Outriders",
+  "nameSingular": "Hireling Outrider",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/hireling-outriders",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3wfacbgodHlguiNP7Y7aBV",
+    "sourceUpdatedAt": "2026-04-13T14:07:28.235Z",
+    "sourceRevision": 4,
+    "publishedVersion": 37,
+    "displayedUpdatedAt": "Last update: 2026 April 13",
+    "publicationCitation": "Arcane Journal: The War of Settra's Fury, p. 41",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "6265408f49beec3b57f06d0a8c0395a4d2febb0f5ff6a55668fc65e8f56dbb47"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 11,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "11 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Hireling Outrider",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Captain",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Flee",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-flee",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Feigned Flight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/feigned-flight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Reserve Move",
+      "sourceUrl": "https://tow.whfb.app/special-rules/reserve-move",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Vanguard",
+      "sourceUrl": "https://tow.whfb.app/special-rules/vanguard",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "The entire unit must take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Cavalry spears (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cavalry spears",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Shortbows (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Shortbows",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shortbow",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Pistols (+3 points per model)",
+          "points": {
+            "amount": 3,
+            "basis": "per_model",
+            "sourceText": "(+3 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Pistols",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/pistol",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Brace of pistols (+6 points per model)",
+          "points": {
+            "amount": 6,
+            "basis": "per_model",
+            "sourceText": "(+6 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Brace of pistols",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/brace-of-pistols",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "The entire unit may take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Light armour (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Heavy armour (+3 points per model)",
+          "points": {
+            "amount": 3,
+            "basis": "per_model",
+            "sourceText": "(+3 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Heavy armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "The entire unit may take shields (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shields",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "Upgrade one model to a Captain (champion) (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:2",
+          "description": "Upgrade one model to a standard bearer (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:3",
+          "description": "Upgrade one model to a musician (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": "0-1 unit per 1,000 points may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "Have the Feigned Flight special rule (+2 points per model)",
+          "points": {
+            "amount": 2,
+            "basis": "per_model",
+            "sourceText": "(+2 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Feigned Flight",
+              "sourceUrl": "https://tow.whfb.app/special-rules/feigned-flight",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:5:2",
+          "description": "Have the Reserve Move special rule (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Reserve Move",
+              "sourceUrl": "https://tow.whfb.app/special-rules/reserve-move",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:5:3",
+          "description": "Have the Vanguard special rule (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Vanguard",
+              "sourceUrl": "https://tow.whfb.app/special-rules/vanguard",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:5:4",
+          "description": "Purchase a magic standard worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The War of Settra's Fury",
+      "sourceEntryId": "6ThvhyraTU3WRtbyeBjTsv",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Realms of Men",
+      "sourceEntryId": "6xHs6glQ4tS6lpeAKSluI1",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 41,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:realms-of-men",
+      "name": "Realms of Men",
+      "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+      "status": "source-listed"
+    }
+  ]
+}

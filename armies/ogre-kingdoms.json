@@ -1,0 +1,136 @@
+{
+  "id": "army:ogre-kingdoms",
+  "name": "Ogre Kingdoms",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3JD4LIC7fWtUyvk0HdGlnp",
+    "sourceUpdatedAt": "2024-09-26T12:55:35.578Z",
+    "sourceRevision": 9,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "232c871b2937897aa6b23b1a65461d8b7953309e5bd5ebed3f64d7b08bbec964"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:bruiser",
+      "name": "Bruiser",
+      "sourceUrl": "https://tow.whfb.app/unit/bruiser"
+    },
+    {
+      "unitId": "unit:butcher",
+      "name": "Butcher",
+      "sourceUrl": "https://tow.whfb.app/unit/butcher"
+    },
+    {
+      "unitId": "unit:firebelly",
+      "name": "Firebelly",
+      "sourceUrl": "https://tow.whfb.app/unit/firebelly"
+    },
+    {
+      "unitId": "unit:hunter",
+      "name": "Hunter",
+      "sourceUrl": "https://tow.whfb.app/unit/hunter"
+    },
+    {
+      "unitId": "unit:slaughtermaster",
+      "name": "Slaughtermaster",
+      "sourceUrl": "https://tow.whfb.app/unit/slaughtermaster"
+    },
+    {
+      "unitId": "unit:tyrant",
+      "name": "Tyrant",
+      "sourceUrl": "https://tow.whfb.app/unit/tyrant"
+    },
+    {
+      "unitId": "unit:stonehorn",
+      "name": "Stonehorn",
+      "sourceUrl": "https://tow.whfb.app/unit/stonehorn"
+    },
+    {
+      "unitId": "unit:thundertusk",
+      "name": "Thundertusk",
+      "sourceUrl": "https://tow.whfb.app/unit/thundertusk"
+    },
+    {
+      "unitId": "unit:gnoblar-fighters",
+      "name": "Gnoblar Fighters",
+      "sourceUrl": "https://tow.whfb.app/unit/gnoblar-fighters"
+    },
+    {
+      "unitId": "unit:gnoblar-trappers",
+      "name": "Gnoblar Trappers",
+      "sourceUrl": "https://tow.whfb.app/unit/gnoblar-trappers"
+    },
+    {
+      "unitId": "unit:ironguts",
+      "name": "Ironguts",
+      "sourceUrl": "https://tow.whfb.app/unit/ironguts"
+    },
+    {
+      "unitId": "unit:leadbelchers",
+      "name": "Leadbelchers",
+      "sourceUrl": "https://tow.whfb.app/unit/leadbelchers"
+    },
+    {
+      "unitId": "unit:maneaters",
+      "name": "Maneaters",
+      "sourceUrl": "https://tow.whfb.app/unit/maneaters"
+    },
+    {
+      "unitId": "unit:ogre-bulls",
+      "name": "Ogre Bulls",
+      "sourceUrl": "https://tow.whfb.app/unit/ogre-bulls"
+    },
+    {
+      "unitId": "unit:yhetees",
+      "name": "Yhetees",
+      "sourceUrl": "https://tow.whfb.app/unit/yhetees"
+    },
+    {
+      "unitId": "unit:mournfang-cavalry",
+      "name": "Mournfang Cavalry",
+      "sourceUrl": "https://tow.whfb.app/unit/mournfang-cavalry"
+    },
+    {
+      "unitId": "unit:sabretusk-pack",
+      "name": "Sabretusk Pack",
+      "sourceUrl": "https://tow.whfb.app/unit/sabretusk-pack"
+    },
+    {
+      "unitId": "unit:gnoblar-scraplauncher",
+      "name": "Gnoblar Scraplauncher",
+      "sourceUrl": "https://tow.whfb.app/unit/gnoblar-scraplauncher"
+    },
+    {
+      "unitId": "unit:ironblaster",
+      "name": "Ironblaster",
+      "sourceUrl": "https://tow.whfb.app/unit/ironblaster"
+    },
+    {
+      "unitId": "unit:giant",
+      "name": "Giant",
+      "sourceUrl": "https://tow.whfb.app/unit/giant"
+    },
+    {
+      "unitId": "unit:gorger",
+      "name": "Gorger",
+      "sourceUrl": "https://tow.whfb.app/unit/gorger"
+    },
+    {
+      "unitId": "unit:stonehorn-riders",
+      "name": "Stonehorn Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/stonehorn-riders"
+    },
+    {
+      "unitId": "unit:thundertusk-riders",
+      "name": "Thundertusk Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/thundertusk-riders"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

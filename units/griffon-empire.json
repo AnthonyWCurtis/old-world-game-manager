@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:griffon-empire",
+  "name": "Griffon (Empire)",
+  "nameSingular": "Griffon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/griffon-empire",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1x44pJCZwK7AC6hdQQgdbZ",
+    "sourceUpdatedAt": "2024-02-26T01:10:30.868Z",
+    "sourceRevision": 6,
+    "publishedVersion": 32,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Forces of Fantasy, p. 70",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "edbcc5aa9581af243390958403d0f35d90282f98ab5028824bd432d6171507ad"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 130,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+130 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Griffon",
+      "characteristics": {
+        "M": 6,
+        "WS": 5,
+        "BS": "-",
+        "S": 5,
+        "T": "(+1)",
+        "W": "(+3)",
+        "I": 5,
+        "A": 4,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "serrated maw",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/serrated-maw",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 70,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    }
+  ]
+}

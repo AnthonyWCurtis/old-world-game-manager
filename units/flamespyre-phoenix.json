@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:flamespyre-phoenix",
+  "name": "Flamespyre Phoenix",
+  "nameSingular": "Flamespyre Phoenix",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/flamespyre-phoenix",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "30l7lFVuGoTsXU8VXS8PFH",
+    "sourceUpdatedAt": "2024-02-26T01:22:32.804Z",
+    "sourceRevision": 1,
+    "publishedVersion": 19,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Forces of Fantasy, p. 175",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "a899206a60bcc11cea114fbc39869b45f0551567cfa2ebd227e512e989d589c9"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 170,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "170 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Flamespyre Phoenix",
+      "characteristics": {
+        "M": 2,
+        "WS": 5,
+        "BS": 0,
+        "S": 5,
+        "T": 5,
+        "W": 5,
+        "I": 4,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blessings of Asuryan",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-asuryan",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Flaming Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/flaming-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "From the Ashes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/from-the-ashes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Wake of Fire",
+      "sourceUrl": "https://tow.whfb.app/special-rules/wake-of-fire",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 175,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

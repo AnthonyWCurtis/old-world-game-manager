@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:flame-cannon",
+  "name": "Flame Cannon",
+  "nameSingular": "Flame Cannon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/flame-cannon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4suR79IibF8eK48mEzeGcf",
+    "sourceUpdatedAt": "2026-07-10T14:45:56.751Z",
+    "sourceRevision": 2,
+    "publishedVersion": 7,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Forces of Fantasy, p. 31",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "a0156111d0171255ad8dd080dad95b7c4da7b033d6cbc69d79725ec0ae5b413f"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 75 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 120,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "120 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Flame Cannon",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 6,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Dwarf Crew",
+      "characteristics": {
+        "M": 3,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 4,
+        "W": 3,
+        "I": 2,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Fire thrower",
+      "sourceUrl": "https://tow.whfb.app/war-machines/fire-throwers",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Dwarfen Mountain Holds",
+      "sourceEntryId": "23vuW2RsmlAD76xnw2GANe",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 31,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "status": "source-listed"
+    }
+  ]
+}

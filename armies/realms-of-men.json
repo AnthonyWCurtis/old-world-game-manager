@@ -1,0 +1,76 @@
+{
+  "id": "army:realms-of-men",
+  "name": "Realms of Men",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6xHs6glQ4tS6lpeAKSluI1",
+    "sourceUpdatedAt": "2025-10-29T16:32:59.292Z",
+    "sourceRevision": 1,
+    "publishedVersion": 4,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3276fed5d956c6248fcc8293d58f569a3971e3e3934b2836b0c97617d75c407e"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:renegade-captain",
+      "name": "Renegade Captain",
+      "sourceUrl": "https://tow.whfb.app/unit/renegade-captain"
+    },
+    {
+      "unitId": "unit:renegade-prince",
+      "name": "Renegade Prince",
+      "sourceUrl": "https://tow.whfb.app/unit/renegade-prince"
+    },
+    {
+      "unitId": "unit:barded-warhorse",
+      "name": "Barded Warhorse",
+      "sourceUrl": "https://tow.whfb.app/unit/barded-warhorse"
+    },
+    {
+      "unitId": "unit:warhorse-realms-of-men",
+      "name": "Warhorse (Realms of Men)",
+      "sourceUrl": "https://tow.whfb.app/unit/warhorse-realms-of-men"
+    },
+    {
+      "unitId": "unit:sellsword-infantry",
+      "name": "Sellsword Infantry",
+      "sourceUrl": "https://tow.whfb.app/unit/sellsword-infantry"
+    },
+    {
+      "unitId": "unit:veteran-sellswords",
+      "name": "Veteran Sellswords",
+      "sourceUrl": "https://tow.whfb.app/unit/veteran-sellswords"
+    },
+    {
+      "unitId": "unit:freeblade-knights",
+      "name": "Freeblade Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/freeblade-knights"
+    },
+    {
+      "unitId": "unit:hireling-outriders",
+      "name": "Hireling Outriders",
+      "sourceUrl": "https://tow.whfb.app/unit/hireling-outriders"
+    },
+    {
+      "unitId": "unit:veteran-freeblades",
+      "name": "Veteran Freeblades",
+      "sourceUrl": "https://tow.whfb.app/unit/veteran-freeblades"
+    },
+    {
+      "unitId": "unit:border-princes-mortar",
+      "name": "Border Princes Mortar",
+      "sourceUrl": "https://tow.whfb.app/unit/border-princes-mortar"
+    },
+    {
+      "unitId": "unit:border-princes-organ-gun",
+      "name": "Border Princes Organ Gun",
+      "sourceUrl": "https://tow.whfb.app/unit/border-princes-organ-gun"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:troglodon",
+  "name": "Troglodon",
+  "nameSingular": "Troglodon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/troglodon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2vJlJdEmJGeL02LprzqHxp",
+    "sourceUpdatedAt": "2024-02-28T03:43:33.578Z",
+    "sourceRevision": 2,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Lizardmen, p. 15",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "e29ecef80017985240d20ff297409c7957bb2e9a5e9c091c937227d6f3241230"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 200,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "200 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Troglodon",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 5,
+        "T": 5,
+        "W": 5,
+        "I": 2,
+        "A": 3,
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Skink Oracle",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 1,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Venomous talons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/venomous-talons",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "venom spray",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/venom-spray",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Arcane Vassal",
+      "sourceUrl": "https://tow.whfb.app/special-rules/arcane-vassal",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Aquatic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/aquatic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cold Blooded",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cold-blooded",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Lustria",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-lustria",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Primeval Roar",
+      "sourceUrl": "https://tow.whfb.app/special-rules/primeval-roar",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Lizardmen",
+      "sourceEntryId": "2MXlrRaUDtVqoAug52n9ZX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 15,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "magicOverride": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, magicOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:lizardmen",
+      "name": "Lizardmen",
+      "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warp-lightning-cannon",
+  "name": "Warp Lightning Cannon",
+  "nameSingular": "Warp Lightning Cannon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warp-lightning-cannon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "HmSQcgijC6YzxiaXdWiAH",
+    "sourceUpdatedAt": "2024-02-29T14:21:51.853Z",
+    "sourceRevision": 1,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Skaven, p. 19",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "a157bfd6a300ef54f44e0da5059174801e9f46976cf6e672897dba47a61adcfd"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 110,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "110 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warp Lightning Cannon",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 6,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Engineer & Crew",
+      "characteristics": {
+        "M": 5,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Warp Lightning Cannon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warp-lightning-cannon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 19,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

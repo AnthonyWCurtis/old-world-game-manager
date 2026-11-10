@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:goblin-mob",
+  "name": "Goblin Mob",
+  "nameSingular": "Goblin",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/goblin-mob",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2665vdIxxDr3smZ26l8O5d",
+    "sourceUpdatedAt": "2026-07-10T17:01:33.799Z",
+    "sourceRevision": 4,
+    "publishedVersion": 30,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Ravening Hordes, p. 23",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "29a0ff018d201c3b7f542583d5b39ff520deea3fcf86e571d906f84e150bfc47"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "10+"
+  },
+  "basePoints": {
+    "amount": 3,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "3 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Goblin",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Boss",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 2,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shields",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear of Elves",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear-of-elves",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Horde",
+      "sourceUrl": "https://tow.whfb.app/special-rules/horde",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impetuous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impetuous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "The entire unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Take thrusting spears (+1 point per model) Or:",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "thrusting spears",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/thrusting-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Replace shield with shortbows (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            },
+            {
+              "name": "shortbows",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shortbow",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "The entire unit may take light armour (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Upgrade one model to a Boss (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Upgrade one model to a standard bearer (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:3",
+          "description": "Upgrade one model to a musician (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:4",
+          "description": "Include 0-3 Nasty Skulkers (+10 points each)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Nasty Skulkers",
+              "sourceUrl": "https://tow.whfb.app/unit/nasty-skulker",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": "0-1 unit per 1,000 points may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "Replace the Close Order special rule with Skirmishers (Free)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Close Order",
+              "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+              "kind": "special-rules"
+            },
+            {
+              "name": "Skirmishers",
+              "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+              "kind": "unusual-formations"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:2",
+          "description": "Purchase a magic standard worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 23,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

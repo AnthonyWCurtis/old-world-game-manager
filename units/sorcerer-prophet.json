@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:sorcerer-prophet",
+  "name": "Sorcerer-Prophet",
+  "nameSingular": "Sorcerer-Prophet",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/sorcerer-prophet",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "57IaHxfW0s8ooEAGjiDssg",
+    "sourceUpdatedAt": "2024-02-26T14:27:34.527Z",
+    "sourceRevision": 2,
+    "publishedVersion": 35,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Chaos Dwarfs, p. 3",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "ee3fe08735ca65db2a539f0ee7706d136e2dc132d02a8ce40a62673dc82c743b"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 195,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "195 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Sorcerer-Prophet",
+      "characteristics": {
+        "M": 3,
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": 5,
+        "W": 3,
+        "I": 2,
+        "A": 3,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blackshard Armour",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blackshard-armour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ensorcelled Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ensorcelled-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Infernal Engineer",
+      "sourceUrl": "https://tow.whfb.app/special-rules/infernal-engineer",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Hashut",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-hashut",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Sorcerer's Curse",
+      "sourceUrl": "https://tow.whfb.app/special-rules/sorcerers-curse",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Darkforged Weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/darkforged-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Naptha Bombs",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/naptha-bombs",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Blood of Hashut",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/blood-of-hashut",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take any of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Darkforged weapon (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Darkforged weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/darkforged-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Naptha bombs (+15 points)",
+          "points": {
+            "amount": 15,
+            "basis": "unspecified",
+            "sourceText": "(+15 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Naptha bombs",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/naptha-bombs",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Blood of Hashut (+20 points per vial)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Blood of Hashut",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/blood-of-hashut",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "A Sorcerer-Prophet may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Be a Level 4 Wizard (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Purchase magic items up to a total of 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "Be mounted on a Bale Taurus (+160 points)",
+          "points": {
+            "amount": 160,
+            "basis": "unspecified",
+            "sourceText": "(+160 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Bale Taurus",
+              "sourceUrl": "https://tow.whfb.app/unit/bale-taurus",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:4",
+          "description": "Be mounted on a Great Taurus (+120 points)",
+          "points": {
+            "amount": 120,
+            "basis": "unspecified",
+            "sourceText": "(+120 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great Taurus",
+              "sourceUrl": "https://tow.whfb.app/unit/great-taurus",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:5",
+          "description": "Be mounted on a Lammasu (+95 points)",
+          "points": {
+            "amount": 95,
+            "basis": "unspecified",
+            "sourceText": "(+95 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Lammasu",
+              "sourceUrl": "https://tow.whfb.app/unit/lammasu",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Chaos Dwarfs",
+      "sourceEntryId": "16C5HyddNU5gZuimUArREX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 3,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+      "status": "source-listed"
+    }
+  ]
+}

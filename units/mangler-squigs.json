@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:mangler-squigs",
+  "name": "Mangler Squigs",
+  "nameSingular": "Mangler Squig",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/mangler-squigs",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "639UQL4JxAHuNNBqLZ4jzN",
+    "sourceUpdatedAt": "2024-02-20T14:18:53.573Z",
+    "sourceRevision": 3,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 February 20",
+    "publicationCitation": "Ravening Hordes, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "9406f3d355f331e727ed84c6baa44b84785154930d260655e129b12eaf31aaa6"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "50 x 75 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 75
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 95,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "95 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Mangler Squig",
+      "characteristics": {
+        "M": "3D6",
+        "WS": 4,
+        "BS": 0,
+        "S": 6,
+        "T": 5,
+        "W": 4,
+        "I": 3,
+        "A": "D6",
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Colossal fang-filled gob",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/colossal-fang-filled-gob",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Dwarfs)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ker-splat",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ker-splat",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Movement",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-movement",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Spiked Ball & Chains",
+      "sourceUrl": "https://tow.whfb.app/special-rules/spiked-ball-and-chains",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Timmm-berrr!",
+      "sourceUrl": "https://tow.whfb.app/special-rules/timmm-berrr",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

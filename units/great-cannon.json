@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:great-cannon",
+  "name": "Great Cannon",
+  "nameSingular": "Great Cannon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/great-cannon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "16ItsWukyV37UndcljMbf7",
+    "sourceUpdatedAt": "2024-02-23T03:19:20.839Z",
+    "sourceRevision": 1,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Forces of Fantasy, p. 71",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "d29e346d173e2b8d19fac4fc87da0c6b4afdcc8d2b17a2e1cb2e30adcf3c6051"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 75 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 125,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "125 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Great Cannon",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 6,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Gun Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Great cannon",
+      "sourceUrl": "https://tow.whfb.app/war-machines/cannon",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Veteran",
+      "sourceUrl": "https://tow.whfb.app/special-rules/veteran",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May have the Veteran special rule (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Veteran",
+              "sourceUrl": "https://tow.whfb.app/special-rules/veteran",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 71,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    }
+  ]
+}

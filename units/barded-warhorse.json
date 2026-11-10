@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:barded-warhorse",
+  "name": "Barded Warhorse",
+  "nameSingular": "Barded Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/barded-warhorse",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "61d5lrpKmGUvhA1RmIw5QW",
+    "sourceUpdatedAt": "2025-10-30T01:33:34.373Z",
+    "sourceRevision": 3,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2025 October 30",
+    "publicationCitation": "Forces of Fantasy, p. 55",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "3c37878b7c4b30399d37d895859103175c57f397da6f01319407243c1b95d212"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 16,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+16 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Barded Warhorse",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Empire of Man",
+      "sourceEntryId": "7BS03u65NyXvCbQbJad5jj",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Realms of Men",
+      "sourceEntryId": "6xHs6glQ4tS6lpeAKSluI1",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Arcane Journal: The War of Settra's Fury",
+      "sourceEntryId": "6ThvhyraTU3WRtbyeBjTsv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 55,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "additionalReferences": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, additionalReferences"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:empire-of-man",
+      "name": "Empire of Man",
+      "sourceUrl": "https://tow.whfb.app/army/empire-of-man",
+      "status": "source-listed"
+    },
+    {
+      "armyId": "army:realms-of-men",
+      "name": "Realms of Men",
+      "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+      "status": "source-listed"
+    }
+  ]
+}

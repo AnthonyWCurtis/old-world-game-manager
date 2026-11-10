@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:warhorse-warriors-of-chaos",
+  "name": "Warhorse (Warriors of Chaos)",
+  "nameSingular": "Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/warhorse-warriors-of-chaos",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6qbAX1e2BbAd5efMyuAIN4",
+    "sourceUpdatedAt": "2024-09-22T17:43:34.018Z",
+    "sourceRevision": 1,
+    "publishedVersion": 11,
+    "displayedUpdatedAt": "Last update: 2024 September 22",
+    "publicationCitation": "Arcane Journal: Warriors of Chaos, p. 38",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0af80397f73cfbce4da75f8ecdfc313ec120e317074fd4d896438a80e5f34a0a"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 14,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+14 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Warhorse",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Warriors of Chaos",
+      "sourceEntryId": "6nXmblqucGpHTaICnwBr3n",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 38,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

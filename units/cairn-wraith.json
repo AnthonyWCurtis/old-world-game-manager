@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cairn-wraith",
+  "name": "Cairn Wraith",
+  "nameSingular": "Cairn Wraith",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cairn-wraith",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3KDdTT4xteKRdlYxrOQd5n",
+    "sourceUpdatedAt": "2024-02-29T19:47:06.118Z",
+    "sourceRevision": 1,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Vampire Counts, p. 6",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "40ae1503994125e09fa8dc25dad45fd220e77036646f9079cc71b6b728546c70"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 50,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "50 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Cairn Wraith",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": 0,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 2,
+        "A": 2,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Spectral scythe",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/spectral-scythe-cairn-wraith",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Ethereal",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ethereal",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 6,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:thorgrim-ulleksson",
+  "name": "Thorgrim Ulleksson",
+  "nameSingular": "Thorgrim Ulleksson",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/thorgrim-ulleksson",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3kAbsSnriW5PyTLXyOaEq2",
+    "sourceUpdatedAt": "2024-08-09T18:49:10.941Z",
+    "sourceRevision": 2,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2024 August 09",
+    "publicationCitation": "Arcane Journal: Dwarfen Mountain Holds, p. 35",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "18f215e745f8dd193884e74af80eed4fdb91c943a543dc4862dde77121bd32fb"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 250,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "250 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Thorgrim Ulleksson",
+      "characteristics": {
+        "M": 3,
+        "WS": 6,
+        "BS": 4,
+        "S": 4,
+        "T": 5,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Grudge-Settler",
+      "sourceUrl": "https://tow.whfb.app/magic-item/grudge-settler",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Grudgestone",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-grudgestone",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armour of Skaldour",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-armour-of-skaldour",
+      "kind": "magic-item"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Gromril Armour",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gromril-armour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Grudgelore",
+      "sourceUrl": "https://tow.whfb.app/special-rules/grudgelore",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Dwarfen Mountain Holds",
+      "sourceEntryId": "7rAcNiHVaNPZLcYek2wB8V",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Dwarfen Mountain Holds",
+      "sourceEntryId": "23vuW2RsmlAD76xnw2GANe",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 35,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "status": "source-listed"
+    }
+  ]
+}

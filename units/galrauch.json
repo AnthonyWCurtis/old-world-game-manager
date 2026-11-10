@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:galrauch",
+  "name": "Galrauch",
+  "nameSingular": "Galrauch",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/galrauch",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3MWW1B3bRY7y5tMXwoqisZ",
+    "sourceUpdatedAt": "2024-09-22T17:29:32.997Z",
+    "sourceRevision": 1,
+    "publishedVersion": 22,
+    "displayedUpdatedAt": "Last update: 2024 September 22",
+    "publicationCitation": "Arcane Journal: Warriors of Chaos, p. 36",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "8f4e9446051c8c465c80e10d885583f723d0683d1d5dcd8d410433802e838f26"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Behemoth",
+      "Named Character"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 465,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "465 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Galrauch",
+      "characteristics": {
+        "M": 6,
+        "WS": 6,
+        "BS": 3,
+        "S": 6,
+        "T": 6,
+        "W": 6,
+        "I": 4,
+        "A": 6,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Dark Fire of Chaos",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/dark-fire-of-chaos",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Fumes of Contagion",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/fumes-of-contagion",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Breath of Change",
+      "sourceUrl": "https://tow.whfb.app/special-rules/breath-of-change",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-tzeentch",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Spirit of Galrauch",
+      "sourceUrl": "https://tow.whfb.app/special-rules/spirit-of-galrauch",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Two-headed Dragon",
+      "sourceUrl": "https://tow.whfb.app/special-rules/two-headed-dragon",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Warriors of Chaos",
+      "sourceEntryId": "6nXmblqucGpHTaICnwBr3n",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 36,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

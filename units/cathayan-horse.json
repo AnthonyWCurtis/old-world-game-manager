@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cathayan-horse",
+  "name": "Cathayan Horse",
+  "nameSingular": "Cathayan Horse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cathayan-horse",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2VDyVmetJHOu34igaMvaKk",
+    "sourceUpdatedAt": "2026-03-27T14:48:15.262Z",
+    "sourceRevision": 1,
+    "publishedVersion": 5,
+    "displayedUpdatedAt": "Last update: 2026 March 27",
+    "publicationCitation": "Arcane Journal: The Breaching of the Great Bastion, p. 44",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b6d53a22a69130ec447dfef162b819d6ea70fd8c5bccdcae60ba8294acad7734"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 16,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+16 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Cathayan Horse",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The Breaching of the Great Bastion",
+      "sourceEntryId": "6I62LiJLxKwye3RlTRRxJa",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Grand Cathay",
+      "sourceEntryId": "4Xen5ZBRl0XdriffuxTg07",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 44,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:grand-cathay",
+      "name": "Grand Cathay",
+      "sourceUrl": "https://tow.whfb.app/army/grand-cathay",
+      "status": "source-listed"
+    }
+  ]
+}

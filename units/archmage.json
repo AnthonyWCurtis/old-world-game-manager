@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:archmage",
+  "name": "Archmage",
+  "nameSingular": "Archmage",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/archmage",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "62OJISS5z7csfsVdh6Y8JG",
+    "sourceUpdatedAt": "2024-02-26T02:15:50.988Z",
+    "sourceRevision": 2,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Forces of Fantasy, p. 157",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "6e6ecef187c0b7ad4745f492d31dc241fa1b45db1caff4d7e90810f67465acc7"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 155,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "155 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Archmage",
+      "characteristics": {
+        "M": 5,
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 5,
+        "A": 2,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ithilmar Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ithilmar-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lileath's Blessing",
+      "sourceUrl": "https://tow.whfb.app/special-rules/lileaths-blessing",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Saphery",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-saphery",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Elven Steed (+14 points)",
+          "points": {
+            "amount": 14,
+            "basis": "unspecified",
+            "sourceText": "(+14 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Elven Steed",
+              "sourceUrl": "https://tow.whfb.app/unit/elven-steed",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Barded Elven Steed (+18 points)",
+          "points": {
+            "amount": 18,
+            "basis": "unspecified",
+            "sourceText": "(+18 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Barded Elven Steed",
+              "sourceUrl": "https://tow.whfb.app/unit/barded-elven-steed",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Moon Dragon (+235 points)",
+          "points": {
+            "amount": 235,
+            "basis": "unspecified",
+            "sourceText": "(+235 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Moon Dragon",
+              "sourceUrl": "https://tow.whfb.app/unit/moon-dragon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Star Dragon (+290 points)",
+          "points": {
+            "amount": 290,
+            "basis": "unspecified",
+            "sourceText": "(+290 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Star Dragon",
+              "sourceUrl": "https://tow.whfb.app/unit/star-dragon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:5",
+          "description": "Great Eagle (+60 points)",
+          "points": {
+            "amount": 60,
+            "basis": "unspecified",
+            "sourceText": "(+60 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great Eagle",
+              "sourceUrl": "https://tow.whfb.app/unit/great-eagle-mount",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May take a single Elven Honour",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "A character with the Chracian Hunter Elven Honour may be mounted on a Lion Chariot (+75 points)",
+          "points": {
+            "amount": 75,
+            "basis": "unspecified",
+            "sourceText": "(+75 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Chracian Hunter",
+              "sourceUrl": "https://tow.whfb.app/magic-item/chracian-hunter",
+              "kind": "magic-item"
+            },
+            {
+              "name": "Lion Chariot",
+              "sourceUrl": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "A character with the Sea Guard Elven Honour may be mounted on a Lothern Skycutter (+90 points)",
+          "points": {
+            "amount": 90,
+            "basis": "unspecified",
+            "sourceText": "(+90 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Sea Guard",
+              "sourceUrl": "https://tow.whfb.app/magic-item/sea-guard",
+              "kind": "magic-item"
+            },
+            {
+              "name": "Lothern Skycutter",
+              "sourceUrl": "https://tow.whfb.app/unit/lothern-skycutter",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "A character with the Blood of Caledor Elven Honour may be mounted on a Sun Dragon (+180 points)",
+          "points": {
+            "amount": 180,
+            "basis": "unspecified",
+            "sourceText": "(+180 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Blood of Caledor",
+              "sourceUrl": "https://tow.whfb.app/magic-item/blood-of-caledor",
+              "kind": "magic-item"
+            },
+            {
+              "name": "Sun Dragon",
+              "sourceUrl": "https://tow.whfb.app/unit/sun-dragon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:4",
+          "description": "A character with the Anointed of Asuryan Elven Honour may be mounted on a:",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Anointed of Asuryan",
+              "sourceUrl": "https://tow.whfb.app/magic-item/anointed-of-asuryan",
+              "kind": "magic-item"
+            },
+            {
+              "name": "Flamespyre Phoenix",
+              "sourceUrl": "https://tow.whfb.app/unit/flamespyre-phoenix-mount",
+              "kind": "unit"
+            },
+            {
+              "name": "Frostheart Phoenix",
+              "sourceUrl": "https://tow.whfb.app/unit/frostheart-phoenix-mount",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "An Archmage may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Be a Level 4 Wizard +30 points",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Purchase magic items up to a total of 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 157,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

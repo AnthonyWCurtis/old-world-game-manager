@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:rat-ogres",
+  "name": "Rat Ogres",
+  "nameSingular": "Rat Ogre",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/rat-ogres",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7Ky9x6bIiLXk2j4T9I2WB1",
+    "sourceUpdatedAt": "2024-11-18T14:13:15.169Z",
+    "sourceRevision": 5,
+    "publishedVersion": 29,
+    "displayedUpdatedAt": "Last update: 2024 November 18",
+    "publicationCitation": "Skaven, p. 12",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "643b2c5101d735c43a67df2799c1b764a63964317fe31d66d81465db98c4ced1"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Monstrous Infantry"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "3+"
+  },
+  "basePoints": {
+    "amount": 48,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "48 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Rat Ogre",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": 1,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 4,
+        "A": 3,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Frenzy",
+      "sourceUrl": "https://tow.whfb.app/special-rules/frenzy",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Horde",
+      "sourceUrl": "https://tow.whfb.app/special-rules/horde",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Safe from Harm",
+      "sourceUrl": "https://tow.whfb.app/special-rules/safe-from-harm",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scurry Away",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scurry-away",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Include one Packmaster for every two Rat Ogres (+5 points each)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Packmaster",
+              "sourceUrl": "https://tow.whfb.app/unit/packmaster",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one Packmaster to a Master Moulder (champion) (+7 points)",
+          "points": {
+            "amount": 7,
+            "basis": "unspecified",
+            "sourceText": "(+7 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Master Moulder",
+              "sourceUrl": "https://tow.whfb.app/unit/master-moulder",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 12,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

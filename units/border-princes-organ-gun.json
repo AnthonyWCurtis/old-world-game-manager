@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:border-princes-organ-gun",
+  "name": "Border Princes Organ Gun",
+  "nameSingular": "Organ Gun",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/border-princes-organ-gun",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2ekWCIMki9aSS9OX8sIZwh",
+    "sourceUpdatedAt": "2025-10-30T13:37:27.329Z",
+    "sourceRevision": 1,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2025 October 30",
+    "publicationCitation": "Arcane Journal: The War of Settra's Fury, p. 42",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "eb5a54aab976fdfb40b548dba34219114600b01e5cfbbd992a09542a57e53e12"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 50 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 125,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "125 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Organ Gun",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 7,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Gun Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Organ gun",
+      "sourceUrl": "https://tow.whfb.app/war-machines/organ-guns",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Levies",
+      "sourceUrl": "https://tow.whfb.app/special-rules/levies",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The War of Settra's Fury",
+      "sourceEntryId": "6ThvhyraTU3WRtbyeBjTsv",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Realms of Men",
+      "sourceEntryId": "6xHs6glQ4tS6lpeAKSluI1",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 42,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:realms-of-men",
+      "name": "Realms of Men",
+      "sourceUrl": "https://tow.whfb.app/army/realms-of-men",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "id": "army:orc-and-goblin-tribes",
+  "name": "Orc & Goblin Tribes",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7AijkJLcIDDcMge1U24Cqv",
+    "sourceUpdatedAt": "2024-02-18T20:26:21.520Z",
+    "sourceRevision": 11,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "df80fa9a02736c1c96598a357d8e4ec4a326639f35f383c17871db7e412ef907"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:kiknik-toofsnatcha",
+      "name": "Kiknik Toofsnatcha",
+      "sourceUrl": "https://tow.whfb.app/unit/kiknik-toofsnatcha"
+    },
+    {
+      "unitId": "unit:ogdruz-swampdigga",
+      "name": "Ogdruz Swampdigga",
+      "sourceUrl": "https://tow.whfb.app/unit/ogdruz-swampdigga"
+    },
+    {
+      "unitId": "unit:black-orc-bigboss",
+      "name": "Black Orc Bigboss",
+      "sourceUrl": "https://tow.whfb.app/unit/black-orc-bigboss"
+    },
+    {
+      "unitId": "unit:black-orc-warboss",
+      "name": "Black Orc Warboss",
+      "sourceUrl": "https://tow.whfb.app/unit/black-orc-warboss"
+    },
+    {
+      "unitId": "unit:goblin-bigboss",
+      "name": "Goblin Bigboss",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-bigboss"
+    },
+    {
+      "unitId": "unit:goblin-oddgit",
+      "name": "Goblin Oddgit",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-oddgit"
+    },
+    {
+      "unitId": "unit:goblin-oddnob",
+      "name": "Goblin Oddnob",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-oddnob"
+    },
+    {
+      "unitId": "unit:goblin-warboss",
+      "name": "Goblin Warboss",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-warboss"
+    },
+    {
+      "unitId": "unit:night-goblin-bigboss",
+      "name": "Night Goblin Bigboss",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-bigboss"
+    },
+    {
+      "unitId": "unit:night-goblin-oddgit",
+      "name": "Night Goblin Oddgit",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-oddgit"
+    },
+    {
+      "unitId": "unit:night-goblin-oddnob",
+      "name": "Night Goblin Oddnob",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-oddnob"
+    },
+    {
+      "unitId": "unit:night-goblin-warboss",
+      "name": "Night Goblin Warboss",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-warboss"
+    },
+    {
+      "unitId": "unit:orc-bigboss",
+      "name": "Orc Bigboss",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-bigboss"
+    },
+    {
+      "unitId": "unit:orc-warboss",
+      "name": "Orc Warboss",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-warboss"
+    },
+    {
+      "unitId": "unit:orc-weirdboy",
+      "name": "Orc Weirdboy",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-weirdboy"
+    },
+    {
+      "unitId": "unit:orc-weirdnob",
+      "name": "Orc Weirdnob",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-weirdnob"
+    },
+    {
+      "unitId": "unit:troll-hag",
+      "name": "Troll Hag",
+      "sourceUrl": "https://tow.whfb.app/unit/troll-hag"
+    },
+    {
+      "unitId": "unit:giant-cave-squig",
+      "name": "Giant Cave Squig",
+      "sourceUrl": "https://tow.whfb.app/unit/giant-cave-squig"
+    },
+    {
+      "unitId": "unit:giant-wolf",
+      "name": "Giant Wolf",
+      "sourceUrl": "https://tow.whfb.app/unit/giant-wolf"
+    },
+    {
+      "unitId": "unit:gigantic-spider",
+      "name": "Gigantic Spider",
+      "sourceUrl": "https://tow.whfb.app/unit/gigantic-spider"
+    },
+    {
+      "unitId": "unit:war-boar",
+      "name": "War Boar",
+      "sourceUrl": "https://tow.whfb.app/unit/war-boar"
+    },
+    {
+      "unitId": "unit:badlands-ogre-bulls",
+      "name": "Badlands Ogre Bulls",
+      "sourceUrl": "https://tow.whfb.app/unit/badlands-ogre-bulls"
+    },
+    {
+      "unitId": "unit:black-orc-mob",
+      "name": "Black Orc Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/black-orc-mob"
+    },
+    {
+      "unitId": "unit:common-troll-mob",
+      "name": "Common Troll Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/common-troll-mob"
+    },
+    {
+      "unitId": "unit:fanatic",
+      "name": "Fanatic",
+      "sourceUrl": "https://tow.whfb.app/unit/fanatic"
+    },
+    {
+      "unitId": "unit:goblin-mob",
+      "name": "Goblin Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-mob"
+    },
+    {
+      "unitId": "unit:nasty-skulker",
+      "name": "Nasty Skulker",
+      "sourceUrl": "https://tow.whfb.app/unit/nasty-skulker"
+    },
+    {
+      "unitId": "unit:night-goblin-mob",
+      "name": "Night Goblin Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-mob"
+    },
+    {
+      "unitId": "unit:night-goblin-squig-herd",
+      "name": "Night Goblin Squig Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-squig-herd"
+    },
+    {
+      "unitId": "unit:orc-mob",
+      "name": "Orc Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-mob"
+    },
+    {
+      "unitId": "unit:river-troll-mob",
+      "name": "River Troll Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/river-troll-mob"
+    },
+    {
+      "unitId": "unit:snotling-mob",
+      "name": "Snotling Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/snotling-mob"
+    },
+    {
+      "unitId": "unit:stone-troll-mob",
+      "name": "Stone Troll Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/stone-troll-mob"
+    },
+    {
+      "unitId": "unit:goblin-spider-rider-mob",
+      "name": "Goblin Spider Rider Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-spider-rider-mob"
+    },
+    {
+      "unitId": "unit:goblin-wolf-rider-mob",
+      "name": "Goblin Wolf Rider Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-wolf-rider-mob"
+    },
+    {
+      "unitId": "unit:night-goblin-squig-hopper-mob",
+      "name": "Night Goblin Squig Hopper Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/night-goblin-squig-hopper-mob"
+    },
+    {
+      "unitId": "unit:orc-boar-boy-mob",
+      "name": "Orc Boar Boy Mob",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-boar-boy-mob"
+    },
+    {
+      "unitId": "unit:black-orc-boar-chariot",
+      "name": "Black Orc Boar Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/black-orc-boar-chariot"
+    },
+    {
+      "unitId": "unit:goblin-wolf-chariot",
+      "name": "Goblin Wolf Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-wolf-chariot"
+    },
+    {
+      "unitId": "unit:orc-boar-chariot",
+      "name": "Orc Boar Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-boar-chariot"
+    },
+    {
+      "unitId": "unit:snotling-pump-wagon",
+      "name": "Snotling Pump Wagon",
+      "sourceUrl": "https://tow.whfb.app/unit/snotling-pump-wagon"
+    },
+    {
+      "unitId": "unit:arachnarok-spider",
+      "name": "Arachnarok Spider",
+      "sourceUrl": "https://tow.whfb.app/unit/arachnarok-spider"
+    },
+    {
+      "unitId": "unit:bonegrinder-giant",
+      "name": "Bonegrinder Giant",
+      "sourceUrl": "https://tow.whfb.app/unit/bonegrinder-giant"
+    },
+    {
+      "unitId": "unit:giant",
+      "name": "Giant",
+      "sourceUrl": "https://tow.whfb.app/unit/giant"
+    },
+    {
+      "unitId": "unit:mangler-squigs",
+      "name": "Mangler Squigs",
+      "sourceUrl": "https://tow.whfb.app/unit/mangler-squigs"
+    },
+    {
+      "unitId": "unit:wyvern",
+      "name": "Wyvern",
+      "sourceUrl": "https://tow.whfb.app/unit/wyvern"
+    },
+    {
+      "unitId": "unit:doom-diver-catapult",
+      "name": "Doom Diver Catapult",
+      "sourceUrl": "https://tow.whfb.app/unit/doom-diver-catapult"
+    },
+    {
+      "unitId": "unit:goblin-bolt-throwa",
+      "name": "Goblin Bolt Throwa",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-bolt-throwa"
+    },
+    {
+      "unitId": "unit:goblin-rock-lobber",
+      "name": "Goblin Rock Lobber",
+      "sourceUrl": "https://tow.whfb.app/unit/goblin-rock-lobber"
+    },
+    {
+      "unitId": "unit:orc-bully",
+      "name": "Orc Bully",
+      "sourceUrl": "https://tow.whfb.app/unit/orc-bully"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

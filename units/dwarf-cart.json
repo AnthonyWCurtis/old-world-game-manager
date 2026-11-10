@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:dwarf-cart",
+  "name": "Dwarf Cart",
+  "nameSingular": "Dwarf Cart",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/dwarf-cart",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6ToqDVH4ZeP98lvczq3ACD",
+    "sourceUpdatedAt": "2026-09-18T12:17:20.268Z",
+    "sourceRevision": 4,
+    "publishedVersion": 31,
+    "displayedUpdatedAt": "Last update: 2026 September 18",
+    "publicationCitation": "Arcane Journal: Dwarfen Mountain Holds, p. 45",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "46acbb53805a1f68417033fc5c338ac4eee4a4e3849a90a9dfcea8efc30ff6e3"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Light Chariot"
+    ],
+    "baseSize": "50 x 75 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 75
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 65,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "65 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Dwarf Cart",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 4,
+        "T": 5,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Dwarf Crew (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Draft Pony",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Bugman's Cart",
+      "sourceUrl": "https://tow.whfb.app/special-rules/bugmans-cart",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Miner's Cart",
+      "sourceUrl": "https://tow.whfb.app/special-rules/miners-cart",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "A Dwarf cart must take one of the following upgrades:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Bugman's Cart (Free)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Bugman's Cart",
+              "sourceUrl": "https://tow.whfb.app/special-rules/bugmans-cart",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Miner's Cart (Free)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Miner's Cart",
+              "sourceUrl": "https://tow.whfb.app/special-rules/miners-cart",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Dwarfen Mountain Holds",
+      "sourceEntryId": "7rAcNiHVaNPZLcYek2wB8V",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Dwarfen Mountain Holds",
+      "sourceEntryId": "23vuW2RsmlAD76xnw2GANe",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 45,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "status": "source-listed"
+    }
+  ]
+}

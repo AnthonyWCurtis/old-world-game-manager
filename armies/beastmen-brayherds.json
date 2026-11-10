@@ -1,0 +1,186 @@
+{
+  "id": "army:beastmen-brayherds",
+  "name": "Beastmen Brayherds",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "68Th1VPl0Hk9PLF624NAyR",
+    "sourceUpdatedAt": "2025-06-18T19:38:52.811Z",
+    "sourceRevision": 7,
+    "publishedVersion": 14,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "837cf00ab5db5a6bbe27f562e3f8ddaa3c312c6a70269d268161c7fb6b0ae7b3"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:ghorros-warhoof",
+      "name": "Ghorros Warhoof",
+      "sourceUrl": "https://tow.whfb.app/unit/ghorros-warhoof"
+    },
+    {
+      "unitId": "unit:kralmaw-the-prophet-of-ruin",
+      "name": "Kralmaw, the Prophet of Ruin",
+      "sourceUrl": "https://tow.whfb.app/unit/kralmaw-the-prophet-of-ruin"
+    },
+    {
+      "unitId": "unit:beastlord",
+      "name": "Beastlord",
+      "sourceUrl": "https://tow.whfb.app/unit/beastlord"
+    },
+    {
+      "unitId": "unit:bray-shaman",
+      "name": "Bray-Shaman",
+      "sourceUrl": "https://tow.whfb.app/unit/bray-shaman"
+    },
+    {
+      "unitId": "unit:chieftain-of-ruin",
+      "name": "Chieftain of Ruin",
+      "sourceUrl": "https://tow.whfb.app/unit/chieftain-of-ruin"
+    },
+    {
+      "unitId": "unit:doombull",
+      "name": "Doombull",
+      "sourceUrl": "https://tow.whfb.app/unit/doombull"
+    },
+    {
+      "unitId": "unit:gorebull",
+      "name": "Gorebull",
+      "sourceUrl": "https://tow.whfb.app/unit/gorebull"
+    },
+    {
+      "unitId": "unit:great-bray-shaman",
+      "name": "Great Bray-Shaman",
+      "sourceUrl": "https://tow.whfb.app/unit/great-bray-shaman"
+    },
+    {
+      "unitId": "unit:wargor",
+      "name": "Wargor",
+      "sourceUrl": "https://tow.whfb.app/unit/wargor"
+    },
+    {
+      "unitId": "unit:warhoof",
+      "name": "Warhoof",
+      "sourceUrl": "https://tow.whfb.app/unit/warhoof"
+    },
+    {
+      "unitId": "unit:bestigor-herd",
+      "name": "Bestigor Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/bestigor-herd"
+    },
+    {
+      "unitId": "unit:gor-herd",
+      "name": "Gor Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/gor-herd"
+    },
+    {
+      "unitId": "unit:harpies",
+      "name": "Harpies",
+      "sourceUrl": "https://tow.whfb.app/unit/harpies"
+    },
+    {
+      "unitId": "unit:minotaur-herd",
+      "name": "Minotaur Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/minotaur-herd"
+    },
+    {
+      "unitId": "unit:primal-warherd",
+      "name": "Primal Warherd",
+      "sourceUrl": "https://tow.whfb.app/unit/primal-warherd"
+    },
+    {
+      "unitId": "unit:primal-warhounds",
+      "name": "Primal Warhounds",
+      "sourceUrl": "https://tow.whfb.app/unit/primal-warhounds"
+    },
+    {
+      "unitId": "unit:ungor-herd",
+      "name": "Ungor Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/ungor-herd"
+    },
+    {
+      "unitId": "unit:ungor-ravagers",
+      "name": "Ungor Ravagers",
+      "sourceUrl": "https://tow.whfb.app/unit/ungor-ravagers"
+    },
+    {
+      "unitId": "unit:warped-gors",
+      "name": "Warped Gors",
+      "sourceUrl": "https://tow.whfb.app/unit/warped-gors"
+    },
+    {
+      "unitId": "unit:centigor-herd",
+      "name": "Centigor Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/centigor-herd"
+    },
+    {
+      "unitId": "unit:chaos-warhounds",
+      "name": "Chaos Warhounds",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-warhounds"
+    },
+    {
+      "unitId": "unit:dragon-ogres",
+      "name": "Dragon Ogres",
+      "sourceUrl": "https://tow.whfb.app/unit/dragon-ogres"
+    },
+    {
+      "unitId": "unit:razorgor-herd",
+      "name": "Razorgor Herd",
+      "sourceUrl": "https://tow.whfb.app/unit/razorgor-herd"
+    },
+    {
+      "unitId": "unit:razorgor-chariot",
+      "name": "Razorgor Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/razorgor-chariot"
+    },
+    {
+      "unitId": "unit:tuskgor-chariot",
+      "name": "Tuskgor Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/tuskgor-chariot"
+    },
+    {
+      "unitId": "unit:chaos-giant",
+      "name": "Chaos Giant",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-giant"
+    },
+    {
+      "unitId": "unit:cockatrice",
+      "name": "Cockatrice",
+      "sourceUrl": "https://tow.whfb.app/unit/cockatrice"
+    },
+    {
+      "unitId": "unit:cygor",
+      "name": "Cygor",
+      "sourceUrl": "https://tow.whfb.app/unit/cygor"
+    },
+    {
+      "unitId": "unit:dragon-ogre-shaggoth",
+      "name": "Dragon Ogre Shaggoth",
+      "sourceUrl": "https://tow.whfb.app/unit/dragon-ogre-shaggoth"
+    },
+    {
+      "unitId": "unit:ghorgon",
+      "name": "Ghorgon",
+      "sourceUrl": "https://tow.whfb.app/unit/ghorgon"
+    },
+    {
+      "unitId": "unit:jabberslythe",
+      "name": "Jabberslythe",
+      "sourceUrl": "https://tow.whfb.app/unit/jabberslythe"
+    },
+    {
+      "unitId": "unit:preyton",
+      "name": "Preyton",
+      "sourceUrl": "https://tow.whfb.app/unit/preyton"
+    },
+    {
+      "unitId": "unit:herdstone",
+      "name": "Herdstone",
+      "sourceUrl": "https://tow.whfb.app/unit/herdstone"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

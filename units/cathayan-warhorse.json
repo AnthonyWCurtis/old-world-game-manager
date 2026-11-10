@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cathayan-warhorse",
+  "name": "Cathayan Warhorse",
+  "nameSingular": "Cathayan Warhorse",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cathayan-warhorse",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "75xTOwgWlnCsDqf3gtpUip",
+    "sourceUpdatedAt": "2026-03-27T14:47:39.724Z",
+    "sourceRevision": 7,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2026 March 27",
+    "publicationCitation": "Arcane Journal: Armies of Grand Cathay, p. 30",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "76f15a0e65c5e96a78b555fa53ac00cbc229f8a3466d4c81cfbbf5c2e5dc6ac4"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Heavy Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 16,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+16 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Cathayan Warhorse",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Cathayan Cataphracts",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cathayan-cataphracts",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Armies of Grand Cathay",
+      "sourceEntryId": "3v8EsxKR7RiDK2vb3FvvVO",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Grand Cathay",
+      "sourceEntryId": "4Xen5ZBRl0XdriffuxTg07",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 30,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:grand-cathay",
+      "name": "Grand Cathay",
+      "sourceUrl": "https://tow.whfb.app/army/grand-cathay",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:bonegrinder-giant",
+  "name": "Bonegrinder Giant",
+  "nameSingular": "Bonegrinder Giant",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/bonegrinder-giant",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "TnMBDfhCw8r5TFUBnzj7A",
+    "sourceUpdatedAt": "2026-07-10T18:31:17.095Z",
+    "sourceRevision": 7,
+    "publishedVersion": 34,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Arcane Journal: Orc & Goblin Tribes, p. 42",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "ae906a557c9d11eb2e5584d861513369fae84eb8761ee9d8bc9fe705dcf181bd"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "50 x 100 mm (min) 100 x 150 mm (max)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 300,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "300 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Bonegrinder Giant",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 1,
+        "S": 7,
+        "T": 7,
+        "W": 8,
+        "I": 3,
+        "A": "*",
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Bonegrinder Giant's club",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/bonegrinder-giants-club",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Bonegrinder Giant Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/bonegrinder-giant-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mercenaries",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mercenaries",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Timmm-berrr!",
+      "sourceUrl": "https://tow.whfb.app/special-rules/timmm-berrr",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Orc & Goblin Tribes",
+      "sourceEntryId": "72MsAgl2zXIcBaW6ZjIYDd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 42,
+  "unmappedSourceFields": {
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

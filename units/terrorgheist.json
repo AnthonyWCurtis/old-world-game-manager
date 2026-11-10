@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:terrorgheist",
+  "name": "Terrorgheist",
+  "nameSingular": "Terrorgheist",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/terrorgheist",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6jdpmiqcN8yfqYm7gooYI1",
+    "sourceUpdatedAt": "2024-02-29T19:00:21.225Z",
+    "sourceRevision": 2,
+    "publishedVersion": 20,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Vampire Counts, p. 21",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "d22a888210c2d1bcc660ca31af05b5b5c3efb38ad55f9f1356bd874bb3899517"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "100 x 150 mm",
+    "baseSizeMm": {
+      "width": 100,
+      "depth": 150
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 205,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "205 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Terrorgheist",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": 0,
+        "S": 5,
+        "T": 6,
+        "W": 6,
+        "I": 3,
+        "A": 4,
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Filth-encrusted talons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/filth-encrusted-talons",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "rancid maw",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/rancid-maw",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Infested",
+      "sourceUrl": "https://tow.whfb.app/special-rules/infested",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Wailing Dirge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/wailing-dirge",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 21,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

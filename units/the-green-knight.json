@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:the-green-knight",
+  "name": "The Green Knight",
+  "nameSingular": "The Green Knight",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/the-green-knight",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4fRTiCcZx4Q4EisWzcMrJ0",
+    "sourceUpdatedAt": "2024-02-23T17:04:17.013Z",
+    "sourceRevision": 3,
+    "publishedVersion": 34,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Arcane Journal: Kingdom of Bretonnia, p. 36",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "48dae92477e2b67730aab788ca328ee1b2f91d76a23493626d48415266868a04"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Cavalry",
+      "Named Character"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 275,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "275 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "The Green Knight",
+      "characteristics": {
+        "M": "-",
+        "WS": 7,
+        "BS": 3,
+        "S": 4,
+        "T": 4,
+        "W": 4,
+        "I": 6,
+        "A": 4,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "The Shadow Steed",
+      "characteristics": {
+        "M": 8,
+        "WS": 4,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "The Dolorous Blade",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-dolorous-blade",
+      "kind": "magic-item"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Aura of the Fay",
+      "sourceUrl": "https://tow.whfb.app/special-rules/aura-of-the-fay",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Blessed Knight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessed-knight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ethereal",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ethereal",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Guardian of the Sacred Sites",
+      "sourceUrl": "https://tow.whfb.app/special-rules/guardian-of-the-sacred-sites",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Loner",
+      "sourceUrl": "https://tow.whfb.app/special-rules/loner",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unstable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unstable",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Kingdom of Bretonnia",
+      "sourceEntryId": "4SdICSDOJeENNwstutrfbW",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 36,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

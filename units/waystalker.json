@@ -1,0 +1,380 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:waystalker",
+  "name": "Waystalker",
+  "nameSingular": "Waystalker",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/waystalker",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5JyLNUhlPYjLG0KJfvIKJ4",
+    "sourceUpdatedAt": "2024-02-25T18:25:45.209Z",
+    "sourceRevision": 2,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2024 February 25",
+    "publicationCitation": "Forces of Fantasy, p. 123",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "4717235fe5db58377633b890ebc17933c1ac507c6c83f8ac39e8c23520a9c818"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 85,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "85 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Waystalker",
+      "characteristics": {
+        "M": 5,
+        "WS": 6,
+        "BS": 7,
+        "S": 4,
+        "T": 3,
+        "W": 2,
+        "I": 5,
+        "A": 2,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Asrai longbow",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/asrai-longbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Evasive",
+      "sourceUrl": "https://tow.whfb.app/special-rules/evasive",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Feigned Flight",
+      "sourceUrl": "https://tow.whfb.app/special-rules/feigned-flight",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fire & Flee",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fire-and-flee",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hawk-eyed Archer",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hawk-eyed-archer",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ignores Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ignores-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Scouts",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scouts",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Arcane Bodkins",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hagbane Tips",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Moonfire Shot",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Swiftshiver Shards",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Trueflight Arrows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May take an additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May take one of the following types of enchanted arrows:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Arcane bodkins (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Arcane bodkins",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/arcane-bodkins",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Hagbane tips (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hagbane tips",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/hagbane-tips",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:3",
+          "description": "Moonfire shot (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Moonfire shot",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/moonfire-shot",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:4",
+          "description": "Swiftshiver shards (+6 points)",
+          "points": {
+            "amount": 6,
+            "basis": "unspecified",
+            "sourceText": "(+6 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Swiftshiver shards",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/swiftshiver-shards",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:5",
+          "description": "Trueflight arrows (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Trueflight arrows",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/trueflight-arrows",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "May take light armour (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "light armour",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "May take Forest Spites up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [
+            {
+              "name": "Forest Spites",
+              "sourceUrl": "https://tow.whfb.app/magic-items/forest-spites",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "May have the Ambushers special rule (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Ambushers",
+              "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:6",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:6:1",
+          "description": "May purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 123,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

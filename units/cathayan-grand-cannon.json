@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cathayan-grand-cannon",
+  "name": "Cathayan Grand Cannon",
+  "nameSingular": "Grand Cannon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cathayan-grand-cannon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1sFk8MHXadqn8zluoUyeot",
+    "sourceUpdatedAt": "2025-07-14T18:43:58.165Z",
+    "sourceRevision": 2,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2025 July 14",
+    "publicationCitation": "Arcane Journal: Armies of Grand Cathay, p. 40",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "a043a4c54ac3ab973a057766a3ef3b9ac642b82c7135d343ec2dac10c4776b11"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "60 x 100 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 130,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "130 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Grand Cannon",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 6,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Cathayan Artillery Crew (x3)",
+      "characteristics": {
+        "M": 4,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Grand cannon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/grand-cannon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Ogre Loader",
+      "sourceUrl": "https://tow.whfb.app/unit/ogre-loader",
+      "kind": "unit"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May have an Ogre Loader (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Ogre Loader",
+              "sourceUrl": "https://tow.whfb.app/unit/ogre-loader",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Armies of Grand Cathay",
+      "sourceEntryId": "3v8EsxKR7RiDK2vb3FvvVO",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Grand Cathay",
+      "sourceEntryId": "4Xen5ZBRl0XdriffuxTg07",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 40,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:grand-cathay",
+      "name": "Grand Cathay",
+      "sourceUrl": "https://tow.whfb.app/army/grand-cathay",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:kiknik-toofsnatcha",
+  "name": "Kiknik Toofsnatcha",
+  "nameSingular": "Kiknik Toofsnatcha",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/kiknik-toofsnatcha",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5Kl5uumFPikc4lyCMRFmGH",
+    "sourceUpdatedAt": "2024-04-15T00:26:06.841Z",
+    "sourceRevision": 2,
+    "publishedVersion": 37,
+    "displayedUpdatedAt": "Last update: 2024 April 15",
+    "publicationCitation": "Arcane Journal: Orc & Goblin Tribes, p. 35",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0ee3545d40ce860a1f49c573a2429d485fc03b9439025e975df543b39cad0d91"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Light Cavalry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 50 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 105,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "105 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Kiknik Toofsnatcha",
+      "characteristics": {
+        "M": 4,
+        "WS": 5,
+        "BS": 3,
+        "S": 4,
+        "T": 4,
+        "W": 3,
+        "I": 5,
+        "A": 4,
+        "Ld": 8
+      }
+    },
+    {
+      "name": "Chompa",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Da Boss's Trophy Rack",
+      "sourceUrl": "https://tow.whfb.app/magic-item/da-boss-trophy-rack",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Da Skull Smasha",
+      "sourceUrl": "https://tow.whfb.app/magic-item/da-skull-smasha",
+      "kind": "magic-item"
+    },
+    {
+      "name": "cavalry spear",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "All Sneaky Like",
+      "sourceUrl": "https://tow.whfb.app/special-rules/all-sneaky-like",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armour Bane (1, Chompa only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Chariot Runners",
+      "sourceUrl": "https://tow.whfb.app/special-rules/chariot-runners",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear of Elves",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear-of-elves",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impetuous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impetuous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "'It & Run",
+      "sourceUrl": "https://tow.whfb.app/special-rules/it-and-run",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Orc & Goblin Tribes",
+      "sourceEntryId": "72MsAgl2zXIcBaW6ZjIYDd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 35,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

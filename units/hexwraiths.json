@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:hexwraiths",
+  "name": "Hexwraiths",
+  "nameSingular": "Hexwraith",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/hexwraiths",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2KYcuxrxPeYKzYpBw95ofN",
+    "sourceUpdatedAt": "2024-03-01T01:13:09.470Z",
+    "sourceRevision": 1,
+    "publishedVersion": 28,
+    "displayedUpdatedAt": "Last update: 2024 March 01",
+    "publicationCitation": "Vampire Counts, p. 15",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "5906f76459fdf98b49ba99daa01cb3d71cb5cf0e4ca1bd646b324317457bc28a"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "5-10"
+  },
+  "basePoints": {
+    "amount": 31,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "31 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Hexwraith",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Hellwraith",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 2,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Spectral Steed",
+      "characteristics": {
+        "M": 8,
+        "WS": 2,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "great weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Ethereal",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ethereal",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Flaming Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/flaming-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (8)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Spectral Reapers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/spectral-reapers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Any unit may upgrade one model to a Hellwraith (champion) (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 15,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

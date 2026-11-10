@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:doom-diver-catapult",
+  "name": "Doom Diver Catapult",
+  "nameSingular": "Doom Diver Catapult",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/doom-diver-catapult",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2mu2j7UYz963Shkn7eoXvn",
+    "sourceUpdatedAt": "2024-11-18T13:52:26.692Z",
+    "sourceRevision": 3,
+    "publishedVersion": 15,
+    "displayedUpdatedAt": "Last update: 2024 November 18",
+    "publicationCitation": "Ravening Hordes, p. 40",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "cb9f04bc2b02f7116d6e8f098d6c6b339008a472eb4310f089978fb6b3d2a0ed"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 75 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 95,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "95 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Doom Diver Catapult",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 5,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Goblin Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "stone thrower",
+      "sourceUrl": "https://tow.whfb.app/war-machines/stone-throwers",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Doom Diver",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/doom-diver",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Fear of Elves",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear-of-elves",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 40,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [
+    "Option rich text present but hierarchy not extracted"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:skeleton-infantry-cohort",
+  "name": "Skeleton Infantry Cohort",
+  "nameSingular": "Royal Host Warrior",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/skeleton-infantry-cohort",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7DUc7B8arP85xXrlQZZQdu",
+    "sourceUpdatedAt": "2024-02-21T14:58:22.917Z",
+    "sourceRevision": 1,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 February 21",
+    "publicationCitation": "Arcane Journal: Tomb Kings of Khemri, p. 43",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "52529fc03f9514993c5a14c59ff0967de21c4e5c3197f2765ee0c1177e5c4e87"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "10+/10+"
+  },
+  "basePoints": {
+    "amount": 5,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "5 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Royal Host Warrior",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Royal Host Archer",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "Master of Arms",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 2,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "thrusting spears",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/thrusting-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shields",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "warbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Arrows of Asaph",
+      "sourceUrl": "https://tow.whfb.app/special-rules/arrows-of-asaph",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Horde",
+      "sourceUrl": "https://tow.whfb.app/special-rules/horde",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Motley Crew",
+      "sourceUrl": "https://tow.whfb.app/special-rules/motley-crew",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regimental Unit",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regimental-unit",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Steadfast Discipline",
+      "sourceUrl": "https://tow.whfb.app/special-rules/steadfast-discipline",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Nehekharan Phalanx",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-phalanx",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Master of Arms (champion) (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Upgrade one model to a musician (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Take a magic standard worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:5",
+          "description": "Have the Nehekharan Phalanx special rule (+10 points per unit)",
+          "points": {
+            "amount": 10,
+            "basis": "per_unit",
+            "sourceText": "(+10 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Nehekharan Phalanx",
+              "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-phalanx",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "A Master of Arms may purchase magic items up to a total of 30 points",
+          "points": null,
+          "magicItemPointsCap": 30,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Tomb Kings of Khemri",
+      "sourceEntryId": "1KvuPgjpewIHVM8lSW3DHM",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 43,
+  "unmappedSourceFields": {
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

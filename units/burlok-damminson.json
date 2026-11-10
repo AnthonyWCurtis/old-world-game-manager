@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:burlok-damminson",
+  "name": "Burlok Damminson",
+  "nameSingular": "Burlok Damminson",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/burlok-damminson",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "Pi0LxKcK6E6xrN67cECOC",
+    "sourceUpdatedAt": "2024-09-02T00:34:18.507Z",
+    "sourceRevision": 3,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2024 September 02",
+    "publicationCitation": "Arcane Journal: Dwarfen Mountain Holds, p. 39",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "1ce27c83d047238054b2c4d014971affba9fa5cb15ee1b43d8af1123843831bf"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 85,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "85 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Burlok Damminson",
+      "characteristics": {
+        "M": 3,
+        "WS": 5,
+        "BS": 5,
+        "S": 4,
+        "T": 4,
+        "W": 2,
+        "I": 2,
+        "A": 3,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Furnace hammer",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/furnace-hammer",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "rivet gun",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/rivet-gun",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Dwarf Crafted",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dwarf-crafted",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gromril Armour",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gromril-armour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Prepared Positions",
+      "sourceUrl": "https://tow.whfb.app/special-rules/prepared-positions",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Range Finding Optics",
+      "sourceUrl": "https://tow.whfb.app/special-rules/range-finding-optics",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "\"Stand Back Chief\"",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stand-back-chief",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Dwarfen Mountain Holds",
+      "sourceEntryId": "7rAcNiHVaNPZLcYek2wB8V",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Dwarfen Mountain Holds",
+      "sourceEntryId": "23vuW2RsmlAD76xnw2GANe",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 39,
+  "unmappedSourceFields": {
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dwarfen-mountain-holds",
+      "name": "Dwarfen Mountain Holds",
+      "sourceUrl": "https://tow.whfb.app/army/dwarfen-mountain-holds",
+      "status": "source-listed"
+    }
+  ]
+}

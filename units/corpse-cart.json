@@ -1,0 +1,279 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:corpse-cart",
+  "name": "Corpse Cart",
+  "nameSingular": "Corpse Cart",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/corpse-cart",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1dfZiJqgk58Ur1S2E1YNde",
+    "sourceUpdatedAt": "2024-03-03T05:27:33.631Z",
+    "sourceRevision": 3,
+    "publishedVersion": 31,
+    "displayedUpdatedAt": "Last update: 2024 March 03",
+    "publicationCitation": "Vampire Counts, p. 18",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "de3476d5291e1a48e6edc47c55e3d06f17df3bdf960580fa605b43d0d3f03576"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 115,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "115 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Corpse Cart",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 4,
+        "T": 4,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Corpsemaster (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 0,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": 5
+      }
+    },
+    {
+      "name": "The Restless Dead",
+      "characteristics": {
+        "M": 4,
+        "WS": 1,
+        "BS": 0,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 1,
+        "A": "2D6",
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Dark Vitality",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dark-vitality",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Undeath",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-undeath",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Attacks (The Restless Dead only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Balefire Brazier",
+      "sourceUrl": "https://tow.whfb.app/special-rules/balefire-brazier",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warped Tintinnabulation",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warped-tintinnabulation",
+      "kind": "special-rules"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "A Corpsemaster may take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Whip (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Whip",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/whip",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Cavalry spear (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cavalry spear",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "A Corpse Cart must take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Balefire Brazier (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Balefire Brazier",
+              "sourceUrl": "https://tow.whfb.app/special-rules/balefire-brazier",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Warped Tintinnabulation (+15 points)",
+          "points": {
+            "amount": 15,
+            "basis": "unspecified",
+            "sourceText": "(+15 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Warped Tintinnabulation",
+              "sourceUrl": "https://tow.whfb.app/special-rules/warped-tintinnabulation",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 18,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "magicOverride": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue, wizardLevel, magicLore, magicOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:lammasu",
+  "name": "Lammasu",
+  "nameSingular": "Lammasu",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/lammasu",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2mp5Ggy1EtEtQNp5RRmKQ1",
+    "sourceUpdatedAt": "2024-03-02T23:21:30.257Z",
+    "sourceRevision": 3,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 March 02",
+    "publicationCitation": "Chaos Dwarfs, p. 13",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "84d4f41dc7abd76ca6e66c8ae51d381e73ab1fb2e30ca1847531040424066eed"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 75 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 75
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 95,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+95 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Lammasu",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": "-",
+        "S": 5,
+        "T": "-",
+        "W": "(+3)",
+        "I": 2,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Sorcerous Miasma",
+      "sourceUrl": "https://tow.whfb.app/special-rules/sorcerous-miasma",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Mace Tail",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/mace-tail",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Sorcerous Exhalation",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/sorcerous-exhalation",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May have a mace tail (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "mace tail",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/mace-tail",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May have Sorcerous Exhalation (+15 points)",
+          "points": {
+            "amount": 15,
+            "basis": "unspecified",
+            "sourceText": "(+15 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Sorcerous Exhalation",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/sorcerous-exhalation",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Chaos Dwarfs",
+      "sourceEntryId": "16C5HyddNU5gZuimUArREX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 13,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:chaos-marauders",
+  "name": "Chaos Marauders",
+  "nameSingular": "Chaos Marauder",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/chaos-marauders",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2CGjfC5QzkVLRCrdNd6ChH",
+    "sourceUpdatedAt": "2026-01-29T19:28:01.193Z",
+    "sourceRevision": 5,
+    "publishedVersion": 73,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Arcane Journal: The Razing of Westerland, p. 38",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "748c270dddfb1525cf3de8cbe1794db76202e0e498accec212483986b7843e2a"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "30 x 30 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 30
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 6,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "6 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Chaos Marauder",
+      "characteristics": {
+        "M": 4,
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 1,
+        "Ld": 6
+      }
+    },
+    {
+      "name": "Marauder Headman",
+      "characteristics": {
+        "M": 4,
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 3,
+        "A": 2,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Horde",
+      "sourceUrl": "https://tow.whfb.app/special-rules/horde",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Chaos Undivided",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-chaos-undivided",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Shieldwall",
+      "sourceUrl": "https://tow.whfb.app/special-rules/shieldwall",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Cult of the Bloodied Hound",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-bloodied-hound",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cult of the Carrion Crow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-carrion-crow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cult of the Slithering Serpent",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-slithering-serpent",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cult of the Fell Raptor",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-fell-raptor",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ambushers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "The entire unit may take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Great weapons (+2 points per model)",
+          "points": {
+            "amount": 2,
+            "basis": "per_model",
+            "sourceText": "(+2 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapons",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Flails (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Flails",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/flail",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "The entire unit may take shields (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shields",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "The entire unit may belong to a single Chaotic Cult :",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "The Cult of the Bloodied Hound (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cult of the Bloodied Hound",
+              "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-bloodied-hound",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "The Cult of the Carrion Crow (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cult of the Carrion Crow",
+              "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-carrion-crow",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:3",
+          "description": "The Cult of the Slithering Serpent (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cult of the Slithering Serpent",
+              "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-slithering-serpent",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:4",
+          "description": "The Cult of the Fell Raptor (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cult of the Fell Raptor",
+              "sourceUrl": "https://tow.whfb.app/special-rules/cult-of-the-fell-raptor",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "Upgrade one model to a Marauder Headman (champion) (+7 points per unit)",
+          "points": {
+            "amount": 7,
+            "basis": "per_unit",
+            "sourceText": "(+7 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:2",
+          "description": "Upgrade one model to a standard bearer (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:4:3",
+          "description": "Upgrade one model to a musician (+5 points per unit)",
+          "points": {
+            "amount": 5,
+            "basis": "per_unit",
+            "sourceText": "(+5 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "A Marauder Headman may purchase magic items up to a total of 25 points",
+          "points": null,
+          "magicItemPointsCap": 25,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:6",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:6:1",
+          "description": "The entire unit may purchase a single Chaotic Trait",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Chaotic Trait",
+              "sourceUrl": "https://tow.whfb.app/magic-items/chaotic-traits",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:7",
+      "eligibilityClause": "0-1 unit per 1,000 points may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:7:1",
+          "description": "Have the Ambushers special rule (+1 point per model)",
+          "points": {
+            "amount": 1,
+            "basis": "per_model",
+            "sourceText": "(+1 point per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Ambushers",
+              "sourceUrl": "https://tow.whfb.app/special-rules/ambushers",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:7:2",
+          "description": "Replace the Close Order special rule with Skirmishers (Free)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Close Order",
+              "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+              "kind": "special-rules"
+            },
+            {
+              "name": "Skirmishers",
+              "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+              "kind": "unusual-formations"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:7:3",
+          "description": "Replace the Close Order special rule with Open Order (Free)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Close Order",
+              "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+              "kind": "special-rules"
+            },
+            {
+              "name": "Open Order",
+              "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+              "kind": "unusual-formations"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:7:4",
+          "description": "Purchase a magic standard worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: The Razing of Westerland",
+      "sourceEntryId": "7z53feWWvluDUspyuTO6hU",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 38,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

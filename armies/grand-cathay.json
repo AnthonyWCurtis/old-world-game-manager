@@ -1,0 +1,126 @@
+{
+  "id": "army:grand-cathay",
+  "name": "Grand Cathay",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/grand-cathay",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4Xen5ZBRl0XdriffuxTg07",
+    "sourceUpdatedAt": "2025-10-29T12:03:43.122Z",
+    "sourceRevision": 3,
+    "publishedVersion": 8,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "57e9dca2fda3f754db48efcb322ced9611ae397e3d235e24fd55238aaa6a4a9a"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:miao-ying",
+      "name": "Miao Ying",
+      "sourceUrl": "https://tow.whfb.app/unit/miao-ying"
+    },
+    {
+      "unitId": "unit:astromancer",
+      "name": "Astromancer",
+      "sourceUrl": "https://tow.whfb.app/unit/astromancer"
+    },
+    {
+      "unitId": "unit:gate-keeper",
+      "name": "Gate Keeper",
+      "sourceUrl": "https://tow.whfb.app/unit/gate-keeper"
+    },
+    {
+      "unitId": "unit:gate-master",
+      "name": "Gate Master",
+      "sourceUrl": "https://tow.whfb.app/unit/gate-master"
+    },
+    {
+      "unitId": "unit:lord-magistrate",
+      "name": "Lord Magistrate",
+      "sourceUrl": "https://tow.whfb.app/unit/lord-magistrate"
+    },
+    {
+      "unitId": "unit:shugengan-general",
+      "name": "Shugengan General",
+      "sourceUrl": "https://tow.whfb.app/unit/shugengan-general"
+    },
+    {
+      "unitId": "unit:shugengan-lord",
+      "name": "Shugengan Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/shugengan-lord"
+    },
+    {
+      "unitId": "unit:strategist",
+      "name": "Strategist",
+      "sourceUrl": "https://tow.whfb.app/unit/strategist"
+    },
+    {
+      "unitId": "unit:supreme-astromancer",
+      "name": "Supreme Astromancer",
+      "sourceUrl": "https://tow.whfb.app/unit/supreme-astromancer"
+    },
+    {
+      "unitId": "unit:cathayan-horse",
+      "name": "Cathayan Horse",
+      "sourceUrl": "https://tow.whfb.app/unit/cathayan-horse"
+    },
+    {
+      "unitId": "unit:cathayan-warhorse",
+      "name": "Cathayan Warhorse",
+      "sourceUrl": "https://tow.whfb.app/unit/cathayan-warhorse"
+    },
+    {
+      "unitId": "unit:crane-gunner-teams",
+      "name": "Crane Gunner Teams",
+      "sourceUrl": "https://tow.whfb.app/unit/crane-gunner-teams"
+    },
+    {
+      "unitId": "unit:iron-hail-gunners",
+      "name": "Iron Hail Gunners",
+      "sourceUrl": "https://tow.whfb.app/unit/iron-hail-gunners"
+    },
+    {
+      "unitId": "unit:jade-warriors",
+      "name": "Jade Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/jade-warriors"
+    },
+    {
+      "unitId": "unit:peasant-levy",
+      "name": "Peasant Levy",
+      "sourceUrl": "https://tow.whfb.app/unit/peasant-levy"
+    },
+    {
+      "unitId": "unit:jade-lancers",
+      "name": "Jade Lancers",
+      "sourceUrl": "https://tow.whfb.app/unit/jade-lancers"
+    },
+    {
+      "unitId": "unit:sky-lantern",
+      "name": "Sky Lantern",
+      "sourceUrl": "https://tow.whfb.app/unit/sky-lantern"
+    },
+    {
+      "unitId": "unit:cathayan-sentinel",
+      "name": "Cathayan Sentinel",
+      "sourceUrl": "https://tow.whfb.app/unit/cathayan-sentinel"
+    },
+    {
+      "unitId": "unit:cathayan-grand-cannon",
+      "name": "Cathayan Grand Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/cathayan-grand-cannon"
+    },
+    {
+      "unitId": "unit:fire-rain-rocket-battery",
+      "name": "Fire Rain Rocket Battery",
+      "sourceUrl": "https://tow.whfb.app/unit/fire-rain-rocket-battery"
+    },
+    {
+      "unitId": "unit:ogre-loader",
+      "name": "Ogre Loader",
+      "sourceUrl": "https://tow.whfb.app/unit/ogre-loader"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

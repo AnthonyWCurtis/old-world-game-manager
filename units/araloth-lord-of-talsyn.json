@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:araloth-lord-of-talsyn",
+  "name": "Araloth, Lord of Talsyn",
+  "nameSingular": "Araloth, Lord of Talsyn",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/araloth-lord-of-talsyn",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "4P1Ne7I5YCmPqeJITKnW1N",
+    "sourceUpdatedAt": "2026-01-29T17:21:43.410Z",
+    "sourceRevision": 3,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2026 January 29",
+    "publicationCitation": "Arcane Journal: Wood Elf Realms, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "2463707c98a1bb37b4a14d511db58debe6decca5c5e4824f8501b41e38d1f2e0"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 150,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "150 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Araloth, Lord of Talsyn",
+      "characteristics": {
+        "M": 5,
+        "WS": 8,
+        "BS": 7,
+        "S": 4,
+        "T": 3,
+        "W": 3,
+        "I": 8,
+        "A": 4,
+        "Ld": 10
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Spear of Talsyn",
+      "sourceUrl": "https://tow.whfb.app/magic-item/spear-of-talsyn",
+      "kind": "magic-item"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Boldest of the Bold",
+      "sourceUrl": "https://tow.whfb.app/special-rules/boldest-of-the-bold",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Evasive",
+      "sourceUrl": "https://tow.whfb.app/special-rules/evasive",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Favour of the Goddess",
+      "sourceUrl": "https://tow.whfb.app/special-rules/favour-of-the-goddess",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skaryn the Eye Thief",
+      "sourceUrl": "https://tow.whfb.app/special-rules/skaryn-the-eye-thief",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "sourceUrl": "https://tow.whfb.app/special-rules/strike-first",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Wood Elf Realms",
+      "sourceEntryId": "1vXLcORxeI2EugRZsMZAam",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Wood Elf Realms",
+      "sourceEntryId": "1VTYhDeufox7WHFzuf7ff5",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:wood-elf-realms",
+      "name": "Wood Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ghorros-warhoof",
+  "name": "Ghorros Warhoof",
+  "nameSingular": "Ghorros Warhoof",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ghorros-warhoof",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7bzpSVIpqnqtu9Nh0C5TQe",
+    "sourceUpdatedAt": "2025-06-20T13:47:15.291Z",
+    "sourceRevision": 2,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2025 June 20",
+    "publicationCitation": "Arcane Journal: Beastmen Brayherds, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "682577ee67c4ebcd2b87c33d058c159528d77019bedc193c21871c0b7935f5b9"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Heavy Cavalry",
+      "Named Character"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 155,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "155 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ghorros Warhoof",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": 3,
+        "S": 5,
+        "T": 4,
+        "W": 3,
+        "I": 4,
+        "A": 4,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Mansmasher",
+      "sourceUrl": "https://tow.whfb.app/magic-item/mansmasher",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Skull of the Unicorn Lord",
+      "sourceUrl": "https://tow.whfb.app/magic-item/the-skull-of-the-unicorn-lord",
+      "kind": "magic-item"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Drunken",
+      "sourceUrl": "https://tow.whfb.app/special-rules/drunken",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Father of Beasts",
+      "sourceUrl": "https://tow.whfb.app/special-rules/father-of-beasts",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gaze of the Gods",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gaze-of-the-gods",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Chaos Undivided",
+      "sourceUrl": "https://tow.whfb.app/special-rules/mark-of-chaos-undivided",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Primal Fury",
+      "sourceUrl": "https://tow.whfb.app/special-rules/primal-fury",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Sons of Ghorros",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-sons-of-ghorros",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Beastmen Brayherds",
+      "sourceEntryId": "5RAIcEQBxfDNCHRXvHVdCo",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Beastmen Brayherds",
+      "sourceEntryId": "68Th1VPl0Hk9PLF624NAyR",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:beastmen-brayherds",
+      "name": "Beastmen Brayherds",
+      "sourceUrl": "https://tow.whfb.app/army/beastmen-brayherds",
+      "status": "source-listed"
+    }
+  ]
+}

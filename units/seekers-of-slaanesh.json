@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:seekers-of-slaanesh",
+  "name": "Seekers of Slaanesh",
+  "nameSingular": "Seeker",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/seekers-of-slaanesh",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "27qL65tOkbysKJed591W7G",
+    "sourceUpdatedAt": "2024-02-27T01:50:20.138Z",
+    "sourceRevision": 1,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Daemons of Chaos, p. 15",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "acd61789d083f998b7e8bb3d1f476d73a511a7caa2047d4dee6598485d52b030"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "Light Cavalry"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "5+"
+  },
+  "basePoints": {
+    "amount": 21,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "21 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Seeker",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 5,
+        "A": 1,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Heartseeker",
+      "characteristics": {
+        "M": "-",
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 5,
+        "A": 2,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Steed of Slaanesh",
+      "characteristics": {
+        "M": 9,
+        "WS": 3,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 5,
+        "A": 1,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Piercing claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/piercing-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Steed of Slaanesh only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemonic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemons of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-slaanesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fast Cavalry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fast-cavalry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Poisoned Attacks (Steed of Slaanesh only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/poisoned-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Any unit may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Upgrade one model to a Heartseeker (champion) (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Upgrade one model to a standard bearer (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Upgrade one model to a musician (+6 points per unit)",
+          "points": {
+            "amount": 6,
+            "basis": "per_unit",
+            "sourceText": "(+6 points per unit)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "May purchase a Daemonic Icon worth up to 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [
+            {
+              "name": "Daemonic Icon",
+              "sourceUrl": "https://tow.whfb.app/magic-items/daemonic-gifts-and-icons",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Daemons of Chaos",
+      "sourceEntryId": "6hFMTVwOVTMPdjCnmMVHMC",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 15,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

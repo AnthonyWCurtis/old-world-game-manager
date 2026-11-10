@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:hellcannon",
+  "name": "Hellcannon",
+  "nameSingular": "Hellcannon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/hellcannon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2dwTiG0t8GxkjiMRtxRwFX",
+    "sourceUpdatedAt": "2026-02-23T18:28:39.030Z",
+    "sourceRevision": 3,
+    "publishedVersion": 34,
+    "displayedUpdatedAt": "Last update: 2026 February 23",
+    "publicationCitation": "Ravening Hordes, p. 76",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "4e6d20710e53deb8729f4e9f3cf3e74adf58a9f876ac5e0c4609b6cdb6bb06d2"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "100 x 150 mm (Hellcannon), 25 x 25 mm (Chaos Dwarf Handlers)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 215,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "215 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Hellcannon",
+      "characteristics": {
+        "M": 3,
+        "WS": 4,
+        "BS": 3,
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": 1,
+        "A": 5,
+        "Ld": 4
+      }
+    },
+    {
+      "name": "Chaos Dwarf Handlers (x3)",
+      "characteristics": {
+        "M": 3,
+        "WS": 4,
+        "BS": "-",
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 1,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Doomfire",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/doomfire",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Caged Fury",
+      "sourceUrl": "https://tow.whfb.app/special-rules/caged-fury",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ensorcelled Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ensorcelled-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Monster Handlers",
+      "sourceUrl": "https://tow.whfb.app/special-rules/monster-handlers",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Unbreakable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/unbreakable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Warp-spawned",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warp-spawned",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 76,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

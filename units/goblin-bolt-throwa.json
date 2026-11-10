@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:goblin-bolt-throwa",
+  "name": "Goblin Bolt Throwa",
+  "nameSingular": "Bolt Throwa",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/goblin-bolt-throwa",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1O5PBl1CKPnUIoUZrEO2qq",
+    "sourceUpdatedAt": "2024-11-18T13:52:36.485Z",
+    "sourceRevision": 4,
+    "publishedVersion": 23,
+    "displayedUpdatedAt": "Last update: 2024 November 18",
+    "publicationCitation": "Ravening Hordes, p. 40",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "cc37e03b20c15d6e77a1ec647e9e0793fd859399c23726fd6a229c1159a9b00c"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "50 x 50 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 45,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "45 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Bolt Throwa",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 5,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Goblin Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 3,
+        "I": 3,
+        "A": 3,
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Bolt thrower",
+      "sourceUrl": "https://tow.whfb.app/war-machines/bolt-throwers",
+      "kind": "war-machines"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Fear of Elves",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear-of-elves",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 40,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [
+    "Option rich text present but hierarchy not extracted"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

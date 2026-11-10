@@ -1,0 +1,285 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:saurus-scar-veteran",
+  "name": "Saurus Scar-Veteran",
+  "nameSingular": "Saurus Scar-Veteran",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/saurus-scar-veteran",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1lfr2xsVvf6xR9hgQDREKU",
+    "sourceUpdatedAt": "2024-02-28T02:19:37.250Z",
+    "sourceRevision": 2,
+    "publishedVersion": 8,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Lizardmen, p. 3",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "689a56a13588cf14308c2882e14efbc16f7a525921c30604dd769a0cbb4b9bd3"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Character"
+    ],
+    "baseSize": "30 x 30 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 30
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 90,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "90 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Saurus Scar-Veteran",
+      "characteristics": {
+        "M": 4,
+        "WS": 5,
+        "BS": 0,
+        "S": 5,
+        "T": 5,
+        "W": 2,
+        "I": 3,
+        "A": 4,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Cold Blooded",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cold-blooded",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Obsidian Blades",
+      "sourceUrl": "https://tow.whfb.app/special-rules/obsidian-blades",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional hand weapon (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Additional hand weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/two-hand-weapons-additional-hand-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Cavalry spear (if appropriately mounted) (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cavalry spear",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Halberd (+3 points)",
+          "points": {
+            "amount": 3,
+            "basis": "unspecified",
+            "sourceText": "(+3 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Halberd",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/halberd",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "May be mounted:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Cold One (+18 points)",
+          "points": {
+            "amount": 18,
+            "basis": "unspecified",
+            "sourceText": "(+18 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Cold One",
+              "sourceUrl": "https://tow.whfb.app/unit/terradon",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Carnosaur (+170 points)",
+          "points": {
+            "amount": 170,
+            "basis": "unspecified",
+            "sourceText": "(+170 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Carnosaur",
+              "sourceUrl": "https://tow.whfb.app/unit/carnosaur",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "A Saurus Scar-Veteran may purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Lizardmen",
+      "sourceEntryId": "2MXlrRaUDtVqoAug52n9ZX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 3,
+  "unmappedSourceFields": {
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:lizardmen",
+      "name": "Lizardmen",
+      "sourceUrl": "https://tow.whfb.app/army/lizardmen",
+      "status": "source-listed"
+    }
+  ]
+}

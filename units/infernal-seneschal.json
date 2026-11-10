@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:infernal-seneschal",
+  "name": "Infernal Seneschal",
+  "nameSingular": "Infernal Seneschal",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/infernal-seneschal",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "57ILQz7ctJfHIkKTbxJ8J6",
+    "sourceUpdatedAt": "2024-02-26T14:33:51.043Z",
+    "sourceRevision": 1,
+    "publishedVersion": 4,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Chaos Dwarfs, p. 4",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "328b8ce7d412d31ffb6d4f422ba1677eabc40393f04ad14f06331e9c17af0f7c"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 60,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "60 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Infernal Seneschal",
+      "characteristics": {
+        "M": 3,
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": 5,
+        "W": 2,
+        "I": 2,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blackshard Armour",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blackshard-armour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ensorcelled Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ensorcelled-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Darkforged Weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/darkforged-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Fireglaive",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/fireglaive",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hailshot Blunderbuss",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hailshot-blunderbuss",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Naptha Bombs",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/naptha-bombs",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Darkforged weapon (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Darkforged weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/darkforged-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great weapon (+4 points)",
+          "points": {
+            "amount": 4,
+            "basis": "unspecified",
+            "sourceText": "(+4 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great weapon",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Fireglaive (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Fireglaive",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/fireglaive",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Hailshot blunderbuss (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Hailshot blunderbuss",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/hailshot-blunderbuss",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Pistol (+5 points)",
+          "points": {
+            "amount": 5,
+            "basis": "unspecified",
+            "sourceText": "(+5 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Pistol",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/pistol",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:3:2",
+          "description": "Naptha bombs (+10 points)",
+          "points": {
+            "amount": 10,
+            "basis": "unspecified",
+            "sourceText": "(+10 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Naptha bombs",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/naptha-bombs",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:4",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:4:1",
+          "description": "May take a shield (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "shield",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:5",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:5:1",
+          "description": "An Infernal Seneschal may purchase magic items up to a total of 50 points",
+          "points": null,
+          "magicItemPointsCap": 50,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Chaos Dwarfs",
+      "sourceEntryId": "16C5HyddNU5gZuimUArREX",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 4,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:chaos-dwarfs",
+      "name": "Chaos Dwarfs",
+      "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+      "status": "source-listed"
+    }
+  ]
+}

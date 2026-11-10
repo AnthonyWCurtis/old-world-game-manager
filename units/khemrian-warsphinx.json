@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:khemrian-warsphinx",
+  "name": "Khemrian Warsphinx",
+  "nameSingular": "Khemrian Warsphinx",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/khemrian-warsphinx",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3TpDAGNEDrwbLg6O9ZfItJ",
+    "sourceUpdatedAt": "2024-03-02T21:09:32.931Z",
+    "sourceRevision": 4,
+    "publishedVersion": 40,
+    "displayedUpdatedAt": "Last update: 2024 March 02",
+    "publicationCitation": "Ravening Hordes, p. 143",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "ba1b8c121154fa9a23e4e6c730e8b79ef492b68ab4e9a73e5822112409c829e6"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "60 x 100 mm",
+    "baseSizeMm": {
+      "width": 60,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 175,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "175 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Khemrian Warsphinx",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": "-",
+        "S": 5,
+        "T": 6,
+        "W": 5,
+        "I": 1,
+        "A": 4,
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Tomb Guard Crew (x2)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 3,
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": 8
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "cavalry spears",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shortbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shortbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Arrows of Asaph",
+      "sourceUrl": "https://tow.whfb.app/special-rules/arrows-of-asaph",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cleaving Blow (Tomb Guard Crew only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cleaving-blow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Howdah",
+      "sourceUrl": "https://tow.whfb.app/special-rules/howdah",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Khopesh (Tomb Guard Crew only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/khopesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (6+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Envenomed Sting",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/envenomed-sting",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Fiery Roar",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/fiery-roar",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May add up to two additional Tomb Guard Crew (+10 points each)",
+          "points": null,
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May take:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Envenomed sting (+5 points)",
+          "points": {
+            "amount": 5,
+            "basis": "unspecified",
+            "sourceText": "(+5 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Envenomed sting",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/envenomed-sting",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Fiery roar (+20 points)",
+          "points": {
+            "amount": 20,
+            "basis": "unspecified",
+            "sourceText": "(+20 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Fiery roar",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/fiery-roar",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 143,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:thundertusk",
+  "name": "Thundertusk",
+  "nameSingular": "Thundertusk",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/thundertusk",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2GM5Uj92UQDRi6GknfHGfU",
+    "sourceUpdatedAt": "2024-02-28T13:24:05.383Z",
+    "sourceRevision": 1,
+    "publishedVersion": 14,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Ogre Kingdoms, p. 7",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "2e83aed4f717d0dd5f9a86fac208c43b98eebedf6a904995d775750c523183c5"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "100 x 150 mm",
+    "baseSizeMm": {
+      "width": 100,
+      "depth": 150
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 165,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+165 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Thundertusk",
+      "characteristics": {
+        "M": 6,
+        "WS": 3,
+        "BS": "-",
+        "S": 6,
+        "T": "(+1)",
+        "W": "(+4)",
+        "I": 2,
+        "A": 4,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Great tusks",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-tusks",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "chill breath",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/chill-breath",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Numbing Chill",
+      "sourceUrl": "https://tow.whfb.app/special-rules/numbing-chill",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ogre Kingdoms",
+      "sourceEntryId": "3JD4LIC7fWtUyvk0HdGlnp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 7,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+      "status": "source-listed"
+    }
+  ]
+}

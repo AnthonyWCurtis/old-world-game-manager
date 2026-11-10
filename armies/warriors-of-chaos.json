@@ -1,0 +1,216 @@
+{
+  "id": "army:warriors-of-chaos",
+  "name": "Warriors of Chaos",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6kwqfCzN3UjmDwET7tHFpp",
+    "sourceUpdatedAt": "2024-02-19T18:11:15.573Z",
+    "sourceRevision": 6,
+    "publishedVersion": 12,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "16e1f013d0cb7d7f7879efd7dd7b567a371e1a448a05f8970e18a74b5247f76f"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:frydaal-the-chainmaker",
+      "name": "Frydaal The Chainmaker",
+      "sourceUrl": "https://tow.whfb.app/unit/frydaal-the-chainmaker"
+    },
+    {
+      "unitId": "unit:galrauch",
+      "name": "Galrauch",
+      "sourceUrl": "https://tow.whfb.app/unit/galrauch"
+    },
+    {
+      "unitId": "unit:aspiring-champion",
+      "name": "Aspiring Champion",
+      "sourceUrl": "https://tow.whfb.app/unit/aspiring-champion"
+    },
+    {
+      "unitId": "unit:champion-of-ruin",
+      "name": "Champion of Ruin",
+      "sourceUrl": "https://tow.whfb.app/unit/champion-of-ruin"
+    },
+    {
+      "unitId": "unit:chaos-lord",
+      "name": "Chaos Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-lord"
+    },
+    {
+      "unitId": "unit:cult-magister",
+      "name": "Cult Magister",
+      "sourceUrl": "https://tow.whfb.app/unit/cult-magister"
+    },
+    {
+      "unitId": "unit:daemon-prince-warriors-of-chaos",
+      "name": "Daemon Prince (Warriors of Chaos)",
+      "sourceUrl": "https://tow.whfb.app/unit/daemon-prince-warriors-of-chaos"
+    },
+    {
+      "unitId": "unit:exalted-champion",
+      "name": "Exalted Champion",
+      "sourceUrl": "https://tow.whfb.app/unit/exalted-champion"
+    },
+    {
+      "unitId": "unit:exalted-sorcerer",
+      "name": "Exalted Sorcerer",
+      "sourceUrl": "https://tow.whfb.app/unit/exalted-sorcerer"
+    },
+    {
+      "unitId": "unit:marauder-tribe-chieftain",
+      "name": "Marauder Tribe Chieftain",
+      "sourceUrl": "https://tow.whfb.app/unit/marauder-tribe-chieftain"
+    },
+    {
+      "unitId": "unit:sorcerer-lord",
+      "name": "Sorcerer Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/sorcerer-lord"
+    },
+    {
+      "unitId": "unit:chaos-steed",
+      "name": "Chaos Steed",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-steed"
+    },
+    {
+      "unitId": "unit:daemonic-mount",
+      "name": "Daemonic Mount",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonic-mount"
+    },
+    {
+      "unitId": "unit:warhorse-warriors-of-chaos",
+      "name": "Warhorse (Warriors of Chaos)",
+      "sourceUrl": "https://tow.whfb.app/unit/warhorse-warriors-of-chaos"
+    },
+    {
+      "unitId": "unit:chaos-cultists",
+      "name": "Chaos Cultists",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-cultists"
+    },
+    {
+      "unitId": "unit:chaos-marauders",
+      "name": "Chaos Marauders",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-marauders"
+    },
+    {
+      "unitId": "unit:chaos-ogres",
+      "name": "Chaos Ogres",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-ogres"
+    },
+    {
+      "unitId": "unit:chaos-spawn",
+      "name": "Chaos Spawn",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-spawn"
+    },
+    {
+      "unitId": "unit:chaos-trolls",
+      "name": "Chaos Trolls",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-trolls"
+    },
+    {
+      "unitId": "unit:chaos-warriors",
+      "name": "Chaos Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-warriors"
+    },
+    {
+      "unitId": "unit:chosen-chaos-warriors",
+      "name": "Chosen Chaos Warriors",
+      "sourceUrl": "https://tow.whfb.app/unit/chosen-chaos-warriors"
+    },
+    {
+      "unitId": "unit:forsaken",
+      "name": "Forsaken",
+      "sourceUrl": "https://tow.whfb.app/unit/forsaken"
+    },
+    {
+      "unitId": "unit:marauder-tribe-berserkers",
+      "name": "Marauder Tribe Berserkers",
+      "sourceUrl": "https://tow.whfb.app/unit/marauder-tribe-berserkers"
+    },
+    {
+      "unitId": "unit:skin-wolves",
+      "name": "Skin Wolves",
+      "sourceUrl": "https://tow.whfb.app/unit/skin-wolves"
+    },
+    {
+      "unitId": "unit:chaos-knights",
+      "name": "Chaos Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-knights"
+    },
+    {
+      "unitId": "unit:chaos-warhound-handler",
+      "name": "Chaos Warhound Handler",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-warhound-handler"
+    },
+    {
+      "unitId": "unit:chaos-warhounds",
+      "name": "Chaos Warhounds",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-warhounds"
+    },
+    {
+      "unitId": "unit:chosen-chaos-knights",
+      "name": "Chosen Chaos Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/chosen-chaos-knights"
+    },
+    {
+      "unitId": "unit:marauder-horsemen",
+      "name": "Marauder Horsemen",
+      "sourceUrl": "https://tow.whfb.app/unit/marauder-horsemen"
+    },
+    {
+      "unitId": "unit:marauder-tribe-huscarls",
+      "name": "Marauder Tribe Huscarls",
+      "sourceUrl": "https://tow.whfb.app/unit/marauder-tribe-huscarls"
+    },
+    {
+      "unitId": "unit:chaos-chariot",
+      "name": "Chaos Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-chariot"
+    },
+    {
+      "unitId": "unit:chosen-chaos-chariot",
+      "name": "Chosen Chaos Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/chosen-chaos-chariot"
+    },
+    {
+      "unitId": "unit:gorebeast-chariot",
+      "name": "Gorebeast Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/gorebeast-chariot"
+    },
+    {
+      "unitId": "unit:chaos-dragon",
+      "name": "Chaos Dragon",
+      "sourceUrl": "https://tow.whfb.app/unit/chaos-dragon"
+    },
+    {
+      "unitId": "unit:chimera",
+      "name": "Chimera",
+      "sourceUrl": "https://tow.whfb.app/unit/chimera"
+    },
+    {
+      "unitId": "unit:gigantic-spawn-of-chaos",
+      "name": "Gigantic Spawn of Chaos",
+      "sourceUrl": "https://tow.whfb.app/unit/gigantic-spawn-of-chaos"
+    },
+    {
+      "unitId": "unit:hellcannon",
+      "name": "Hellcannon",
+      "sourceUrl": "https://tow.whfb.app/unit/hellcannon"
+    },
+    {
+      "unitId": "unit:manticore-warriors-of-chaos",
+      "name": "Manticore (Warriors of Chaos)",
+      "sourceUrl": "https://tow.whfb.app/unit/manticore-warriors-of-chaos"
+    },
+    {
+      "unitId": "unit:warpfire-dragon",
+      "name": "Warpfire Dragon",
+      "sourceUrl": "https://tow.whfb.app/unit/warpfire-dragon"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

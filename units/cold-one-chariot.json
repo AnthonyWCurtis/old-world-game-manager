@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:cold-one-chariot",
+  "name": "Cold One Chariot",
+  "nameSingular": "Chariot",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/cold-one-chariot",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2uQ0gkZlUkrYsuhMvbBok5",
+    "sourceUpdatedAt": "2024-02-27T16:53:26.849Z",
+    "sourceRevision": 3,
+    "publishedVersion": 27,
+    "displayedUpdatedAt": "Last update: 2024 February 27",
+    "publicationCitation": "Dark Elves, p. 16",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "95f1ce7769f83c492ca8617cef34cc5ab0219a0c1f8bc6b0d44177fee5394122"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 125,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "125 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Chariot",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 5,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Knight Charioteer (x2)",
+      "characteristics": {
+        "M": "-",
+        "WS": 5,
+        "BS": 4,
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 5,
+        "A": 1,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Cold One (x2)",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 4,
+        "T": "-",
+        "W": "-",
+        "I": 2,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "cavalry spears",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/cavalry-spear",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "repeater crossbows",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/repeater-crossbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Cold One only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (High Elves)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stupidity",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stupidity",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Dark Elves",
+      "sourceEntryId": "4z8TnCYVKA7KbHJ8I5Dgd9",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 16,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:dark-elves",
+      "name": "Dark Elves",
+      "sourceUrl": "https://tow.whfb.app/army/dark-elves",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:poisoned-wind-globadiers",
+  "name": "Poisoned Wind Globadiers",
+  "nameSingular": "Globadier",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/poisoned-wind-globadiers",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1tfIuiGWSezR95Xvswjg85",
+    "sourceUpdatedAt": "2024-03-03T04:52:10.081Z",
+    "sourceRevision": 2,
+    "publishedVersion": 12,
+    "displayedUpdatedAt": "Last update: 2024 March 03",
+    "publicationCitation": "Skaven, p. 10",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "cdbda7af5dc718ef6b365df2cbbf0707133980acb9b65bbbd3d7b61909e79816"
+  },
+  "classification": {
+    "unitCategory": [
+      "Infantry"
+    ],
+    "troopType": [
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "2-10"
+  },
+  "basePoints": {
+    "amount": 10,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "10 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Globadier",
+      "characteristics": {
+        "M": 5,
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": 3,
+        "W": 1,
+        "I": 4,
+        "A": 1,
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Poisoned Wind globes",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/poisoned-wind-globes",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Scurry Away",
+      "sourceUrl": "https://tow.whfb.app/special-rules/scurry-away",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Warband",
+      "sourceUrl": "https://tow.whfb.app/special-rules/warband",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 10,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

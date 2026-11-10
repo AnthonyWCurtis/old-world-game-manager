@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:doomwheel",
+  "name": "Doomwheel",
+  "nameSingular": "Doomwheel",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/doomwheel",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "7dzQOpUz8SEBAnAaqInh6U",
+    "sourceUpdatedAt": "2024-02-29T14:16:46.135Z",
+    "sourceRevision": 2,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Skaven, p. 17",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "98b90ef44aab84b21c6e80c96893a8b5964fffadc6a2af33295eda23cfa07261"
+  },
+  "classification": {
+    "unitCategory": [
+      "Chariot"
+    ],
+    "troopType": [
+      "Heavy Chariot"
+    ],
+    "baseSize": "50 x 100 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 145,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "145 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Doomwheel",
+      "characteristics": {
+        "M": "3D6",
+        "WS": "-",
+        "BS": "-",
+        "S": 5,
+        "T": 5,
+        "W": 4,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Warlock (x1)",
+      "characteristics": {
+        "M": "-",
+        "WS": 3,
+        "BS": 3,
+        "S": 3,
+        "T": "-",
+        "W": "-",
+        "I": 3,
+        "A": 1,
+        "Ld": 7
+      }
+    },
+    {
+      "name": "Rats",
+      "characteristics": {
+        "M": "-",
+        "WS": 2,
+        "BS": 0,
+        "S": 2,
+        "T": "-",
+        "W": "-",
+        "I": 4,
+        "A": "2D6",
+        "Ld": 5
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Crushing Bulk",
+      "sourceUrl": "https://tow.whfb.app/special-rules/crushing-bulk",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Immune to Psychology",
+      "sourceUrl": "https://tow.whfb.app/special-rules/immune-to-psychology",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Attacks (Rats only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Movement",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-movement",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Zzzzap!",
+      "sourceUrl": "https://tow.whfb.app/special-rules/zzzzap",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Skaven",
+      "sourceEntryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 17,
+  "unmappedSourceFields": {
+    "armourValue": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: armourValue"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:skaven",
+      "name": "Skaven",
+      "sourceUrl": "https://tow.whfb.app/army/skaven",
+      "status": "source-listed"
+    }
+  ]
+}

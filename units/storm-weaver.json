@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:storm-weaver",
+  "name": "Storm Weaver",
+  "nameSingular": "Storm Weaver",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/storm-weaver",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5Czpx4mNEpF17UKOLnPOPo",
+    "sourceUpdatedAt": "2025-03-07T16:43:39.374Z",
+    "sourceRevision": 2,
+    "publishedVersion": 17,
+    "displayedUpdatedAt": "Last update: 2025 March 07",
+    "publicationCitation": "Arcane Journal: High Elf Realms, p. 40",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "a2e2b94385d32f3befa1891793445b56976dc14c11733402b1431d440458aa42"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 85,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "85 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Storm Weaver",
+      "characteristics": {
+        "M": 5,
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 3,
+        "W": 2,
+        "I": 4,
+        "A": 2,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Elven Reflexes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/elven-reflexes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ithilmar Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ithilmar-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Lore of Saphery",
+      "sourceUrl": "https://tow.whfb.app/the-lores-of-magic/lore-of-saphery",
+      "kind": "the-lores-of-magic"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "May be mounted on a Unicorn (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Unicorn",
+              "sourceUrl": "https://tow.whfb.app/unit/unicorn",
+              "kind": "unit"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "A Storm Weaver may:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Be a Level 2 Wizard (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Be a Level 3 Wizard (+60 points)",
+          "points": {
+            "amount": 60,
+            "basis": "unspecified",
+            "sourceText": "(+60 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:3",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:3:1",
+          "description": "Purchase magic items up to a total of 75 points",
+          "points": null,
+          "magicItemPointsCap": 75,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: High Elf Realms",
+      "sourceEntryId": "73GE8yQGVszrewP5aLYLDf",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 40,
+  "unmappedSourceFields": {
+    "wizardLevel": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "magicLore": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: wizardLevel, magicLore, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

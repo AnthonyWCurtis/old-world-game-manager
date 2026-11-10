@@ -1,0 +1,176 @@
+{
+  "id": "army:kingdom-of-bretonnia",
+  "name": "Kingdom of Bretonnia",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+    "sourceUpdatedAt": "2024-02-23T03:30:00.626Z",
+    "sourceRevision": 6,
+    "publishedVersion": 12,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "9387dbd561b7f99433db76c104493b7ea1b9887c5b09876695b6cfdd46978223"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:the-green-knight",
+      "name": "The Green Knight",
+      "sourceUrl": "https://tow.whfb.app/unit/the-green-knight"
+    },
+    {
+      "unitId": "unit:lady-elisse-duchaard",
+      "name": "Lady Élisse Duchaard",
+      "sourceUrl": "https://tow.whfb.app/unit/lady-elisse-duchaard"
+    },
+    {
+      "unitId": "unit:sir-cecil-gastonne",
+      "name": "Sir Cecil Gastonne",
+      "sourceUrl": "https://tow.whfb.app/unit/sir-cecil-gastonne"
+    },
+    {
+      "unitId": "unit:baron",
+      "name": "Baron",
+      "sourceUrl": "https://tow.whfb.app/unit/baron"
+    },
+    {
+      "unitId": "unit:damsel",
+      "name": "Damsel",
+      "sourceUrl": "https://tow.whfb.app/unit/damsel"
+    },
+    {
+      "unitId": "unit:duke",
+      "name": "Duke",
+      "sourceUrl": "https://tow.whfb.app/unit/duke"
+    },
+    {
+      "unitId": "unit:outcast-wizard",
+      "name": "Outcast Wizard",
+      "sourceUrl": "https://tow.whfb.app/unit/outcast-wizard"
+    },
+    {
+      "unitId": "unit:paladin",
+      "name": "Paladin",
+      "sourceUrl": "https://tow.whfb.app/unit/paladin"
+    },
+    {
+      "unitId": "unit:prophetess",
+      "name": "Prophetess",
+      "sourceUrl": "https://tow.whfb.app/unit/prophetess"
+    },
+    {
+      "unitId": "unit:sergeant-at-arms",
+      "name": "Sergeant-at-Arms",
+      "sourceUrl": "https://tow.whfb.app/unit/sergeant-at-arms"
+    },
+    {
+      "unitId": "unit:barded-pegasus",
+      "name": "Barded Pegasus",
+      "sourceUrl": "https://tow.whfb.app/unit/barded-pegasus"
+    },
+    {
+      "unitId": "unit:bretonnian-warhorse",
+      "name": "Bretonnian Warhorse",
+      "sourceUrl": "https://tow.whfb.app/unit/bretonnian-warhorse"
+    },
+    {
+      "unitId": "unit:royal-pegasus",
+      "name": "Royal Pegasus",
+      "sourceUrl": "https://tow.whfb.app/unit/royal-pegasus"
+    },
+    {
+      "unitId": "unit:unicorn",
+      "name": "Unicorn",
+      "sourceUrl": "https://tow.whfb.app/unit/unicorn"
+    },
+    {
+      "unitId": "unit:warhorse-bretonnia",
+      "name": "Warhorse (Bretonnia)",
+      "sourceUrl": "https://tow.whfb.app/unit/warhorse-bretonnia"
+    },
+    {
+      "unitId": "unit:battle-pilgrims",
+      "name": "Battle Pilgrims",
+      "sourceUrl": "https://tow.whfb.app/unit/battle-pilgrims"
+    },
+    {
+      "unitId": "unit:border-princes-brigands",
+      "name": "Border Princes Brigands",
+      "sourceUrl": "https://tow.whfb.app/unit/border-princes-brigands"
+    },
+    {
+      "unitId": "unit:knights-of-the-realm-on-foot",
+      "name": "Knights of the Realm on Foot",
+      "sourceUrl": "https://tow.whfb.app/unit/knights-of-the-realm-on-foot"
+    },
+    {
+      "unitId": "unit:men-at-arms",
+      "name": "Men-at-Arms",
+      "sourceUrl": "https://tow.whfb.app/unit/men-at-arms"
+    },
+    {
+      "unitId": "unit:peasant-bowmen",
+      "name": "Peasant Bowmen",
+      "sourceUrl": "https://tow.whfb.app/unit/peasant-bowmen"
+    },
+    {
+      "unitId": "unit:squires",
+      "name": "Squires",
+      "sourceUrl": "https://tow.whfb.app/unit/squires"
+    },
+    {
+      "unitId": "unit:yeomen-guard",
+      "name": "Yeomen Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/yeomen-guard"
+    },
+    {
+      "unitId": "unit:grail-knights",
+      "name": "Grail Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/grail-knights"
+    },
+    {
+      "unitId": "unit:knights-errant",
+      "name": "Knights Errant",
+      "sourceUrl": "https://tow.whfb.app/unit/knights-errant"
+    },
+    {
+      "unitId": "unit:mounted-knights-of-the-realm",
+      "name": "Mounted Knights of the Realm",
+      "sourceUrl": "https://tow.whfb.app/unit/mounted-knights-of-the-realm"
+    },
+    {
+      "unitId": "unit:mounted-yeomen",
+      "name": "Mounted Yeomen",
+      "sourceUrl": "https://tow.whfb.app/unit/mounted-yeomen"
+    },
+    {
+      "unitId": "unit:pegasus-knights",
+      "name": "Pegasus Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/pegasus-knights"
+    },
+    {
+      "unitId": "unit:questing-knights",
+      "name": "Questing Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/questing-knights"
+    },
+    {
+      "unitId": "unit:hippogryph",
+      "name": "Hippogryph",
+      "sourceUrl": "https://tow.whfb.app/unit/hippogryph"
+    },
+    {
+      "unitId": "unit:border-princes-bombard",
+      "name": "Border Princes Bombard",
+      "sourceUrl": "https://tow.whfb.app/unit/border-princes-bombard"
+    },
+    {
+      "unitId": "unit:field-trebuchet",
+      "name": "Field Trebuchet",
+      "sourceUrl": "https://tow.whfb.app/unit/field-trebuchet"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

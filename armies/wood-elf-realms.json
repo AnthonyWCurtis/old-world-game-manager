@@ -1,0 +1,211 @@
+{
+  "id": "army:wood-elf-realms",
+  "name": "Wood Elf Realms",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/wood-elf-realms",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1VTYhDeufox7WHFzuf7ff5",
+    "sourceUpdatedAt": "2025-06-15T17:23:41.409Z",
+    "sourceRevision": 8,
+    "publishedVersion": 15,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "9389b42e8bb1904d19b4bb8a07aaee418687100ab598d1e14ecb8754ff7a11b4"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:araloth-lord-of-talsyn",
+      "name": "Araloth, Lord of Talsyn",
+      "sourceUrl": "https://tow.whfb.app/unit/araloth-lord-of-talsyn"
+    },
+    {
+      "unitId": "unit:orion-the-king-in-the-woods",
+      "name": "Orion, the King in the Woods",
+      "sourceUrl": "https://tow.whfb.app/unit/orion-the-king-in-the-woods"
+    },
+    {
+      "unitId": "unit:branchwraith",
+      "name": "Branchwraith",
+      "sourceUrl": "https://tow.whfb.app/unit/branchwraith"
+    },
+    {
+      "unitId": "unit:glade-captain",
+      "name": "Glade Captain",
+      "sourceUrl": "https://tow.whfb.app/unit/glade-captain"
+    },
+    {
+      "unitId": "unit:glade-lord",
+      "name": "Glade Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/glade-lord"
+    },
+    {
+      "unitId": "unit:shadowdancer",
+      "name": "Shadowdancer",
+      "sourceUrl": "https://tow.whfb.app/unit/shadowdancer"
+    },
+    {
+      "unitId": "unit:spellsinger",
+      "name": "Spellsinger",
+      "sourceUrl": "https://tow.whfb.app/unit/spellsinger"
+    },
+    {
+      "unitId": "unit:spellweaver",
+      "name": "Spellweaver",
+      "sourceUrl": "https://tow.whfb.app/unit/spellweaver"
+    },
+    {
+      "unitId": "unit:treemen-ancient",
+      "name": "Treeman Ancient",
+      "sourceUrl": "https://tow.whfb.app/unit/treemen-ancient"
+    },
+    {
+      "unitId": "unit:warden-of-talsyn",
+      "name": "Warden of Talsyn",
+      "sourceUrl": "https://tow.whfb.app/unit/warden-of-talsyn"
+    },
+    {
+      "unitId": "unit:waystalker",
+      "name": "Waystalker",
+      "sourceUrl": "https://tow.whfb.app/unit/waystalker"
+    },
+    {
+      "unitId": "unit:elven-steed",
+      "name": "Elven Steed",
+      "sourceUrl": "https://tow.whfb.app/unit/elven-steed"
+    },
+    {
+      "unitId": "unit:great-eagle-mount",
+      "name": "Great Eagle (Mount)",
+      "sourceUrl": "https://tow.whfb.app/unit/great-eagle-mount"
+    },
+    {
+      "unitId": "unit:great-stag",
+      "name": "Great Stag",
+      "sourceUrl": "https://tow.whfb.app/unit/great-stag"
+    },
+    {
+      "unitId": "unit:unicorn",
+      "name": "Unicorn",
+      "sourceUrl": "https://tow.whfb.app/unit/unicorn"
+    },
+    {
+      "unitId": "unit:warhawk",
+      "name": "Warhawk",
+      "sourceUrl": "https://tow.whfb.app/unit/warhawk"
+    },
+    {
+      "unitId": "unit:bear-of-loren",
+      "name": "Bear of Loren",
+      "sourceUrl": "https://tow.whfb.app/unit/bear-of-loren"
+    },
+    {
+      "unitId": "unit:beast-keeper",
+      "name": "Beast Keeper",
+      "sourceUrl": "https://tow.whfb.app/unit/beast-keeper"
+    },
+    {
+      "unitId": "unit:deepwood-hound",
+      "name": "Deepwood Hound",
+      "sourceUrl": "https://tow.whfb.app/unit/deepwood-hound"
+    },
+    {
+      "unitId": "unit:deepwood-scouts",
+      "name": "Deepwood Scouts",
+      "sourceUrl": "https://tow.whfb.app/unit/deepwood-scouts"
+    },
+    {
+      "unitId": "unit:dryads",
+      "name": "Dryads",
+      "sourceUrl": "https://tow.whfb.app/unit/dryads"
+    },
+    {
+      "unitId": "unit:eternal-guard",
+      "name": "Eternal Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/eternal-guard"
+    },
+    {
+      "unitId": "unit:forest-cat",
+      "name": "Forest Cat",
+      "sourceUrl": "https://tow.whfb.app/unit/forest-cat"
+    },
+    {
+      "unitId": "unit:glade-guard",
+      "name": "Glade Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/glade-guard"
+    },
+    {
+      "unitId": "unit:guardians-of-talsyn",
+      "name": "Guardians of Talsyn",
+      "sourceUrl": "https://tow.whfb.app/unit/guardians-of-talsyn"
+    },
+    {
+      "unitId": "unit:sylvan-boar",
+      "name": "Sylvan Boar",
+      "sourceUrl": "https://tow.whfb.app/unit/sylvan-boar"
+    },
+    {
+      "unitId": "unit:tree-kin",
+      "name": "Tree Kin",
+      "sourceUrl": "https://tow.whfb.app/unit/tree-kin"
+    },
+    {
+      "unitId": "unit:wardancers",
+      "name": "Wardancers",
+      "sourceUrl": "https://tow.whfb.app/unit/wardancers"
+    },
+    {
+      "unitId": "unit:waywatchers",
+      "name": "Waywatchers",
+      "sourceUrl": "https://tow.whfb.app/unit/waywatchers"
+    },
+    {
+      "unitId": "unit:wildwood-rangers",
+      "name": "Wildwood Rangers",
+      "sourceUrl": "https://tow.whfb.app/unit/wildwood-rangers"
+    },
+    {
+      "unitId": "unit:wood-elf-beast-pack",
+      "name": "Wood Elf Beast Pack",
+      "sourceUrl": "https://tow.whfb.app/unit/wood-elf-beast-pack"
+    },
+    {
+      "unitId": "unit:glade-riders",
+      "name": "Glade Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/glade-riders"
+    },
+    {
+      "unitId": "unit:sisters-of-the-thorn",
+      "name": "Sisters of the Thorn",
+      "sourceUrl": "https://tow.whfb.app/unit/sisters-of-the-thorn"
+    },
+    {
+      "unitId": "unit:warhawk-riders",
+      "name": "Warhawk Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/warhawk-riders"
+    },
+    {
+      "unitId": "unit:wild-riders",
+      "name": "Wild Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/wild-riders"
+    },
+    {
+      "unitId": "unit:forest-dragon",
+      "name": "Forest Dragon",
+      "sourceUrl": "https://tow.whfb.app/unit/forest-dragon"
+    },
+    {
+      "unitId": "unit:great-eagle",
+      "name": "Great Eagle",
+      "sourceUrl": "https://tow.whfb.app/unit/great-eagle"
+    },
+    {
+      "unitId": "unit:treeman",
+      "name": "Treeman",
+      "sourceUrl": "https://tow.whfb.app/unit/treeman"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

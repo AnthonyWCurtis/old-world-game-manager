@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:soul-grinder",
+  "name": "Soul Grinder",
+  "nameSingular": "Soul Grinder",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/soul-grinder",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "yUbHoPR6cAXe7iTZEwldC",
+    "sourceUpdatedAt": "2026-02-20T12:22:27.614Z",
+    "sourceRevision": 3,
+    "publishedVersion": 31,
+    "displayedUpdatedAt": "Last update: 2026 February 20",
+    "publicationCitation": "Daemons of Chaos, p. 26",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "7551f3a70a61289538a3d681c212531db18af0f1c83d759a3f81720fafb7e8b3"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "150 x 100 mm",
+    "baseSizeMm": {
+      "width": 150,
+      "depth": 100
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 255,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "255 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Soul Grinder",
+      "characteristics": {
+        "M": 8,
+        "WS": 3,
+        "BS": 3,
+        "S": 6,
+        "T": 6,
+        "W": 6,
+        "I": 3,
+        "A": 4,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "iron claw",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/iron-claw",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "harvester cannon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/harvester-cannon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemonic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Reserve Move",
+      "sourceUrl": "https://tow.whfb.app/special-rules/reserve-move",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Daemon of Khorne",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-khorne",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemon of Nurgle",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-nurgle",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemon of Slaanesh",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-slaanesh",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemon of Tzeentch",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-tzeentch",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Baleful Torrent",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/baleful-torrent",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Warp Gaze",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warp-gaze",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "May be a:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Daemon of Khorne (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Daemon of Khorne",
+              "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-khorne",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Daemon of Nurgle (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Daemon of Nurgle",
+              "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-nurgle",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Daemons of Slaanesh (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Daemons of Slaanesh",
+              "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-slaanesh",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:4",
+          "description": "Daemons of Tzeentch (+2 points)",
+          "points": {
+            "amount": 2,
+            "basis": "unspecified",
+            "sourceText": "(+2 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Daemons of Tzeentch",
+              "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-tzeentch",
+              "kind": "special-rules"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": "May take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "Baleful torrent (+25 points)",
+          "points": {
+            "amount": 25,
+            "basis": "unspecified",
+            "sourceText": "(+25 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Baleful torrent",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/baleful-torrent",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:2:2",
+          "description": "Warp gaze (+30 points)",
+          "points": {
+            "amount": 30,
+            "basis": "unspecified",
+            "sourceText": "(+30 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Warp gaze",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/warp-gaze",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Daemons of Chaos",
+      "sourceEntryId": "6hFMTVwOVTMPdjCnmMVHMC",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 26,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:sir-cecil-gastonne",
+  "name": "Sir Cecil Gastonne",
+  "nameSingular": "Sir Cecil Gastonne",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/sir-cecil-gastonne",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "5Kms4OEO7benuvXhcEZWPu",
+    "sourceUpdatedAt": "2024-02-23T17:06:19.647Z",
+    "sourceRevision": 3,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Arcane Journal: Kingdom of Bretonnia, p. 39",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "b3036949ca287d4b7b786e7135a697e4bc5087316e6c0061886e200a47f0bc09"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Regular Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 165,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "165 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Sir Cecil Gastonne",
+      "characteristics": {
+        "M": 4,
+        "WS": 7,
+        "BS": 3,
+        "S": 4,
+        "T": 4,
+        "W": 3,
+        "I": 5,
+        "A": 4,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Sorrow's End",
+      "sourceUrl": "https://tow.whfb.app/magic-item/sorrows-end",
+      "kind": "magic-item"
+    },
+    {
+      "name": "Dragonhide Cloak",
+      "sourceUrl": "https://tow.whfb.app/magic-item/dragonhide-cloak",
+      "kind": "magic-item"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Blessings of the Lady",
+      "sourceUrl": "https://tow.whfb.app/special-rules/blessings-of-the-lady",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Wyrm Slayer",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-wyrm-slayer",
+      "kind": "special-rules"
+    },
+    {
+      "name": "The Exile's Vow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/the-exiles-vow",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: Kingdom of Bretonnia",
+      "sourceEntryId": "4SdICSDOJeENNwstutrfbW",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 39,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

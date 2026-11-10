@@ -1,0 +1,131 @@
+{
+  "id": "army:chaos-dwarfs",
+  "name": "Chaos Dwarfs",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/chaos-dwarfs",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "16C5HyddNU5gZuimUArREX",
+    "sourceUpdatedAt": "2026-08-23T18:24:51.435Z",
+    "sourceRevision": 11,
+    "publishedVersion": 28,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "c4b09063217cf46913bbdc07ecb65ff1dfc38a253fd117222a32ecb4860ed98b"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:bull-centaur-taurruk",
+      "name": "Bull Centaur Taur'ruk",
+      "sourceUrl": "https://tow.whfb.app/unit/bull-centaur-taurruk"
+    },
+    {
+      "unitId": "unit:daemonsmith-sorcerer",
+      "name": "Daemonsmith Sorcerer",
+      "sourceUrl": "https://tow.whfb.app/unit/daemonsmith-sorcerer"
+    },
+    {
+      "unitId": "unit:hobgoblin-khan",
+      "name": "Hobgoblin Khan",
+      "sourceUrl": "https://tow.whfb.app/unit/hobgoblin-khan"
+    },
+    {
+      "unitId": "unit:infernal-castellan",
+      "name": "Infernal Castellan",
+      "sourceUrl": "https://tow.whfb.app/unit/infernal-castellan"
+    },
+    {
+      "unitId": "unit:infernal-seneschal",
+      "name": "Infernal Seneschal",
+      "sourceUrl": "https://tow.whfb.app/unit/infernal-seneschal"
+    },
+    {
+      "unitId": "unit:sorcerer-prophet",
+      "name": "Sorcerer-Prophet",
+      "sourceUrl": "https://tow.whfb.app/unit/sorcerer-prophet"
+    },
+    {
+      "unitId": "unit:giant-wolf",
+      "name": "Giant Wolf",
+      "sourceUrl": "https://tow.whfb.app/unit/giant-wolf"
+    },
+    {
+      "unitId": "unit:hobgoblin-cutthroats",
+      "name": "Hobgoblin Cutthroats",
+      "sourceUrl": "https://tow.whfb.app/unit/hobgoblin-cutthroats"
+    },
+    {
+      "unitId": "unit:infernal-guard",
+      "name": "Infernal Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/infernal-guard"
+    },
+    {
+      "unitId": "unit:infernal-ironsworn",
+      "name": "Infernal Ironsworn",
+      "sourceUrl": "https://tow.whfb.app/unit/infernal-ironsworn"
+    },
+    {
+      "unitId": "unit:kdaai-fireborn",
+      "name": "K'daai Fireborn",
+      "sourceUrl": "https://tow.whfb.app/unit/kdaai-fireborn"
+    },
+    {
+      "unitId": "unit:sneaky-gits",
+      "name": "Sneaky Gits",
+      "sourceUrl": "https://tow.whfb.app/unit/sneaky-gits"
+    },
+    {
+      "unitId": "unit:bull-centaur-renders",
+      "name": "Bull Centaur Renders",
+      "sourceUrl": "https://tow.whfb.app/unit/bull-centaur-renders"
+    },
+    {
+      "unitId": "unit:hobgoblin-wolf-riders",
+      "name": "Hobgoblin Wolf Riders",
+      "sourceUrl": "https://tow.whfb.app/unit/hobgoblin-wolf-riders"
+    },
+    {
+      "unitId": "unit:iron-daemon",
+      "name": "Iron Daemon",
+      "sourceUrl": "https://tow.whfb.app/unit/iron-daemon"
+    },
+    {
+      "unitId": "unit:bale-taurus",
+      "name": "Bale Taurus",
+      "sourceUrl": "https://tow.whfb.app/unit/bale-taurus"
+    },
+    {
+      "unitId": "unit:great-taurus",
+      "name": "Great Taurus",
+      "sourceUrl": "https://tow.whfb.app/unit/great-taurus"
+    },
+    {
+      "unitId": "unit:lammasu",
+      "name": "Lammasu",
+      "sourceUrl": "https://tow.whfb.app/unit/lammasu"
+    },
+    {
+      "unitId": "unit:deathshrieker-rocket-launcher",
+      "name": "Deathshrieker Rocket Launcher",
+      "sourceUrl": "https://tow.whfb.app/unit/deathshrieker-rocket-launcher"
+    },
+    {
+      "unitId": "unit:dreadquake-mortar",
+      "name": "Dreadquake Mortar",
+      "sourceUrl": "https://tow.whfb.app/unit/dreadquake-mortar"
+    },
+    {
+      "unitId": "unit:hobgoblin-bolt-thrower",
+      "name": "Hobgoblin Bolt Thrower",
+      "sourceUrl": "https://tow.whfb.app/unit/hobgoblin-bolt-thrower"
+    },
+    {
+      "unitId": "unit:magma-cannon",
+      "name": "Magma Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/magma-cannon"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

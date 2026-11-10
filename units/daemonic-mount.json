@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:daemonic-mount",
+  "name": "Daemonic Mount",
+  "nameSingular": "Daemonic Mount",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/daemonic-mount",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2itRTUBFERLYMyOGjXAsSB",
+    "sourceUpdatedAt": "2026-07-10T17:46:12.143Z",
+    "sourceRevision": 3,
+    "publishedVersion": 21,
+    "displayedUpdatedAt": "Last update: 2026 July 10",
+    "publicationCitation": "Ravening Hordes, p. 59",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "cedcb1d9b13d276bc851881a787388dd1d2118bf80cfbe28d311567f5d0ba211"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "40 x 60 mm (min), 50 x 75 mm (max)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 35,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+35 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Daemonic Mount",
+      "characteristics": {
+        "M": 8,
+        "WS": 4,
+        "BS": "-",
+        "S": 5,
+        "T": "-",
+        "W": "(+1)",
+        "I": 3,
+        "A": 2,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "barding",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/barding",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (1, Daemonic Mount only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magical Attacks",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magical-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Mark of Chaos (as rider)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/marks-of-chaos",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Warriors of Chaos",
+      "sourceEntryId": "6kwqfCzN3UjmDwET7tHFpp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 59,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:warriors-of-chaos",
+      "name": "Warriors of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/warriors-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:prince-ulthers-dragon-company",
+  "name": "Prince Ulther's Dragon Company",
+  "nameSingular": "Prince Ulther Stonehammer",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/prince-ulthers-dragon-company",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "51mPzWJzZhzoEoGqr3pnbc",
+    "sourceUpdatedAt": "2024-08-09T19:19:21.180Z",
+    "sourceRevision": 7,
+    "publishedVersion": 50,
+    "displayedUpdatedAt": "Last update: 2024 August 09",
+    "publicationCitation": "Regiment of Renown: Prince Ulther's Dragon Company, p. 1",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "0345311176834c4974f3e767102d136087ebec4374088f0b63035936226ecfd9"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Heavy Infantry",
+      "Named Character"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "Minimum unit of four models: Prince Ulther, his champion Borri Forkbeard, his standard bearer and his musician (both Dragon Company troopers). To this, you may add any number of additional Dragon Company troopers."
+  },
+  "basePoints": {
+    "amount": 115,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "115 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "Prince Ulther Stonehammer",
+      "characteristics": {
+        "M": 3,
+        "WS": 5,
+        "BS": 5,
+        "S": 4,
+        "T": 5,
+        "W": 2,
+        "I": 2,
+        "A": 3,
+        "Ld": 10
+      }
+    },
+    {
+      "name": "Borri Forkbeard (champion)",
+      "characteristics": {
+        "M": 3,
+        "WS": 4,
+        "BS": 4,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 2,
+        "A": 2,
+        "Ld": 9
+      }
+    },
+    {
+      "name": "Dragon Company trooper",
+      "characteristics": {
+        "M": 3,
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 2,
+        "A": 1,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Dragonblade",
+      "sourceUrl": "https://tow.whfb.app/magic-item/dragonblade",
+      "kind": "magic-item"
+    },
+    {
+      "name": "brace of pistols",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/brace-of-pistols",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "great weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Drilled",
+      "sourceUrl": "https://tow.whfb.app/special-rules/drilled",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Gromril Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/gromril-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Orcs & Goblins)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Resolute",
+      "sourceUrl": "https://tow.whfb.app/special-rules/resolute",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stubborn",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stubborn",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Additional Dragon Company Troopers (+14 points per model)",
+          "points": {
+            "amount": 14,
+            "basis": "per_model",
+            "sourceText": "(+14 points per model)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Regiment of Renown: Prince Ulther's Dragon Company",
+      "sourceEntryId": "3az2Ut7J9ZmPE3Co3Y42iz",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Regiments of Renown",
+      "sourceEntryId": "5QbASLYEIixQi2oc40h3gZ",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 1,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:regiments-of-renown",
+      "name": "Regiments of Renown",
+      "sourceUrl": "https://tow.whfb.app/army/regiments-of-renown",
+      "status": "source-listed"
+    }
+  ]
+}

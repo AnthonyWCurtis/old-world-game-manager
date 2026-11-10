@@ -1,0 +1,186 @@
+{
+  "id": "army:vampire-counts",
+  "name": "Vampire Counts",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "BMGv7b2M2th9fQuRELDTE",
+    "sourceUpdatedAt": "2024-09-26T12:55:46.933Z",
+    "sourceRevision": 10,
+    "publishedVersion": 25,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "64acce40a7660212ec710400d68c547386a224672b1eef0f5341fc926726b236"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:cairn-wraith",
+      "name": "Cairn Wraith",
+      "sourceUrl": "https://tow.whfb.app/unit/cairn-wraith"
+    },
+    {
+      "unitId": "unit:master-necromancer",
+      "name": "Master Necromancer",
+      "sourceUrl": "https://tow.whfb.app/unit/master-necromancer"
+    },
+    {
+      "unitId": "unit:necromantic-acolyte",
+      "name": "Necromantic Acolyte",
+      "sourceUrl": "https://tow.whfb.app/unit/necromantic-acolyte"
+    },
+    {
+      "unitId": "unit:strigoi-ghoul-king",
+      "name": "Strigoi Ghoul King",
+      "sourceUrl": "https://tow.whfb.app/unit/strigoi-ghoul-king"
+    },
+    {
+      "unitId": "unit:tomb-banshee",
+      "name": "Tomb Banshee",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-banshee"
+    },
+    {
+      "unitId": "unit:vampire-count",
+      "name": "Vampire Count",
+      "sourceUrl": "https://tow.whfb.app/unit/vampire-count"
+    },
+    {
+      "unitId": "unit:vampire-thrall",
+      "name": "Vampire Thrall",
+      "sourceUrl": "https://tow.whfb.app/unit/vampire-thrall"
+    },
+    {
+      "unitId": "unit:wight-king",
+      "name": "Wight King",
+      "sourceUrl": "https://tow.whfb.app/unit/wight-king"
+    },
+    {
+      "unitId": "unit:wight-lord",
+      "name": "Wight Lord",
+      "sourceUrl": "https://tow.whfb.app/unit/wight-lord"
+    },
+    {
+      "unitId": "unit:nightmare",
+      "name": "Nightmare",
+      "sourceUrl": "https://tow.whfb.app/unit/nightmare"
+    },
+    {
+      "unitId": "unit:skeletal-steed-vampire-counts",
+      "name": "Skeletal Steed (Vampire Counts)",
+      "sourceUrl": "https://tow.whfb.app/unit/skeletal-steed-vampire-counts"
+    },
+    {
+      "unitId": "unit:terrorgheist-mount",
+      "name": "Terrorgheist (Mount)",
+      "sourceUrl": "https://tow.whfb.app/unit/terrorgheist-mount"
+    },
+    {
+      "unitId": "unit:bat-swarms",
+      "name": "Bat Swarms",
+      "sourceUrl": "https://tow.whfb.app/unit/bat-swarms"
+    },
+    {
+      "unitId": "unit:crypt-ghouls",
+      "name": "Crypt Ghouls",
+      "sourceUrl": "https://tow.whfb.app/unit/crypt-ghouls"
+    },
+    {
+      "unitId": "unit:crypt-horrors",
+      "name": "Crypt Horrors",
+      "sourceUrl": "https://tow.whfb.app/unit/crypt-horrors"
+    },
+    {
+      "unitId": "unit:fell-bats",
+      "name": "Fell Bats",
+      "sourceUrl": "https://tow.whfb.app/unit/fell-bats"
+    },
+    {
+      "unitId": "unit:grave-guard",
+      "name": "Grave Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/grave-guard"
+    },
+    {
+      "unitId": "unit:skeleton-warriors-vampire-counts",
+      "name": "Skeleton Warriors (Vampire Counts)",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-warriors-vampire-counts"
+    },
+    {
+      "unitId": "unit:spirit-hosts",
+      "name": "Spirit Hosts",
+      "sourceUrl": "https://tow.whfb.app/unit/spirit-hosts"
+    },
+    {
+      "unitId": "unit:vargheists",
+      "name": "Vargheists",
+      "sourceUrl": "https://tow.whfb.app/unit/vargheists"
+    },
+    {
+      "unitId": "unit:zombies",
+      "name": "Zombies",
+      "sourceUrl": "https://tow.whfb.app/unit/zombies"
+    },
+    {
+      "unitId": "unit:black-knights",
+      "name": "Black Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/black-knights"
+    },
+    {
+      "unitId": "unit:blood-knights",
+      "name": "Blood Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/blood-knights"
+    },
+    {
+      "unitId": "unit:dire-wolves",
+      "name": "Dire Wolves",
+      "sourceUrl": "https://tow.whfb.app/unit/dire-wolves"
+    },
+    {
+      "unitId": "unit:hexwraiths",
+      "name": "Hexwraiths",
+      "sourceUrl": "https://tow.whfb.app/unit/hexwraiths"
+    },
+    {
+      "unitId": "unit:black-coach",
+      "name": "Black Coach",
+      "sourceUrl": "https://tow.whfb.app/unit/black-coach"
+    },
+    {
+      "unitId": "unit:corpse-cart",
+      "name": "Corpse Cart",
+      "sourceUrl": "https://tow.whfb.app/unit/corpse-cart"
+    },
+    {
+      "unitId": "unit:coven-throne",
+      "name": "Coven Throne",
+      "sourceUrl": "https://tow.whfb.app/unit/coven-throne"
+    },
+    {
+      "unitId": "unit:mortis-engine",
+      "name": "Mortis Engine",
+      "sourceUrl": "https://tow.whfb.app/unit/mortis-engine"
+    },
+    {
+      "unitId": "unit:abyssal-terror",
+      "name": "Abyssal Terror",
+      "sourceUrl": "https://tow.whfb.app/unit/abyssal-terror"
+    },
+    {
+      "unitId": "unit:terrorgheist",
+      "name": "Terrorgheist",
+      "sourceUrl": "https://tow.whfb.app/unit/terrorgheist"
+    },
+    {
+      "unitId": "unit:varghulf",
+      "name": "Varghulf",
+      "sourceUrl": "https://tow.whfb.app/unit/varghulf"
+    },
+    {
+      "unitId": "unit:zombie-dragon",
+      "name": "Zombie Dragon",
+      "sourceUrl": "https://tow.whfb.app/unit/zombie-dragon"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

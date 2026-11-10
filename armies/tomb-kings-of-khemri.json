@@ -1,0 +1,211 @@
+{
+  "id": "army:tomb-kings-of-khemri",
+  "name": "Tomb Kings of Khemri",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "1VEJS7r1hKy6agmdBE61Pa",
+    "sourceUpdatedAt": "2024-02-20T15:24:23.331Z",
+    "sourceRevision": 6,
+    "publishedVersion": 12,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "cbb303024225f73609434341bbaf438cc8cee1f54bdd010cbd57e52e8b1ceb01"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:nekaph",
+      "name": "Nekaph",
+      "sourceUrl": "https://tow.whfb.app/unit/nekaph"
+    },
+    {
+      "unitId": "unit:prince-apophas",
+      "name": "Prince Apophas",
+      "sourceUrl": "https://tow.whfb.app/unit/prince-apophas"
+    },
+    {
+      "unitId": "unit:settra-the-imperishable",
+      "name": "Settra the Imperishable",
+      "sourceUrl": "https://tow.whfb.app/unit/settra-the-imperishable"
+    },
+    {
+      "unitId": "unit:arch-necrotect",
+      "name": "Arch Necrotect",
+      "sourceUrl": "https://tow.whfb.app/unit/arch-necrotect"
+    },
+    {
+      "unitId": "unit:high-priest",
+      "name": "High Priest",
+      "sourceUrl": "https://tow.whfb.app/unit/high-priest"
+    },
+    {
+      "unitId": "unit:mortuary-priest",
+      "name": "Mortuary Priest",
+      "sourceUrl": "https://tow.whfb.app/unit/mortuary-priest"
+    },
+    {
+      "unitId": "unit:necrotect",
+      "name": "Necrotect",
+      "sourceUrl": "https://tow.whfb.app/unit/necrotect"
+    },
+    {
+      "unitId": "unit:royal-herald",
+      "name": "Royal Herald",
+      "sourceUrl": "https://tow.whfb.app/unit/royal-herald"
+    },
+    {
+      "unitId": "unit:tomb-king",
+      "name": "Tomb King",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-king"
+    },
+    {
+      "unitId": "unit:tomb-prince",
+      "name": "Tomb Prince",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-prince"
+    },
+    {
+      "unitId": "unit:barded-skeletal-steed",
+      "name": "Barded Skeletal Steed",
+      "sourceUrl": "https://tow.whfb.app/unit/barded-skeletal-steed"
+    },
+    {
+      "unitId": "unit:skeletal-steed-tomb-kings",
+      "name": "Skeletal Steed (Tomb Kings)",
+      "sourceUrl": "https://tow.whfb.app/unit/skeletal-steed-tomb-kings"
+    },
+    {
+      "unitId": "unit:skeleton-chariot",
+      "name": "Skeleton Chariot",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-chariot"
+    },
+    {
+      "unitId": "unit:carrion",
+      "name": "Carrion",
+      "sourceUrl": "https://tow.whfb.app/unit/carrion"
+    },
+    {
+      "unitId": "unit:skeleton-archers",
+      "name": "Skeleton Archers",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-archers"
+    },
+    {
+      "unitId": "unit:skeleton-infantry-cohort",
+      "name": "Skeleton Infantry Cohort",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-infantry-cohort"
+    },
+    {
+      "unitId": "unit:skeleton-skirmishers",
+      "name": "Skeleton Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-skirmishers"
+    },
+    {
+      "unitId": "unit:skeleton-warriors-tomb-kings",
+      "name": "Skeleton Warriors (Tomb Kings)",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-warriors-tomb-kings"
+    },
+    {
+      "unitId": "unit:tomb-guard",
+      "name": "Tomb Guard",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-guard"
+    },
+    {
+      "unitId": "unit:tomb-swarms",
+      "name": "Tomb Swarms",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-swarms"
+    },
+    {
+      "unitId": "unit:ushabti",
+      "name": "Ushabti",
+      "sourceUrl": "https://tow.whfb.app/unit/ushabti"
+    },
+    {
+      "unitId": "unit:venerable-ushabti",
+      "name": "Venerable Ushabti",
+      "sourceUrl": "https://tow.whfb.app/unit/venerable-ushabti"
+    },
+    {
+      "unitId": "unit:necropolis-knights",
+      "name": "Necropolis Knights",
+      "sourceUrl": "https://tow.whfb.app/unit/necropolis-knights"
+    },
+    {
+      "unitId": "unit:necroserpents",
+      "name": "Necroserpents",
+      "sourceUrl": "https://tow.whfb.app/unit/necroserpents"
+    },
+    {
+      "unitId": "unit:sepulchral-stalkers",
+      "name": "Sepulchral Stalkers",
+      "sourceUrl": "https://tow.whfb.app/unit/sepulchral-stalkers"
+    },
+    {
+      "unitId": "unit:skeleton-cavalry-cohort",
+      "name": "Skeleton Cavalry Cohort",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-cavalry-cohort"
+    },
+    {
+      "unitId": "unit:skeleton-horse-archers",
+      "name": "Skeleton Horse Archers",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-horse-archers"
+    },
+    {
+      "unitId": "unit:skeleton-horsemen",
+      "name": "Skeleton Horsemen",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-horsemen"
+    },
+    {
+      "unitId": "unit:skeleton-chariots",
+      "name": "Skeleton Chariots",
+      "sourceUrl": "https://tow.whfb.app/unit/skeleton-chariots"
+    },
+    {
+      "unitId": "unit:tomb-guard-chariots",
+      "name": "Tomb Guard Chariots",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-guard-chariots"
+    },
+    {
+      "unitId": "unit:khemrian-warsphinx",
+      "name": "Khemrian Warsphinx",
+      "sourceUrl": "https://tow.whfb.app/unit/khemrian-warsphinx"
+    },
+    {
+      "unitId": "unit:necrolith-bone-dragon",
+      "name": "Necrolith Bone Dragon",
+      "sourceUrl": "https://tow.whfb.app/unit/necrolith-bone-dragon"
+    },
+    {
+      "unitId": "unit:necrolith-colossus",
+      "name": "Necrolith Colossus",
+      "sourceUrl": "https://tow.whfb.app/unit/necrolith-colossus"
+    },
+    {
+      "unitId": "unit:necrosphinx",
+      "name": "Necrosphinx",
+      "sourceUrl": "https://tow.whfb.app/unit/necrosphinx"
+    },
+    {
+      "unitId": "unit:tomb-scorpion",
+      "name": "Tomb Scorpion",
+      "sourceUrl": "https://tow.whfb.app/unit/tomb-scorpion"
+    },
+    {
+      "unitId": "unit:winged-warsphinx",
+      "name": "Winged Warsphinx",
+      "sourceUrl": "https://tow.whfb.app/unit/winged-warsphinx"
+    },
+    {
+      "unitId": "unit:casket-of-souls",
+      "name": "Casket of Souls",
+      "sourceUrl": "https://tow.whfb.app/unit/casket-of-souls"
+    },
+    {
+      "unitId": "unit:screaming-skull-catapult",
+      "name": "Screaming Skull Catapult",
+      "sourceUrl": "https://tow.whfb.app/unit/screaming-skull-catapult"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}

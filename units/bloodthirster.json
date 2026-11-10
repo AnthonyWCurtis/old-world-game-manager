@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:bloodthirster",
+  "name": "Bloodthirster",
+  "nameSingular": "Bloodthirster",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/bloodthirster",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "43UgWXrWrBQO9HnX9i42a8",
+    "sourceUpdatedAt": "2024-02-26T20:27:00.099Z",
+    "sourceRevision": 2,
+    "publishedVersion": 34,
+    "displayedUpdatedAt": "Last update: 2024 February 26",
+    "publicationCitation": "Daemons of Chaos, p. 3",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "8ba643b966852a76af9f0c67ff0661ca81885f737239a1182dcff8ac782a4105"
+  },
+  "classification": {
+    "unitCategory": [
+      "Character"
+    ],
+    "troopType": [
+      "Behemoth",
+      "Character"
+    ],
+    "baseSize": "50 x 50 mm (min), 100 x 150 mm (max)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 355,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "355 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Bloodthirster",
+      "characteristics": {
+        "M": 8,
+        "WS": 10,
+        "BS": 5,
+        "S": 6,
+        "T": 6,
+        "W": 6,
+        "I": 7,
+        "A": 6,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Daemonic",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemonic Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemonic-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Daemons of Khorne",
+      "sourceUrl": "https://tow.whfb.app/special-rules/daemon-of-khorne",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (10)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Furious Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/furious-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impetuous",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impetuous",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Infernal Favour (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/infernal-favour",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Magic Resistance (-2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/magic-resistance",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [
+    {
+      "name": "Bloodflail",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/bloodflail",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Great Axe",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-axe",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Lash of Khorne",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/lash-of-khorne",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "upgradeGroups": [
+    {
+      "id": "group:1",
+      "eligibilityClause": "Must take one of the following:",
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:1:1",
+          "description": "Bloodflail (+25 points)",
+          "points": {
+            "amount": 25,
+            "basis": "unspecified",
+            "sourceText": "(+25 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Bloodflail",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/bloodflail",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:2",
+          "description": "Great axe (+35 points)",
+          "points": {
+            "amount": 35,
+            "basis": "unspecified",
+            "sourceText": "(+35 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Great axe",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/great-axe",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        },
+        {
+          "id": "option:1:3",
+          "description": "Lash of Khorne (+15 points)",
+          "points": {
+            "amount": 15,
+            "basis": "unspecified",
+            "sourceText": "(+15 points)"
+          },
+          "magicItemPointsCap": null,
+          "linkedReferences": [
+            {
+              "name": "Lash of Khorne",
+              "sourceUrl": "https://tow.whfb.app/weapons-of-war/lash-of-khorne",
+              "kind": "weapons-of-war"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    },
+    {
+      "id": "group:2",
+      "eligibilityClause": null,
+      "relationship": "not_asserted_mutually_exclusive",
+      "options": [
+        {
+          "id": "option:2:1",
+          "description": "May purchase Daemonic Gifts up to a total of 100 points",
+          "points": null,
+          "magicItemPointsCap": 100,
+          "linkedReferences": [
+            {
+              "name": "Daemonic Gifts",
+              "sourceUrl": "https://tow.whfb.app/magic-items/daemonic-gifts-and-icons",
+              "kind": "magic-items"
+            }
+          ],
+          "status": "source-extracted-unverified"
+        }
+      ]
+    }
+  ],
+  "sourceAssociations": [
+    {
+      "name": "Daemons of Chaos",
+      "sourceEntryId": "6hFMTVwOVTMPdjCnmMVHMC",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 3,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:daemons-of-chaos",
+      "name": "Daemons of Chaos",
+      "sourceUrl": "https://tow.whfb.app/army/daemons-of-chaos",
+      "status": "source-listed"
+    }
+  ]
+}

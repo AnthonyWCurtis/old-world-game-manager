@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:war-lions",
+  "name": "War Lions",
+  "nameSingular": "War Lion",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/war-lions",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "52rs8tfARCptzjN1dpnWs0",
+    "sourceUpdatedAt": "2025-03-07T17:46:00.799Z",
+    "sourceRevision": 2,
+    "publishedVersion": 21,
+    "displayedUpdatedAt": "Last update: 2025 March 07",
+    "publicationCitation": "Arcane Journal: High Elf Realms, p. 44",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "17fb8b29c2fa03734c6beca527ee9ca4a5913ed7644e031e3e66a7617b223736"
+  },
+  "classification": {
+    "unitCategory": [
+      "Cavalry"
+    ],
+    "troopType": [
+      "War Beast"
+    ],
+    "baseSize": "30 x 60 mm",
+    "baseSizeMm": {
+      "width": 30,
+      "depth": 60
+    },
+    "unitSize": "2-6"
+  },
+  "basePoints": {
+    "amount": 18,
+    "basis": "per_model",
+    "isAdditive": false,
+    "sourceText": "18 points per model"
+  },
+  "modelProfiles": [
+    {
+      "name": "War Lion",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": 0,
+        "S": 4,
+        "T": 4,
+        "W": 1,
+        "I": 4,
+        "A": 2,
+        "Ld": 7
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Cleaving Blow",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cleaving-blow",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fear",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fear",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Move Through Cover",
+      "sourceUrl": "https://tow.whfb.app/special-rules/move-through-cover",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Open Order",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/open-order-formation",
+      "kind": "unusual-formations"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Vanguard",
+      "sourceUrl": "https://tow.whfb.app/special-rules/vanguard",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: High Elf Realms",
+      "sourceEntryId": "73GE8yQGVszrewP5aLYLDf",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 44,
+  "unmappedSourceFields": {
+    "bodyAfter": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: bodyAfter"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

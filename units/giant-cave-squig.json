@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:giant-cave-squig",
+  "name": "Giant Cave Squig",
+  "nameSingular": "Giant Cave Squig",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/giant-cave-squig",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "2aMSkToLAevJMA9CJiCFyj",
+    "sourceUpdatedAt": "2024-02-19T15:13:29.623Z",
+    "sourceRevision": 2,
+    "publishedVersion": 13,
+    "displayedUpdatedAt": "Last update: 2024 February 19",
+    "publicationCitation": "Ravening Hordes, p. 20",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "22624d34fac352883067165acfaabf0e245637b5c8cedbea69fbaf46b5a8a1a3"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Monstrous Cavalry"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 25,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+25 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Giant Cave Squig",
+      "characteristics": {
+        "M": "3D6",
+        "WS": 4,
+        "BS": "-",
+        "S": 5,
+        "T": "-",
+        "W": "(+1)",
+        "I": 3,
+        "A": 3,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Massive Gob",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/massive-gob",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armoured Hide (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armoured-hide",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Hatred (Dwarfs)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/hatred",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D3)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Loner",
+      "sourceUrl": "https://tow.whfb.app/special-rules/loner",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Random Movement",
+      "sourceUrl": "https://tow.whfb.app/special-rules/random-movement",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Orc & Goblin Tribes",
+      "sourceEntryId": "7AijkJLcIDDcMge1U24Cqv",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 20,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:orc-and-goblin-tribes",
+      "name": "Orc & Goblin Tribes",
+      "sourceUrl": "https://tow.whfb.app/army/orc-and-goblin-tribes",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:stonehorn",
+  "name": "Stonehorn",
+  "nameSingular": "Stonehorn",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/stonehorn",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6SjNlNJG9THQdPuGpkMonf",
+    "sourceUpdatedAt": "2024-02-28T13:20:45.638Z",
+    "sourceRevision": 1,
+    "publishedVersion": 24,
+    "displayedUpdatedAt": "Last update: 2024 February 28",
+    "publicationCitation": "Ogre Kingdoms, p. 7",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "9eb2188f1a36fd66ca3c345090c9d59de28b7188f337f0f0de6e1320776e77f5"
+  },
+  "classification": {
+    "unitCategory": [
+      "Mount"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "100 x 150 mm",
+    "baseSizeMm": {
+      "width": 100,
+      "depth": 150
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 195,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+195 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Stonehorn",
+      "characteristics": {
+        "M": 7,
+        "WS": 3,
+        "BS": "-",
+        "S": 6,
+        "T": "(+1)",
+        "W": "(+4)",
+        "I": 2,
+        "A": 4,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Horns of stone",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/horns-of-stone",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Armour Bane (2, Stonehorn only)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/armour-bane",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "First Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/first-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Impact Hits (D6+1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/impact-hits",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stone Skeleton",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stone-skeleton",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Thunderous Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/thunderous-charge",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ogre Kingdoms",
+      "sourceEntryId": "3JD4LIC7fWtUyvk0HdGlnp",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 7,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:ogre-kingdoms",
+      "name": "Ogre Kingdoms",
+      "sourceUrl": "https://tow.whfb.app/army/ogre-kingdoms",
+      "status": "source-listed"
+    }
+  ]
+}

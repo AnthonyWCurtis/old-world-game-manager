@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:varghulf",
+  "name": "Varghulf",
+  "nameSingular": "Varghulf",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/varghulf",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "6ZyfhSiezr4pC13CuLp7Ax",
+    "sourceUpdatedAt": "2024-02-29T19:06:29.839Z",
+    "sourceRevision": 1,
+    "publishedVersion": 16,
+    "displayedUpdatedAt": "Last update: 2024 February 29",
+    "publicationCitation": "Vampire Counts, p. 22",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "77530990e199da5d1e51486a8985ded8969039a7354cb1689fcfdd862ed3da4d"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Monstrous Creature"
+    ],
+    "baseSize": "50 x 50 mm",
+    "baseSizeMm": {
+      "width": 50,
+      "depth": 50
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 140,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "140 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Varghulf",
+      "characteristics": {
+        "M": 8,
+        "WS": 5,
+        "BS": 0,
+        "S": 5,
+        "T": 5,
+        "W": 4,
+        "I": 4,
+        "A": 4,
+        "Ld": 4
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "light armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/light-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Bestial Fury",
+      "sourceUrl": "https://tow.whfb.app/special-rules/bestial-fury",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Counter Charge",
+      "sourceUrl": "https://tow.whfb.app/special-rules/counter-charge",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Dark Vitality",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dark-vitality",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Flammable",
+      "sourceUrl": "https://tow.whfb.app/special-rules/flammable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Frenzy",
+      "sourceUrl": "https://tow.whfb.app/special-rules/frenzy",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (1)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Necromantic Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/necromantic-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Regeneration (5+)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/regeneration",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Vampire Counts",
+      "sourceEntryId": "BMGv7b2M2th9fQuRELDTE",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 22,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:vampire-counts",
+      "name": "Vampire Counts",
+      "sourceUrl": "https://tow.whfb.app/army/vampire-counts",
+      "status": "source-listed"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:field-trebuchet",
+  "name": "Field Trebuchet",
+  "nameSingular": "Field Trebuchet",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/field-trebuchet",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "wNWMsSP0VNWNGUwMTOU8l",
+    "sourceUpdatedAt": "2024-02-23T16:41:35.912Z",
+    "sourceRevision": 1,
+    "publishedVersion": 19,
+    "displayedUpdatedAt": "Last update: 2024 February 23",
+    "publicationCitation": "Forces of Fantasy, p. 101",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "dc82df5681a6fa17407e8579cf12835452e51c83457cd6a2715d34d3bc174bac"
+  },
+  "classification": {
+    "unitCategory": [
+      "War Machine"
+    ],
+    "troopType": [
+      "War Machine"
+    ],
+    "baseSize": "60 x 100 mm (war machine), 25 x 25 mm (crew)",
+    "baseSizeMm": null,
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 100,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "100 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Field Trebuchet",
+      "characteristics": {
+        "M": "-",
+        "WS": "-",
+        "BS": "-",
+        "S": "-",
+        "T": 7,
+        "W": 3,
+        "I": "-",
+        "A": "-",
+        "Ld": "-"
+      }
+    },
+    {
+      "name": "Peasant Crew",
+      "characteristics": {
+        "M": 4,
+        "WS": 2,
+        "BS": 2,
+        "S": 3,
+        "T": 3,
+        "W": 4,
+        "I": 3,
+        "A": 4,
+        "Ld": 6
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Field trebuchet",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/field-trebuchet",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "hand weapons",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Levies",
+      "sourceUrl": "https://tow.whfb.app/special-rules/levies",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Peasantry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/peasantry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Skirmishers",
+      "sourceUrl": "https://tow.whfb.app/unusual-formations/skirmish-formation",
+      "kind": "unusual-formations"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Forces of Fantasy",
+      "sourceEntryId": "Pr1j2CwFi8QxERaKAHUNd",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Kingdom of Bretonnia",
+      "sourceEntryId": "3yCDMYNiN3Fm3SLyCxvVWc",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 101,
+  "unmappedSourceFields": {},
+  "extractionWarnings": [],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:kingdom-of-bretonnia",
+      "name": "Kingdom of Bretonnia",
+      "sourceUrl": "https://tow.whfb.app/army/kingdom-of-bretonnia",
+      "status": "source-listed"
+    }
+  ]
+}

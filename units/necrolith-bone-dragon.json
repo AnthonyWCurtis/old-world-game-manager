@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:necrolith-bone-dragon",
+  "name": "Necrolith Bone Dragon",
+  "nameSingular": "Necrolith Bone Dragon",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/necrolith-bone-dragon",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "586eRjPMvwMA4vZMPwrX9m",
+    "sourceUpdatedAt": "2024-02-24T03:47:59.053Z",
+    "sourceRevision": 5,
+    "publishedVersion": 36,
+    "displayedUpdatedAt": "Last update: 2024 February 24",
+    "publicationCitation": "Ravening Hordes, p. 142",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "913be4f67f56a2097198f3a59615d0c7b38f54a5e07625ec006393c9a2fc380c"
+  },
+  "classification": {
+    "unitCategory": [
+      "Monster"
+    ],
+    "troopType": [
+      "Behemoth"
+    ],
+    "baseSize": "100 x 150 mm",
+    "baseSizeMm": {
+      "width": 100,
+      "depth": 150
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 195,
+    "basis": "additional_cost",
+    "isAdditive": true,
+    "sourceText": "+195 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Necrolith Bone Dragon",
+      "characteristics": {
+        "M": 6,
+        "WS": 4,
+        "BS": "-",
+        "S": 6,
+        "T": "(+1)",
+        "W": "(+5)",
+        "I": 2,
+        "A": 5,
+        "Ld": "-"
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Wicked claws",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/wicked-claws",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "breath of desiccation",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/breath-of-desiccation",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "full plate armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/full-plate-armour",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Close Order",
+      "sourceUrl": "https://tow.whfb.app/special-rules/close-order",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Cloud of Dust",
+      "sourceUrl": "https://tow.whfb.app/special-rules/cloud-of-dust",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Dry as Dust",
+      "sourceUrl": "https://tow.whfb.app/special-rules/dry-as-dust",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Fly (9)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/fly",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Indomitable (2)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/indomitable",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Large Target",
+      "sourceUrl": "https://tow.whfb.app/special-rules/large-target",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Nehekharan Undead",
+      "sourceUrl": "https://tow.whfb.app/special-rules/nehekharan-undead",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Stomp Attacks (D6)",
+      "sourceUrl": "https://tow.whfb.app/special-rules/stomp-attacks",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Swiftstride",
+      "sourceUrl": "https://tow.whfb.app/special-rules/swiftstride",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Terror",
+      "sourceUrl": "https://tow.whfb.app/special-rules/terror",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Ravening Hordes",
+      "sourceEntryId": "2skMZWimCQDm3r8l8e1HJQ",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "Tomb Kings of Khemri",
+      "sourceEntryId": "1VEJS7r1hKy6agmdBE61Pa",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 142,
+  "unmappedSourceFields": {
+    "costOverride": {
+      "kind": "str",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: costOverride, bodyBefore"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:tomb-kings-of-khemri",
+      "name": "Tomb Kings of Khemri",
+      "sourceUrl": "https://tow.whfb.app/army/tomb-kings-of-khemri",
+      "status": "source-listed"
+    }
+  ]
+}

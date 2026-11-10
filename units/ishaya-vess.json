@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.1.0",
+  "recordType": "unit-source-extract",
+  "id": "unit:ishaya-vess",
+  "name": "Ishaya Vess",
+  "nameSingular": "Ishaya Vess",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/unit/ishaya-vess",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3MwNPBSs3GKChUzFmPXEfT",
+    "sourceUpdatedAt": "2025-03-07T13:26:01.293Z",
+    "sourceRevision": 1,
+    "publishedVersion": 26,
+    "displayedUpdatedAt": "Last update: 2025 March 07",
+    "publicationCitation": "Arcane Journal: High Elf Realms, p. 37",
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "62562784a17477637cc424ca43e5572e9502485f43e83aa658567c0de4e9882d"
+  },
+  "classification": {
+    "unitCategory": [
+      "Named Character"
+    ],
+    "troopType": [
+      "Named Character",
+      "Regular Infantry"
+    ],
+    "baseSize": "25 x 25 mm",
+    "baseSizeMm": {
+      "width": 25,
+      "depth": 25
+    },
+    "unitSize": "1"
+  },
+  "basePoints": {
+    "amount": 170,
+    "basis": "per_unit",
+    "isAdditive": false,
+    "sourceText": "170 points"
+  },
+  "modelProfiles": [
+    {
+      "name": "Ishaya Vess",
+      "characteristics": {
+        "M": 5,
+        "WS": 7,
+        "BS": 7,
+        "S": 4,
+        "T": 3,
+        "W": 3,
+        "I": 7,
+        "A": 3,
+        "Ld": 9
+      }
+    }
+  ],
+  "startingEquipment": [
+    {
+      "name": "Hand weapon",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/hand-weapon",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "heavy armour",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/heavy-armour",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "shield",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/shield",
+      "kind": "weapons-of-war"
+    },
+    {
+      "name": "Mathlann's Ire",
+      "sourceUrl": "https://tow.whfb.app/magic-item/mathlanns-ire",
+      "kind": "magic-item"
+    },
+    {
+      "name": "warbow",
+      "sourceUrl": "https://tow.whfb.app/weapons-of-war/warbow",
+      "kind": "weapons-of-war"
+    }
+  ],
+  "startingRules": [
+    {
+      "name": "Commanding Voice",
+      "sourceUrl": "https://tow.whfb.app/special-rules/commanding-voice",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Ithilmar Weapons",
+      "sourceUrl": "https://tow.whfb.app/special-rules/ithilmar-weapons",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Naval Discipline",
+      "sourceUrl": "https://tow.whfb.app/special-rules/naval-discipline",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Rallying Cry",
+      "sourceUrl": "https://tow.whfb.app/special-rules/rallying-cry",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Strike First",
+      "sourceUrl": "https://tow.whfb.app/special-rules/strike-first",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Precision Strikes",
+      "sourceUrl": "https://tow.whfb.app/special-rules/precision-strikes",
+      "kind": "special-rules"
+    },
+    {
+      "name": "Valour of Ages",
+      "sourceUrl": "https://tow.whfb.app/special-rules/valour-of-ages",
+      "kind": "special-rules"
+    }
+  ],
+  "optionalRules": [],
+  "upgradeGroups": [],
+  "sourceAssociations": [
+    {
+      "name": "Arcane Journal: High Elf Realms",
+      "sourceEntryId": "73GE8yQGVszrewP5aLYLDf",
+      "sourceEntryType": "association"
+    },
+    {
+      "name": "High Elf Realms",
+      "sourceEntryId": "ORvp2CwYP0XpAFTuEfUNq",
+      "sourceEntryType": "association"
+    }
+  ],
+  "sourceArmyLists": [],
+  "sourceBookPage": 37,
+  "unmappedSourceFields": {
+    "magicItem": {
+      "kind": "list",
+      "hasContent": true
+    },
+    "bodyBefore": {
+      "kind": "dict",
+      "hasContent": true
+    },
+    "title": {
+      "kind": "str",
+      "hasContent": true
+    }
+  },
+  "extractionWarnings": [
+    "Unmapped source fields present: magicItem, bodyBefore, title"
+  ],
+  "legalityVerified": false,
+  "engineImplemented": false,
+  "listedInArmies": [
+    {
+      "armyId": "army:high-elf-realms",
+      "name": "High Elf Realms",
+      "sourceUrl": "https://tow.whfb.app/army/high-elf-realms",
+      "status": "source-listed"
+    }
+  ]
+}

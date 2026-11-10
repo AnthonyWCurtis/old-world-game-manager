@@ -1,0 +1,151 @@
+{
+  "id": "army:skaven",
+  "name": "Skaven",
+  "source": {
+    "sourceUrl": "https://tow.whfb.app/army/skaven",
+    "checkedAt": "2026-11-10T06:01:10+00:00",
+    "entryId": "3Q8T4uoOa6u7LvOOKDjKFa",
+    "sourceUpdatedAt": "2024-09-26T12:55:41.605Z",
+    "sourceRevision": 9,
+    "publishedVersion": 22,
+    "displayedUpdatedAt": null,
+    "publicationCitation": null,
+    "verificationStatus": "source-extracted",
+    "sourceVersion": null,
+    "method": "public HTML embedded structured pageProps; verified link location and DOM option hierarchy",
+    "htmlSha256": "262f53343b909fd641b7265c491e8c62e188fb559b5650c0a4c54a8d99e046af"
+  },
+  "listedUnits": [
+    {
+      "unitId": "unit:grey-seer",
+      "name": "Grey Seer",
+      "sourceUrl": "https://tow.whfb.app/unit/grey-seer"
+    },
+    {
+      "unitId": "unit:master-assassin",
+      "name": "Master Assassin",
+      "sourceUrl": "https://tow.whfb.app/unit/master-assassin"
+    },
+    {
+      "unitId": "unit:plague-priest",
+      "name": "Plague Priest",
+      "sourceUrl": "https://tow.whfb.app/unit/plague-priest"
+    },
+    {
+      "unitId": "unit:skaven-chieftain",
+      "name": "Skaven Chieftain",
+      "sourceUrl": "https://tow.whfb.app/unit/skaven-chieftain"
+    },
+    {
+      "unitId": "unit:skaven-warlord",
+      "name": "Skaven Warlord",
+      "sourceUrl": "https://tow.whfb.app/unit/skaven-warlord"
+    },
+    {
+      "unitId": "unit:warlock-engineer",
+      "name": "Warlock Engineer",
+      "sourceUrl": "https://tow.whfb.app/unit/warlock-engineer"
+    },
+    {
+      "unitId": "unit:clanrats",
+      "name": "Clanrats",
+      "sourceUrl": "https://tow.whfb.app/unit/clanrats"
+    },
+    {
+      "unitId": "unit:gutter-runners",
+      "name": "Gutter Runners",
+      "sourceUrl": "https://tow.whfb.app/unit/gutter-runners"
+    },
+    {
+      "unitId": "unit:master-moulder",
+      "name": "Master Moulder",
+      "sourceUrl": "https://tow.whfb.app/unit/master-moulder"
+    },
+    {
+      "unitId": "unit:night-runners",
+      "name": "Night Runners",
+      "sourceUrl": "https://tow.whfb.app/unit/night-runners"
+    },
+    {
+      "unitId": "unit:packmaster",
+      "name": "Packmaster",
+      "sourceUrl": "https://tow.whfb.app/unit/packmaster"
+    },
+    {
+      "unitId": "unit:plague-censer-bearers",
+      "name": "Plague Censer Bearers",
+      "sourceUrl": "https://tow.whfb.app/unit/plague-censer-bearers"
+    },
+    {
+      "unitId": "unit:plague-monks",
+      "name": "Plague Monks",
+      "sourceUrl": "https://tow.whfb.app/unit/plague-monks"
+    },
+    {
+      "unitId": "unit:poisoned-wind-globadiers",
+      "name": "Poisoned Wind Globadiers",
+      "sourceUrl": "https://tow.whfb.app/unit/poisoned-wind-globadiers"
+    },
+    {
+      "unitId": "unit:rat-ogres",
+      "name": "Rat Ogres",
+      "sourceUrl": "https://tow.whfb.app/unit/rat-ogres"
+    },
+    {
+      "unitId": "unit:rat-swarms",
+      "name": "Rat Swarms",
+      "sourceUrl": "https://tow.whfb.app/unit/rat-swarms"
+    },
+    {
+      "unitId": "unit:stormvermin",
+      "name": "Stormvermin",
+      "sourceUrl": "https://tow.whfb.app/unit/stormvermin"
+    },
+    {
+      "unitId": "unit:warplock-jezzails",
+      "name": "Warplock Jezzails",
+      "sourceUrl": "https://tow.whfb.app/unit/warplock-jezzails"
+    },
+    {
+      "unitId": "unit:weapon-team",
+      "name": "Weapon Team",
+      "sourceUrl": "https://tow.whfb.app/unit/weapon-team"
+    },
+    {
+      "unitId": "unit:giant-rats",
+      "name": "Giant Rats",
+      "sourceUrl": "https://tow.whfb.app/unit/giant-rats"
+    },
+    {
+      "unitId": "unit:doomwheel",
+      "name": "Doomwheel",
+      "sourceUrl": "https://tow.whfb.app/unit/doomwheel"
+    },
+    {
+      "unitId": "unit:plague-furnace",
+      "name": "Plague Furnace",
+      "sourceUrl": "https://tow.whfb.app/unit/plague-furnace"
+    },
+    {
+      "unitId": "unit:screaming-bell",
+      "name": "Screaming Bell",
+      "sourceUrl": "https://tow.whfb.app/unit/screaming-bell"
+    },
+    {
+      "unitId": "unit:hell-pit-abomination",
+      "name": "Hell Pit Abomination",
+      "sourceUrl": "https://tow.whfb.app/unit/hell-pit-abomination"
+    },
+    {
+      "unitId": "unit:plagueclaw-catapult",
+      "name": "Plagueclaw Catapult",
+      "sourceUrl": "https://tow.whfb.app/unit/plagueclaw-catapult"
+    },
+    {
+      "unitId": "unit:warp-lightning-cannon",
+      "name": "Warp Lightning Cannon",
+      "sourceUrl": "https://tow.whfb.app/unit/warp-lightning-cannon"
+    }
+  ],
+  "verificationStatus": "source-extracted"
+}
