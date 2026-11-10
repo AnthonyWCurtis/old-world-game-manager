@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.3.3</title>
+<title>Old World Game Manager · Browser Edition v0.4.0</title>
 <link rel="stylesheet" href="./styles.css?v=0.3.3">
 <script type="module" src="./app.js?v=0.3.3"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.3.3</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.4.0</span></div></header>
 <main class="wrap">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines, model groups and quoted unit nicknames. Nothing is checked for army legality.</p>
@@ -37,7 +37,7 @@
    <button id="saveBtn" disabled>Save on this device</button>
    <button id="jsonBtn" disabled>Export JSON</button>
   </div>
-  <p class="muted small" id="help">Your pasted army never leaves this browser. Reference matching uses a deliberately limited starter catalogue; it is not a complete verified rules database. Unmatched does not mean invalid.</p>
+  <p class="muted small" id="help">Your pasted army never leaves this browser. Source-backed unit profiles are loaded from versioned local snapshots when available. The catalogue and source links do not validate rules or army legality. Unmatched does not mean invalid.</p>
   <div id="error" class="error" hidden role="alert"></div>
  </section>
  <section class="result" id="result" hidden>
@@ -71,11 +71,12 @@
   <section class="panel source-panel" aria-label="Live rules source status">
    <div class="line"><h2>Live source references</h2><button id="sourceRefreshBtn" type="button" class="smallbtn">Check for updates now</button></div>
    <p class="muted small">Loads cached source links immediately, then checks the four public indexes for armies, rules, magic and magic items when the cache is older than 15 minutes. Relevant pages are checked hourly in small batches. Use Check for updates now to force a check. Imported points, equipment and selections are never overwritten; detected changes do not automatically modify rules.</p>
-   <p id="sourceStatus" class="source-status" role="status" aria-live="polite">Import or open an army to check the source.</p>
+   <p id="unitDataStatus" class="source-status" role="status" aria-live="polite">Import or open an army to load 581 versioned unit references from the local database.</p>
+    <p id="sourceStatus" class="source-status" role="status" aria-live="polite">Import or open an army to check the source.</p>
   </section>
   <section class="panel">
    <div class="line"><h2>Army roster</h2><span class="muted small">Original list order</span></div>
-   <p class="muted small">Units appear in the order they were exported, with their equipment and upgrades displayed beneath each entry. Repeated units stay separate.</p>
+   <p class="muted small">Units appear in source order, with imported selections left unchanged. Expand View unit source data to inspect profiles, equipment, special rules and published upgrade choices. Repeated units stay separate.</p>
    <div id="roster"></div>
   </section>
   <details class="panel technical">
