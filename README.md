@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.5.0** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.5.1** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -29,6 +29,17 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder. Footerless regular text with a sectioned, hyphen-bullet structure uses the compatible parser without claiming a confirmed builder.
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+
+## v0.5.1 — Night Goblin wizard and Full Command source references
+
+The Cali cup 2,000-point Orc & Goblin Tribes v0.4.5 debug reported one unmatched `Level 4 Wizard` selection for a Night Goblin Oddnob and four unmatched `Full Command` selections for distinct Night Goblin Mob instances.
+
+- `Level 4 Wizard` now matches the published `Be a Level 4 Wizard (+30 points)` option on the [Oddnob](https://tow.whfb.app/unit/night-goblin-oddnob) parent record, alongside the pre-existing `May be a Level …` handling.
+- `Full Command` now matches only when the parent unit's published options unambiguously document a champion (whose model profile is also present), standard bearer and musician. For [Night Goblin Mob](https://tow.whfb.app/unit/night-goblin-mob), these are Boss +7, standard bearer +5 and musician +5 points per unit, retained as source evidence **without independently recalculating the roster**.
+- The original imported selection remains one `Full Command` entry. The matcher does not insert extra rows, double-charge points, change the imported roster's reported points or claim army legality. Missing or ambiguous evidence stays unmatched.
+- Tests use real source-backed unit JSON with a **synthetic five-occurrence reproduction**; they do not fabricate the unprovided full 16-unit list. They cover repeated units, wrong URLs, missing command options, idempotency and preservation of imported values.
+
+A matched reference identifies a source-page option, **not** an independently verified army configuration or price.
 
 ## v0.5.0 — Dedicated Army Roster screen
 
