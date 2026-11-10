@@ -7,6 +7,7 @@ on:
       - 'docs/unit-data/**'
       - 'docs/unit-data.js'
       - 'docs/unit-detail-ui.js'
+      - 'docs/army-roster-page.js'
       - 'docs/unit-selection-matcher.js'
       - 'docs/selection-information.js'
       - 'scripts/build-browser-unit-data.mjs'
@@ -32,6 +33,7 @@ on:
       - 'docs/unit-data/**'
       - 'docs/unit-data.js'
       - 'docs/unit-detail-ui.js'
+      - 'docs/army-roster-page.js'
       - 'docs/unit-selection-matcher.js'
       - 'docs/selection-information.js'
       - 'scripts/build-browser-unit-data.mjs'
@@ -60,4 +62,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check scripts/build-rules-reference-index.mjs && node --check scripts/build-magic-reference-index.mjs && node --check scripts/build-magic-items-reference-index.mjs && node --check scripts/build-armies-reference-index.mjs && node --check scripts/build-browser-unit-data.mjs && node --check docs/unit-data.js && node --check docs/unit-detail-ui.js && node --check docs/selection-information.js && node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs
+      - run: node --check scripts/build-rules-reference-index.mjs && node --check scripts/build-magic-reference-index.mjs && node --check scripts/build-magic-items-reference-index.mjs && node --check scripts/build-armies-reference-index.mjs && node --check scripts/build-browser-unit-data.mjs && node --check docs/unit-data.js && node --check docs/unit-detail-ui.js && node --check docs/army-roster-page.js && node --check docs/selection-information.js && node --check docs/app.js && node --check docs/live-source.js && node --check docs/report-submission.js && node --check docs/report-ui.js && node --check worker/unmatched-report-worker.mjs && node --check scripts/aggregate-unmatched.mjs && node --test tests/*.test.mjs
