@@ -209,7 +209,8 @@ try{
  await page.locator('#armyRosterPage').waitFor({state:'visible',timeout:10000});
  assert.equal(await page.locator('#importPage').isHidden(),true);
  assert.match(page.url(),/#army-roster$/);
- assert.match(await page.locator('#armyRosterHeading').innerText(),/Lothern Sea Guard/i);
+ assert.equal(await page.locator('#armyRosterHeading').innerText(),'Test');
+ assert.match(await page.locator('#armyRosterList .army-unit-card').first().innerText(),/Lothern Sea Guard/);
  const armyMetrics=await page.locator('#armyRosterSummary').innerText();
  assert.match(armyMetrics,/387 pts/);
  assert.match(armyMetrics,/1\s*Unit entries/);
