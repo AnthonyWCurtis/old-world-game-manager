@@ -34,7 +34,16 @@ try{
  await page.waitForURL(/\/army-roster\.html/);
  await page.locator('.unit-card').first().waitFor();
  await page.waitForFunction(()=>document.querySelector('#sourceProfiles')?.textContent==='2',
-   null,{timeout:30000});
+   null,{timeout:12000}).catch(async error=>{
+    const report=await page.evaluate(()=>({
+     status:document.querySelector('#rosterStatus')?.textContent,
+     profiles:document.querySelector('#sourceProfiles')?.textContent,
+     cards:document.querySelectorAll('.unit-card').length,
+     pageText:document.body?.innerText?.slice(0,1200)
+    }));
+    throw Error('New roster profiles failed to load: '+JSON.stringify(report)+
+     ' · Browser errors: '+errors.join('; ')+' · '+error.message);
+   });
  assert.equal(await page.locator('#totalUnits').innerText(),'1');
  assert.equal(await page.locator('#knownModels').innerText(),'33');
  assert.equal(await page.locator('#totalPoints').innerText(),'387');
