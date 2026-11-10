@@ -156,9 +156,47 @@ try{
  }else{
   assert.match(await ulthuanButton.textContent(),/No unmatched references/);
  }
+ // New Recruit points-first format with medium-confidence detection:
+ // Rangers Ol Deadeye and Irondrakes Standard Runes are reference-linked
+ // from the exact parent options, with 13 instances and 2,500 points intact.
+ const dwarfs=readFileSync(new URL(
+  '../tests/fixtures/new-recruit-dwarf-unmatched-2500.txt',import.meta.url),'utf8');
+ await page.locator('#sourceText').fill(dwarfs);
+ await page.locator('#parseBtn').click();
+ await page.waitForFunction(()=>{
+  const items=[...document.querySelectorAll('#units .selection')];
+  return [
+   ['Ol Deadeye','https://tow.whfb.app/unit/rangers'],
+   ['Standard Runes','https://tow.whfb.app/magic-items/standard-runes']
+  ].every(([name,url])=>{
+   const entry=items.find(n=>n.querySelector('.selection-name')?.textContent===name);
+   return entry?.querySelector('.tag')?.textContent?.includes('Matched') &&
+    entry.querySelector('a')?.href===url;
+  });
+ },null,{timeout:30000});
+ assert.match(await page.locator('#armyMeta').innerText(),/2,500/);
+ const refs=await page.locator('#units .selection').evaluateAll(nodes=>
+  nodes.filter(n=>['Ol Deadeye','Standard Runes'].includes(n.querySelector('.selection-name')?.textContent))
+   .map(n=>({name:n.querySelector('.selection-name')?.textContent,
+    status:n.querySelector('.tag')?.textContent,url:n.querySelector('a')?.href})));
+ assert.equal(refs.length,2);
+ assert.ok(refs.every(r=>r.status.includes('Matched')));
+ assert.deepEqual(refs.map(r=>r.url),[
+  'https://tow.whfb.app/unit/rangers',
+  'https://tow.whfb.app/magic-items/standard-runes'
+ ]);
+ const dwarfUnmatchedBtn=page.locator('#copyUnmatchedBtn');
+ if(await dwarfUnmatchedBtn.isEnabled()){
+  await dwarfUnmatchedBtn.click();
+  const report=await page.locator('#unmatchedDebugFallback').inputValue();
+  assert.ok(!report.includes('SELECTION: Ol Deadeye'));
+  assert.ok(!report.includes('SELECTION: Standard Runes'));
+ }else{
+  assert.match(await dwarfUnmatchedBtn.textContent(),/No unmatched references/);
+ }
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf, Mage and Shadow Walker source-backed references.');
+ console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf, Mage, Shadow Walker and New Recruit Dwarf references.');
 }finally{await browser.close();}
