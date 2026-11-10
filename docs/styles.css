@@ -126,3 +126,18 @@
 
 /* Informational fields are source-list descriptors, not linked rules. */
 .tag.info{background:#e8edf2;color:#405769;border:1px solid #c8d4df}
+
+/* v0.4.7: Prominent navigation from import diagnostics into the battle roster. */
+.roster-launch{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(115deg,#213a52,#152a3e);border:1px solid #304d65;border-radius:13px;padding:17px;margin:17px 0 21px;color:#fff}
+.roster-launch-copy{display:flex;flex-direction:column;gap:3px;flex:1;min-width:200px}
+.roster-launch-copy strong{font-size:17px;letter-spacing:-.01em}
+.roster-launch-copy span{font-size:12px;max-width:440px;color:#d0dee6}
+.roster-view-btn{display:inline-flex;justify-content:center;align-items:center;gap:18px;min-height:52px;border:1px solid #ecd4a4;border-radius:10px;background:#caa567;color:#182a3e;padding:11px 19px;font-size:15px;font-weight:850;cursor:pointer;box-shadow:0 3px 0 #7f6236}
+.roster-view-btn:hover{background:#e0bb7e;transform:translateY(-1px)}
+.roster-view-btn:active{transform:translateY(1px);box-shadow:0 1px 0 #7f6236}
+.roster-view-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:600px){
+ .roster-launch{margin:14px 0;padding:15px;align-items:stretch}
+ .roster-launch-copy{min-width:0}
+ .roster-view-btn{width:100%;justify-content:space-between;min-height:54px}
+}
