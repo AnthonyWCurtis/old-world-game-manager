@@ -1,9 +1,9 @@
 # Game Manager v1 — Fresh Foundation & Game Screen (Design)
 
 **Date:** 10 November 2026  
-**Status:** Proposed — awaiting explicit user approval before application code changes  
+**Status:** Approved direction — user selected Option A and authorised v1 to replace the live site after verification  
 **Repository:** `AnthonyWCurtis/old-world-game-manager`  
-**Chosen approach:** Option A — fresh v1 development on a new branch inside the existing repository, retaining verified components and preserving the released v0.5 site.
+**Chosen approach:** Option A — fresh v1 development on a new branch inside the existing repository, retaining verified components and making a recoverable v0.5 snapshot before publishing tested v1 milestones to the existing live site.
 
 ## 1. Intent
 
@@ -17,7 +17,7 @@ This document describes the full direction, but **only Stages 1 and 2 are the fi
 
 ## 2. Decisions already agreed
 
-- Develop **inside the current GitHub repository**, on an isolated v1 branch. Do not overwrite the live GitHub Pages v0.5 build during development.
+- Develop **inside the current GitHub repository**, on an isolated v1 branch. The existing live GitHub Pages URL may be updated with tested v1 milestones; the v0.5 state has been preserved in branch `archive/v0.5.0-pre-v1`.
 - Reuse tested parser/exporter support and reliable existing source data instead of rewriting everything.
 - Continue supporting **15 named layouts across four exporters**: Old World Builder, Ingude, New Recruit, Old World Rankings / Battle Builder.
 - Import immediately and preserve pasted army content even when offline or reference data is unavailable.
@@ -84,7 +84,7 @@ The deployed app is currently static HTML/CSS/JavaScript ES modules under `docs/
 
 Re-use `docs/parser.js` and its tests, `docs/unit-data.js`, the reference datasets, and the existing `docs/army-roster-page.js` as a **starting point**, not a constraint on the new interface. Keep the source-data branch (`data/all-armies-units-json-v1.1`) intact.
 
-Prefer a v1 branch built from `main`. Integrate outstanding documentation PR #20 and matching PR #19 deliberately rather than assuming they are already merged. Protect the released Pages directory from publishing v1 until tested and approved. Do not bump visible production version based solely on a design document.
+Prefer a v1 branch built from `main`. Integrate outstanding documentation PR #20 and matching PR #19 deliberately rather than assuming they are already merged. Maintain v1 work on a development branch until the milestone passes tests. The user has authorised promotion to the existing public GitHub Pages URL; no parallel old site is required. Do not bump visible production version based solely on a design document.
 
 ### 4.3 Data mapping and enrichment
 
@@ -138,7 +138,7 @@ Source labels and badges should describe evidence and uncertainty accurately, no
 - **Rendering:** verify every unit/character appears once with all imported selection rows; published base characteristics never masquerade as selected upgrades or calculated values.
 - **Mobile:** browser smoke tests at narrow widths, portrait/landscape; focus/accessibility and no page-level horizontal scrolling; test iOS Safari for critical offline/persistence paths where available.
 - **Offline:** test cached app loading and saved-army opening without network, empty-source-cache behaviour and failed updates without data loss.
-- **Regression:** the released v0.5 experience remains available. Promote v1 to GitHub Pages only after all relevant tests pass and the player approves the milestone.
+- **Regression:** the v0.5 release remains recoverable from `archive/v0.5.0-pre-v1`. Promote verified Stage 1–2 changes to the existing GitHub Pages URL; the user has already authorised replacement rather than maintaining the old public site.
 
 ## 8. Decisions left to implementation planning
 
@@ -150,7 +150,7 @@ Source labels and badges should describe evidence and uncertainty accurately, no
 
 ## 9. Approval gate and first build
 
-**No application implementation is authorised by this design file alone.** After the user reviews and explicitly approves it:
+**User direction:** begin Option A and allow tested v1 to replace the old live site. The following implementation process remains required:
 
 1. Invoke the Superpowers **writing-plans** skill to produce an actionable, tested implementation plan.
 2. Begin the **Stage 1 importer/data foundation** changes on `feat/v1-game-manager-foundation`.
