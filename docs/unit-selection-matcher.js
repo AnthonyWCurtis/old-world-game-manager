@@ -5,6 +5,7 @@
  *
  * Original selections, quantities and point values are NEVER changed.
  */
+import {isInformationalSelection,recountReferenceStats} from './selection-information.js?v=0.4.2';
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const clean=s=>String(s||'').normalize('NFKC').toLowerCase()
   .replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
@@ -74,39 +75,6 @@ function directCommand(record,selection){
  });
  return matched.length===1?matched[0]:null;
 }
-function containsMountSelection(unit,record,selection){
- const mountUrls=new Set();
- const mountNames=new Set();
- for(const g of record.upgradeGroups||[]){
-  for(const opt of g.options||[]){
-   for(const ref of opt.linkedReferences||[]){
-    if(ref.kind==='unit'&&safeRef(ref)){
-     mountUrls.add(ref.sourceUrl);
-     mountNames.add(normalized(ref.name));
-    }
-   }
-   // Direct mount options also have ordinary text, e.g. "Elven Steed (+14 points)".
-   if(/may be mounted/i.test(g.eligibilityClause||'')){
-    const title=String(opt.description||'').replace(/\s*\(\+\d+ points?\)\s*$/i,'');
-    mountNames.add(normalized(title));
-   }
-  }
- }
- return selectionsOf(unit).some(other=>{
-  if(other===selection||normalized(other.name)==='on foot')return false;
-  return mountUrls.has(other.reference?.url) ||
-    mountNames.has(normalized(other.name)) ||
-    other.kind==='mount-or-component';
- });
-}
-function onFootEvidence(unit,record,selection){
- if(normalized(selection.name)!=='on foot'||selection.kind!=='mount-state')return false;
- const types=record.classification?.troopType||[];
- if(!types.includes('Regular Infantry')||!types.includes('Character'))return false;
- if(!(record.upgradeGroups||[]).some(g=>/^May be mounted:\s*$/i.test(g.eligibilityClause||'')))
-  return false;
- return !containsMountSelection(unit,record,selection);
-}
 function wizardEvidence(record,selection){
  const fact=SOURCE_VERIFIED_WIZARDS[record.id];
  if(!fact||fact.sourceUrl!==record.source.sourceUrl)return null;
@@ -129,6 +97,7 @@ function wizardEvidence(record,selection){
  return null;
 }
 function referenceForSelection(unit,record,selection){
+ if(isInformationalSelection(selection))return null;
  const url=validParent(record);
  if(!url || unit.reference?.url!==url)return null;
  const gear=findUniqueStartingEquipment(record,selection);
@@ -151,26 +120,12 @@ function referenceForSelection(unit,record,selection){
    name:selection.name,url,type:wizard.type,source:'unit-scoped-data',
    verificationStatus:'source-extracted',evidence:wizard.basis,note:wizard.note};
  }
- if(onFootEvidence(unit,record,selection)){
-  return {id:'unit-scoped:'+record.id+':default-unmounted',
-   name:selection.name,url,type:'mount-state',source:'unit-scoped-data',
-   verificationStatus:'source-extracted',
-   evidence:'unmounted-character-default',
-   note:'On foot is an unmounted default state, not an upgrade or separate item.'};
- }
  return null;
 }
 /** Exported to test exactly what was proven for an imported selection. */
 export const findSourceScopedSelectionReference=referenceForSelection;
 
-function recount(army){
- const units=army.units||[];
- const selections=units.flatMap(selectionsOf);
- army.stats.matchedUnits=units.filter(u=>u.matchStatus==='matched').length;
- army.stats.unmatchedUnits=units.length-army.stats.matchedUnits;
- army.stats.matchedSelections=selections.filter(s=>s.matchStatus==='matched').length;
- army.stats.unmatchedSelections=selections.length-army.stats.matchedSelections;
-}
+function recount(army){recountReferenceStats(army);}
 export function applySourceScopedSelectionReferences(army,records){
  if(!army?.units||!records)return {added:0};
  let added=0;
@@ -178,6 +133,10 @@ export function applySourceScopedSelectionReferences(army,records){
   const record=records[unit.id];
   if(!validParent(record)||record.source.sourceUrl!==unit.reference?.url)continue;
   for(const selection of selectionsOf(unit)){
+   if(isInformationalSelection(selection)){
+    selection.matchStatus='informational';selection.reference=null;
+    continue;
+   }
    // Reviewed references, manual mappings and model-profile evidence win.
    if(selection.reference&&
       !['live-index','unit-scoped-data'].includes(selection.reference.source))continue;
