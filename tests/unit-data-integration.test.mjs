@@ -167,3 +167,28 @@ test('Bundle builder rejects missing source unit pages or incomplete source cove
    failedPages:1},units:[],armies:[]};
  assert.throws(()=>buildUnitDataBundle(partial),/incomplete source/);
 });
+
+test('Browser wiring loads source data but retains original exported roster state',()=>{
+ const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
+ const app=readFileSync(new URL('../docs/app.js',import.meta.url),'utf8');
+ const css=readFileSync(new URL('../docs/styles.css',import.meta.url),'utf8');
+ assert.match(html,/Browser Edition v0\.4\.0/);
+ assert.match(html,/id="unitDataStatus"/);
+ assert.match(html,/app\.js\?v=0\.4\.0/);
+ assert.match(app,/loadUnitDataIndex\(\)/);
+ assert.match(app,/applyUnitDataReferences\(army,index\)/);
+ assert.match(app,/getUnitDetails\(army,index\)/);
+ assert.match(app,/renderUnitDataDetails\(detailedRecord\)/);
+ assert.match(app,/unitDataRecords=\{\}/);
+ assert.match(css,/\.unit-data-stat-scroll\{[^}]*overflow-x:auto/);
+ assert.match(css,/\.unit-data-summary\{[^}]*min-height:44px/);
+});
+test('Mismatched source commit in a downloaded shard is never displayed as verified data',async()=>{
+ const invalidIndex=structuredClone(index);
+ invalidIndex.source.commit='1111111111111111111111111111111111111111';
+ const army=makeArmy(['Lothern Sea Guard']);
+ const out=await getUnitDetails(army,invalidIndex,{fetcher:fetchFromFiles});
+ assert.equal(out.matched,0);
+ assert.equal(out.records.u1,undefined);
+ assert.ok(out.errors.some(x=>x.includes('Invalid unit data shard')));
+});
