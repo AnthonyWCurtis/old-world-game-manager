@@ -146,6 +146,11 @@ function validShard(shard,index,shardId){
 async function getShard(index,id,fetcher){
  const key='shard:'+index.source.commit+':'+id;
  const hit=await cacheGet(key);
+ // A version-pinned shard is immutable, so a valid local copy can be reused
+ // immediately on later imports, including after going offline.
+ if(hit){
+  try{return validShard(hit,index,id);}catch{/* Corrupt cache ignored. */}
+ }
  if(pending.has(key))return await pending.get(key);
  const task=(async()=>{
   try{
