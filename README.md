@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.3.3** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.4.0** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -11,8 +11,8 @@ A mobile-friendly, browser-based army-list importer for **Warhammer: The Old Wor
 1. Open the [Game Manager website](https://anthonywcurtis.github.io/old-world-game-manager/).
 2. Paste an exported army list into **Paste exported list**, or load one of the 24 supplied test examples.
 3. Check the detected builder and layout shown in green. An unrecognised format is shown in red; **Format not right? Choose manually** provides a manual override. A layout can be recognised without the builder's identity being confirmed.
-4. Select **Analyse import**. The roster and original order appear immediately. Live-source reference checks then run without replacing the imported selections or points.
-5. Expand **Reference matching and import details** to investigate individual unmatched references. Use **Unmatched only** to filter the details.
+4. Select **Analyse import**. The roster appears immediately; versioned source-backed unit profiles are loaded only for recognized units. Live-source checks do not replace imported selections or points.
+5. Expand **View unit source data** beneath a roster entry to inspect its characteristics, equipment, standard and optional rules, and available upgrades. **Reference matching and import details** shows unmatched selections.
 6. Use **Save on this device**, **Export JSON**, or **Backup all JSON** if you want to keep the results.
 
 When an entire previously rendered Game Manager page is accidentally pasted instead of a source list, the app warns against importing the duplicate content and can offer to recover one identifiable, clean export.
@@ -30,6 +30,20 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
 
+## v0.4 — Versioned source-backed unit details
+
+**Connected data:** [581 unit definitions](docs/unit-data/index.json), **960** model-characteristic rows and **2,435** source-extracted upgrade choices, assembled from all 19 army pages on [tow.whfb.app](https://tow.whfb.app/sitemap/armies).
+
+The data itself remains independent on [the data-only GitHub branch](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/data/all-armies-units-json-v1.1). The Game Manager embeds a **version-pinned**, build-validated reference snapshot of commit `c9f888b0e4d0cca941c117829644ae9a33966942`, split into **32 small JSON shards** in [docs/unit-data/shards](docs/unit-data/shards/). It downloads the small [unit index](docs/unit-data/index.json) when an army is imported, and requests only shards needed for the roster's units. Shards already visited are cached in IndexedDB for subsequent loads and offline reuse where browser storage persists. **Unvisited units are not guaranteed to work offline until their shards have been downloaded.**
+
+Unit identification uses an existing exact `https://tow.whfb.app/unit/…` reference first. When no source link exists, the importer matches only one **unique exact normalized unit name**; no fuzzy names, invented URLs or inferred faction eligibility. Manually reviewed references always remain authoritative. Unknown and ambiguous units stay unmatched.
+
+Each roster entry can expand **View unit source data** to show model profiles, base source cost wording, classification, unit size, starting equipment, standard/optional rules, published upgrade groups and the original page link. The original pasted list, selected upgrades, points and model groups are **never changed by this reference layer**. Duplicate unit instances remain independent.
+
+**Data-quality limits:** these are source-extracted reference facts rather than independently verified unit legality or effect implementations. The original snapshot contains **269 units with extraction review flags**, including complex composites. Published options are not assumed to be selected; optional rules are not automatically enabled; source page membership does not prove legality. The v0.4 browser does **not** automatically recost an army or verify equipment, spells, magic-item budgets or upgrades. See [source data coverage](https://github.com/AnthonyWCurtis/old-world-game-manager/blob/data/all-armies-units-json-v1.1/coverage-report.json).
+
+To rebuild the site's static unit data when the independent source snapshot is updated, update the pinned source commit in `scripts/build-browser-unit-data.mjs` and `.github/workflows/build-browser-unit-data.yml`, run its GitHub Action on a feature branch, and verify the full test suite before publishing.
+
 ## Rules sitemap reference collection (v0.4 groundwork)
 
 The public [rules sitemap](https://tow.whfb.app/sitemap/rules) is now indexed in the static [rules-reference dataset](docs/reference-records/rules-index.json), with [summary and category counts](docs/reference-records/rules-summary.json). The first retrieval on 9 November 2026 contained **1,833 unique URLs**, including **652 special-rules pages**, across 31 path categories and 32 section links. The [collection registry](docs/reference-records/collections.json) registers Rules alongside Magic and global Armies references.
@@ -40,7 +54,7 @@ This is a URL-and-title index only: `source-indexed` means the sitemap contained
 
 The public [Magic sitemap](https://tow.whfb.app/sitemap/magic) is now stored in [magic-index.json](docs/reference-records/magic-index.json) with a [compact summary](docs/reference-records/magic-summary.json). The 9 November 2026 snapshot contains **170 unique source links**: **29 magic lores, 139 spells and 2 guidance pages**. The [collection registry](docs/reference-records/collections.json) makes the Magic, Rules and global Armies collections separately discoverable.
 
-This is a **title-and-link index**, not a rules-text or spell-effects extractor. Spell costs, casting values, lore eligibility and active spell effects must be sourced and verified separately before gameplay calculations. The bounded weekly/manual source refresh retains the previous snapshot on incomplete results. The current v0.3.3 browser importer does not yet consume the new static magic index.
+This is a **title-and-link index**, not a rules-text or spell-effects extractor. Spell costs, casting values, lore eligibility and active spell effects must be sourced and verified separately before gameplay calculations. The bounded weekly/manual source refresh retains the previous snapshot on incomplete results. The v0.4 browser still does not use the static magic index to validate spell selection or spell effects.
 
 ## Global Armies sitemap references (v0.4 groundwork)
 
@@ -48,7 +62,7 @@ The public [Armies sitemap](https://tow.whfb.app/sitemap/armies) is now indexed 
 
 This global index captures **names, page types and actual source URLs only**. It does **not** assert that an indexed unit belongs to a certain army, can be purchased in a particular composition, or has legal points/options. All 45 High Elf unit URLs are included in this global index. The separate High Elf unit manifest, 45 detailed JSON records and their dedicated refresh workflow have been deleted. The global index retains names and URLs only, **not** their detailed statistics or upgrades. The snapshot refreshes through a weekly/manual GitHub Action.
 
-The browser importer remains v0.3.3 and is not yet connected to the new static reference collections. Subsequent matching work must use source evidence for parent-specific upgrades and preserve unmatched status when the global index lacks a unique match.
+The v0.4 browser uses the independently extracted unit snapshot described below. The global sitemap index remains a separate URL-and-title collection; its links do not prove an upgrade or army composition is legal.
 
 ## Magic Items & Abilities sitemap collection (v0.4 groundwork)
 
@@ -56,7 +70,7 @@ The public [Magic Items (and Abilities) sitemap](https://tow.whfb.app/sitemap/ma
 
 This is an index of **published names, source URLs and sections**, including faction item categories, runes, gifts, honours and abilities. It does not verify item point costs, item rules, upgrade permissions, army eligibility or legal configurations. Item names carrying a source asterisk are preserved and can be matched without that trailing marker. A limited GitHub Actions workflow refreshes the index weekly or on demand, checking for partial or unsafe source data.
 
-The v0.3.3 browser importer is unchanged; it does not yet use the newly generated static collections for its reference statuses.
+The v0.4 importer uses the versioned unit snapshot for unit references and display; it does not yet use the Magic Items sitemap index to verify a character's equipment or selections.
 
 ## Source references and caching
 
