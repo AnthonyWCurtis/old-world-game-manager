@@ -5,6 +5,10 @@ on:
       - feat/game-manager-v0-4-unit-data
     paths:
       - 'docs/app.js'
+      - 'docs/army-roster.html'
+      - 'docs/army-roster.js'
+      - 'docs/army-roster.css'
+      - 'docs/army-roster-snapshot.js'
       - 'docs/index.html'
       - 'docs/unit-data.js'
       - 'docs/unit-detail-ui.js'
@@ -15,6 +19,10 @@ on:
   pull_request:
     paths:
       - 'docs/app.js'
+      - 'docs/army-roster.html'
+      - 'docs/army-roster.js'
+      - 'docs/army-roster.css'
+      - 'docs/army-roster-snapshot.js'
       - 'docs/index.html'
       - 'docs/unit-data.js'
       - 'docs/unit-detail-ui.js'
