@@ -19,6 +19,11 @@ const normalized=s=>clean(s).replace(/\*+$/,'').trim();
  *
  * Archmage: https://tow.whfb.app/unit/archmage
  * Magic: "Archmage is a Level 3 Wizard"; optional "Be a Level 4 Wizard".
+ * Mage: https://tow.whfb.app/unit/mage
+ * Magic: "Mage is a Level 1 Wizard"; optional "Be a Level 2 Wizard +30 points".
+ *
+ * A wizard selection is reference-matched only to a page-verified parent,
+ * and upgraded levels additionally require the exact parent option text.
  */
 export const SOURCE_VERIFIED_WIZARDS=Object.freeze({
   'unit:archmage': Object.freeze({
@@ -28,6 +33,14 @@ export const SOURCE_VERIFIED_WIZARDS=Object.freeze({
     upgradeWizardLevels:[4],
     evidenceSection:'Magic',
     evidenceText:'Archmage is a Level 3 Wizard'
+  }),
+  'unit:mage': Object.freeze({
+    sourceUrl:'https://tow.whfb.app/unit/mage',
+    verifiedOn:'2026-11-10',
+    baseWizardLevel:1,
+    upgradeWizardLevels:[2],
+    evidenceSection:'Magic',
+    evidenceText:'Mage is a Level 1 Wizard'
   })
 });
 
@@ -131,10 +144,13 @@ function optionalWizardLevelOption(record,selection){
 function wizardEvidence(record,selection){
  const fact=SOURCE_VERIFIED_WIZARDS[record.id];
  if(!fact||fact.sourceUrl!==record.source.sourceUrl)return null;
- if(!record.modelProfiles.some(m=>normalized(m.name)==='archmage'))return null;
+ // A verified source page and its corresponding model profile are both
+ // required: a Wizard option on an unrelated unit must not gain a match.
+ if(!record.modelProfiles.some(m=>normalized(m.name)===normalized(record.name)))return null;
  const name=normalized(selection.name);
  if(name==='wizard')return {type:'wizard',basis:'source-page-magic-clause',
-   note:'The source page identifies this unit as a Level 3 Wizard; Level 4 is an optional upgrade.'};
+   note:record.name+' is a Level '+fact.baseWizardLevel+
+    ' Wizard by default. Upgraded levels are separate optional choices.'};
  const match=name.match(/^level ([1-4]) wizard$/);
  if(!match)return null;
  const level=Number(match[1]);

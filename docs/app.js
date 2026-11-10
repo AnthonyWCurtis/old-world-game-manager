@@ -7,7 +7,7 @@ import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfile
 import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
-import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.3';
+import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.4';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -345,7 +345,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.3'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.4'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -367,7 +367,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.4.3'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.4'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
