@@ -1,4 +1,4 @@
-import {collectUnmatched} from './unmatched-debug.js?v=0.2.7';
+import {collectUnmatched} from './unmatched-debug.js?v=0.4.2';
 
 /** A public client submits *only* missing source-reference names and context.
  * The endpoint and Turnstile site key are public; write credentials stay on the Worker.
