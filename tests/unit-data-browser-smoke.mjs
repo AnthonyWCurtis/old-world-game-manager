@@ -69,9 +69,50 @@ try{
  for(const resolved of ['Level 1 Wizard',"Lord's Bowmen",'9x Additional hand weapon']){
   assert.ok(!woodElfDebug.includes('SELECTION: '+resolved),'Source-backed entry still unmatched: '+resolved);
  }
+ // Winter Muster (5 units / 750 points): both nested Mage wizard references
+ // must become source-linked after the versioned parent-unit JSON finishes loading.
+ const winterMuster=[
+  '===','Winter Muster [750 pts]',
+  'Warhammer: The Old World, High Elf Realms, Combined Arms','===','',
+  '++ Characters [200 pts] ++','',
+  'Handmaiden of the Everqueen [90 pts]','- Hand weapon','- General','',
+  'Mage [110 pts]','- Hand weapon','- Wizard [Level 2 Wizard]',
+  '- On foot','- High Magic','',
+  '++ Core Units [435 pts] ++','',
+  '16 Sisters of Avelorn [247 pts]','- Hand weapon','- Bow of Avelorn','',
+  '16 Lothern Sea Guard [188 pts]','- Hand weapons','- Shields','',
+  '++ Special Units [115 pts] ++','',
+  'Lothern Skycutters [115 pts]','- Hand weapons','',
+  'Created with "Old World Builder"',''
+ ].join('\n');
+ await page.locator('#sourceText').fill(winterMuster);
+ await page.locator('#parseBtn').click();
+ await page.waitForFunction(()=>{
+   const selections=[...document.querySelectorAll('#units .selection')];
+   return ['Wizard [Level 2 Wizard]','Level 2 Wizard'].every(label=>{
+    const entry=selections.find(n=>n.querySelector('.selection-name')?.textContent===label);
+    return entry?.querySelector('.tag')?.textContent?.includes('Matched') &&
+     entry.querySelector('a')?.href==='https://tow.whfb.app/unit/mage';
+   });
+ },null,{timeout:30000});
+ assert.match(await page.locator('#armyMeta').innerText(),/750/);
+ const winterSelected=await page.locator('#units .selection').evaluateAll(nodes=>nodes
+  .filter(n=>['Wizard [Level 2 Wizard]','Level 2 Wizard']
+    .includes(n.querySelector('.selection-name')?.textContent))
+  .map(n=>({
+    name:n.querySelector('.selection-name')?.textContent,
+    status:n.querySelector('.tag')?.textContent,
+    url:n.querySelector('a')?.href
+  })));
+ assert.equal(winterSelected.length,2);
+ assert.ok(winterSelected.every(x=>x.url==='https://tow.whfb.app/unit/mage'));
+ await page.locator('#copyUnmatchedBtn').click();
+ const winterReport=await page.locator('#unmatchedDebugFallback').inputValue();
+ assert.ok(!winterReport.includes('SELECTION: Wizard'));
+ assert.ok(!winterReport.includes('SELECTION: Level 2 Wizard'));
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard profiles, five On foot placeholders, and three Wood Elf source-backed references with two unresolved.');
+ console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf and two Mage wizard references for Winter Muster.');
 }finally{await browser.close();}
