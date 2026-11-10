@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {chromium} from 'playwright';
 
 const browser=await chromium.launch({headless:true});
@@ -46,9 +47,31 @@ try{
  await page.locator('#copyUnmatchedBtn').click();
  const debug=await page.locator('#unmatchedDebugFallback').inputValue();
  assert.ok(!debug.includes('SELECTION: On foot'));
+ // Wood Elf source matching: 3 genuine parent-backed matches and two unresolved
+ // references from the user's reported list, without changing 748 points.
+ const woodElfBase=readFileSync(new URL('../docs/examples/wood-elves.txt',import.meta.url),'utf8');
+ const woodElfReport=woodElfBase
+   .replace('- A Resplendence of Luminescents',
+     '- The Briar-bow\n- A Resplendence of Luminescents')
+   .replace('- Swiftshiver Shards',
+     "- Swiftshiver Shards\n- The Kinbands of Modryn\n- Lord's Bowmen")
+   .replace('8 Wardancers [128 pts]\n- Hand weapon',
+     '8 Wardancers [128 pts]\n- Hand weapon\n- 9x Additional hand weapon');
+ await page.locator('#sourceText').fill(woodElfReport);
+ await page.locator('#parseBtn').click();
+ await page.waitForFunction(()=>document.querySelector('#unitDataStatus')?.textContent.includes('Unit profiles available for 5/5'),null,{timeout:30000});
+ assert.match(await page.locator('#armyMeta').innerText(),/748/);
+ await page.locator('#copyUnmatchedBtn').click();
+ const woodElfDebug=await page.locator('#unmatchedDebugFallback').inputValue();
+ for(const unresolved of ['The Briar-bow','The Kinbands of Modryn']){
+  assert.ok(woodElfDebug.includes('SELECTION: '+unresolved),'Unverified entry must remain unmatched: '+unresolved);
+ }
+ for(const resolved of ['Level 1 Wizard',"Lord's Bowmen",'9x Additional hand weapon']){
+  assert.ok(!woodElfDebug.includes('SELECTION: '+resolved),'Source-backed entry still unmatched: '+resolved);
+ }
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard profiles and 5 On foot informational labels, no fake source links or global overflow.');
+ console.log('Mobile browser passed: Sea Guard profiles, five On foot placeholders, and three Wood Elf source-backed references with two unresolved.');
 }finally{await browser.close();}
