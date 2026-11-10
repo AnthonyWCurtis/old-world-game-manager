@@ -26,7 +26,7 @@ export function createGameScreenModel(parsedArmy,unitDataRecords={},fallbackProf
  const units=input.map((unit,index)=>{
   const section=sections.get(unit.sectionId);
   const sectionName=section?.name||'Uncategorised';
-  const isCharacter=/\bcharacters?\b/i.test(sectionName);
+  const isCharacter=/\b(?:characters?|lords?|heroes|hero)\b/i.test(sectionName);
   const record=unitDataRecords[unit.id];
   const fallback=fallbackProfiles[unit.reference?.url];
   const profiles=record?.modelProfiles?.length?record.modelProfiles:
