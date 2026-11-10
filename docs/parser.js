@@ -1,4 +1,5 @@
 import { findReference } from './catalog.js?v=0.3.2';
+import {isInformationalSelection} from './selection-information.js?v=0.4.2';
 const unknown = () => ({ value: null, origin: 'unknown', line: null });
 const explicit = (value, line) => ({ value, origin: 'explicit', line });
 const trim = (s) => s.replace(/\s+/g, ' ').trim();
@@ -278,9 +279,11 @@ function createSelection(input, line, parentUnit, kindOverride, owner = null) {
         qualifier = qualifierMatch[2].trim();
         working = qualifierMatch[1].trim();
     }
-    const ref = referenceFor(working, parentUnit);
-    const status = ref ? 'matched' : 'unmatched';
-    const selection = { id: `s${++counter}`, name: working, raw, line, kind: kindOverride || classify(working), reportedPoints: cost.points, priceInterpretation: cost.points === null ? 'unknown' : 'displayed', children, reference: ref, matchStatus: status, qualifier, owner };
+    const kind = kindOverride || classify(working);
+    const descriptor = isInformationalSelection({name:working,kind});
+    const ref = descriptor ? null : referenceFor(working, parentUnit);
+    const status = descriptor ? 'informational' : ref ? 'matched' : 'unmatched';
+    const selection = { id: `s${++counter}`, name: working, raw, line, kind, reportedPoints: cost.points, priceInterpretation: cost.points === null ? 'unknown' : 'displayed', children, reference: ref, matchStatus: status, qualifier, owner };
     return selection;
 }
 function splitSelections(content, line, unit, category) {
@@ -485,7 +488,7 @@ function finish(result) {
     }
     const flatten = (s) => s.flatMap(x => [x, ...flatten(x.children)]);
     const selectionList = result.units.flatMap(u => [...flatten(u.selections), ...u.modelGroups.flatMap(g => flatten(g.selections))]);
-    result.stats = { unitCount: result.units.length, selectionCount: selectionList.length, modelGroupCount: result.units.reduce((a, u) => a + u.modelGroups.length, 0), matchedUnits: result.units.filter(u => u.matchStatus === 'matched').length, unmatchedUnits: result.units.filter(u => u.matchStatus === 'unmatched').length, matchedSelections: selectionList.filter(s => s.matchStatus === 'matched').length, unmatchedSelections: selectionList.filter(s => s.matchStatus !== 'matched').length, unparsedLines: result.diagnostics.filter(d => d.code.startsWith('UNPARSED') || d.code.startsWith('ORPHAN')).length };
+    result.stats = { unitCount: result.units.length, selectionCount: selectionList.length, modelGroupCount: result.units.reduce((a, u) => a + u.modelGroups.length, 0), matchedUnits: result.units.filter(u => u.matchStatus === 'matched').length, unmatchedUnits: result.units.filter(u => u.matchStatus === 'unmatched').length, matchedSelections: selectionList.filter(s => s.matchStatus === 'matched').length, unmatchedSelections: selectionList.filter(s => !isInformationalSelection(s) && s.matchStatus !== 'matched').length, informationalSelections: selectionList.filter(isInformationalSelection).length, unparsedLines: result.diagnostics.filter(d => d.code.startsWith('UNPARSED') || d.code.startsWith('ORPHAN')).length };
     if (result.units.length === 0)
         result.diagnostics.push({ severity: 'warning', code: 'NO_UNITS', line: null, message: 'No unit headings were identified. Check the selected format or paste a complete export.' });
     if (result.format.exporter === 'unknown')
@@ -537,7 +540,7 @@ export function parseArmy(text, override) {
         : originalLines.map((text, i) => ({ text, line: i + 1 }));
     const result = { schemaVersion: 1, format, originalText, inputEncoding: normalized.encoding,
         army: { name: unknown(), faction: unknown(), composition: unknown(), gameFormat: unknown(), player: unknown(), reportedPoints: unknown(), limitPoints: unknown(), derivedPoints: unknown() },
-        sections: [], units: [], diagnostics: [], stats: { unitCount: 0, selectionCount: 0, modelGroupCount: 0, matchedUnits: 0, matchedSelections: 0, unmatchedSelections: 0, unmatchedUnits: 0, unparsedLines: 0 } };
+        sections: [], units: [], diagnostics: [], stats: { unitCount: 0, selectionCount: 0, modelGroupCount: 0, matchedUnits: 0, matchedSelections: 0, unmatchedSelections: 0, informationalSelections: 0, unmatchedUnits: 0, unparsedLines: 0 } };
     if (normalized.encoding === 'percent-encoded')
         result.diagnostics.push({ severity: 'info', code: 'URL_ENCODED_ROSTER_DECODED', line: null, message: 'Decoded URL-encoded list text for importing. The original clipboard text is preserved.' });
     let section = null, unit = null;
