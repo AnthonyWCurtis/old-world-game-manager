@@ -25,6 +25,38 @@ try{
  assert.match(await panel.innerText(),/up to a total of 25 points/);
  assert.equal(await panel.locator('table.unit-data-stats tbody tr').count(),2);
  assert.equal(await page.locator('.roster-cost').first().innerText(),before);
+ // v0.4.7: prominent CTA opens a genuinely separate, phone-friendly roster page
+ // and back navigation restores the original imported list in the same tab.
+ const viewRoster=page.locator('#viewRosterBtn');
+ assert.equal(await viewRoster.isVisible(),true);
+ assert.match(await viewRoster.innerText(),/View Army Roster/);
+ await viewRoster.click();
+ await page.waitForURL(/\/army-roster\.html/);
+ await page.locator('.unit-card').first().waitFor();
+ await page.waitForFunction(()=>document.querySelector('#sourceProfiles')?.textContent==='2',
+   null,{timeout:30000});
+ assert.equal(await page.locator('#totalUnits').innerText(),'1');
+ assert.equal(await page.locator('#knownModels').innerText(),'33');
+ assert.equal(await page.locator('#totalPoints').innerText(),'387');
+ assert.equal(await page.locator('.unit-card').count(),1);
+ assert.equal(await page.locator('.profile').count(),2);
+ assert.equal(await page.locator('.stat').count(),18);
+ assert.match(await page.locator('.unit-card').first().innerText(),/Lothern Sea Guard/);
+ assert.match(await page.locator('.unit-card').first().innerText(),/387 pts/);
+ assert.match(await page.locator('.profile').first().innerText(),/WS/);
+ const rosterOverflow=await page.evaluate(()=>
+  document.documentElement.scrollWidth-document.documentElement.clientWidth);
+ assert.ok(rosterOverflow<=3,'New roster horizontally overflows iPhone: '+rosterOverflow);
+ await page.locator('#unitSearch').fill('not a real unit');
+ assert.equal(await page.locator('.unit-card:visible').count(),0);
+ assert.equal(await page.locator('#noSearchResults').isVisible(),true);
+ await page.locator('#unitSearch').fill('sea guard');
+ assert.equal(await page.locator('.unit-card:visible').count(),1);
+ await page.locator('a.back-link').click();
+ await page.waitForURL(url=>url.pathname.endsWith('/index.html'));
+ await page.locator('.roster-cost').first().waitFor();
+ assert.equal(await page.locator('.roster-cost').first().innerText(),before);
+ assert.ok((await page.locator('#sourceText').inputValue()).includes('Lothern Sea Guard'));
  // Simulate revisiting the same unit with the source network unavailable.
  await page.route('https://tow.whfb.app/**',r=>r.abort());
  await page.locator('#sourceRefreshBtn').click();
@@ -198,5 +230,5 @@ try{
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf, Mage, Shadow Walker and New Recruit Dwarf references.');
+ console.log('Mobile browser passed: new roster page & return flow, Sea Guard profiles and source-linked selections.');
 }finally{await browser.close();}
