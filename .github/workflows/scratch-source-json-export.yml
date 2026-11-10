@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 27
     env:
-      PILOT_COUNT: '5'
+      PILOT_COUNT: '0'
       SOURCE_DELAY_SECONDS: '0.85'
     steps:
       - uses: actions/checkout@v4
