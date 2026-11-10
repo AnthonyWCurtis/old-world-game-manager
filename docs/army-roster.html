@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17293d">
+<title>Army Roster · Old World Game Manager v0.4.7</title>
+<link rel="stylesheet" href="./army-roster.css?v=0.4.7">
+<script type="module" src="./army-roster.js?v=0.4.7"></script>
+</head>
+<body>
+<header class="roster-nav">
+ <div class="nav-inner">
+  <a class="back-link" href="./index.html?restore=roster"><span aria-hidden="true">←</span> Back to importer</a>
+  <span class="nav-brand">OLD WORLD <span class="nav-separator">/</span> ARMY ROSTER</span>
+ </div>
+</header>
+<main class="page-wrap">
+ <section id="emptyRoster" class="empty-view" hidden>
+  <h1>No imported army yet</h1>
+  <p>Import an army list first, then choose <strong>View Army Roster</strong> to see its units and characteristics on this page.</p>
+  <a href="./index.html?restore=roster" class="action-link">Go to importer</a>
+ </section>
+ <div id="rosterContent" hidden>
+  <section class="hero">
+   <div class="hero-top"><span class="eyebrow">YOUR BATTLE ROSTER</span><span class="hero-edition">Game Manager v0.4.7</span></div>
+   <h1 id="armyName">Imported army</h1>
+   <p id="armyFaction" class="faction">Army list</p>
+   <div class="overview-numbers">
+    <div><strong id="totalPoints">—</strong><span>Imported points</span></div>
+    <div><strong id="totalUnits">—</strong><span>Unit entries</span></div>
+    <div><strong id="knownModels">—</strong><span>Known models</span></div>
+    <div><strong id="sourceProfiles">—</strong><span>Source profiles</span></div>
+   </div>
+  </section>
+  <div class="roster-toolbar">
+   <div class="toolbar-heading"><h2>Units &amp; profiles</h2><p>Original order, including repeated units</p></div>
+   <div class="toolbar-actions">
+    <label class="search-label" for="unitSearch">Find a unit</label>
+    <input id="unitSearch" type="search" placeholder="Search your units…" autocomplete="off">
+    <button id="printRoster" class="print-button" type="button">Print / Save PDF</button>
+   </div>
+  </div>
+  <p id="rosterStatus" class="roster-status" role="status" aria-live="polite">Reading source profiles…</p>
+  <p class="data-disclaimer">Profiles show published <strong>base characteristics</strong> from the source database. Imported upgrades, magic and buffs are listed separately; their effects and army legality are not calculated.</p>
+  <div id="rosterUnits"></div>
+  <p id="noSearchResults" class="empty-search" hidden>No units match that search.</p>
+  <footer class="roster-footer"><a href="./index.html?restore=roster">← Return to importer</a><span>Source-extracted reference data · Not a legality checker</span></footer>
+ </div>
+</main>
+</body>
+</html>
