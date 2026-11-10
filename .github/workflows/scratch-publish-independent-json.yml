@@ -1,0 +1,71 @@
+name: Publish independent 581-unit JSON data-only branch
+on:
+  push:
+    branches:
+      - scratch/independent-all-units-json-20261110
+    paths:
+      - scratch/publish-independent-json.py
+      - scratch/wood-elf-beast-pack.source-composite.json.gz.b64
+      - .github/workflows/scratch-publish-independent-json.yml
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: publish-independent-old-world-json
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download previously collected 580-unit and 19-army source data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/old-world-source"
+          gh run download 42765680299 --repo AnthonyWCurtis/old-world-game-manager --name independent-old-world-unit-json --dir "$RUNNER_TEMP/old-world-source"
+          test -s "$RUNNER_TEMP/old-world-source/old-world-all-armies-units.json"
+      - name: Assemble complete dataset, including the independently verified composite unit
+        env:
+          SOURCE_RAW: ${{ runner.temp }}/old-world-source/old-world-all-armies-units.json
+          DATA_OUTPUT: ${{ runner.temp }}/old-world-database-only
+        run: |
+          python -m py_compile scratch/publish-independent-json.py
+          python scratch/publish-independent-json.py
+          python - <<'PY'
+          import os,json,pathlib
+          folder=pathlib.Path(os.environ["DATA_OUTPUT"])
+          both=json.loads((folder/"old-world-all-armies-units.json").read_text())
+          report=json.loads((folder/"coverage-report.json").read_text())
+          assert len(both["units"])==581 and len(both["armies"])==19
+          assert report["modelProfiles"]==960 and report["validationPassed"]
+          assert len(list((folder/"units").glob("*.json")))==581
+          assert len(list((folder/"armies").glob("*.json")))==19
+          print("COMPLETE JSON VALIDATED",report["unitPages"],report["armyPages"])
+          PY
+      - name: Publish a clean orphan data-only branch (do not alter main)
+        env:
+          DATA_OUTPUT: ${{ runner.temp }}/old-world-database-only
+          TARGET_BRANCH: data/all-armies-units-json-v1.1
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null 2>&1; then
+            echo "Refusing to overwrite an existing data snapshot branch: $TARGET_BRANCH"
+            exit 1
+          fi
+          git config user.name "independent-warhammer-data-export"
+          git config user.email "actions@users.noreply.github.com"
+          git switch --orphan "$TARGET_BRANCH"
+          git rm -r -f --ignore-unmatch . >/dev/null
+          git clean -fdx >/dev/null
+          cp -a "$DATA_OUTPUT/." .
+          git add -A
+          git commit -m "Publish independent source-extracted JSON for 581 units and 19 armies"
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          echo "DATASET_URL=https://github.com/AnthonyWCurtis/old-world-game-manager/tree/$TARGET_BRANCH" >> "$GITHUB_STEP_SUMMARY"
