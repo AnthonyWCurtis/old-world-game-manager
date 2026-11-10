@@ -127,7 +127,7 @@ try{
   '++ Core Units [100 pts] ++','',
   '10 Lothern Sea Guard [100 pts]','',
   '++ Special Units [196 pts] ++','',
-  '6 Shadow Warriors [86 pts]','- Hand weapons','- Longbows','- Shadow Walker','',
+  '6 Shadow Warriors [86 pts]','- Shadow Walker','',
   '5 Swordmasters of Hoeth [110 pts]','',
   '++ Rare Units [100 pts] ++','',
   'Eagle-Claw Bolt Thrower [100 pts]','',
