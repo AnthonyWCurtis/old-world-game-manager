@@ -4,10 +4,13 @@ import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0
 import { wireReportUI } from './report-ui.js?v=0.3.0';
 import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatchState } from './match-status.js?v=0.2.8';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.2.9';
+import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
+import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
+let unitDataRecords={};
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
@@ -126,7 +129,11 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
 // The roster is a view of the parsed data, not a second army parser.
  // Unit order follows the original input, including duplicate unit instances.
 function renderRoster(army){
- const holder=$('roster');holder.replaceChildren();
+ const holder=$('roster');
+ // Preserve expanded source details across live matching and cache refreshes.
+ const expanded=new Set([...holder.querySelectorAll('.roster-entry[data-unit-id] details.unit-data-details[open]')]
+  .map(d=>d.closest('.roster-entry')?.dataset.unitId).filter(Boolean));
+ holder.replaceChildren();
  const sectionById=new Map(army.sections.map(s=>[s.id,s]));
  let lastSection=undefined,sectionIndex=0;
  for(const unit of army.units){
@@ -142,6 +149,7 @@ function renderRoster(army){
   }
   sectionIndex++;
   const card=make('article','roster-entry');
+  card.dataset.unitId=unit.id;
   const matchState=unitMatchState(unit);
   if(matchState==='partial')card.classList.add('roster-partial');
   const top=make('div','roster-entry-head');
@@ -184,7 +192,13 @@ function renderRoster(army){
    }
    card.append(details);
   }
-  const cachedProfile=sourceProfiles[unit.reference?.url];
+  const detailedRecord=unitDataRecords[unit.id];
+  if(detailedRecord){
+   const panel=renderUnitDataDetails(detailedRecord);
+   if(expanded.has(unit.id))panel.open=true;
+   card.append(panel);
+  }
+  const cachedProfile=detailedRecord?null:sourceProfiles[unit.reference?.url];
   if(cachedProfile?.models?.length){
    const sourceBox=make('div','roster-base-profile');
    const head=make('strong','', 'TOW source characteristics (base profile; upgrades not applied)');
@@ -218,6 +232,30 @@ async function refreshCurrentSource(force=false){
  $('sourceRefreshBtn').disabled=true;
  sourceStatus('Reading previously cached references…');
  const active=()=>current===army&&job===sourceJob;
+ // Independent version-pinned source dataset: fetch only the needed unit shards.
+ // This never changes imported points, equipment selections or legality status.
+ void (async()=>{
+  const status=$('unitDataStatus');
+  try{
+   status.textContent='Reading versioned source unit data…';
+   const index=await loadUnitDataIndex();
+   if(!active())return;
+   applyUnitDataReferences(army,index);
+   render();
+   const result=await getUnitDetails(army,index);
+   if(!active())return;
+   unitDataRecords=result.records;
+   render();
+   status.textContent='Unit profiles available for '+result.matched+'/'+army.units.length+
+     ' roster entries · '+index.counts.units+' units in source snapshot · '+
+     index.counts.unitsWithWarnings+' records have extraction flags. '+
+     (result.errors.length?'Some unit data unavailable; cached records retained where possible. ':'')+
+     'Source-extracted: upgrades, costs and army legality are not independently verified.';
+  }catch(error){
+   if(active())status.textContent='Unit reference data unavailable: '+
+     (error?.message||error)+'. The imported roster is unaffected.';
+  }
+ })();
  try{
   // Public pages without browser CORS are read from the last GitHub Actions
   // source snapshot. Matching remains scoped to the unit's actual source URL.
@@ -302,7 +340,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.3.3'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -324,7 +362,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.3.2'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
@@ -397,14 +435,14 @@ $('extractListBtn').addEventListener('click',()=>{
  if(!extracted){showError('Could not identify a single clean export. Copy only the army list from your builder.');return;}
  $('sourceText').value=extracted.text;
  $('format').value='auto';
- current=null;sourceProfiles={};
+ current=null;sourceProfiles={};unitDataRecords={};
  $('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;
  showError('');updateFormatDetection();
  $('sourceText').focus();
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());sourceProfiles={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());sourceProfiles={};unitDataRecords={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -418,13 +456,13 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};$('sourceText').value=loaded.original_text;$('format').value='auto';updateFormatDetection();render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=loaded.result;sourceProfiles={};unitDataRecords={};$('sourceText').value=loaded.original_text;$('format').value='auto';updateFormatDetection();render();$('result').scrollIntoView();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
 $('exampleBtn').addEventListener('click',async()=>{
  const id=$('examples').value;if(!id)return;
- try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';updateFormatDetection();current=null;$('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
+ try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';updateFormatDetection();current=null;unitDataRecords={};$('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
  catch(e){showError(e.message);}
 });
 fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load sample manifest');return r.json();}).then(items=>{for(const item of items){const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label;$('examples').append(opt);}}).catch(e=>showError(e.message));
