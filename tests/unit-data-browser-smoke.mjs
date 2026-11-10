@@ -33,7 +33,7 @@ try{
  await page.locator('#examples').selectOption('owb-regular');
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
- await page.locator('#units .tag.info').first().waitFor({timeout:10000});
+ await page.locator('#units .tag.info').first().waitFor({state:'attached',timeout:10000});
  assert.equal(await page.locator('#units .tag.info').count(),5);
  const descriptive=await page.locator('#units .selection:has(> .tag.info)').evaluateAll(
    nodes=>nodes.map(n=>({text:n.querySelector('.selection-name')?.textContent||'',
