@@ -116,9 +116,49 @@ try{
   assert.match(await unmatchedButton.textContent(),/No unmatched references/);
   assert.equal(await page.locator('#unmatchedDebugFallback').isHidden(),true);
  }
+ // Synthetic six-unit 586-point Old World Builder scaffold reproduces the
+ // reported Shadow Warriors entry #4 without inventing the user's full list.
+ const ulthuan=[
+  '===','The Warriors Of Ulthuan [586 pts]',
+  'Warhammer: The Old World, High Elf Realms, Combined Arms','===','',
+  '++ Characters [190 pts] ++','',
+  'Noble [100 pts]','',
+  'Mage [90 pts]','',
+  '++ Core Units [100 pts] ++','',
+  '10 Lothern Sea Guard [100 pts]','',
+  '++ Special Units [196 pts] ++','',
+  '6 Shadow Warriors [86 pts]','- Shadow Walker','',
+  '5 Swordmasters of Hoeth [110 pts]','',
+  '++ Rare Units [100 pts] ++','',
+  'Eagle-Claw Bolt Thrower [100 pts]','',
+  'Created with "Old World Builder"',''
+ ].join('\n');
+ await page.locator('#sourceText').fill(ulthuan);
+ await page.locator('#parseBtn').click();
+ await page.waitForFunction(()=>{
+  const items=[...document.querySelectorAll('#units .selection')];
+  const shadow=items.find(x=>x.querySelector('.selection-name')?.textContent==='Shadow Walker');
+  return shadow?.querySelector('.tag')?.textContent?.includes('Matched') &&
+   shadow?.querySelector('a')?.href==='https://tow.whfb.app/unit/shadow-warriors';
+ },null,{timeout:30000});
+ assert.match(await page.locator('#armyMeta').innerText(),/586/);
+ const shadowMatched=await page.locator('#units .selection').evaluateAll(items=>{
+  const item=items.find(x=>x.querySelector('.selection-name')?.textContent==='Shadow Walker');
+  return item?{label:item.querySelector('.tag')?.textContent,link:item.querySelector('a')?.href}:null;
+ });
+ assert.ok(shadowMatched?.label?.includes('Matched'));
+ assert.equal(shadowMatched.link,'https://tow.whfb.app/unit/shadow-warriors');
+ const ulthuanButton=page.locator('#copyUnmatchedBtn');
+ if(await ulthuanButton.isEnabled()){
+  await ulthuanButton.click();
+  const unmatched=await page.locator('#unmatchedDebugFallback').inputValue();
+  assert.ok(!unmatched.includes('SELECTION: Shadow Walker'));
+ }else{
+  assert.match(await ulthuanButton.textContent(),/No unmatched references/);
+ }
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf and two Mage wizard references for Winter Muster.');
+ console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf, Mage and Shadow Walker source-backed references.');
 }finally{await browser.close();}

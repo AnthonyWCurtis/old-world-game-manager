@@ -117,15 +117,19 @@ function modelCountEquipmentOption(record,selection){
  * An exact champion title *and* an explicit upgrade are mandatory.
  */
 function publishedChampionOption(record,selection){
- const provided=normalized(selection.name);
+ // Hyphens in published champion titles (Shadow-walker) may be exported as
+ // spaces (Shadow Walker). This comparison is scoped to the exact parent and
+ // requires BOTH its model profile and explicit champion upgrade option.
+ const title=value=>normalized(value).replace(/[-‐‑‒–—]/g,' ').replace(/\s+/g,' ').trim();
+ const provided=title(selection.name);
  if(!provided)return null;
  const canonical=provided.endsWith('bowmen')?
   provided.slice(0,-'bowmen'.length)+'bowman':provided;
- if(!record.modelProfiles?.some(m=>normalized(m.name)===canonical))return null;
+ if(!record.modelProfiles?.some(m=>title(m.name)===canonical))return null;
  const matching=(record.upgradeGroups||[]).flatMap(g=>g.options||[]).filter(o=>{
   const m=String(o.description||'').match(
-   /^upgrade one model to an?\s+(.+?)\s*\(champion\)\s*\(\+\d+ points? per unit\)/i);
-  return m && normalized(m[1])===canonical;
+   /^(?:any unit may\s+)?upgrade one model to an?\s+(.+?)\s*\(champion\)\s*\(\+\d+ points? per unit\)/i);
+  return m && title(m[1])===canonical;
  });
  return matching.length===1?{option:matching[0],sourceName:canonical}:null;
 }
