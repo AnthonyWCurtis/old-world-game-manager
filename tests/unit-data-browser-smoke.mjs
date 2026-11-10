@@ -194,9 +194,61 @@ try{
  }else{
   assert.match(await dwarfUnmatchedBtn.textContent(),/No unmatched references/);
  }
+ // v0.5.0: use the prominent post-import action to open the dedicated
+ // full-screen army roster without losing the imported data or any source stats.
+ await page.locator('#examples').selectOption('single-sea-guard');
+ await page.locator('#exampleBtn').click();
+ await page.locator('#parseBtn').click();
+ await page.waitForFunction(()=>
+  document.querySelector('#unitDataStatus')?.textContent.includes('Unit profiles available for 1/1'),
+  null,{timeout:30000});
+ const importedText=await page.locator('#sourceText').inputValue();
+ const launchHeight=await page.locator('#viewRosterBtn').evaluate(el=>el.getBoundingClientRect().height);
+ assert.ok(launchHeight>=44,'Army roster launch button is too small to tap: '+launchHeight);
+ await page.locator('#viewRosterBtn').click();
+ await page.locator('#armyRosterPage').waitFor({state:'visible',timeout:10000});
+ assert.equal(await page.locator('#importPage').isHidden(),true);
+ assert.match(page.url(),/#army-roster$/);
+ assert.equal(await page.locator('#armyRosterHeading').innerText(),'Test');
+ assert.match(await page.locator('#armyRosterList .army-unit-card').first().innerText(),/Lothern Sea Guard/);
+ const armyMetrics=await page.locator('#armyRosterSummary').innerText();
+ assert.match(armyMetrics,/387 pts/);
+ assert.match(armyMetrics,/1\s*Unit entries/);
+ assert.match(armyMetrics,/33\s*Models with known counts/);
+ assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),1);
+ assert.match(await page.locator('.army-unit-card .army-unit-head').innerText(),/33 models/);
+ assert.match(await page.locator('.army-unit-card .army-unit-head').innerText(),/387 pts/);
+ assert.equal(await page.locator('.army-profile-table thead th').allTextContents().then(x=>x.join(' ')),
+  'Model M WS BS S T W I A Ld');
+ assert.equal(await page.locator('.army-profile-table tbody tr').count(),2);
+ assert.match(await page.locator('.army-profile-table tbody tr').first().innerText(),/Sea Guard/);
+ assert.match(await page.locator('.army-profile-table tbody tr').nth(1).innerText(),/Sea Master/);
+ const sourceUrl=await page.locator('.army-unit-card .army-source-link').first().getAttribute('href');
+ assert.equal(sourceUrl,'https://tow.whfb.app/unit/lothern-sea-guard');
+ const rosterOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+ assert.ok(rosterOverflow<=3,'Army roster global horizontal overflow: '+rosterOverflow);
+ await page.locator('#backToImporterBtn').click();
+ await page.locator('#importPage').waitFor({state:'visible',timeout:10000});
+ assert.equal(await page.locator('#armyRosterPage').isHidden(),true);
+ assert.equal(await page.locator('#sourceText').inputValue(),importedText);
+ assert.match(await page.locator('#armyMeta').innerText(),/387/);
+
+ // Model-group counts from a different exporter remain visible as imported,
+ // even when its source profile is not in the local shard cache yet.
+ await page.locator('#examples').selectOption('nr-tow-model-groups');
+ await page.locator('#exampleBtn').click();
+ await page.locator('#parseBtn').click();
+ await page.locator('#viewRosterBtn').click();
+ await page.locator('#armyRosterPage').waitFor({state:'visible',timeout:10000});
+ const special=page.locator('#armyRosterList .army-unit-card').filter({hasText:'Primal Warherds'}).first();
+ assert.match(await special.innerText(),/21 models/);
+ assert.match(await special.innerText(),/11× Gor/);
+ assert.match(await special.innerText(),/10× Ungor/);
+ await page.locator('#backToImporterBottomBtn').click();
+ await page.locator('#importPage').waitFor({state:'visible',timeout:10000});
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
  assert.deepEqual(errors,[],'Browser page errors: '+errors.join('; '));
- console.log('Mobile browser passed: Sea Guard, On foot, Wood Elf, Mage, Shadow Walker and New Recruit Dwarf references.');
+ console.log('Mobile browser passed: previous reference checks plus full roster navigation, profile stats, counts, points, back buttons and model groups.');
 }finally{await browser.close();}

@@ -8,6 +8,7 @@ import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.6';
+import {renderArmyRosterPage} from './army-roster-page.js?v=0.5.0';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -132,6 +133,52 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
 }
 // The roster is a view of the parsed data, not a second army parser.
  // Unit order follows the original input, including duplicate unit instances.
+// Hash navigation gives the imported army a separate screen without copying
+// army state to a second application or risking partial sessionStorage writes.
+function renderArmyScreen(){
+ if(!current)return;
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles);
+ const name=label(current.army.name);
+ $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
+ const faction=label(current.army.faction);
+ $('armyRosterFaction').textContent=faction==='Unknown'?
+   'Faction not specified by the exporter':faction;
+ const metrics=$('armyRosterSummary');metrics.replaceChildren();
+ for(const [number,caption] of [
+  [overview.displayedTotal==null?'—':points(overview.displayedTotal),'Imported unit points'],
+  [overview.unitInstances,'Unit entries'],
+  [overview.knownModelCount,'Models with known counts']
+ ]){
+  const box=make('div','army-summary-metric');
+  box.append(make('strong','',number),make('span','',caption));
+  metrics.append(box);
+ }
+ const available=overview.availableProfiles+
+  current.units.filter(u=>!unitDataRecords[u.id]&&
+   !!sourceProfiles[u.reference?.url]?.models?.length).length;
+ $('armyRosterDataStatus').textContent=
+  available+'/'+overview.unitInstances+' unit profiles available · '+
+  (overview.unknownModelUnitCount?
+   overview.unknownModelUnitCount+' unit count(s) not provided in export. ':'')+
+  (available<overview.unitInstances?'Missing profiles are not guessed. ':'')+
+  'Reference data is not a legality or points check.';
+}
+function showPageForHash({scroll=false}={}){
+ const roster=!!current&&window.location.hash==='#army-roster';
+ $('importPage').hidden=roster;
+ $('armyRosterPage').hidden=!roster;
+ if(roster)renderArmyScreen();
+ if(scroll)window.scrollTo(0,0);
+}
+function openArmyRoster(){
+ if(!current||!current.units.length)return;
+ if(window.location.hash==='#army-roster')showPageForHash({scroll:true});
+ else window.location.hash='army-roster';
+}
+function closeArmyRoster(){
+ if(window.location.hash==='#import')showPageForHash({scroll:true});
+ else window.location.hash='import';
+}
 function renderRoster(army){
  const holder=$('roster');
  // Preserve expanded source details across live matching and cache refreshes.
@@ -345,7 +392,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.6'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.5.0'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -367,7 +414,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.4.6'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.5.0'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
@@ -432,7 +479,13 @@ function render(){
   }
  }
  $('saveBtn').disabled=false;$('jsonBtn').disabled=false;
+ $('viewRosterBtn').disabled=!current.units.length;
+ if(window.location.hash==='#army-roster')showPageForHash();
 }
+$('viewRosterBtn').addEventListener('click',openArmyRoster);
+$('backToImporterBtn').addEventListener('click',closeArmyRoster);
+$('backToImporterBottomBtn').addEventListener('click',closeArmyRoster);
+window.addEventListener('hashchange',()=>showPageForHash({scroll:true}));
 $('sourceText').addEventListener('input',updateFormatDetection);
 $('format').addEventListener('change',updateFormatDetection);
 $('extractListBtn').addEventListener('click',()=>{
@@ -474,4 +527,8 @@ fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load 
 $('refreshBtn').addEventListener('click' ,()=>refresh().catch(e=>showError(e.message)));
 $('backupBtn').addEventListener('click',async()=>{try{const rows=await readAll();if(!rows.length)throw Error('No saved snapshots to back up yet.');downloadJSON('old-world-game-manager-backup.json',{schemaVersion:1,exportedAt:new Date().toISOString(),snapshots:rows});}catch(e){showError(e.message);}});
 updateFormatDetection();
+// A direct roster URL cannot resurrect an unsaved, in-memory army after reload.
+if(window.location.hash==='#army-roster'&&!current)
+ history.replaceState(null,'',window.location.pathname+window.location.search+'#import');
+showPageForHash();
 refresh().catch(e=>showError(e.message));

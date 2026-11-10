@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.4.6** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.5.0** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -29,6 +29,23 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder. Footerless regular text with a sectioned, hyphen-bullet structure uses the compatible parser without claiming a confirmed builder.
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+
+## v0.5.0 — Dedicated Army Roster screen
+
+After importing a list, the results now prominently offer **View Army Roster**. Selecting it navigates to a separate mobile-friendly, full-page roster screen (`#army-roster`) instead of burying unit data below source diagnostics.
+
+The new screen displays:
+
+- Army name, faction, listed total points, number of unit entries and **known** model count.
+- Each unit in the original roster order, grouped by the import's actual sections; repeated units are shown separately.
+- Imported unit/model quantity and points, plus full published model-characteristic profiles **M / WS / BS / S / T / W / I / A / Ld** when available.
+- Separate records for champions and other model profiles, imported selections (including nested choices), New Recruit model groups and their counts.
+- Optional expanded equipment and special-rule references, and links to the original unit pages.
+- A clear **Back to importer** action at both the top and bottom. Browser back/forward supports the page route, and imported state stays in memory throughout navigation.
+
+**Accuracy and offline behavior:** Nothing is recalculated, and chosen upgrades never overwrite published base stats. Missing models or data are explicitly labelled, not guessed. The roster uses the Game Manager's version-pinned, cached source JSON and gracefully shows unavailable profiles when not cached offline. The screen does not automatically save the list across a page reload; use **Save on this device** to keep a snapshot. Any roster navigation inside the same page preserves the current import without resubmission.
+
+The separate roster screen is read-only and uses no new backend. The existing diagnostic, importer, JSON export and source-verification screens remain intact. Coverage includes automated parser/unit tests plus a 390px mobile Chromium smoke test for statistics, points, model groups, source links, page navigation and global overflow.
 
 ## v0.4.6 — New Recruit Dwarf source references
 
