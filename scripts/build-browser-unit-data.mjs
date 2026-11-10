@@ -152,7 +152,7 @@ export async function publishUnitData(input,output,{sourceCommit=SOURCE_COMMIT}=
 }
 if(import.meta.url==='file://'+process.argv[1]){
  const args=process.argv.slice(2);
- const get=(flag,defaultValue)=>args[args.indexOf(flag)+1]||defaultValue;
+ const get=(flag,defaultValue)=>args.includes(flag)?(args[args.indexOf(flag)+1]||defaultValue):defaultValue;
  if(!args.includes('--input')||!args.includes('--output')){
   console.error('Usage: node scripts/build-browser-unit-data.mjs --input SOURCE.json --output docs/unit-data');
   process.exitCode=2;
