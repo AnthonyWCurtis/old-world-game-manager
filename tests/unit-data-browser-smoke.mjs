@@ -106,10 +106,16 @@ try{
   })));
  assert.equal(winterSelected.length,2);
  assert.ok(winterSelected.every(x=>x.url==='https://tow.whfb.app/unit/mage'));
- await page.locator('#copyUnmatchedBtn').click();
- const winterReport=await page.locator('#unmatchedDebugFallback').inputValue();
- assert.ok(!winterReport.includes('SELECTION: Wizard'));
- assert.ok(!winterReport.includes('SELECTION: Level 2 Wizard'));
+ const unmatchedButton=page.locator('#copyUnmatchedBtn');
+ if(await unmatchedButton.isEnabled()){
+  await unmatchedButton.click();
+  const winterReport=await page.locator('#unmatchedDebugFallback').inputValue();
+  assert.ok(!winterReport.includes('SELECTION: Wizard'));
+  assert.ok(!winterReport.includes('SELECTION: Level 2 Wizard'));
+ }else{
+  assert.match(await unmatchedButton.textContent(),/No unmatched references/);
+  assert.equal(await page.locator('#unmatchedDebugFallback').isHidden(),true);
+ }
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
  assert.ok(overflow<=3,'Unexpected horizontal page overflow: '+overflow);
