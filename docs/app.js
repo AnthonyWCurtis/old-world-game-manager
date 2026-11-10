@@ -129,7 +129,11 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
 // The roster is a view of the parsed data, not a second army parser.
  // Unit order follows the original input, including duplicate unit instances.
 function renderRoster(army){
- const holder=$('roster');holder.replaceChildren();
+ const holder=$('roster');
+ // Preserve expanded source details across live matching and cache refreshes.
+ const expanded=new Set([...holder.querySelectorAll('.roster-entry[data-unit-id] details.unit-data-details[open]')]
+  .map(d=>d.closest('.roster-entry')?.dataset.unitId).filter(Boolean));
+ holder.replaceChildren();
  const sectionById=new Map(army.sections.map(s=>[s.id,s]));
  let lastSection=undefined,sectionIndex=0;
  for(const unit of army.units){
@@ -145,6 +149,7 @@ function renderRoster(army){
   }
   sectionIndex++;
   const card=make('article','roster-entry');
+  card.dataset.unitId=unit.id;
   const matchState=unitMatchState(unit);
   if(matchState==='partial')card.classList.add('roster-partial');
   const top=make('div','roster-entry-head');
@@ -188,7 +193,11 @@ function renderRoster(army){
    card.append(details);
   }
   const detailedRecord=unitDataRecords[unit.id];
-  if(detailedRecord)card.append(renderUnitDataDetails(detailedRecord));
+  if(detailedRecord){
+   const panel=renderUnitDataDetails(detailedRecord);
+   if(expanded.has(unit.id))panel.open=true;
+   card.append(panel);
+  }
   const cachedProfile=detailedRecord?null:sourceProfiles[unit.reference?.url];
   if(cachedProfile?.models?.length){
    const sourceBox=make('div','roster-base-profile');
@@ -331,7 +340,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.3.3'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -353,7 +362,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.3.2'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
