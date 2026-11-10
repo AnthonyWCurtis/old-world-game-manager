@@ -2,7 +2,7 @@
 
 A mobile-friendly, browser-based army-list importer for **Warhammer: The Old World**. Paste an army list, identify its export format, inspect the roster, and investigate references that have not yet been linked to the rules source.
 
-**Browser edition: v0.4.0** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
+**Browser edition: v0.4.1** · **[Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/)**
 
 > **Current scope:** Army-list parsing, local saves, reference discovery, and unmatched-reference diagnostics. This is **not** an army-legality checker or combat simulator. A matched source link is not proof that the selected configuration is legal, and an unmatched item is not necessarily invalid.
 
@@ -29,6 +29,19 @@ When an entire previously rendered Game Manager page is accidentally pasted inst
 **15 named layouts** are supported. The TOW parser handles points-first lines, upgrades split across lines, repeated unit instances, and nested model groups such as `• 11x Gor, Additional Hand Weapon`. Old World Builder minimalist exports may prefix unit lines with custom quoted nicknames: for example, `'ORMO' 22 Hobgoblin Cutthroats` is stored as unit **Hobgoblin Cutthroats** (22 models) with the separate display-only nickname **ORMO**. Source matching ignores the nickname, while original text, duplicates, and option names containing apostrophes remain intact. If a list has no export footer, its format may be inferred from structure rather than positively attributed to a specific builder. Footerless regular text with a sectioned, hyphen-bullet structure uses the compatible parser without claiming a confirmed builder.
 
 The importer preserves original pasted text, source line information, reported points, equipment/options and model groups wherever present. Version 0.3.3 recognises footerless sectioned bullet-list rosters (with medium confidence and no claimed exporter attribution), including the Northside Warriors test fixture. Version 0.3.2 added verified, parent-scoped Chaos Dwarf references for Wizard, Level 3 Wizard, Bale Taurus, Ranged weapon (an exporter category), standard bearer, full command and musicians on the specific reported units. All 10 unit instances in the anonymised 1,999-point example now resolve to reviewed unit-page references as well. It does **not** invent missing army sections, player names, faction, composition, points limits or rules. The calculated total sums displayed unit points; it is not an independent rules-based costing check.
+
+## v0.4.1 — Parent-scoped selection reference matching
+
+Source-extracted unit details now resolve an imported selection **only when the matched parent unit's source data supplies the evidence**, without editing the source list or assuming legality.
+
+- **Starting equipment**: unique exact-name links from that unit's published starting equipment (for example Swordmasters' Swords of Hoeth and Sisters' Bows of Avelorn).
+- **Command upgrades**: standard bearer and musician references only when the parent unit's source page explicitly offers that upgrade.
+- **Archmage wizard entries**: Wizard and the baseline Level 3 Wizard are supported by the reviewed [Archmage unit page](https://tow.whfb.app/unit/archmage); Level 4 Wizard additionally requires its specifically listed +30-point upgrade in the source-backed unit data.
+- **On foot**: recognised as a source-backed *default unmounted character state* only when the parent profile is a regular-infantry character with explicitly optional mounts and no contradictory mount selection. This is not a purchasable item or legality validation.
+
+The High Elf debug example with 16 previously unmatched selections now has regression coverage for all 16. Ambiguous or unavailable options stay unmatched, while previously reviewed/manual references retain precedence. The app's matched tick indicates a **reference identification**, never that army construction or point values have been confirmed.
+
+A copied debug report marked `Game Manager: v0.3.2` is from an older browser build: refresh the deployed site to v0.4.1 and run the import again to produce a current report.
 
 ## v0.4 — Versioned source-backed unit details
 
