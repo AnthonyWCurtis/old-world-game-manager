@@ -1,0 +1,44 @@
+name: SCRATCH independent all-armies JSON export (not Game Manager)
+on:
+  push:
+    branches: [scratch/independent-all-units-json-20261110]
+    paths:
+      - 'scratch/independent-source-json-export.py'
+      - '.github/workflows/scratch-source-json-export.yml'
+permissions:
+  contents: write
+concurrency:
+  group: scratch-unit-export
+  cancel-in-progress: false
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 27
+    env:
+      PILOT_COUNT: '5'
+      SOURCE_DELAY_SECONDS: '0.85'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install HTML extraction dependencies
+        run: python -m pip install -q requests beautifulsoup4 lxml
+      - name: Verify robots and extract source data to standalone JSON
+        run: python scratch/independent-source-json-export.py
+      - name: Upload independently usable JSON files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-old-world-unit-json
+          path: scratch-output/*.json
+          retention-days: 30
+          if-no-files-found: error
+      - name: Commit complete JSON only to scratch branch
+        if: success() && env.PILOT_COUNT == '0'
+        run: |
+          git config user.name "standalone-reference-export"
+          git config user.email "actions@users.noreply.github.com"
+          git add scratch-output/*.json
+          git commit -m "Export all source-derived army unit data as standalone JSON"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin HEAD:"$GITHUB_REF_NAME"
