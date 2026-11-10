@@ -180,5 +180,5 @@ test('Game Manager v0.4.4 wires the Mage fix after loading its reference shard',
  assert.match(app,/appVersion:'0\.4\.7'/);
  assert.match(html,/Browser Edition v0\.4\.7/);
  assert.match(html,/app\.js\?v=0\.4\.7/);
- assert.match(app,/unit-selection-matcher\.js\?v=0\.4\.7/);
+ assert.match(app,/unit-selection-matcher\.js\?v=0\.4\.6/);
 });
