@@ -94,11 +94,13 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 | --- | --- |
 | [`docs/`](docs/) | Static mobile website; the GitHub Pages publication directory |
 | [`docs/parser.js`](docs/parser.js) | Multi-exporter parsing and data normalisation |
-| [`docs/army-roster-page.js`](docs/army-roster-page.js) | Current read-only game-screen precursor |
+| [`docs/army-roster-page.js`](docs/army-roster-page.js) | Read-only mobile Game Screen with separate character/regiment sections |
 | [`docs/unit-data.js`](docs/unit-data.js) and [`docs/unit-data/`](docs/unit-data/) | Version-pinned source-backed unit index, shards and browser caching |
 | [`docs/unit-selection-matcher.js`](docs/unit-selection-matcher.js) | Conservative, source-scoped upgrade reference matching |
 | [`docs/reference-records/`](docs/reference-records/) | Source-indexed reference collections, primarily names and links |
-| [`tests/`](tests/) | Parser, matching, integration and regression tests |
+| [`docs/game-screen-model.js`](docs/game-screen-model.js) and [`docs/army-state.js`](docs/army-state.js) | Read-only source/roster projection and legacy saved-army restoration |
+| [`docs/sw.js`](docs/sw.js) and [`docs/offline.js`](docs/offline.js) | Versioned offline app-shell cache and best-effort registration |
+| [`tests/`](tests/) | Parser, matching, offline, integration and mobile browser regression tests |
 | [`.github/workflows/`](.github/workflows/) | CI, source indexing and deployment-related automation |
 | [`PROJECT_HISTORY.md`](PROJECT_HISTORY.md) | Earlier version notes, source-collection decisions and debugging history |
 | [`docs/REPOSITORY_CLEANUP.md`](docs/REPOSITORY_CLEANUP.md) | Non-destructive GitHub cleanup audit and follow-up actions |
