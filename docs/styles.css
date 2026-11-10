@@ -229,3 +229,30 @@
  .army-unit-points span{font-size:9px}
  .army-section-heading h2{font-size:15px}
 }
+
+/* v1 Game Screen: clear character/regiment hierarchy, sized for tabletop use. */
+.game-screen-jump{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:18px 0 12px}
+.game-screen-jump button{min-height:44px;padding:10px 12px;border:1px solid #bed0dd;background:#fff;border-radius:10px;color:#19445e;font-weight:750;font-size:14px;box-shadow:0 1px 5px rgba(22,48,65,.045)}
+.game-screen-jump button:hover,.game-screen-jump button:focus-visible{background:#e8f1f7;outline-offset:2px}
+.game-character-group,.game-regiments-group{min-width:0;scroll-margin-top:14px}
+.game-character-group{border-radius:16px;padding:2px 0 12px}
+.game-regiments-group{margin-top:14px}
+.game-section-header{margin-top:18px;border-bottom-color:#b7c6d2}
+.game-section-header h2{font-size:20px}
+.game-character-card{border-color:#c5aa77;box-shadow:0 2px 12px rgba(100,78,35,.07)}
+.game-character-card .army-unit-index{background:#886936}
+.game-character-card .army-unit-head{background:#fbf7ef}
+.game-subsection{margin:16px 0 9px;padding-top:4px}
+.game-subsection h2{font-size:14px}
+.game-screen-jump+[id="armyRosterList"]{min-width:0}
+@media(max-width:600px){
+ .game-screen-jump{gap:7px}
+ .game-screen-jump button{font-size:13px;padding:9px 6px}
+ .game-section-header h2{font-size:18px}
+ .game-character-group,.game-regiments-group{width:100%;max-width:100%}
+}
+
+/* Keep quick save reachable when the screen is narrow. */
+.army-screen-toolbar{flex-wrap:wrap}
+.game-screen-save{background:#e8cf93;color:#243c4e;font-weight:750;border-color:#c7aa6e}
+.game-screen-save:hover{background:#f6dfab}

@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Old World Game Manager · Browser Edition v0.5.0</title>
-<link rel="stylesheet" href="./styles.css?v=0.5.0">
-<script type="module" src="./app.js?v=0.5.0"></script>
+<title>Old World Game Manager · v1 Game Screen preview</title>
+<link rel="stylesheet" href="./styles.css?v=1.0.0-alpha.1">
+<script type="module" src="./app.js?v=1.0.0-alpha.1"></script>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · Browser Edition v0.5.0</span></div></header>
+<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · v1 preview</span></div></header>
 <main class="wrap" id="importPage">
  <h1>Import army list</h1>
  <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines, model groups and quoted unit nicknames. Nothing is checked for army legality.</p>
@@ -44,10 +44,10 @@
   <div class="army-roster-launch">
    <div class="army-launch-text">
     <span class="army-launch-eyebrow">Your army is ready</span>
-    <strong>See your entire army in one place</strong>
-    <span>Unit counts, points, model profiles and imported equipment.</span>
+    <strong>Your army, ready for the table</strong>
+    <span>Characters, regiments, profiles, equipment and source links.</span>
    </div>
-   <button id="viewRosterBtn" class="army-launch-button" type="button" aria-controls="armyRosterPage">View Army Roster <span aria-hidden="true">→</span></button>
+   <button id="viewRosterBtn" class="army-launch-button" type="button" aria-controls="armyRosterPage">Enter Game Screen <span aria-hidden="true">→</span></button>
   </div>
   <div class="panel">
    <div class="line"><h2 id="armyTitle">Imported army</h2><span class="status" id="formatLabel"></span></div>
@@ -102,19 +102,21 @@
 <main id="armyRosterPage" class="wrap army-screen" hidden aria-labelledby="armyRosterHeading">
  <div class="army-screen-toolbar">
   <button id="backToImporterBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Back to importer</button>
-  <span class="army-screen-mode">ARMY ROSTER</span>
+  <button id="gameScreenSaveBtn" type="button" class="army-back-button game-screen-save">Save on this device</button>
+  <span class="army-screen-mode">BATTLE COMPANION</span>
  </div>
  <header class="army-screen-hero">
-  <p class="army-screen-kicker">Battle roster · Imported list</p>
-  <h1 id="armyRosterHeading">Army Roster</h1>
+  <p class="army-screen-kicker">Your army · Live game companion preview</p>
+  <h1 id="armyRosterHeading">Game Screen</h1>
   <p id="armyRosterFaction" class="army-screen-faction"></p>
   <div id="armyRosterSummary" class="army-summary-metrics" aria-label="Imported army totals"></div>
  </header>
  <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
  <div class="army-roster-quality">The profiles shown are published <strong>base characteristics</strong>. Equipment choices, spells, special rules and upgrades from the import are listed separately and do not automatically change the profile. This view does not verify legality or recalculate points.</div>
+ <nav class="game-screen-jump" aria-label="Game Screen sections"><button id="gameScreenJumpCharacters" type="button">Characters</button><button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button></nav>
  <div id="armyRosterList" class="army-screen-list"></div>
  <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to importer</button></div>
 </main>
-<footer class="wrap footer">Army-list importer with reference discovery and diagnostics. No legality or gameplay calculations.</footer>
+<footer class="wrap footer">Game Manager v1 preview · Imported rosters and published base profiles. Calculations and joining characters will follow.</footer>
 </body>
 </html>

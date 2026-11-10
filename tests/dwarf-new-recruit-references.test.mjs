@@ -153,12 +153,12 @@ test('Standard Runes only resolves from exact, unique, published allowance and l
  assert.equal(rangerMatch?.sourceMaxPoints,25);
  assert.equal(rangerMatch?.url,'https://tow.whfb.app/magic-items/standard-runes');
 });
-test('Game Manager continues to load source-backed Dwarf references in the v0.5.0 browser',()=>{
+test('Game Manager continues to load source-backed Dwarf references in the v1 preview browser',()=>{
  const html=readFileSync(new URL('index.html',root),'utf8');
  const app=readFileSync(new URL('app.js',root),'utf8');
- assert.match(html,/Browser Edition v0\.5\.0/);
- assert.match(html,/app\.js\?v=0\.5\.0/);
+ assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.1/);
  assert.match(app,/unit-selection-matcher\.js\?v=0\.4\.6/);
- assert.match(app,/appVersion:'0\.5\.0'/);
+ assert.match(app,/appVersion:'1\.0\.0-alpha\.1'/);
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
 });
