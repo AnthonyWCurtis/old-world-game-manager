@@ -120,7 +120,7 @@ function publishedChampionOption(record,selection){
  // Hyphens in published champion titles (Shadow-walker) may be exported as
  // spaces (Shadow Walker). This comparison is scoped to the exact parent and
  // requires BOTH its model profile and explicit champion upgrade option.
- const title=value=>normalized(value).replace(/[-‐‑‒–—]/g,' ').replace(/\s+/g,' ').trim();
+ const title=value=>normalized(value).replace(/['’]/g,'').replace(/[-‐‑‒–—]/g,' ').replace(/\s+/g,' ').trim();
  const provided=title(selection.name);
  if(!provided)return null;
  const canonical=provided.endsWith('bowmen')?
@@ -132,6 +132,32 @@ function publishedChampionOption(record,selection){
   return m && title(m[1])===canonical;
  });
  return matching.length===1?{option:matching[0],sourceName:canonical}:null;
+}
+
+/**
+ * Published Standard Runes category allowance for the exact source unit.
+ * A named allowance is not a selected rune, a valid standard bearer or
+ * proof of army-composition eligibility. Require linked category evidence,
+ * its matching explicit cap and a unique option on the parent unit.
+ */
+function publishedStandardRunesAllowance(record,selection){
+ if(normalized(selection.name)!=='standard runes')return null;
+ const found=[];
+ for(const group of record.upgradeGroups||[]){
+  for(const option of group.options||[]){
+   const m=String(option.description||'').match(
+    /^Purchase Standard runes up to a total of (\d+) points$/i);
+   if(!m)continue;
+   const cap=Number(m[1]);
+   if(!Number.isSafeInteger(cap)||cap<=0||option.magicItemPointsCap!==cap)continue;
+   for(const ref of option.linkedReferences||[]){
+    if(normalized(ref.name)!=='standard runes'||!safeRef(ref)||
+       ref.sourceUrl!=='https://tow.whfb.app/magic-items/standard-runes')continue;
+    found.push({ref,option,group,cap});
+   }
+  }
+ }
+ return found.length===1?found[0]:null;
 }
 
 /** Require an explicit paid Wizard level option on this exact source unit. */
@@ -204,6 +230,20 @@ function referenceForSelection(unit,record,selection){
    verificationStatus:'source-extracted',evidence:'published-champion-upgrade',
    note:'The parent unit lists the '+champion.option.description+
     '. Champion eligibility and points are not independently verified.'};
+ }
+ const runes=publishedStandardRunesAllowance(record,selection);
+ if(runes){
+  const clause=runes.group.eligibilityClause;
+  return {
+   id:'unit-scoped:'+record.id+':standard-runes',
+   name:selection.name,url:runes.ref.sourceUrl,type:'magic-item-category',
+   source:'unit-scoped-data',parentSourceUrl:url,
+   verificationStatus:'source-extracted',evidence:'published-standard-runes-allowance',
+   sourceMaxPoints:runes.cap,sourceEligibilityClause:clause||null,
+   note:'The parent unit offers Standard runes up to '+runes.cap+
+    ' points'+(clause?' under "'+clause+'"':'')+
+    '. This is a source reference only: standard bearer prerequisites, selected runes, restrictions and points have not been verified.'
+  };
  }
  const optionalWizard=optionalWizardLevelOption(record,selection);
  if(optionalWizard){
