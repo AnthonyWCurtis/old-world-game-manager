@@ -5,12 +5,14 @@ import {parseArmy} from '../docs/parser.js';
 import {collectUnmatched} from '../docs/unmatched-debug.js';
 import {findSourceScopedSelectionReference,applySourceScopedSelectionReferences} from '../docs/unit-selection-matcher.js';
 import {shardForId} from '../scripts/build-browser-unit-data.mjs';
+import {applyUnitDataReferences} from '../docs/unit-data.js';
 
 function sourceUnit(slug){
  const id='unit:'+slug,shard=shardForId(id);
  const document=JSON.parse(readFileSync(new URL('../docs/unit-data/shards/'+shard+'.json',import.meta.url),'utf8'));
  return document.records[id];
 }
+const index=JSON.parse(readFileSync(new URL('../docs/unit-data/index.json',import.meta.url),'utf8'));
 const shadow=sourceUnit('shadow-warriors');
 const guard=sourceUnit('lothern-sea-guard');
 
@@ -43,6 +45,9 @@ const fixture=[
 
 function setup(){
  const army=parseArmy(fixture);
+ // The parser alone cannot know every unit; the app first resolves its parent
+ // from the versioned 581-unit index before matching individual selections.
+ applyUnitDataReferences(army,index);
  const unit=army.units.find(u=>u.name==='Shadow Warriors');
  assert.ok(unit,'Shadow Warriors missing');
  const option=unit.selections.find(s=>s.name==='Shadow Walker');
