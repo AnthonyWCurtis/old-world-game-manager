@@ -31,8 +31,6 @@ const fixture=[
  '10 Lothern Sea Guard [100 pts]','',
  '++ Special Units [196 pts] ++','',
  '6 Shadow Warriors [86 pts]',
- '- Hand weapons',
- '- Longbows',
  '- Shadow Walker',
  '',
  '5 Swordmasters of Hoeth [110 pts]',
