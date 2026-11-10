@@ -8,7 +8,7 @@ import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.6';
-import {renderArmyRosterPage} from './army-roster-page.js?v=0.5.0';
+import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.1';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -392,7 +392,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.5.0'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'1.0.0-alpha.1'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -483,6 +483,16 @@ function render(){
  if(window.location.hash==='#army-roster')showPageForHash();
 }
 $('viewRosterBtn').addEventListener('click',openArmyRoster);
+for(const [buttonId,targetId] of [
+ ['gameScreenJumpCharacters','gameCharacters'],
+ ['gameScreenJumpRegiments','gameRegiments']
+]){
+ $(buttonId).addEventListener('click',()=>{
+  if(!current)return;
+  const section=$(targetId);
+  if(section)section.scrollIntoView({behavior:'smooth',block:'start'});
+ });
+}
 $('backToImporterBtn').addEventListener('click',closeArmyRoster);
 $('backToImporterBottomBtn').addEventListener('click',closeArmyRoster);
 window.addEventListener('hashchange',()=>showPageForHash({scroll:true}));
