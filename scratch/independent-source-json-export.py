@@ -217,8 +217,7 @@ def extract_unit(html,url,expected_name):
     slug=path.split("/")[-1]
     name=clean(fs.get("name"))
     if not name:raise ValueError("No structured source unit name")
-    if clean(expected_name).lower()!=name.lower():
-        raise ValueError(f"Sitemap/page unit name mismatch: {expected_name} vs {name}")
+    sitemap_name_diff=clean(expected_name).casefold()!=name.casefold()
     profiles=[model_stats(r) for r in fs.get("unitProfile",[]) if isinstance(r,dict)]
     profiles=[p for p in profiles if p]
     if not profiles:raise ValueError("Missing source structured characteristic profiles")
@@ -233,8 +232,14 @@ def extract_unit(html,url,expected_name):
     if isinstance(base_size,str):
         m=re.match(r"^(\d+)\s*[x×]\s*(\d+)\s*mm$",base_size,re.I)
         if m:base_mm={"width":int(m.group(1)),"depth":int(m.group(2))}
-    c=fs.get("cost");am=int(c) if isinstance(c,int) else None
-    basis="per_model" if costText and "per model" in costText.lower() else "per_unit_or_mount"
+    c=fs.get("cost")
+    m=re.search(r"\+?\d[\d,]*",str(c)) if c is not None else None
+    if m is None and costText:
+        m=re.search(r"\+?\d[\d,]*",costText)
+    am=int(m.group(0).lstrip("+").replace(",","")) if m else None
+    is_additive=bool(costText and costText.strip().startswith("+"))
+    basis=("per_model" if costText and "per model" in costText.lower()
+        else "additional_cost" if is_additive else "per_unit")
     options=describe_options(soup)
     equipment=list_refs(soup.select_one(".unit-profile__details--equipment"))
     default_rules=list_refs(soup.select_one(".unit-profile__details--special-rules"))
@@ -246,6 +251,7 @@ def extract_unit(html,url,expected_name):
         "unitCategory","association","armyLists","nameSingular"}
     extra={k:{"kind":type(v).__name__,"hasContent":bool(v)} for k,v in fs.items() if k not in known}
     warnings=[]
+    if sitemap_name_diff:warnings.append('Sitemap name differs from canonical page title: '+expected_name)
     if not costText:warnings.append("No page cost description")
     if not equipment:warnings.append("No confidently scoped starting equipment links")
     if not default_rules:warnings.append("No confidently scoped default rule links")
@@ -261,7 +267,7 @@ def extract_unit(html,url,expected_name):
           "baseSize":base_size,
           "baseSizeMm":base_mm,
           "unitSize":fs.get("unitSize")},
-        "basePoints":{"amount":am,"basis":basis,"sourceText":costText},
+        "basePoints":{"amount":am,"basis":basis,"isAdditive":is_additive,"sourceText":costText},
         "modelProfiles":profiles,
         "startingEquipment":equipment,
         "startingRules":default_rules,
