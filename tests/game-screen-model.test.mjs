@@ -75,3 +75,18 @@ test('duplicate same-name units remain separate instances',()=>{
  assert.notEqual(model.units[0].id,model.units[1].id);
  assert.deepEqual(model.units.map(u=>u.count),[33,15]);
 });
+
+test('explicit Lords and Heroes sections both create independent character cards',()=>{
+ const army=parseArmy(fixture('single-sea-guard'));
+ const first=army.units[0];
+ army.sections=[{id:'lords',name:'Lords'},{id:'heroes',name:'Heroes'}];
+ const other=structuredClone(first);
+ other.id='second-character';
+ other.sectionId='heroes';
+ first.sectionId='lords';
+ army.units.push(other);
+ const view=createGameScreenModel(army);
+ assert.equal(view.characters.length,2);
+ assert.equal(view.regiments.length,0);
+ assert.deepEqual(view.characters.map(x=>x.section),['Lords','Heroes']);
+});
