@@ -6,6 +6,7 @@ import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatch
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.2.9';
 import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
+import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=0.4.1';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -245,6 +246,7 @@ async function refreshCurrentSource(force=false){
    const result=await getUnitDetails(army,index);
    if(!active())return;
    unitDataRecords=result.records;
+   applySourceScopedSelectionReferences(army,unitDataRecords);
    render();
    status.textContent='Unit profiles available for '+result.matched+'/'+army.units.length+
      ' roster entries · '+index.counts.units+' units in source snapshot · '+
@@ -340,7 +342,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'0.4.1'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -362,7 +364,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'0.4.0'});
+ const text=formatUnmatchedDebug(current,{appVersion:'0.4.1'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
