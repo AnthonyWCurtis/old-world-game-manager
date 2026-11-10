@@ -1,3 +1,4 @@
+import {createGameScreenModel} from './game-screen-model.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -208,30 +209,57 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  const doc=container.ownerDocument||document;
  const opened=new Set([...container.querySelectorAll('article[data-unit-id] details.army-unit-source-details[open]')]
   .map(node=>node.closest('article[data-unit-id]')?.dataset.unitId).filter(Boolean));
+ const model=createGameScreenModel(army,records,fallbackProfiles);
  const overview=rosterOverview(army,records);
+ const byId=new Map((army.units||[]).map(unit=>[unit.id,unit]));
  container.replaceChildren();
- const sections=new Map((army.sections||[]).map(x=>[x.id,x]));
- let lastId=Symbol('begin');
- for(const [index,unit] of (army.units||[]).entries()){
-  const sectionId=unit.sectionId??null;
-  if(sectionId!==lastId){
-   const sourceSection=sections.get(sectionId);
-   const group=el(doc,'div','army-section-heading');
-   const title=el(doc,'h2','',sourceSection?.name||'Uncategorised units');
-   const items=army.units.filter(x=>(x.sectionId??null)===sectionId).length;
-   group.append(title,el(doc,'span','',items+(items===1?' unit entry':' unit entries')));
-   if(sourceSection?.reportedPoints?.value!=null){
-    group.append(el(doc,'span','army-section-points',
-     'Export section: '+points(sourceSection.reportedPoints.value)));
-   }
-   container.append(group);
-   lastId=sectionId;
-  }
-  const sourceRecord=records[unit.id];
-  const fallback=fallbackProfiles[unit.reference?.url];
-  container.append(unitCard(doc,unit,index+1,sourceRecord,fallback,opened.has(unit.id)));
+
+ // A character remains an independent imported instance until an explicitly
+ // verified joining workflow is implemented (Stage 3). No inferred assignment.
+ const characters=el(doc,'section','game-character-group');
+ characters.id='gameCharacters';
+ const charHead=el(doc,'div','army-section-heading game-section-header');
+ charHead.append(el(doc,'h2','','Characters'),el(doc,'span','',model.characters.length+' imported'));
+ characters.append(charHead);
+ if(!model.characters.length)
+  characters.append(el(doc,'p','army-quiet','No separate Characters section was provided by this export.'));
+ for(const entry of model.characters){
+  const imported=byId.get(entry.id);
+  if(!imported)continue;
+  const card=unitCard(doc,imported,entry.index,records[entry.id],
+   fallbackProfiles[imported.reference?.url],opened.has(entry.id));
+  card.classList.add('game-character-card');
+  characters.append(card);
  }
- if(!army.units?.length)
-  container.append(el(doc,'p','army-profile-missing','No units were identified in this import.'));
+ container.append(characters);
+
+ const regiments=el(doc,'section','game-regiments-group');
+ regiments.id='gameRegiments';
+ const regHead=el(doc,'div','army-section-heading game-section-header');
+ regHead.append(el(doc,'h2','','Regiments & other units'),
+  el(doc,'span','',model.regiments.length+' imported'));
+ regiments.append(regHead);
+ const sections=new Map((army.sections||[]).map(section=>[section.id,section]));
+ for(const group of model.groups){
+  const members=group.units.filter(unit=>!unit.isCharacter);
+  if(!members.length)continue;
+  const section=sections.get(group.id);
+  const head=el(doc,'div','army-section-heading game-subsection');
+  head.append(el(doc,'h2','',group.name));
+  head.append(el(doc,'span','',members.length+(members.length===1?' unit entry':' unit entries')));
+  if(section?.reportedPoints?.value!=null)
+   head.append(el(doc,'span','army-section-points',
+    'Export section: '+points(section.reportedPoints.value)));
+  regiments.append(head);
+  for(const entry of members){
+   const imported=byId.get(entry.id);
+   if(!imported)continue;
+   regiments.append(unitCard(doc,imported,entry.index,records[entry.id],
+    fallbackProfiles[imported.reference?.url],opened.has(entry.id)));
+  }
+ }
+ if(!model.regiments.length)
+  regiments.append(el(doc,'p','army-quiet','No additional units were identified in this import.'));
+ container.append(regiments);
  return overview;
 }
