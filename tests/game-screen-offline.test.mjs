@@ -9,7 +9,7 @@ test('v1 registers a versioned same-origin offline app shell',()=>{
  assert.match(app,/registerOfflineSupport/);
  assert.match(offline,/navigator\.serviceWorker\.register/);
  assert.match(sw,/game-manager-v1-shell/);
- for(const file of ['index.html','app.js','parser.js','army-roster-page.js','game-screen-model.js','army-state.js','unit-data.js','styles.css']){
+ for(const file of ['index.html','app.js','parser.js','army-roster-page.js','game-screen-model.js','army-state.js','offline.js','unit-data.js','styles.css']){
   assert.ok(sw.includes("'./"+file+"'"),file+' must be available in the offline app shell');
  }
 });
