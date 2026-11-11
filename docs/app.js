@@ -652,6 +652,11 @@ async function refreshCurrentSource(force=false){
    const referenced=await getSelectedUnitReferenceDetails(army,index);
    if(!active())return;
    selectedUnitSourceRecords=referenced.byUrl;
+   // Selection references may be assigned after the first source snapshot read.
+   // Re-select exact published option URLs without retaining unrelated pages.
+   const linkedProfiles=await getPublishedUnitProfiles(army).catch(()=>({}));
+   if(!active())return;
+   sourceProfiles={...sourceProfiles,...linkedProfiles};
    render();
    status.textContent='Unit profiles available for '+result.matched+'/'+army.units.length+
      ' roster entries · '+index.counts.units+' units in source snapshot · '+
