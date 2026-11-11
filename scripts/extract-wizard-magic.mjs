@@ -27,7 +27,7 @@ export function extractWizardMagic(html,sourceUrl,magicIndex){
  const baseLevel=Number(match[2]);
  const loreText=match[3];
  const alternatives=loreText.split(/\s*,\s*|\s+or\s+|\s+and\s+/i)
-  .map(s=>s.trim()).filter(Boolean);
+  .map(s=>s.trim().replace(/^(?:or|and) +/i,'').trim()).filter(Boolean);
  if(!alternatives.length||alternatives.length>20)return null;
  const choices=[];
  for(const name of alternatives){
