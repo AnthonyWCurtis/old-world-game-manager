@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-known-spell-casting';
+const CACHE_NAME='game-manager-v1-shell-20261111-online-refresh-v1';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -73,15 +73,28 @@ self.addEventListener('fetch',event=>{
   })());
   return;
  }
- // Cached same-origin app modules can be reused offline across query-versioned URLs.
- // Unit data shards remain under their own IndexedDB cache, not a global SW mirror.
+ // Code is network-first while online. The old cache-first handler could
+ // render a fresh index.html with stale JS modules (and an obsolete spell UI).
+ // Persist each file under its canonical, query-free URL so versioned imports
+ // always receive the latest cached response when the device is offline.
  if(!appPaths.has(url.pathname))return;
  event.respondWith((async()=>{
   const cache=await caches.open(CACHE_NAME);
-  const cached=await cache.match(request,{ignoreSearch:true});
+  const cacheKey=new URL(url.pathname,self.location.origin);
+  const isCode=/\.(?:js|css)$/.test(url.pathname);
+  if(isCode){
+   try{
+    const fresh=await fetch(request,{cache:'no-cache'});
+    if(fresh.ok)await cache.put(cacheKey,fresh.clone());
+    return fresh;
+   }catch{
+    return await cache.match(cacheKey)||Response.error();
+   }
+  }
+  const cached=await cache.match(cacheKey);
   if(cached)return cached;
-  const response=await fetch(request);
-  if(response.ok)await cache.put(request,response.clone());
-  return response;
+  const fresh=await fetch(request);
+  if(fresh.ok)await cache.put(cacheKey,fresh.clone());
+  return fresh;
  })());
 });
