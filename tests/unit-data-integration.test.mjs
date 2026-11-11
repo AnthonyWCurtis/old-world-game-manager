@@ -174,7 +174,7 @@ test('Browser wiring loads source data but retains original exported roster stat
  const css=readFileSync(new URL('../docs/styles.css',import.meta.url),'utf8');
  assert.match(html,/v1 Game Screen preview/);
  assert.match(html,/id="unitDataStatus"/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.3/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.4/);
  assert.match(app,/loadUnitDataIndex\(\)/);
  assert.match(app,/applyUnitDataReferences\(army,index\)/);
  assert.match(app,/getUnitDetails\(army,index\)/);
