@@ -42,7 +42,7 @@ try{
  // Each selected spell must show a visible rules description, not just cast
  // value, phase and a source hyperlink. User reported ER and GR missing.
  const descriptions=[
-  ['earthen-ramparts',/5\\+ Ward save.*defended low linear obstacle.*cannot march or charge/s],
+  ['earthen-ramparts',/5\+ Ward save.*defended low linear obstacle.*cannot march or charge/s],
   ['plague-of-rust',/-2 to its armour value/],
   ['travel-mystical-pathway',/repositioned within 12/],
   ['drain-magic',/Enemy Wizards within 24/],
@@ -69,7 +69,7 @@ try{
   await action.click();
  };
  await cast('earthen-ramparts',{target:seaId});
- assert.match(await control.locator('.game-active-spell[data-spell-id="earthen-ramparts"]').innerText(),/5\\+ Ward save/);
+ assert.match(await control.locator('.game-active-spell[data-spell-id="earthen-ramparts"]').innerText(),/5\+ Ward save/);
  assert.match(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-unit-active-magic').textContent(),/Earthen Ramparts/);
  assert.match(await sea.locator('[data-save="ward"]').textContent(),/5\+.*all wounds/i);
  await cast('plague-of-rust',{enemy:'Enemy Knights'});
