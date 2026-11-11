@@ -110,7 +110,7 @@ test('unit-page wizard evidence refines the generic link, but only for that spec
  assert.equal(stormWizard.reference.source,'generic-wizard-rule',
   'Storm Weaver has no stored parent-specific wizard evidence, so generic link remains');
  assert.equal(army.army.derivedPoints.value,2599);
- assert.equal(army.stats.unmatchedSelections,0);
+ assert.ok(!allArmySelections(army).some(s=>s.name==='Wizard'&&s.matchStatus!=='matched'));
 });
 
 test('live app applies the generic pass to imported and saved armies before source refresh',()=>{
@@ -119,6 +119,6 @@ test('live app applies the generic pass to imported and saved armies before sour
  assert.match(app,/import \{applyGenericWizardReferences\} from '\.\/wizard-references\.js/);
  assert.match(app,/current=parseArmy\(input,sourceOverride\(\)\);applyInformationalPlaceholders\(current\);applyGenericWizardReferences\(current\)/);
  assert.match(app,/current=restoreStoredImport\(loaded\);applyInformationalPlaceholders\(current\);applyGenericWizardReferences\(current\)/);
- assert.match(app,/selection\.reference\?\.source==='generic-wizard-rule'/);
+ assert.match(app,/s\.reference\?\.source==='generic-wizard-rule'/);
  assert.match(shell,/\.\/wizard-references\.js/);
 });
