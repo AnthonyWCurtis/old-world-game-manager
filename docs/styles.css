@@ -573,3 +573,22 @@
 .game-active-items{margin:13px 0;border-top:1px solid #cfdae2;padding-top:10px;display:grid;gap:7px}
 .game-active-items h4{margin:2px 0;font-size:14px;color:#276145}
 .game-active-items .game-effect-card{border-color:#a9d3b5}
+
+
+/* Offence appears immediately when a unit opens; it is never confused with saves. */
+.game-offensive-effects-panel{
+ margin:12px 11px 10px;padding:13px;border:1px solid #c7d6e4;
+ border-left:4px solid #527998;border-radius:11px;background:#f2f7fb;min-width:0;
+}
+.game-offensive-effects-panel h4{margin:0 0 10px;color:#1e4d6e;font-size:16px}
+.game-offensive-effect{padding:8px 0;border-top:1px solid #d9e5ec;min-width:0}
+.game-offensive-effect:first-of-type{border-top:0;padding-top:0}
+.game-offensive-effect-name{display:block;color:#20465e;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.game-offensive-effect-detail{margin:6px 0;color:#253f54;font-size:14px;line-height:1.5}
+.game-offensive-effect-scope{margin:5px 0 8px;color:#526a7b;font-size:12px;line-height:1.45}
+.game-card-chip-offensive{background:#dbe9f5;color:#234f72;border:1px solid #bdd0e0}
+@media(max-width:480px){
+ .game-offensive-effects-panel{margin:10px 7px;padding:11px}
+ .game-offensive-effect-name{font-size:14px}
+ .game-offensive-effect-detail{font-size:13px}
+}
