@@ -7,8 +7,8 @@ ALLOWED_ORIGIN = "https://anthonywcurtis.github.io"
 # Admin origin is served directly by this Worker (first-party login cookies).
 ADMIN_PUBLIC_ORIGIN = "https://old-world-unmatched-reports.oldworldcompanion.workers.dev"
 ADMIN_GITHUB_LOGIN = "AnthonyWCurtis"
-# Set after registering the GitHub OAuth app, then redeploy.
-ADMIN_GITHUB_CLIENT_ID = ""
+# Public GitHub OAuth app client ID; redeploy Worker after setting private secrets.
+ADMIN_GITHUB_CLIENT_ID = "Ov23li4Sy8Ynh9lfW7G5"
 
 # Add these SECRETS in Cloudflare Workers. Do not commit secret values.
 # GITHUB_TOKEN = fine-grained GitHub token for this repository (Contents: Read and write)
