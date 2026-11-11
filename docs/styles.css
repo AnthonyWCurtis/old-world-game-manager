@@ -313,3 +313,41 @@
  .game-defence-stat>strong{font-size:12px}
  .game-defence-heading{gap:2px 8px}
 }
+
+/* Stage 4B — source-verified, player-confirmed magic effects. */
+.game-spell-panel{min-width:0;margin:16px 0;border:1px solid #b9cee1;border-radius:13px;padding:13px;background:#f8fbff}
+.game-spell-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.game-spell-heading h2{font-size:19px;color:#254a68;margin:0}
+.game-spell-heading>span{font-size:12px;font-weight:700;background:#dfeefa;border-radius:100px;padding:5px 9px;color:#315a7b}
+.game-spell-disclosure,.game-spell-policy{font-size:12px;line-height:1.65;color:#50687b;margin:8px 0}
+.game-spell-policy{margin:8px 2px 16px}
+.game-spell-candidates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:9px;margin:12px 0 0}
+.game-spell-caster{border:1px solid #b8ccd9;border-radius:9px;background:#fff;min-width:0}
+.game-spell-caster>summary{font-size:14px;font-weight:750;cursor:pointer;padding:12px;min-height:44px;color:#2b4b69}
+.game-spell-caster-body{padding:2px 12px 13px}
+.game-spell-activity{font-size:12px;color:#4e6277;line-height:1.5;margin:5px 0}
+.game-spell-warning{font-size:12px;color:#885126;background:#fff7e8;border-left:3px solid #c99855;border-radius:4px;padding:8px 9px;margin:8px 0}
+.game-spell-source{display:inline-block;font-size:12px;color:#235b84;text-decoration:underline;margin:6px 8px 9px 0}
+.game-spell-target-label{display:block;font-size:13px;font-weight:700;margin:7px 0 4px;color:#315574}
+.game-spell-target{display:block;width:100%;min-width:0;min-height:46px;font-size:15px}
+.game-spell-confirm-label{display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:12px;line-height:1.5;color:#304e64}
+.game-spell-confirm{min-width:20px;width:20px;height:20px;margin:1px 0 0;accent-color:#29648e}
+.game-spell-cast,.game-spell-end,.game-spell-expire{min-height:44px;padding:9px 12px;border-radius:9px;font-size:13px;font-weight:750}
+.game-spell-cast:disabled{opacity:.48;cursor:not-allowed}
+.game-active-spells{margin:12px 0 8px}
+.game-active-spells h3{margin:7px 0 8px;font-size:13px;color:#365a76}
+.game-active-spell{margin:8px 0;padding:11px;border:1px solid #afcfae;border-radius:10px;background:#f1fbf1;min-width:0}
+.game-active-spell>strong{font-size:14px;color:#2d5b3b}
+.game-spell-end{margin:4px 0 0;background:#fff;border-color:#bdc9c8;color:#4f6269}
+.game-spell-expire{margin:7px 0 3px;background:#e8e7f6;border-color:#beb9d8;color:#544d79;width:100%}
+.game-spell-empty{font-size:12px;color:#68798a;margin:11px 0}
+.game-defence-incoming,.game-defence-movement{margin:9px 0 3px;border:1px solid #d3c8e6;background:#f7f4fd;color:#3d4a67;padding:9px;border-radius:8px;line-height:1.5}
+.game-defence-incoming{display:flex;flex-direction:column;gap:4px}
+.game-defence-incoming strong,.game-defence-movement strong{font-size:13px}
+.game-defence-incoming span{font-size:11px}
+.game-defence-movement ul{margin:4px 0;padding-left:20px;font-size:12px}
+@media(max-width:500px){
+ .game-spell-panel{padding:10px}
+ .game-spell-caster>summary{font-size:13px}
+ .game-active-spell{padding:9px}
+}
