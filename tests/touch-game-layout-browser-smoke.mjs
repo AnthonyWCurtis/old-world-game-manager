@@ -71,7 +71,7 @@ try{
  await page.locator('#gameNavMagic').click();
  await page.locator('#backToImporterBtn').click();
  await page.locator('#resumeGameBtn').click();
- assert.equal(await page.locator('#gameMagicPanel').isVisible(),true);
+ await page.locator('#gameMagicPanel').waitFor({state:'visible',timeout:15000});
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('saved automatically'),
   null,{timeout:15000});
  await page.waitForFunction(()=>navigator.serviceWorker?.controller!==null,null,{timeout:20000});
