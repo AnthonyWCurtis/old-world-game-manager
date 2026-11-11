@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -46,14 +47,17 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ await showMagic(page);
  const panel=page.locator('#spellControlPanel');
  assert.match(await panel.innerText(),/No selectable known spells yet/);
+ await showUnitsAndExpand(page);
  const storm=page.locator('#gameCharacters .game-character-card')
   .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
  const spellbook=storm.locator('.game-wizard-spellbook');
  await spellbook.locator(':scope > summary').click();
  await spellbook.locator('.game-wizard-spell-row')
   .filter({hasText:'Plague of Rust'}).locator('input[type=checkbox]').check();
+ await showMagic(page);
  await panel.locator('.game-spell-caster').first().waitFor();
  assert.equal(await panel.locator('.game-spell-caster').count(),1);
  assert.match(await panel.innerText(),/Plague of Rust/);
