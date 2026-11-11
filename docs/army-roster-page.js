@@ -1,6 +1,7 @@
 import {createGameScreenModel} from './game-screen-model.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
+import {sourcePrintedArmour} from './source-printed-armour.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
 /**
@@ -203,10 +204,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  }
  // A printed chassis/unit value is not an equipment-derived or attack-specific save.
  // Never transfer it to an attached rider, crew model, or regiment.
- const printedArmour=fallback?.publishedArmour;
- if(record?.source?.sourceUrl===printedArmour?.sourceUrl&&
-    printedArmour?.verificationStatus==='source-page-extracted'&&
-    Number.isInteger(printedArmour.value)&&printedArmour.value>=2&&printedArmour.value<=7){
+ const printedArmour=sourcePrintedArmour(record,fallback);
+ if(printedArmour){
   const section=el(doc,'section','army-ref-group');
   section.append(el(doc,'strong','','Source-printed armour value: '+printedArmour.value+'+'));
   section.append(el(doc,'p','','Published unit/chassis value only. Model scope, rider equipment, armour modifiers and final saves are not calculated.'));
@@ -386,7 +385,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  if(profile)body.append(profile);
  const offensive=renderUnitOffensiveEffects(doc,effects);
  if(offensive)body.append(offensive);
- body.append(renderDefencePanel(doc,defence,onShieldUse));
+ body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback)));
  body.append(renderUnitEffects(doc,effects,effectActions));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
  remove.type='button';
@@ -401,7 +400,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  * A defence panel never conflates an equipped model's save with that of a
  * different character, or a Magic Missile-only Ward with an all-purpose Ward.
  */
-function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
+function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null){
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
@@ -427,6 +426,13 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
   metrics.append(item);
  }
  panel.append(metrics);
+ if(printedArmour){
+  const sourceValue=el(doc,'div','game-defence-incoming');
+  sourceValue.append(el(doc,'strong','','Published unit/chassis armour: '+printedArmour.label));
+  sourceValue.append(el(doc,'span','','Source reference only. Model scope is unresolved; this does not replace the equipment-only Armour value above or determine a final save.'));
+  sourceValue.append(safeLink(doc,'Original source page',printedArmour.sourceUrl,'game-defence-source'));
+  panel.append(sourceValue);
+ }
  if(defence.activeSpellEffects?.length||defence.spellMovementNotes?.length){
   const banner=el(doc,'div','game-unit-active-magic');
   banner.append(el(doc,'strong','','Magic affecting this unit'));
@@ -544,7 +550,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const content=card.querySelector('.game-unit-expandable');
   const offensive=renderUnitOffensiveEffects(doc,effects);
   if(offensive)content.append(offensive);
-  content.append(renderDefencePanel(doc,defence,onShieldUse));
+  content.append(renderDefencePanel(doc,defence,onShieldUse,
+   sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url])));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
