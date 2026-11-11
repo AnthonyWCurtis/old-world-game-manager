@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {
   SOURCE_ORIGIN,SITEMAP_URL,parseMagicSitemap,assembleMagicIndex,
-  normalizeMagicName,matchMagicReference
+  normalizeMagicName,matchMagicReference,parseLoreSpellLinks
 } from '../scripts/build-magic-reference-index.mjs';
 
 const root=new URL('../docs/reference-records/',import.meta.url);
@@ -156,4 +156,46 @@ test('Assembled magic records retain timestamp without claiming verified spell c
  assert.equal(record.source.checkedAt,'2026-11-09T21:00:00.000Z');
  assert.equal(record.counts.entries,138);
  assert.ok(record.entries.every(e=>e.verificationStatus==='source-indexed'));
+});
+
+test('published source-lore links map only to indexed spells with page provenance',()=>{
+ assert.equal(magic.loreLinks?.status,'source-lore-page-indexed');
+ assert.equal(magic.loreLinks.pagesChecked,magic.counts.lores);
+ assert.ok(magic.loreLinks.linksIndexed>=100);
+ const byId=new Map(magic.entries.map(e=>[e.id,e]));
+ for(const lore of magic.entries.filter(e=>e.kind==='lore')){
+  assert.equal(lore.spellLinkStatus,'source-lore-page-indexed');
+  assert.equal(lore.spellLinksCheckedAt,magic.loreLinks.checkedAt);
+  assert.ok(lore.spellIds.length>=1&&lore.spellIds.length<=12);
+  assert.equal(new Set(lore.spellIds).size,lore.spellIds.length);
+  for(const id of lore.spellIds){
+   assert.equal(byId.get(id)?.kind,'spell');
+   assert.ok(byId.get(id).loreIds.includes(lore.id));
+  }
+  assert.ok(lore.signatureSpellIds.every(id=>lore.spellIds.includes(id)));
+ }
+ for(const spell of magic.entries.filter(e=>e.kind==='spell')){
+  assert.ok(Array.isArray(spell.loreIds));
+  for(const id of spell.loreIds)assert.ok(byId.get(id)?.spellIds?.includes(spell.id));
+ }
+});
+test('lore HTML parser fails closed on forged, unknown and off-page spell links',()=>{
+ const lore={kind:'lore',name:'Elementalism',url:SOURCE_ORIGIN+'/the-lores-of-magic/elementalism'};
+ const spells=[
+  {kind:'spell',id:'magic-ref:/spell/storm-call',name:'Storm Call',url:SOURCE_ORIGIN+'/spell/storm-call'},
+  {kind:'spell',id:'magic-ref:/spell/earthen-ramparts',name:'Earthen Ramparts',url:SOURCE_ORIGIN+'/spell/earthen-ramparts'}
+ ];
+ const sample='<html><main><h1>Elementalism</h1>'+
+  '<a href="/spell/storm-call">Storm Call (Signature Spell)</a>'+
+  '<a href="/spell/earthen-ramparts">4. Earthen Ramparts</a>'+
+  '<a href="/spell/earthen-ramparts">4. Earthen Ramparts</a>'+
+  '<a href="https://other.example/spell/magic">Other</a>'+
+  '<a href="/spell/storm-call?bad=true">Storm Call</a>'+
+  '<a href="/spell/unlisted">Unlisted</a>'+
+  '</main><footer><a href="/spell/unlisted">Not content</a></footer></html>';
+ assert.deepEqual(parseLoreSpellLinks(sample,lore,spells),[
+  {id:spells[0].id,signature:true},{id:spells[1].id,signature:false}
+ ]);
+ assert.throws(()=>parseLoreSpellLinks('<main><a href="/spell/not-in-index">Unlisted</a></main>',lore,spells),/Unexpected spell links/);
+ assert.throws(()=>parseLoreSpellLinks('<a href="/spell/storm-call">Storm Call</a>',lore,spells),/No main lore content/);
 });
