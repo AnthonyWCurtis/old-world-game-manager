@@ -17,6 +17,7 @@ export const CATALOGUE = [
     // Old World Builder shortens Orion's published title to "Orion".
     // Source: https://tow.whfb.app/unit/orion-the-king-in-the-woods
     { id: 'unit:orion-the-king-in-the-woods', name: 'Orion, the King in the Woods', aliases: ['Orion'], type: 'unit', url: 'https://tow.whfb.app/unit/orion-the-king-in-the-woods', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-11' },
+    { id: 'unit:wood-elf-beast-pack', name: 'Wood Elf Beast Pack', type: 'unit', url: 'https://tow.whfb.app/unit/wood-elf-beast-pack', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-11' },
     { id: 'unit:waystalker', name: 'Waystalker', type: 'unit', url: 'https://tow.whfb.app/unit/waystalker' },
     { id: 'unit:shadowdancer', name: 'Shadowdancer', type: 'unit', url: 'https://tow.whfb.app/unit/shadowdancer' },
     { id: 'unit:glade-guard', name: 'Glade Guard', type: 'unit', url: 'https://tow.whfb.app/unit/glade-guard' },
