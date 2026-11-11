@@ -110,3 +110,27 @@ test('public POST /report validation remains separate from admin login',async()=
    entries:[{type:'unit',name:'Test',unit:'Test'}]})}),env);
  assert.equal(noTurnstile.status,503,'Existing Worker still requires rate limiter and Turnstile secrets');
 });
+
+test('GitHub review update retries a concurrent SHA conflict without losing existing reviews',async()=>{
+ store={sha:'conflict-base',content:b64(JSON.stringify({schemaVersion:1,entries:{
+  existing:{status:'needs-info',note:'Keep this review',fixUrl:''}
+ }}))};
+ const session=await makeSession();
+ let writes=0;
+ const retryGithub=(url,opts={})=>{
+  if(new URL(url).pathname.endsWith('/reports/admin/reviews.json')&&opts.method==='PUT'){
+   writes++;
+   if(writes===1)return Promise.resolve(new Response('conflict',{status:409}));
+  }
+  return github(url,opts);
+ };
+ const result=await handleAdminRequest(new Request(ORIGIN+'/admin/api/review',{method:'POST',headers:{
+  Cookie:session,Origin:ORIGIN,'Content-Type':'application/json'
+ },body:JSON.stringify({filename:file,ordinal:2,status:'needs-info',note:'Request a clearer export',fixUrl:''})}),
+ env,retryGithub);
+ assert.equal(result.status,200);
+ assert.equal(writes,2);
+ const saved=JSON.parse(Buffer.from(store.content,'base64').toString('utf8'));
+ assert.equal(saved.entries.existing.note,'Keep this review');
+ assert.equal(saved.entries[file+'#2'].status,'needs-info');
+});
