@@ -112,6 +112,45 @@ function modelCountEquipmentOption(record,selection){
 }
 
 /**
+ * An OWB Beast Pack selection such as "2x Deepwood Hound" is a composite
+ * beast choice, NOT generic gear and NOT a separate purchased unit.
+ * Match only a source-verified Beast Pack record with one unambiguous
+ * published model option and an explicit model-count range.
+ */
+function publishedBeastPackOption(record,selection){
+ if(record.id!=='unit:wood-elf-beast-pack'||
+    record.source?.sourceUrl!=='https://tow.whfb.app/unit/wood-elf-beast-pack')
+  return null;
+ const text=String(selection.name||'').trim();
+ const m=text.match(/^([1-9]\d*)\s*[x×]\s+(.+)$/i);
+ if(!m)return null;
+ const quantity=Number(m[1]),name=normalized(m[2]);
+ if(!Number.isSafeInteger(quantity)||!name)return null;
+ const hits=[];
+ for(const group of record.upgradeGroups||[]){
+  if(group.relationship!=='one_beast_type_per_pack'||
+     !/^Each Beast Keeper must take one of the following\*?:/i.test(
+      group.eligibilityClause||''))continue;
+  for(const option of group.options||[]){
+   if(!Number.isSafeInteger(option.minModels)||
+      !Number.isSafeInteger(option.maxModels)||
+      quantity<option.minModels||quantity>option.maxModels||
+      option.points?.basis!=='per_beast_model'&&
+       option.points?.basis!=='per_selected_beast')continue;
+   for(const ref of option.linkedReferences||[]){
+    if(!safeRef(ref)||normalized(ref.name)!==name||!ref.sourceUrl.startsWith(
+      'https://tow.whfb.app/unit/'))continue;
+    const expected=new URL(ref.sourceUrl).pathname.slice('/unit/'.length);
+    if(!['deepwood-hound','forest-cat','sylvan-boar','bear-of-loren'].includes(expected))
+     continue;
+    hits.push({ref,option,group,quantity});
+   }
+  }
+ }
+ return hits.length===1?hits[0]:null;
+}
+
+/**
  * Some exporters pluralise champion titles (Lord's Bowmen) while the source
  * profile and unit upgrade both use the singular (Lord's Bowman).
  * An exact champion title *and* an explicit upgrade are mandatory.
@@ -212,6 +251,17 @@ function referenceForSelection(unit,record,selection){
    name:selection.name,url,type:'command',source:'unit-scoped-data',
    verificationStatus:'source-extracted',evidence:'published-command-upgrade',
    note:'This unit page lists the command option; selection legality and costs are not verified.'};
+ }
+ const beast=publishedBeastPackOption(record,selection);
+ if(beast){
+  return {id:'unit-scoped:'+record.id+':beast-choice:'+normalized(beast.ref.name),
+   name:selection.name,url:beast.ref.sourceUrl,type:'unit-component',
+   source:'unit-scoped-data',parentSourceUrl:url,
+   verificationStatus:'source-extracted',evidence:'published-beast-pack-option',
+   sourceQuantity:beast.quantity,sourceMinimum:beast.option.minModels,
+   sourceMaximum:beast.option.maxModels,
+   note:'The Beast Pack page lists '+beast.option.description+
+    '. Its quantity is a reference to the selected beast type; the pack composition, ownership, roster legality and points have not been verified.'};
  }
  const modelGear=modelCountEquipmentOption(record,selection);
  if(modelGear){
