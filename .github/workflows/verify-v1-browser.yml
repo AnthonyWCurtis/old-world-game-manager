@@ -7,12 +7,14 @@ on:
       - 'docs/**'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
+      - 'tests/stage4-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   pull_request:
     paths:
       - 'docs/**'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
+      - 'tests/stage4-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   workflow_dispatch:
 permissions:
@@ -36,3 +38,4 @@ jobs:
           sleep 2
           node tests/v1-browser-smoke.mjs
           node tests/stage3-browser-smoke.mjs
+          node tests/stage4-browser-smoke.mjs
