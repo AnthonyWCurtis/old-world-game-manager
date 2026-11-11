@@ -244,7 +244,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  }
  if(record){
   const sourceNotes=el(doc,'details','army-unit-compact-details army-source-meta-details');
-  sourceNotes.append(el(doc,'summary','','Unit source details'));
+  sourceNotes.append(el(doc,'summary','','Unit source details · '+
+   (record.extractionWarnings?.length?record.extractionWarnings.length+' review flag(s)':'source-extracted')));
   const sourceNotesBody=el(doc,'div','army-unit-source-meta');
   const bits=[];
   if(record.classification?.troopType?.length)bits.push(record.classification.troopType.join(' / '));
