@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -14,6 +15,7 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ await showUnitsAndExpand(page);
  const units=page.locator('#gameRegiments .army-unit-card');
  const ships=units.filter({has:page.locator('h3:text-is("Ship\'s Company")')});
  assert.equal(await ships.count(),3,'Duplicate units remain separate imported instances');
@@ -59,6 +61,7 @@ try{
  assert.equal(await restored.locator('h3').first().innerText(),'Left Flank');
  assert.match(await restored.locator('.army-unit-nickname').first().innerText(),/Official: Ship's Company/);
  assert.equal(await page.locator('#gameRegiments .army-unit-card[data-unit-id="'+second+'"] h3').first().innerText(),"Ship's Company");
+ await showUnitsAndExpand(page);
  const restoredBook=page.locator('#gameCharacters .game-character-card[data-unit-id="'+stormId+'"] .game-wizard-spellbook');
  await restoredBook.locator(':scope > summary').click();
  assert.equal(await restoredBook.locator('.game-wizard-spell-row').count(),7,'Offline cached lore filtering must survive reload');

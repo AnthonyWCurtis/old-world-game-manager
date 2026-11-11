@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -22,6 +23,7 @@ try{
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  assert.match(page.url(),/#army-roster$/);
+ await showUnitsAndExpand(page);
  const source=await page.locator('#sourceText').inputValue();
  const storm=page.locator('#gameCharacters .game-character-card')
   .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
@@ -29,6 +31,7 @@ try{
  await book.locator(':scope > summary').click();
  await book.locator('.game-wizard-spell-row').filter({hasText:'Earthen Ramparts'})
   .locator('input[type=checkbox]').check();
+ await showMagic(page);
  const control=page.locator('#spellControlPanel');
  await control.locator('.game-spell-caster[data-spell-id="earthen-ramparts"]').waitFor();
  const sea=page.locator('#gameRegiments .army-unit-card')

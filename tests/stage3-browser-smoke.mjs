@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -14,6 +15,7 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
+ await showUnitsAndExpand(page);
  await page.locator('.game-character-card').first().waitFor({state:'visible'});
 
  const characters=page.locator('#gameCharacters .game-character-card');

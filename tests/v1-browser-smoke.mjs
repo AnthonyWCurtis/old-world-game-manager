@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -17,6 +18,7 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
+ await showUnitsAndExpand(page);
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  assert.match(await page.locator('.army-screen-mode').innerText(),/BATTLE COMPANION/);
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),1);
@@ -42,6 +44,7 @@ try{
   'The Mage link may be refined to its source-verified parent unit');
  assert.match(await page.locator('#armyMeta').innerText(),/2,599/);
  await page.locator('#viewRosterBtn').click();
+ await showUnitsAndExpand(page);
  await page.locator('.game-character-card').first().waitFor({state:'attached',timeout:10000});
  assert.ok(await page.locator('.game-character-card').count()>0);
  assert.ok(await page.locator('#gameRegiments .army-unit-card').count()>0);
@@ -79,6 +82,7 @@ try{
  await page.locator('#sourceText').fill(raw);
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
+ await showUnitsAndExpand(page);
  assert.match(await page.locator('#gameRegiments').innerText(),/Lothern Sea Guard/);
  assert.equal(errors.length,0,'Runtime JS errors: '+errors.join(' | '));
  console.log('v1 mobile import → Game Screen → save → offline reload → new paste: PASS');

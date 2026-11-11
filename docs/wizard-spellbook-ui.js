@@ -87,11 +87,11 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
  const openCasting=el(doc,'button','game-wizard-open-casting','Go to casting controls');
  openCasting.type='button';
  openCasting.addEventListener('click',()=>{
-  const area=doc.getElementById('spellControlPanel');
-  const candidate=[...area?.querySelectorAll('.game-spell-caster')||[]]
-   .find(el=>el.dataset.casterId===unit.id);
-  if(candidate)candidate.open=true;
-  area?.scrollIntoView({block:'start',behavior:'smooth'});
+  // The casting panel lives in a different tab. Ask the page to show that
+  // workspace before trying to expand or scroll to this Wizard's spell.
+  doc.dispatchEvent(new CustomEvent('game-manager:open-magic',{
+   detail:{wizardId:unit.id}
+  }));
  });
  body.append(openCasting);
  panel.append(body);

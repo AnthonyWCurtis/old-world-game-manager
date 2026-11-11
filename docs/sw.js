@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-online-refresh-v1';
+const CACHE_NAME='game-manager-v1-shell-20261111-touch-tabs-v1';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -24,6 +24,8 @@ const APP_SHELL=[
  './defence-engine.js',
  './spell-engine.js',
  './spell-controls.js',
+ './game-layout.js',
+ './game-overview.js',
  './player-customization.js',
  './wizard-spellbook-ui.js',
  './reference-records/magic-index.json',

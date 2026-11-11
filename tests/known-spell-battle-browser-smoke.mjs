@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -14,6 +15,7 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ await showUnitsAndExpand(page);
  const control=page.locator('#spellControlPanel');
  const sea=page.locator('#gameRegiments .army-unit-card').filter({
   has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
@@ -32,6 +34,7 @@ try{
  };
  for(const spell of ['Earthen Ramparts','Travel Mystical Pathway','Plague of Rust',
   'Drain Magic','Glittering Robe'])await choose(spell);
+ await showMagic(page);
  await control.locator('.game-spell-caster').first().waitFor();
  assert.equal(await control.locator('.game-spell-caster').count(),5);
  assert.equal(await control.locator('.game-wizard-casting-group').count(),3);
@@ -48,8 +51,8 @@ try{
   await action.click();
  };
  await cast('earthen-ramparts',{target:seaId});
- assert.match(await sea.locator(':scope > .game-defence-panel .game-unit-active-magic').innerText(),/Earthen Ramparts/);
- assert.match(await sea.locator('[data-save="ward"]').innerText(),/5\+.*all wounds/i);
+ assert.match(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-unit-active-magic').textContent(),/Earthen Ramparts/);
+ assert.match(await sea.locator('[data-save="ward"]').textContent(),/5\+.*all wounds/i);
  await cast('plague-of-rust',{enemy:'Enemy Knights'});
  assert.match(await control.locator('.game-active-spell[data-spell-id="plague-of-rust"]').innerText(),
   /Enemy unit: Enemy Knights/);
@@ -57,21 +60,23 @@ try{
  await cast('travel-mystical-pathway',{target:companyId});
  assert.equal(await control.locator('.game-active-spell[data-spell-id="travel-mystical-pathway"]').count(),0);
  assert.equal(await control.locator('.game-spell-event').count(),1);
- assert.match(await company.locator('.game-unit-active-magic').innerText(),/Movement resolved: Travel Mystical Pathway/);
+ assert.match(await company.locator('.game-unit-active-magic').textContent(),/Movement resolved: Travel Mystical Pathway/);
  await cast('drain-magic');
  assert.match(await control.locator('.game-active-spell[data-spell-id="drain-magic"]').innerText(),/Remains in Play/);
  const glitter=control.locator('.game-spell-caster[data-spell-id="glittering-robe"]');
  const illusionId=await glitter.getAttribute('data-caster-id');
+ await showUnitsAndExpand(page);
  await page.locator('#gameCharacters .game-character-card[data-unit-id="'+illusionId+'"] .character-unit-picker')
   .selectOption(seaId);
+ await showMagic(page);
  await cast('glittering-robe');
  assert.equal(await control.locator('.game-active-spell[data-spell-id="earthen-ramparts"]').count(),0,
   'Robe expires only older enchantments affecting the same unit');
  assert.equal(await control.locator('.game-active-spell[data-spell-id="plague-of-rust"]').count(),1,
   'Enemy-targeted hex is not an Enchantment');
- assert.match(await sea.locator(':scope > .game-defence-panel .game-unit-active-magic').innerText(),/Glittering Robe/);
- assert.match(await sea.locator(':scope > .game-defence-panel .game-defence-incoming').innerText(),/-1 To Hit/);
- assert.equal(await sea.locator(':scope > .game-defence-panel .game-defence-movement').count(),0);
+ assert.match(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-unit-active-magic').textContent(),/Glittering Robe/);
+ assert.match(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-defence-incoming').textContent(),/-1 To Hit/);
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-defence-movement').count(),0);
 
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('saved automatically'),
   null,{timeout:15000});

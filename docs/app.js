@@ -17,6 +17,10 @@ import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUse
 import {indexedSpells} from './player-customization.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
+import {GAME_TABS,loadGameLayout,saveGameLayout,setActiveTab,setUnitExpanded} from './game-layout.js';
+import {renderGameOverview} from './game-overview.js';
+import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
+import {unitDisplayName} from './player-customization.js';
 const $=id=>document.getElementById(id);
 const ACTIVE_TAB_ARMY_KEY='old-world-game-manager-active-army-v1';
 let current=null;
@@ -25,6 +29,113 @@ let sourceProfiles={};
 let unitDataRecords={};
 let battleSession=null;
 let magicIndex=null;
+let gameLayout=null;
+let gameLayoutArmyKey=null;
+let gameScrollWrite=null;
+function ensureGameLayout(){
+ if(!current)return null;
+ const key=armySessionKey(current);
+ if(!gameLayout||gameLayoutArmyKey!==key){
+  gameLayout=loadGameLayout(current);
+  gameLayoutArmyKey=key;
+ }
+ return gameLayout;
+}
+function rememberGameScroll(){
+ if(!current||window.location.hash!=='#army-roster'||!gameLayout)return;
+ gameLayout.scroll[gameLayout.tab]=Math.max(0,Math.round(window.scrollY));
+ saveGameLayout(gameLayout);
+}
+function applyGameTab(){
+ const state=ensureGameLayout();
+ if(!state)return;
+ for(const tab of GAME_TABS){
+  const panel=$('game'+tab[0].toUpperCase()+tab.slice(1)+'Panel');
+  const button=document.querySelector('#gameWorkspaceNav [data-game-tab="'+tab+'"]');
+  if(panel)panel.hidden=state.tab!==tab;
+  if(button){
+   button.setAttribute('aria-selected',String(state.tab===tab));
+   button.tabIndex=state.tab===tab?0:-1;
+   button.classList.toggle('game-nav-selected',state.tab===tab);
+  }
+ }
+}
+function switchGameTab(tab,{focusCaster=null}={}){
+ if(!current||!GAME_TABS.includes(tab))return;
+ const previous=ensureGameLayout();
+ gameLayout=setActiveTab(previous,tab,window.scrollY);
+ applyGameTab();
+ const scroll=gameLayout.scroll[tab]||0;
+ requestAnimationFrame(()=>{
+  const limit=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
+  window.scrollTo({top:Math.min(scroll,limit),behavior:'instant'});
+  if(tab==='magic'&&focusCaster){
+   const area=$('spellControlPanel');
+   const candidate=[...area.querySelectorAll('.game-spell-caster')]
+    .find(node=>node.dataset.casterId===focusCaster);
+   if(candidate)candidate.open=true;
+   area.scrollIntoView({block:'start',behavior:'smooth'});
+  }
+ });
+}
+function handleUnitFoldChange(unitId,open){
+ gameLayout=setUnitExpanded(ensureGameLayout(),unitId,open);
+}
+function renderMagicSpellbooks(){
+ const holder=$('gameKnownSpellbooks');
+ const openBookIds=new Set([...holder.querySelectorAll('details.game-wizard-spellbook[open]')]
+  .map(node=>node.dataset.wizardId));
+ const previousDrawer=holder.querySelector('#gameKnownSpellbookDrawer');
+ const drawerWasOpen=previousDrawer?.open||false;
+ holder.replaceChildren();
+ const drawer=make('details','game-magic-known-drawer');
+ drawer.id='gameKnownSpellbookDrawer';drawer.open=drawerWasOpen;
+ const heading=make('summary','game-magic-known-heading','Choose or change spells each Wizard knows');
+ drawer.append(heading);
+ const intro=make('p','game-spell-disclosure',
+  'Select source-linked spells known by each imported Wizard. Selecting a spell does not cast it. Known spells appear in casting controls above.');
+ drawer.append(intro);
+ let wizardCount=0;
+ for(const unit of current.units){
+  const book=renderWizardSpellbook(document,unit,battleSession,magicIndex,handleWizardKnownSpell);
+  if(!book)continue;
+  wizardCount++;
+  const block=make('section','game-magic-wizard-book');
+  block.append(make('h3','',unitDisplayName(unit,battleSession)));
+  book.open=openBookIds.has(unit.id);
+  block.append(book);drawer.append(block);
+ }
+ if(!wizardCount)drawer.append(make('p','game-spell-empty','No Wizards with an indexed lore found in this army.'));
+ holder.append(drawer);
+}
+$('gameWorkspaceNav').addEventListener('keydown',event=>{
+ if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+ const active=event.target.closest('[data-game-tab]')?.dataset.gameTab;
+ if(!active)return;
+ event.preventDefault();
+ let target=active;
+ if(event.key==='Home')target=GAME_TABS[0];
+ else if(event.key==='End')target=GAME_TABS[GAME_TABS.length-1];
+ else target=GAME_TABS[(GAME_TABS.indexOf(active)+(event.key==='ArrowRight'?1:GAME_TABS.length-1))%GAME_TABS.length];
+ switchGameTab(target);
+ document.querySelector('#gameWorkspaceNav [data-game-tab="'+target+'"]')?.focus();
+});
+$('armyRosterPage').addEventListener('click',event=>{
+ const tab=event.target.closest('[data-game-tab]')?.dataset.gameTab;
+ if(tab)switchGameTab(tab);
+});
+document.addEventListener('game-manager:open-magic',event=>{
+ if(current)switchGameTab('magic',{focusCaster:event.detail?.wizardId});
+});
+window.addEventListener('scroll',()=>{
+ if(window.location.hash!=='#army-roster')return;
+ clearTimeout(gameScrollWrite);
+ gameScrollWrite=setTimeout(rememberGameScroll,250);
+},{passive:true});
+window.addEventListener('pagehide',rememberGameScroll);
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState==='hidden')rememberGameScroll();
+});
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
@@ -295,8 +406,12 @@ function handleWizardKnownSpell(unitId,spellId,known){
 }
 function renderArmyScreen(){
  if(!current)return;
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex);
-  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear},magicIndex);
+ const state=ensureGameLayout();
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange);
+ renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear},magicIndex);
+ renderGameOverview($('gameOverviewContent'),current,battleSession,magicIndex);
+ renderMagicSpellbooks();
+ applyGameTab();
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
  const faction=label(current.army.faction);
@@ -369,7 +484,13 @@ function showPageForHash({scroll=false}={}){
  $('importPage').hidden=roster;
  $('armyRosterPage').hidden=!roster;
  if(roster)renderArmyScreen();
- if(scroll)window.scrollTo(0,0);
+ if(scroll){
+  const saved=roster?ensureGameLayout()?.scroll?.[gameLayout.tab]||0:0;
+  requestAnimationFrame(()=>{
+   const limit=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
+   window.scrollTo({top:Math.min(saved,limit),behavior:'instant'});
+  });
+ }
 }
 function openArmyRoster(){
  if(!current||!current.units.length)return;
@@ -378,6 +499,7 @@ function openArmyRoster(){
  else window.location.hash='army-roster';
 }
 function closeArmyRoster(){
+ rememberGameScroll();
  if(window.location.hash==='#import')showPageForHash({scroll:true});
  else window.location.hash='import';
 }

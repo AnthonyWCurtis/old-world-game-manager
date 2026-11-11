@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -14,11 +15,12 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
+ await showUnitsAndExpand(page);
  await page.locator('#gameRegiments .game-defence-panel').first().waitFor({state:'attached'});
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  assert.equal(await sea.count(),1);
  const seaId=await sea.getAttribute('data-unit-id');
- const seaDef=sea.locator(':scope > .game-defence-panel');
+ const seaDef=sea.locator(':scope > .game-unit-expandable > .game-defence-panel');
  assert.match(await seaDef.locator('[data-save="armour"]').innerText(),/5\+/);
  assert.match(await seaDef.locator('[data-save="ward"]').innerText(),/Not established/);
  assert.match(await seaDef.locator('[data-save="regeneration"]').innerText(),/Not established/);
@@ -28,7 +30,7 @@ try{
  const sky=page.locator('#gameCharacters .game-character-card').filter({hasText:'283 pts'}).first();
  const skyId=await sky.getAttribute('data-unit-id');
  assert.ok(skyId);
- const skyDef=sky.locator(':scope > .game-defence-panel');
+ const skyDef=sky.locator(':scope > .game-unit-expandable > .game-defence-panel');
  assert.match(await skyDef.locator('[data-save="armour"]').innerText(),/4\+/);
  assert.match(await skyDef.locator('[data-save="ward"]').innerText(),/5\+/);
  assert.match(await skyDef.locator('[data-save="regeneration"]').innerText(),/5\+/);
@@ -38,8 +40,8 @@ try{
  // Joining a character never propagates their armour, one-use Ward or regeneration.
  await sky.locator('select.character-unit-picker').selectOption(seaId);
  const seaAgain=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+seaId+'"]');
- assert.match(await seaAgain.locator(':scope > .game-defence-panel [data-save="armour"]').innerText(),/5\+/);
- assert.match(await seaAgain.locator(':scope > .game-defence-panel [data-save="regeneration"]').innerText(),/Not established/);
+ assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="armour"]').innerText(),/5\+/);
+ assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="regeneration"]').innerText(),/Not established/);
  assert.equal(await seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]').count(),1);
  const attached=seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]');
  await attached.locator(':scope > summary').click();

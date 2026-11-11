@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {chromium} from 'playwright';
+import {showUnitsAndExpand,showMagic} from './touch-layout-test-helpers.mjs';
 
 const browser=await chromium.launch({headless:true});
 const viewports=[
@@ -66,12 +67,13 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ await showUnitsAndExpand(page);
  await page.waitForFunction(()=>document.querySelectorAll('.army-profile-scroll').length>0,
   null,{timeout:20000});
  for(const v of viewports){
   await page.setViewportSize({width:v.width,height:v.height});
   await assertPageFits(page,'Game Screen',v);
-  const buttons=['backToImporterBtn','gameScreenSaveBtn',
+  const buttons=['gameNavOverview','gameNavUnits','gameNavMagic','backToImporterBtn','gameScreenSaveBtn',
    'gameScreenJumpCharacters','gameScreenJumpRegiments'];
   if(v.width<=650){
    for(const id of buttons){
