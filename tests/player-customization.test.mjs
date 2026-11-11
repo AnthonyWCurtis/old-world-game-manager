@@ -63,7 +63,7 @@ test('each imported Wizard has independent spell knowledge with no automatic cas
  assert.equal(state.knownSpells[storm.id],undefined);
  assert.ok(state.knownSpells[other.id]);
  assert.throws(()=>setWizardKnownSpell(a,state,unit(a).id,spell.id,true,magic),/wizard/i);
- assert.throws(()=>setWizardKnownSpell(a,state,storm.id,'magic-ref:/spell/not-in-index',true,magic),/index/i);
+ assert.throws(()=>setWizardKnownSpell(a,state,storm.id,'magic-ref:/spell/not-in-index',true,magic),/lore/i);
  assert.throws(()=>setWizardKnownSpell(a,state,storm.id,spell.id,true,[]),/lore/i);
 });
 
