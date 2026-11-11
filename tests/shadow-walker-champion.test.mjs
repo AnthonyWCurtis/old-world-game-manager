@@ -129,9 +129,9 @@ test('Previously verified Glade Guard champion alias continues to match',()=>{
 test('v0.4.5 browser includes source-scoped champion fix with fresh asset keys',()=>{
  const app=readFileSync(new URL('../docs/app.js',import.meta.url),'utf8');
  const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
- assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.3/);
+ assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.4/);
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
- assert.match(app,/appVersion:'1\.0\.0-alpha\.3'/);
+ assert.match(app,/appVersion:'1\.0\.0-alpha\.4'/);
  assert.match(html,/v1 Game Screen preview/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.3/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.4/);
 });
