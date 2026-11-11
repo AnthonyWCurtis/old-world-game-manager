@@ -595,7 +595,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const content=card.querySelector('.game-unit-expandable');
    const offensive=renderUnitOffensiveEffects(doc,effects);
    if(offensive)content.append(offensive);
-   content.append(renderDefencePanel(doc,defence,onShieldUse));
+   content.append(renderDefencePanel(doc,defence,onShieldUse,
+    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url])));
    content.append(renderUnitEffects(doc,effects,itemActions));
    const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
    if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
