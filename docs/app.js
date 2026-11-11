@@ -11,7 +11,7 @@ import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
 import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {renderSpellControls} from './spell-controls.js';
-import {activateSpell,endSpell,expireAtNextStartOfTurn} from './spell-engine.js';
+import {activateSpell,endSpell,expireAtNextStartOfTurn,clearSpellEvent} from './spell-engine.js';
 import {restoreStoredImport} from './army-state.js';
 import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
 import {indexedSpells} from './player-customization.js';
@@ -218,11 +218,11 @@ async function handleShieldUsage(characterId,used){
 async function persistSpellChange(army,nextState){
  battleSession=nextState;
  renderArmyScreen();
- battleStateStatus('Saving active enchantments…','saving');
+ battleStateStatus('Saving spell activity…','saving');
  try{
   await writeBattleSession(nextState);
   if(current===army&&battleSession===nextState)
-   battleStateStatus('Assignments, one-use items and active spells saved automatically on this device.');
+   battleStateStatus('Known spells and battle activity saved automatically on this device.');
  }catch(error){
   if(current===army)battleStateStatus('Active spell not saved: '+(error?.message||error)+
    '. The spell status is only in memory until this is resolved.','error');
@@ -243,6 +243,14 @@ function handleSpellEnd({spellId,casterId}){
   const next=endSpell(army,battleSession,spellId,casterId);
   void persistSpellChange(army,next);
  }catch(error){battleStateStatus('Spell not ended: '+(error?.message||error),'error');}
+}
+function handleSpellEventClear({spellId,casterId,targetId}){
+ if(!current)return;
+ const army=current;
+ try{
+  const next=clearSpellEvent(army,battleSession,spellId,casterId,targetId);
+  void persistSpellChange(army,next);
+ }catch(error){battleStateStatus('Movement record not cleared: '+(error?.message||error),'error');}
 }
 function handleSpellsExpire(){
  if(!current)return;
@@ -278,7 +286,7 @@ function handleWizardKnownSpell(unitId,spellId,known){
  try{
   const army=current;
   const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,magicIndex);
-  void persistPlayerCustomization(army,state,'known spells',false);
+  void persistPlayerCustomization(army,state,'known spells',true);
  }catch(error){
   battleStateStatus('Spell selection not saved: '+(error?.message||error),'error');
   renderArmyScreen();
@@ -287,7 +295,7 @@ function handleWizardKnownSpell(unitId,spellId,known){
 function renderArmyScreen(){
  if(!current)return;
  const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex);
-  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire});
+  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear},magicIndex);
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
  const faction=label(current.army.faction);
