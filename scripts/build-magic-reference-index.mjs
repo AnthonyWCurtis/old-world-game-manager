@@ -1,8 +1,9 @@
 /**
  * Build a static, source-linked magic index from tow.whfb.app/sitemap/magic.
  *
- * Sitemap title + URL only. Does not claim verified spell effects, caster
- * eligibility, spell generation, casting values, or army legality.
+ * Sitemap title + URL and source-linked lore-page spell relationships.
+ * Does not claim spell effects, caster eligibility, spell generation, casting values,
+ * or army legality. Each lore page is fetched once with a bounded delay.
  */
 import {readFile,writeFile} from 'node:fs/promises';
 
@@ -129,6 +130,73 @@ export function assembleMagicIndex(html,checkedAt){
   entries,ambiguousNames
  };
 }
+
+/**
+ * A lore page itself is the source of truth for its advertised spell links.
+ * This is an INDEX relationship only, not proof that an individual wizard may
+ * generate, substitute or know a spell. No spell effect text is mirrored.
+ */
+export function parseLoreSpellLinks(html,lore,spellEntries){
+ if(typeof html!=='string'||!html.trim()||html.length>MAX_BYTES)
+  throw Error('Invalid or oversized lore source page');
+ if(!lore||lore.kind!=='lore'||!safeUrl(lore.url,'lore')||
+    !Array.isArray(spellEntries))throw Error('Invalid lore or spell catalogue');
+ const markup=html.replace(/<(script|style|noscript)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi,'');
+ // Restrict discovery to the article, not global navigation or page footer.
+ const main=markup.match(/<main\\b[^>]*>([\\s\\S]*?)<\\/main>/i)?.[1];
+ if(!main)throw Error('No main lore content at '+lore.url);
+ const catalogue=new Map(spellEntries.filter(e=>e.kind==='spell').map(e=>[e.url,e]));
+ const links=sectionLinks(main,'spell');
+ const found=new Map();
+ for(const link of links){
+  const spell=catalogue.get(link.url);
+  if(!spell)continue; // Unindexed URLs are never recorded as eligible spells.
+  const name=link.name.replace(/^\\d+\\.\\s*/,'').replace(/\\s*\\(Signature Spell\\)\\s*$/i,'').trim();
+  if(normalizeMagicName(name)!==normalizeMagicName(spell.name))continue;
+  const signature=/\\(Signature Spell\\)/i.test(link.name);
+  if(found.has(spell.id)){if(signature)found.get(spell.id).signature=true;continue;}
+  found.set(spell.id,{id:spell.id,signature});
+ }
+ if(!found.size||found.size>12)
+  throw Error('Unexpected spell links for lore '+lore.name+': '+found.size);
+ return [...found.values()];
+}
+/** Bounded, sequential source verification: one request per indexed lore page. */
+export async function enrichMagicIndexWithLoreLinks(index,{fetcher,checkedAt=index?.source?.checkedAt}={}){
+ if(!index?.entries?.length||typeof fetcher!=='function')
+  throw Error('Magic index and source fetcher required');
+ const entries=index.entries.map(e=>({...e}));
+ const spells=entries.filter(e=>e.kind==='spell');
+ const lores=entries.filter(e=>e.kind==='lore');
+ if(lores.length<20||lores.length>40)throw Error('Lore page count outside review bounds');
+ const spellLoreIds=new Map();
+ let linked=0;
+ for(const [position,lore] of lores.entries()){
+  if(position)await new Promise(resolve=>setTimeout(resolve,250));
+  const source=await fetcher(lore.url);
+  const links=parseLoreSpellLinks(source,lore,spells);
+  lore.spellIds=links.map(x=>x.id);
+  lore.signatureSpellIds=links.filter(x=>x.signature).map(x=>x.id);
+  lore.spellLinksCheckedAt=checkedAt;
+  lore.spellLinkStatus='source-lore-page-indexed';
+  linked+=links.length;
+  for(const {id} of links){
+   const ls=spellLoreIds.get(id)||[];
+   ls.push(lore.id);
+   spellLoreIds.set(id,ls);
+  }
+ }
+ for(const spell of spells)spell.loreIds=spellLoreIds.get(spell.id)||[];
+ return {...index,entries,loreLinks:{
+  status:'source-lore-page-indexed',
+  checkedAt,
+  method:'sequential, bounded lore-page HTML spell links; index only, not spell legality',
+  pagesChecked:lores.length,
+  linksIndexed:linked,
+  spellsWithLore:spells.filter(e=>e.loreIds.length).length
+ }};
+}
+
 async function fetchHtml(url){
  const r=await fetch(url,{headers:{
   'User-Agent':'OldWorldGameManager-MagicIndex/0.1 (+https://github.com/AnthonyWCurtis/old-world-game-manager)'
@@ -141,7 +209,7 @@ async function fetchHtml(url){
 }
 export async function refreshMagicIndex({fetcher=fetchHtml,checkedAt=new Date().toISOString()}={}){
  const html=await fetcher(SITEMAP_URL);
- const next=assembleMagicIndex(html,checkedAt);
+ const next=await enrichMagicIndexWithLoreLinks(assembleMagicIndex(html,checkedAt),{fetcher,checkedAt});
  let previous=null;
  try{previous=JSON.parse(await readFile(OUTPUT,'utf8'));}catch{}
  if(previous?.counts?.entries&&next.counts.entries<previous.counts.entries*0.9)
