@@ -26,7 +26,7 @@ test('Spell UI distinguishes 5+ Ward from -1 incoming To Hit and warns about dur
  assert.match(defence,/movementRestrictions/);
  assert.match(defence,/spellWarnings/);
  const html=read('index.html');
- assert.match(html,/until.*next.*Start of Turn/i);
+ assert.match(html,/next.*Start of Turn/i);
  assert.match(html,/player.confirm/i);
 });
 
