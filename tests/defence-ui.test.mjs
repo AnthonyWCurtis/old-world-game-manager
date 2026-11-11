@@ -8,7 +8,7 @@ test('mobile roster renders separate armour, conditional Ward and Regeneration v
  assert.match(render,/import \{evaluateDefences\} from '\.\/defence-engine\.js'/);
  assert.match(render,/game-defence-panel/);
  assert.match(render,/game-defence-values/);
- assert.match(render,/data-save/);
+ assert.match(render,/dataset\.save/);
  assert.match(render,/game-defence-conditional/);
  assert.match(render,/game-defence-champion/);
  assert.match(render,/game-defence-shield-used/);
