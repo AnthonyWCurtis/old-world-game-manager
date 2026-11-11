@@ -4,7 +4,7 @@
  */
 import {createGameScreenModel} from './game-screen-model.js';
 import {sanitizeActiveSpells} from './spell-engine.js';
-import {MAX_UNIT_NAME_LENGTH,wizardDescriptor,isIndexedSpellId,sanitizeKnownSpells} from './player-customization.js';
+import {MAX_UNIT_NAME_LENGTH,wizardDescriptor,isIndexedSpellId,sanitizeKnownSpells,spellsForWizard} from './player-customization.js';
 
 const STATE_VERSION=1;
 const validEntries=(army)=>{
@@ -109,14 +109,18 @@ export function setUnitDisplayName(army,session,unitId,name){
  return state;
 }
 /** User-recorded spell knowledge; the catalogue validates the new selection. */
-export function setWizardKnownSpell(army,session,unitId,spellId,known,catalogue){
+export function setWizardKnownSpell(army,session,unitId,spellId,known,magicIndex){
  const unit=(army?.units||[]).find(u=>u.id===unitId);
  if(!unit||!wizardDescriptor(unit))throw Error('Select an imported wizard.');
- if(typeof known!=='boolean'||!isIndexedSpellId(spellId)||
-    !Array.isArray(catalogue)||!catalogue.some(s=>s.id===spellId))
-  throw Error('Select a spell from the verified-origin magic index.');
+ if(typeof known!=='boolean'||!isIndexedSpellId(spellId))
+  throw Error('A known spell must be an indexed spell ID and a boolean choice.');
  const state=restoreBattleSession(army,session);
  const list=new Set(state.knownSpells[unitId]||[]);
+ const permitted=spellsForWizard(unit,magicIndex).some(s=>s.id===spellId);
+ // An older all-spells selection may be removed but never added again without
+ // the correct imported-lore evidence; preserve other saved choices intact.
+ if(!permitted&&(known||!list.has(spellId)))
+  throw Error('This spell is not linked to the imported Wizard lore.');
  if(known)list.add(spellId);else list.delete(spellId);
  if(list.size>150)throw Error('Too many spell records.');
  if(list.size)state.knownSpells[unitId]=[...list];
