@@ -201,6 +201,18 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
     magic.levelUpgrades.map(u=>'Level '+u.level+' (+'+u.additionalPoints+' pts)').join(' · ')));
   details.append(group);
  }
+ // A printed chassis/unit value is not an equipment-derived or attack-specific save.
+ // Never transfer it to an attached rider, crew model, or regiment.
+ const printedArmour=fallback?.publishedArmour;
+ if(record?.source?.sourceUrl===printedArmour?.sourceUrl&&
+    printedArmour?.verificationStatus==='source-page-extracted'&&
+    Number.isInteger(printedArmour.value)&&printedArmour.value>=2&&printedArmour.value<=7){
+  const section=el(doc,'section','army-ref-group');
+  section.append(el(doc,'strong','','Source-printed armour value: '+printedArmour.value+'+'));
+  section.append(el(doc,'p','','Published unit/chassis value only. Model scope, rider equipment, armour modifiers and final saves are not calculated.'));
+  section.append(safeLink(doc,'Original armour source',printedArmour.sourceUrl,'army-ref-pill'));
+  details.append(section);
+ }
  if(record){
   const sourceNotes=el(doc,'div','army-unit-source-meta');
   const bits=[];
