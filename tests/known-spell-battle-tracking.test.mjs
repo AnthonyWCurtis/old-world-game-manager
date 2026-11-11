@@ -25,6 +25,27 @@ function choose(a){
 }
 const cast=(a,s,spellId,casterId,other={})=>activateSpell(a,s,{spellId,casterId,confirmed:true,...other});
 
+test('every supported spell has an accurate source-linked effect description for casting and active status',()=>{
+ const rules=Object.values(SPELL_RULES);
+ assert.equal(rules.length,5);
+ for(const rule of rules){
+  assert.ok(typeof rule.effectSummary==='string'&&rule.effectSummary.length>=60,
+   rule.name+' must include a descriptive effectSummary for the Magic workspace');
+  assert.equal(rule.sourceUrl,'https://tow.whfb.app/spell/'+rule.id);
+ }
+ const er=SPELL_RULES['earthen-ramparts'].effectSummary;
+ assert.match(er,/5\+ Ward save/);
+ assert.match(er,/defended low linear obstacle/);
+ assert.match(er,/cannot march or charge/);
+ assert.match(er,/next Start of Turn/);
+ const gr=SPELL_RULES['glittering-robe'].effectSummary;
+ assert.match(gr,/-1 To Hit/);
+ assert.match(gr,/joined/);
+ assert.match(gr,/other Enchantments previously cast/);
+ assert.match(gr,/immediately expire/);
+ assert.match(gr,/next Start of Turn/);
+});
+
 test('saved known-spell choices become exactly five caster-specific battle options',()=>{
  const a=make(),baseline=restoreBattleSession(a);
  assert.deepEqual(selectedWizardSpells(a,baseline,index),[]);

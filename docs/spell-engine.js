@@ -11,13 +11,15 @@ export const SPELL_RULES=Object.freeze({
   id:'earthen-ramparts',name:'Earthen Ramparts',lore:'Elementalism',type:'Enchantment',
   castingValue:'9+',range:'15"',duration:'until next Start of Turn',
   sourceUrl:'https://tow.whfb.app/spell/earthen-ramparts',
-  targeting:'friendly-unit',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting'
+  targeting:'friendly-unit',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting',
+  effectSummary:'Until your next Start of Turn, the target friendly unit gains a 5+ Ward save against any wounds suffered and counts as behind a defended low linear obstacle if charged. While this spell is in play, the unit cannot march or charge.'
  }),
  'glittering-robe':Object.freeze({
   id:'glittering-robe',name:'Glittering Robe',lore:'Illusion',type:'Enchantment',
   castingValue:'8+',range:'Self',duration:'until next Start of Turn',
   sourceUrl:'https://tow.whfb.app/spell/glittering-robe',
-  targeting:'self',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting'
+  targeting:'self',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting',
+  effectSummary:'Until your next Start of Turn, enemy units suffer -1 To Hit against the caster and any unit they have joined. When cast, any other Enchantments previously cast on the affected models immediately expire.'
  })
  ,
  'plague-of-rust':Object.freeze({
