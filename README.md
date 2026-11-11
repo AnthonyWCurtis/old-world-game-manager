@@ -4,7 +4,7 @@
 
 [Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/) · [Project history](PROJECT_HISTORY.md) · [Rules source: tow.whfb.app](https://tow.whfb.app)
 
-**v1.0.0-alpha.4 preview:** Stages 1–3 provide import, a mobile Game Screen, two-way character assignments and automatic local saving. Stage 4A adds scoped, source-backed **equipment-only armour** and **conditional Ward/Regeneration summaries** for regiments, champions and attached characters, plus a persistent once-per-game Charmed Shield usage control. Active spell effects and combat calculations are still future milestones. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
+**v1.0.0-alpha.5 preview:** Stages 1–3 provide imports, character assignments and offline saved battle state. Stage 4A covers limited equipment-only armour, conditional Ward/Regeneration and Charmed Shield use. **Stage 4B** adds manually confirmed **Earthen Ramparts** (5+ Ward and movement restrictions) and **Glittering Robe** (−1 enemy To Hit), their duration, overwriting of affected Enchantments, and persisted expiry/dispels. Automated casting, all other spells and combat remain future milestones. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
 
 > **Important:** At present this is a roster importer and viewer, **not** a combat calculator or army-legality checker. Source links and extracted profiles do not prove a selection is legal or correctly costed.
 
@@ -41,7 +41,8 @@ The screen should work well on a phone at the table and preserve the player's ba
 | Character-to-unit assignments and expandable attached character profiles | **Implemented**, player-recorded only; eligibility not yet verified |
 | Equipment-only armour, conditional Ward and Regeneration summaries | **Implemented for the explicitly supported selected equipment/items** — not a universal save engine; scopes and source URLs shown |
 | Once-per-game Charmed Shield use tracking | **Implemented** — manual toggle persisted with character battle state |
-| Active spell buffs, attack-specific saves, shooting and combat calculations | **Planned — not implemented** |
+| Earthen Ramparts and Glittering Robe (Stage 4B) | **Implemented as manual, player-confirmed enchantments** with source, scope, duration, interaction, individual ending and offline persistence |
+| Other spells, automatic casting, attack-specific saves, shooting and combat calculations | **Planned — not implemented** |
 
 ### Importing an army
 
@@ -93,6 +94,18 @@ Ward and Regeneration have **separate, conditional records**, not a single combi
 
 **Still unresolved:** combat-specific effective armour vs AP/weapon choice, unrecognised magic armour and abilities, mounted model combinations, spell activation/expiry (including Earthen Ramparts), combat save resolution and joining eligibility. All protection data remains separate from the imported unit characteristics and points. Usage and assignments are saved on this device, not in the roster JSON backup.
 
+## Stage 4B — Manually tracked enchantments
+
+The **Magic & active effects** section identifies imported Wizard characters with the appropriate lore. Selecting **Elementalism** or **Illusion** does **not** establish which spells the Wizard actually knows. Before recording a cast, the player must confirm that the Wizard knows the spell, successfully cast it, and valid phase, range and target restrictions were met. The app does not roll casting dice, measure table distance, check front-rank eligibility or determine dispels.
+
+- **[Earthen Ramparts](https://tow.whfb.app/spell/earthen-ramparts):** 9+ Enchantment, range 15", target friendly unit. Displays a **5+ Ward against all wounds**, a defended obstacle when charged, and **cannot march or charge**. The FAQ clarifies compelled charge declarations and Counter Charge; this interface does not enforce those movement decisions.
+- **[Glittering Robe](https://tow.whfb.app/spell/glittering-robe):** 8+ Enchantment, range Self. Displays **−1 enemy To Hit** against the caster and a joined unit, **not** an armour or Ward bonus. Recording its casting ends older active Enchantments affecting any affected model, including an earlier Earthen Ramparts on the joined regiment. If the caster moves units, the app does not silently grant protection to the new regiment; it warns that applicability needs checking.
+- Both effects ordinarily last until your **next Start of Turn sub-phase**, and are **not** Remains in Play spells. Choose **End / dispelled** to end an individual spell, or **Expire at my next Start of Turn** when the correct player phase arrives. No silent time-based expiry occurs.
+- [Spells affecting joined characters](https://tow.whfb.app/characters/spells-characters) can also extend a whole-unit effect to attached models, but **joining legality remains player-controlled and unverified**. These conditional effects are never added to an unrelated character.
+- Active spell records are saved in the existing **battle_sessions** IndexedDB store alongside character assignments and spent Charmed Shields, keyed to the exact army import. The exported roster JSON does **not** yet include battle session state.
+
+**Not yet supported:** other enchantments, automatic spell knowledge/generation, dice, dispel mechanics, automatically validating rank/phase/range, combat-effective save resolution, full magic effect interaction and turn automation. The rules register is intentionally small and auditable.
+
 ## Accuracy principles
 
 - **Recognised ≠ legal:** a matched reference identifies an option; it does not certify list legality, army composition or points.
@@ -115,6 +128,7 @@ Ward and Regeneration have **separate, conditional records**, not a single combi
 | [`docs/reference-records/`](docs/reference-records/) | Source-indexed reference collections, primarily names and links |
 | [`docs/game-screen-model.js`](docs/game-screen-model.js) and [`docs/army-state.js`](docs/army-state.js) | Read-only source/roster projection and legacy saved-army restoration |
 | [`docs/defence-engine.js`](docs/defence-engine.js) | Source-verified limited equipment-only and conditional armour/Ward/Regeneration calculations |
+| [`docs/spell-engine.js`](docs/spell-engine.js) and [`docs/spell-controls.js`](docs/spell-controls.js) | Player-confirmed enchantment lifecycle, scope, UI, rule links and manual expiration |
 | [`docs/sw.js`](docs/sw.js) and [`docs/offline.js`](docs/offline.js) | Versioned offline app-shell cache and best-effort registration |
 | [`docs/battle-session.js`](docs/battle-session.js) and [`docs/battle-session-store.js`](docs/battle-session-store.js) | Assignment rules and separate automatically saved IndexedDB battle-session store |
 | [`tests/`](tests/) | Parser, matching, offline, integration and mobile browser regression tests |
@@ -144,6 +158,6 @@ The Service Worker caches the static app shell for offline relaunch after the in
 
 Imported army lists are parsed in the browser and are not automatically uploaded. Saved lists are local to the browser/device, may disappear when browser storage is cleared and are **not** yet synchronised across devices. Use JSON backup/export when the roster matters. Opt-in unmatched reports contain limited reference context, not an automatic upload of the full list.
 
-**Not yet available:** automatic join-legality verification, automatic unit buffs, full offline rules text, full spell effect interpretation, derived saves, attacks, combat resolution, independent points validation or army legality validation. These remain future stages rather than claims about the current site.
+**Not yet available:** automatic join-legality verification, full spell lore coverage, automatic casting/buff validation, full offline rules text, combat-effective saves, attacks, combat resolution, independent points validation or army legality validation. These remain future stages rather than claims about the current site.
 
 This is a fan-made project, not an official Games Workshop product.
