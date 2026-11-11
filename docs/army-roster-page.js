@@ -433,7 +433,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  const specialRules=sourceDefensiveRules(record);
  const armourCap=sourceArmourCap(record);
  if(armourCap||specialRules.length){
-  const context=el(doc,'div','game-defence-incoming');
+  const context=el(doc,'div','game-defence-detail-body');
   context.append(el(doc,'strong','','Published defensive references (not applied automatically)'));
   if(armourCap){
    context.append(el(doc,'span','','Source troop-type armour ceiling: '+armourCap.cap+
@@ -448,14 +448,14 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   panel.append(context);
  }
  if(printedArmour){
-  const sourceValue=el(doc,'div','game-defence-incoming');
+  const sourceValue=el(doc,'div','game-defence-detail-body');
   sourceValue.append(el(doc,'strong','','Published unit/chassis armour: '+printedArmour.label));
   sourceValue.append(el(doc,'span','','Source reference only. Model scope is unresolved; this does not replace the equipment-only Armour value above or determine a final save.'));
   sourceValue.append(safeLink(doc,'Original source page',printedArmour.sourceUrl,'game-defence-source'));
   panel.append(sourceValue);
  }
  if(armourCandidates.length){
-  const mount=el(doc,'div','game-defence-incoming');
+  const mount=el(doc,'div','game-defence-detail-body');
   mount.append(el(doc,'strong','','Selected-option armour references — mount role unresolved'));
   for(const candidate of armourCandidates){
    mount.append(el(doc,'span','',candidate.selectionName+': source-printed '+candidate.label+
@@ -471,7 +471,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   panel.append(mount);
  }
  if(mountProfiles.length){
-  const linked=el(doc,'div','game-defence-incoming');
+  const linked=el(doc,'div','game-defence-detail-body');
   linked.append(el(doc,'strong','','Linked selected mount profiles — source evidence'));
   for(const candidate of mountProfiles){
    linked.append(el(doc,'span','',candidate.name+' · '+
