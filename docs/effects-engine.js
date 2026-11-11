@@ -17,8 +17,10 @@ const item=(id,name,kind,mode,description,extra={})=>Object.freeze({
 });
 export const ITEM_EFFECT_RULES=Object.freeze({
  'razor-standard':item('razor-standard','Razor Standard','Magic standard','passive',
-  'The unit carrying this standard gains Armour Bane (2). It does not gain Magical Attacks merely because it carries this standard.',
-  {scope:'standard',faqUrl:SOURCE+'faq/magic-items-faq'}),
+  'The unit carrying this standard gains Armour Bane (2). On a natural 6 To Wound, the Armour Piercing of the weapon used for that wound improves by 2 (for example, AP – becomes AP -2). This is not AP -2 on every wound, does not apply to spells and does not grant Magical Attacks.',
+  {scope:'standard',effectGroup:'offensive',quickLabel:'Armour Bane (2)',
+   quickDetail:'Natural 6 To Wound: the weapon\'s AP improves by 2 for that wound only (AP – becomes AP -2). Not an automatic -2 to every enemy save; not for spells.',
+   ruleUrl:SOURCE+'special-rules/armour-bane',faqUrl:SOURCE+'faq/universal-special-rules'}),
  'banner-of-confidence':item('banner-of-confidence','Banner of Confidence','Magic standard','conditional',
   'A unit carrying this standard does not suffer the usual -1 To Hit modifier when making a Stand & Shoot charge reaction.',
   {scope:'standard'}),
@@ -138,6 +140,8 @@ export function ownedItemEffects(army,session){
     champion,unresolvedStandard,
     status:stateFor(rule,owner.id,session),
     boundSpell:rule.boundSpell||null,
+    effectGroup:rule.effectGroup||null,quickLabel:rule.quickLabel||null,
+    quickDetail:rule.quickDetail||null,ruleUrl:rule.ruleUrl||null,
     trackUse:rule.trackUse===true,
     usesExistingShieldState:rule.usesExistingShieldState===true,
     shared:false,joinedFrom:null
