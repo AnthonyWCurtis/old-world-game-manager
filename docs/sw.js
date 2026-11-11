@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-mount-benefits-v5';
+const CACHE_NAME='game-manager-v1-shell-20261111-mount-profile-table-v6';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -28,6 +28,7 @@ const APP_SHELL=[
  './selected-armour-candidates.js',
  './resolve-selected-mount-profiles.js',
  './published-mount-benefits.js',
+ './selected-mount-profile-rows.js',
  './spell-engine.js',
  './spell-controls.js',
  './effects-engine.js',
