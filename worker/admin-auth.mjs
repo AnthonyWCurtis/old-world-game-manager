@@ -43,7 +43,7 @@ function config(env){
 const blocked=(message,status=403)=>new Response(message,{
  status,headers:{'Cache-Control':'no-store','Content-Type':'text/plain; charset=utf-8'}
 });
-const redirect=(url,status=302)=>Response.redirect(url,status);
+const redirect=(url,status=302)=>new Response(null,{status,headers:{Location:url}});
 async function hmacKey(secret){
  return crypto.subtle.importKey('raw',encoder.encode(secret),{name:'HMAC',hash:'SHA-256'},
   false,['sign','verify']);
