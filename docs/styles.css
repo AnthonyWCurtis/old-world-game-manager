@@ -283,3 +283,33 @@
  .game-assigned-characters{padding:8px 9px 12px}
  .game-attached-character>summary{flex-wrap:wrap}
 }
+
+/* Stage 4A: defensive values are scoped to their bearer or regiment. */
+.game-defence-overview{font-size:12px;line-height:1.6;color:#3c5366;margin:12px 0}
+.game-defence-panel{min-width:0;margin:10px 12px 12px;border:1px solid #bfcfde;background:#f9fcff;border-radius:11px;padding:12px;overflow-wrap:anywhere}
+.game-defence-heading{display:flex;gap:6px 12px;justify-content:space-between;align-items:baseline;flex-wrap:wrap;margin-bottom:9px}
+.game-defence-heading strong{font-size:14px;color:#254b65}
+.game-defence-heading span{font-size:11px;color:#536c82}
+.game-defence-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.game-defence-stat{display:flex;flex-direction:column;gap:4px;min-height:71px;background:white;border:1px solid #d4dfe8;border-radius:8px;padding:9px;overflow-wrap:anywhere}
+.game-defence-stat>span{font-size:11px;color:#51647a;font-weight:700}
+.game-defence-stat>strong{font-size:13px;line-height:1.3;color:#173f5a;word-break:normal}
+.game-defence-details{border-top:1px solid #dce5ec;margin-top:10px;padding-top:8px}
+.game-defence-details>summary{cursor:pointer;font-size:12px;color:#305b7a;font-weight:650;min-height:35px;padding:6px 0}
+.game-defence-detail-body{font-size:12px;line-height:1.6;color:#344e60}
+.game-defence-detail-body>p{margin:6px 0 8px}
+.game-defence-conditional,.game-defence-champion{padding:8px;margin:7px 0;border-left:3px solid #b4c8d9;background:#eef5fa;border-radius:4px}
+.game-defence-conditional p,.game-defence-champion p{margin:3px 0}
+.game-defence-champion{border-left-color:#b89951;background:#fcf7ea}
+.game-defence-source{display:inline-block;margin:3px 10px 3px 0;color:#235b88;text-decoration:underline;font-size:12px}
+.game-defence-disclaimer{font-weight:600;color:#66706b}
+.game-defence-shield-used{display:flex;align-items:center;gap:9px;margin-top:9px;padding:8px 10px;min-height:44px;border:1px solid #b3ccdc;border-radius:8px;background:#f3f7fb;color:#254e6a;font-size:13px;font-weight:700;cursor:pointer}
+.game-defence-shield-used input{width:18px;height:18px;margin:0;flex-shrink:0;accent-color:#256289}
+.game-attached-character .game-defence-panel{margin:10px 0}
+@media(max-width:500px){
+ .game-defence-panel{margin:10px 9px;padding:9px}
+ .game-defence-values{gap:5px}
+ .game-defence-stat{padding:7px 6px}
+ .game-defence-stat>strong{font-size:12px}
+ .game-defence-heading{gap:2px 8px}
+}
