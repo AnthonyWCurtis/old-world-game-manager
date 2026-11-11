@@ -568,3 +568,8 @@
  .game-effect-title strong{font-size:13px}
  .game-effect-action{width:100%}
 }
+
+
+.game-active-items{margin:13px 0;border-top:1px solid #cfdae2;padding-top:10px;display:grid;gap:7px}
+.game-active-items h4{margin:2px 0;font-size:14px;color:#276145}
+.game-active-items .game-effect-card{border-color:#a9d3b5}
