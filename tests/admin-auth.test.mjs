@@ -96,3 +96,12 @@ test('logout clears session cookie on the Worker origin',()=>{
  assert.equal(response.headers.get('location'),ORIGIN+'/admin');
  assert.match(response.headers.get('set-cookie'),/Max-Age=0/);
 });
+
+test('GitHub OAuth client IDs with their standard Iv1. prefix are accepted',async()=>{
+ const response=await startGithubLogin(new Request(ORIGIN+'/auth/github'),{
+  ...env,ADMIN_GITHUB_CLIENT_ID:'Iv1.1234567890abcdef'
+ });
+ assert.equal(response.status,302);
+ assert.equal(new URL(response.headers.get('location')).searchParams.get('client_id'),
+  'Iv1.1234567890abcdef');
+});
