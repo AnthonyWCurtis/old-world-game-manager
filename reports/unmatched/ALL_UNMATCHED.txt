@@ -1,10 +1,22 @@
 Warhammer: The Old World — ALL UNMATCHED REFERENCES
 Collected from anonymous reports submitted by players.
 These are unresolved source references, not invalid army selections.
-Distinct missing references: 0
-Unmatched occurrences: 0
+Distinct missing references: 2
+Unmatched occurrences: 2
 Previously reported and now source-linked: 9
-Archived occurrences (including resolved): 9
-Report files: 1
+Archived occurrences (including resolved): 11
+Report files: 2
 
-No unresolved catalogue references remain in archived reports. Original reports are retained as history.
+The Briar-bow (SELECTION)
+  Parent unit: Waystalker
+  Kind: option
+  Parent source: https://tow.whfb.app/unit/waystalker
+  Occurrences: 1
+  Report files: report-20261111T131017366Z-80228425-7e5f-4613-a7b7-29b5b3180a90.txt
+
+The Kinbands of Modryn (SELECTION)
+  Parent unit: Glade Guard
+  Kind: option
+  Parent source: https://tow.whfb.app/unit/glade-guard
+  Occurrences: 1
+  Report files: report-20261111T131017366Z-80228425-7e5f-4613-a7b7-29b5b3180a90.txt
