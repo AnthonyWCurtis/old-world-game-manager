@@ -11,6 +11,8 @@ import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
 import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {renderSpellControls} from './spell-controls.js';
+import {projectArmyEffects,setItemEffectState} from './effects-engine.js';
+import {renderMagicItemAbilities} from './effects-ui.js';
 import {activateSpell,endSpell,expireAtNextStartOfTurn,clearSpellEvent} from './spell-engine.js';
 import {restoreStoredImport} from './army-state.js';
 import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
@@ -340,6 +342,27 @@ async function persistSpellChange(army,nextState){
    '. The spell status is only in memory until this is resolved.','error');
  }
 }
+async function handleItemEffectState(ownerId,itemId,status){
+ if(!current)return;
+ const army=current;
+ try{
+  const next=setItemEffectState(army,battleSession,ownerId,itemId,status);
+  battleSession=next;
+  renderArmyScreen();
+  battleStateStatus('Saving one-use item activity…','saving');
+  try{
+   await writeBattleSession(next);
+   if(current===army&&battleSession===next)
+    battleStateStatus('One-use item activity saved automatically on this device.');
+  }catch(error){
+   if(current===army)
+    battleStateStatus('Item activity could not be saved: '+(error?.message||error)+
+     '. The change is only in memory until saving recovers.','error');
+  }
+ }catch(error){
+  battleStateStatus('Item status unchanged: '+(error?.message||error),'error');
+ }
+}
 function handleSpellCast(spec){
  if(!current)return;
  const army=current;
@@ -407,9 +430,13 @@ function handleWizardKnownSpell(unitId,spellId,known){
 function renderArmyScreen(){
  if(!current)return;
  const state=ensureGameLayout();
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange);
+ const effectProjection=projectArmyEffects(current,battleSession);
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState);
  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear},magicIndex);
- renderGameOverview($('gameOverviewContent'),current,battleSession,magicIndex);
+ renderMagicItemAbilities($('gameItemAbilities'),effectProjection,battleSession,{
+  onItemState:handleItemEffectState,onShieldUse:handleShieldUsage
+ });
+ renderGameOverview($('gameOverviewContent'),current,battleSession,magicIndex,effectProjection);
  renderMagicSpellbooks();
  applyGameTab();
  const name=label(current.army.name);
