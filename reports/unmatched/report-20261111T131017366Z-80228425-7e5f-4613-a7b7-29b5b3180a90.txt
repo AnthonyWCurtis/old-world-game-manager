@@ -1,0 +1,21 @@
+Warhammer: The Old World — Unmatched Source Reference Report
+Report ID: 80228425-7e5f-4613-a7b7-29b5b3180a90
+Submitted: 2026-11-11T13:10:17.366Z
+Export format: old-world-builder / regular-text
+Faction: Wood Elf Realms
+Unmatched entries: 2
+
+Each item is an unmatched source reference, not a declaration of invalid army composition.
+No player name, original army list, IP address or matched selections included.
+
+[1] SELECTION: The Briar-bow
+  Parent unit: Waystalker
+  Kind: option
+  Source line: 11
+  Parent unit reference: https://tow.whfb.app/unit/waystalker
+
+[2] SELECTION: The Kinbands of Modryn
+  Parent unit: Glade Guard
+  Kind: option
+  Source line: 26
+  Parent unit reference: https://tow.whfb.app/unit/glade-guard
