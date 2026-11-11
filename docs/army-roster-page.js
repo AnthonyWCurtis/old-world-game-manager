@@ -2,7 +2,7 @@ import {createGameScreenModel} from './game-screen-model.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
-import {renderUnitEffects} from './effects-ui.js';
+import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -264,6 +264,11 @@ function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
   status.append(el(doc,'span','game-card-chip game-card-chip-movement',
    'Movement: '+note.name));
  const items=effects.filter(e=>e.kind!=='Spell');
+ for(const effect of items.filter(e=>e.effectGroup==='offensive'&&e.quickLabel)){
+  const chip=el(doc,'span','game-card-chip game-card-chip-offensive',effect.quickLabel);
+  chip.title=effect.quickDetail||effect.description;
+  status.append(chip);
+ }
  for(const [statusName,label,className] of [
   ['equipped','equipped','game-card-chip-item'],
   ['conditional','conditional','game-card-chip-item'],
@@ -346,6 +351,8 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
+ const offensive=renderUnitOffensiveEffects(doc,effects);
+ if(offensive)body.append(offensive);
  body.append(renderDefencePanel(doc,defence,onShieldUse));
  body.append(renderUnitEffects(doc,effects,effectActions));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
@@ -502,6 +509,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const effects=effectProjection.byUnit?.[entry.id]||[];
   appendCompactStatus(doc,card,defence,0,effects);
   const content=card.querySelector('.game-unit-expandable');
+  const offensive=renderUnitOffensiveEffects(doc,effects);
+  if(offensive)content.append(offensive);
   content.append(renderDefencePanel(doc,defence,onShieldUse));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
@@ -544,6 +553,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const effects=effectProjection.byUnit?.[entry.id]||[];
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    const content=card.querySelector('.game-unit-expandable');
+   const offensive=renderUnitOffensiveEffects(doc,effects);
+   if(offensive)content.append(offensive);
    content.append(renderDefencePanel(doc,defence,onShieldUse));
    content.append(renderUnitEffects(doc,effects,itemActions));
    const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);

@@ -155,3 +155,32 @@ test('IndexedDB serializer includes item states instead of dropping the new fiel
  assert.match(source,/itemStates:Object\.fromEntries\(Object\.entries\(session\.itemStates/);
  assert.match(source,/knownSpells:Object\.fromEntries/);
 });
+
+
+test('Razor Standard is indexed as an offensive rule with a conditional natural-six armour modifier',()=>{
+ const rule=ITEM_EFFECT_RULES['razor-standard'];
+ assert.equal(rule.effectGroup,'offensive');
+ assert.equal(rule.quickLabel,'Armour Bane (2)');
+ assert.match(rule.quickDetail,/Natural 6 To Wound/);
+ assert.match(rule.quickDetail,/AP improves by 2 for that wound only/);
+ assert.match(rule.quickDetail,/not for spells/);
+ assert.match(rule.description,/not AP -2 on every wound/);
+ assert.equal(rule.ruleUrl,'https://tow.whfb.app/special-rules/armour-bane');
+ const sea=fixture('owb-regular').units.find(u=>u.name==='Lothern Sea Guard');
+ const army=fixture('owb-regular');
+ const projected=projectArmyEffects(army,restoreBattleSession(army));
+ const effect=projected.byUnit[sea.id].find(e=>e.id==='razor-standard');
+ assert.ok(effect);
+ assert.equal(effect.status,'equipped');
+ assert.equal(effect.effectGroup,'offensive');
+ assert.equal(effect.quickLabel,rule.quickLabel);
+ assert.equal(effect.ruleUrl,rule.ruleUrl);
+ const company=army.units.find(u=>u.name==="Ship's Company");
+ assert.equal(projected.byUnit[company.id].some(e=>e.effectGroup==='offensive'),false,
+  'Do not invent Armour Bane on unselected regiments');
+ const ui=readFileSync(new URL('../docs/effects-ui.js',import.meta.url),'utf8');
+ assert.match(ui,/renderUnitOffensiveEffects/);
+ assert.match(ui,/game-offensive-effect-detail/);
+ const roster=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
+ assert.match(roster,/game-card-chip-offensive/);
+});
