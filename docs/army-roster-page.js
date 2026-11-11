@@ -148,6 +148,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    tbody.append(tr);
   }
   table.append(tbody);scroller.append(table);details.append(scroller);
+  details.append(el(doc,'p','army-profile-swipe','Swipe the table sideways to see all characteristics.'));
  }else{
   const missing=el(doc,'div','army-profile-missing');
   missing.append(el(doc,'strong','','Profile not available'));

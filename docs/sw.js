@@ -1,10 +1,11 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-alpha5-lore-filtered';
+const CACHE_NAME='game-manager-v1-shell-20261111-mobile-layout-v1';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
  './index.html',
  './styles.css',
+ './mobile.css',
  './app.js',
  './parser.js',
  './import-guard.js',
