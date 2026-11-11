@@ -16,6 +16,7 @@ on:
       - 'tests/game-screen-return-navigation-browser-smoke.mjs'
       - 'tests/touch-game-layout-browser-smoke.mjs'
       - 'tests/effects-engine-browser-smoke.mjs'
+      - 'tests/reported-wood-elf-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   pull_request:
     paths:
@@ -31,6 +32,7 @@ on:
       - 'tests/game-screen-return-navigation-browser-smoke.mjs'
       - 'tests/touch-game-layout-browser-smoke.mjs'
       - 'tests/effects-engine-browser-smoke.mjs'
+      - 'tests/reported-wood-elf-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   workflow_dispatch:
 permissions:
@@ -65,3 +67,4 @@ jobs:
           node tests/game-screen-return-navigation-browser-smoke.mjs
           node tests/touch-game-layout-browser-smoke.mjs
           node tests/effects-engine-browser-smoke.mjs
+          node tests/reported-wood-elf-browser-smoke.mjs
