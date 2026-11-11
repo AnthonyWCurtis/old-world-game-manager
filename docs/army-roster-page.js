@@ -151,10 +151,10 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
 
  const profiles=statProfile(record,fallback);
  const details=el(doc,'div','army-unit-card-body');
- if(profiles.length){
+ if(profiles.length||mountProfileGroups.length){
   const caption=el(doc,'div','army-profile-caption');
   caption.append(el(doc,'strong','','Model characteristics'));
-  const note=record?'Published base profiles':'Cached source base profiles';
+  const note=profiles.length?(record?'Published base profiles':'Cached source base profiles'):'Rider profile unavailable';
   caption.append(el(doc,'span','',note+' · selected options not applied'));
   details.append(caption);
   const scroller=el(doc,'div','army-profile-scroll');
@@ -718,7 +718,10 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
      fallbackProfiles[original.reference?.url],entry.id,
      openMembers.has(entry.id+':'+character.id),onAssignment,
       evaluateDefences(army,session,character.id),onShieldUse,session,
-      effectProjection.byUnit?.[character.id]||[],itemActions));
+      effectProjection.byUnit?.[character.id]||[],itemActions,
+      selectedMountProfileGroups(
+       resolveSelectedMountProfiles(original,selectedUnitRecords,fallbackProfiles),
+       selectedUnitRecords,fallbackProfiles)));
    }
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
