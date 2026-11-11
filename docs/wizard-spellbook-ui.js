@@ -83,6 +83,17 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
   const q=search.value.trim().toLowerCase();
   for(const row of list.children)row.hidden=!row.dataset.search.includes(q);
  });
- body.append(list);panel.append(body);
+ body.append(list);
+ const openCasting=el(doc,'button','game-wizard-open-casting','Go to casting controls');
+ openCasting.type='button';
+ openCasting.addEventListener('click',()=>{
+  const area=doc.getElementById('spellControlPanel');
+  const candidate=[...area?.querySelectorAll('.game-spell-caster')||[]]
+   .find(el=>el.dataset.casterId===unit.id);
+  if(candidate)candidate.open=true;
+  area?.scrollIntoView({block:'start',behavior:'smooth'});
+ });
+ body.append(openCasting);
+ panel.append(body);
  return panel;
 }
