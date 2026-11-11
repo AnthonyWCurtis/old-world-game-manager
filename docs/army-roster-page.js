@@ -304,6 +304,24 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
   metrics.append(item);
  }
  panel.append(metrics);
+ // Incoming hit modifiers are NOT Ward saves and must be visible separately.
+ if(defence.attackModifiers?.length){
+  const incoming=el(doc,'div','game-defence-incoming');
+  const value=defence.attackModifiers.map(e=>e.label+' · '+e.name).join(' / ');
+  incoming.append(el(doc,'strong','','Incoming To Hit: '+value));
+  incoming.append(el(doc,'span','','Enemy attacks against affected models; not a saving throw.'));
+  panel.append(incoming);
+ }
+ if(defence.movementRestrictions?.length){
+  const movement=el(doc,'div','game-defence-movement');
+  movement.append(el(doc,'strong','','Active movement/charge restrictions'));
+  const list=el(doc,'ul');
+  for(const rule of defence.movementRestrictions)
+   list.append(el(doc,'li','',rule.detail));
+  movement.append(list);panel.append(movement);
+ }
+ for(const warning of defence.spellWarnings||[])
+  panel.append(el(doc,'p','game-spell-warning',warning));
  const notes=el(doc,'details','game-defence-details');
  const sum=el(doc,'summary','','Sources, scope and conditions');
  notes.append(sum);
@@ -332,8 +350,12 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
   }
  }
  for(const rule of defence.otherEffects)addRule(rule,'game-defence-conditional');
+ for(const rule of defence.attackModifiers||[])
+  addRule({...rule,condition:'Enemy To Hit modifier; not an armour or Ward save'},'game-defence-conditional');
+ for(const rule of defence.movementRestrictions||[])
+  addRule({...rule,name:rule.name+' — '+rule.detail,condition:rule.detail},'game-defence-conditional');
  body.append(el(doc,'p','game-defence-disclaimer',
-  'These values exclude enemy Armour Piercing, spell effects and unverified special rules. Conditional saves are not universal saves. Joined-character eligibility is not validated.'));
+  'These values exclude enemy Armour Piercing and unverified special rules. Spell effects require confirmed player declarations. Conditional saves are not universal saves. Joined-character legality and precise phase/range are not validated.'));
  notes.append(body);panel.append(notes);
  const charmed=defence.ward.find(w=>w.name==='Charmed Shield');
  if(defence.isCharacter&&charmed){
