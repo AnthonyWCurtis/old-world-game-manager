@@ -40,6 +40,7 @@ function config(env){
   String(env?.GITHUB_OAUTH_CLIENT_SECRET||'').length>8&&
   String(env?.ADMIN_SESSION_SECRET||'').length>=32;
 }
+export const adminConfigured=config;
 const blocked=(message,status=403)=>new Response(message,{
  status,headers:{'Cache-Control':'no-store','Content-Type':'text/plain; charset=utf-8'}
 });
