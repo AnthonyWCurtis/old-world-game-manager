@@ -133,3 +133,19 @@ test('restore sanitisation drops malformed spell state, stale IDs and duplicates
  assert.deepEqual(restored,[good]);
  assert.deepEqual(sanitizeActiveSpells(a,null),[]);
 });
+
+test('an independently targeted character who joins later brings their whole-unit spell with them',()=>{
+ const a=army(),mage=illusion(a),unit=sea(a);
+ let s=cast(a,restoreBattleSession(a),'earthen-ramparts',storm(a).id,mage.id);
+ assert.equal(spellEffectsFor(a,s,mage.id).ward[0].value,5);
+ assert.equal(spellEffectsFor(a,s,unit.id).ward.length,0);
+ s=assignCharacter(a,s,mage.id,unit.id);
+ const effects=spellEffectsFor(a,s,unit.id);
+ assert.equal(effects.ward[0].value,5);
+ assert.match(effects.ward[0].scope,/join/i);
+ const other=a.units.find(u=>u.name==='Ishaya Vess');
+ s=assignCharacter(a,s,other.id,unit.id);
+ assert.equal(spellEffectsFor(a,s,other.id).ward[0].value,5);
+ s=assignCharacter(a,s,mage.id,null);
+ assert.equal(spellEffectsFor(a,s,unit.id).ward.length,0);
+});
