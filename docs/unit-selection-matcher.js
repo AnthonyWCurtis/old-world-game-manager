@@ -278,7 +278,7 @@ export function applySourceScopedSelectionReferences(army,records){
    }
    // Reviewed references, manual mappings and model-profile evidence win.
    if(selection.reference&&
-      !['live-index','unit-scoped-data'].includes(selection.reference.source))continue;
+      !['live-index','unit-scoped-data','generic-wizard-rule'].includes(selection.reference.source))continue;
    const match=referenceForSelection(unit,record,selection);
    if(match){
     if(selection.matchStatus!=='matched')added++;

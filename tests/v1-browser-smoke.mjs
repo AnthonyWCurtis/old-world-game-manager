@@ -30,6 +30,17 @@ try{
  await page.locator('#examples').selectOption('owb-regular');
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
+ // Every exact Wizard label receives its general rule link, even with upstream offline.
+ const genericWizardLinks=await page.locator('#units .selection').evaluateAll(nodes=>nodes
+  .filter(node=>/^Wizard\s*\[Level [1-4] Wizard\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
+  .map(node=>node.querySelector('a')?.href));
+ assert.equal(genericWizardLinks.length,3,'Storm Weaver and both Mages each select Wizard');
+ assert.equal(genericWizardLinks[0],'https://tow.whfb.app/magic/wizards',
+  'Storm Weaver must have the general Wizard link even without a reviewed parent clause');
+ assert.ok(genericWizardLinks.slice(1).every(url=>
+  ['https://tow.whfb.app/magic/wizards','https://tow.whfb.app/unit/mage'].includes(url)),
+  'The Mage link may be refined to its source-verified parent unit');
+ assert.match(await page.locator('#armyMeta').innerText(),/2,599/);
  await page.locator('#viewRosterBtn').click();
  await page.locator('.game-character-card').first().waitFor({state:'attached',timeout:10000});
  assert.ok(await page.locator('.game-character-card').count()>0);
@@ -49,6 +60,14 @@ try{
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ const reopenedWizardLinks=await page.locator('#units .selection').evaluateAll(nodes=>nodes
+  .filter(node=>/^Wizard\s*\[Level [1-4] Wizard\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
+  .map(node=>node.querySelector('a')?.href));
+ assert.equal(reopenedWizardLinks.length,3);
+ assert.equal(reopenedWizardLinks[0],'https://tow.whfb.app/magic/wizards');
+ assert.ok(reopenedWizardLinks.slice(1).every(url=>
+  ['https://tow.whfb.app/magic/wizards','https://tow.whfb.app/unit/mage'].includes(url)),
+  'Offline saved army keeps general links until a verified source can refine them');
  assert.ok(await page.locator('#gameCharacters .army-unit-card').count()>0);
  assert.ok(await page.locator('#gameRegiments .army-unit-card').count()>0);
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));

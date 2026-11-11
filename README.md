@@ -4,7 +4,7 @@
 
 [Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/) · [Project history](PROJECT_HISTORY.md) · [Rules source: tow.whfb.app](https://tow.whfb.app)
 
-**v1.0.0-alpha.1 preview:** Stages 1–2 introduce a mobile Game Screen, separate character/regiment sections, legacy saved-roster opening and best-effort offline app-shell caching. Character joins, calculated effects and combat are still future stages. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
+**v1.0.0-alpha.2 preview:** Stages 1–2 introduce a mobile Game Screen, separate character/regiment sections, legacy saved-roster opening and best-effort offline app-shell caching. Character joins, calculated effects and combat are still future stages. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
 
 > **Important:** At present this is a roster importer and viewer, **not** a combat calculator or army-legality checker. Source links and extracted profiles do not prove a selection is legal or correctly costed.
 
@@ -32,6 +32,7 @@ The screen should work well on a phone at the table and preserve the player's ba
 | Display imported units, model quantities, imported points and selections | **Implemented**, when present in the export |
 | Display published **base** model profiles (M / WS / BS / S / T / W / I / A / Ld) | **Implemented when source data is available**; selected modifiers are not applied |
 | Show published equipment/rule references and link to source unit pages | **Implemented for available source records**, not a complete offline rules library |
+| Generic Wizard and Level 1–4 Wizard source links | **Implemented** — recognised as general rules, independently of character legality; stronger verified unit evidence may refine the link |
 | Save and reopen imported rosters; export/backup JSON | **Implemented** — save from Game Screen or importer, open a saved roster into Game Screen; battle state is not auto-saved yet |
 | Cache the app shell and previously visited unit references | **Implemented as best-effort offline caching** after an online visit; browser storage and source coverage still limit availability |
 | Identify unmatched references and optionally submit an anonymous report with consent | **Implemented** |
@@ -82,6 +83,7 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 ## Accuracy principles
 
 - **Recognised ≠ legal:** a matched reference identifies an option; it does not certify list legality, army composition or points.
+- **Wizard rule link ≠ eligible Wizard level:** `Wizard` links to [Wizards](https://tow.whfb.app/magic/wizards) and `Level 1 Wizard`–`Level 4 Wizard` to [Levels of Wizardry](https://tow.whfb.app/magic/levels-of-wizardry); only individually verified character pages establish available levels and upgrades.
 - **Base ≠ effective:** published base profiles must not be silently replaced with equipped, buffed or mounted values.
 - **Scopes matter:** a character's personal save or special rule cannot automatically become a unit-wide effect. Only verified rules establish the recipient and duration.
 - **Unknown ≠ invalid:** preserve unmatched or incomplete selections and show their uncertainty.

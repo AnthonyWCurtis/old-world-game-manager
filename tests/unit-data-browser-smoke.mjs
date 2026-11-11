@@ -44,9 +44,14 @@ try{
  const metrics=await page.locator('#metrics').innerText();
  assert.match(metrics,/Informational entries/);
  assert.match(await page.locator('#armyMeta').innerText(),/2,599/);
- await page.locator('#copyUnmatchedBtn').click();
- const debug=await page.locator('#unmatchedDebugFallback').inputValue();
- assert.ok(!debug.includes('SELECTION: On foot'));
+ const sampleUnmatchedButton=page.locator('#copyUnmatchedBtn');
+ if(await sampleUnmatchedButton.isEnabled()){
+  await sampleUnmatchedButton.click();
+  const debug=await page.locator('#unmatchedDebugFallback').inputValue();
+  assert.ok(!debug.includes('SELECTION: On foot'));
+ }else{
+  assert.match(await sampleUnmatchedButton.textContent(),/No unmatched references/);
+ }
  // Wood Elf source matching: 3 genuine parent-backed matches and two unresolved
  // references from the user's reported list, without changing 748 points.
  const woodElfBase=readFileSync(new URL('../docs/examples/wood-elves.txt',import.meta.url),'utf8');
