@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-all-spell-descriptions-v1';
+const CACHE_NAME='game-manager-v1-shell-20261111-unified-effects-v1';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -24,6 +24,8 @@ const APP_SHELL=[
  './defence-engine.js',
  './spell-engine.js',
  './spell-controls.js',
+ './effects-engine.js',
+ './effects-ui.js',
  './game-layout.js',
  './game-overview.js',
  './player-customization.js',

@@ -157,7 +157,7 @@
   <details class="game-guidance"><summary>Important rules and profile limitations</summary>
    <p class="game-rule-warning">Character assignments are <strong>recorded, not rules-verified</strong>. Rules on <a href="https://tow.whfb.app/characters/characters-and-units" target="_blank" rel="noopener noreferrer">joining units</a>, <a href="https://tow.whfb.app/special-rules/fly" target="_blank" rel="noopener noreferrer">Fly</a> and <a href="https://tow.whfb.app/special-rules/ethereal" target="_blank" rel="noopener noreferrer">Ethereal</a> can restrict joins. The game must not infer equipment, buffs or legality from membership alone.</p>
    <p class="army-roster-quality">Personal unit names and wizard spell selections save separately on this device and never modify the original import. Profiles are published <strong>base characteristics</strong>. Selected equipment, spells and upgrades do not automatically alter them; this is not a legality or points calculator.</p>
-   <p class="game-defence-overview">Defence summaries distinguish equipment-only armour and source-backed conditional Ward and Regeneration effects. Magic Missile-only saves are not universal. One-use items need manual confirmation. A Ward against Magic Missiles is not a universal Ward; Charmed Shield is a once-per-game item. Enemy AP, targeting, automatic casting and legal joins are not assumed.</p>
+   <p class="game-defence-overview">Defence summaries distinguish equipment-only armour and source-backed conditional Ward and Regeneration effects. Magic Missile-only saves are not universal. Source-reviewed banners and magic items show their exact scope and any conditions; other selections are not automatically assigned effects. One-use items need manual confirmation. A Ward against Magic Missiles is not a universal Ward; Charmed Shield is a once-per-game item. Enemy AP, targeting, automatic casting and legal joins are not assumed.</p>
   </details>
   <nav class="game-screen-jump" aria-label="Unit list sections">
    <button id="gameScreenJumpCharacters" type="button">Characters</button>
@@ -168,6 +168,7 @@
  </section>
  <section id="gameMagicPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavMagic" hidden>
   <section id="spellControlPanel" class="game-spell-panel" aria-label="Active spells and enchantments"></section>
+  <section id="gameItemAbilities" class="game-spell-panel game-magic-items-panel" aria-label="Magic items and Bound spells"></section>
   <section id="gameKnownSpellbooks" class="game-magic-spellbooks" aria-label="Wizard spellbooks"></section>
   <details class="game-guidance"><summary>Magic tracking and expiry reminders</summary>
    <p class="game-spell-policy">Tick spells known by each Wizard in the spellbooks below, then record successful casts and legal targets above. Earthen Ramparts, Plague of Rust and Glittering Robe expire at your next Start of Turn; Drain Magic remains in play until ended; Travel Mystical Pathway resolves immediately in the Movement phase. These are player-confirmed records: check range, target, phase and dice at the table.</p>

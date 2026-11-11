@@ -23,7 +23,7 @@ function effectTarget(effect,rule,byId,session){
  const joined=effect.joinedUnitId?byId.get(effect.joinedUnitId):null;
  return fmtName(unit,session)+(joined?' + '+fmtName(joined,session):'');
 }
-export function renderGameOverview(container,army,session,magicIndex){
+export function renderGameOverview(container,army,session,magicIndex,effects=null){
  const doc=container.ownerDocument||document;
  const roster=createGameScreenModel(army);
  const byId=new Map((army?.units||[]).map(u=>[u.id,u]));
@@ -42,7 +42,9 @@ export function renderGameOverview(container,army,session,magicIndex){
   [roster.units.length,'Unit entries'],
   [assigned,'Characters assigned'],
   [ongoing.length,'Ongoing spells'],
-  [movement.length,'Movement records']
+  [movement.length,'Movement records'],
+  [effects?.owned?.length||0,'Reviewed items'],
+  [effects?.counts?.active||0,'Active item effects']
  ]){
   const tile=el(doc,'div','game-overview-metric');
   tile.append(el(doc,'strong','',value),el(doc,'span','',label));
@@ -80,6 +82,52 @@ export function renderGameOverview(container,army,session,magicIndex){
  }
  spells.append(action(doc,'magic','Manage magic & active effects'));
  container.append(spells);
+ const itemSection=el(doc,'section','game-overview-section game-overview-item-section');
+ itemSection.append(el(doc,'h3','','Equipment, banners & item effects'));
+ const allItems=effects?.owned||[];
+ if(!allItems.length){
+  itemSection.append(el(doc,'p','game-overview-empty',
+   'No supported equipment effects were found in this imported roster. Unreviewed selections are not assigned guessed benefits.'));
+ }else{
+  const activeItems=allItems.filter(x=>x.status==='active');
+  if(activeItems.length){
+   const activeHead=el(doc,'h4','','Player-recorded active items');
+   itemSection.append(activeHead);
+   const activeList=el(doc,'ul','game-overview-effect-list');
+   for(const item of activeItems){
+    const row=el(doc,'li','game-overview-effect');
+    row.append(el(doc,'strong','',item.name));
+    row.append(el(doc,'span','',fmtName(byId.get(item.ownerId),session)));
+    row.append(el(doc,'small','',item.description));
+    activeList.append(row);
+   }
+   itemSection.append(activeList);
+  }
+  const counts=effects.counts||{};
+  itemSection.append(el(doc,'p','game-overview-caption',
+   (counts.equipped||0)+' equipped/passive · '+(counts.conditional||0)+
+   ' conditional · '+(counts.ready||0)+' one-use ready · '+
+   (counts.spent||0)+' spent · '+(counts.boundSpells||0)+' Bound spells'));
+  const drawer=el(doc,'details','game-overview-item-drawer');
+  drawer.append(el(doc,'summary','','Review all '+allItems.length+' source-linked item effects'));
+  const list=el(doc,'ul','game-overview-item-list');
+  for(const item of allItems){
+   const row=el(doc,'li','game-overview-item');
+   row.append(el(doc,'strong','',item.name));
+   row.append(el(doc,'span','',fmtName(byId.get(item.ownerId),session)));
+   const badge=el(doc,'small','',
+    item.status==='equipped'?'Equipped':item.status==='conditional'?'Conditional':
+    item.status==='ready'?'Ready':item.status==='spent'?'Spent':
+    item.status==='active'?'Active':item.status==='bound-spell'?'Bound spell':item.status);
+   row.append(badge);
+   const link=el(doc,'a','','Source');
+   link.href=item.sourceUrl;link.target='_blank';link.rel='noopener noreferrer';
+   row.append(link);list.append(row);
+  }
+  drawer.append(list);itemSection.append(drawer);
+ }
+ itemSection.append(action(doc,'units','Review unit effects & item controls'));
+ container.append(itemSection);
  const units=el(doc,'section','game-overview-section');
  units.append(el(doc,'h3','','Your army'));
  units.append(el(doc,'p','game-overview-caption',

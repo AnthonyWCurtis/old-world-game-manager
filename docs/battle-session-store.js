@@ -47,6 +47,7 @@ let queue=Promise.resolve();
 export function writeBattleSession(session){
  const copy={schemaVersion:session.schemaVersion,armyKey:session.armyKey,
   assignments:{...session.assignments},usedCharmedShields:{...(session.usedCharmedShields||{})},activeSpells:(session.activeSpells||[]).map(effect=>({...effect})),spellEvents:(session.spellEvents||[]).map(effect=>({...effect})),
+  itemStates:Object.fromEntries(Object.entries(session.itemStates||{}).map(([id,items])=>[id,{...items}])),
   unitNames:{...(session.unitNames||{})},knownSpells:Object.fromEntries(Object.entries(session.knownSpells||{}).map(([id,ids])=>[id,[...ids]])),
   savedAt:new Date().toISOString()};
  queue=queue.catch(()=>{}).then(()=>transaction('readwrite',store=>store.put(copy)));
