@@ -243,15 +243,17 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(section);
  }
  if(record){
-  const sourceNotes=el(doc,'details','army-unit-source-meta army-unit-compact-details');
+  const sourceNotes=el(doc,'details','army-unit-compact-details army-source-meta-details');
   sourceNotes.append(el(doc,'summary','','Unit source details'));
+  const sourceNotesBody=el(doc,'div','army-unit-source-meta');
   const bits=[];
   if(record.classification?.troopType?.length)bits.push(record.classification.troopType.join(' / '));
   if(record.classification?.baseSize)bits.push('Base '+record.classification.baseSize);
   if(record.basePoints?.sourceText)bits.push('Source: '+record.basePoints.sourceText);
-  if(bits.length)sourceNotes.append(el(doc,'span','',bits.join(' · ')));
-  sourceNotes.append(el(doc,'span','army-source-status',
+  if(bits.length)sourceNotesBody.append(el(doc,'span','',bits.join(' · ')));
+  sourceNotesBody.append(el(doc,'span','army-source-status',
    (record.extractionWarnings?.length?'Source data has '+record.extractionWarnings.length+' review flag(s)':'Source-extracted · not rules-verified')));
+  sourceNotes.append(sourceNotesBody);
   details.append(sourceNotes);
  }
 
