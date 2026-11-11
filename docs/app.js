@@ -11,7 +11,7 @@ import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.3';
 import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.3';
 import {restoreStoredImport} from './army-state.js';
-import {armySessionKey,restoreBattleSession,assignCharacter} from './battle-session.js';
+import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed} from './battle-session.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
@@ -189,9 +189,30 @@ async function handleCharacterAssignment(characterId,unitId){
   battleStateStatus('Assignment not made: '+(error?.message||error),'error');
  }
 }
+async function handleShieldUsage(characterId,used){
+ if(!current)return;
+ const army=current;
+ try{
+  battleSession=markCharmedShieldUsed(army,battleSession,characterId,used);
+  const state=battleSession;
+  renderArmyScreen();
+  battleStateStatus('Saving one-use item status…','saving');
+  try{
+   await writeBattleSession(state);
+   if(current===army&&battleSession===state)
+    battleStateStatus('Character assignments and one-use items saved automatically on this device.');
+  }catch(error){
+   if(current===army)
+    battleStateStatus('Unable to save item use: '+(error?.message||error)+
+    '. The changed status has not been saved.','error');
+  }
+ }catch(error){
+  battleStateStatus('Item status unchanged: '+(error?.message||error),'error');
+ }
+}
 function renderArmyScreen(){
  if(!current)return;
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment);
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage);
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
  const faction=label(current.army.faction);
