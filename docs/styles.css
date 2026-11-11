@@ -373,3 +373,8 @@
 .game-wizard-spell-row .game-spell-source{margin:0 3px 0 0}
 .game-wizard-imported{font-size:10px;font-weight:750;color:#4d6e31}
 @media(max-width:500px){.game-wizard-spellbook{margin:10px 9px}.game-wizard-spellbook-body{padding:0 9px 10px}.game-unit-rename{width:100%}}
+
+.game-wizard-signature,.game-wizard-lore-tag{font-size:10px;line-height:1.45;color:#426636;background:#edf4e6;border-radius:100px;padding:3px 6px;font-weight:700}
+.game-wizard-lore-tag{color:#426285;background:#e6eff9}
+.game-wizard-clear-previous{min-height:44px;margin:5px 0 10px;border:1px solid #cba37b;background:#fff5e8;color:#784c29;padding:9px 12px;border-radius:8px;font-weight:750;font-size:12px}
+.game-wizard-clear-previous[hidden]{display:none}
