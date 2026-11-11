@@ -50,8 +50,8 @@ test('Only selected imported items get registered, including nested banner and c
  assert.equal(JSON.stringify(army),text,
   'Projecting effects never changes original imported selections or points');
  const other=fixture('single-sea-guard');
- assert.equal(ownedItemEffects(other,null).length,0,
-  'No global hardcoded player-army effects on generic imports');
+ assert.deepEqual(ownedItemEffects(other,null).map(x=>x.id),['razor-standard'],
+  'A separate imported army receives only its selected Razor Standard, not another army\'s effects');
 });
 
 test('Standards share with joined characters and joined BSB, without sharing bearer-only items',()=>{
@@ -70,7 +70,7 @@ test('Standards share with joined characters and joined BSB, without sharing bea
  assert.equal(sharedBanner[0].shared,true);
  assert.equal(sharedBanner[0].ownerId,bsb.id);
  assert.equal(sharedBanner[0].status,'conditional');
- assert.match(sharedBanner[0].scope,/joining.*legality not checked/);
+ assert.match(sharedBanner[0].scope,/joins recorded, legality not checked/);
  const razorOnBSB=byRule(proj,bsb.id,'razor-standard');
  assert.equal(razorOnBSB.length,1);
  assert.equal(razorOnBSB[0].shared,true);
