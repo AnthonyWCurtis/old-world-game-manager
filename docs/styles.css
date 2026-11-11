@@ -420,3 +420,96 @@
 .resume-game-screen{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin:0 0 14px;padding:11px 16px;background:#e8cf93;border:1px solid #bfa46d;border-radius:10px;color:#213a50;font-size:15px;font-weight:750}
 .resume-game-screen:hover,.resume-game-screen:focus-visible{background:#f4dfab}
 @media(max-width:650px){.resume-game-screen{display:flex;width:100%;min-height:50px}}
+
+
+/* Touch-first Game Screen workspaces; top controls stay separate from battle records. */
+#armyRosterPage{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+.game-workspace-panel[hidden],.game-unit-expandable[hidden]{display:none!important}
+.game-workspace-panel{min-width:0;animation:game-section-enter .16s ease-out}
+@keyframes game-section-enter{from{opacity:.75;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+.game-workspace-nav{
+ position:fixed;z-index:1100;left:50%;bottom:0;transform:translateX(-50%);
+ width:100%;max-width:820px;
+ padding:7px max(10px,env(safe-area-inset-right,0px))
+ calc(7px + env(safe-area-inset-bottom,0px))
+ max(10px,env(safe-area-inset-left,0px));
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
+ background:rgba(249,252,255,.98);border:1px solid #c9d6e0;
+ border-radius:17px 17px 0 0;box-shadow:0 -5px 20px rgba(14,42,60,.17);
+}
+.game-nav-tab{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:2px;min-width:0;min-height:58px;padding:6px 4px;
+ background:transparent;color:#3b566b;border:1px solid transparent;
+ border-radius:11px;font-size:12px;font-weight:760;letter-spacing:.01em;
+}
+.game-nav-tab .game-nav-icon{font-size:22px;line-height:1.12}
+.game-nav-tab.game-nav-selected{
+ background:#234d69;color:#fff;border-color:#1b445e;
+}
+.game-nav-tab:focus-visible{outline:3px solid #a07128;outline-offset:1px}
+.game-overview-heading{margin:18px 0 12px}
+.game-overview-heading h2{margin:0 0 5px;color:#193f57;font-size:23px}
+.game-overview-caption{margin:0;color:#547087;line-height:1.55;font-size:14px}
+.game-overview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0}
+.game-overview-metric{
+ display:flex;flex-direction:column;align-items:center;gap:5px;
+ min-width:0;padding:14px 8px;border:1px solid #cbdbe5;border-radius:12px;
+ background:#eef5fa;text-align:center;
+}
+.game-overview-metric strong{font-size:24px;color:#1c4964;font-variant-numeric:tabular-nums}
+.game-overview-metric span{font-size:11px;line-height:1.3;color:#47677e}
+.game-overview-section{padding:16px;margin:12px 0;border:1px solid #d2dee8;border-radius:14px;background:#fff}
+.game-overview-section h3{margin:0 0 9px;font-size:17px;color:#223f56}
+.game-overview-section h4{font-size:14px;margin:12px 0 6px}
+.game-overview-empty{color:#4e667a;font-size:14px;margin:7px 0}
+.game-overview-effect-list{list-style:none;display:grid;gap:8px;margin:6px 0 14px;padding:0}
+.game-overview-effect{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 9px;
+ padding:10px;border-radius:9px;background:#ebf6ed;border:1px solid #bfd7c6}
+.game-overview-effect strong{font-size:14px;color:#255c3a}
+.game-overview-effect span{font-size:13px;color:#25445b}
+.game-overview-effect small{flex-basis:100%;color:#5c6f7d;font-size:12px}
+.game-overview-action{min-height:50px;width:100%;text-align:center;background:#244f6d;color:#fff;
+ border:1px solid #1a3e57;border-radius:11px;font-size:15px;font-weight:760;padding:12px}
+.game-overview-action:hover,.game-overview-action:focus-visible{background:#346b8e}
+.game-overview-caution{font-size:12px;color:#637a88;line-height:1.5;padding:4px 2px}
+.game-guidance{background:#f5f7f9;border:1px solid #d4dfe7;border-radius:10px;
+ padding:10px 13px;margin:12px 0}
+.game-guidance>summary{cursor:pointer;font-size:13px;font-weight:750;color:#3e5c72;min-height:44px;
+ display:flex;align-items:center}
+.game-units-hint{font-size:13px;color:#506b7e;margin:12px 0}
+.army-unit-head{cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;
+ row-gap:3px;align-items:start;min-width:0}
+.army-unit-identity{grid-column:1;min-width:0}
+.army-unit-points{grid-column:2;max-width:140px}
+.game-unit-expand-toggle{grid-column:2;justify-self:end;align-self:center;
+ min-height:44px;min-width:95px;padding:9px 10px;background:#fff;border:1px solid #bacddc;
+ border-radius:9px;color:#25506b;font-size:12px;font-weight:760}
+.game-unit-open>.army-unit-head .game-unit-expand-toggle{background:#dbeaf4}
+.game-unit-expand-toggle:focus-visible{outline:3px solid #bb8c39;outline-offset:2px}
+.game-unit-expandable{border-top:1px solid #d7e1e8;padding-bottom:6px}
+.game-card-status{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:6px}
+.game-card-chip{display:inline-flex;max-width:100%;overflow-wrap:anywhere;padding:3px 7px;
+ border-radius:9px;background:#e8eef5;color:#365469;font-size:11px;font-weight:700}
+.game-card-chip-magic{background:#e0f2e4;color:#25613b}
+.game-card-chip-movement{background:#e2eef9;color:#245776}
+.game-magic-known-drawer{padding:13px 15px;background:#fff;border:1px solid #cbdbe7;border-radius:12px}
+.game-magic-known-heading{min-height:48px;font-size:15px;font-weight:780;cursor:pointer;color:#21465e;
+ display:list-item;align-content:center}
+.game-magic-wizard-book{padding:9px 0;border-top:1px solid #dae3eb}
+.game-magic-wizard-book h3{margin:7px 0;font-size:15px}
+.game-magic-wizard-book>.game-wizard-spellbook{margin:0}
+@media(max-width:650px){
+ .game-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .game-overview-metric{padding:11px 8px}
+ .game-workspace-nav{border-radius:13px 13px 0 0}
+ .army-unit-head{padding:10px;gap:4px 8px}
+ .game-unit-expand-toggle{grid-row:2;font-size:12px}
+ .game-unit-card-body{max-width:100%}
+ .game-overview-section{padding:13px;margin:10px 0}
+}
+@media(orientation:landscape) and (max-height:500px){
+ .game-nav-tab{flex-direction:row;min-height:48px;font-size:12px}
+ .game-nav-tab .game-nav-icon{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.game-workspace-panel{animation:none}}
