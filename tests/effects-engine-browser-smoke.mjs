@@ -138,7 +138,7 @@ try{
   await page.setViewportSize(v);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
    'No page-wide overflow at '+v.width);
-  const height=await page.locator('.game-effect-summary').first().evaluate(x=>x.getBoundingClientRect().height);
+  const height=await page.locator('.game-effect-summary:visible').first().evaluate(x=>x.getBoundingClientRect().height);
   assert.ok(height>=44,'Effect summary has 44px+ touch height');
  }
  assert.deepEqual(errors,[]);
