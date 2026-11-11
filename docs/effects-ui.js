@@ -95,6 +95,34 @@ export function renderEffectRow(doc,row,{onItemState=()=>{},onShieldUse=()=>{}}=
  card.append(body);
  return card;
 }
+/** Always-visible attack modifiers belong before Defence, not among save values.
+ * Source metadata controls visibility; only imported verified effects qualify.
+ */
+export function renderUnitOffensiveEffects(doc,unitEffects=[]){
+ const entries=unitEffects.filter(e=>e.effectGroup==='offensive'&&
+  e.quickLabel&&e.quickDetail&&e.status!=='spent');
+ if(!entries.length)return null;
+ const section=el(doc,'section','game-offensive-effects-panel');
+ section.setAttribute('aria-label','Offensive effects');
+ section.append(el(doc,'h4','','Offensive effects'));
+ for(const effect of entries){
+  const rule=el(doc,'div','game-offensive-effect');
+  rule.dataset.effectId=effect.id;
+  rule.append(el(doc,'strong','game-offensive-effect-name',
+   effect.name+' — '+effect.quickLabel));
+  rule.append(el(doc,'p','game-offensive-effect-detail',effect.quickDetail));
+  rule.append(el(doc,'p','game-offensive-effect-scope',effect.scope));
+  const links=el(doc,'div','game-effect-source-links');
+  links.append(sourceLink(doc,'Item source',effect.sourceUrl));
+  if(effect.ruleUrl)links.append(sourceLink(doc,'How '+effect.quickLabel+' works',effect.ruleUrl));
+  rule.append(links);
+  section.append(rule);
+ }
+ section.append(el(doc,'p','game-effect-caution',
+  'Attack-only reference: this does not change the unit’s own armour or base characteristics, and dice are not resolved automatically.'));
+ return section;
+}
+
 export function renderUnitEffects(doc,unitEffects,actionsHandlers={}){
  const area=el(doc,'section','game-effects-panel');
  area.append(el(doc,'h4','','Effects, items & banners'));
