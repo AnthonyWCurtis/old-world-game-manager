@@ -105,6 +105,12 @@ test('wizard spell list is source-filtered to imported lores, with no cross-lore
  const unknown=structuredClone(storm);
  unknown.selections=unknown.selections.filter(s=>s.name!=='Elementalism');
  assert.equal(spellsForWizard(unknown,magic).length,0);
+ const multiple=structuredClone(storm);
+ multiple.selections.push({name:'Illusion',children:[]});
+ const combined=spellsForWizard(multiple,magic);
+ assert.equal(combined.length,14,'Two imported lores give the union of their source-linked lists');
+ assert.equal(combined.some(s=>s.name==='Glittering Robe'),true);
+ assert.equal(combined.some(s=>s.name==='Drain Magic'),false);
  const imported=JSON.stringify(a);
  assert.throws(()=>setWizardKnownSpell(a,restoreBattleSession(a),storm.id,
   highList[0].id,true,magic),/lore/i);
