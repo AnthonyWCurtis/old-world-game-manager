@@ -14,6 +14,15 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ // Select the spells each caster knows first, then they become casting options.
+ const bookBySpell=name=>page.locator('#gameCharacters .game-wizard-spellbook')
+  .filter({has:page.locator('.game-wizard-spell-row').filter({hasText:name})}).first();
+ for(const spell of ['Earthen Ramparts','Glittering Robe']){
+  const book=bookBySpell(spell);
+  await book.locator(':scope > summary').click();
+  await book.locator('.game-wizard-spell-row').filter({hasText:spell})
+   .locator('input[type=checkbox]').check();
+ }
  const control=page.locator('#spellControlPanel');
  await control.locator('.game-spell-caster').first().waitFor();
  assert.equal(await control.locator('.game-spell-caster').count(),2);
@@ -32,7 +41,7 @@ try{
  assert.ok(stormId&&mageId);
  assert.equal(await earth.locator('.game-spell-cast').isDisabled(),true);
  const recordEarth=async()=>{
-  await earth.locator('summary').click();
+  if(!(await earth.evaluate(el=>el.open)))await earth.locator('summary').click();
   await earth.locator('.game-spell-target').selectOption(seaId);
   await earth.locator('.game-spell-confirm').check();
   await earth.locator('.game-spell-cast').click();
@@ -48,7 +57,7 @@ try{
  await page.locator('#gameCharacters .game-character-card[data-unit-id="'+mageId+'"] .character-unit-picker')
   .selectOption(seaId);
  const glitter2=control.locator('.game-spell-caster[data-spell-id="glittering-robe"]');
- await glitter2.locator('summary').click();
+ if(!(await glitter2.evaluate(el=>el.open)))await glitter2.locator('summary').click();
  assert.equal(await glitter2.locator('.game-spell-target').count(),0);
  await glitter2.locator('.game-spell-confirm').check();
  await glitter2.locator('.game-spell-cast').click();
