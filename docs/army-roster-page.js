@@ -3,6 +3,8 @@ import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
 import {sourcePrintedArmour} from './source-printed-armour.js';
 import {sourceDefensiveRules,sourceArmourCap} from './source-defensive-rules.js';
+import {selectedArmourSourceCandidates} from './selected-armour-candidates.js';
+import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
 /**
@@ -401,7 +403,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  * A defence panel never conflates an equipped model's save with that of a
  * different character, or a Magic Missile-only Ward with an all-purpose Ward.
  */
-function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null){
+function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null,armourCandidates=[]){
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
@@ -450,6 +452,22 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   sourceValue.append(el(doc,'span','','Source reference only. Model scope is unresolved; this does not replace the equipment-only Armour value above or determine a final save.'));
   sourceValue.append(safeLink(doc,'Original source page',printedArmour.sourceUrl,'game-defence-source'));
   panel.append(sourceValue);
+ }
+ if(armourCandidates.length){
+  const mount=el(doc,'div','game-defence-incoming');
+  mount.append(el(doc,'strong','','Selected-option armour references — mount role unresolved'));
+  for(const candidate of armourCandidates){
+   mount.append(el(doc,'span','',candidate.selectionName+': source-printed '+candidate.label+
+    '. This may be a mount or other selected entry; no rider/chariot relationship inferred.'));
+   mount.append(safeLink(doc,'Option source',candidate.sourceUrl,'game-defence-source'));
+  }
+  mount.append(el(doc,'span','',
+   'Chariot/ridden-monster armour may offer a rider-or-mount choice; cavalry uses rider armour. Character shields do not improve chariot armour; magic armour benefits require using that magic armour.'));
+  for(const [name,url] of [['Chariot split profile',MOUNT_ARMOUR_RULES.chariot],
+   ['Ridden monster',MOUNT_ARMOUR_RULES.riddenMonster],
+   ['Cavalry split profile',MOUNT_ARMOUR_RULES.cavalry],['Official FAQ',MOUNT_ARMOUR_RULES.faq]])
+   mount.append(safeLink(doc,name,url,'game-defence-source'));
+  panel.append(mount);
  }
  if(defence.activeSpellEffects?.length||defence.spellMovementNotes?.length){
   const banner=el(doc,'div','game-unit-active-magic');
@@ -570,7 +588,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   if(offensive)content.append(offensive);
   content.append(renderDefencePanel(doc,defence,onShieldUse,
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
-    records[entry.id]));
+    records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles)));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
