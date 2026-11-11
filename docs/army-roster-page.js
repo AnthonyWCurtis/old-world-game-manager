@@ -2,6 +2,7 @@ import {createGameScreenModel} from './game-screen-model.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
 import {sourcePrintedArmour} from './source-printed-armour.js';
+import {sourceDefensiveRules,sourceArmourCap} from './source-defensive-rules.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
 /**
@@ -385,7 +386,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  if(profile)body.append(profile);
  const offensive=renderUnitOffensiveEffects(doc,effects);
  if(offensive)body.append(offensive);
- body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback)));
+ body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record));
  body.append(renderUnitEffects(doc,effects,effectActions));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
  remove.type='button';
@@ -400,7 +401,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  * A defence panel never conflates an equipped model's save with that of a
  * different character, or a Magic Missile-only Ward with an all-purpose Ward.
  */
-function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null){
+function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null){
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
@@ -426,6 +427,23 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null){
   metrics.append(item);
  }
  panel.append(metrics);
+ const specialRules=sourceDefensiveRules(record);
+ const armourCap=sourceArmourCap(record);
+ if(armourCap||specialRules.length){
+  const context=el(doc,'div','game-defence-incoming');
+  context.append(el(doc,'strong','','Published defensive references (not applied automatically)'));
+  if(armourCap){
+   context.append(el(doc,'span','','Source troop-type armour ceiling: '+armourCap.cap+
+    '+ (model/mount scope unverified).'));
+   context.append(safeLink(doc,'Armour limits rule',armourCap.sourceUrl,'game-defence-source'));
+  }
+  for(const rule of specialRules){
+   context.append(el(doc,'span','',rule.name+' — '+rule.classification+
+    '. Save value, affected model and eligibility require verification.'));
+   context.append(safeLink(doc,'Rule source',rule.sourceUrl,'game-defence-source'));
+  }
+  panel.append(context);
+ }
  if(printedArmour){
   const sourceValue=el(doc,'div','game-defence-incoming');
   sourceValue.append(el(doc,'strong','','Published unit/chassis armour: '+printedArmour.label));
@@ -551,7 +569,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const offensive=renderUnitOffensiveEffects(doc,effects);
   if(offensive)content.append(offensive);
   content.append(renderDefencePanel(doc,defence,onShieldUse,
-   sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url])));
+   sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
+    records[entry.id]));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
