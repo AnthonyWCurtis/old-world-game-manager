@@ -329,6 +329,16 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
   metrics.append(item);
  }
  panel.append(metrics);
+ if(defence.activeSpellEffects?.length||defence.spellMovementNotes?.length){
+  const banner=el(doc,'div','game-unit-active-magic');
+  banner.append(el(doc,'strong','','Magic affecting this unit'));
+  for(const effect of defence.activeSpellEffects||[])
+   banner.append(el(doc,'span','game-unit-magic-chip','Active: '+effect.name));
+  for(const note of defence.spellMovementNotes||[])
+   banner.append(el(doc,'span','game-unit-magic-chip game-unit-magic-movement',
+    'Movement resolved: '+note.name));
+  panel.append(banner);
+ }
  // Incoming hit modifiers are NOT Ward saves and must be visible separately.
  if(defence.attackModifiers?.length){
   const incoming=el(doc,'div','game-defence-incoming');
