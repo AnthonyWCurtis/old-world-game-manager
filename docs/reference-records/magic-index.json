@@ -4,7 +4,7 @@
   "source": {
     "origin": "https://tow.whfb.app",
     "url": "https://tow.whfb.app/sitemap/magic",
-    "checkedAt": "2026-11-11T10:46:21.214Z",
+    "checkedAt": "2026-11-11T10:52:30.121Z",
     "verificationStatus": "source-indexed",
     "sourceVersion": null,
     "method": "single bounded public HTML sitemap fetch; titles and URLs only"
@@ -51,7 +51,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/hammerhand"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -75,7 +75,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/the-summoning"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -99,7 +99,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/doombolt"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -123,7 +123,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/storm-call"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -147,7 +147,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/drain-magic"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -171,7 +171,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/glittering-robe"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -193,7 +193,7 @@
         "magic-ref:/spell/forest-walker",
         "magic-ref:/spell/flock-of-doom-wood-elves"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -215,7 +215,7 @@
         "magic-ref:/spell/devolve",
         "magic-ref:/spell/mantle-of-ghorok"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -239,7 +239,7 @@
         "magic-ref:/spell/fleshy-abundance",
         "magic-ref:/spell/blue-fire"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -263,7 +263,7 @@
         "magic-ref:/spell/pink-fire",
         "magic-ref:/spell/gift-of-mutation"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -283,7 +283,7 @@
         "magic-ref:/spell/brain-bursta",
         "magic-ref:/spell/gaze-of-gork"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -305,7 +305,7 @@
         "magic-ref:/spell/storm-of-ash",
         "magic-ref:/spell/flames-of-hashut"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -325,7 +325,7 @@
         "magic-ref:/spell/apotheosis",
         "magic-ref:/spell/monsoon"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -345,7 +345,7 @@
         "magic-ref:/spell/morks-curse",
         "magic-ref:/spell/itchy-nuisance"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -365,7 +365,7 @@
         "magic-ref:/spell/cursing-word",
         "magic-ref:/spell/black-horror"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -387,7 +387,7 @@
         "magic-ref:/spell/khsars-incantation-of-the-desert-wind",
         "magic-ref:/spell/usekhps-incantation-of-desiccation"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -411,7 +411,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/primordial-gloom"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -433,7 +433,7 @@
         "magic-ref:/spell/courage-of-aenarion",
         "magic-ref:/spell/vauls-unmaking"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -453,7 +453,7 @@
         "magic-ref:/spell/toothcracker",
         "magic-ref:/spell/trollguts"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -475,7 +475,7 @@
         "magic-ref:/spell/warp-lightning",
         "magic-ref:/spell/cloud-of-corruption"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -497,7 +497,7 @@
         "magic-ref:/spell/burning-gaze",
         "magic-ref:/spell/the-ladys-wrath"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -521,7 +521,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/maelstrom-of-chaos"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -545,7 +545,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/swirling-mists"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -569,7 +569,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/big-smartz"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -591,7 +591,7 @@
         "magic-ref:/spell/hellish-vigour",
         "magic-ref:/spell/raise-dead"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -613,7 +613,7 @@
         "magic-ref:/spell/great-bastion",
         "magic-ref:/spell/might-of-heaven-and-earth"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -635,7 +635,7 @@
         "magic-ref:/spell/accursed-mirror",
         "magic-ref:/spell/ancestral-warriors"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -659,7 +659,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/the-dwellers-below"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -703,7 +703,7 @@
       "signatureSpellIds": [
         "magic-ref:/spell/fist-of-gork-or-mork"
       ],
-      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinksCheckedAt": "2026-11-11T10:52:30.121Z",
       "spellLinkStatus": "source-lore-page-indexed"
     },
     {
@@ -2503,7 +2503,7 @@
   "ambiguousNames": [],
   "loreLinks": {
     "status": "source-lore-page-indexed",
-    "checkedAt": "2026-11-11T10:46:21.214Z",
+    "checkedAt": "2026-11-11T10:52:30.121Z",
     "method": "sequential, bounded lore-page HTML spell links; index only, not spell legality",
     "pagesChecked": 29,
     "linksIndexed": 132,
