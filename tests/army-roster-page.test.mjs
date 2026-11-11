@@ -98,9 +98,9 @@ test('Browser route, action, back buttons and data refresh wiring are present',(
  assert.match(app,/window\.location\.hash='army-roster'/);
  assert.match(app,/window\.addEventListener\('hashchange'/);
  assert.match(app,/backToImporterBottomBtn/);
- assert.match(app,/appVersion:'1\.0\.0-alpha\.4'/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.4/);
- assert.match(app,/army-roster-page\.js\?v=1\.0\.0-alpha\.4/);
+ assert.match(app,/appVersion:'1\.0\.0-alpha\.5'/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5/);
+ assert.match(app,/army-roster-page\.js\?v=1\.0\.0-alpha\.5/);
  assert.match(css,/\.army-profile-scroll\{[^}]*overflow-x:auto/);
  assert.match(css,/\.army-launch-button\{[^}]*min-height:48px/);
 });
