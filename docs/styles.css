@@ -592,3 +592,11 @@
  .game-offensive-effect-name{font-size:14px}
  .game-offensive-effect-detail{font-size:13px}
 }
+
+/* Selected mount model rows are visibly grouped, but keep published rider stats unchanged. */
+.army-profile-table .army-profile-mount-heading th{
+ background:#dfebf3;color:#234a64;font-weight:800;text-align:left;
+ position:static;white-space:normal;border-top:2px solid #b5ccd9;
+}
+.army-profile-table .army-profile-mount-row{background:#f3f8fb}
+.army-profile-table .army-profile-mount-row>th:first-child{background:#e9f2f7}
