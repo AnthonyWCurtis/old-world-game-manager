@@ -393,3 +393,24 @@
 .game-unit-magic-movement{background:#e3effc;color:#285875;border-color:#b0cbdf}
 .game-wizard-open-casting{margin-top:10px;min-height:48px;width:100%;background:#2b6182;color:#fff;border-color:#2b6182;font-size:14px}
 @media(max-width:650px){.game-wizard-casting-group>h3{font-size:14px}.game-spell-events{margin-top:10px}.game-spell-candidates{grid-template-columns:1fr}}
+
+/* Service-worker update prompt remains visible in Safari and Home Screen mode. */
+.gm-update-notice[hidden]{display:none!important}
+.gm-update-notice{
+ position:fixed;z-index:1500;
+ bottom:calc(12px + env(safe-area-inset-bottom,0px));
+ left:calc(12px + env(safe-area-inset-left,0px));
+ right:calc(12px + env(safe-area-inset-right,0px));
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ max-width:820px;margin-inline:auto;padding:13px 15px;
+ color:#172e42;background:#fff;border:2px solid #9dbacb;
+ border-radius:13px;box-shadow:0 10px 35px rgba(20,43,60,.25)
+}
+.gm-update-notice div{min-width:0;display:flex;flex-direction:column;gap:3px}
+.gm-update-notice strong{font-size:14px}
+.gm-update-notice span{font-size:13px;color:#48647a;line-height:1.4}
+.gm-update-reload{min-height:44px;flex-shrink:0;background:#235b7c;border-color:#235b7c;color:#fff}
+@media(max-width:600px){
+ .gm-update-notice{flex-direction:column;align-items:stretch}
+ .gm-update-reload{width:100%;min-height:48px}
+}
