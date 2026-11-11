@@ -148,3 +148,10 @@ test('A named magic item with an explicit conflicting magic-item reference is no
  const items=ownedItemEffects(army,null);
  assert.equal(items.filter(e=>e.ownerId===sea.id&&e.id==='razor-standard').length,0);
 });
+
+
+test('IndexedDB serializer includes item states instead of dropping the new field',()=>{
+ const source=readFileSync(new URL('../docs/battle-session-store.js',import.meta.url),'utf8');
+ assert.match(source,/itemStates:Object\.fromEntries\(Object\.entries\(session\.itemStates/);
+ assert.match(source,/knownSpells:Object\.fromEntries/);
+});
