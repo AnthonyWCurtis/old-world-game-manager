@@ -351,3 +351,25 @@
  .game-spell-caster>summary{font-size:13px}
  .game-active-spell{padding:9px}
 }
+
+/* Player-owned labels and source-indexed wizard spellbook — responsive, no horizontal scroll. */
+.game-rename-toggle{display:inline-flex;margin-top:7px;align-items:center;justify-content:center;min-height:40px;padding:5px 11px;border-radius:8px;background:#fff;border:1px solid #adc1cf;color:#245a7d;font-size:12px;font-weight:750}
+.game-unit-rename[hidden]{display:none}
+.game-unit-rename{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 3px;max-width:100%}
+.game-unit-rename-input{width:min(100%,280px);min-width:0;flex:1 1 170px;min-height:44px;font-size:16px;padding:7px 10px;border-radius:8px;border:1px solid #9eb6c8}
+.game-unit-rename-save,.game-unit-rename-reset{min-height:44px;border-radius:8px;padding:8px 11px;font-size:12px;font-weight:750}
+.game-unit-rename-save{color:white;background:#2a607f;border:1px solid #2a607f}
+.game-unit-rename-reset{color:#2a607f;background:white;border:1px solid #aec2d0}
+.game-wizard-spellbook{margin:12px 15px;border:1px solid #c1cddd;border-radius:10px;background:#fafcff}
+.game-wizard-spellbook>summary{padding:12px;min-height:44px;font-size:14px;font-weight:750;color:#274f71;cursor:pointer}
+.game-wizard-spellbook-body{padding:0 12px 13px;min-width:0}
+.game-wizard-spell-search{display:block;width:100%;min-height:46px;padding:8px 10px;border-radius:8px;border:1px solid #9bb7ce;font-size:16px;margin:10px 0}
+.game-wizard-spell-list{max-height:340px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;border:1px solid #d7e2eb;border-radius:8px;background:#fff}
+.game-wizard-spell-row{padding:5px 8px;border-bottom:1px solid #e5edf3;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.game-wizard-spell-row[hidden]{display:none}
+.game-wizard-spell-choice{display:flex;align-items:center;flex:1 1 190px;gap:11px;min-height:42px;min-width:0;font-size:13px}
+.game-wizard-spell-choice input{width:21px;height:21px;flex-shrink:0;accent-color:#326c94}
+.game-wizard-spell-choice span{overflow-wrap:anywhere}
+.game-wizard-spell-row .game-spell-source{margin:0 3px 0 0}
+.game-wizard-imported{font-size:10px;font-weight:750;color:#4d6e31}
+@media(max-width:500px){.game-wizard-spellbook{margin:10px 9px}.game-wizard-spellbook-body{padding:0 9px 10px}.game-unit-rename{width:100%}}
