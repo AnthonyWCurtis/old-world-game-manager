@@ -11,6 +11,7 @@ on:
       - 'tests/stage4b-browser-smoke.mjs'
       - 'tests/player-customization-browser-smoke.mjs'
       - 'tests/mobile-responsive-browser-smoke.mjs'
+      - 'tests/known-spell-battle-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   pull_request:
     paths:
@@ -21,6 +22,7 @@ on:
       - 'tests/stage4b-browser-smoke.mjs'
       - 'tests/player-customization-browser-smoke.mjs'
       - 'tests/mobile-responsive-browser-smoke.mjs'
+      - 'tests/known-spell-battle-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   workflow_dispatch:
 permissions:
@@ -48,3 +50,4 @@ jobs:
           node tests/stage4b-browser-smoke.mjs
           node tests/player-customization-browser-smoke.mjs
           node tests/mobile-responsive-browser-smoke.mjs
+          node tests/known-spell-battle-browser-smoke.mjs
