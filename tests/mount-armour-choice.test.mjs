@@ -5,13 +5,14 @@ import {compareRiderMountArmour,MOUNT_ARMOUR_RULES} from '../docs/mount-armour-c
 import {selectedArmourSourceCandidates} from '../docs/selected-armour-candidates.js';
 const url='https://tow.whfb.app/unit/example-chariot';
 const fallback={publishedArmour:{sourceUrl:url,value:4,label:'4+',verificationStatus:'source-page-extracted'}};
-test('chariot choices keep rider shield separate and do not automatically choose 4+',()=>{
+test('chariot comparison follows better armour rule without conflating shield',()=>{
  const v=compareRiderMountArmour({mountType:'chariot',modelScopeVerified:true,
   riderValue:5,mountValue:4,mountSourceUrl:url});
- assert.equal(v.status,'choice-required');
+ assert.equal(v.status,'conditional');
+ assert.equal(v.betterArmour,4);
  assert.deepEqual(v.choices.map(x=>x.owner),['rider','mount']);
  assert.match(v.note,/shield does not improve mount armour/i);
- assert.match(v.note,/Magic armour benefits cannot be kept/i);
+ assert.match(v.note,/rider-only equipment/i);
  assert.equal(v.ruleUrl,MOUNT_ARMOUR_RULES.chariot);
 });
 test('ridden monster gives explicit choices but cavalry does not use mount armour',()=>{
