@@ -378,3 +378,18 @@
 .game-wizard-lore-tag{color:#426285;background:#e6eff9}
 .game-wizard-clear-previous{min-height:44px;margin:5px 0 10px;border:1px solid #cba37b;background:#fff5e8;color:#784c29;padding:9px 12px;border-radius:8px;font-weight:750;font-size:12px}
 .game-wizard-clear-previous[hidden]{display:none}
+
+/* Selected known spells: active and movement effects stay visually distinct. */
+.game-wizard-casting-group{margin:14px 0 0;min-width:0}
+.game-wizard-casting-group>h3{font-size:15px;color:#2b536e;margin:10px 2px 8px}
+.game-spell-events{border-top:1px solid #c6d5e2;margin:13px 0 5px;padding-top:8px}
+.game-spell-event{background:#f1f7fc;border:1px solid #bad1e2;border-radius:9px;padding:10px 12px;margin:9px 0}
+.game-spell-event>strong{color:#275778;font-size:14px}
+.game-spell-enemy-name{display:block;width:100%;max-width:100%;min-height:48px;font-size:16px;padding:9px 11px;border-radius:8px;border:1px solid #abc0d1;margin:5px 0}
+.game-spell-clear-event{min-height:44px;padding:9px 12px;border-radius:9px;font-weight:700}
+.game-unit-active-magic{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:10px 0;padding:9px 10px;background:#ebf6ee;border:1px solid #bdd6c4;border-radius:8px}
+.game-unit-active-magic>strong{font-size:12px;color:#285f3d;width:100%}
+.game-unit-magic-chip{display:inline-flex;align-items:center;padding:5px 9px;border-radius:100px;background:#dcf0de;color:#23583b;border:1px solid #a9cdaa;font-size:12px;font-weight:750}
+.game-unit-magic-movement{background:#e3effc;color:#285875;border-color:#b0cbdf}
+.game-wizard-open-casting{margin-top:10px;min-height:48px;width:100%;background:#2b6182;color:#fff;border-color:#2b6182;font-size:14px}
+@media(max-width:650px){.game-wizard-casting-group>h3{font-size:14px}.game-spell-events{margin-top:10px}.game-spell-candidates{grid-template-columns:1fr}}
