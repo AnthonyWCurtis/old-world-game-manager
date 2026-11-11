@@ -205,17 +205,85 @@ function unitCard(doc,unit,index,record,fallback,wasOpen){
  * as async source references arrive and unit cards are updated.
  * Returns an overview for display and test assertions.
  */
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={}){
+
+/** Player-controlled membership. A recorded join is NOT rules-verified. */
+function assignmentEditor(doc,character,regiments,currentUnitId,onAssignment){
+ const row=el(doc,'div','game-assignment-editor');
+ const label=el(doc,'label','',currentUnitId?'Change Unit / Remove':'Assign to Unit');
+ const picker=el(doc,'select','character-unit-picker');
+ picker.id='character-unit-'+character.id;
+ picker.setAttribute('aria-label','Assign '+character.name+' to a unit');
+ label.htmlFor=picker.id;
+ const none=el(doc,'option','','Not assigned — independent');
+ none.value='';picker.append(none);
+ for(const regiment of regiments){
+  const option=el(doc,'option','',regiment.name+' · entry '+regiment.index);
+  option.value=regiment.id;picker.append(option);
+ }
+ picker.value=currentUnitId||'';
+ picker.addEventListener('change',()=>onAssignment(character.id,picker.value||null));
+ row.append(label,picker);
+ return row;
+}
+
+function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment){
+ const row=el(doc,'div','game-assignment-editor');
+ const label=el(doc,'label','','Add Character');
+ const picker=el(doc,'select','regiment-character-picker');
+ picker.id='regiment-character-'+regiment.id;
+ picker.setAttribute('aria-label','Add a character to '+regiment.name);
+ label.htmlFor=picker.id;
+ const empty=el(doc,'option','','Choose a character…');
+ empty.value='';picker.append(empty);
+ for(const character of characters){
+  const prior=assignments[character.id];
+  const source=prior&&byId.get(prior);
+  const suffix=source?' · currently with '+source.name:'';
+  const option=el(doc,'option','',character.name+' · entry '+character.index+suffix);
+  option.value=character.id;picker.append(option);
+ }
+ picker.value='';
+ picker.addEventListener('change',()=>{
+  if(picker.value)onAssignment(picker.value,regiment.id);
+ });
+ row.append(label,picker);
+ return row;
+}
+
+function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment){
+ const panel=el(doc,'details','game-attached-character');
+ panel.dataset.characterId=character.id;
+ panel.dataset.regimentId=unitId;
+ panel.open=open;
+ const summary=el(doc,'summary');
+ summary.append(el(doc,'span','',character.name+' · entry '+character.index));
+ summary.append(el(doc,'small','',points(character.points)));
+ panel.append(summary);
+ const body=el(doc,'div','game-attached-character-body');
+ const sourceCard=unitCard(doc,imported,character.index,record,fallback,false);
+ const profile=sourceCard.querySelector('.army-unit-card-body');
+ if(profile)body.append(profile);
+ const remove=el(doc,'button','game-character-remove','Remove from unit');
+ remove.type='button';
+ remove.addEventListener('click',()=>onAssignment(character.id,null));
+ body.append(remove);
+ panel.append(body);
+ return panel;
+}
+
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{}){
  const doc=container.ownerDocument||document;
  const opened=new Set([...container.querySelectorAll('article[data-unit-id] details.army-unit-source-details[open]')]
   .map(node=>node.closest('article[data-unit-id]')?.dataset.unitId).filter(Boolean));
+ const openMembers=new Set([...container.querySelectorAll('details.game-attached-character[open]')]
+  .map(d=>d.dataset.regimentId+':'+d.dataset.characterId));
  const model=createGameScreenModel(army,records,fallbackProfiles);
  const overview=rosterOverview(army,records);
  const byId=new Map((army.units||[]).map(unit=>[unit.id,unit]));
+ const displayId=new Map(model.units.map(entry=>[entry.id,entry]));
+ const assignments=session?.assignments||{};
  container.replaceChildren();
 
- // A character remains an independent imported instance until an explicitly
- // verified joining workflow is implemented (Stage 3). No inferred assignment.
  const characters=el(doc,'section','game-character-group');
  characters.id='gameCharacters';
  const charHead=el(doc,'div','army-section-heading game-section-header');
@@ -229,6 +297,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const card=unitCard(doc,imported,entry.index,records[entry.id],
    fallbackProfiles[imported.reference?.url],opened.has(entry.id));
   card.classList.add('game-character-card');
+  const target=displayId.get(assignments[entry.id]);
+  card.append(el(doc,'p','game-membership-label',
+   target?'Assigned to '+target.name+' · entry '+target.index:'Independent · no regiment assigned'));
+  if(model.regiments.length)
+   card.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment));
   characters.append(card);
  }
  container.append(characters);
@@ -254,8 +327,24 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   for(const entry of members){
    const imported=byId.get(entry.id);
    if(!imported)continue;
-   regiments.append(unitCard(doc,imported,entry.index,records[entry.id],
-    fallbackProfiles[imported.reference?.url],opened.has(entry.id)));
+   const card=unitCard(doc,imported,entry.index,records[entry.id],
+    fallbackProfiles[imported.reference?.url],opened.has(entry.id));
+   const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
+   const memberArea=el(doc,'section','game-assigned-characters');
+   memberArea.append(el(doc,'h4','','Assigned characters ('+memberList.length+')'));
+   if(!memberList.length)
+    memberArea.append(el(doc,'p','army-quiet','No characters assigned.'));
+   for(const character of memberList){
+    const original=byId.get(character.id);
+    if(!original)continue;
+    memberArea.append(attachedCharacter(doc,character,original,records[character.id],
+     fallbackProfiles[original.reference?.url],entry.id,
+     openMembers.has(entry.id+':'+character.id),onAssignment));
+   }
+   if(model.characters.length)
+    memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment));
+   card.append(memberArea);
+   regiments.append(card);
   }
  }
  if(!model.regiments.length)
