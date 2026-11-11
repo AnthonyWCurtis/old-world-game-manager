@@ -96,6 +96,9 @@ try{
  await potion.locator('button.game-effect-action').filter({hasText:'Confirm consumed'}).click();
  assert.equal(await potion.getAttribute('data-status'),'active');
  assert.match(await elixir.locator('.game-card-status').innerText(),/Active: Elixir of Power/);
+ await page.locator('#gameNavMagic').click();
+ assert.match(await page.locator('#spellControlPanel .game-spell-heading').innerText(),/1 items active/);
+ assert.equal(await page.locator('#spellControlPanel .game-active-items .game-effect-card[data-effect-id="elixir-of-power"]').count(),1);
  await page.locator('#gameNavOverview').click();
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/Player-recorded active items/);
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/Elixir of Power/);
