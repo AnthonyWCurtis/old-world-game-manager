@@ -9,7 +9,7 @@ import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.2';
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.2';
-import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.1';
+import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.2';
 import {restoreStoredImport} from './army-state.js';
 import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
