@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Old World Game Manager · v1 Game Screen preview</title>
-<link rel="stylesheet" href="./styles.css?v=1.0.0-alpha.2">
-<script type="module" src="./app.js?v=1.0.0-alpha.2"></script>
+<link rel="stylesheet" href="./styles.css?v=1.0.0-alpha.3">
+<script type="module" src="./app.js?v=1.0.0-alpha.3"></script>
 </head>
 <body>
 <header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · v1 preview</span></div></header>
@@ -112,11 +112,13 @@
   <div id="armyRosterSummary" class="army-summary-metrics" aria-label="Imported army totals"></div>
  </header>
  <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
+ <p id="battleSessionStatus" class="game-battle-status" role="status" aria-live="polite">Assignments are stored separately from imported army data.</p>
+ <p class="game-rule-warning">Character assignments are <strong>recorded, not rules-verified</strong>. Rules on <a href="https://tow.whfb.app/characters/characters-and-units" target="_blank" rel="noopener noreferrer">joining units</a>, <a href="https://tow.whfb.app/special-rules/fly" target="_blank" rel="noopener noreferrer">Fly</a> and <a href="https://tow.whfb.app/special-rules/ethereal" target="_blank" rel="noopener noreferrer">Ethereal</a> can restrict joins. The game must not infer equipment, buffs or legality from membership alone.</p>
  <div class="army-roster-quality">The profiles shown are published <strong>base characteristics</strong>. Equipment choices, spells, special rules and upgrades from the import are listed separately and do not automatically change the profile. This view does not verify legality or recalculate points.</div>
  <nav class="game-screen-jump" aria-label="Game Screen sections"><button id="gameScreenJumpCharacters" type="button">Characters</button><button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button></nav>
  <div id="armyRosterList" class="army-screen-list"></div>
  <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to importer</button></div>
 </main>
-<footer class="wrap footer">Game Manager v1 preview · Imported rosters and published base profiles. Calculations and joining characters will follow.</footer>
+<footer class="wrap footer">Game Manager v1 preview · Imported rosters and published base profiles. Assignments save locally; derived saves, buffs and combat calculations will follow.</footer>
 </body>
 </html>

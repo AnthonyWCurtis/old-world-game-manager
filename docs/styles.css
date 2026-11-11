@@ -256,3 +256,30 @@
 .army-screen-toolbar{flex-wrap:wrap}
 .game-screen-save{background:#e8cf93;color:#243c4e;font-weight:750;border-color:#c7aa6e}
 .game-screen-save:hover{background:#f6dfab}
+
+/* Stage 3 — membership is player-recorded and distinct from imported unit facts. */
+.game-battle-status{font-size:13px;border:1px solid #bed5c5;background:#f1fbf4;color:#254e39;border-radius:10px;padding:11px 13px;margin:12px 0}
+.game-battle-status[data-status="error"]{background:#fff2ed;border-color:#e9bdab;color:#793b21}
+.game-battle-status[data-status="saving"]{background:#f4f7fc;color:#3d5770}
+.game-rule-warning{font-size:12px;line-height:1.65;color:#5d532f;background:#fbf8ea;border-left:3px solid #c6ac5d;padding:10px 12px;border-radius:5px}
+.game-rule-warning a{color:#305c82}
+.game-membership-label{margin:8px 14px 0;padding:7px 10px;border-radius:7px;background:#f0f5fb;color:#315274;font-weight:650;font-size:13px}
+.game-assignment-editor{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,2fr);align-items:center;gap:10px;padding:12px 14px;border-top:1px solid #e3e9ee}
+.game-assignment-editor label{font-weight:650;color:#2e4b62;font-size:13px}
+.game-assignment-editor select{min-width:0;width:100%;height:46px;font-size:15px}
+.game-assigned-characters{padding:10px 14px 14px;border-top:1px solid #d6e2eb;background:#f8fbfd;min-width:0}
+.game-assigned-characters h4{font-size:14px;margin:4px 0 9px}
+.game-attached-character{border:1px solid #c6d8e5;border-radius:10px;background:#fff;margin:8px 0;min-width:0;overflow:hidden}
+.game-attached-character>summary{display:flex;align-items:center;justify-content:space-between;gap:9px;cursor:pointer;padding:12px;min-height:46px;font-weight:700;color:#234660}
+.game-attached-character>summary small{color:#53667b;white-space:nowrap;font-weight:600}
+.game-attached-character-body{padding:0 10px 12px;min-width:0}
+.game-attached-character-body .army-unit-card-body{padding:0;min-width:0}
+.game-attached-character .army-profile-scroll{max-width:100%;overflow-x:auto}
+.game-character-remove{min-height:44px;margin:8px 0 0;border-color:#bdc8d1;font-weight:650;font-size:13px}
+@media(max-width:500px){
+ .game-assignment-editor{grid-template-columns:1fr;gap:5px}
+ .game-assignment-editor select{height:48px}
+ .game-membership-label{margin:8px 10px 0}
+ .game-assigned-characters{padding:8px 9px 12px}
+ .game-attached-character>summary{flex-wrap:wrap}
+}

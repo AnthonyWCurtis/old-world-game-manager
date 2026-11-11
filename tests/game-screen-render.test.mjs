@@ -13,7 +13,7 @@ test('v1 Game Screen is entered from the import result, with distinct character 
  const app=code('app.js');
  assert.match(app,/gameScreenJumpCharacters/);
  assert.match(app,/gameScreenJumpRegiments/);
- assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles\)/);
+ assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment\)/);
 });
 
 test('read-only roster rendering takes imported source and groups known characters without guessing',()=>{
