@@ -9,9 +9,35 @@
 <title>Old World Game Manager · v1 Game Screen preview</title>
 <link rel="stylesheet" href="./styles.css?v=1.0.0-alpha.5">
 <link rel="stylesheet" href="./mobile.css?v=1.0.0-mobile.1">
-<script type="module" src="./app.js?v=1.0.0-alpha.5"></script>
+<script>
+/* Even an older cached app bundle can display this prompt: index.html is online-first. */
+(()=>{
+ if(!('serviceWorker' in navigator))return;
+ const serviceWorker=navigator.serviceWorker;
+ const hadController=Boolean(serviceWorker.controller);
+ const showNotice=()=>{
+  const notice=document.getElementById('appUpdateNotice');
+  if(notice)notice.hidden=false;
+ };
+ serviceWorker.addEventListener('controllerchange',()=>{
+  if(!hadController)return; // Initial offline installation is not an update.
+  if(document.readyState==='loading')
+   document.addEventListener('DOMContentLoaded',showNotice,{once:true});
+  else showNotice();
+ });
+ document.addEventListener('DOMContentLoaded',()=>{
+  const button=document.getElementById('appUpdateReloadBtn');
+  if(button)button.addEventListener('click',()=>location.reload());
+ },{once:true});
+})();
+</script>
+<script type="module" src="./app.js?v=1.0.0-stale-cache-fix.1"></script>
 </head>
 <body>
+<div id="appUpdateNotice" class="gm-update-notice" role="status" aria-live="polite" hidden>
+ <div><strong>Updated Game Manager is ready</strong><span>Save any unsaved army list first, then reload to use the latest spell controls.</span></div>
+ <button id="appUpdateReloadBtn" type="button" class="gm-update-reload">Reload updated app</button>
+</div>
 <header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · v1 preview</span></div></header>
 <main class="wrap" id="importPage">
  <h1>Import army list</h1>
