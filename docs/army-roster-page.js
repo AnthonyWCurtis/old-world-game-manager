@@ -243,7 +243,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(section);
  }
  if(record){
-  const sourceNotes=el(doc,'div','army-unit-source-meta');
+  const sourceNotes=el(doc,'details','army-unit-source-meta army-unit-compact-details');
+  sourceNotes.append(el(doc,'summary','','Unit source details'));
   const bits=[];
   if(record.classification?.troopType?.length)bits.push(record.classification.troopType.join(' / '));
   if(record.classification?.baseSize)bits.push('Base '+record.classification.baseSize);
@@ -255,8 +256,10 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  }
 
  const selections=collectSelections(unit.selections);
- const chosen=el(doc,'div','army-import-selections');
- chosen.append(el(doc,'h4','','Imported selections'));
+ const chosen=el(doc,'details','army-import-selections army-unit-compact-details');
+ const modelSelections=(unit.modelGroups||[]).reduce((n,g)=>n+(g.selections||[]).length,0);
+ chosen.append(el(doc,'summary','','Imported selections · '+(selections.length+modelSelections)));
+ const chosenBody=el(doc,'div','army-unit-compact-content');
  if(selections.length){
   const list=el(doc,'ul','army-selection-list');
   for(const item of selections){
@@ -266,9 +269,9 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    if(item.informational)li.append(el(doc,'small','','Info only'));
    list.append(li);
   }
-  chosen.append(list);
+  chosenBody.append(list);
  }else{
-  chosen.append(el(doc,'p','army-quiet','No selections were included in this export.'));
+  chosenBody.append(el(doc,'p','army-quiet','No selections were included in this export.'));
  }
  for(const group of unit.modelGroups||[]){
   const groupArea=el(doc,'div','army-model-group');
@@ -281,14 +284,17 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    list.append(li);
   }
   if(list.children.length)groupArea.append(list);
-  chosen.append(groupArea);
+  chosenBody.append(groupArea);
  }
+ chosen.append(chosenBody);
  details.append(chosen);
 
  if(record?.startingEquipment?.length||record?.startingRules?.length||record?.optionalRules?.length){
-  const extra=el(doc,'details','army-unit-source-details');
+  const extra=el(doc,'details','army-unit-source-details army-unit-compact-details');
   if(wasOpen)extra.open=true;
-  extra.append(el(doc,'summary','','Published equipment & rules'));
+  extra.append(el(doc,'summary','','Published equipment & rules · '+(
+   (record.startingEquipment||[]).length+(record.startingRules||[]).length+
+   (record.optionalRules||[]).length)+' references'));
   const content=el(doc,'div','army-unit-source-body');
   for(const [heading,refs] of [
    ['Starting equipment',record.startingEquipment],
