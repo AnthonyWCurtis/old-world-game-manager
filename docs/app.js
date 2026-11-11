@@ -656,6 +656,7 @@ async function refreshCurrentSource(force=false){
    // Re-select exact published option URLs without retaining unrelated pages.
    const linkedProfiles=await getPublishedUnitProfiles(army).catch(()=>({}));
    if(!active())return;
+   published={...published,...linkedProfiles};
    sourceProfiles={...sourceProfiles,...linkedProfiles};
    render();
    status.textContent='Unit profiles available for '+result.matched+'/'+army.units.length+
@@ -671,7 +672,7 @@ async function refreshCurrentSource(force=false){
  try{
   // Public pages without browser CORS are read from the last GitHub Actions
   // source snapshot. Matching remains scoped to the unit's actual source URL.
-  const published=await getPublishedUnitProfiles(army).catch(()=>({}));
+  let published=await getPublishedUnitProfiles(army).catch(()=>({}));
   if(!active())return;
   sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
   if(!active())return;
