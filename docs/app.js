@@ -432,7 +432,7 @@ function renderArmyScreen(){
  const state=ensureGameLayout();
  const effectProjection=projectArmyEffects(current,battleSession);
  const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState);
- renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear},magicIndex);
+ renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear,onItemState:handleItemEffectState,onShieldUse:handleShieldUsage},magicIndex,effectProjection);
  renderMagicItemAbilities($('gameItemAbilities'),effectProjection,battleSession,{
   onItemState:handleItemEffectState,onShieldUse:handleShieldUsage
  });
