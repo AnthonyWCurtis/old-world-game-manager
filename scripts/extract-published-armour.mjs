@@ -10,7 +10,7 @@ const textOnly=html=>String(html||'')
  .replace(/&#(?:x([0-9a-f]+)|([0-9]+));/gi,
   (_,hex,dec)=>String.fromCodePoint(Number.parseInt(hex||dec,hex?16:10)))
  .replace(/&(?:nbsp|amp|lt|gt|quot|apos);/gi,x=>({
-  '&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'})[x.toLowerCase()]||x)
+  '&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':String.fromCharCode(39)})[x.toLowerCase()]||x)
  .replace(/\s+/g,' ').trim();
 export function extractPublishedArmourValue(html,sourceUrl){
  let url;
