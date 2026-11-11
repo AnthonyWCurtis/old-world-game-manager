@@ -133,6 +133,7 @@ export function evaluateDefences(army,session,unitId){
   movementRestrictions:spell.movementRestrictions,
   spellWarnings:spell.warnings,
   activeSpellEffects:spell.activeEffects,
+  spellMovementNotes:spell.movementNotes,
   champions:identity.isCharacter?[]:championDefences(unit),
   joinedCharacters,sharedWard,
   disclosure:'Armour is equipment-only. Ward and incoming To Hit effects from spells are player-declared and conditional; no automatic legality, enemy AP or dice resolution.'
