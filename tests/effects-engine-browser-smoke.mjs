@@ -53,13 +53,13 @@ try{
  assert.equal(await bsb.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),1);
  assert.equal(await sea.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),0);
  await bsb.locator('.character-unit-picker').selectOption(seaId);
- const sharedBanner=sea.locator('.game-effect-card[data-effect-id="banner-of-confidence"]');
+ const sharedBanner=sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="banner-of-confidence"]');
  assert.equal(await sharedBanner.count(),1);
  assert.equal(await sharedBanner.getAttribute('data-shared'),'true');
  assert.match(await sea.locator('.game-card-status').innerText(),/conditional/);
  assert.equal(await bsb.locator('.game-effect-card[data-effect-id="razor-standard"]').count(),1,
   'A character joined to Sea Guard receives the unit standard effect');
- assert.equal(await sea.locator('.game-effect-card[data-effect-id="ruby-ring-of-ruin"]').count(),0,
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="ruby-ring-of-ruin"]').count(),0,
   'The BSB ring is not shared as a unit-wide magic item');
 
  // Ruby Ring is a separate Bound spell, not a newly known Wizard spell.
