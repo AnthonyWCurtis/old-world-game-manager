@@ -21,7 +21,7 @@ export function indexedSpells(index){
  if(index?.collectionType!=='source-reference-index'||index?.source?.origin!=='https://tow.whfb.app'||!Array.isArray(index.entries))return [];
  const seen=new Set();
  return index.entries.filter(entry=>{
-  if(entry?.kind!=='spell'||typeof entry.name!=='string'||!/^[\w '-]{2,120}$/.test(entry.name))return false;
+  if(entry?.kind!=='spell'||typeof entry.name!=='string'||!entry.name.trim()||entry.name.length>160)return false;
   if(typeof entry.id!=='string'||!/^magic-ref:\/spell\/[a-z0-9-]+$/.test(entry.id))return false;
   if(entry.url!=='https://tow.whfb.app/spell/'+entry.id.slice('magic-ref:/spell/'.length))return false;
   if(seen.has(entry.id))return false;
