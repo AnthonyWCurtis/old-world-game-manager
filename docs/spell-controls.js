@@ -1,5 +1,5 @@
 /**
- * Accessible, no-innerHTML Game Screen controls for player-confirmed spells.
+ * Accessible DOM-created Game Screen controls for player-confirmed spells.
  * A wizard's selected lore is NOT evidence of learned spells or a successful cast.
  */
 import {SPELL_RULES,eligibleWizardSpells,spellEffectsFor} from './spell-engine.js';
