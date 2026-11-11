@@ -101,7 +101,7 @@ async function main(){
  // Run oldest-checked source pages first so a 35-page batch advances coverage.
  const previous=await existingSnapshot();
  const shardDir=new URL('../docs/unit-data/shards/',import.meta.url);
- const shardNames=(await readdir(shardDir)).filter(n=>/^[0-9a-f]{2}\\.json$/.test(n));
+ const shardNames=(await readdir(shardDir)).filter(n=>n.endsWith('.json')&&n.length===7);
  for(const filename of shardNames){
   const shard=JSON.parse(await readFile(new URL(filename,shardDir),'utf8'));
   for(const record of Object.values(shard.records||{})){
