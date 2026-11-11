@@ -414,3 +414,9 @@
  .gm-update-notice{flex-direction:column;align-items:stretch}
  .gm-update-reload{width:100%;min-height:48px}
 }
+
+/* Return to active Game Screen from the importer without re-importing. */
+.resume-game-screen[hidden]{display:none!important}
+.resume-game-screen{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin:0 0 14px;padding:11px 16px;background:#e8cf93;border:1px solid #bfa46d;border-radius:10px;color:#213a50;font-size:15px;font-weight:750}
+.resume-game-screen:hover,.resume-game-screen:focus-visible{background:#f4dfab}
+@media(max-width:650px){.resume-game-screen{display:flex;width:100%;min-height:50px}}
