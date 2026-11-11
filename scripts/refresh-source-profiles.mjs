@@ -11,10 +11,12 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {parseArmy} from '../docs/parser.js';
 import {findIndexedReference} from '../docs/live-source.js';
+import {extractWizardMagic} from './extract-wizard-magic.mjs';
 
 const ORIGIN='https://tow.whfb.app';
 const OUTPUT=new URL('../docs/source-profiles.json',import.meta.url);
 const EXAMPLES=new URL('../docs/examples/',import.meta.url);
+const MAGIC_INDEX=new URL('../docs/reference-records/magic-index.json',import.meta.url);
 const MAX_PER_RUN=35;
 const MAX_BYTES=2_000_000;
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -96,6 +98,9 @@ async function main(){
  }
  jobs.sort((a,b)=>b.frequency-a.frequency||a.url.localeCompare(b.url));
  const previous=await existingSnapshot();
+ const magicIndex=JSON.parse(await readFile(MAGIC_INDEX,'utf8'));
+ if(magicIndex?.source?.url!=='https://tow.whfb.app/sitemap/magic'||!Array.isArray(magicIndex.entries))
+  throw Error('Trusted source magic index unavailable');
  const selected=jobs.slice(0,MAX_PER_RUN);
  const checkedAt=new Date().toISOString();
  let updated=0,failed=0;
@@ -104,10 +109,12 @@ async function main(){
    const html=await fetchHtml(job.url);
    const names=parseModelNames(html);
    if(!names.length)throw Error('No model names found in profile table');
+   const wizardMagic=extractWizardMagic(html,job.url,magicIndex);
    previous[job.url]={
     url:job.url,source:'tow.whfb.app',schemaVersion:2,sourceCheckedAt:checkedAt,
     verificationStatus:'source-extracted',models:names.map(name=>({name})),
-    wizardLevels:previous[job.url]?.wizardLevels||[]
+    wizardLevels:previous[job.url]?.wizardLevels||[],
+    ...(wizardMagic?{wizardMagic}: {})
    };
    updated++;
    console.log((i+1)+'/'+selected.length+' '+job.url+' → '+names.length+' models');
@@ -120,7 +127,7 @@ async function main(){
  }
  const sorted=Object.fromEntries(Object.entries(previous).sort(([a],[b])=>a.localeCompare(b)));
  const data={schemaVersion:2,sourceOrigin:ORIGIN,generatedAt:checkedAt,
-  note:'Names only, from allowed public unit pages. No army legality or option points inferred.',
+  note:'Model names and explicit wizard facts only, from permitted public unit pages. No army legality inferred.',
   profiles:sorted};
  await writeFile(OUTPUT,JSON.stringify(data,null,2)+'\n');
  console.log('Discovered '+jobs.length+' unit URLs from '+files.length+' example lists; checked '+selected.length+
