@@ -14,6 +14,9 @@ export const CATALOGUE = [
     { id: 'unit:prince', name: 'Prince', type: 'unit', url: 'https://tow.whfb.app/unit/prince' },
     { id: 'unit:silver-helms', name: 'Silver Helms', type: 'unit', url: 'https://tow.whfb.app/unit/silver-helms' },
     { id: 'unit:sisters-of-avelorn', name: 'Sisters of Avelorn', type: 'unit', url: 'https://tow.whfb.app/unit/sisters-of-avelorn' },
+    // Old World Builder shortens Orion's published title to "Orion".
+    // Source: https://tow.whfb.app/unit/orion-the-king-in-the-woods
+    { id: 'unit:orion-the-king-in-the-woods', name: 'Orion, the King in the Woods', aliases: ['Orion'], type: 'unit', url: 'https://tow.whfb.app/unit/orion-the-king-in-the-woods', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-11' },
     { id: 'unit:waystalker', name: 'Waystalker', type: 'unit', url: 'https://tow.whfb.app/unit/waystalker' },
     { id: 'unit:shadowdancer', name: 'Shadowdancer', type: 'unit', url: 'https://tow.whfb.app/unit/shadowdancer' },
     { id: 'unit:glade-guard', name: 'Glade Guard', type: 'unit', url: 'https://tow.whfb.app/unit/glade-guard' },
@@ -44,6 +47,9 @@ export const CATALOGUE = [
     { id: 'equipment:asrai-longbow', name: 'Asrai longbow', type: 'equipment', url: 'https://tow.whfb.app/weapons-of-war/asrai-longbow', aliases: ['Asrai longbows'] },
     { id: 'equipment:swiftshiver-shards', name: 'Swiftshiver Shards', type: 'equipment', url: 'https://tow.whfb.app/weapons-of-war/swiftshiver-shards' },
     { id: 'equipment:arcane-bodkins', name: 'Arcane Bodkins', type: 'equipment', url: 'https://tow.whfb.app/weapons-of-war/arcane-bodkins' },
+    // Orion's unique named weapon is exported without the canonical "The".
+    // Parent-specific reference only, not an assertion of another unit's eligibility.
+    { id: 'item:orion-spear-of-kurnous', name: 'The Spear of Kurnous', aliases: ['Spear of Kurnous'], type: 'item', parentUnit: 'Orion', url: 'https://tow.whfb.app/magic-item/the-spear-of-kurnous', sourceStatus: 'verified-on-tow', verifiedOn: '2026-11-11', scopeEvidenceUrl: 'https://tow.whfb.app/unit/orion-the-king-in-the-woods' },
     { id: 'item:razor-standard', name: 'Razor Standard', type: 'item', url: 'https://tow.whfb.app/magic-item/razor-standard' },
     { id: 'item:loremasters-cloak', name: "The Loremaster's Cloak", type: 'item', url: 'https://tow.whfb.app/magic-item/the-loremasters-cloak' },
     { id: 'item:seed-of-rebirth', name: 'Seed of Rebirth', type: 'item', url: 'https://tow.whfb.app/magic-item/seed-of-rebirth' },
