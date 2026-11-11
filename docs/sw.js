@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-source-armour-v1';
+const CACHE_NAME='game-manager-v1-shell-20261111-source-armour-rules-v2';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -23,6 +23,7 @@ const APP_SHELL=[
  './game-screen-model.js',
  './defence-engine.js',
  './source-printed-armour.js',
+ './source-defensive-rules.js',
  './spell-engine.js',
  './spell-controls.js',
  './effects-engine.js',
