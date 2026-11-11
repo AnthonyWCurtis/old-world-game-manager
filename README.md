@@ -4,7 +4,7 @@
 
 [Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/) · [Project history](PROJECT_HISTORY.md) · [Rules source: tow.whfb.app](https://tow.whfb.app)
 
-**v1.0.0-alpha.2 preview:** Stages 1–2 introduce a mobile Game Screen, separate character/regiment sections, legacy saved-roster opening and best-effort offline app-shell caching. Character joins, calculated effects and combat are still future stages. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
+**v1.0.0-alpha.3 preview:** Stages 1–3 include a mobile Game Screen, separate character/regiment sections, character-to-unit assignments in either direction, expandable attached profiles, automatic local assignment saving, and best-effort offline app-shell caching. Calculated effects and combat are still future stages. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
 
 > **Important:** At present this is a roster importer and viewer, **not** a combat calculator or army-legality checker. Source links and extracted profiles do not prove a selection is legal or correctly costed.
 
@@ -33,12 +33,13 @@ The screen should work well on a phone at the table and preserve the player's ba
 | Display published **base** model profiles (M / WS / BS / S / T / W / I / A / Ld) | **Implemented when source data is available**; selected modifiers are not applied |
 | Show published equipment/rule references and link to source unit pages | **Implemented for available source records**, not a complete offline rules library |
 | Generic Wizard and Level 1–4 Wizard source links | **Implemented** — recognised as general rules, independently of character legality; stronger verified unit evidence may refine the link |
-| Save and reopen imported rosters; export/backup JSON | **Implemented** — save from Game Screen or importer, open a saved roster into Game Screen; battle state is not auto-saved yet |
+| Save and reopen imported rosters; export/backup JSON | **Implemented** — saved rosters reopen in Game Screen; character assignments auto-save in separate local storage keyed to the imported army text |
 | Cache the app shell and previously visited unit references | **Implemented as best-effort offline caching** after an online visit; browser storage and source coverage still limit availability |
 | Identify unmatched references and optionally submit an anonymous report with consent | **Implemented** |
 | Automatic complete army-specific offline reference packs | **Planned** |
 | Fully automatic source-data refresh and seamless background download | **Planned**; existing limited live-cache checks and repository index refreshes are not this complete workflow |
-| Character-to-unit assignments, effective buffs, derived saves and attack calculations | **Planned — not implemented** |
+| Character-to-unit assignments and expandable attached character profiles | **Implemented in v1 alpha.3**, player-recorded only; eligibility not yet verified |
+| Effective buffs, derived saves, shooting and attack calculations | **Planned — not implemented** |
 
 ### Importing an army
 
@@ -78,6 +79,8 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 
 **Current reality:** the site already has a small unit index plus 32 version-pinned JSON shards containing 581 extracted unit records from 19 army indexes. Only shards needed for recognised roster units are requested and cached where browser storage permits. The source snapshot contains **269 unit records flagged for extraction review**; source-extracted is not equivalent to a verified gameplay effect. Other repository reference indexes mostly contain **titles and URLs**, not complete rules effects. See [reference collection notes](docs/reference-records/README.md), [source cache design](docs/live-cache-design.md), and [archived technical background](PROJECT_HISTORY.md#v04--versioned-source-backed-unit-details).
 
+**Assignment recovery:** Character memberships are stored automatically in IndexedDB under a key derived from the exact pasted army text. Reimporting the **identical export** or opening a saved copy restores them on that device. Editing the export text creates a new session. Clearing browser storage loses the memberships; the current JSON army export/backup does **not** include battle-session assignments. Browser private mode may discard the store. Check the Game Screen saving-status message before closing.
+
 **Source of truth for Warhammer rules:** [tow.whfb.app](https://tow.whfb.app). Do not invent missing characteristics, point costs, restrictions, item effects, spell eligibility or rule interpretations. Source-content caching and reuse must be compatible with its access permissions.
 
 ## Accuracy principles
@@ -96,12 +99,13 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 | --- | --- |
 | [`docs/`](docs/) | Static mobile website; the GitHub Pages publication directory |
 | [`docs/parser.js`](docs/parser.js) | Multi-exporter parsing and data normalisation |
-| [`docs/army-roster-page.js`](docs/army-roster-page.js) | Read-only mobile Game Screen with separate character/regiment sections |
+| [`docs/army-roster-page.js`](docs/army-roster-page.js) | Mobile Game Screen with two-way character assignments and nested published profiles |
 | [`docs/unit-data.js`](docs/unit-data.js) and [`docs/unit-data/`](docs/unit-data/) | Version-pinned source-backed unit index, shards and browser caching |
 | [`docs/unit-selection-matcher.js`](docs/unit-selection-matcher.js) | Conservative, source-scoped upgrade reference matching |
 | [`docs/reference-records/`](docs/reference-records/) | Source-indexed reference collections, primarily names and links |
 | [`docs/game-screen-model.js`](docs/game-screen-model.js) and [`docs/army-state.js`](docs/army-state.js) | Read-only source/roster projection and legacy saved-army restoration |
 | [`docs/sw.js`](docs/sw.js) and [`docs/offline.js`](docs/offline.js) | Versioned offline app-shell cache and best-effort registration |
+| [`docs/battle-session.js`](docs/battle-session.js) and [`docs/battle-session-store.js`](docs/battle-session-store.js) | Assignment rules and separate automatically saved IndexedDB battle-session store |
 | [`tests/`](tests/) | Parser, matching, offline, integration and mobile browser regression tests |
 | [`.github/workflows/`](.github/workflows/) | CI, source indexing and deployment-related automation |
 | [`PROJECT_HISTORY.md`](PROJECT_HISTORY.md) | Earlier version notes, source-collection decisions and debugging history |
@@ -121,7 +125,7 @@ For the latest test status, use [GitHub Actions](https://github.com/AnthonyWCurt
 
 ## v1 preview release limits
 
-The first v1 milestone is **a Game Screen and reliable import/persistence foundation**, not a complete battle-management or rules engine. Its Character section lists imported characters separately: there is **no join/remove control yet**, and the app never infers character assignments or grants buffs. Profiles are published **base** values, and the reported army points come from the export.
+The v1 Stage 3 milestone records character memberships without pretending to check legality or apply special rules. The Character section and each regiment show synchronised assignment controls. Multiple characters may be recorded in one unit, and each character is assigned to at most one unit. Each attached character expands to show their separate imported selections and available published **base** characteristics. Character joins, moves and removals do **not** affect imported points, equipment or stats. Review [Characters & Units](https://tow.whfb.app/characters/characters-and-units), [Fly](https://tow.whfb.app/special-rules/fly) and [Ethereal](https://tow.whfb.app/special-rules/ethereal) when checking legality.
 
 The Service Worker caches the static app shell for offline relaunch after the initial online visit; source unit shards must already be cached to show their statistics offline. Browser storage may be evicted, so keep a JSON backup. This cache does not mirror full tow.whfb.app rules pages or make unverified source-extracted facts authoritative.
 
@@ -129,6 +133,6 @@ The Service Worker caches the static app shell for offline relaunch after the in
 
 Imported army lists are parsed in the browser and are not automatically uploaded. Saved lists are local to the browser/device, may disappear when browser storage is cleared and are **not** yet synchronised across devices. Use JSON backup/export when the roster matters. Opt-in unmatched reports contain limited reference context, not an automatic upload of the full list.
 
-**Not yet available:** character assignment, automatic unit buffs, full offline rules text, full spell effect interpretation, derived saves, attacks, combat resolution, independent points validation or army legality validation. These remain future stages rather than claims about the current site.
+**Not yet available:** automatic join-legality verification, automatic unit buffs, full offline rules text, full spell effect interpretation, derived saves, attacks, combat resolution, independent points validation or army legality validation. These remain future stages rather than claims about the current site.
 
 This is a fan-made project, not an official Games Workshop product.
