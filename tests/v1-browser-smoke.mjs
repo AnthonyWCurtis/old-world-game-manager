@@ -32,7 +32,7 @@ try{
  await page.locator('#parseBtn').click();
  // Every exact Wizard label receives its general rule link, even with upstream offline.
  const genericWizardLinks=await page.locator('#units .selection').evaluateAll(nodes=>nodes
-  .filter(node=>/^Wizard\\s*\\[Level [1-4] Wizard\\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
+  .filter(node=>/^Wizard\s*\[Level [1-4] Wizard\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
   .map(node=>node.querySelector('a')?.href));
  assert.equal(genericWizardLinks.length,3,'Storm Weaver and both Mages each select Wizard');
  assert.equal(genericWizardLinks[0],'https://tow.whfb.app/magic/wizards',
@@ -61,7 +61,7 @@ try{
  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  const reopenedWizardLinks=await page.locator('#units .selection').evaluateAll(nodes=>nodes
-  .filter(node=>/^Wizard\\s*\\[Level [1-4] Wizard\\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
+  .filter(node=>/^Wizard\s*\[Level [1-4] Wizard\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
   .map(node=>node.querySelector('a')?.href));
  assert.equal(reopenedWizardLinks.length,3);
  assert.equal(reopenedWizardLinks[0],'https://tow.whfb.app/magic/wizards');
