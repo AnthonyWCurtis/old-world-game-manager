@@ -661,7 +661,7 @@ $('extractListBtn').addEventListener('click',()=>{
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};await restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};const restoring=restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});await restoring;if(current)render();void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
