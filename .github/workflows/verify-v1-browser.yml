@@ -47,7 +47,9 @@ jobs:
       - name: Install browser runner
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          # Ubuntu hosted runners already include Chromium's shared runtime libs.
+          # Download only the headless shell; apt font mirrors can be unavailable.
+          npx playwright install --only-shell chromium
       - name: Serve static app and test mobile/tablet viewports with offline reload
         run: |
           python3 -m http.server 8787 --directory docs >/tmp/gm-v1-http.log 2>&1 &
