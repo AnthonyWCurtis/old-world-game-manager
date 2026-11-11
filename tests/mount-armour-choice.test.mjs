@@ -12,7 +12,7 @@ test('chariot comparison follows better armour rule without conflating shield',(
  assert.equal(v.numericallyBetter,4);
  assert.match(v.note,/must not auto-select/i);
  assert.deepEqual(v.choices.map(x=>x.owner),['rider','mount']);
- assert.match(v.note,/shield does not improve mount armour/i);
+ assert.match(v.note,/rider shield does not alter the mount value/i);
  assert.match(v.note,/magic armour benefits/i);
  assert.equal(v.ruleUrl,MOUNT_ARMOUR_RULES.chariot);
 });
