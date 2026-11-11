@@ -4,7 +4,7 @@
   "source": {
     "origin": "https://tow.whfb.app",
     "url": "https://tow.whfb.app/sitemap/magic",
-    "checkedAt": "2026-11-09T21:24:53.891Z",
+    "checkedAt": "2026-11-11T10:46:21.214Z",
     "verificationStatus": "source-indexed",
     "sourceVersion": null,
     "method": "single bounded public HTML sitemap fetch; titles and URLs only"
@@ -38,7 +38,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/hammerhand",
+        "magic-ref:/spell/fireball",
+        "magic-ref:/spell/curse-of-arrow-attraction",
+        "magic-ref:/spell/pillar-of-fire",
+        "magic-ref:/spell/arcane-urgency",
+        "magic-ref:/spell/oaken-shield",
+        "magic-ref:/spell/curse-of-cowardly-flight"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/hammerhand"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/daemonology",
@@ -48,7 +62,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/the-summoning",
+        "magic-ref:/spell/steed-of-shadows",
+        "magic-ref:/spell/gathering-darkness",
+        "magic-ref:/spell/daemonic-familiars",
+        "magic-ref:/spell/daemonic-vessel",
+        "magic-ref:/spell/vortex-of-chaos",
+        "magic-ref:/spell/daemonic-vigour"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/the-summoning"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/dark-magic",
@@ -58,7 +86,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/doombolt",
+        "magic-ref:/spell/word-of-pain",
+        "magic-ref:/spell/stream-of-corruption",
+        "magic-ref:/spell/infernal-gateway",
+        "magic-ref:/spell/phantasmagoria",
+        "magic-ref:/spell/battle-lust",
+        "magic-ref:/spell/soul-eater"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/doombolt"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/elementalism",
@@ -68,7 +110,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/storm-call",
+        "magic-ref:/spell/flaming-sword",
+        "magic-ref:/spell/plague-of-rust",
+        "magic-ref:/spell/summon-elemental-spirit",
+        "magic-ref:/spell/earthen-ramparts",
+        "magic-ref:/spell/wind-blast",
+        "magic-ref:/spell/travel-mystical-pathway"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/storm-call"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/high-magic",
@@ -78,7 +134,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/drain-magic",
+        "magic-ref:/spell/walk-between-worlds",
+        "magic-ref:/spell/fiery-convocation",
+        "magic-ref:/spell/tempest",
+        "magic-ref:/spell/corporeal-unmaking",
+        "magic-ref:/spell/fury-of-khaine",
+        "magic-ref:/spell/shield-of-saphery"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/drain-magic"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/illusion",
@@ -88,7 +158,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/glittering-robe",
+        "magic-ref:/spell/mind-razor",
+        "magic-ref:/spell/shimmering-dragon",
+        "magic-ref:/spell/column-of-crystal",
+        "magic-ref:/spell/confounding-convocation",
+        "magic-ref:/spell/spectral-doppelganger",
+        "magic-ref:/spell/miasmic-mirage"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/glittering-robe"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-athel-loren",
@@ -98,7 +182,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/tree-singing",
+        "magic-ref:/spell/forest-walker",
+        "magic-ref:/spell/flock-of-doom-wood-elves"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/tree-singing",
+        "magic-ref:/spell/forest-walker",
+        "magic-ref:/spell/flock-of-doom-wood-elves"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-beasts",
@@ -108,7 +204,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/viletide",
+        "magic-ref:/spell/devolve",
+        "magic-ref:/spell/mantle-of-ghorok"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/viletide",
+        "magic-ref:/spell/devolve",
+        "magic-ref:/spell/mantle-of-ghorok"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-chaos",
@@ -118,7 +226,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/winds-of-chaos",
+        "magic-ref:/spell/acquiescence",
+        "magic-ref:/spell/fleshy-abundance",
+        "magic-ref:/spell/blue-fire"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/winds-of-chaos",
+        "magic-ref:/spell/acquiescence",
+        "magic-ref:/spell/fleshy-abundance",
+        "magic-ref:/spell/blue-fire"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-daemons",
@@ -128,7 +250,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/plague-wind",
+        "magic-ref:/spell/cacophonic-hymn",
+        "magic-ref:/spell/pink-fire",
+        "magic-ref:/spell/gift-of-mutation"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/plague-wind",
+        "magic-ref:/spell/cacophonic-hymn",
+        "magic-ref:/spell/pink-fire",
+        "magic-ref:/spell/gift-of-mutation"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-gork",
@@ -138,7 +274,17 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/brain-bursta",
+        "magic-ref:/spell/gaze-of-gork"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/brain-bursta",
+        "magic-ref:/spell/gaze-of-gork"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-hashut",
@@ -148,7 +294,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/curse-of-hashut",
+        "magic-ref:/spell/storm-of-ash",
+        "magic-ref:/spell/flames-of-hashut"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/curse-of-hashut",
+        "magic-ref:/spell/storm-of-ash",
+        "magic-ref:/spell/flames-of-hashut"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-lustria",
@@ -158,7 +316,17 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/apotheosis",
+        "magic-ref:/spell/monsoon"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/apotheosis",
+        "magic-ref:/spell/monsoon"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-mork",
@@ -168,7 +336,17 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/morks-curse",
+        "magic-ref:/spell/itchy-nuisance"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/morks-curse",
+        "magic-ref:/spell/itchy-nuisance"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-naggaroth",
@@ -178,7 +356,17 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/cursing-word",
+        "magic-ref:/spell/black-horror"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/cursing-word",
+        "magic-ref:/spell/black-horror"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-nehekhara",
@@ -188,7 +376,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/djafs-incantation-of-cursed-blades",
+        "magic-ref:/spell/khsars-incantation-of-the-desert-wind",
+        "magic-ref:/spell/usekhps-incantation-of-desiccation"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/djafs-incantation-of-cursed-blades",
+        "magic-ref:/spell/khsars-incantation-of-the-desert-wind",
+        "magic-ref:/spell/usekhps-incantation-of-desiccation"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-primal-magic",
@@ -198,7 +398,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/primordial-gloom",
+        "magic-ref:/spell/call-of-the-wild",
+        "magic-ref:/spell/in-the-gloaming-wildwood",
+        "magic-ref:/spell/flock-of-doom-beastmen",
+        "magic-ref:/spell/fury-of-the-beast",
+        "magic-ref:/spell/strangleroot",
+        "magic-ref:/spell/neath-the-shaden-wodespan"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/primordial-gloom"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-saphery",
@@ -208,7 +422,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/hand-of-khaine",
+        "magic-ref:/spell/courage-of-aenarion",
+        "magic-ref:/spell/vauls-unmaking"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/hand-of-khaine",
+        "magic-ref:/spell/courage-of-aenarion",
+        "magic-ref:/spell/vauls-unmaking"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-the-great-maw",
@@ -218,7 +444,17 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/toothcracker",
+        "magic-ref:/spell/trollguts"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/toothcracker",
+        "magic-ref:/spell/trollguts"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-the-horned-rat",
@@ -228,7 +464,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/skitterleap",
+        "magic-ref:/spell/warp-lightning",
+        "magic-ref:/spell/cloud-of-corruption"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/skitterleap",
+        "magic-ref:/spell/warp-lightning",
+        "magic-ref:/spell/cloud-of-corruption"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-the-lady",
@@ -238,7 +486,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/the-ladys-gift",
+        "magic-ref:/spell/burning-gaze",
+        "magic-ref:/spell/the-ladys-wrath"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/the-ladys-gift",
+        "magic-ref:/spell/burning-gaze",
+        "magic-ref:/spell/the-ladys-wrath"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands",
@@ -248,7 +508,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/maelstrom-of-chaos",
+        "magic-ref:/spell/blackened-bolts",
+        "magic-ref:/spell/veil-of-gloom",
+        "magic-ref:/spell/vortex-of-darkness",
+        "magic-ref:/spell/shadowed-assailants",
+        "magic-ref:/spell/crawling-mists",
+        "magic-ref:/spell/chains-of-darkness"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/maelstrom-of-chaos"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-the-wilds",
@@ -258,7 +532,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/swirling-mists",
+        "magic-ref:/spell/fury-of-athel-loren",
+        "magic-ref:/spell/ariels-blessing",
+        "magic-ref:/spell/spiteful-torrent",
+        "magic-ref:/spell/durthus-wrath",
+        "magic-ref:/spell/hidden-pathways",
+        "magic-ref:/spell/sapping-blight"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/swirling-mists"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-troll-magic",
@@ -268,7 +556,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/big-smartz",
+        "magic-ref:/spell/acidic-bile",
+        "magic-ref:/spell/troll-brainz",
+        "magic-ref:/spell/ravenous-recourse",
+        "magic-ref:/spell/foetid-whirlpool",
+        "magic-ref:/spell/torrent-of-filth",
+        "magic-ref:/spell/rapid-regeneration"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/big-smartz"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-undeath",
@@ -278,7 +580,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/vanhals-danse-macabre",
+        "magic-ref:/spell/hellish-vigour",
+        "magic-ref:/spell/raise-dead"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/vanhals-danse-macabre",
+        "magic-ref:/spell/hellish-vigour",
+        "magic-ref:/spell/raise-dead"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-yang",
@@ -288,7 +602,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/constellation-of-the-dragon",
+        "magic-ref:/spell/great-bastion",
+        "magic-ref:/spell/might-of-heaven-and-earth"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/constellation-of-the-dragon",
+        "magic-ref:/spell/great-bastion",
+        "magic-ref:/spell/might-of-heaven-and-earth"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/lore-of-yin",
@@ -298,7 +624,19 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/spirits-of-wind-and-shadow",
+        "magic-ref:/spell/accursed-mirror",
+        "magic-ref:/spell/ancestral-warriors"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/spirits-of-wind-and-shadow",
+        "magic-ref:/spell/accursed-mirror",
+        "magic-ref:/spell/ancestral-warriors"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/necromancy",
@@ -308,7 +646,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/the-dwellers-below",
+        "magic-ref:/spell/deathly-cabal",
+        "magic-ref:/spell/unquiet-spirits",
+        "magic-ref:/spell/spiritual-vortex",
+        "magic-ref:/spell/curse-of-years",
+        "magic-ref:/spell/spectral-steed",
+        "magic-ref:/spell/spirit-leech"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/the-dwellers-below"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/the-lores-of-magic/spell-categories-lores",
@@ -338,7 +690,21 @@
       "kind": "lore",
       "section": "Magic Lore Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "spellIds": [
+        "magic-ref:/spell/fist-of-gork-or-mork",
+        "magic-ref:/spell/vindictive-glare",
+        "magic-ref:/spell/hand-of-mork-or-gork",
+        "magic-ref:/spell/bad-moon-rizin",
+        "magic-ref:/spell/evil-sun-shinin",
+        "magic-ref:/spell/ere-we-go",
+        "magic-ref:/spell/foot-of-gork-or-mork"
+      ],
+      "signatureSpellIds": [
+        "magic-ref:/spell/fist-of-gork-or-mork"
+      ],
+      "spellLinksCheckedAt": "2026-11-11T10:46:21.214Z",
+      "spellLinkStatus": "source-lore-page-indexed"
     },
     {
       "id": "magic-ref:/spell/accursed-mirror",
@@ -348,7 +714,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yin"
+      ]
     },
     {
       "id": "magic-ref:/spell/acidic-bile",
@@ -358,7 +727,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/acquiescence",
@@ -368,7 +740,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-chaos"
+      ]
     },
     {
       "id": "magic-ref:/spell/ancestral-warriors",
@@ -378,7 +753,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yin"
+      ]
     },
     {
       "id": "magic-ref:/spell/apotheosis",
@@ -388,7 +766,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-lustria"
+      ]
     },
     {
       "id": "magic-ref:/spell/arcane-urgency",
@@ -398,7 +779,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/ariels-blessing",
@@ -408,7 +792,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/bad-moon-rizin",
@@ -418,7 +805,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/battle-lust",
@@ -428,7 +818,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/big-smartz",
@@ -438,7 +831,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/black-horror",
@@ -448,7 +844,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-naggaroth"
+      ]
     },
     {
       "id": "magic-ref:/spell/blackened-bolts",
@@ -458,7 +857,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/blue-fire",
@@ -468,7 +870,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-chaos"
+      ]
     },
     {
       "id": "magic-ref:/spell/brain-bursta",
@@ -478,7 +883,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-gork"
+      ]
     },
     {
       "id": "magic-ref:/spell/burning-gaze",
@@ -488,7 +896,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-lady"
+      ]
     },
     {
       "id": "magic-ref:/spell/cacophonic-hymn",
@@ -498,7 +909,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-daemons"
+      ]
     },
     {
       "id": "magic-ref:/spell/call-of-the-wild",
@@ -508,7 +922,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/chains-of-darkness",
@@ -518,7 +935,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/cloud-of-corruption",
@@ -528,7 +948,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-horned-rat"
+      ]
     },
     {
       "id": "magic-ref:/spell/column-of-crystal",
@@ -538,7 +961,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/confounding-convocation",
@@ -548,7 +974,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/constellation-of-the-dragon",
@@ -558,7 +987,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yang"
+      ]
     },
     {
       "id": "magic-ref:/spell/corporeal-unmaking",
@@ -568,7 +1000,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/courage-of-aenarion",
@@ -578,7 +1013,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-saphery"
+      ]
     },
     {
       "id": "magic-ref:/spell/crawling-mists",
@@ -588,7 +1026,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/curse-of-arrow-attraction",
@@ -598,7 +1039,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/curse-of-cowardly-flight",
@@ -608,7 +1052,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/curse-of-hashut",
@@ -618,7 +1065,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-hashut"
+      ]
     },
     {
       "id": "magic-ref:/spell/curse-of-years",
@@ -628,7 +1078,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/cursing-word",
@@ -638,7 +1091,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-naggaroth"
+      ]
     },
     {
       "id": "magic-ref:/spell/daemonic-familiars",
@@ -648,7 +1104,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/daemonic-vessel",
@@ -658,7 +1117,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/daemonic-vigour",
@@ -668,7 +1130,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/deathly-cabal",
@@ -678,7 +1143,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/devolve",
@@ -688,7 +1156,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-beasts"
+      ]
     },
     {
       "id": "magic-ref:/spell/djafs-incantation-of-cursed-blades",
@@ -698,7 +1169,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-nehekhara"
+      ]
     },
     {
       "id": "magic-ref:/spell/doombolt",
@@ -708,7 +1182,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/drain-magic",
@@ -718,7 +1195,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/durthus-wrath",
@@ -728,7 +1208,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/the-dwellers-below",
@@ -738,7 +1221,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/earthen-ramparts",
@@ -748,7 +1234,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/ere-we-go",
@@ -758,7 +1247,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/evil-sun-shinin",
@@ -768,7 +1260,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/fiery-convocation",
@@ -778,7 +1273,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/fireball",
@@ -788,7 +1286,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/fist-of-gork-or-mork",
@@ -798,7 +1299,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/flames-of-hashut",
@@ -808,7 +1312,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-hashut"
+      ]
     },
     {
       "id": "magic-ref:/spell/flaming-sword",
@@ -818,7 +1325,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/fleshy-abundance",
@@ -828,7 +1338,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-chaos"
+      ]
     },
     {
       "id": "magic-ref:/spell/flock-of-doom-beastmen",
@@ -838,7 +1351,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/flock-of-doom-wood-elves",
@@ -848,7 +1364,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-athel-loren"
+      ]
     },
     {
       "id": "magic-ref:/spell/foetid-whirlpool",
@@ -858,7 +1377,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/foot-of-gork-or-mork",
@@ -868,7 +1390,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/forest-walker",
@@ -878,7 +1403,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-athel-loren"
+      ]
     },
     {
       "id": "magic-ref:/spell/fury-of-athel-loren",
@@ -888,7 +1416,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/fury-of-khaine",
@@ -898,7 +1429,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/fury-of-the-beast",
@@ -908,7 +1442,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/gathering-darkness",
@@ -918,7 +1455,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/gaze-of-gork",
@@ -928,7 +1468,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-gork"
+      ]
     },
     {
       "id": "magic-ref:/spell/gift-of-mutation",
@@ -938,7 +1481,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-daemons"
+      ]
     },
     {
       "id": "magic-ref:/spell/glittering-robe",
@@ -948,7 +1494,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/great-bastion",
@@ -958,7 +1507,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yang"
+      ]
     },
     {
       "id": "magic-ref:/spell/hammerhand",
@@ -968,7 +1520,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/hand-of-khaine",
@@ -978,7 +1533,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-saphery"
+      ]
     },
     {
       "id": "magic-ref:/spell/hand-of-mork-or-gork",
@@ -988,7 +1546,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/hellish-vigour",
@@ -998,7 +1559,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-undeath"
+      ]
     },
     {
       "id": "magic-ref:/spell/hidden-pathways",
@@ -1008,7 +1572,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/in-the-gloaming-wildwood",
@@ -1018,7 +1585,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/infernal-gateway",
@@ -1028,7 +1598,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/itchy-nuisance",
@@ -1038,7 +1611,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-mork"
+      ]
     },
     {
       "id": "magic-ref:/spell/khsars-incantation-of-the-desert-wind",
@@ -1048,7 +1624,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-nehekhara"
+      ]
     },
     {
       "id": "magic-ref:/spell/the-ladys-gift",
@@ -1058,7 +1637,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-lady"
+      ]
     },
     {
       "id": "magic-ref:/spell/the-ladys-wrath",
@@ -1068,7 +1650,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-lady"
+      ]
     },
     {
       "id": "magic-ref:/spell/light-of-death",
@@ -1078,7 +1663,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/light-of-protection",
@@ -1088,7 +1674,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/maelstrom-of-chaos",
@@ -1098,7 +1685,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/mantle-of-ghorok",
@@ -1108,7 +1698,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-beasts"
+      ]
     },
     {
       "id": "magic-ref:/spell/miasmic-mirage",
@@ -1118,7 +1711,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/might-of-heaven-and-earth",
@@ -1128,7 +1724,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yang"
+      ]
     },
     {
       "id": "magic-ref:/spell/mind-razor",
@@ -1138,7 +1737,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/monsoon",
@@ -1148,7 +1750,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-lustria"
+      ]
     },
     {
       "id": "magic-ref:/spell/morks-curse",
@@ -1158,7 +1763,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-mork"
+      ]
     },
     {
       "id": "magic-ref:/spell/neath-the-shaden-wodespan",
@@ -1168,7 +1776,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/oaken-shield",
@@ -1178,7 +1789,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/phantasmagoria",
@@ -1188,7 +1802,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/pillar-of-fire",
@@ -1198,7 +1815,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/battle-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/pink-fire",
@@ -1208,7 +1828,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-daemons"
+      ]
     },
     {
       "id": "magic-ref:/spell/plague-of-rust",
@@ -1218,7 +1841,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/plague-wind",
@@ -1228,7 +1854,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-daemons"
+      ]
     },
     {
       "id": "magic-ref:/spell/primordial-gloom",
@@ -1238,7 +1867,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/raise-dead",
@@ -1248,7 +1880,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-undeath"
+      ]
     },
     {
       "id": "magic-ref:/spell/rapid-regeneration",
@@ -1258,7 +1893,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/ravenous-recourse",
@@ -1268,7 +1906,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/rune-of-haste-and-urgency",
@@ -1278,7 +1919,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/rune-of-hearth-and-home",
@@ -1288,7 +1930,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/rune-of-oath-and-steel",
@@ -1298,7 +1941,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/rune-of-wrath-and-ruin",
@@ -1308,7 +1952,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/sapping-blight",
@@ -1318,7 +1963,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/shadowed-assailants",
@@ -1328,7 +1976,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/shield-of-saphery",
@@ -1338,7 +1989,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/shimmering-dragon",
@@ -1348,7 +2002,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/skitterleap",
@@ -1358,7 +2015,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-horned-rat"
+      ]
     },
     {
       "id": "magic-ref:/spell/soul-eater",
@@ -1368,7 +2028,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/spectral-doppelganger",
@@ -1378,7 +2041,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/illusion"
+      ]
     },
     {
       "id": "magic-ref:/spell/spectral-steed",
@@ -1388,7 +2054,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/spirit-leech",
@@ -1398,7 +2067,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/spirits-of-wind-and-shadow",
@@ -1408,7 +2080,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-yin"
+      ]
     },
     {
       "id": "magic-ref:/spell/spiritual-vortex",
@@ -1418,7 +2093,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/spiteful-torrent",
@@ -1428,7 +2106,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/steed-of-shadows",
@@ -1438,7 +2119,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/storm-call",
@@ -1448,7 +2132,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/the-storm-dragons-fury",
@@ -1458,7 +2145,8 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": []
     },
     {
       "id": "magic-ref:/spell/storm-of-ash",
@@ -1468,7 +2156,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-hashut"
+      ]
     },
     {
       "id": "magic-ref:/spell/strangleroot",
@@ -1478,7 +2169,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-primal-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/stream-of-corruption",
@@ -1488,7 +2182,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/summon-elemental-spirit",
@@ -1498,7 +2195,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/the-summoning",
@@ -1508,7 +2208,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/swirling-mists",
@@ -1518,7 +2221,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-wilds"
+      ]
     },
     {
       "id": "magic-ref:/spell/tempest",
@@ -1528,7 +2234,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/toothcracker",
@@ -1538,7 +2247,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-great-maw"
+      ]
     },
     {
       "id": "magic-ref:/spell/torrent-of-filth",
@@ -1548,7 +2260,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/travel-mystical-pathway",
@@ -1558,7 +2273,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/tree-singing",
@@ -1568,7 +2286,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-athel-loren"
+      ]
     },
     {
       "id": "magic-ref:/spell/troll-brainz",
@@ -1578,7 +2299,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-troll-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/trollguts",
@@ -1588,7 +2312,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-great-maw"
+      ]
     },
     {
       "id": "magic-ref:/spell/unquiet-spirits",
@@ -1598,7 +2325,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/necromancy"
+      ]
     },
     {
       "id": "magic-ref:/spell/usekhps-incantation-of-desiccation",
@@ -1608,7 +2338,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-nehekhara"
+      ]
     },
     {
       "id": "magic-ref:/spell/vanhals-danse-macabre",
@@ -1618,7 +2351,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-undeath"
+      ]
     },
     {
       "id": "magic-ref:/spell/vauls-unmaking",
@@ -1628,7 +2364,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-saphery"
+      ]
     },
     {
       "id": "magic-ref:/spell/veil-of-gloom",
@@ -1638,7 +2377,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/viletide",
@@ -1648,7 +2390,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-beasts"
+      ]
     },
     {
       "id": "magic-ref:/spell/vindictive-glare",
@@ -1658,7 +2403,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/waaagh-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/vortex-of-chaos",
@@ -1668,7 +2416,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/daemonology"
+      ]
     },
     {
       "id": "magic-ref:/spell/vortex-of-darkness",
@@ -1678,7 +2429,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-shadowlands"
+      ]
     },
     {
       "id": "magic-ref:/spell/walk-between-worlds",
@@ -1688,7 +2442,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/high-magic"
+      ]
     },
     {
       "id": "magic-ref:/spell/warp-lightning",
@@ -1698,7 +2455,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-the-horned-rat"
+      ]
     },
     {
       "id": "magic-ref:/spell/wind-blast",
@@ -1708,7 +2468,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/elementalism"
+      ]
     },
     {
       "id": "magic-ref:/spell/winds-of-chaos",
@@ -1718,7 +2481,10 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/lore-of-chaos"
+      ]
     },
     {
       "id": "magic-ref:/spell/word-of-pain",
@@ -1728,8 +2494,19 @@
       "kind": "spell",
       "section": "Spell Index",
       "verificationStatus": "source-indexed",
-      "alternateNames": []
+      "alternateNames": [],
+      "loreIds": [
+        "magic-ref:/the-lores-of-magic/dark-magic"
+      ]
     }
   ],
-  "ambiguousNames": []
+  "ambiguousNames": [],
+  "loreLinks": {
+    "status": "source-lore-page-indexed",
+    "checkedAt": "2026-11-11T10:46:21.214Z",
+    "method": "sequential, bounded lore-page HTML spell links; index only, not spell legality",
+    "pagesChecked": 29,
+    "linksIndexed": 132,
+    "spellsWithLore": 132
+  }
 }
