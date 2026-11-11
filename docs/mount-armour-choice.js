@@ -36,7 +36,8 @@ export function compareRiderMountArmour({mountType,riderValue=null,mountValue=nu
   }
   choices.push({owner:'mount',value:mountValue,label:mountValue+'+',sourceUrl:mountSourceUrl});
  }
- return {status:choices.length?'choice-required':'unresolved',mountType,choices,
+ return {status:choices.length?'conditional':'unresolved',mountType,choices,
   ruleUrl:MOUNT_ARMOUR_RULES[mountType],faqUrl:MOUNT_ARMOUR_RULES.faq,
-  note:'A ridden monster/chariot allows a choice of rider or mount armour. Rider shield does not improve mount armour. Magic armour benefits cannot be kept when using mount armour. Do not automatically pick the numerically lower value.'};
+  betterArmour:choices.length===2?Math.min(...choices.map(x=>x.value)):null,
+  note:'The ridden monster/chariot uses whichever armour value is better, subject to verified source values and any applicable modifiers. A rider shield does not alter the mount value; do not apply rider-only equipment to the mount.'};
 }
