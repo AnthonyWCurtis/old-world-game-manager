@@ -57,14 +57,14 @@ export function recoveredWrappedSelections(entries){
 
 export function consolidate(reports){
  const all=new Map();
- let occurrences=0,archivedOccurrences=0,resolvedOccurrences=0;
+ let occurrences=0,archivedOccurrences=0,resolvedOccurrences=0,parserFixedOccurrences=0;
  for(const report of reports){
   const items=parseSubmittedReport(report.content);
   const parserFixed=recoveredWrappedSelections(items);
   for(const [index,item] of items.entries()){
    archivedOccurrences++;
    if(parserFixed.has(index)){
-    resolvedOccurrences++;
+    parserFixedOccurrences++;
     continue;
    }
    // Historical report files are immutable. Show only names that still
@@ -90,7 +90,8 @@ export function consolidate(reports){
   'These are unresolved source references, not invalid army selections.',
   'Distinct missing references: '+sorted.length,
   'Unmatched occurrences: '+occurrences,
-  'Previously reported and now source-linked or parser-fixed: '+resolvedOccurrences,
+  'Previously reported and now source-linked: '+resolvedOccurrences,
+   'Previously reported and now parser-fixed: '+parserFixedOccurrences,
   'Archived occurrences (including resolved): '+archivedOccurrences,
   'Report files: '+reports.length,
   ''
