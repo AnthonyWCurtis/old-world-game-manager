@@ -135,6 +135,9 @@ export async function handleAdminRequest(request,env,fetcher=fetch){
   const session=await readAdminSession(request,env);
   return html(session?ADMIN_HTML:ADMIN_LOGIN_HTML);
  }
+ if((path==='/admin/api/review'||path==='/admin/logout')&&
+    method==='POST'&&request.headers.get('Origin')!==url.origin)
+  return blocked('Incorrect request origin.',403);
  const session=await readAdminSession(request,env);
  if(!session)return blocked('Administrator sign-in required.',401);
  if(path==='/admin/client.js'){
