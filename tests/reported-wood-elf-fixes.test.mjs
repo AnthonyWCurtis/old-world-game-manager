@@ -85,7 +85,7 @@ test('Wood Elf Beast Pack count matches only its published Deepwood Hounds optio
  assert.equal(first.url,'https://tow.whfb.app/unit/deepwood-hound');
  assert.equal(first.sourceQuantity,2);
  assert.equal(first.evidence,'published-beast-pack-option');
- assert.match(first.note,/points.*not verified/i);
+ assert.match(first.note,/points.*not been verified/i);
  const byInstance={[pack.id]:record};
  assert.equal(applySourceScopedSelectionReferences(army,byInstance).added,3);
  assert.ok(pack.selections.every(s=>s.matchStatus==='matched'));
