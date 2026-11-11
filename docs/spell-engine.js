@@ -1,22 +1,45 @@
 /**
- * Two source-reviewed enchantments with player-declared success/ownership.
- * Pure state + effect projection; NEVER treats an imported lore as spell knowledge.
+ * Source-reviewed, deliberately limited battle tracking for five known spells.
+ * A selected/known spell is NEVER automatically cast or made active.
  * All limitations are explicit (range, combat eligibility, joining and timing).
  */
 import {createGameScreenModel} from './game-screen-model.js';
+import {spellsForWizard} from './player-customization.js';
 
 export const SPELL_RULES=Object.freeze({
  'earthen-ramparts':Object.freeze({
   id:'earthen-ramparts',name:'Earthen Ramparts',lore:'Elementalism',type:'Enchantment',
   castingValue:'9+',range:'15"',duration:'until next Start of Turn',
   sourceUrl:'https://tow.whfb.app/spell/earthen-ramparts',
-  targeting:'friendly-unit',ruleStatus:'verified-rule; player-declared-casting'
+  targeting:'friendly-unit',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting'
  }),
  'glittering-robe':Object.freeze({
   id:'glittering-robe',name:'Glittering Robe',lore:'Illusion',type:'Enchantment',
   castingValue:'8+',range:'Self',duration:'until next Start of Turn',
   sourceUrl:'https://tow.whfb.app/spell/glittering-robe',
-  targeting:'self',ruleStatus:'verified-rule; player-declared-casting'
+  targeting:'self',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting'
+ })
+ ,
+ 'plague-of-rust':Object.freeze({
+  id:'plague-of-rust',name:'Plague of Rust',lore:'Elementalism',type:'Hex',
+  castingValue:'9+',range:'21"',duration:'until next Start of Turn',
+  sourceUrl:'https://tow.whfb.app/spell/plague-of-rust',
+  targeting:'enemy-unit',lifecycle:'duration',ruleStatus:'verified-rule; player-declared-casting',
+  effectSummary:'Target enemy unit suffers -2 to its armour value; may target an enemy engaged in combat.'
+ }),
+ 'travel-mystical-pathway':Object.freeze({
+  id:'travel-mystical-pathway',name:'Travel Mystical Pathway',lore:'Elementalism',
+  type:'Conveyance',castingValue:'10+',range:'9"',duration:'immediate; current Movement phase',
+  sourceUrl:'https://tow.whfb.app/spell/travel-mystical-pathway',
+  targeting:'friendly-unit',lifecycle:'instant',ruleStatus:'verified-rule; player-declared-casting',
+  effectSummary:'Target friendly unit not fleeing or previously moved may be repositioned within 12" of original location, more than 6" from enemies; cannot move again this Movement phase.'
+ }),
+ 'drain-magic':Object.freeze({
+  id:'drain-magic',name:'Drain Magic',lore:'High Magic',type:'Hex',
+  castingValue:'9+',range:'Self',duration:'Remains in Play',
+  sourceUrl:'https://tow.whfb.app/spell/drain-magic',
+  targeting:'self',lifecycle:'remains-in-play',ruleStatus:'verified-rule; player-declared-casting',
+  effectSummary:'Enemy Wizards within 24" of the caster have +2 to the casting value when attempting spells.'
  })
 });
 
@@ -53,6 +76,28 @@ export function eligibleWizardSpells(army){
  return result;
 }
 
+
+/** The user's checked spells, not the whole lore: one candidate per instance. */
+export function selectedWizardSpells(army,session,magicIndex){
+ const characters=model(army).characters;
+ const byId=new Map((army?.units||[]).map(u=>[u.id,u]));
+ const candidates=[];
+ for(const character of characters){
+  const unit=byId.get(character.id);
+  const allowed=spellsForWizard(unit,magicIndex);
+  const sourceById=new Map(allowed.map(s=>[s.id,s]));
+  for(const id of session?.knownSpells?.[character.id]||[]){
+   const spell=sourceById.get(id);
+   if(!spell)continue; // Previously saved off-lore names are not cast candidates.
+   const rule=Object.values(SPELL_RULES).find(x=>x.sourceUrl===spell.url)||null;
+   candidates.push({casterId:character.id,casterName:character.name,casterIndex:character.index,
+    spellId:rule?.id??null,spellName:spell.name,spellUrl:spell.url,rule,
+    supported:Boolean(rule)});
+  }
+ }
+ return candidates;
+}
+
 const available=(army,casterId,spellId)=>
  eligibleWizardSpells(army).some(x=>x.casterId===casterId&&x.spellId===spellId);
 const isRegiment=(army,id)=>model(army).regiments.some(u=>u.id===id);
@@ -72,7 +117,7 @@ export function sanitizeActiveSpells(army,records,assignments={}){
   if(!raw||typeof raw!=='object'||Array.isArray(raw))continue;
   const {spellId,casterId}=raw;
   const rule=SPELL_RULES[spellId];
-  if(!rule||typeof casterId!=='string'||!available(army,casterId,spellId)||
+  if(!rule||rule.lifecycle==='instant'||typeof casterId!=='string'||!available(army,casterId,spellId)||
      raw.confirmed!==true)continue;
   const key=spellId+':'+casterId;
   if(seen.has(key))continue;
@@ -80,13 +125,39 @@ export function sanitizeActiveSpells(army,records,assignments={}){
   if(rule.targeting==='friendly-unit'){
    if(typeof targetId!=='string'||!(isRegiment(army,targetId)||isCharacter(army,targetId)))continue;
   }else if(targetId!==null)continue;
+  const enemyName=typeof raw.enemyName==='string'?raw.enemyName.trim():'';
+  if(rule.targeting==='enemy-unit'&&(!enemyName||enemyName.length>100))continue;
+  if(rule.targeting!=='enemy-unit'&&enemyName)continue;
   if(joinedUnitId!==null&&(!ids.has(joinedUnitId)||!isRegiment(army,joinedUnitId)))continue;
   if(rule.targeting==='friendly-unit'&&joinedUnitId!==null)continue;
   // Retain joined unit at time of casting; if membership changes later, do not retarget.
-  result.push({spellId,casterId,targetId,joinedUnitId,confirmed:true});
+  result.push({...{spellId,casterId,targetId,joinedUnitId,confirmed:true},
+   ...(rule.targeting==='enemy-unit'?{enemyName}:{})});
   seen.add(key);
  }
  return result;
+}
+
+
+export function sanitizeSpellEvents(army,stored){
+ if(!Array.isArray(stored))return [];
+ const out=[],seen=new Set();
+ for(const raw of stored){
+  if(raw?.spellId!=='travel-mystical-pathway'||raw.confirmed!==true||
+     typeof raw.casterId!=='string'||typeof raw.targetId!=='string'||
+     !available(army,raw.casterId,raw.spellId)||
+     !(isRegiment(army,raw.targetId)||isCharacter(army,raw.targetId)))continue;
+  const key=raw.spellId+':'+raw.casterId+':'+raw.targetId;
+  if(seen.has(key))continue;
+  seen.add(key);out.push({spellId:raw.spellId,casterId:raw.casterId,
+   targetId:raw.targetId,confirmed:true});
+ }
+ return out.slice(0,50);
+}
+export function clearSpellEvent(army,session,spellId,casterId,targetId){
+ if(spellId!=='travel-mystical-pathway')throw Error('Unknown movement spell event.');
+ return {...session,spellEvents:sanitizeSpellEvents(army,session?.spellEvents)
+  .filter(e=>!(e.spellId===spellId&&e.casterId===casterId&&e.targetId===targetId))};
 }
 
 function recipients(army,session,effect){
@@ -105,6 +176,8 @@ function recipients(army,session,effect){
     if(unitId===parentUnit)ids.add(characterId);
    }
   }
+ }else if(effect.spellId==='drain-magic'){
+  ids.add(effect.casterId);
  }else if(effect.spellId==='glittering-robe'){
   ids.add(effect.casterId);
   if(effect.joinedUnitId&&assignments[effect.casterId]===effect.joinedUnitId){
@@ -122,30 +195,44 @@ const sameRecipient=(a,b)=>[...a].some(x=>b.has(x));
  * selection, cast success, valid targeting/range and applicable phase are
  * confirmed by the player, not inferred by this app.
  */
-export function activateSpell(army,session,{spellId,casterId,targetId=null,confirmed=false}={}){
+export function activateSpell(army,session,{spellId,casterId,targetId=null,enemyName=null,confirmed=false}={}){
  const rule=SPELL_RULES[spellId];
  if(!rule)throw Error('Unsupported spell rule.');
  if(!available(army,casterId,spellId))
   throw Error('That character is not an imported Wizard with the required lore.');
+ const known=session?.knownSpells?.[casterId];
+ if(Array.isArray(known)&&known.length&&!known.includes('magic-ref:/spell/'+spellId))
+  throw Error('This spell is not among the caster’s selected known spells.');
  if(confirmed!==true)
   throw Error('Confirm that this Wizard knows the spell, cast it successfully and met range/phase/target restrictions.');
  const assignments=session?.assignments||{};
+ const namedEnemy=typeof enemyName==='string'?enemyName.trim():'';
  if(rule.targeting==='friendly-unit'){
   if(!isTargetAllowed(army,assignments,targetId))
    throw Error('Select a valid target friendly regiment or independent character.');
- }else if(targetId!==null)
+  if(namedEnemy)throw Error('A friendly-unit spell cannot target an enemy.');
+ }else if(rule.targeting==='enemy-unit'){
+  if(targetId!==null||!namedEnemy||namedEnemy.length>100)
+   throw Error('Enter an enemy unit name (up to 100 characters).');
+ }else if(targetId!==null||namedEnemy)
   throw Error('A range Self spell takes no separate target.');
+ if(rule.lifecycle==='instant'){
+  const record={spellId,casterId,targetId,confirmed:true};
+  const existing=sanitizeSpellEvents(army,session?.spellEvents);
+  return {...session,spellEvents:[...existing.filter(e=>!(e.spellId===spellId&&e.casterId===casterId)),record]};
+ }
  const effect={
-  spellId,casterId,targetId:rule.targeting==='self'?null:targetId,
+  spellId,casterId,targetId:rule.targeting==='friendly-unit'?targetId:null,
   joinedUnitId:rule.targeting==='self'?(assignments[casterId]||null):null,
+  ...(rule.targeting==='enemy-unit'?{enemyName:namedEnemy}:{}),
   confirmed:true
  };
  const existing=sanitizeActiveSpells(army,session?.activeSpells,assignments);
  const newRecipients=recipients(army,session,effect);
  const next=existing.filter(old=>{
   if(spellKey(old)===spellKey(effect))return false;
-  // Only Glittering Robe has the explicit older-Enchantments-expire clause.
-  if(spellId==='glittering-robe'&&
+  // Glittering Robe removes older Enchantments on affected models only.
+  if(spellId==='glittering-robe'&&SPELL_RULES[old.spellId]?.type==='Enchantment'&&
      sameRecipient(newRecipients,recipients(army,session,old)))return false;
   return true;
  });
@@ -159,7 +246,10 @@ export function endSpell(army,session,spellId,casterId){
 }
 /** Player invokes at the correct own Start of Turn; not automatic clock expiry. */
 export function expireAtNextStartOfTurn(army,session){
- return {...session,activeSpells:[]};
+ return {...session,
+  activeSpells:sanitizeActiveSpells(army,session?.activeSpells,session?.assignments)
+   .filter(e=>SPELL_RULES[e.spellId]?.lifecycle==='remains-in-play'),
+  spellEvents:[]};
 }
 const uniqueBy=(items,key)=>{const seen=new Set();return items.filter(x=>{
  const k=key(x);if(seen.has(k))return false;seen.add(k);return true;
@@ -169,9 +259,17 @@ const uniqueBy=(items,key)=>{const seen=new Set();return items.filter(x=>{
 export function spellEffectsFor(army,session,unitId){
  const ids=unitIds(army);
  if(!ids.has(unitId))throw Error('Unknown imported unit for spell effects.');
- const result={ward:[],attackModifiers:[],movementRestrictions:[],activeEffects:[],warnings:[]};
+ const result={ward:[],attackModifiers:[],movementRestrictions:[],activeEffects:[],movementNotes:[],warnings:[]};
  const effects=sanitizeActiveSpells(army,session?.activeSpells,session?.assignments);
  const assignments=session?.assignments||{};
+ for(const note of sanitizeSpellEvents(army,session?.spellEvents)){
+  if(note.targetId===unitId)result.movementNotes.push({
+   name:'Travel Mystical Pathway',
+   detail:'Moved via Travel Mystical Pathway — cannot move again this Movement phase (player-confirmed).',
+   sourceUrl:SPELL_RULES['travel-mystical-pathway'].sourceUrl,
+   casterId:note.casterId
+  });
+ }
  for(const effect of effects){
   const rule=SPELL_RULES[effect.spellId];
   const applies=recipients(army,session,effect).has(unitId);
@@ -201,6 +299,9 @@ export function spellEffectsFor(army,session,unitId){
    ];
    for(const [code,detail] of limits)
     result.movementRestrictions.push({...base,code,detail});
+  }else if(effect.spellId==='drain-magic'){
+   result.activeEffects[result.activeEffects.length-1].condition=
+    'Remains in Play: enemy Wizards within 24" of caster suffer +2 casting value';
   }else if(effect.spellId==='glittering-robe'){
    result.attackModifiers.push({...base,value:-1,label:'-1 To Hit',
     condition:'Enemy To Hit against affected models',scope});

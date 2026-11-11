@@ -23,11 +23,13 @@ test('published spell metadata and explicit lore + Wizard gating',()=>{
  assert.equal(SPELL_RULES['glittering-robe'].range,'Self');
  assert.equal(SPELL_RULES['glittering-robe'].duration,'until next Start of Turn');
  const a=army(),casters=eligibleWizardSpells(a);
- assert.equal(casters.length,2);
- assert.deepEqual(casters.map(c=>c.spellId),['earthen-ramparts','glittering-robe']);
- assert.deepEqual(casters.map(c=>c.casterId),[storm(a).id,illusion(a).id]);
+ assert.equal(casters.length,5);
+ assert.deepEqual(new Set(casters.map(c=>c.spellId)),new Set([
+  'earthen-ramparts','glittering-robe','plague-of-rust','travel-mystical-pathway','drain-magic']));
+ assert.equal(casters.filter(c=>c.casterId===storm(a).id).length,3);
+ assert.equal(casters.filter(c=>c.casterId===illusion(a).id).length,1);
+ assert.equal(casters.filter(c=>c.casterId===high(a).id).length,1);
  assert.ok(casters.every(c=>c.knownStatus==='requires-player-confirmation'));
- assert.equal(casters.some(c=>c.casterId===high(a).id),false);
 });
 
 test('lore is not knowledge: activation requires confirmed successful casting',()=>{

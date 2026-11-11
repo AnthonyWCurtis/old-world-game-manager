@@ -6,7 +6,7 @@ const read=file=>readFileSync(new URL('../docs/'+file,import.meta.url),'utf8');
 test('Game Screen has spell panel and explicit player confirmation controls',()=>{
  const html=read('index.html'),controls=read('spell-controls.js');
  assert.match(html,/id="spellControlPanel"/);
- assert.match(controls,/eligibleWizardSpells/);
+ assert.match(controls,/selectedWizardSpells/);
  assert.match(controls,/game-spell-confirm/);
  assert.match(controls,/game-spell-target/);
  assert.match(controls,/game-spell-cast/);
@@ -26,7 +26,7 @@ test('Spell UI distinguishes 5+ Ward from -1 incoming To Hit and warns about dur
  assert.match(defence,/movementRestrictions/);
  assert.match(defence,/spellWarnings/);
  const html=read('index.html');
- assert.match(html,/until.*next.*Start of Turn/i);
+ assert.match(html,/next.*Start of Turn/i);
  assert.match(html,/player.confirm/i);
 });
 
@@ -39,5 +39,6 @@ test('app callbacks handle activations, individual endings, and player-selected 
  assert.match(app,/handleSpellCast/);
  assert.match(app,/handleSpellEnd/);
  assert.match(app,/handleSpellsExpire/);
+ assert.match(app,/handleSpellEventClear/);
  assert.match(app,/writeBattleSession\(state\)/);
 });

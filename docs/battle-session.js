@@ -3,7 +3,7 @@
  * Joining is NOT validated against troop type, special rules, phase or formation.
  */
 import {createGameScreenModel} from './game-screen-model.js';
-import {sanitizeActiveSpells} from './spell-engine.js';
+import {sanitizeActiveSpells,sanitizeSpellEvents} from './spell-engine.js';
 import {MAX_UNIT_NAME_LENGTH,wizardDescriptor,isIndexedSpellId,sanitizeKnownSpells,spellsForWizard} from './player-customization.js';
 
 const STATE_VERSION=1;
@@ -64,7 +64,8 @@ export function restoreBattleSession(army,stored){
  }
  const knownSpells=sanitizeKnownSpells(army,personal?.knownSpells);
  const activeSpells=sanitizeActiveSpells(army,personal?.activeSpells,assignments);
- return {schemaVersion:STATE_VERSION,armyKey,assignments,usedCharmedShields,activeSpells,unitNames,knownSpells};
+ const spellEvents=sanitizeSpellEvents(army,personal?.spellEvents);
+ return {schemaVersion:STATE_VERSION,armyKey,assignments,usedCharmedShields,activeSpells,spellEvents,unitNames,knownSpells};
 }
 
 /** Assign or detach one character, returning new state without mutating inputs. */
