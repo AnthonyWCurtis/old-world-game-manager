@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261110-alpha1';
+const CACHE_NAME='game-manager-v1-shell-20261111-alpha2';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -17,6 +17,7 @@ const APP_SHELL=[
  './unit-detail-ui.js',
  './selection-information.js',
  './unit-selection-matcher.js',
+ './wizard-references.js',
  './army-roster-page.js',
  './game-screen-model.js',
  './army-state.js',
