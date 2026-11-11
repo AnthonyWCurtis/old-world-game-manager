@@ -34,14 +34,23 @@ export function restoreBattleSession(army,stored){
  const armyKey=armySessionKey(army);
  const {characters,regiments}=validEntries(army);
  const assignments={};
+ const usedCharmedShields={};
  if(stored?.schemaVersion===STATE_VERSION&&stored?.armyKey===armyKey&&
     stored.assignments&&typeof stored.assignments==='object'&&!Array.isArray(stored.assignments)){
   for(const [characterId,unitId] of Object.entries(stored.assignments)){
    if(characters.has(characterId)&&regiments.has(unitId))
     assignments[characterId]=unitId;
   }
+  if(stored.usedCharmedShields&&typeof stored.usedCharmedShields==='object'&&!Array.isArray(stored.usedCharmedShields)){
+   for(const [characterId,used] of Object.entries(stored.usedCharmedShields)){
+    const entry=army.units.find(u=>u.id===characterId);
+    if(characters.has(characterId)&&used===true&&
+       entry?.selections?.some(s=>String(s.name||'').toLowerCase()==='charmed shield'))
+     usedCharmedShields[characterId]=true;
+   }
+  }
  }
- return {schemaVersion:STATE_VERSION,armyKey,assignments};
+ return {schemaVersion:STATE_VERSION,armyKey,assignments,usedCharmedShields};
 }
 
 /** Assign or detach one character, returning new state without mutating inputs. */
@@ -58,4 +67,18 @@ export function assignCharacter(army,session,characterId,unitId){
 
 export function charactersForUnit(session,unitId){
  return Object.entries(session?.assignments||{}).filter(([,id])=>id===unitId).map(([id])=>id);
+}
+
+/** Player-controlled one-use item flag, persisted separately from the army list. */
+export function markCharmedShieldUsed(army,session,characterId,used){
+ const {characters}=validEntries(army);
+ const entry=army.units.find(u=>u.id===characterId);
+ if(!characters.has(characterId)||!entry?.selections?.some(s=>
+    String(s.name||'').toLowerCase()==='charmed shield'))
+  throw Error('Only a selected Charmed Shield on an imported character can be marked used.');
+ if(typeof used!=='boolean')throw Error('Charmed Shield usage must be a boolean.');
+ const state=restoreBattleSession(army,session);
+ if(used)state.usedCharmedShields[characterId]=true;
+ else delete state.usedCharmedShields[characterId];
+ return state;
 }
