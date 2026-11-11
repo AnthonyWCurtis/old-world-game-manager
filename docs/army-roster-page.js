@@ -5,6 +5,7 @@ import {sourcePrintedArmour} from './source-printed-armour.js';
 import {sourceDefensiveRules,sourceArmourCap} from './source-defensive-rules.js';
 import {selectedArmourSourceCandidates} from './selected-armour-candidates.js';
 import {resolveSelectedMountProfiles} from './resolve-selected-mount-profiles.js';
+import {selectedMountProfileGroups} from './selected-mount-profile-rows.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
@@ -81,7 +82,7 @@ function sourceRefRow(doc,title,refs){
  group.append(items);
  return group;
 }
-function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{}){
+function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{},mountProfileGroups=[]){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
  const header=el(doc,'header','army-unit-head');
@@ -176,7 +177,32 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    }
    tbody.append(tr);
   }
+  for(const group of mountProfileGroups){
+   const groupHeader=el(doc,'tr','army-profile-mount-heading');
+   const heading=el(doc,'th','','Selected mount: '+group.selectionName);
+   heading.colSpan=PROFILE_COLUMNS.length+1;
+   groupHeader.append(heading);tbody.append(groupHeader);
+   if(!group.profiles.length){
+    const blank=el(doc,'tr','army-profile-mount-row');
+    const cell=el(doc,'td','','Published mount model characteristics not established');
+    cell.colSpan=PROFILE_COLUMNS.length+1;blank.append(cell);tbody.append(blank);
+   }
+   for(const profile of group.profiles){
+    const tr=el(doc,'tr','army-profile-mount-row');
+    tr.append(el(doc,'th','','↳ '+text(profile.name,'Mount model')));
+    for(const stat of PROFILE_COLUMNS)
+     tr.append(el(doc,'td','',
+      profile.characteristics?.[stat]===undefined?'—':String(profile.characteristics[stat]??'—')));
+    tbody.append(tr);
+   }
+  }
   table.append(tbody);scroller.append(table);details.append(scroller);
+  for(const group of mountProfileGroups){
+   const reference=el(doc,'div','army-unit-source-meta');
+   reference.append(el(doc,'span','','Selected mount source profiles · rider characteristics unchanged · eligibility not verified'));
+   reference.append(safeLink(doc,'Mount source',group.sourceUrl,'army-source-link'));
+   details.append(reference);
+  }
   details.append(el(doc,'p','army-profile-swipe','Swipe the table sideways to see all characteristics.'));
  }else{
   const missing=el(doc,'div','army-profile-missing');
@@ -374,7 +400,7 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment,se
  return row;
 }
 
-function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session,effects=[],effectActions={}){
+function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session,effects=[],effectActions={},mountProfileGroups=[]){
  const panel=el(doc,'details','game-attached-character');
  panel.dataset.characterId=character.id;
  panel.dataset.regimentId=unitId;
@@ -384,7 +410,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  summary.append(el(doc,'small','',points(character.points)));
  panel.append(summary);
  const body=el(doc,'div','game-attached-character-body');
- const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session);
+ const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session,null,false,()=>{},mountProfileGroups);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
  const offensive=renderUnitOffensiveEffects(doc,effects);
@@ -614,9 +640,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  for(const entry of model.characters){
   const imported=byId.get(entry.id);
   if(!imported)continue;
+  const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
+  const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles);
   const card=unitCard(doc,imported,entry.index,records[entry.id],
    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
-   openCards.has(entry.id),onToggle);
+   openCards.has(entry.id),onToggle,mountRows);
   card.classList.add('game-character-card');
   const defence=evaluateDefences(army,session,entry.id);
   const effects=effectProjection.byUnit?.[entry.id]||[];
@@ -661,9 +689,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   for(const entry of members){
    const imported=byId.get(entry.id);
    if(!imported)continue;
+   const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
+   const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles);
    const card=unitCard(doc,imported,entry.index,records[entry.id],
     fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
-    openCards.has(entry.id),onToggle);
+    openCards.has(entry.id),onToggle,mountRows);
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
    const defence=evaluateDefences(army,session,entry.id);
    const effects=effectProjection.byUnit?.[entry.id]||[];
