@@ -2,6 +2,7 @@
 import {SPELL_RULES,selectedWizardSpells,spellEffectsFor} from './spell-engine.js';
 import {createGameScreenModel} from './game-screen-model.js';
 import {unitDisplayName} from './player-customization.js';
+import {renderEffectRow} from './effects-ui.js';
 
 const node=(doc,tag,cls='',value)=>{
  const result=doc.createElement(tag);
@@ -22,18 +23,21 @@ const phases={Enchantment:'Strategy · Conjuration',Hex:'Strategy · Conjuration
 const openKey=(spellId,casterId)=>spellId+':'+casterId;
 
 export function renderSpellControls(container,army,session,
- {onCast=()=>{},onEnd=()=>{},onExpire=()=>{},onClearEvent=()=>{}}={},magicIndex=null){
+ {onCast=()=>{},onEnd=()=>{},onExpire=()=>{},onClearEvent=()=>{},
+  onItemState=()=>{},onShieldUse=()=>{}}={},magicIndex=null,effectProjection=null){
  const doc=container.ownerDocument||document;
  const roster=createGameScreenModel(army),entries=new Map(roster.units.map(u=>[u.id,u]));
  const assignments=session?.assignments||{};
  const casters=selectedWizardSpells(army,session,magicIndex);
  const active=session?.activeSpells||[],events=session?.spellEvents||[];
+ const activeItems=(effectProjection?.owned||[]).filter(item=>item.status==='active');
  const opened=new Set([...container.querySelectorAll('.game-spell-caster[open]')]
   .map(el=>openKey(el.dataset.spellId,el.dataset.casterId)));
  container.replaceChildren();
  const head=node(doc,'div','game-spell-heading');
  head.append(node(doc,'h2','','Magic & active effects'));
- head.append(node(doc,'span','',active.length+' active · '+events.length+' movement'));
+ head.append(node(doc,'span','',active.length+' spells active · '+activeItems.length+
+  ' items active · '+events.length+' movement'));
  container.append(head);
  container.append(node(doc,'p','game-spell-disclosure',
   'These are the spells you selected in each Wizard’s spellbook. Tap a spell, choose its target where required, confirm a successful legal cast, then record it. Known does not mean active. Dice, range, phase and eligibility remain player-confirmed.'));
@@ -67,6 +71,13 @@ export function renderSpellControls(container,army,session,
   area.append(end);activeList.append(area);
  }
  if(!active.length)activeList.append(node(doc,'p','game-spell-empty','No ongoing spell effects recorded.'));
+ if(activeItems.length){
+  const itemPanel=node(doc,'section','game-active-items');
+  itemPanel.append(node(doc,'h4','','Active item buffs'));
+  for(const item of activeItems)
+   itemPanel.append(renderEffectRow(doc,item,{onItemState,onShieldUse}));
+  activeList.append(itemPanel);
+ }
  if(events.length){
   const resolved=node(doc,'div','game-spell-events');
   resolved.append(node(doc,'h3','','Movement phase — already resolved'));
