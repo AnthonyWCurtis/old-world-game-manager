@@ -9,10 +9,11 @@ test('chariot comparison follows better armour rule without conflating shield',(
  const v=compareRiderMountArmour({mountType:'chariot',modelScopeVerified:true,
   riderValue:5,mountValue:4,mountSourceUrl:url});
  assert.equal(v.status,'conditional');
- assert.equal(v.betterArmour,4);
+ assert.equal(v.numericallyBetter,4);
+ assert.match(v.note,/must not auto-select/i);
  assert.deepEqual(v.choices.map(x=>x.owner),['rider','mount']);
  assert.match(v.note,/shield does not improve mount armour/i);
- assert.match(v.note,/rider-only equipment/i);
+ assert.match(v.note,/magic armour benefits/i);
  assert.equal(v.ruleUrl,MOUNT_ARMOUR_RULES.chariot);
 });
 test('ridden monster gives explicit choices but cavalry does not use mount armour',()=>{
