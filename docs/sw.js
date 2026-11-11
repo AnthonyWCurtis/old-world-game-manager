@@ -4,7 +4,8 @@ const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
  './index.html',
- './styles.css',\n './mobile.css',
+ './styles.css',
+ './mobile.css',
  './app.js',
  './parser.js',
  './import-guard.js',
