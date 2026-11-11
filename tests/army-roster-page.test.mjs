@@ -95,7 +95,7 @@ test('Browser route, action, back buttons and data refresh wiring are present',(
  }
  assert.match(html,/Enter Game Screen/);
  assert.ok(app.includes("renderArmyRosterPage($('armyRosterList')")&&
-  app.includes('magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState)'));
+  app.includes('magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState,selectedUnitSourceRecords)'));
  assert.match(app,/window\.location\.hash='army-roster'/);
  assert.match(app,/window\.addEventListener\('hashchange'/);
  assert.match(app,/backToImporterBottomBtn/);
