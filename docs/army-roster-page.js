@@ -75,7 +75,7 @@ function sourceRefRow(doc,title,refs){
  group.append(items);
  return group;
 }
-function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null){
+function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{}){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
  const header=el(doc,'header','army-unit-head');
@@ -117,7 +117,30 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  price.append(el(doc,'strong','',points(valueOf(unit.reportedPoints))));
  price.append(el(doc,'span','','Imported unit cost'));
  header.append(price);
- card.append(header);
+ const expandable=el(doc,'div','game-unit-expandable');
+ expandable.hidden=!expanded;
+ expandable.id='game-unit-content-'+index;
+ const toggle=el(doc,'button','game-unit-expand-toggle',expanded?'Hide details':'Show details');
+ toggle.type='button';
+ toggle.setAttribute('aria-label',(expanded?'Collapse ':'Expand ')+customName+' details');
+ toggle.setAttribute('aria-expanded',String(expanded));
+ toggle.setAttribute('aria-controls',expandable.id);
+ toggle.addEventListener('click',()=>{
+  const open=expandable.hidden;
+  expandable.hidden=!open;
+  card.classList.toggle('game-unit-open',open);
+  toggle.textContent=open?'Hide details':'Show details';
+  toggle.setAttribute('aria-label',(open?'Collapse ':'Expand ')+customName+' details');
+  toggle.setAttribute('aria-expanded',String(open));
+  onToggle(unit.id,open);
+ });
+ header.append(toggle);
+ header.addEventListener('click',event=>{
+  if(event.target.closest('button,a,input,select,label,form'))return;
+  toggle.click();
+ });
+ card.classList.toggle('game-unit-open',expanded);
+ card.append(header,expandable);
 
  const profiles=statProfile(record,fallback);
  const details=el(doc,'div','army-unit-card-body');
@@ -222,8 +245,24 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   footer.append(safeLink(doc,'View published unit page',url,'army-source-link'));
   details.append(footer);
  }
- card.append(details);
+ expandable.append(details);
  return card;
+}
+
+/** Show important status without opening the card; source effects remain in its details. */
+function appendCompactStatus(doc,card,defence,assignedCount=0){
+ const header=card.querySelector('.army-unit-head');
+ if(!header)return;
+ const status=el(doc,'div','game-card-status');
+ if(assignedCount)status.append(el(doc,'span','game-card-chip',
+  assignedCount+' assigned character'+(assignedCount===1?'':'s')));
+ const ongoing=new Set((defence?.activeSpellEffects||[]).map(e=>e.name).filter(Boolean));
+ for(const name of [...ongoing].slice(0,3))
+  status.append(el(doc,'span','game-card-chip game-card-chip-magic','Active: '+name));
+ for(const note of (defence?.spellMovementNotes||[]).slice(0,2))
+  status.append(el(doc,'span','game-card-chip game-card-chip-movement',
+   'Movement: '+note.name));
+ if(status.childNodes.length)header.querySelector('.army-unit-names')?.append(status);
 }
 
 /**
@@ -407,8 +446,11 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
  return panel;
 }
 
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null){
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null,expandedCardIds=null,onToggle=()=>{}){
  const doc=container.ownerDocument||document;
+ const openCards=new Set(Array.isArray(expandedCardIds)?expandedCardIds:
+  [...container.querySelectorAll('article[data-unit-id].game-unit-open')]
+   .map(node=>node.dataset.unitId));
  const opened=new Set([...container.querySelectorAll('article[data-unit-id] details.army-unit-source-details[open]')]
   .map(node=>node.closest('article[data-unit-id]')?.dataset.unitId).filter(Boolean));
  const openMembers=new Set([...container.querySelectorAll('details.game-attached-character[open]')]
@@ -433,16 +475,20 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const imported=byId.get(entry.id);
   if(!imported)continue;
   const card=unitCard(doc,imported,entry.index,records[entry.id],
-   fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename);
+   fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
+   openCards.has(entry.id),onToggle);
   card.classList.add('game-character-card');
-  card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
+  const defence=evaluateDefences(army,session,entry.id);
+  appendCompactStatus(doc,card,defence);
+  const content=card.querySelector('.game-unit-expandable');
+  content.append(renderDefencePanel(doc,defence,onShieldUse));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
-  if(spellbook){spellbook.open=openWizards.has(entry.id);card.append(spellbook);}
+  if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
   const target=displayId.get(assignments[entry.id]);
-  card.append(el(doc,'p','game-membership-label',
+  content.append(el(doc,'p','game-membership-label',
    target?'Assigned to '+unitDisplayName(target,session)+' · entry '+target.index:'Independent · no regiment assigned'));
   if(model.regiments.length)
-   card.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
+   content.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
   characters.append(card);
  }
  container.append(characters);
@@ -469,9 +515,13 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const imported=byId.get(entry.id);
    if(!imported)continue;
    const card=unitCard(doc,imported,entry.index,records[entry.id],
-    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename);
+    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
+    openCards.has(entry.id),onToggle);
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
-   card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
+   const defence=evaluateDefences(army,session,entry.id);
+   appendCompactStatus(doc,card,defence,memberList.length);
+   const content=card.querySelector('.game-unit-expandable');
+   content.append(renderDefencePanel(doc,defence,onShieldUse));
    const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
    if(spellbook){spellbook.open=openWizards.has(entry.id);card.append(spellbook);}
    const memberArea=el(doc,'section','game-assigned-characters');
@@ -488,7 +538,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    }
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
-   card.append(memberArea);
+   content.append(memberArea);
    regiments.append(card);
   }
  }
