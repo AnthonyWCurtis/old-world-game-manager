@@ -33,7 +33,7 @@ test('battle state persistence tracks one-use item without changing original sel
  const store=source('battle-session-store.js');
  assert.match(app,/markCharmedShieldUsed/);
  assert.match(app,/handleShieldUsage/);
- assert.match(app,/onShieldUse/);
+ assert.match(app,/handleCharacterAssignment,handleShieldUsage/);
  assert.match(store,/usedCharmedShields/);
  const cache=source('sw.js');
  assert.match(cache,/\.\/defence-engine\.js/);
