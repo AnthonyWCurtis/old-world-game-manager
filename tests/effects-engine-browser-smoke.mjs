@@ -40,7 +40,7 @@ try{
  await cloak.locator('summary').click();
  assert.match(await cloak.locator('.game-effect-scope').first().innerText(),/Champion bearer only/);
  const company=page.locator('#gameRegiments .army-unit-card')
-  .filter({has:page.locator('h3:text-is("Ship's Company")')}).first();
+  .filter({has:page.locator("h3:text-is(\"Ship's Company\")")}).first();
  await company.locator('.game-unit-expand-toggle').click();
  assert.match(await company.locator('.game-effect-empty').innerText(),/No supported source-reviewed effects/);
 
