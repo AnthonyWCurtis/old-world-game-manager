@@ -180,6 +180,27 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(missing);
  }
 
+ // Independently refreshed source-page facts; do not treat an available
+ // upgrade as selected or a lore as known by this imported unit instance.
+ const magic=fallback?.wizardMagic;
+ if(magic?.verificationStatus==='source-page-extracted'&&
+    magic.sourceUrl===record?.source?.sourceUrl&&
+    Number.isInteger(magic.baseLevel)&&magic.baseLevel>=1&&magic.baseLevel<=4){
+  const group=el(doc,'section','army-ref-group');
+  group.append(el(doc,'strong','','Published wizard information (not selected automatically)'));
+  group.append(el(doc,'p','','Source base level: '+magic.baseLevel));
+  if(magic.availableLores?.length){
+   const links=el(doc,'div','army-ref-items');
+   for(const lore of magic.availableLores)
+    links.append(safeLink(doc,lore.name,lore.url,'army-ref-pill'));
+   group.append(el(doc,'p','','Source-listed lore alternatives (not imported selections):'));
+   group.append(links);
+  }
+  if(magic.levelUpgrades?.length)
+   group.append(el(doc,'p','','Available upgrades (not selected): '+
+    magic.levelUpgrades.map(u=>'Level '+u.level+' (+'+u.additionalPoints+' pts)').join(' · ')));
+  details.append(group);
+ }
  if(record){
   const sourceNotes=el(doc,'div','army-unit-source-meta');
   const bits=[];
