@@ -4,6 +4,7 @@ import {unitDisplayName} from './player-customization.js';
 import {sourcePrintedArmour} from './source-printed-armour.js';
 import {sourceDefensiveRules,sourceArmourCap} from './source-defensive-rules.js';
 import {selectedArmourSourceCandidates} from './selected-armour-candidates.js';
+import {resolveSelectedMountProfiles} from './resolve-selected-mount-profiles.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
@@ -403,7 +404,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  * A defence panel never conflates an equipped model's save with that of a
  * different character, or a Magic Missile-only Ward with an all-purpose Ward.
  */
-function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null,armourCandidates=[]){
+function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null,armourCandidates=[],mountProfiles=[]){
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
@@ -468,6 +469,20 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
    ['Cavalry split profile',MOUNT_ARMOUR_RULES.cavalry],['Official FAQ',MOUNT_ARMOUR_RULES.faq]])
    mount.append(safeLink(doc,name,url,'game-defence-source'));
   panel.append(mount);
+ }
+ if(mountProfiles.length){
+  const linked=el(doc,'div','game-defence-incoming');
+  linked.append(el(doc,'strong','','Linked selected mount profiles — source evidence'));
+  for(const candidate of mountProfiles){
+   linked.append(el(doc,'span','',candidate.name+' · '+
+    (candidate.mountType==='riddenMonster'?'Ridden monster':candidate.mountType)+
+    ' · published mount armour '+(candidate.printedArmour?.label||'not established')+
+    '. Mounted-model association and legality not yet verified.'));
+   linked.append(safeLink(doc,'Published mount record',candidate.sourceUrl,'game-defence-source'));
+   if(candidate.ruleUrl)linked.append(safeLink(doc,'Applicable split-profile reference',
+    candidate.ruleUrl,'game-defence-source'));
+  }
+  panel.append(linked);
  }
  if(defence.activeSpellEffects?.length||defence.spellMovementNotes?.length){
   const banner=el(doc,'div','game-unit-active-magic');
@@ -547,7 +562,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  return panel;
 }
 
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null,expandedCardIds=null,onToggle=()=>{},effectProjection={byUnit:{}},onItemState=()=>{}){
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null,expandedCardIds=null,onToggle=()=>{},effectProjection={byUnit:{}},onItemState=()=>{},selectedUnitRecords={}){
  const doc=container.ownerDocument||document;
  const openCards=new Set(Array.isArray(expandedCardIds)?expandedCardIds:
   [...container.querySelectorAll('article[data-unit-id].game-unit-open')]
@@ -588,7 +603,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   if(offensive)content.append(offensive);
   content.append(renderDefencePanel(doc,defence,onShieldUse,
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
-    records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles)));
+    records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
+    resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles,defence.armour?.value)));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
