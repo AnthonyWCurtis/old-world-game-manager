@@ -40,9 +40,9 @@ try{
  await recordEarth();
  assert.equal(await control.locator('.game-active-spell').count(),1);
  assert.match(await seaWard().innerText(),/5\+.*all wounds/i);
- assert.match(await sea.locator('.game-defence-movement').innerText(),/Cannot march.*Cannot charge/s);
+ assert.match(await sea.locator(':scope > .game-defence-panel .game-defence-movement').innerText(),/Cannot march.*Cannot charge/s);
  assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
- assert.equal(await sea.locator('.game-defence-incoming').count(),0);
+ assert.equal(await sea.locator(':scope > .game-defence-panel .game-defence-incoming').count(),0);
 
  // Glittering Robe is Self, only becomes unit-wide after explicitly joining Mage.
  await page.locator('#gameCharacters .game-character-card[data-unit-id="'+mageId+'"] .character-unit-picker')
@@ -56,8 +56,8 @@ try{
   'Glittering cast on joined Mage and Sea Guard expires older Earthen Ramparts');
  assert.match(await control.locator('.game-active-spell').innerText(),/Glittering Robe/);
  assert.match(await seaWard().innerText(),/Not established/);
- assert.match(await sea.locator('.game-defence-incoming').innerText(),/-1 To Hit/);
- assert.equal(await sea.locator('.game-defence-movement').count(),0);
+ assert.match(await sea.locator(':scope > .game-defence-panel .game-defence-incoming').innerText(),/-1 To Hit/);
+ assert.equal(await sea.locator(':scope > .game-defence-panel .game-defence-movement').count(),0);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
 
  // End, re-cast Earthen, persist the player-reported effect and reopen offline.
