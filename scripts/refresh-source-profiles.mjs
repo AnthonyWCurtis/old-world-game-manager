@@ -125,17 +125,26 @@ async function main(){
   throw Error('Trusted source magic index unavailable');
  const selected=jobs.slice(0,MAX_PER_RUN);
  const checkedAt=new Date().toISOString();
- let updated=0,failed=0;
+ let updated=0,failed=0,wizardChecked=0,wizardExtracted=0,wizardUnresolved=0;
  for(const [i,job] of selected.entries()){
   try{
    const html=await fetchHtml(job.url);
    const names=parseModelNames(html);
    if(!names.length)throw Error('No model names found in profile table');
    const wizardMagic=extractWizardMagic(html,job.url,magicIndex);
+   if(job.wizardReview){
+    wizardChecked++;
+    if(wizardMagic)wizardExtracted++;
+    else{
+     wizardUnresolved++;
+     console.warn('Unresolved wizard source section: '+job.url+' (not marked verified)');
+    }
+   }
    previous[job.url]={
     url:job.url,source:'tow.whfb.app',schemaVersion:2,sourceCheckedAt:checkedAt,
     verificationStatus:'source-extracted',models:names.map(name=>({name})),
     wizardLevels:previous[job.url]?.wizardLevels||[],
+    wizardExtractionStatus:job.wizardReview?(wizardMagic?'source-page-extracted':'unresolved'):'not-required',
     ...(wizardMagic?{wizardMagic}: {})
    };
    updated++;
@@ -152,8 +161,12 @@ async function main(){
   note:'Model names and explicit wizard facts only, from permitted public unit pages. No army legality inferred.',
   profiles:sorted};
  await writeFile(OUTPUT,JSON.stringify(data,null,2)+'\n');
- console.log('Discovered '+jobs.length+' unit URLs from '+files.length+' example lists; checked '+selected.length+
+ console.log('Discovered '+jobs.length+' unit URLs from '+files.length+' example lists and wizard audit flags; checked '+selected.length+
   ', refreshed '+updated+', failures '+failed+', available profiles '+Object.keys(sorted).length);
+ console.log('Wizard extraction: '+wizardExtracted+'/'+wizardChecked+' source pages resolved; '+wizardUnresolved+
+  ' unresolved sections (other fetch failures counted separately)');
+ if(wizardChecked>0 && wizardExtracted===0)
+  throw Error('No wizard facts could be extracted from any checked wizard page; inspect source HTML/parser');
  if(!updated&&!Object.keys(sorted).length)throw Error('No verified unit data could be retrieved');
 }
 if(process.argv[1]&&new URL('file://'+process.argv[1]).pathname===new URL(import.meta.url).pathname){
