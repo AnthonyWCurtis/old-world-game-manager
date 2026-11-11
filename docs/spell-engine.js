@@ -78,7 +78,7 @@ export function sanitizeActiveSpells(army,records,assignments={}){
   if(seen.has(key))continue;
   const targetId=raw.targetId??null,joinedUnitId=raw.joinedUnitId??null;
   if(rule.targeting==='friendly-unit'){
-   if(typeof targetId!=='string'||!isTargetAllowed(army,assignments,targetId))continue;
+   if(typeof targetId!=='string'||!(isRegiment(army,targetId)||isCharacter(army,targetId)))continue;
   }else if(targetId!==null)continue;
   if(joinedUnitId!==null&&(!ids.has(joinedUnitId)||!isRegiment(army,joinedUnitId)))continue;
   if(rule.targeting==='friendly-unit'&&joinedUnitId!==null)continue;
@@ -94,8 +94,16 @@ function recipients(army,session,effect){
  const assignments=session?.assignments||{};
  if(effect.spellId==='earthen-ramparts'){
   ids.add(effect.targetId);
-  for(const [characterId,unitId] of Object.entries(assignments)){
-   if(unitId===effect.targetId)ids.add(characterId);
+  // A spell on a character which later joins a unit may affect that entire
+  // unit, and a spell on the unit may affect its joined characters.
+  // The player's join is recorded, not legality-verified.
+  const parentUnit=isCharacter(army,effect.targetId)?
+   (assignments[effect.targetId]||null):effect.targetId;
+  if(parentUnit){
+   ids.add(parentUnit);
+   for(const [characterId,unitId] of Object.entries(assignments)){
+    if(unitId===parentUnit)ids.add(characterId);
+   }
   }
  }else if(effect.spellId==='glittering-robe'){
   ids.add(effect.casterId);
