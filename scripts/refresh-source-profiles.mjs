@@ -12,6 +12,7 @@ import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {parseArmy} from '../docs/parser.js';
 import {findIndexedReference} from '../docs/live-source.js';
 import {extractWizardMagic} from './extract-wizard-magic.mjs';
+import {extractPublishedArmourValue} from './extract-published-armour.mjs';
 
 const ORIGIN='https://tow.whfb.app';
 const OUTPUT=new URL('../docs/source-profiles.json',import.meta.url);
@@ -105,21 +106,30 @@ async function main(){
  for(const filename of shardNames){
   const shard=JSON.parse(await readFile(new URL(filename,shardDir),'utf8'));
   for(const record of Object.values(shard.records||{})){
-   if(!(record.extractionWarnings||[]).some(w=>/wizardLevel|magicLore/.test(w)))continue;
+   const flags=(record.extractionWarnings||[]).join(' ');
+   if(!/wizardLevel|magicLore|armourValue/.test(flags))continue;
    const url=safeUrl(record.source?.sourceUrl);
    if(!url)continue;
    if(!seen.has(url)){
-    jobs.push({name:record.name,url,frequency:0,wizardReview:true});seen.add(url);
+    jobs.push({name:record.name,url,frequency:0,wizardReview:/wizardLevel|magicLore/.test(flags),
+     armourReview:/armourValue/.test(flags)});seen.add(url);
    }else{
     const existing=jobs.find(j=>j.url===url);
-    if(existing)existing.wizardReview=true;
+    if(existing){
+     if(/wizardLevel|magicLore/.test(flags))existing.wizardReview=true;
+     if(/armourValue/.test(flags))existing.armourReview=true;
+    }
    }
   }
  }
- jobs.sort((a,b)=>Number(!!b.wizardReview)-Number(!!a.wizardReview)||
-  (a.wizardReview?String(previous[a.url]?.sourceCheckedAt||'')
-   .localeCompare(String(previous[b.url]?.sourceCheckedAt||'')):b.frequency-a.frequency)||
-   a.url.localeCompare(b.url));
+ // Review both incomplete wizard and printed armour fields before sample units.
+ // Least-recently checked first prevents permanently starving another category.
+ jobs.sort((a,b)=>Number(!!(b.wizardReview||b.armourReview))-
+  Number(!!(a.wizardReview||a.armourReview))||
+  ((a.wizardReview||a.armourReview)?
+   String(previous[a.url]?.sourceCheckedAt||'').localeCompare(
+    String(previous[b.url]?.sourceCheckedAt||'')):
+   b.frequency-a.frequency)||a.url.localeCompare(b.url));
  const magicIndex=JSON.parse(await readFile(MAGIC_INDEX,'utf8'));
  if(magicIndex?.source?.url!=='https://tow.whfb.app/sitemap/magic'||!Array.isArray(magicIndex.entries))
   throw Error('Trusted source magic index unavailable');
@@ -132,11 +142,15 @@ async function main(){
    const names=parseModelNames(html);
    if(!names.length)throw Error('No model names found in profile table');
    const wizardMagic=extractWizardMagic(html,job.url,magicIndex);
+   const publishedArmour=extractPublishedArmourValue(html,job.url);
+   if(job.armourReview&&!publishedArmour)
+    console.warn('Unresolved printed armour value: '+job.url+' (not treated as equipment-only)');
    previous[job.url]={
     url:job.url,source:'tow.whfb.app',schemaVersion:2,sourceCheckedAt:checkedAt,
     verificationStatus:'source-extracted',models:names.map(name=>({name})),
     wizardLevels:previous[job.url]?.wizardLevels||[],
-    ...(wizardMagic?{wizardMagic}: {})
+    ...(wizardMagic?{wizardMagic}: {}),
+    ...(publishedArmour?{publishedArmour}: {})
    };
    updated++;
    console.log((i+1)+'/'+selected.length+' '+job.url+' → '+names.length+' models');
@@ -149,10 +163,10 @@ async function main(){
  }
  const sorted=Object.fromEntries(Object.entries(previous).sort(([a],[b])=>a.localeCompare(b)));
  const data={schemaVersion:2,sourceOrigin:ORIGIN,generatedAt:checkedAt,
-  note:'Model names and explicit wizard facts only, from permitted public unit pages. No army legality inferred.',
+  note:'Model names and separately sourced wizard/printed armour facts only. No inferred army legality, equipment saves, or attack-specific saves.',
   profiles:sorted};
  await writeFile(OUTPUT,JSON.stringify(data,null,2)+'\n');
- console.log('Discovered '+jobs.length+' unit URLs from '+files.length+' example lists; checked '+selected.length+
+ console.log('Discovered '+jobs.length+' unit URLs from examples and audit flags ('+files.length+' example files); checked '+selected.length+
   ', refreshed '+updated+', failures '+failed+', available profiles '+Object.keys(sorted).length);
  if(!updated&&!Object.keys(sorted).length)throw Error('No verified unit data could be retrieved');
 }
