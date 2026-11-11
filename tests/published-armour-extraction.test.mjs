@@ -37,7 +37,7 @@ test('printed armour remains a display-only source fact, not an automatic defenc
  const defence=readFileSync(new URL('../docs/defence-engine.js',import.meta.url),'utf8');
  const refresh=readFileSync(new URL('../scripts/refresh-source-profiles.mjs',import.meta.url),'utf8');
  assert.match(ui,/Source-printed armour value:/);
- assert.match(ui,/record\?\.source\?\.sourceUrl===printedArmour\?\.sourceUrl/);
+ assert.match(ui,/sourcePrintedArmour\(record,fallback\)/);
  assert.match(refresh,/armourReview/);
  assert.match(refresh,/extractPublishedArmourValue\(html,job\.url\)/);
  assert.doesNotMatch(defence,/publishedArmour/);
