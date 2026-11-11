@@ -259,7 +259,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
 
  const selections=collectSelections(unit.selections);
  const chosen=el(doc,'details','army-import-selections army-unit-compact-details');
- const modelSelections=(unit.modelGroups||[]).reduce((n,g)=>n+(g.selections||[]).length,0);
+ const modelSelections=(unit.modelGroups||[]).reduce((n,g)=>n+collectSelections(g.selections).length,0);
  chosen.append(el(doc,'summary','','Imported selections · '+(selections.length+modelSelections)));
  const chosenBody=el(doc,'div','army-unit-compact-content');
  if(selections.length){
