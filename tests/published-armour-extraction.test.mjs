@@ -42,3 +42,14 @@ test('printed armour remains a display-only source fact, not an automatic defenc
  assert.match(refresh,/extractPublishedArmourValue\(html,job\.url\)/);
  assert.doesNotMatch(defence,/publishedArmour/);
 });
+
+test('accepts a labelled source value split across HTML elements',()=>{
+ const html='<section><div><strong>Armour Value:</strong><span>4+</span></div></section>';
+ assert.equal(extractPublishedArmourValue(html,sky)?.value,4);
+});
+test('ignores script-injected armour values and refuses ambiguous published text',()=>{
+ const script='<script>const hint="Armour Value: 4+";</script><div>Ward Save: 5+</div>';
+ assert.equal(extractPublishedArmourValue(script,sky),null);
+ const ambiguous='<p>Armour Value: 4+</p><p>Armour Value: 3+</p>';
+ assert.equal(extractPublishedArmourValue(ambiguous,sky),null);
+});
