@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - feat/magic-sitemap-index-20261109
+      - feat/v1-source-lore-filtered-spellbooks
     paths:
       - 'scripts/build-magic-reference-index.mjs'
       - '.github/workflows/refresh-magic-reference-index.yml'
