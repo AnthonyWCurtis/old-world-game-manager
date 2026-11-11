@@ -96,8 +96,30 @@ async function main(){
   seen.add(url);
   jobs.push({name,url,frequency});
  }
- jobs.sort((a,b)=>b.frequency-a.frequency||a.url.localeCompare(b.url));
+ // Audit-driven source coverage: prioritize every unit whose pinned source
+ // record specifically flagged wizardLevel / magicLore, not one army's examples.
+ // Run oldest-checked source pages first so a 35-page batch advances coverage.
  const previous=await existingSnapshot();
+ const shardDir=new URL('../docs/unit-data/shards/',import.meta.url);
+ const shardNames=(await readdir(shardDir)).filter(n=>/^[0-9a-f]{2}\\.json$/.test(n));
+ for(const filename of shardNames){
+  const shard=JSON.parse(await readFile(new URL(filename,shardDir),'utf8'));
+  for(const record of Object.values(shard.records||{})){
+   if(!(record.extractionWarnings||[]).some(w=>/wizardLevel|magicLore/.test(w)))continue;
+   const url=safeUrl(record.source?.sourceUrl);
+   if(!url)continue;
+   if(!seen.has(url)){
+    jobs.push({name:record.name,url,frequency:0,wizardReview:true});seen.add(url);
+   }else{
+    const existing=jobs.find(j=>j.url===url);
+    if(existing)existing.wizardReview=true;
+   }
+  }
+ }
+ jobs.sort((a,b)=>Number(!!b.wizardReview)-Number(!!a.wizardReview)||
+  (a.wizardReview?String(previous[a.url]?.sourceCheckedAt||'')
+   .localeCompare(String(previous[b.url]?.sourceCheckedAt||'')):b.frequency-a.frequency)||
+   a.url.localeCompare(b.url));
  const magicIndex=JSON.parse(await readFile(MAGIC_INDEX,'utf8'));
  if(magicIndex?.source?.url!=='https://tow.whfb.app/sitemap/magic'||!Array.isArray(magicIndex.entries))
   throw Error('Trusted source magic index unavailable');
