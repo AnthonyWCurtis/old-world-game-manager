@@ -36,7 +36,7 @@ function config(env){
  try{const u=new URL(origin);validOrigin=u.protocol==='https:'&&u.origin===origin;}catch{}
  const login=String(env?.ADMIN_GITHUB_LOGIN||'').trim();
  return validOrigin&&/^[a-z0-9-]{1,39}$/i.test(login)&&
-  /^[a-z0-9_]{6,100}$/i.test(String(env?.ADMIN_GITHUB_CLIENT_ID||''))&&
+  /^[a-z0-9_.-]{6,100}$/i.test(String(env?.ADMIN_GITHUB_CLIENT_ID||''))&&
   String(env?.GITHUB_OAUTH_CLIENT_SECRET||'').length>8&&
   String(env?.ADMIN_SESSION_SECRET||'').length>=32;
 }
