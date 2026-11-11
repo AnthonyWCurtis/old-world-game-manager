@@ -4,6 +4,7 @@
  * attack-specific saving throw or a claim of list/join eligibility.
  */
 import {createGameScreenModel} from './game-screen-model.js';
+import {spellEffectsFor} from './spell-engine.js';
 
 export const DEFENCE_SOURCES=Object.freeze({
  armour:'https://tow.whfb.app/weapons-of-war/armour-value',
@@ -105,10 +106,16 @@ export function evaluateDefences(army,session,unitId){
  if(!identity)throw Error('Unknown imported unit for defensive calculation.');
  const unit=army.units.find(u=>u.id===unitId);
  const own=ownDefence(unit,session);
+ const spell=spellEffectsFor(army,session,unitId);
  const attachedIds=model.characters.filter(c=>session?.assignments?.[c.id]===unitId);
  const joinedCharacters=identity.isCharacter?[]:attachedIds.map(character=>{
   const imported=army.units.find(u=>u.id===character.id);
-  return {id:character.id,name:character.name,defence:ownDefence(imported,session)};
+  const personal=ownDefence(imported,session);
+  const magic=spellEffectsFor(army,session,character.id);
+  return {id:character.id,name:character.name,
+   defence:{...personal,ward:[...personal.ward,...magic.ward],
+    attackModifiers:magic.attackModifiers,movementRestrictions:magic.movementRestrictions,
+    spellWarnings:magic.warnings}};
  });
  const sharedWard=[];
  for(const member of attachedIds){
@@ -121,8 +128,13 @@ export function evaluateDefences(army,session,unitId){
  return {
   id:unitId,name:unit.name,isCharacter:identity.isCharacter,
   ...own,
+  ward:[...own.ward,...spell.ward],
+  attackModifiers:spell.attackModifiers,
+  movementRestrictions:spell.movementRestrictions,
+  spellWarnings:spell.warnings,
+  activeSpellEffects:spell.activeEffects,
   champions:identity.isCharacter?[]:championDefences(unit),
   joinedCharacters,sharedWard,
-  disclosure:'Equipment-only and conditional saves: no automatic eligibility, enemy AP, combat modifiers or spell activation.'
+  disclosure:'Armour is equipment-only. Ward and incoming To Hit effects from spells are player-declared and conditional; no automatic legality, enemy AP or dice resolution.'
  };
 }
