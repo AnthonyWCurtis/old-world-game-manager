@@ -1,8 +1,6 @@
 /** Touch-friendly source-linked effects, items and bound-spell references.
  * Rule effects are rendered from the reviewed registry, never from free text.
  */
-import {unitDisplayName} from './player-customization.js';
-
 const el=(doc,tag,cls='',label)=>{
  const node=doc.createElement(tag);
  if(cls)node.className=cls;
@@ -71,7 +69,7 @@ export function renderEffectRow(doc,row,{onItemState=()=>{},onShieldUse=()=>{}}=
  card.append(summary);
  const body=el(doc,'div','game-effect-details');
  body.append(el(doc,'p','game-effect-description',row.description));
- const info=el(doc,'p','game-effect-scope',row.scope));
+ const info=el(doc,'p','game-effect-scope',row.scope);
  body.append(info);
  if(row.shared)
   body.append(el(doc,'p','game-effect-caution',
@@ -135,7 +133,6 @@ export function renderMagicItemAbilities(container,projection,session,handlers={
   container.append(el(doc,'p','game-effect-empty','No supported casting items were imported for this army.'));
   return;
  }
- const byId=new Map((projection?.army?.units||[]).map(u=>[u.id,u]));
  for(const row of found){
   const owner=row.ownerName||'Imported character';
   const block=el(doc,'section','game-magic-item-group');
