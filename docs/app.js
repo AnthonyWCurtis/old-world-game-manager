@@ -18,6 +18,7 @@ import {indexedSpells} from './player-customization.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
+const ACTIVE_TAB_ARMY_KEY='old-world-game-manager-active-army-v1';
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
@@ -321,6 +322,48 @@ function renderArmyScreen(){
   (available<overview.unitInstances?'Missing profiles are not guessed. ':'')+
   'Reference data is not a legality or points check.';
 }
+/*
+ * A rules/source page may evict the Game Screen on iOS Safari. The #army-roster
+ * URL previously redirected straight to #import during a fresh page load,
+ * even though the player had already opened the roster. Keep only the active
+ * export in this tab's short-lived sessionStorage; persistent saved armies
+ * and their battle state remain in IndexedDB as before.
+ */
+function rememberActiveGameScreen(){
+ const text=current?.originalText;
+ if(typeof text!=='string'||text.length<10||text.length>500000)return;
+ const format=$('format').value;
+ const override=format!=='auto'&&/^[a-z-]+:[a-z-]+$/.test(format)?format:null;
+ try{
+  sessionStorage.setItem(ACTIVE_TAB_ARMY_KEY,JSON.stringify({version:1,text,override}));
+ }catch{/* Storage can be unavailable; in-memory navigation still works. */}
+}
+function restoreActiveGameScreenFromTab(){
+ let saved;
+ try{saved=JSON.parse(sessionStorage.getItem(ACTIVE_TAB_ARMY_KEY)||'null');}catch{return false;}
+ if(saved?.version!==1||typeof saved.text!=='string'||
+    saved.text.length<10||saved.text.length>500000)return false;
+ const override=typeof saved.override==='string'&&/^[a-z-]+:[a-z-]+$/.test(saved.override)
+  ?saved.override:null;
+ try{
+  const [exporter,layout]=override?override.split(':'):[null,null];
+  const restored=parseArmy(saved.text,override?{exporter,layout}:null);
+  if(!restored?.units?.length)return false;
+  current=restored;applyInformationalPlaceholders(current);applyGenericWizardReferences(current);
+  sourceProfiles={};unitDataRecords={};
+  $('sourceText').value=restored.originalText;
+  $('format').value=override&&[...$('format').options].some(o=>o.value===override)?override:'auto';
+  updateFormatDetection();
+  const army=current;
+  render();
+  void restoreCurrentBattleSession().then(()=>{if(current===army)render();}).catch(()=>{});
+  void refreshCurrentSource(false);
+  return true;
+ }catch{
+  current=null;
+  return false;
+ }
+}
 function showPageForHash({scroll=false}={}){
  const roster=!!current&&window.location.hash==='#army-roster';
  $('importPage').hidden=roster;
@@ -330,6 +373,7 @@ function showPageForHash({scroll=false}={}){
 }
 function openArmyRoster(){
  if(!current||!current.units.length)return;
+ rememberActiveGameScreen();
  if(window.location.hash==='#army-roster')showPageForHash({scroll:true});
  else window.location.hash='army-roster';
 }
@@ -638,9 +682,11 @@ function render(){
  }
  $('saveBtn').disabled=false;$('jsonBtn').disabled=false;
  $('viewRosterBtn').disabled=!current.units.length;
+ $('resumeGameBtn').hidden=!current.units.length;
  if(window.location.hash==='#army-roster')showPageForHash();
 }
 $('viewRosterBtn').addEventListener('click',openArmyRoster);
+$('resumeGameBtn').addEventListener('click',openArmyRoster);
 $('gameScreenSaveBtn').addEventListener('click',()=> $('saveBtn').click());
 for(const [buttonId,targetId] of [
  ['gameScreenJumpCharacters','gameCharacters'],
@@ -663,7 +709,7 @@ $('extractListBtn').addEventListener('click',()=>{
  $('sourceText').value=extracted.text;
  $('format').value='auto';
  current=null;sourceProfiles={};unitDataRecords={};
- $('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;
+ $('result').hidden=true;$('resumeGameBtn').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;
  showError('');updateFormatDetection();
  $('sourceText').focus();
 });
@@ -689,7 +735,7 @@ async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.l
 }
 $('exampleBtn').addEventListener('click',async()=>{
  const id=$('examples').value;if(!id)return;
- try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';updateFormatDetection();current=null;unitDataRecords={};$('result').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
+ try{const r=await fetch('./examples/'+encodeURIComponent(id)+'.txt');if(!r.ok)throw Error('Could not load sample');$('sourceText').value=await r.text();$('format').value='auto';updateFormatDetection();current=null;unitDataRecords={};$('result').hidden=true;$('resumeGameBtn').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;showError('');}
  catch(e){showError(e.message);}
 });
 fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load sample manifest');return r.json();}).then(items=>{for(const item of items){const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label;$('examples').append(opt);}}).catch(e=>showError(e.message));
@@ -711,8 +757,10 @@ async function loadMagicIndex(){
 }
 updateFormatDetection();
 void loadMagicIndex();
-// A direct roster URL cannot resurrect an unsaved, in-memory army after reload.
-if(window.location.hash==='#army-roster'&&!current)
+// Restore the current tab's last open Game Screen before deciding the route.
+// This handles iOS Safari returning from another page without choosing a
+// different saved army or erasing any player-owned battle records.
+if(window.location.hash==='#army-roster'&&!current&&!restoreActiveGameScreenFromTab())
  history.replaceState(null,'',window.location.pathname+window.location.search+'#import');
 showPageForHash();
 refresh().catch(e=>showError(e.message));
