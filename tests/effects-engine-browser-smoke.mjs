@@ -32,8 +32,13 @@ try{
  await sea.locator('.game-unit-expand-toggle').click();
  const offence=sea.locator(':scope > .game-unit-expandable > .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
- assert.equal(await sea.locator('.game-unit-expandable > :first-child').getAttribute('class'),
-  'game-offensive-effects-panel','Offensive effects should be above Defence summary');
+ const order=await sea.locator('.game-unit-expandable').evaluate(area=>{
+  const children=[...area.children];
+  return {offence:children.findIndex(el=>el.classList.contains('game-offensive-effects-panel')),
+   defence:children.findIndex(el=>el.classList.contains('game-defence-panel'))};
+ });
+ assert.ok(order.offence>=0&&order.defence>order.offence,
+  'Offensive effects should appear before Defence summary: '+JSON.stringify(order));
  const razorQuick=offence.locator('.game-offensive-effect[data-effect-id="razor-standard"]');
  assert.equal(await razorQuick.count(),1);
  assert.match(await razorQuick.innerText(),/Armour Bane \(2\)/);
