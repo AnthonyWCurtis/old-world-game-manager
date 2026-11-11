@@ -24,3 +24,19 @@ test('static dashboard uses first-party script and no third-party login/client t
  assert.doesNotMatch(ADMIN_SCRIPT,/GITHUB_TOKEN|CLIENT_SECRET|ADMIN_SESSION_SECRET/);
  assert.match(ADMIN_SCRIPT,/textContent/);
 });
+
+test('admin can copy ChatGPT-ready unresolved queue, filtered entries, reports and individual issues',()=>{
+ for(const id of ['copyOpenReports','copyVisibleReports','copyPreviewPanel','copyPreviewText',
+  'selectCopyText'])assert.match(ADMIN_HTML,new RegExp('id="'+id+'"'));
+ assert.match(ADMIN_SCRIPT,/formatChatGPTExport/);
+ assert.match(ADMIN_SCRIPT,/navigator\.clipboard\.writeText/);
+ assert.match(ADMIN_SCRIPT,/game manager|Game Manager/i);
+ assert.match(ADMIN_SCRIPT,/copySingleReport|copyReport/);
+ assert.match(ADMIN_SCRIPT,/copySingleEntry|copyEntry/);
+ assert.match(ADMIN_SCRIPT,/review\.status/);
+ assert.match(ADMIN_SCRIPT,/sourceLine/);
+ assert.match(ADMIN_SCRIPT,/sourceUrl/);
+ assert.match(ADMIN_SCRIPT,/report\.faction/);
+ assert.match(ADMIN_SCRIPT,/not complete army lists|not full army lists/i);
+ assert.doesNotMatch(ADMIN_SCRIPT,/innerHTML\s*=/);
+});
