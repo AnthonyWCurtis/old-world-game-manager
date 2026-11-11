@@ -7,6 +7,7 @@ import {collectUnmatched} from '../docs/unmatched-debug.js';
 import {findIndexedUnit} from '../docs/unit-data.js';
 import {applySourceScopedSelectionReferences,findSourceScopedSelectionReference} from '../docs/unit-selection-matcher.js';
 import {shardForId} from '../scripts/build-browser-unit-data.mjs';
+import {parseSubmittedReport,consolidate,recoveredWrappedSelections} from '../scripts/aggregate-unmatched.mjs';
 
 const sourceRecord=slug=>{
  const id='unit:'+slug;
@@ -118,4 +119,41 @@ test('unsupported Wood Elf choices remain unverified, never assigned invented so
  assert.deepEqual(collectUnmatched(army).map(s=>s.name),['The Briar-bow','The Kinbands of Modryn']);
  assert.equal(findReference('The Briar-bow','selection','Waystalker'),null);
  assert.equal(findReference('The Kinbands of Modryn','selection','Glade Guard'),null);
+});
+
+test('historical fragmented Deepwood Hound references count as parser-fixed, not outstanding',()=>{
+ const file='report-20261111T131552339Z-edefe906-ec56-4c92-8f77-0205df47e648.txt';
+ const entries=parseSubmittedReport(submitted);
+ const recovered=recoveredWrappedSelections(entries);
+ assert.equal(entries.length,11);
+ assert.equal(recovered.size,9);
+ assert.ok(recovered.has(2)&&recovered.has(10));
+ const reportFiles=[
+  'report-20261109T185859798Z-3f621230-14c2-4b20-982f-49d3373e7841.txt',
+  'report-20261111T131017366Z-80228425-7e5f-4613-a7b7-29b5b3180a90.txt',
+  file
+ ];
+ const result=consolidate(reportFiles.map(name=>({
+  name,content:readFileSync(new URL('../reports/unmatched/'+name,import.meta.url),'utf8')
+ })));
+ assert.match(result,/Distinct missing references: 2/);
+ assert.match(result,/Unmatched occurrences: 2/);
+ assert.match(result,/Previously reported and now source-linked or parser-fixed: 20/);
+ assert.match(result,/Archived occurrences \(including resolved\): 22/);
+ assert.match(result,/The Briar-bow \(SELECTION\)/);
+ assert.match(result,/The Kinbands of Modryn \(SELECTION\)/);
+ for(const oldName of ['Orion (UNIT)','Spear of Kurnous (SELECTION)',
+  'teeth)] (SELECTION)','tusks (SELECTION)','Deepwood Hound [Hand weapons'])
+  assert.ok(!result.includes(oldName),'Should not remain unresolved: '+oldName);
+});
+
+test('the historic fragment classifier rejects unrelated or incomplete selection records',()=>{
+ const entries=parseSubmittedReport(submitted);
+ assert.equal(recoveredWrappedSelections(entries.slice(0,3)).size,0);
+ const corrupted=structuredClone(entries);
+ corrupted[3].sourceLine+=5;
+ assert.equal(recoveredWrappedSelections(corrupted).size,6);
+ const wrongParent=structuredClone(entries);
+ wrongParent[3].unit='Glade Guard';
+ assert.equal(recoveredWrappedSelections(wrongParent).size,6);
 });
