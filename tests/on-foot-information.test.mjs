@@ -118,7 +118,7 @@ test('UI shows neutral badge, informational count, and current report version',(
  assert.match(app,/applyInformationalPlaceholders\(current\)/);
  assert.match(app,/Informational entries/);
  assert.match(app,/Descriptive mount state only/);
- assert.match(app,/appVersion:'1\.0\.0-alpha\.1'/);
+ assert.match(app,/appVersion:'1\.0\.0-alpha\.2'/);
  assert.match(html,/v1 Game Screen preview/);
  assert.match(css,/\.tag\.info\{[^}]*background:/);
 });
