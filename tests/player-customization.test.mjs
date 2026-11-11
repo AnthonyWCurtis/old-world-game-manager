@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {parseArmy} from '../docs/parser.js';
 import {restoreBattleSession,setUnitDisplayName,setWizardKnownSpell,armySessionKey,assignCharacter} from '../docs/battle-session.js';
-import {indexedSpells,wizardDescriptor,unitDisplayName} from '../docs/player-customization.js';
+import {indexedSpells,wizardDescriptor,unitDisplayName,spellsForWizard} from '../docs/player-customization.js';
 
 const example=name=>readFileSync(new URL('../docs/examples/'+name+'.txt',import.meta.url),'utf8');
 const magic=JSON.parse(readFileSync(new URL('../docs/reference-records/magic-index.json',import.meta.url),'utf8'));
@@ -49,8 +49,8 @@ test('each imported Wizard has independent spell knowledge with no automatic cas
  const spell=spells.find(s=>s.name==='Earthen Ramparts');
  const spell2=spells.find(s=>s.name==='Glittering Robe');
  let state=restoreBattleSession(a);
- state=setWizardKnownSpell(a,state,storm.id,spell.id,true,spells);
- state=setWizardKnownSpell(a,state,other.id,spell2.id,true,spells);
+ state=setWizardKnownSpell(a,state,storm.id,spell.id,true,magic);
+ state=setWizardKnownSpell(a,state,other.id,spell2.id,true,magic);
  assert.deepEqual(state.knownSpells[storm.id],[spell.id]);
  assert.deepEqual(state.knownSpells[other.id],[spell2.id]);
  assert.deepEqual(state.activeSpells,[]);
@@ -59,12 +59,12 @@ test('each imported Wizard has independent spell knowledge with no automatic cas
  assert.deepEqual(restored.knownSpells,state.knownSpells);
  const changed=assignCharacter(a,state,other.id,unit(a).id);
  assert.deepEqual(changed.knownSpells,state.knownSpells);
- state=setWizardKnownSpell(a,state,storm.id,spell.id,false,spells);
+ state=setWizardKnownSpell(a,state,storm.id,spell.id,false,magic);
  assert.equal(state.knownSpells[storm.id],undefined);
  assert.ok(state.knownSpells[other.id]);
- assert.throws(()=>setWizardKnownSpell(a,state,unit(a).id,spell.id,true,spells),/wizard/i);
- assert.throws(()=>setWizardKnownSpell(a,state,storm.id,'magic-ref:/spell/not-in-index',true,spells),/index/i);
- assert.throws(()=>setWizardKnownSpell(a,state,storm.id,spell.id,true,[]),/index/i);
+ assert.throws(()=>setWizardKnownSpell(a,state,unit(a).id,spell.id,true,magic),/wizard/i);
+ assert.throws(()=>setWizardKnownSpell(a,state,storm.id,'magic-ref:/spell/not-in-index',true,magic),/index/i);
+ assert.throws(()=>setWizardKnownSpell(a,state,storm.id,spell.id,true,[]),/lore/i);
 });
 
 test('legacy session migration ignores unknown ids and preserves existing imported quoted nicknames',()=>{
@@ -82,4 +82,42 @@ test('legacy session migration ignores unknown ids and preserves existing import
  const foreign=restoreBattleSession(army(),stored);
  assert.deepEqual(foreign.unitNames,{});
  assert.deepEqual(foreign.knownSpells,{});
+});
+
+test('wizard spell list is source-filtered to imported lores, with no cross-lore choices',()=>{
+ const a=army(),storm=wizard(a);
+ const mages=a.units.filter(u=>u.name==='Mage');
+ const high=mages.find(u=>u.selections.some(s=>s.name==='High Magic'));
+ const illusion=mages.find(u=>u.selections.some(s=>s.name==='Illusion'));
+ const earth=spellsForWizard(storm,magic),highList=spellsForWizard(high,magic),ill=spellsForWizard(illusion,magic);
+ assert.equal(magic.loreLinks.status,'source-lore-page-indexed');
+ assert.equal(magic.loreLinks.pagesChecked,magic.counts.lores);
+ assert.equal(earth.length,7);
+ assert.equal(highList.length,7);
+ assert.equal(ill.length,7);
+ assert.ok(earth.some(s=>s.name==='Earthen Ramparts'));
+ assert.ok(earth.some(s=>s.name==='Storm Call'&&s.signatureIn.includes('Elementalism')));
+ assert.equal(earth.some(s=>s.name==='Drain Magic'||s.name==='Glittering Robe'),false);
+ assert.equal(highList.some(s=>s.name==='Earthen Ramparts'),false);
+ assert.equal(ill.some(s=>s.name==='Earthen Ramparts'),false);
+ assert.equal(spellsForWizard(unit(a),magic).length,0);
+ assert.equal(spellsForWizard(storm,{...magic,loreLinks:null}).length,0);
+ const unknown=structuredClone(storm);
+ unknown.selections=unknown.selections.filter(s=>s.name!=='Elementalism');
+ assert.equal(spellsForWizard(unknown,magic).length,0);
+ const imported=JSON.stringify(a);
+ assert.throws(()=>setWizardKnownSpell(a,restoreBattleSession(a),storm.id,
+  highList[0].id,true,magic),/lore/i);
+ assert.equal(JSON.stringify(a),imported);
+});
+test('old off-lore choices remain saved but can be removed, not re-added',()=>{
+ const a=army(),storm=wizard(a),high=a.units.filter(u=>u.name==='Mage').find(u=>u.selections.some(s=>s.name==='High Magic'));
+ const wrong=spellsForWizard(high,magic)[0].id;
+ let state=restoreBattleSession(a);
+ state.knownSpells[storm.id]=[wrong];
+ const restored=restoreBattleSession(a,state);
+ assert.deepEqual(restored.knownSpells[storm.id],[wrong]);
+ assert.throws(()=>setWizardKnownSpell(a,restored,storm.id,wrong,true,magic),/lore/i);
+ const cleared=setWizardKnownSpell(a,restored,storm.id,wrong,false,magic);
+ assert.equal(cleared.knownSpells[storm.id],undefined);
 });
