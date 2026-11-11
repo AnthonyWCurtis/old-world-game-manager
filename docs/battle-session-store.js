@@ -46,7 +46,7 @@ export function readBattleSession(armyKey){
 let queue=Promise.resolve();
 export function writeBattleSession(session){
  const copy={schemaVersion:session.schemaVersion,armyKey:session.armyKey,
-  assignments:{...session.assignments},usedCharmedShields:{...(session.usedCharmedShields||{})},savedAt:new Date().toISOString()};
+  assignments:{...session.assignments},usedCharmedShields:{...(session.usedCharmedShields||{})},activeSpells:(session.activeSpells||[]).map(effect=>({...effect})),savedAt:new Date().toISOString()};
  queue=queue.catch(()=>{}).then(()=>transaction('readwrite',store=>store.put(copy)));
  return queue;
 }
