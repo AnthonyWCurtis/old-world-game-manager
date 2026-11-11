@@ -141,9 +141,9 @@ export function parseLoreSpellLinks(html,lore,spellEntries){
   throw Error('Invalid or oversized lore source page');
  if(!lore||lore.kind!=='lore'||!safeUrl(lore.url,'lore')||
     !Array.isArray(spellEntries))throw Error('Invalid lore or spell catalogue');
- const markup=html.replace(/<(script|style|noscript)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi,'');
+ const markup=html.replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi,'');
  // Restrict discovery to the article, not global navigation or page footer.
- const main=markup.match(/<main\\b[^>]*>([\\s\\S]*?)<\\/main>/i)?.[1];
+ const main=markup.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
  if(!main)throw Error('No main lore content at '+lore.url);
  const catalogue=new Map(spellEntries.filter(e=>e.kind==='spell').map(e=>[e.url,e]));
  const links=sectionLinks(main,'spell');
@@ -151,9 +151,9 @@ export function parseLoreSpellLinks(html,lore,spellEntries){
  for(const link of links){
   const spell=catalogue.get(link.url);
   if(!spell)continue; // Unindexed URLs are never recorded as eligible spells.
-  const name=link.name.replace(/^\\d+\\.\\s*/,'').replace(/\\s*\\(Signature Spell\\)\\s*$/i,'').trim();
+  const name=link.name.replace(/^\d+\.\s*/,'').replace(/\s*\(Signature Spell\)\s*$/i,'').trim();
   if(normalizeMagicName(name)!==normalizeMagicName(spell.name))continue;
-  const signature=/\\(Signature Spell\\)/i.test(link.name);
+  const signature=/\(Signature Spell\)/i.test(link.name);
   if(found.has(spell.id)){if(signature)found.get(spell.id).signature=true;continue;}
   found.set(spell.id,{id:spell.id,signature});
  }
