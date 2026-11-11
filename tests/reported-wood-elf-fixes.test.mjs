@@ -138,7 +138,8 @@ test('historical fragmented Deepwood Hound references count as parser-fixed, not
  })));
  assert.match(result,/Distinct missing references: 2/);
  assert.match(result,/Unmatched occurrences: 2/);
- assert.match(result,/Previously reported and now source-linked or parser-fixed: 20/);
+ assert.match(result,/Previously reported and now source-linked: 11/);
+ assert.match(result,/Previously reported and now parser-fixed: 9/);
  assert.match(result,/Archived occurrences \(including resolved\): 22/);
  assert.match(result,/The Briar-bow \(SELECTION\)/);
  assert.match(result,/The Kinbands of Modryn \(SELECTION\)/);
