@@ -6,6 +6,7 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {auditReferenceCollections} from './audit-reference-collections.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const canonical=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
@@ -100,10 +101,25 @@ export async function runAudit({root=ROOT,output=join(ROOT,'coverage-report.json
   shards[id]=await load('docs/unit-data/shards/'+id+'.json');
  }
  const result=auditCoverage(sitemap,catalogue,shards);
+ const referenceCollections=auditReferenceCollections({
+  rules:await load('docs/reference-records/rules-index.json'),
+  magic:await load('docs/reference-records/magic-index.json'),
+  'magic-items':await load('docs/reference-records/magic-items-index.json')
+ });
+ result.collections={armies:{entries:sitemap.entries.length,sourceSnapshotCheckedAt:sitemap.source?.checkedAt},...referenceCollections.summaries};
+ result.overlappingReferenceUrls=referenceCollections.sharedUrls;
+ result.errors.push(...referenceCollections.errors.map(e=>({...e,kind:e.collection})));
+ result.warnings.push(...referenceCollections.warnings.map(e=>({...e,kind:e.collection})));
+ result.counts.errors=result.errors.length;
+ result.counts.warnings=result.warnings.length;
+ result.counts.indexedReferences=Object.values(result.collections).reduce((n,c)=>n+c.entries,0);
+ result.status=result.errors.length?'fail':result.warnings.length?'pass-with-warnings':'pass';
+ result.scope+=' Additional collections are checked for sitemap-index integrity only, not source-page extraction.';
  await mkdir(dirname(output),{recursive:true});
  await writeFile(output,JSON.stringify(result,null,2)+'\n');
  console.log('Sitemap units: '+result.counts.sitemapUnits+
   ' | catalogue: '+result.counts.catalogueUnits+' | shards: '+result.counts.shardUnits);
+ console.log('All four sitemap collections: '+result.counts.indexedReferences+' indexed references (may overlap)');
  console.log('Errors: '+result.counts.errors+' | warnings: '+result.counts.warnings+
   ' | affected extraction records: '+result.counts.unitWarnings);
  console.log('Report: '+output);
