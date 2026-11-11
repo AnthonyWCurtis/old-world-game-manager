@@ -29,3 +29,9 @@ test('printed armour is displayed separately and never passed into equipment arm
  assert.match(roster,/sourcePrintedArmour\(record,fallback\)/);
  assert.doesNotMatch(engine,/sourcePrintedArmour|publishedArmour/);
 });
+
+test('offline app shell includes every added Defence Summary module',()=>{
+ const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
+ assert.match(sw,/['"]\.\/source-printed-armour\.js['"]/);
+ assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261111-source-armour-v1'/);
+});
