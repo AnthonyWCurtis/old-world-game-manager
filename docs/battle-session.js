@@ -4,6 +4,7 @@
  */
 import {createGameScreenModel} from './game-screen-model.js';
 import {sanitizeActiveSpells} from './spell-engine.js';
+import {MAX_UNIT_NAME_LENGTH,wizardDescriptor,isIndexedSpellId,sanitizeKnownSpells} from './player-customization.js';
 
 const STATE_VERSION=1;
 const validEntries=(army)=>{
@@ -51,8 +52,19 @@ export function restoreBattleSession(army,stored){
    }
   }
  }
- const activeSpells=sanitizeActiveSpells(army,stored?.schemaVersion===STATE_VERSION&&stored?.armyKey===armyKey?stored.activeSpells:[],assignments);
- return {schemaVersion:STATE_VERSION,armyKey,assignments,usedCharmedShields,activeSpells};
+ const personal=stored?.schemaVersion===STATE_VERSION&&stored?.armyKey===armyKey?stored:null;
+ const unitNames={};
+ if(personal?.unitNames&&typeof personal.unitNames==='object'&&!Array.isArray(personal.unitNames)){
+  const valid=new Set((army.units||[]).map(u=>u.id));
+  for(const [id,name] of Object.entries(personal.unitNames)){
+   if(!valid.has(id)||typeof name!=='string')continue;
+   const clean=name.trim();
+   if(clean&&clean.length<=MAX_UNIT_NAME_LENGTH)unitNames[id]=clean;
+  }
+ }
+ const knownSpells=sanitizeKnownSpells(army,personal?.knownSpells);
+ const activeSpells=sanitizeActiveSpells(army,personal?.activeSpells,assignments);
+ return {schemaVersion:STATE_VERSION,armyKey,assignments,usedCharmedShields,activeSpells,unitNames,knownSpells};
 }
 
 /** Assign or detach one character, returning new state without mutating inputs. */
@@ -82,5 +94,32 @@ export function markCharmedShieldUsed(army,session,characterId,used){
  const state=restoreBattleSession(army,session);
  if(used)state.usedCharmedShields[characterId]=true;
  else delete state.usedCharmedShields[characterId];
+ return state;
+}
+
+/** Optional personal label for any instance; the original imported name is untouched. */
+export function setUnitDisplayName(army,session,unitId,name){
+ if(!(army?.units||[]).some(u=>u.id===unitId))throw Error('Select a valid imported unit.');
+ if(name!==null&&typeof name!=='string')throw Error('Unit name must be text.');
+ const clean=name===null?'':name.trim();
+ if(clean.length>MAX_UNIT_NAME_LENGTH)throw Error('Unit name must be 80 characters or fewer.');
+ const state=restoreBattleSession(army,session);
+ if(clean)state.unitNames[unitId]=clean;
+ else delete state.unitNames[unitId];
+ return state;
+}
+/** User-recorded spell knowledge; the catalogue validates the new selection. */
+export function setWizardKnownSpell(army,session,unitId,spellId,known,catalogue){
+ const unit=(army?.units||[]).find(u=>u.id===unitId);
+ if(!unit||!wizardDescriptor(unit))throw Error('Select an imported wizard.');
+ if(typeof known!=='boolean'||!isIndexedSpellId(spellId)||
+    !Array.isArray(catalogue)||!catalogue.some(s=>s.id===spellId))
+  throw Error('Select a spell from the verified-origin magic index.');
+ const state=restoreBattleSession(army,session);
+ const list=new Set(state.knownSpells[unitId]||[]);
+ if(known)list.add(spellId);else list.delete(spellId);
+ if(list.size>150)throw Error('Too many spell records.');
+ if(list.size)state.knownSpells[unitId]=[...list];
+ else delete state.knownSpells[unitId];
  return state;
 }

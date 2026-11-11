@@ -4,6 +4,7 @@
  */
 import {SPELL_RULES,eligibleWizardSpells,spellEffectsFor} from './spell-engine.js';
 import {createGameScreenModel} from './game-screen-model.js';
+import {unitDisplayName} from './player-customization.js';
 
 const node=(doc,tag,cls='',value)=>{
  const result=doc.createElement(tag);
@@ -18,7 +19,7 @@ const safeSource=(doc,rule)=>{
  anchor.rel='noopener noreferrer';
  return anchor;
 };
-const nameFor=(id,map)=>map.get(id)?.name||'Unknown imported unit';
+const nameFor=(id,map,session)=>unitDisplayName(map.get(id),session);
 
 export function renderSpellControls(container,army,session,{onCast=()=>{},onEnd=()=>{},onExpire=()=>{}}={}){
  const doc=container.ownerDocument||document;
@@ -45,18 +46,18 @@ export function renderSpellControls(container,army,session,{onCast=()=>{},onEnd=
    area.dataset.casterId=spell.casterId;
    area.append(node(doc,'strong','',rule.name));
    const target=spell.spellId==='earthen-ramparts'
-    ?'Target: '+nameFor(spell.targetId,entries)
-    :'Self: '+nameFor(spell.casterId,entries)+
+    ?'Target: '+nameFor(spell.targetId,entries,session)
+    :'Self: '+nameFor(spell.casterId,entries,session)+
      (spell.joinedUnitId?' + joined '+nameFor(spell.joinedUnitId,entries):' (independent)');
    area.append(node(doc,'div','game-spell-activity',target));
    area.append(node(doc,'div','game-spell-activity',
-    'Caster: '+nameFor(spell.casterId,entries)+' · until your next Start of Turn · player-declared'));
+    'Caster: '+nameFor(spell.casterId,entries,session)+' · until your next Start of Turn · player-declared'));
    const warnings=spellEffectsFor(army,session,spell.casterId).warnings;
    for(const warning of warnings)area.append(node(doc,'p','game-spell-warning',warning));
    area.append(safeSource(doc,rule));
    const button=node(doc,'button','game-spell-end','End / dispelled');
    button.type='button';
-   button.setAttribute('aria-label','End '+rule.name+' cast by '+nameFor(spell.casterId,entries));
+   button.setAttribute('aria-label','End '+rule.name+' cast by '+nameFor(spell.casterId,entries,session));
    button.addEventListener('click',()=>onEnd({spellId:spell.spellId,casterId:spell.casterId}));
    area.append(button);
    activeList.append(area);
@@ -79,7 +80,7 @@ export function renderSpellControls(container,army,session,{onCast=()=>{},onEnd=
   const card=node(doc,'details','game-spell-caster');
   card.dataset.casterId=caster.casterId;
   card.dataset.spellId=rule.id;
-  const summary=node(doc,'summary','',rule.name+' · '+caster.casterName+' (entry '+caster.casterIndex+')');
+  const summary=node(doc,'summary','',rule.name+' · '+unitDisplayName(entries.get(caster.casterId),session)+' (entry '+caster.casterIndex+')');
   card.append(summary);
   const body=node(doc,'div','game-spell-caster-body');
   body.append(node(doc,'p','game-spell-activity',
@@ -102,7 +103,7 @@ export function renderSpellControls(container,army,session,{onCast=()=>{},onEnd=
     ...roster.characters.filter(c=>!assignments[c.id])
    ];
    for(const unit of targetChoices){
-    const option=node(doc,'option','',unit.name+' · entry '+unit.index);
+    const option=node(doc,'option','',unitDisplayName(unit,session)+' · entry '+unit.index);
     option.value=unit.id;picker.append(option);
    }
    body.append(selectLabel,picker);

@@ -13,7 +13,8 @@ import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {renderSpellControls} from './spell-controls.js';
 import {activateSpell,endSpell,expireAtNextStartOfTurn} from './spell-engine.js';
 import {restoreStoredImport} from './army-state.js';
-import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed} from './battle-session.js';
+import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
+import {indexedSpells} from './player-customization.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
@@ -22,6 +23,7 @@ const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
 let unitDataRecords={};
 let battleSession=null;
+let magicIndex=null;
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
@@ -250,9 +252,41 @@ function handleSpellsExpire(){
   void persistSpellChange(army,next);
  }catch(error){battleStateStatus('Spell expiry failed: '+(error?.message||error),'error');}
 }
+async function persistPlayerCustomization(army,state,description,render=true){
+ battleSession=state;
+ if(render)renderArmyScreen();
+ battleStateStatus('Saving '+description+'…','saving');
+ try{
+  await writeBattleSession(state);
+  if(current===army&&battleSession===state)
+   battleStateStatus('Personal unit names and wizard spellbooks saved automatically on this device.');
+ }catch(error){
+  if(current===army)battleStateStatus('Could not save '+description+': '+(error?.message||error)+
+   '. Changes will be lost when this page closes unless storage recovers.','error');
+ }
+}
+function handleUnitName(unitId,name){
+ if(!current)return;
+ try{
+  const army=current;
+  const state=setUnitDisplayName(army,battleSession,unitId,name);
+  void persistPlayerCustomization(army,state,'unit name');
+ }catch(error){battleStateStatus('Unit not renamed: '+(error?.message||error),'error');}
+}
+function handleWizardKnownSpell(unitId,spellId,known){
+ if(!current)return;
+ try{
+  const army=current;
+  const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,indexedSpells(magicIndex));
+  void persistPlayerCustomization(army,state,'known spells',false);
+ }catch(error){
+  battleStateStatus('Spell selection not saved: '+(error?.message||error),'error');
+  renderArmyScreen();
+ }
+}
 function renderArmyScreen(){
  if(!current)return;
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage);
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex);
   renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire});
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
@@ -627,7 +661,7 @@ $('extractListBtn').addEventListener('click',()=>{
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};await restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};const restoring=restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});await restoring;if(current)render();void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -653,7 +687,22 @@ $('exampleBtn').addEventListener('click',async()=>{
 fetch('./examples/manifest.json').then(r=>{if(!r.ok)throw Error('Could not load sample manifest');return r.json();}).then(items=>{for(const item of items){const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label;$('examples').append(opt);}}).catch(e=>showError(e.message));
 $('refreshBtn').addEventListener('click' ,()=>refresh().catch(e=>showError(e.message)));
 $('backupBtn').addEventListener('click',async()=>{try{const rows=await readAll();if(!rows.length)throw Error('No saved snapshots to back up yet.');downloadJSON('old-world-game-manager-backup.json',{schemaVersion:1,exportedAt:new Date().toISOString(),snapshots:rows});}catch(e){showError(e.message);}});
+async function loadMagicIndex(){
+ try{
+  const response=await fetch('./reference-records/magic-index.json',{cache:'force-cache'});
+  if(!response.ok)throw Error('Magic index is unavailable');
+  const index=await response.json();
+  if(!indexedSpells(index).length)throw Error('Magic index could not be validated');
+  magicIndex=index;
+ }catch(error){
+  magicIndex=null;
+  if(current)battleStateStatus('Magic list unavailable: '+(error?.message||error)+
+   '. Other game features remain available.','error');
+ }
+ if(current&&window.location.hash==='#army-roster')renderArmyScreen();
+}
 updateFormatDetection();
+void loadMagicIndex();
 // A direct roster URL cannot resurrect an unsaved, in-memory army after reload.
 if(window.location.hash==='#army-roster'&&!current)
  history.replaceState(null,'',window.location.pathname+window.location.search+'#import');
