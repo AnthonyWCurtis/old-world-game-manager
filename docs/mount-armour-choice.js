@@ -38,6 +38,6 @@ export function compareRiderMountArmour({mountType,riderValue=null,mountValue=nu
  }
  return {status:choices.length?'conditional':'unresolved',mountType,choices,
   ruleUrl:MOUNT_ARMOUR_RULES[mountType],faqUrl:MOUNT_ARMOUR_RULES.faq,
-  betterArmour:choices.length===2?Math.min(...choices.map(x=>x.value)):null,
-  note:'The ridden monster/chariot uses whichever armour value is better, subject to verified source values and any applicable modifiers. A rider shield does not alter the mount value; do not apply rider-only equipment to the mount.'};
+  numericallyBetter:choices.length===2?Math.min(...choices.map(x=>x.value)):null,
+  note:'A mounted character chooses whichever armour is better; the official FAQ clarifies that magic armour can make better subjective. The model must not auto-select based on the numeric value alone. A rider shield does not alter the mount value; magic armour benefits are unavailable if mount armour is used.'};
 }
