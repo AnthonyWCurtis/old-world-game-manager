@@ -14,7 +14,7 @@ export function parseSubmittedReport(text){
  };
  for(const line of lines){
   const head=line.match(/^\[\d+\]\s+(UNIT|SELECTION):\s+(.+)$/);
-  if(head){flush();entry={type:head[1],name:head[2].trim(),unit:null,url:'-',kind:null};continue;}
+  if(head){flush();entry={type:head[1],name:head[2].trim(),unit:null,url:'-',kind:null,sourceLine:null};continue;}
   if(!entry)continue;
   const name=line.match(/^\s+Parent unit:\s+(.+)$/);
   if(name)entry.unit=name[1].trim();
@@ -22,16 +22,51 @@ export function parseSubmittedReport(text){
   if(link)entry.url=link[1].trim();
   const kind=line.match(/^\s+Kind:\s+(.+)$/);
   if(kind)entry.kind=kind[1].trim();
+  const originalLine=line.match(/^\s+Source line:\s+(\d+)$/);
+  if(originalLine)entry.sourceLine=Number(originalLine[1]);
  }
  flush();
  return out;
 }
+/**
+ * Historical report text is immutable, including malformed selection names.
+ * Match only the exact THREE consecutive fragments emitted by an OWB
+ * multi-line bracketed Wood Elf Beast Pack choice. This requires the
+ * verified unit profile https://tow.whfb.app/unit/wood-elf-beast-pack
+ * and its Deepwood Hound choice:
+ * https://tow.whfb.app/unit/deepwood-hound
+ *
+ * The current parser reassembles these fragments into a single selection.
+ * Do not relabel unrelated, incomplete or unverified reports as fixed.
+ */
+export function recoveredWrappedSelections(entries){
+ const recovered=new Set();
+ for(let i=0;i+2<entries.length;i++){
+  const [a,b,c]=entries.slice(i,i+3);
+  if([a,b,c].some(x=>x.type!=='SELECTION'||x.unit!=='Wood Elf Beast Pack'||
+     x.url!=='https://tow.whfb.app/unit/wood-elf-beast-pack'))continue;
+  if(!/^[1-3]x Deepwood Hound \[Hand weapons \(Claws \+ fangs$/i.test(a.name)||
+     b.name!=='tusks'||c.name!=='teeth)]')continue;
+  if(!Number.isSafeInteger(a.sourceLine)||b.sourceLine!==a.sourceLine+1||
+     c.sourceLine!==a.sourceLine+2)continue;
+  recovered.add(i);recovered.add(i+1);recovered.add(i+2);
+  i+=2;
+ }
+ return recovered;
+}
+
 export function consolidate(reports){
  const all=new Map();
- let occurrences=0,archivedOccurrences=0,resolvedOccurrences=0;
+ let occurrences=0,archivedOccurrences=0,resolvedOccurrences=0,parserFixedOccurrences=0;
  for(const report of reports){
-  for(const item of parseSubmittedReport(report.content)){
+  const items=parseSubmittedReport(report.content);
+  const parserFixed=recoveredWrappedSelections(items);
+  for(const [index,item] of items.entries()){
    archivedOccurrences++;
+   if(parserFixed.has(index)){
+    parserFixedOccurrences++;
+    continue;
+   }
    // Historical report files are immutable. Show only names that still
    // lack a *reviewed catalogue* reference, so repaired issues disappear
    // from the current copy-paste queue without losing the audit trail.
@@ -56,6 +91,7 @@ export function consolidate(reports){
   'Distinct missing references: '+sorted.length,
   'Unmatched occurrences: '+occurrences,
   'Previously reported and now source-linked: '+resolvedOccurrences,
+   'Previously reported and now parser-fixed: '+parserFixedOccurrences,
   'Archived occurrences (including resolved): '+archivedOccurrences,
   'Report files: '+reports.length,
   ''
