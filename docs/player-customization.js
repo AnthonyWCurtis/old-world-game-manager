@@ -29,6 +29,33 @@ export function indexedSpells(index){
  }).map(entry=>({id:entry.id,name:entry.name,url:entry.url,verificationStatus:entry.verificationStatus}))
  .sort((a,b)=>a.name.localeCompare(b.name));
 }
+
+/**
+ * Only the spells linked by the source lore pages chosen in THIS imported
+ * wizard's selections. A source-lore link is not proof of generation, allowed
+ * substitutions, or spell count; it is only the browsing/selection scope.
+ */
+export function spellsForWizard(unit,index){
+ const wizard=wizardDescriptor(unit,index);
+ if(!wizard||index?.loreLinks?.status!=='source-lore-page-indexed')return [];
+ const chosen=new Set(wizard.lores.map(normalize));
+ const loreEntries=(index.entries||[]).filter(e=>e?.kind==='lore'&&chosen.has(normalize(e.name))&&
+  e.spellLinkStatus==='source-lore-page-indexed'&&Array.isArray(e.spellIds));
+ const sources=new Map();
+ for(const lore of loreEntries){
+  for(const id of lore.spellIds){
+   if(!isIndexedSpellId(id))continue;
+   const item=sources.get(id)||{lores:[],signatureIn:[]};
+   item.lores.push(lore.name);
+   if(lore.signatureSpellIds?.includes(id))item.signatureIn.push(lore.name);
+   sources.set(id,item);
+  }
+ }
+ return indexedSpells(index).filter(s=>sources.has(s.id)).map(s=>({
+  ...s,lores:sources.get(s.id).lores,signatureIn:sources.get(s.id).signatureIn
+ }));
+}
+
 export const isIndexedSpellId=id=>typeof id==='string'&&/^magic-ref:\/spell\/[a-z0-9-]+$/.test(id);
 export function unitDisplayName(unit,session){
  return session?.unitNames?.[unit?.id]||unit?.nickname||unit?.name||'Unnamed unit';
