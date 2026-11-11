@@ -7,9 +7,9 @@ import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfile
 import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
-import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.3';
-import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.3';
-import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.3';
+import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.4';
+import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.4';
+import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.4';
 import {restoreStoredImport} from './army-state.js';
 import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed} from './battle-session.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
@@ -467,7 +467,7 @@ function syncUnmatchedDebug(){
   $('selectUnmatchedBtn').hidden=true;
   feedback.textContent='';
  }else if(!fallback.hidden){
-  const newText=formatUnmatchedDebug(current,{appVersion:'1.0.0-alpha.3'});
+  const newText=formatUnmatchedDebug(current,{appVersion:'1.0.0-alpha.4'});
   if(fallback.value!==newText){
    fallback.value=newText;
    feedback.textContent='Source matches updated. The debug report below is up to date.';
@@ -489,7 +489,7 @@ async function copyUnmatchedDebug(){
   $('copyUnmatchedStatus').textContent='No unmatched references to copy.';
   return;
  }
- const text=formatUnmatchedDebug(current,{appVersion:'1.0.0-alpha.3'});
+ const text=formatUnmatchedDebug(current,{appVersion:'1.0.0-alpha.4'});
  const feedback=$('copyUnmatchedStatus');
  const fallback=$('unmatchedDebugFallback');
  // Show the actual report synchronously. A blocked clipboard can never make
