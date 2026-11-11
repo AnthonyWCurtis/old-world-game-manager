@@ -34,6 +34,11 @@ try{
  await book.waitFor({state:'attached'});
  await page.waitForFunction(()=>document.querySelectorAll('.game-wizard-spellbook .game-wizard-spell-row').length>0);
  await book.locator(':scope > summary').click();
+ assert.equal(await book.locator('.game-wizard-spell-row').count(),7,
+  'An Elementalism wizard sees only its seven source-linked spells');
+ assert.equal(await book.locator('.game-wizard-spell-row').filter({hasText:'Drain Magic'}).count(),0);
+ assert.equal(await book.locator('.game-wizard-spell-row').filter({hasText:'Glittering Robe'}).count(),0);
+ assert.match(await book.innerText(),/Showing 7 source-linked spells from Elementalism/);
  await book.locator('.game-wizard-spell-search').fill('Earthen Ramparts');
  const checkbox=book.locator('.game-wizard-spell-row').filter({hasText:'Earthen Ramparts'}).locator('input[type=checkbox]');
  await checkbox.check();
@@ -55,6 +60,7 @@ try{
  assert.equal(await page.locator('#gameRegiments .army-unit-card[data-unit-id="'+second+'"] h3').first().innerText(),"Ship's Company");
  const restoredBook=page.locator('#gameCharacters .game-character-card[data-unit-id="'+stormId+'"] .game-wizard-spellbook');
  await restoredBook.locator(':scope > summary').click();
+ assert.equal(await restoredBook.locator('.game-wizard-spell-row').count(),7,'Offline cached lore filtering must survive reload');
  await restoredBook.locator('.game-wizard-spell-search').fill('Earthen Ramparts');
  assert.equal(await restoredBook.locator('.game-wizard-spell-row').filter({hasText:'Earthen Ramparts'}).locator('input[type=checkbox]').isChecked(),true);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
