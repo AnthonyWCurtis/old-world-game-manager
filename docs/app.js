@@ -11,12 +11,15 @@ import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.2';
 import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.2';
 import {restoreStoredImport} from './army-state.js';
+import {armySessionKey,restoreBattleSession,assignCharacter} from './battle-session.js';
+import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
 const $=id=>document.getElementById(id);
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
 let unitDataRecords={};
+let battleSession=null;
 const make=(tag,cls='',value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const missing=f=>f?.value==null?'Unknown':String(f.value);
 const showError=msg=>{$('error').hidden=!msg;$('error').textContent=msg||'';};
@@ -91,8 +94,11 @@ const STORE = 'snapshots';
 function openDB(){
  return new Promise((resolve,reject)=>{
   if(!('indexedDB' in window))return reject(Error('Browser local storage unavailable. You can still analyse and export JSON.'));
-  const req=indexedDB.open(DBNAME,1);
-  req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(STORE))req.result.createObjectStore(STORE,{keyPath:'id'});};
+  const req=indexedDB.open(DBNAME,2);
+  req.onupgradeneeded=()=>{
+   if(!req.result.objectStoreNames.contains(STORE))req.result.createObjectStore(STORE,{keyPath:'id'});
+   if(!req.result.objectStoreNames.contains('battle_sessions'))req.result.createObjectStore('battle_sessions',{keyPath:'armyKey'});
+  };
   req.onsuccess=()=>resolve(req.result);
   req.onerror=()=>reject(req.error||Error('Could not open browser storage'));
  });
@@ -138,9 +144,54 @@ function appendSelection(where,s,depth=0,unmatchedOnly=false){
  // Unit order follows the original input, including duplicate unit instances.
 // Hash navigation gives the imported army a separate screen without copying
 // army state to a second application or risking partial sessionStorage writes.
+function battleStateStatus(message,status='ready'){
+ const node=$('battleSessionStatus');
+ if(!node)return;
+ node.textContent=message;
+ node.dataset.status=status;
+}
+async function restoreCurrentBattleSession(){
+ const army=current;
+ if(!army)return;
+ battleSession=restoreBattleSession(army);
+ battleStateStatus('Loading saved character assignments…','saving');
+ try{
+  const stored=await readBattleSession(armySessionKey(army));
+  if(current!==army)return;
+  battleSession=restoreBattleSession(army,stored);
+  battleStateStatus(stored?
+   'Character assignments recovered · saved locally on this device.':
+   'Character assignments will save automatically on this device.');
+ }catch(error){
+  if(current!==army)return;
+  battleStateStatus('Local saving unavailable: '+(error?.message||error)+
+   '. Assignments will last only until this page closes.','error');
+ }
+}
+async function handleCharacterAssignment(characterId,unitId){
+ if(!current)return;
+ const army=current;
+ try{
+  battleSession=assignCharacter(army,battleSession,characterId,unitId);
+  const state=battleSession;
+  renderArmyScreen();
+  battleStateStatus('Saving character assignments…','saving');
+  try{
+   await writeBattleSession(state);
+   if(current===army&&battleSession===state)
+    battleStateStatus('Character assignments saved automatically on this device.');
+  }catch(error){
+   if(current===army)
+    battleStateStatus('Unable to save this assignment: '+(error?.message||error)+
+     '. Keep this page open or retry; the assignment has not been saved.','error');
+  }
+ }catch(error){
+  battleStateStatus('Assignment not made: '+(error?.message||error),'error');
+ }
+}
 function renderArmyScreen(){
  if(!current)return;
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles);
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment);
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
  const faction=label(current.army.faction);
@@ -514,7 +565,7 @@ $('extractListBtn').addEventListener('click',()=>{
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};await restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -528,7 +579,7 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};await restoreCurrentBattleSession();$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
