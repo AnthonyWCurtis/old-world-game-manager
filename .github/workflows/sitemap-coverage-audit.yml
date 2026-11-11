@@ -1,0 +1,42 @@
+name: Sitemap coverage audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 7 * * 1'
+  push:
+    paths:
+      - 'scripts/audit-sitemap-coverage.mjs'
+      - 'docs/reference-records/armies-index.json'
+      - 'docs/unit-data/**'
+      - 'tests/sitemap-coverage-audit.test.mjs'
+      - '.github/workflows/sitemap-coverage-audit.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-sitemap-coverage.mjs'
+      - 'docs/reference-records/armies-index.json'
+      - 'docs/unit-data/**'
+      - 'tests/sitemap-coverage-audit.test.mjs'
+      - '.github/workflows/sitemap-coverage-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify audit implementation and existing stored data
+        run: node --test tests/sitemap-coverage-audit.test.mjs
+      - name: Produce machine-readable coverage report
+        if: always()
+        run: node scripts/audit-sitemap-coverage.mjs artifacts/sitemap-coverage.json
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-coverage
+          path: artifacts/sitemap-coverage.json
+          if-no-files-found: warn
+          retention-days: 30
