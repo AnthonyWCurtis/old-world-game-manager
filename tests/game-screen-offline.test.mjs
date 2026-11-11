@@ -5,7 +5,7 @@ const read=p=>readFileSync(new URL('../docs/'+p,import.meta.url),'utf8');
 
 test('v1 registers a versioned same-origin offline app shell',()=>{
  const html=read('index.html'),app=read('app.js'),offline=read('offline.js'),sw=read('sw.js');
- assert.match(html,/\.\/app\.js\?v=1\.0\.0-alpha\.2/);
+ assert.match(html,/\.\/app\.js\?v=1\.0\.0-alpha\.3/);
  assert.match(app,/registerOfflineSupport/);
  assert.match(offline,/navigator\.serviceWorker\.register/);
  assert.match(sw,/game-manager-v1-shell/);
