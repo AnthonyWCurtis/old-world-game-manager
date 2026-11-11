@@ -94,13 +94,13 @@ test('Browser route, action, back buttons and data refresh wiring are present',(
   assert.match(html,new RegExp('id="'+id+'"'),'Missing '+id);
  }
  assert.match(html,/Enter Game Screen/);
- assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment\)/);
+ assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage\)/);
  assert.match(app,/window\.location\.hash='army-roster'/);
  assert.match(app,/window\.addEventListener\('hashchange'/);
  assert.match(app,/backToImporterBottomBtn/);
- assert.match(app,/appVersion:'1\.0\.0-alpha\.3'/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.3/);
- assert.match(app,/army-roster-page\.js\?v=1\.0\.0-alpha\.3/);
+ assert.match(app,/appVersion:'1\.0\.0-alpha\.4'/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.4/);
+ assert.match(app,/army-roster-page\.js\?v=1\.0\.0-alpha\.4/);
  assert.match(css,/\.army-profile-scroll\{[^}]*overflow-x:auto/);
  assert.match(css,/\.army-launch-button\{[^}]*min-height:48px/);
 });

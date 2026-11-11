@@ -32,7 +32,7 @@ test('Versioned browser app loads the published source profile fallback on impor
  const app=read('../docs/app.js');
  const live=read('../docs/live-source.js');
  assert.match(html,/v1 Game Screen preview/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.3/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.4/);
  assert.match(app,/live-source\.js\?v=0\.4\.2/);
  assert.match(app,/getPublishedUnitProfiles\(army\)/);
  assert.match(app,/applyProfileReferences\(army,sourceProfiles\)/);
