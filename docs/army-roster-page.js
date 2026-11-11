@@ -1,5 +1,7 @@
 import {createGameScreenModel} from './game-screen-model.js';
 import {evaluateDefences} from './defence-engine.js';
+import {unitDisplayName} from './player-customization.js';
+import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -73,15 +75,37 @@ function sourceRefRow(doc,title,refs){
  group.append(items);
  return group;
 }
-function unitCard(doc,unit,index,record,fallback,wasOpen){
+function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
  const header=el(doc,'header','army-unit-head');
  const identity=el(doc,'div','army-unit-identity');
  identity.append(el(doc,'span','army-unit-index',String(index).padStart(2,'0')));
  const main=el(doc,'div','army-unit-names');
- main.append(el(doc,'h3','',unit.name));
- if(unit.nickname)main.append(el(doc,'span','army-unit-nickname',unit.nickname));
+ const customName=unitDisplayName(unit,session);
+ main.append(el(doc,'h3','',customName));
+ if(customName!==unit.name)main.append(el(doc,'span','army-unit-nickname','Official: '+unit.name));
+ if(unit.nickname&&customName!==unit.nickname)
+  main.append(el(doc,'span','army-unit-nickname','Imported label: '+unit.nickname));
+ if(onRename){
+  const toggle=el(doc,'button','game-rename-toggle','Rename');
+  toggle.type='button';
+  toggle.setAttribute('aria-label','Rename '+customName);
+  const form=el(doc,'form','game-unit-rename');
+  form.hidden=true;
+  const input=el(doc,'input','game-unit-rename-input');
+  input.type='text';input.maxLength=80;input.value=session?.unitNames?.[unit.id]||'';
+  input.placeholder=unit.nickname||unit.name;
+  input.setAttribute('aria-label','Personal name for '+unit.name+' entry '+index);
+  const save=el(doc,'button','game-unit-rename-save','Save name');
+  save.type='submit';
+  const reset=el(doc,'button','game-unit-rename-reset','Use imported name');
+  reset.type='button';
+  reset.addEventListener('click',()=>onRename(unit.id,null));
+  form.addEventListener('submit',event=>{event.preventDefault();onRename(unit.id,input.value);});
+  toggle.addEventListener('click',()=>{form.hidden=!form.hidden;if(!form.hidden)input.focus();});
+  form.append(input,save,reset);main.append(toggle,form);
+ }
  const headingMeta=el(doc,'div','army-unit-meta');
  headingMeta.append(el(doc,'span','army-model-number',modelCountLabel(unit)));
  if(unit.quantity?.origin==='derived')
@@ -208,7 +232,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen){
  */
 
 /** Player-controlled membership. A recorded join is NOT rules-verified. */
-function assignmentEditor(doc,character,regiments,currentUnitId,onAssignment){
+function assignmentEditor(doc,character,regiments,currentUnitId,onAssignment,session){
  const row=el(doc,'div','game-assignment-editor');
  const label=el(doc,'label','',currentUnitId?'Change Unit / Remove':'Assign to Unit');
  const picker=el(doc,'select','character-unit-picker');
@@ -218,7 +242,7 @@ function assignmentEditor(doc,character,regiments,currentUnitId,onAssignment){
  const none=el(doc,'option','','Not assigned — independent');
  none.value='';picker.append(none);
  for(const regiment of regiments){
-  const option=el(doc,'option','',regiment.name+' · entry '+regiment.index);
+  const option=el(doc,'option','',unitDisplayName(regiment,session)+' · entry '+regiment.index);
   option.value=regiment.id;picker.append(option);
  }
  picker.value=currentUnitId||'';
@@ -227,7 +251,7 @@ function assignmentEditor(doc,character,regiments,currentUnitId,onAssignment){
  return row;
 }
 
-function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment){
+function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment,session){
  const row=el(doc,'div','game-assignment-editor');
  const label=el(doc,'label','','Add Character');
  const picker=el(doc,'select','regiment-character-picker');
@@ -239,8 +263,8 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment){
  for(const character of characters){
   const prior=assignments[character.id];
   const source=prior&&byId.get(prior);
-  const suffix=source?' · currently with '+source.name:'';
-  const option=el(doc,'option','',character.name+' · entry '+character.index+suffix);
+  const suffix=source?' · currently with '+unitDisplayName(source,session):'';
+  const option=el(doc,'option','',unitDisplayName(character,session)+' · entry '+character.index+suffix);
   option.value=character.id;picker.append(option);
  }
  picker.value='';
@@ -251,17 +275,17 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment){
  return row;
 }
 
-function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse){
+function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session){
  const panel=el(doc,'details','game-attached-character');
  panel.dataset.characterId=character.id;
  panel.dataset.regimentId=unitId;
  panel.open=open;
  const summary=el(doc,'summary');
- summary.append(el(doc,'span','',character.name+' · entry '+character.index));
+ summary.append(el(doc,'span','',unitDisplayName(character,session)+' · entry '+character.index));
  summary.append(el(doc,'small','',points(character.points)));
  panel.append(summary);
  const body=el(doc,'div','game-attached-character-body');
- const sourceCard=unitCard(doc,imported,character.index,record,fallback,false);
+ const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
  body.append(renderDefencePanel(doc,defence,onShieldUse));
@@ -372,12 +396,14 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
  return panel;
 }
 
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{}){
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null){
  const doc=container.ownerDocument||document;
  const opened=new Set([...container.querySelectorAll('article[data-unit-id] details.army-unit-source-details[open]')]
   .map(node=>node.closest('article[data-unit-id]')?.dataset.unitId).filter(Boolean));
  const openMembers=new Set([...container.querySelectorAll('details.game-attached-character[open]')]
   .map(d=>d.dataset.regimentId+':'+d.dataset.characterId));
+ const openWizards=new Set([...container.querySelectorAll('details.game-wizard-spellbook[open]')]
+  .map(d=>d.dataset.wizardId));
  const model=createGameScreenModel(army,records,fallbackProfiles);
  const overview=rosterOverview(army,records);
  const byId=new Map((army.units||[]).map(unit=>[unit.id,unit]));
@@ -396,14 +422,16 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const imported=byId.get(entry.id);
   if(!imported)continue;
   const card=unitCard(doc,imported,entry.index,records[entry.id],
-   fallbackProfiles[imported.reference?.url],opened.has(entry.id));
+   fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename);
   card.classList.add('game-character-card');
   card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
+  const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
+  if(spellbook){spellbook.open=openWizards.has(entry.id);card.append(spellbook);}
   const target=displayId.get(assignments[entry.id]);
   card.append(el(doc,'p','game-membership-label',
-   target?'Assigned to '+target.name+' · entry '+target.index:'Independent · no regiment assigned'));
+   target?'Assigned to '+unitDisplayName(target,session)+' · entry '+target.index:'Independent · no regiment assigned'));
   if(model.regiments.length)
-   card.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment));
+   card.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
   characters.append(card);
  }
  container.append(characters);
@@ -430,9 +458,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const imported=byId.get(entry.id);
    if(!imported)continue;
    const card=unitCard(doc,imported,entry.index,records[entry.id],
-    fallbackProfiles[imported.reference?.url],opened.has(entry.id));
+    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename);
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
    card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
+   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
+   if(spellbook){spellbook.open=openWizards.has(entry.id);card.append(spellbook);}
    const memberArea=el(doc,'section','game-assigned-characters');
    memberArea.append(el(doc,'h4','','Assigned characters ('+memberList.length+')'));
    if(!memberList.length)
@@ -443,10 +473,10 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     memberArea.append(attachedCharacter(doc,character,original,records[character.id],
      fallbackProfiles[original.reference?.url],entry.id,
      openMembers.has(entry.id+':'+character.id),onAssignment,
-      evaluateDefences(army,session,character.id),onShieldUse));
+      evaluateDefences(army,session,character.id),onShieldUse,session));
    }
    if(model.characters.length)
-    memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment));
+    memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
    card.append(memberArea);
    regiments.append(card);
   }
