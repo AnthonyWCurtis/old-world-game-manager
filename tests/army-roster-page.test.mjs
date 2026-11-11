@@ -94,7 +94,7 @@ test('Browser route, action, back buttons and data refresh wiring are present',(
   assert.match(html,new RegExp('id="'+id+'"'),'Missing '+id);
  }
  assert.match(html,/Enter Game Screen/);
- assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles\)/);
+ assert.match(app,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment\)/);
  assert.match(app,/window\.location\.hash='army-roster'/);
  assert.match(app,/window\.addEventListener\('hashchange'/);
  assert.match(app,/backToImporterBottomBtn/);
