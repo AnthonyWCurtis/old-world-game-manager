@@ -6,16 +6,20 @@ on:
   push:
     paths:
       - 'scripts/audit-sitemap-coverage.mjs'
-      - 'docs/reference-records/armies-index.json'
+      - 'scripts/audit-reference-collections.mjs'
+      - 'docs/reference-records/**'
       - 'docs/unit-data/**'
-      - 'tests/sitemap-coverage-audit.test.mjs'
+      - 'tests/*coverage-audit.test.mjs'
+      - 'tests/reference-collections-audit.test.mjs'
       - '.github/workflows/sitemap-coverage-audit.yml'
   pull_request:
     paths:
       - 'scripts/audit-sitemap-coverage.mjs'
-      - 'docs/reference-records/armies-index.json'
+      - 'scripts/audit-reference-collections.mjs'
+      - 'docs/reference-records/**'
       - 'docs/unit-data/**'
-      - 'tests/sitemap-coverage-audit.test.mjs'
+      - 'tests/*coverage-audit.test.mjs'
+      - 'tests/reference-collections-audit.test.mjs'
       - '.github/workflows/sitemap-coverage-audit.yml'
 permissions:
   contents: read
@@ -28,7 +32,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify audit implementation and existing stored data
-        run: node --test tests/sitemap-coverage-audit.test.mjs
+        run: node --test tests/sitemap-coverage-audit.test.mjs tests/reference-collections-audit.test.mjs
       - name: Produce machine-readable coverage report
         if: always()
         run: node scripts/audit-sitemap-coverage.mjs artifacts/sitemap-coverage.json
