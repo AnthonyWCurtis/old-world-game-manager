@@ -481,6 +481,29 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
    linked.append(safeLink(doc,'Published mount record',candidate.sourceUrl,'game-defence-source'));
    if(candidate.ruleUrl)linked.append(safeLink(doc,'Applicable split-profile reference',
     candidate.ruleUrl,'game-defence-source'));
+   if(candidate.publishedBenefits){
+    const benefits=candidate.publishedBenefits;
+    const group=el(doc,'div','game-defence-detail-body');
+    group.append(el(doc,'strong','','Mount effects and possible rider benefits — conditional'));
+    for(const item of benefits.benefits){
+     group.append(el(doc,'span','',item.name+' ('+item.scope+'): '+item.detail));
+     group.append(safeLink(doc,'Rule source',item.sourceUrl,'game-defence-source'));
+    }
+    if(benefits.specialRules.length){
+     group.append(el(doc,'strong','','Published mount special rules'));
+     for(const item of benefits.specialRules){
+      group.append(el(doc,'span','',item.name+' — '+item.classification+
+       ' — '+item.appliesTo+'. Not granted to the rider automatically.'));
+      group.append(safeLink(doc,'Special rule',item.sourceUrl,'game-defence-source'));
+     }
+    }
+    group.append(el(doc,'span','',benefits.weaponRuleExclusion.detail));
+    group.append(safeLink(doc,'Weapon-rule FAQ',
+     benefits.weaponRuleExclusion.sourceUrl,'game-defence-source'));
+    group.append(el(doc,'p','game-defence-disclaimer',
+     'Source rules describe the combined mounted model, but exact rider transfer, eligibility and optional upgrades remain unverified.'));
+    linked.append(group);
+   }
   }
   panel.append(linked);
  }
