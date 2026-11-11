@@ -4,7 +4,7 @@
 
 [Open Game Manager](https://anthonywcurtis.github.io/old-world-game-manager/) · [Project history](PROJECT_HISTORY.md) · [Rules source: tow.whfb.app](https://tow.whfb.app)
 
-**v1.0.0-alpha.3 preview:** Stages 1–3 include a mobile Game Screen, separate character/regiment sections, character-to-unit assignments in either direction, expandable attached profiles, automatic local assignment saving, and best-effort offline app-shell caching. Calculated effects and combat are still future stages. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
+**v1.0.0-alpha.4 preview:** Stages 1–3 provide import, a mobile Game Screen, two-way character assignments and automatic local saving. Stage 4A adds scoped, source-backed **equipment-only armour** and **conditional Ward/Regeneration summaries** for regiments, champions and attached characters, plus a persistent once-per-game Charmed Shield usage control. Active spell effects and combat calculations are still future milestones. The previous v0.5.0 release is backed up at [`archive/v0.5.0-pre-v1`](https://github.com/AnthonyWCurtis/old-world-game-manager/tree/archive/v0.5.0-pre-v1).
 
 > **Important:** At present this is a roster importer and viewer, **not** a combat calculator or army-legality checker. Source links and extracted profiles do not prove a selection is legal or correctly costed.
 
@@ -38,15 +38,17 @@ The screen should work well on a phone at the table and preserve the player's ba
 | Identify unmatched references and optionally submit an anonymous report with consent | **Implemented** |
 | Automatic complete army-specific offline reference packs | **Planned** |
 | Fully automatic source-data refresh and seamless background download | **Planned**; existing limited live-cache checks and repository index refreshes are not this complete workflow |
-| Character-to-unit assignments and expandable attached character profiles | **Implemented in v1 alpha.3**, player-recorded only; eligibility not yet verified |
-| Effective buffs, derived saves, shooting and attack calculations | **Planned — not implemented** |
+| Character-to-unit assignments and expandable attached character profiles | **Implemented**, player-recorded only; eligibility not yet verified |
+| Equipment-only armour, conditional Ward and Regeneration summaries | **Implemented for the explicitly supported selected equipment/items** — not a universal save engine; scopes and source URLs shown |
+| Once-per-game Charmed Shield use tracking | **Implemented** — manual toggle persisted with character battle state |
+| Active spell buffs, attack-specific saves, shooting and combat calculations | **Planned — not implemented** |
 
 ### Importing an army
 
 1. [Open the browser app](https://anthonywcurtis.github.io/old-world-game-manager/) and paste a list or select a bundled example.
 2. Review the detected exporter and layout. Change the format manually if necessary.
-3. Select **Analyse import**, then **Enter Game Screen** to open the full-page characters-and-regiments view.
-4. Inspect imported options and any available published unit profiles. Expand the source references or follow the links when needed.
+3. Select **Analyse import**, then **Enter Game Screen** to open the full-page characters-and-regiments view and their defensive summaries.
+4. Inspect imported options, published profiles and the **Defence summary**. Expand *Sources, scope and conditions* to see why each save applies. For a Charmed Shield, tick **already used** once its single-use Ward has been spent.
 5. Select **Save on this device** from the Game Screen or importer, or **Backup all JSON** for a portable copy.
 
 **Supported sources:** Old World Builder (six text/Discord layouts), Ingude (three), New Recruit (three) and Old World Rankings / Battle Builder (three). See the historical [export-format details](PROJECT_HISTORY.md#supported-army-list-exports).
@@ -83,6 +85,14 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 
 **Source of truth for Warhammer rules:** [tow.whfb.app](https://tow.whfb.app). Do not invent missing characteristics, point costs, restrictions, item effects, spell eligibility or rule interpretations. Source-content caching and reuse must be compatible with its access permissions.
 
+## Stage 4A protection scope
+
+The Game Screen calculates **selected-equipment armour values** for explicitly recognised light/heavy/full plate armour and shields, **before** enemy Armour Piercing, weapon-use restrictions, magic and other modifiers. An unknown armour selection remains *not established*; unarmoured 7+ is not presented as an available saving throw.
+
+Ward and Regeneration have **separate, conditional records**, not a single combined save. A Charmed Shield is a bearer-only, single-use 5+ Ward against one wound; it remains a shield for armour when the once-per-game Ward is spent. Seed of Rebirth is bearer-only Regeneration (5+). The Loremaster's Cloak gives a 4+ Ward **only against Magic Missiles** to its bearer and, when the bearer is an independently joined character, conditionally to the unit they have joined. The Cloak selected for the Sea Master champion in the Old World Builder sample is shown as **champion-only**, not a free regiment-wide Ward. See [defence scope design](docs/superpowers/specs/2026-11-11-stage4-defence-foundation.md).
+
+**Still unresolved:** combat-specific effective armour vs AP/weapon choice, unrecognised magic armour and abilities, mounted model combinations, spell activation/expiry (including Earthen Ramparts), combat save resolution and joining eligibility. All protection data remains separate from the imported unit characteristics and points. Usage and assignments are saved on this device, not in the roster JSON backup.
+
 ## Accuracy principles
 
 - **Recognised ≠ legal:** a matched reference identifies an option; it does not certify list legality, army composition or points.
@@ -104,6 +114,7 @@ We are **keeping** the existing source-linked unit data and indexes for now: lat
 | [`docs/unit-selection-matcher.js`](docs/unit-selection-matcher.js) | Conservative, source-scoped upgrade reference matching |
 | [`docs/reference-records/`](docs/reference-records/) | Source-indexed reference collections, primarily names and links |
 | [`docs/game-screen-model.js`](docs/game-screen-model.js) and [`docs/army-state.js`](docs/army-state.js) | Read-only source/roster projection and legacy saved-army restoration |
+| [`docs/defence-engine.js`](docs/defence-engine.js) | Source-verified limited equipment-only and conditional armour/Ward/Regeneration calculations |
 | [`docs/sw.js`](docs/sw.js) and [`docs/offline.js`](docs/offline.js) | Versioned offline app-shell cache and best-effort registration |
 | [`docs/battle-session.js`](docs/battle-session.js) and [`docs/battle-session-store.js`](docs/battle-session-store.js) | Assignment rules and separate automatically saved IndexedDB battle-session store |
 | [`tests/`](tests/) | Parser, matching, offline, integration and mobile browser regression tests |
