@@ -145,15 +145,36 @@
  </header>
  <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
  <p id="battleSessionStatus" class="game-battle-status" role="status" aria-live="polite">Assignments are stored separately from imported army data.</p>
- <p class="game-rule-warning">Character assignments are <strong>recorded, not rules-verified</strong>. Rules on <a href="https://tow.whfb.app/characters/characters-and-units" target="_blank" rel="noopener noreferrer">joining units</a>, <a href="https://tow.whfb.app/special-rules/fly" target="_blank" rel="noopener noreferrer">Fly</a> and <a href="https://tow.whfb.app/special-rules/ethereal" target="_blank" rel="noopener noreferrer">Ethereal</a> can restrict joins. The game must not infer equipment, buffs or legality from membership alone.</p>
- <div class="army-roster-quality">Personal unit names and wizard spell selections save separately on this device and never modify the original import. The profiles shown are published <strong>base characteristics</strong>. Equipment choices, spells, special rules and upgrades from the import are listed separately and do not automatically change the profile. This view does not verify legality or recalculate points.</div>
- <p class="game-defence-overview">Defence summaries show <strong>Equipment-only armour</strong> and <strong>source-backed conditional</strong> Ward and Regeneration effects. A 4+ Ward against <strong>Magic Missiles</strong> is not a universal Ward. A Charmed Shield is once per game; use its manual checkbox after it is spent. No enemy AP, automatic spell effects, or joining legality are assumed.</p>
- <section id="spellControlPanel" class="game-spell-panel" aria-label="Active spells and enchantments"></section>
- <p class="game-spell-policy">Tick the spells each wizard knows in their spellbook, then use <strong>Magic &amp; active effects</strong> to record successful casts and targets. Earthen Ramparts, Plague of Rust and Glittering Robe expire at your next Start of Turn; Drain Magic <strong>remains in play</strong> until ended; Travel Mystical Pathway is an immediate Movement-phase action. These are player-confirmed records: targeting, ranges and dice rolls must be checked at the table.</p>
- <nav class="game-screen-jump" aria-label="Game Screen sections"><button id="gameScreenJumpCharacters" type="button">Characters</button><button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button></nav>
- <div id="armyRosterList" class="army-screen-list"></div>
+ <nav id="gameWorkspaceNav" class="game-workspace-nav" role="tablist" aria-label="Battle companion sections">
+  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">▤</span><span>Units</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavMagic" data-game-tab="magic" role="tab" aria-controls="gameMagicPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">✦</span><span>Magic</span></button>
+ </nav>
+ <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview">
+  <div id="gameOverviewContent"></div>
+ </section>
+ <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits" hidden>
+  <details class="game-guidance"><summary>Important rules and profile limitations</summary>
+   <p class="game-rule-warning">Character assignments are <strong>recorded, not rules-verified</strong>. Rules on <a href="https://tow.whfb.app/characters/characters-and-units" target="_blank" rel="noopener noreferrer">joining units</a>, <a href="https://tow.whfb.app/special-rules/fly" target="_blank" rel="noopener noreferrer">Fly</a> and <a href="https://tow.whfb.app/special-rules/ethereal" target="_blank" rel="noopener noreferrer">Ethereal</a> can restrict joins. The game must not infer equipment, buffs or legality from membership alone.</p>
+   <p class="army-roster-quality">Personal unit names and wizard spell selections save separately on this device and never modify the original import. Profiles are published <strong>base characteristics</strong>. Selected equipment, spells and upgrades do not automatically alter them; this is not a legality or points calculator.</p>
+   <p class="game-defence-overview">Defence summaries distinguish equipment-only armour and source-backed conditional Ward and Regeneration effects. Magic Missile-only saves are not universal. One-use items need manual confirmation. Enemy AP, targeting, automatic casting and legal joins are not assumed.</p>
+  </details>
+  <nav class="game-screen-jump" aria-label="Unit list sections">
+   <button id="gameScreenJumpCharacters" type="button">Characters</button>
+   <button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button>
+  </nav>
+  <p class="game-units-hint">Tap a unit header to expand its characteristics, equipment, assignments and battle effects. Unit cards start collapsed.</p>
+  <div id="armyRosterList" class="army-screen-list"></div>
+ </section>
+ <section id="gameMagicPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavMagic" hidden>
+  <section id="spellControlPanel" class="game-spell-panel" aria-label="Active spells and enchantments"></section>
+  <section id="gameKnownSpellbooks" class="game-magic-spellbooks" aria-label="Wizard spellbooks"></section>
+  <details class="game-guidance"><summary>Magic tracking and expiry reminders</summary>
+   <p class="game-spell-policy">Tick spells known by each Wizard in the spellbooks below, then record successful casts and legal targets above. Earthen Ramparts, Plague of Rust and Glittering Robe expire at your next Start of Turn; Drain Magic remains in play until ended; Travel Mystical Pathway resolves immediately in the Movement phase. These are player-confirmed records: check range, target, phase and dice at the table.</p>
+  </details>
+ </section>
  <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to importer</button></div>
 </main>
-<footer class="wrap footer">Game Manager v1 preview · Imported rosters and published base profiles. Assignments, one-use item states, personal unit names and wizard spellbooks save locally. Equipment-only defence summaries are available; spell buffs and combat calculations will follow.</footer>
+<footer class="wrap footer">Game Manager · Touch-first battle companion. Imported rosters, known spells, assignments and recorded active magic save locally. Rules, targeting and combat results still require player verification.</footer>
 </body>
 </html>
