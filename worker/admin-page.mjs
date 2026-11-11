@@ -3,7 +3,7 @@
  * Browser receives report data and review status, never GitHub credentials.
  * All untrusted names, notes and metadata are rendered with textContent.
  */
-const STYLE=String.raw\`
+const STYLE=String.raw`
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;background:#f0f3f6;color:#1c3347;font-size:14px}
@@ -52,7 +52,7 @@ button:disabled{opacity:.55;cursor:default}
 .footer{margin:24px 0;color:#64778a;font-size:12px}
 .empty{text-align:center;padding:22px;color:#64778a}
 @media(max-width:650px){.toolbar{grid-template-columns:1fr}.toolbar button{width:100%}.counts{grid-template-columns:repeat(2,minmax(0,1fr))}.review-form{grid-template-columns:1fr}.report>summary{align-items:start;flex-direction:column;gap:5px}.report-entry{padding:11px}.top{padding:16px}}
-\`;
+`;
 const html=(body,script='')=>'<!doctype html><html lang="en"><head><meta charset="utf-8">'+
  '<meta name="viewport" content="width=device-width,initial-scale=1">'+
  '<meta name="theme-color" content="#153349"><title>Old World Companion · Report Admin</title>'+
@@ -84,7 +84,7 @@ export const ADMIN_HTML=html(
  '<script defer src="/admin/client.js"></script>'
 );
 
-export const ADMIN_SCRIPT=String.raw\`
+export const ADMIN_SCRIPT=String.raw`
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const state={data:null};
@@ -112,7 +112,7 @@ function link(text,url){
  e.href=valid;e.target='_blank';e.rel='noopener noreferrer';
  return e;
 }
-const safeFile=file=>/^report-\\d{8}T\\d{9}Z-[0-9a-f-]{36}\\.txt$/i.test(file);
+const safeFile=file=>/^report-\d{8}T\d{9}Z-[0-9a-f-]{36}\.txt$/i.test(file);
 function status(message,error=false){
  $('adminStatus').textContent=message;$('adminStatus').dataset.error=error?'true':'false';
 }
@@ -228,4 +228,4 @@ $('statusFilter').addEventListener('change',draw);
 $('refreshReports').addEventListener('click',()=>void refresh());
 void refresh();
 })();
-\`;
+`;
