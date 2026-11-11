@@ -528,6 +528,53 @@ function joinWrappedTowLines(rawLines) {
     }
     return out;
 }
+/**
+ * Old World Builder can wrap a single bracketed model/equipment description
+ * onto separate "- ..." lines. A wrapped beast selection was incorrectly
+ * counted as three choices ("2x Deepwood Hound ...", "tusks", "teeth)]").
+ *
+ * Rejoin only a bounded, COMPLETE [..(..)] sequence spanning adjacent bullets.
+ * Do not join independent equipment lines or silently consume unfinished data.
+ * The exact original input is preserved separately in result.originalText.
+ */
+export function joinWrappedOwbSelections(lines){
+ const output=[];
+ const depth=text=>{
+  let square=0,round=0,invalid=false;
+  for(const char of text){
+   if(char==='[')square++;
+   else if(char===']'){square--;if(square<0)invalid=true;}
+   else if(char==='(')round++;
+   else if(char===')'){round--;if(round<0)invalid=true;}
+  }
+  return {square,round,invalid};
+ };
+ for(let i=0;i<lines.length;i++){
+  const original=lines[i];
+  const first=original.text.trim();
+  const initial=depth(first);
+  if(!/^-[ ]+(?!#)/.test(first)||!first.includes('[')||
+     initial.invalid||initial.square<=0||initial.round<=0){
+   output.push(original);continue;
+  }
+  let candidate=first,joined=-1;
+  for(let j=i+1;j<Math.min(lines.length,i+5);j++){
+   const next=lines[j].text.trim();
+   if(!/^-[ ]+(?!#)/.test(next)||/\[\d[\d,]*\s*pts?\]\s*$/i.test(next))
+    break;
+   candidate+=', '+next.replace(/^-[ ]+/,'');
+   if(candidate.length>950)break;
+   const current=depth(candidate);
+   if(current.invalid)break;
+   if(current.square===0&&current.round===0){joined=j;break;}
+  }
+  if(joined===-1){output.push(original);continue;}
+  output.push({text:candidate,line:original.line});
+  i=joined;
+ }
+ return output;
+}
+
 /** Pure deterministic parser; does not perform legality checks, points verification or network calls. */
 export function parseArmy(text, override) {
     counter = 0;
@@ -535,9 +582,12 @@ export function parseArmy(text, override) {
     const normalized = normalizeImportText(text);
     const originalLines = normalized.text.replace(/\r\n?/g, '\n').split('\n');
     const format = detectFormat(normalized.text, override);
+    const numberedLines = originalLines.map((text, i) => ({ text, line: i + 1 }));
     const lines = format.exporter === 'new-recruit' && format.layout === 'tow'
         ? joinWrappedTowLines(originalLines)
-        : originalLines.map((text, i) => ({ text, line: i + 1 }));
+        : format.exporter === 'old-world-builder' && format.layout === 'regular-text'
+            ? joinWrappedOwbSelections(numberedLines)
+            : numberedLines;
     const result = { schemaVersion: 1, format, originalText, inputEncoding: normalized.encoding,
         army: { name: unknown(), faction: unknown(), composition: unknown(), gameFormat: unknown(), player: unknown(), reportedPoints: unknown(), limitPoints: unknown(), derivedPoints: unknown() },
         sections: [], units: [], diagnostics: [], stats: { unitCount: 0, selectionCount: 0, modelGroupCount: 0, matchedUnits: 0, matchedSelections: 0, unmatchedSelections: 0, informationalSelections: 0, unmatchedUnits: 0, unparsedLines: 0 } };
