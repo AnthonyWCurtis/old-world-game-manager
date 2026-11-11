@@ -48,7 +48,7 @@ try{
   await action.click();
  };
  await cast('earthen-ramparts',{target:seaId});
- assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
+ assert.match(await sea.locator(':scope > .game-defence-panel .game-unit-active-magic').innerText(),/Earthen Ramparts/);
  assert.match(await sea.locator('[data-save="ward"]').innerText(),/5\+.*all wounds/i);
  await cast('plague-of-rust',{enemy:'Enemy Knights'});
  assert.match(await control.locator('.game-active-spell[data-spell-id="plague-of-rust"]').innerText(),
@@ -69,9 +69,9 @@ try{
   'Robe expires only older enchantments affecting the same unit');
  assert.equal(await control.locator('.game-active-spell[data-spell-id="plague-of-rust"]').count(),1,
   'Enemy-targeted hex is not an Enchantment');
- assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Glittering Robe/);
- assert.match(await sea.locator('.game-defence-incoming').innerText(),/-1 To Hit/);
- assert.equal(await sea.locator('.game-defence-movement').count(),0);
+ assert.match(await sea.locator(':scope > .game-defence-panel .game-unit-active-magic').innerText(),/Glittering Robe/);
+ assert.match(await sea.locator(':scope > .game-defence-panel .game-defence-incoming').innerText(),/-1 To Hit/);
+ assert.equal(await sea.locator(':scope > .game-defence-panel .game-defence-movement').count(),0);
 
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('saved automatically'),
   null,{timeout:15000});
