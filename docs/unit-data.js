@@ -195,3 +195,40 @@ export async function getUnitDetails(army,index,{fetcher=fetch}={}){
  }
  return {records,matched:Object.keys(records).length,errors};
 }
+
+/**
+ * Load source-verified unit records referenced by selected equipment/mount
+ * options. Uses the same pinned 32-shard snapshot as imported units.
+ * No name matching, guessing selected mount type or altering imported data.
+ */
+export async function getSelectedUnitReferenceDetails(army,index,{fetcher=fetch}={}){
+ const entries=new Map((index?.entries||[]).map(e=>[e.sourceUrl,e]));
+ const targets=new Map();
+ const gather=items=>{
+  for(const item of Array.isArray(items)?items:[]){
+   const url=item?.reference?.url,entry=entries.get(url);
+   if(entry?.id==='unit:'+new URL(entry.sourceUrl).pathname.split('/')[2])
+    targets.set(url,entry);
+   gather(item?.children);
+  }
+ };
+ for(const unit of army?.units||[]){
+  gather(unit.selections);
+  for(const group of unit.modelGroups||[])gather(group.selections);
+ }
+ const byUrl={},errors=[];
+ const shards=new Set([...targets.values()].map(e=>e.shard));
+ for(const shardId of shards){
+  try{
+   const shard=await getShard(index,shardId,fetcher);
+   for(const [url,entry] of targets){
+    if(entry.shard!==shardId)continue;
+    const record=shard.records?.[entry.id];
+    if(record?.id===entry.id&&record?.source?.sourceUrl===url&&
+     record.source.verificationStatus==='source-extracted')
+     byUrl[url]=record;
+   }
+  }catch(error){errors.push(shardId+': '+String(error?.message||error));}
+ }
+ return {byUrl,errors};
+}
