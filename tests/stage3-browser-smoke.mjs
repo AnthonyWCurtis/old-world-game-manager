@@ -44,7 +44,7 @@ try{
  assert.equal(await assigned(firstRegiment).count(),1);
  assert.equal(await assigned(secondRegiment).count(),1);
  const nested=assigned(secondRegiment).first();
- await nested.locator('summary').click();
+ await nested.locator('summary').first().click();
  assert.match(await nested.innerText(),/Imported selections/);
  await nested.locator('button.game-character-remove').click();
  assert.equal(await assigned(secondRegiment).count(),0);
