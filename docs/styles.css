@@ -513,3 +513,58 @@
  .game-nav-tab .game-nav-icon{font-size:18px}
 }
 @media(prefers-reduced-motion:reduce){.game-workspace-panel{animation:none}}
+
+
+/* Unified source-reviewed effects; compact by default for tabletop phones. */
+.game-effects-panel{margin:13px 11px;padding:11px;background:#f8fafc;border:1px solid #ccdae5;border-radius:12px;min-width:0}
+.game-effects-panel h4{margin:0 0 5px;color:#234962;font-size:16px}
+.game-effect-counts,.game-effect-empty{margin:4px 0 9px;font-size:12px;color:#547085;line-height:1.5}
+.game-effects-list{display:grid;gap:8px;min-width:0}
+.game-effect-card{border:1px solid #ccd9e1;border-radius:10px;min-width:0;overflow:hidden;background:#fff}
+.game-effect-summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;
+ min-height:54px;padding:9px 11px;list-style-position:inside}
+.game-effect-summary::marker{color:#507792}
+.game-effect-title{display:flex;flex-direction:column;gap:3px;min-width:0;overflow-wrap:anywhere}
+.game-effect-title strong{font-size:14px;color:#233f55;line-height:1.3}
+.game-effect-kind{font-size:11px;color:#627b8e}
+.game-effect-badge{flex-shrink:0;max-width:45%;padding:5px 7px;background:#e7eff5;
+ color:#30556b;border-radius:8px;font-size:11px;font-weight:800;text-align:center;line-height:1.25}
+.game-effect-badge-active{background:#d7f0e0;color:#1e6538}
+.game-effect-badge-ready{background:#e3efff;color:#275a79}
+.game-effect-badge-spent{background:#f6e8e5;color:#7a4c42}
+.game-effect-badge-conditional{background:#fff0d5;color:#7a5624}
+.game-effect-badge-bound-spell{background:#ebe6fa;color:#5e4d86}
+.game-effect-details{padding:10px 12px 13px;border-top:1px solid #dfebf1;display:grid;gap:8px}
+.game-effect-details p{margin:0;overflow-wrap:anywhere}
+.game-effect-description{font-size:13px;line-height:1.55;color:#233e52}
+.game-effect-scope{font-size:12px;color:#4a6981;line-height:1.5}
+.game-effect-caution{font-size:12px;color:#79643f;line-height:1.45}
+.game-effect-source-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.game-effect-source{font-size:12px;font-weight:700;color:#265e82;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.game-effect-actions{display:flex;gap:8px;flex-wrap:wrap}
+.game-effect-action{min-height:48px;min-width:0;flex:1;padding:10px 12px;
+ border-radius:10px;border:1px solid #abc4d4;background:#e7f1f8;color:#234d69;
+ font-size:13px;font-weight:750}
+.game-effect-action:hover,.game-effect-action:focus-visible{background:#d4e8f5;outline-offset:2px}
+.game-card-chip-item{background:#ecedf9;color:#484e7e}
+.game-card-chip-spent{background:#f4e8e6;color:#80544b}
+.game-magic-items-panel{margin:16px 0}
+.game-magic-item-group{padding:11px 0;border-top:1px solid #cfdae2}
+.game-magic-item-group h3{font-size:14px;color:#254f6e;margin:0 0 7px}
+.game-overview-item-drawer{margin-top:10px;background:#f4f8fa;border:1px solid #d0dce4;padding:8px 11px;border-radius:10px}
+.game-overview-item-drawer>summary{min-height:48px;display:list-item;align-content:center;
+ cursor:pointer;color:#275471;font-weight:750;font-size:13px}
+.game-overview-item-list{display:grid;gap:5px;list-style:none;margin:10px 0 2px;padding:0}
+.game-overview-item{padding:8px 6px;border-top:1px solid #d9e4ec;display:flex;
+ gap:6px;align-items:baseline;flex-wrap:wrap;overflow-wrap:anywhere}
+.game-overview-item strong{font-size:12px}
+.game-overview-item span{font-size:12px;color:#576f7e}
+.game-overview-item small{font-size:11px;color:#6d5c40}
+.game-overview-item a{font-size:11px;color:#245e81}
+@media(max-width:480px){
+ .game-effects-panel{margin:11px 7px;padding:9px}
+ .game-effect-summary{padding:9px}
+ .game-effect-badge{font-size:10px}
+ .game-effect-title strong{font-size:13px}
+ .game-effect-action{width:100%}
+}
