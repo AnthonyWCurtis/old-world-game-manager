@@ -19,7 +19,7 @@ const submitted=readFileSync(new URL('../reports/unmatched/report-20261111T13155
 
 const example=`===
 Woodland March [500 pts]
-Wood Elf Realms, Battle March
+Warhammer: The Old World, Wood Elf Realms, Battle March
 ===
 ++ Characters [405 pts] ++
 Orion [405 pts]
