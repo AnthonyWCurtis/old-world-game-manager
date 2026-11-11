@@ -83,6 +83,7 @@ try{
  assert.match(await control.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
 
  // A brand-new browser tab with no selected army must not guess an army.
+ await context.setOffline(false);
  const empty=await context.newPage();
  await empty.goto('http://127.0.0.1:8787/#army-roster',{waitUntil:'domcontentloaded'});
  await empty.locator('#importPage').waitFor({state:'visible'});
