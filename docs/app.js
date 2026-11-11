@@ -277,7 +277,7 @@ function handleWizardKnownSpell(unitId,spellId,known){
  if(!current)return;
  try{
   const army=current;
-  const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,indexedSpells(magicIndex));
+  const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,magicIndex);
   void persistPlayerCustomization(army,state,'known spells',false);
  }catch(error){
   battleStateStatus('Spell selection not saved: '+(error?.message||error),'error');
