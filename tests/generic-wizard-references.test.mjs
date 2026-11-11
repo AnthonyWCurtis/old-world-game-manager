@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {parseArmy} from '../docs/parser.js';
 import {allArmySelections} from '../docs/selection-information.js';
+import {shardForId} from '../scripts/build-browser-unit-data.mjs';
+import {applySourceScopedSelectionReferences} from '../docs/unit-selection-matcher.js';
 import {matchWizardRuleReference,applyGenericWizardReferences} from '../docs/wizard-references.js';
 
 const fixture=readFileSync(new URL('../docs/examples/owb-regular.txt',import.meta.url),'utf8');
@@ -50,7 +52,7 @@ test('the real 17-entry 2,599-point Storm Weaver import resolves nested Wizard w
  assert.equal(wizard.reference.url,'https://tow.whfb.app/magic/wizards');
  assert.equal(wizard.reference.eligibilityVerified,false);
  assert.deepEqual(level.reference,childRef);
- assert.equal(army.stats.unmatchedSelections,before-1);
+ assert.equal(army.stats.unmatchedSelections,before-result.added);
  assert.equal(army.units.length,17);
  assert.equal(army.army.derivedPoints.value,2599);
  assert.equal(army.army.reportedPoints.value,2599);
@@ -83,4 +85,40 @@ test('generic pass covers model-group selections and never overwrites a reviewed
  assert.equal(a.selections[2].reference,null);
  assert.equal(army.stats.unmatchedSelections,1);
  assert.equal(allArmySelections(army).length,4);
+});
+
+test('unit-page wizard evidence refines the generic link, but only for that specific parent',()=>{
+ const army=parseArmy(fixture);
+ const mage=army.units.find(u=>u.name==='Mage');
+ const storm=army.units.find(u=>u.name==='Storm Weaver');
+ const generic=applyGenericWizardReferences(army);
+ assert.ok(generic.added>=1);
+ const mageWizard=mage.selections.find(s=>s.name==='Wizard');
+ const stormWizard=storm.selections.find(s=>s.name==='Wizard');
+ assert.equal(mageWizard.reference.source,'generic-wizard-rule');
+ assert.equal(stormWizard.reference.source,'generic-wizard-rule');
+ const readRecord=slug=>{
+  const id='unit:'+slug;
+  const shard=shardForId(id);
+  return JSON.parse(readFileSync(new URL('../docs/unit-data/shards/'+shard+'.json',import.meta.url),'utf8')).records[id];
+ };
+ const records={[mage.id]:readRecord('mage'),[storm.id]:readRecord('storm-weaver')};
+ const result=applySourceScopedSelectionReferences(army,records);
+ assert.equal(result.added,0,'Replacing a generic reference is refinement, not a newly matched selection');
+ assert.equal(mageWizard.reference.source,'unit-scoped-data');
+ assert.equal(mageWizard.reference.evidence,'source-page-magic-clause');
+ assert.equal(stormWizard.reference.source,'generic-wizard-rule',
+  'Storm Weaver has no stored parent-specific wizard evidence, so generic link remains');
+ assert.equal(army.army.derivedPoints.value,2599);
+ assert.equal(army.stats.unmatchedSelections,0);
+});
+
+test('live app applies the generic pass to imported and saved armies before source refresh',()=>{
+ const app=readFileSync(new URL('../docs/app.js',import.meta.url),'utf8');
+ const shell=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
+ assert.match(app,/import \{applyGenericWizardReferences\} from '\.\/wizard-references\.js/);
+ assert.match(app,/current=parseArmy\(input,sourceOverride\(\)\);applyInformationalPlaceholders\(current\);applyGenericWizardReferences\(current\)/);
+ assert.match(app,/current=restoreStoredImport\(loaded\);applyInformationalPlaceholders\(current\);applyGenericWizardReferences\(current\)/);
+ assert.match(app,/selection\.reference\?\.source==='generic-wizard-rule'/);
+ assert.match(shell,/\.\/wizard-references\.js/);
 });
