@@ -1,4 +1,5 @@
 import {createGameScreenModel} from './game-screen-model.js';
+import {evaluateDefences} from './defence-engine.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -250,7 +251,7 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment){
  return row;
 }
 
-function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment){
+function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse){
  const panel=el(doc,'details','game-attached-character');
  panel.dataset.characterId=character.id;
  panel.dataset.regimentId=unitId;
@@ -263,6 +264,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  const sourceCard=unitCard(doc,imported,character.index,record,fallback,false);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
+ body.append(renderDefencePanel(doc,defence,onShieldUse));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
  remove.type='button';
  remove.addEventListener('click',()=>onAssignment(character.id,null));
@@ -271,7 +273,84 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  return panel;
 }
 
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{}){
+
+/**
+ * A defence panel never conflates an equipped model's save with that of a
+ * different character, or a Magic Missile-only Ward with an all-purpose Ward.
+ */
+function renderDefencePanel(doc,defence,onShieldUse=()=>{}){
+ const panel=el(doc,'section','game-defence-panel');
+ panel.dataset.unitId=defence.id;
+ const heading=el(doc,'div','game-defence-heading');
+ heading.append(el(doc,'strong','','Defence summary'));
+ heading.append(el(doc,'span','','Equipment-only armour · source-backed conditional saves'));
+ panel.append(heading);
+
+ const activeWard=[...defence.ward,...defence.sharedWard].filter(entry=>entry.available);
+ const wardPreview=activeWard.length?
+  activeWard.map(entry=>entry.label+' · '+entry.condition).join(' / '):
+  defence.ward.some(entry=>entry.available===false)?'Spent or not currently available':'Not established';
+ const regenPreview=defence.regeneration.length?
+  defence.regeneration.map(entry=>entry.label+' · bearer only').join(' / '):'Not established';
+ const metrics=el(doc,'div','game-defence-values');
+ for(const [name,display,key] of [
+  ['Armour',defence.armour.label,'armour'],
+  ['Ward',wardPreview,'ward'],
+  ['Regeneration',regenPreview,'regeneration']
+ ]){
+  const item=el(doc,'div','game-defence-stat');
+  item.dataset.save=key;
+  item.append(el(doc,'span','',name),el(doc,'strong','',display));
+  metrics.append(item);
+ }
+ panel.append(metrics);
+ const notes=el(doc,'details','game-defence-details');
+ const sum=el(doc,'summary','','Sources, scope and conditions');
+ notes.append(sum);
+ const body=el(doc,'div','game-defence-detail-body');
+ body.append(el(doc,'p','',defence.armour.note));
+ body.append(safeLink(doc,'Armour value',defence.armour.sources[0],'game-defence-source'));
+ if(defence.armour.sources.length>1)
+  body.append(safeLink(doc,'Shield rules',defence.armour.sources[1],'game-defence-source'));
+ const addRule=(entry,cssClass='game-defence-conditional')=>{
+  const block=el(doc,'div',cssClass);
+  block.append(el(doc,'strong','',entry.name+' — '+(entry.label||'defensive rule')));
+  block.append(el(doc,'p','',entry.condition+' · '+entry.scope+
+   (entry.available===false?' · Already used — no longer available':'')+
+   (entry.status?.includes('joining')?' · Join legality not verified':'')));
+  block.append(safeLink(doc,'View source rule',entry.sourceUrl,'game-defence-source'));
+  body.append(block);
+ };
+ for(const entry of defence.ward)addRule(entry);
+ for(const entry of defence.regeneration)addRule(entry);
+ for(const entry of defence.sharedWard){
+  addRule({...entry,name:entry.name+' (from '+entry.fromCharacterName+')'});
+ }
+ for(const champion of defence.champions){
+  for(const entry of champion.ward){
+   addRule({...entry,name:champion.name+': '+entry.name},'game-defence-champion');
+  }
+ }
+ for(const rule of defence.otherEffects)addRule(rule,'game-defence-conditional');
+ body.append(el(doc,'p','game-defence-disclaimer',
+  'These values exclude enemy Armour Piercing, spell effects and unverified special rules. Conditional saves are not universal saves. Joined-character eligibility is not validated.'));
+ notes.append(body);panel.append(notes);
+ const charmed=defence.ward.find(w=>w.name==='Charmed Shield');
+ if(defence.isCharacter&&charmed){
+  const wrap=el(doc,'label','game-defence-shield-used');
+  const checkbox=el(doc,'input');
+  checkbox.type='checkbox';
+  checkbox.checked=charmed.available===false;
+  checkbox.setAttribute('aria-label','Charmed Shield has been used for '+defence.name);
+  checkbox.addEventListener('change',()=>onShieldUse(defence.id,checkbox.checked));
+  wrap.append(checkbox,el(doc,'span','',
+   'Charmed Shield already used (once per game)'));
+  panel.append(wrap);
+ }
+ return panel;
+}
+
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{}){
  const doc=container.ownerDocument||document;
  const opened=new Set([...container.querySelectorAll('article[data-unit-id] details.army-unit-source-details[open]')]
   .map(node=>node.closest('article[data-unit-id]')?.dataset.unitId).filter(Boolean));
@@ -297,6 +376,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const card=unitCard(doc,imported,entry.index,records[entry.id],
    fallbackProfiles[imported.reference?.url],opened.has(entry.id));
   card.classList.add('game-character-card');
+  card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
   const target=displayId.get(assignments[entry.id]);
   card.append(el(doc,'p','game-membership-label',
    target?'Assigned to '+target.name+' · entry '+target.index:'Independent · no regiment assigned'));
@@ -330,6 +410,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const card=unitCard(doc,imported,entry.index,records[entry.id],
     fallbackProfiles[imported.reference?.url],opened.has(entry.id));
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
+   card.append(renderDefencePanel(doc,evaluateDefences(army,session,entry.id),onShieldUse));
    const memberArea=el(doc,'section','game-assigned-characters');
    memberArea.append(el(doc,'h4','','Assigned characters ('+memberList.length+')'));
    if(!memberList.length)
@@ -339,7 +420,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     if(!original)continue;
     memberArea.append(attachedCharacter(doc,character,original,records[character.id],
      fallbackProfiles[original.reference?.url],entry.id,
-     openMembers.has(entry.id+':'+character.id),onAssignment));
+     openMembers.has(entry.id+':'+character.id),onAssignment,
+      evaluateDefences(army,session,character.id),onShieldUse));
    }
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment));
