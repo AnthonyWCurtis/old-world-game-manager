@@ -4,6 +4,7 @@ on:
     paths:
       - 'scripts/refresh-source-profiles.mjs'
       - 'scripts/extract-wizard-magic.mjs'
+      - 'scripts/extract-published-armour.mjs'
       - '.github/workflows/refresh-source-profiles.yml'
   schedule:
     - cron: '23 4 * * *'
