@@ -40,7 +40,8 @@ export function auditCoverage(sitemap,catalogue,shards){
  const byCatalogue=new Map(catalogueEntries.map(e=>[e.sourceUrl,e]));
  const bySitemap=new Map(unitEntries.map(e=>[e.url,e]));
  const records=new Map();
- for(const [shardId,shard] of Object.entries(shards||{})){
+ for(const [shardId,payload] of Object.entries(shards||{})){
+  const shard=payload?.records;
   if(!shard||typeof shard!=='object'||Array.isArray(shard)){
    errors.push(issue('INVALID_SHARD','shard',null,'Invalid shard '+shardId));continue;
   }
@@ -96,7 +97,7 @@ export async function runAudit({root=ROOT,output=join(ROOT,'coverage-report.json
  const shards={};
  for(let i=0;i<catalogue.shards;i++){
   const id=i.toString(16).padStart(2,'0');
-  shards[id]=await load('docs/unit-data/'+id+'.json');
+  shards[id]=await load('docs/unit-data/shards/'+id+'.json');
  }
  const result=auditCoverage(sitemap,catalogue,shards);
  await mkdir(dirname(output),{recursive:true});
