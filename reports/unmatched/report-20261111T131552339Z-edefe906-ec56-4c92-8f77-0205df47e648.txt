@@ -1,0 +1,75 @@
+Warhammer: The Old World — Unmatched Source Reference Report
+Report ID: edefe906-ec56-4c92-8f77-0205df47e648
+Submitted: 2026-11-11T13:15:52.339Z
+Export format: old-world-builder / regular-text
+Faction: Wood Elf Realms
+Unmatched entries: 11
+
+Each item is an unmatched source reference, not a declaration of invalid army composition.
+No player name, original army list, IP address or matched selections included.
+
+[1] UNIT: Orion
+  Parent unit: Orion
+  Kind: unknown
+  Source line: 8
+  Parent unit reference: -
+
+[2] SELECTION: Spear of Kurnous
+  Parent unit: Orion
+  Kind: equipment
+  Source line: 12
+  Parent unit reference: -
+
+[3] SELECTION: 2x Deepwood Hound [Hand weapons (Claws + fangs
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 62
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[4] SELECTION: tusks
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 63
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[5] SELECTION: teeth)]
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 64
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[6] SELECTION: 2x Deepwood Hound [Hand weapons (Claws + fangs
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 67
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[7] SELECTION: tusks
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 68
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[8] SELECTION: teeth)]
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 69
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[9] SELECTION: 1x Deepwood Hound [Hand weapons (Claws + fangs
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 72
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[10] SELECTION: tusks
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 73
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
+
+[11] SELECTION: teeth)]
+  Parent unit: Wood Elf Beast Pack
+  Kind: option
+  Source line: 74
+  Parent unit reference: https://tow.whfb.app/unit/wood-elf-beast-pack
