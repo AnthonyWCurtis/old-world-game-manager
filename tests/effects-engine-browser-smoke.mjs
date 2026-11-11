@@ -26,7 +26,7 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  assert.match(await sea.locator('.game-card-status').innerText(),/equipped/);
  assert.match(await sea.locator('.game-card-status').innerText(),/conditional/);
- assert.match(await sea.locator('.game-card-status').innerText(),/Armour Bane \\(2\\)/,
+ assert.match(await sea.locator('.game-card-status').innerText(),/Armour Bane \(2\)/,
   'Collapsed Sea Guard must name its offensive standard instead of showing only a generic item count');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
@@ -36,13 +36,13 @@ try{
   'game-offensive-effects-panel','Offensive effects should be above Defence summary');
  const razorQuick=offence.locator('.game-offensive-effect[data-effect-id="razor-standard"]');
  assert.equal(await razorQuick.count(),1);
- assert.match(await razorQuick.innerText(),/Armour Bane \\(2\\)/);
+ assert.match(await razorQuick.innerText(),/Armour Bane \(2\)/);
  assert.match(await razorQuick.innerText(),/Natural 6 To Wound/);
  assert.match(await razorQuick.innerText(),/AP improves by 2 for that wound only/);
  assert.match(await razorQuick.innerText(),/not for spells/i);
  assert.equal(await razorQuick.locator('a').filter({hasText:'How Armour Bane (2) works'}).getAttribute('href'),
   'https://tow.whfb.app/special-rules/armour-bane');
- assert.match(await sea.locator('.game-defence-panel [data-save="armour"]').innerText(),/5\\+/,
+ assert.match(await sea.locator('.game-defence-panel [data-save="armour"]').innerText(),/5\+/,
   'Razor Standard must never change the defending Sea Guard armour value');
  const razor=sea.locator('.game-effects-panel .game-effect-card[data-effect-id="razor-standard"]');
  assert.equal(await razor.count(),1);
