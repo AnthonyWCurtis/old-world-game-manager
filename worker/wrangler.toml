@@ -4,10 +4,17 @@ compatibility_date = "2026-07-01"
 
 [vars]
 ALLOWED_ORIGIN = "https://anthonywcurtis.github.io"
+# Admin origin is served directly by this Worker (first-party login cookies).
+ADMIN_PUBLIC_ORIGIN = "https://old-world-unmatched-reports.oldworldcompanion.workers.dev"
+ADMIN_GITHUB_LOGIN = "AnthonyWCurtis"
+# Set after registering the GitHub OAuth app, then redeploy.
+ADMIN_GITHUB_CLIENT_ID = ""
 
 # Add these SECRETS in Cloudflare Workers. Do not commit secret values.
 # GITHUB_TOKEN = fine-grained GitHub token for this repository (Contents: Read and write)
 # TURNSTILE_SECRET = Turnstile secret key
+# GITHUB_OAUTH_CLIENT_SECRET = GitHub OAuth app client secret (ADMIN ONLY)
+# ADMIN_SESSION_SECRET = random 32+ character HMAC signing key (ADMIN ONLY)
 #
 # Limits reports per client address to reduce spam in the public repository.
 [[ratelimits]]

@@ -41,3 +41,65 @@ These steps are retained for future recovery or a fresh deployment.
 - **Status:** The app confirms success only after GitHub accepts the file. If submission fails, players can still use the existing **Copy unmatched debug** feature.
 
 **Ongoing requirements:** Maintain the Cloudflare Worker, Turnstile keys and server-side GitHub write token (which may expire). If the token expires or Worker is disabled, submissions will fail until restored. Turnstile and rate limiting reduce spam but cannot eliminate it. Reports remain publicly visible. Never publish private credentials.
+
+---
+
+## Owner-only Report Admin (new)
+
+**Current state:** The code now contains an authenticated admin console, but **GitHub OAuth must be configured and the Worker redeployed before login works**. Simply merging a GitHub PR does not deploy the separately hosted Cloudflare Worker.
+
+**Admin URL after activation:** https://old-world-unmatched-reports.oldworldcompanion.workers.dev/admin
+
+### 1. Register the GitHub OAuth App
+
+Sign into the GitHub account allowed to administer the repository (default allowlist: `AnthonyWCurtis`). Visit [GitHub Developer Settings](https://github.com/settings/developers) → **OAuth Apps** → **New OAuth App**.
+
+- **Application name:** `Old World Companion Admin`
+- **Homepage URL:** `https://old-world-unmatched-reports.oldworldcompanion.workers.dev/admin`
+- **Authorization callback URL:** `https://old-world-unmatched-reports.oldworldcompanion.workers.dev/auth/callback`
+
+Copy the **Client ID** (public) and generate a **Client secret** (private). The OAuth flow requests no private repository scopes; the Worker independently checks the signed-in GitHub account identity using `GET /user`. The existing Worker GitHub contents token handles permitted repository writes only on the server.
+
+### 2. Set the public Worker configuration
+
+In `worker/wrangler.toml`, replace the empty `ADMIN_GITHUB_CLIENT_ID = ""` with your actual client ID. Keep:
+
+- `ADMIN_PUBLIC_ORIGIN = "https://old-world-unmatched-reports.oldworldcompanion.workers.dev"`
+- `ADMIN_GITHUB_LOGIN = "AnthonyWCurtis"` (change only if the authorized GitHub account differs).
+
+The repository version does **not** contain the private OAuth client secret.
+
+### 3. Add private Cloudflare secrets
+
+Using your own trusted terminal (do **not** send the secrets in ChatGPT or commit them):
+
+```powershell
+cd worker
+npx wrangler@latest login
+npx wrangler@latest secret put GITHUB_OAUTH_CLIENT_SECRET
+npx wrangler@latest secret put ADMIN_SESSION_SECRET
+npx wrangler@latest deploy
+```
+
+Enter the GitHub OAuth **Client secret** when prompted for `GITHUB_OAUTH_CLIENT_SECRET`. For `ADMIN_SESSION_SECRET`, generate a unique random 32-byte (or longer) key and paste only into Wrangler. One way to generate it locally:
+
+```powershell
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+The existing `GITHUB_TOKEN`, `TURNSTILE_SECRET`, and `REPORT_RATE_LIMITER` must remain configured for public reports. Do not replace or reveal the existing GitHub write token.
+
+### 4. Confirm end-to-end operation
+
+1. Open the admin URL above in a private browser window. It must offer **Sign in with GitHub**, and `/admin/api/reports` must reject unauthorized requests with **401**.
+2. Sign into the configured GitHub account, approve the OAuth app and confirm you see the submitted report queue.
+3. Open a report, inspect a missing source reference and save an **Investigating** status with a short note.
+4. Confirm the status is saved to `reports/admin/reviews.json` in GitHub. The UI and notes are **public**; do not enter secrets, player details or confidential material.
+5. Test **Sign out** and confirm protected API requests fail.
+6. Submit a public unmatched report from the normal Game Manager to confirm the existing Turnstile/rate-limited `POST /report` flow still works.
+
+**Security:** Admin cookies are first-party on the Worker domain and signed, `HttpOnly`, `Secure`, `SameSite=Lax` and valid for at most 8 hours. OAuth uses random state and PKCE. All POST mutations require an authenticated session plus same-origin `Origin`; the Worker never sends write credentials to browser JavaScript. The dashboard uses a strict Content-Security-Policy, no `innerHTML`, and rejects arbitrary report paths.
+
+**Report scope:** The current public submissions include **only missing reference names, parent units, source lines and URLs**. The admin page can review the problems; it cannot reconstruct complete pasted army lists or identify the player. The archive and review file are public GitHub content. Changing an entry's review status is **triage only**: it does not fix source matching or remove the entry from `ALL_UNMATCHED.txt` until the verified catalogue/parser is updated and the aggregation runs. A `Fixed` review status requires a project PR or commit evidence URL.
+
+**Troubleshooting:** If the admin page says `not yet configured`, verify the public client ID and both new secrets, then redeploy. A 403 after GitHub login means that account is not on the configured allowlist. A 502 when saving reviews means Worker `GITHUB_TOKEN` access or GitHub's Contents API must be checked; repository file updates use SHA-retry to handle concurrent changes. If the domain changes, update both the Worker origin and GitHub OAuth callback URL.

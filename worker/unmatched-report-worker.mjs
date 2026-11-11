@@ -13,6 +13,7 @@
  *
  * Requires a Turnstile site key in docs/report-config.json on GitHub Pages.
  */
+import {handleAdminRequest} from './admin-api.mjs';
 const REPO='AnthonyWCurtis/old-world-game-manager';
 const SOURCE='https://tow.whfb.app';
 const MAX_BYTES=20000;
@@ -98,6 +99,12 @@ const encodeBase64=text=>{
 };
 export default {
  async fetch(request,env){
+  // Authenticated admin routes are first-party Worker pages; public /report
+  // preserves its separate Turnstile, Origin, rate-limit and consent gates.
+  const path=new URL(request.url).pathname;
+  if(path==='/admin'||path.startsWith('/admin/')||
+     path==='/auth/github'||path==='/auth/callback')
+   return handleAdminRequest(request,env);
   const allowed=String(env.ALLOWED_ORIGIN||'https://anthonywcurtis.github.io').replace(/\/$/,'');
   const origin=request.headers.get('Origin');
   if(origin!==allowed)

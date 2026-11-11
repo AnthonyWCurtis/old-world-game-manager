@@ -8,6 +8,16 @@
 
 > **Important:** At present this is a roster importer and viewer, **not** a combat calculator or army-legality checker. Source links and extracted profiles do not prove a selection is legal or correctly costed.
 
+## Owner report dashboard (activation required)
+
+An owner-only **Report Admin** dashboard has been implemented in the existing Cloudflare Worker, ready for GitHub OAuth activation. After the owner registers an OAuth app and sets the private Cloudflare secrets, the dashboard is accessed at:
+
+**https://old-world-unmatched-reports.oldworldcompanion.workers.dev/admin**
+
+It reads the real public submissions under [reports/unmatched](reports/unmatched), displays source links, source lines, faction, exporter and reported selections, and records review status and source/PR evidence separately in [reports/admin/reviews.json](reports/admin/reviews.json). It does **not** receive full army lists, and marking an issue reviewed does not alter the app's rules catalogue. The reports and review notes are public on GitHub.
+
+**This is not live login functionality until the Cloudflare Worker is redeployed with a configured GitHub OAuth app.** See [Admin setup and deployment](ANONYMOUS_REPORTING_SETUP.md#owner-only-report-admin-new) for the exact callback URL and secret setup. The existing public reporting flow remains separate.
+
 ## The long-term goal
 
 A player should be able to paste an army list and then use a clear, mobile-friendly **Game Screen** for the duration of a Warhammer: The Old World battle:
