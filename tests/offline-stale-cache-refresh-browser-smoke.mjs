@@ -75,7 +75,8 @@ try{
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
- await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
+ if(await page.locator('#importPage').isVisible())
+  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('recovered'),null,{timeout:15000});
  assert.equal(await panel.locator('.game-spell-caster').count(),1,

@@ -13,6 +13,7 @@ on:
       - 'tests/mobile-responsive-browser-smoke.mjs'
       - 'tests/known-spell-battle-browser-smoke.mjs'
       - 'tests/offline-stale-cache-refresh-browser-smoke.mjs'
+      - 'tests/game-screen-return-navigation-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   pull_request:
     paths:
@@ -25,6 +26,7 @@ on:
       - 'tests/mobile-responsive-browser-smoke.mjs'
       - 'tests/known-spell-battle-browser-smoke.mjs'
       - 'tests/offline-stale-cache-refresh-browser-smoke.mjs'
+      - 'tests/game-screen-return-navigation-browser-smoke.mjs'
       - '.github/workflows/verify-v1-browser.yml'
   workflow_dispatch:
 permissions:
@@ -54,3 +56,4 @@ jobs:
           node tests/mobile-responsive-browser-smoke.mjs
           node tests/known-spell-battle-browser-smoke.mjs
           node tests/offline-stale-cache-refresh-browser-smoke.mjs
+          node tests/game-screen-return-navigation-browser-smoke.mjs

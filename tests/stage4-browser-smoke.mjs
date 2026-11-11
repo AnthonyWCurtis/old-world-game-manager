@@ -58,7 +58,8 @@ try{
 
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
- await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
+ if(await page.locator('#importPage').isVisible())
+  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('recovered'),null,{timeout:15000});
  const restored=page.locator('#gameCharacters .game-character-card[data-unit-id="'+skyId+'"] .game-defence-panel');

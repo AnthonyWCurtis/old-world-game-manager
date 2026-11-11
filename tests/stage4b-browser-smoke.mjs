@@ -81,7 +81,8 @@ try{
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
- await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
+ if(await page.locator('#importPage').isVisible())
+  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('recovered'),
   null,{timeout:15000});

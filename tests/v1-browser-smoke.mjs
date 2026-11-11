@@ -58,7 +58,8 @@ try{
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
- await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
+ if(await page.locator('#importPage').isVisible())
+  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  const reopenedWizardLinks=await page.locator('#units .selection').evaluateAll(nodes=>nodes
   .filter(node=>/^Wizard\s*\[Level [1-4] Wizard\]$/.test(node.querySelector('.selection-name')?.textContent?.trim()||''))
