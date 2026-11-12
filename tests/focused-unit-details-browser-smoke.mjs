@@ -70,6 +70,7 @@ try{
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
+  await page.waitForFunction(()=>document.querySelector('#gameUnitFocusBack')?.getBoundingClientRect().height>=44,null,{timeout:5000});
   const height=await page.locator('#gameUnitFocusBack').evaluate(el=>el.getBoundingClientRect().height);
   const diagnostics=await page.evaluate(()=>{
    const root=document.querySelector('#armyRosterPage'),panel=document.querySelector('#gameUnitsPanel'),
