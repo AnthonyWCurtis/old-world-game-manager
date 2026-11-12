@@ -765,3 +765,9 @@
  .game-attack-phase{padding:10px;gap:8px}
  .game-attack-phase .game-attack-stat{min-height:47px}
 }
+
+/* v0.9: distinguish equipment retained in an import from the weapon actually fired. */
+.game-attack-weapon-choice{
+ padding:7px 9px;border-left:3px solid #8da7bc;
+ background:#f1f6fa;border-radius:5px;
+}
