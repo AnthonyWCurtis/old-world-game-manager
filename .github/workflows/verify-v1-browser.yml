@@ -9,6 +9,7 @@ on:
       - 'tests/tactical-magic-contrast-browser-smoke.mjs'
       - 'tests/tactical-command-browser-smoke.mjs'
       - 'tests/focused-unit-details-browser-smoke.mjs'
+      - 'tests/roster-long-press-reorder-browser-smoke.mjs'
       - 'tests/compact-roster-browser-smoke.mjs'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
@@ -67,6 +68,7 @@ jobs:
           node tests/tactical-magic-contrast-browser-smoke.mjs
           node tests/tactical-command-browser-smoke.mjs
           node tests/focused-unit-details-browser-smoke.mjs
+          node tests/roster-long-press-reorder-browser-smoke.mjs
           node tests/compact-roster-browser-smoke.mjs
           node tests/v1-browser-smoke.mjs
           node tests/stage3-browser-smoke.mjs
