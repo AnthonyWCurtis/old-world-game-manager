@@ -53,8 +53,8 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
   name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope
  }));
  return {melee,boundSpells,otherBoundSpells,magicWeapons,
-  offensiveEffects:attacking.filter(e=>e.effectGroup==='offensive'&&
-   e.quickLabel&&e.quickDetail)};
+  offensiveEffects:(Array.isArray(effects)?effects:[]).filter(e=>
+   e.effectGroup==='offensive'&&e.quickLabel&&e.quickDetail&&e.status!=='spent')};
 }
 const stat=(doc,label,value)=>{
  const box=el(doc,'div','game-attack-stat');
@@ -105,7 +105,7 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   if(spell.specialRules?.length)
    group.append(el(doc,'p','game-attack-subtitle',spell.specialRules.join(' · ')));
   group.append(el(doc,'p','game-attack-caution',
-   'Casting requires a successful roll; targets, dispels and damage are not resolved automatically. Not a normal weapon attack.'));
+   'Requires casting and may be dispelled. Magic Missiles cannot be cast after marching or as a Stand & Shoot reaction. Targeting and damage are not resolved automatically; this is not a normal weapon attack.'));
   const links=el(doc,'div','game-attack-links');
   links.append(sourceLink(doc,'Spell rules',spell.url));
   links.append(sourceLink(doc,'Item rules',entry.sourceUrl));
