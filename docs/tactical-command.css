@@ -546,3 +546,34 @@ body.tactical-ui{
 @media(prefers-reduced-motion:reduce){
  .tactical-ui #armyRosterList .army-unit-card.game-roster-dragging{transform:none}
 }
+
+
+/* Reviewed source-rule effects and compact benefit names.
+ * Never clip a verified joining benefit behind the legacy one-line status row.
+ */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-card-status{
+ max-height:none;overflow:visible;flex-wrap:wrap;row-gap:5px;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-card-chip{
+ white-space:normal;max-width:100%;overflow-wrap:anywhere;line-height:1.45;
+ padding:3px 7px;
+}
+.tactical-ui .game-published-rules-reference{
+ margin:13px 0 4px;padding:0 11px 10px;
+ background:#1b3045;border:1px solid #455f76;border-radius:10px;
+ color:#eaf3fb;
+}
+.tactical-ui .game-published-rules-reference:not([open]){padding-bottom:0}
+.tactical-ui .game-published-rules-reference>summary{
+ min-height:47px;display:list-item;align-content:center;
+ color:#f1d3a1;font-size:13px;font-weight:750;cursor:pointer;
+}
+.tactical-ui .game-published-rules-reference .game-effect-caution{
+ color:#d0dfeb;font-size:13px;
+}
+.tactical-ui .game-published-rules-list{
+ display:grid;gap:8px;list-style:disc;margin:8px 0 6px;padding-left:21px;
+}
+.tactical-ui .game-published-rules-list a{
+ color:#f1d3a1;font-size:14px;
+}
