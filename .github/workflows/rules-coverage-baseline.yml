@@ -1,0 +1,39 @@
+name: Verify rules coverage baseline
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/rules-coverage-baseline.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/rules-coverage-baseline.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coverage-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all importer and coverage tests
+        run: node --test tests/*.test.mjs
+      - name: Check reproducible committed coverage artifacts
+        run: node scripts/build-rules-coverage.mjs --check
+      - name: Check existing sitemap and source projector audits
+        run: |
+          node scripts/audit-rule-effect-coverage.mjs
+          node scripts/audit-sitemap-coverage.mjs artifacts/sitemap-coverage.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage-1-rules-coverage
+          path: |
+            docs/rules-coverage/*.json
+            docs/rules-coverage/*.md

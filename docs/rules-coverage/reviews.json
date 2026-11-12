@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-12",
+  "baselineCommit": "fbff8957e25de1bac222a5ca5f63211d2f16b909",
+  "reviewEvidence": "docs/rules-coverage/methodology.md",
+  "policy": "Retain prior source review dates; this audit checks implementation scope, not fresh verification of every upstream rule.",
+  "groups": [
+    {"registry":"REVIEWED_CORE_RULES","mode":"manual","code":"docs/source-core-rule-effects.js","tests":["tests/source-core-rule-effects.test.mjs"],"missing":["Model eligibility, dice, timing and numerical resolution remain manual"]},
+    {"registry":"REVIEWED_CHARACTER_RULES","mode":"conditional","code":"docs/source-special-rule-effects.js","tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Legal joins, model scope and attack calculations are not enforced"]},
+    {"registry":"REVIEWED_CONTAGIOUS_RULES","mode":"conditional","code":"docs/source-special-rule-effects.js","tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Leadership tests, failed-test restrictions and legal joins are not resolved"]},
+    {"registry":"ITEM_EFFECT_RULES","mode":"partial","code":"docs/effects-engine.js","tests":["tests/effects-engine.test.mjs"],"missing":["Full item mechanics, eligibility, timing, stacking and exceptional interactions not established","Defence and effects selection/scope resolution can disagree"]},
+    {"registry":"SPELL_RULES","mode":"partial","code":"docs/spell-engine.js","tests":["tests/spell-engine.test.mjs"],"missing":["Casting, dispelling, range, legal targets and full effect enforcement remain manual"]},
+    {"registry":"REVIEWED_MISSILE_WEAPONS","mode":"partial","code":"docs/source-missile-profiles.js","tests":["tests/attack-phase-groups.test.mjs"],"missing":["Profile display only; attack eligibility, shots, hit/wound/save/damage resolution not established"]}
+  ],
+  "gaps": [
+    {"id":"gap:faq-errata","name":"Complete FAQ and errata catalogue","category":"faq-errata","question":"No committed FAQ index; enumerate permitted public FAQ/errata pages, versions and affected rules before asserting closure."},
+    {"id":"gap:exceptional-interactions","name":"Complete exceptional interaction catalogue","category":"interaction","question":"Atomic conditions and exceptional rule combinations have not been enumerated."},
+    {"id":"gap:semantic-rule-identity","name":"Atomic canonical rule decomposition and semantic aliases","category":"catalogue","question":"Pages may contain multiple mechanics or duplicate other pages; cross-URL equivalence remains unverified."},
+    {"id":"gap:special-rule-scope","name":"Universal versus army/unit special-rule scope","category":"special-rule","question":"Index titles do not establish scope; verify universal, faction and unit eligibility from rule text."}
+  ],
+  "interactions": [
+    {"id":"interaction:precision-strikes-armour-bane","name":"Precision Strikes with Armour Bane","sourceUrls":["https://tow.whfb.app/special-rules/precision-strikes","https://tow.whfb.app/special-rules/armour-bane"],"mode":"conditional","code":["docs/source-special-rule-effects.js"],"tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Separate reminders only; AP stacking and natural-six resolution are not calculated"]},
+    {"id":"interaction:stupidity-recorded-join","name":"Stupidity inherited through recorded character join","sourceUrls":["https://tow.whfb.app/special-rules/stupidity","https://tow.whfb.app/faq/universal-special-rules"],"mode":"conditional","code":["docs/source-special-rule-effects.js"],"tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Legal join and psychology outcome enforcement remain manual"]}
+  ]
+}
