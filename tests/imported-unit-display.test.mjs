@@ -44,7 +44,7 @@ test('no optional upgrade metadata means no unjustified profile hiding',()=>{
 test('roster uses selected model rows; source alternatives not activated',()=>{
  const ui=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
  assert.match(ui,/displayModelProfiles\(unit,record,fallback\)/);
- assert.match(ui,/selectedPublishedOptionalRules\(unit,record\)/);
+ assert.match(ui,/unitEquipmentAndRules\(unit,record\)/);
  assert.doesNotMatch(ui,/\['Optional rules — not active automatically',record\.optionalRules\]/);
  const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
  assert.match(sw,/\.\/imported-unit-display\.js/);
