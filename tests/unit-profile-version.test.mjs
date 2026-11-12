@@ -8,7 +8,7 @@ test('Unit Profiles displays v0.4',()=>{
  assert.equal(UNIT_PROFILES_VERSION,'0.4');
  const html=source('docs/index.html');
  assert.match(html,/<section id="gameUnitsPanel"/);
- assert.match(html,/id="unitProfilesVersion">v0\.3<\/strong>/);
+ assert.match(html,/id="unitProfilesVersion">v0\.4<\/strong>/);
  assert.match(html,/What’s new\?/);
  assert.match(html,/Source costs and extraction status are tucked into Source details/);
 });
@@ -17,12 +17,12 @@ test('the visible version is wired to a single profile-display version constant'
  const ui=source('docs/army-roster-page.js');
  assert.match(app,/import \{renderArmyRosterPage, UNIT_PROFILES_VERSION\}/);
  assert.match(app,/version\.textContent='v'\+UNIT_PROFILES_VERSION/);
- assert.match(ui,/export const UNIT_PROFILES_VERSION='0\.3'/);
+ assert.match(ui,/export const UNIT_PROFILES_VERSION='0\.4'/);
 });
 test('version history is available and the offline shell is revised',()=>{
  const notes=source('docs/UNIT-PROFILES-VERSIONS.md');
  const sw=source('docs/sw.js');
- assert.match(notes,/## v0\.3 — 12 November 2026/);
+ assert.match(notes,/## v0\.4 — 12 November 2026/);
  assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-4'/);
  assert.match(sw,/'\.\/army-roster-page\.js'/);
  assert.match(sw,/'\.\/index\.html'/);
