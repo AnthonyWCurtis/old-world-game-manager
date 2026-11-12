@@ -4,6 +4,15 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.5 — 12 November 2026
+
+- Removed the redundant **Source details** disclosure from everyday Unit Profiles.
+- Kept troop type, base size, model characteristics and imported unit totals visible.
+- Published base points, source status and extraction findings remain preserved
+  in the versioned source records and existing audit/debug facilities.
+- Only units with source extraction review flags display a short warning.
+- No source data, calculated stats, army-list contents or battle state changed.
+
 ## v0.4 — 12 November 2026
 
 - Show verified troop type and base size as one short line directly beneath
