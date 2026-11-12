@@ -35,6 +35,24 @@ export const REVIEWED_CHARACTER_RULES=Object.freeze({
  )
 });
 
+/**
+ * Rules inherited by a recorded regiment from any qualifying character.
+ * Scope is explicit, and the source rule must be present on the matching
+ * source-extracted character record. These are reminders, not automated rolls.
+ */
+export const REVIEWED_CONTAGIOUS_RULES=Object.freeze({
+ 'stupidity':Object.freeze({
+  id:'stupidity',name:'Stupidity',
+  sourceUrl:SOURCE+'special-rules/stupidity',
+  faqUrl:SOURCE+'faq/universal-special-rules',
+  trigger:'recorded-joined-regiment',kind:'Special rule',
+  status:'conditional',effectGroup:'restriction',verifiedOn:'2026-11-12',
+  description:'A unit becomes subject to Stupidity when joined by a character with Stupidity. Unless fleeing or engaged in combat, a subject unit takes a Leadership test in its Start of Turn sub-phase. On failure until its next Start of Turn, it cannot move (except to flee), shoot, cast spells or attempt Wizardly dispels, and must Hold if charged. No test or failed result is assumed.',
+  quickLabel:'Stupidity · test required',
+  quickDetail:'A recorded joined character with Stupidity makes the regiment subject to the rule. Test when required; restrictions apply only after failure. Leaving removes the inherited rule.'
+ })
+});
+
 /** Only the published rules from a unit's *matching* source-extracted record. */
 export function verifiedPublishedRules(unit,record){
  if(!isVerifiedRecord(unit,record))return [];
@@ -57,6 +75,11 @@ export function referenceOnlyPublishedRules(unit,record){
  const modelled=new Set(Object.values(REVIEWED_CHARACTER_RULES)
   .filter(rule=>unit?.reference?.url===rule.sourceOwnerUrl)
   .map(rule=>rule.sourceUrl));
+ // General contagious rules are projected only from character instances.
+ // Keep the same rules visible as reference-only on ordinary regiments.
+ if(/characters?/i.test(unit?.section||''))
+  for(const rule of Object.values(REVIEWED_CONTAGIOUS_RULES))
+   modelled.add(rule.sourceUrl);
  return available.filter(ref=>!modelled.has(ref.sourceUrl));
 }
 
@@ -98,6 +121,29 @@ export function projectReviewedCharacterRules(army,session,unitRecords={},byUnit
     scope:'From '+character.name+': recorded join to this regiment. Applies to the qualifying Lothern Sea Guard weapons; join legality and on-table eligibility are not automatically verified.',
     shared:true,joinedFrom:character.id,effectGroup:'offensive',
     trackUse:false,boundSpell:null
+   });
+  }
+  // This projector is deliberately army-agnostic: a verified character with
+  // this published rule grants its listed unit-level consequences to whichever
+  // regiment it is recorded as joining. It does not automate joining legality,
+  // tests, results, mounts, casualties, or any other special rule.
+  for(const rule of Object.values(REVIEWED_CONTAGIOUS_RULES)){
+   if(!verifiedPublishedRules(owner,record).some(ref=>
+      ref.name===rule.name&&ref.sourceUrl===rule.sourceUrl))continue;
+   if(!byUnit[character.id])continue;
+   byUnit[character.id].push({
+    ...rule,ownerId:character.id,ownerName:character.name,
+    ownerIsCharacter:true,beneficiaryId:character.id,
+    scope:'Character has this verified source rule; any legally joined regiment also becomes subject. No test result is assumed.',
+    shared:false,joinedFrom:null,trackUse:false,boundSpell:null
+   });
+   const regiment=regiments.get(session?.assignments?.[character.id]);
+   if(!regiment||!byUnit[regiment.id])continue;
+   byUnit[regiment.id].push({
+    ...rule,ownerId:character.id,ownerName:character.name,
+    ownerIsCharacter:true,beneficiaryId:regiment.id,
+    scope:'From '+character.name+': this regiment is subject to Stupidity while the character is joined. Joining legality, test results and failed-test restrictions are not automated.',
+    shared:true,joinedFrom:character.id,trackUse:false,boundSpell:null
    });
   }
  }

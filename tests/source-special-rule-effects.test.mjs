@@ -78,3 +78,57 @@ test('Rules fail closed without source proof, with mismatched owner, unverified 
  assert.equal(find(result(army,session,sourceMap(ishaya),company.id),'precision-strikes').length,0);
  assert.equal(find(result(army,session,sourceMap(ishaya),sea.id),'precision-strikes').length,0);
 });
+
+test('Stupidity rule transfer is source-gated, reversible and army-agnostic (synthetic source fixture)',()=>{
+ const army=fixture(),ishaya=person(army,'Ishaya Vess'),sea=person(army,'Lothern Sea Guard');
+ const company=person(army,"Ship's Company");
+ const pristine=JSON.stringify(army);
+ const records=sourceMap(ishaya);
+ const rule={name:'Stupidity',sourceUrl:'https://tow.whfb.app/special-rules/stupidity'};
+ // Synthetic source record models a character with Stupidity; the real
+ // Ishaya record above is NEVER asserted to have this rule.
+ const simulated=structuredClone(ishayaRecord);
+ simulated.startingRules.push(rule);
+ let session=assignCharacter(army,restoreBattleSession(army),ishaya.id,sea.id);
+ assert.equal(find(result(army,session,records,sea.id),'stupidity').length,0,
+  'Real Ishaya has no Stupidity, and must never project it');
+ const proof=sourceMap(ishaya,simulated);
+ let effects=find(result(army,session,proof,sea.id),'stupidity');
+ assert.equal(effects.length,1);
+ assert.equal(effects[0].kind,'Special rule');
+ assert.equal(effects[0].status,'conditional');
+ assert.equal(effects[0].effectGroup,'restriction');
+ assert.equal(effects[0].shared,true);
+ assert.equal(effects[0].ownerId,ishaya.id);
+ assert.equal(effects[0].sourceUrl,rule.sourceUrl);
+ assert.match(effects[0].quickDetail,/test when required/i);
+ assert.match(effects[0].scope,/not automated/i);
+ assert.equal(find(result(army,session,proof,ishaya.id),'stupidity').length,1);
+ assert.equal(find(result(army,session,proof,company.id),'stupidity').length,0);
+ session=assignCharacter(army,session,ishaya.id,company.id);
+ assert.equal(find(result(army,session,proof,sea.id),'stupidity').length,0,
+  'Previous regiment must immediately lose inherited rule');
+ assert.equal(find(result(army,session,proof,company.id),'stupidity').length,1,
+  'Any regiment can inherit the rule, not only a particular faction or unit name');
+ session=assignCharacter(army,session,ishaya.id,null);
+ assert.equal(find(result(army,session,proof,company.id),'stupidity').length,0);
+ assert.equal(JSON.stringify(army),pristine,'Effect projection must be read-only');
+});
+test('Stupidity transfer fails closed on invalid records, altered rule names or wrong URLs',()=>{
+ const army=fixture(),ishaya=person(army,'Ishaya Vess'),sea=person(army,'Lothern Sea Guard');
+ const session=assignCharacter(army,restoreBattleSession(army),ishaya.id,sea.id);
+ const simulated=structuredClone(ishayaRecord);
+ simulated.startingRules.push({name:'Stupidity',sourceUrl:'https://tow.whfb.app/special-rules/stupidity'});
+ const projected=r=>find(result(army,session,sourceMap(ishaya,r),sea.id),'stupidity');
+ assert.equal(projected(simulated).length,1);
+ for(const change of [
+  r=>{r.source.verificationStatus='unverified';},
+  r=>{r.source.sourceUrl='https://tow.whfb.app/unit/other';},
+  r=>{r.startingRules.at(-1).name='Fear';},
+  r=>{r.startingRules.at(-1).sourceUrl='https://example.invalid/stupidity';},
+  r=>{r.startingRules.at(-1).sourceUrl='https://tow.whfb.app/special-rules/fear';}
+ ]){
+  const wrong=structuredClone(simulated);change(wrong);
+  assert.equal(projected(wrong).length,0);
+ }
+});
