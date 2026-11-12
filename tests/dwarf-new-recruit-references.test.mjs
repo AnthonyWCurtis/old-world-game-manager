@@ -156,7 +156,7 @@ test('Standard Runes only resolves from exact, unique, published allowance and l
 test('Game Manager continues to load source-backed Dwarf references in the v1 preview browser',()=>{
  const html=readFileSync(new URL('index.html',root),'utf8');
  const app=readFileSync(new URL('app.js',root),'utf8');
- assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/Old World Companion · Tactical Command/);
  assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5/);
  assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.5/);
  assert.match(app,/appVersion:'1\.0\.0-alpha\.5'/);
