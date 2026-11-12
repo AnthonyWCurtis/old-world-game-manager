@@ -1,3 +1,4 @@
+import {displayModelProfiles} from './imported-unit-display.js';
 /**
  * Display-only profile rows from a selected, exact-source-linked mount.
  * Keep the rider's original base profiles untouched. No stat combining.
@@ -5,7 +6,7 @@
 const validUrl=url=>typeof url==='string'&&
  /^https:\/\/tow\.whfb\.app\/unit\/[a-z0-9-]+$/.test(url);
 const columns=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
-export function selectedMountProfileGroups(candidates=[],recordsByUrl={},fallbackProfiles={}){
+export function selectedMountProfileGroups(candidates=[],recordsByUrl={},fallbackProfiles={},importedUnit=null){
  const groups=[];
  for(const candidate of candidates){
   const url=candidate?.sourceUrl;
@@ -15,11 +16,12 @@ export function selectedMountProfileGroups(candidates=[],recordsByUrl={},fallbac
      record.source.verificationStatus!=='source-extracted')continue;
   // The selection must already have been resolved by the strict mount matcher.
   if(!['chariot','riddenMonster','cavalry'].includes(candidate.mountType))continue;
-  const raw=Array.isArray(record.modelProfiles)&&record.modelProfiles.length?
-   record.modelProfiles:
-   fallbackProfiles[url]?.url===url&&
-   fallbackProfiles[url]?.verificationStatus==='source-extracted'&&
-   Array.isArray(fallbackProfiles[url]?.models)?fallbackProfiles[url].models:[];
+  const raw=importedUnit?displayModelProfiles(importedUnit,record,fallbackProfiles[url]):
+   Array.isArray(record.modelProfiles)&&record.modelProfiles.length?
+    record.modelProfiles:
+    fallbackProfiles[url]?.url===url&&
+    fallbackProfiles[url]?.verificationStatus==='source-extracted'&&
+    Array.isArray(fallbackProfiles[url]?.models)?fallbackProfiles[url].models:[];
   const profiles=raw.filter(p=>p&&typeof p.name==='string'&&p.name.trim())
    .map(p=>({name:p.name,characteristics:Object.fromEntries(
     columns.filter(k=>p.characteristics?.[k]!==null&&
