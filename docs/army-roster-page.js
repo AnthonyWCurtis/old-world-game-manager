@@ -20,7 +20,7 @@ import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
  * with textContent; external links are explicitly restricted to tow.whfb.app.
  */
 /** Visible, independent version of the unit profile display (not the importer). */
-export const UNIT_PROFILES_VERSION='0.2';
+export const UNIT_PROFILES_VERSION='0.3';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;
@@ -282,7 +282,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    for(const item of items){
     const caption=(item.scope?item.scope+': ':'')+item.name;
     const chip=safeLink(doc,caption,item.sourceUrl,'army-ref-pill army-unit-loadout-pill');
-    chip.title=item.origin==='published-default'?'Published standard equipment/rule':
+    chip.title=item.commandRole?'Open '+item.ruleTitle+' rules on tow.whfb.app':
+     item.origin==='published-default'?'Published standard equipment/rule':
      'Imported selection; source matching and conditions may require review';
     if(item.origin==='published-default')chip.classList.add('army-unit-loadout-default');
     if(item.status==='unmatched')chip.classList.add('army-unit-loadout-unmatched');
