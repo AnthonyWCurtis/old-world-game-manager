@@ -14,7 +14,7 @@ export function loadGameLayout(army){
  const valid=new Set((army?.units||[]).map(u=>u.id));
  return {
   key,
-  tab:isTab(saved?.tab)?saved.tab:'overview',
+  tab:isTab(saved?.tab)?saved.tab:'units',
   expandedUnits:Array.isArray(saved?.expandedUnits)?
    saved.expandedUnits.filter(id=>typeof id==='string'&&valid.has(id)).slice(0,300):[],
   scroll:saved?.scroll&&typeof saved.scroll==='object'?
