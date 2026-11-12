@@ -201,6 +201,14 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    }
   }
   table.append(tbody);scroller.append(table);details.append(scroller);
+  if(record){
+   const quickFacts=[];
+   if(record.classification?.troopType?.length)
+    quickFacts.push(record.classification.troopType.join(' / '));
+   if(record.classification?.baseSize)quickFacts.push('Base '+record.classification.baseSize);
+   if(quickFacts.length)
+    details.append(el(doc,'p','army-unit-quick-facts',quickFacts.join(' · ')));
+  }
   for(const group of mountProfileGroups){
    const reference=el(doc,'div','army-unit-source-meta');
    reference.append(el(doc,'span','','Selected mount source profiles · rider characteristics unchanged · eligibility not verified'));
@@ -247,12 +255,6 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(section);
  }
  if(record){
-  const unitFacts=[];
-  if(record.classification?.troopType?.length)unitFacts.push(record.classification.troopType.join(' / '));
-  if(record.classification?.baseSize)unitFacts.push('Base '+record.classification.baseSize);
-  if(unitFacts.length)
-   details.append(el(doc,'p','army-unit-quick-facts',unitFacts.join(' · ')));
-
   const sourceNotes=el(doc,'details','army-unit-compact-details army-source-meta-details');
   const warnings=record.extractionWarnings?.length||0;
   sourceNotes.append(el(doc,'summary','',warnings?
