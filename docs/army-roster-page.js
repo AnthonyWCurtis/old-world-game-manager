@@ -426,7 +426,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  if(profile)body.append(profile);
  const offensive=renderUnitOffensiveEffects(doc,effects);
  if(offensive)body.append(offensive);
- body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record));
+ body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record,[],[],imported));
  body.append(renderUnitEffects(doc,effects,effectActions));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
  remove.type='button';
@@ -441,7 +441,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  * A defence panel never conflates an equipped model's save with that of a
  * different character, or a Magic Missile-only Ward with an all-purpose Ward.
  */
-function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null,armourCandidates=[],mountProfiles=[]){
+function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,record=null,armourCandidates=[],mountProfiles=[],importedUnit=null){
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
@@ -467,7 +467,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   metrics.append(item);
  }
  panel.append(metrics);
- const specialRules=sourceDefensiveRules(record);
+ const specialRules=sourceDefensiveRules(record,importedUnit);
  const armourCap=sourceArmourCap(record);
  if(armourCap||specialRules.length){
   const context=el(doc,'div','game-defence-detail-body');
@@ -666,7 +666,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   content.append(renderDefencePanel(doc,defence,onShieldUse,
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
-    resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles,defence.armour?.value)));
+    resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles,defence.armour?.value),imported));
   content.append(renderUnitEffects(doc,effects,itemActions));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
@@ -714,7 +714,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    if(offensive)content.append(offensive);
    content.append(renderDefencePanel(doc,defence,onShieldUse,
     sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
-    records[entry.id]));
+    records[entry.id],[],[],imported));
    content.append(renderUnitEffects(doc,effects,itemActions));
    const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
    if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
