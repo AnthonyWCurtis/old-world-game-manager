@@ -284,9 +284,20 @@ export function extractSemanticLabels(element,prefix=''){
 export function selectPublishedUnitProfiles(army,snapshot){
  const profiles=snapshot?.profiles||{}, out={};
  if(snapshot?.schemaVersion!==2||snapshot?.sourceOrigin!==SOURCE_ORIGIN)return out;
+ const urls=new Set();
+ const collect=selections=>{
+  for(const selection of Array.isArray(selections)?selections:[]){
+   if(sourceUrl(selection?.reference?.url))urls.add(selection.reference.url);
+   collect(selection?.children);
+  }
+ };
  for(const unit of army?.units||[]){
-  const url=unit.reference?.url;
-  const entry=url&&profiles[url];
+  if(sourceUrl(unit.reference?.url))urls.add(unit.reference.url);
+  collect(unit.selections);
+  for(const group of unit.modelGroups||[])collect(group.selections);
+ }
+ for(const url of urls){
+  const entry=profiles[url];
   if(entry?.url===url&&entry?.source==='tow.whfb.app'&&
     entry?.verificationStatus==='source-extracted'&&
     Array.isArray(entry.models)&&entry.models.length){

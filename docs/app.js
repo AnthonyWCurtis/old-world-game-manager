@@ -4,7 +4,7 @@ import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0
 import { wireReportUI } from './report-ui.js?v=0.4.2';
 import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatchState } from './match-status.js?v=0.4.2';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.4.2';
-import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails} from './unit-data.js?v=0.4.0';
+import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails, getSelectedUnitReferenceDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5';
@@ -29,6 +29,8 @@ let current=null;
 const anonymousReports=wireReportUI(()=>current);
 let sourceProfiles={};
 let unitDataRecords={};
+let selectedUnitSourceRecords={};
+let selectedPublishedProfiles={};
 let battleSession=null;
 let magicIndex=null;
 let gameLayout=null;
@@ -431,7 +433,7 @@ function renderArmyScreen(){
  if(!current)return;
  const state=ensureGameLayout();
  const effectProjection=projectArmyEffects(current,battleSession);
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState);
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState,selectedUnitSourceRecords);
  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear,onItemState:handleItemEffectState,onShieldUse:handleShieldUsage},magicIndex,effectProjection);
  renderMagicItemAbilities($('gameItemAbilities'),effectProjection,battleSession,{
   onItemState:handleItemEffectState,onShieldUse:handleShieldUsage
@@ -492,7 +494,7 @@ function restoreActiveGameScreenFromTab(){
   const restored=parseArmy(saved.text,override?{exporter,layout}:null);
   if(!restored?.units?.length)return false;
   current=restored;applyInformationalPlaceholders(current);applyGenericWizardReferences(current);
-  sourceProfiles={};unitDataRecords={};
+  sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};
   $('sourceText').value=restored.originalText;
   $('format').value=override&&[...$('format').options].some(o=>o.value===override)?override:'auto';
   updateFormatDetection();
@@ -649,11 +651,25 @@ async function refreshCurrentSource(force=false){
    unitDataRecords=result.records;
    applySourceScopedSelectionReferences(army,unitDataRecords);
    render();
+   // Main unit records are ready: do not hold their status hostage to
+   // optional selected-mount reference or fallback snapshot retrieval.
    status.textContent='Unit profiles available for '+result.matched+'/'+army.units.length+
      ' roster entries · '+index.counts.units+' units in source snapshot · '+
      index.counts.unitsWithWarnings+' records have extraction flags. '+
      (result.errors.length?'Some unit data unavailable; cached records retained where possible. ':'')+
      'Source-extracted: upgrades, costs and army legality are not independently verified.';
+   try{
+    const referenced=await getSelectedUnitReferenceDetails(army,index);
+    if(!active())return;
+    selectedUnitSourceRecords=referenced.byUrl;
+    // Re-select only exactly matched option source URLs after links exist.
+    selectedPublishedProfiles=await getPublishedUnitProfiles(army).catch(()=>({}));
+    if(!active())return;
+    sourceProfiles={...sourceProfiles,...selectedPublishedProfiles};
+    render();
+   }catch(error){
+    if(active())console.warn('Selected option profiles unavailable; imported roster unaffected',error);
+   }
   }catch(error){
    if(active())status.textContent='Unit reference data unavailable: '+
      (error?.message||error)+'. The imported roster is unaffected.';
@@ -662,9 +678,9 @@ async function refreshCurrentSource(force=false){
  try{
   // Public pages without browser CORS are read from the last GitHub Actions
   // source snapshot. Matching remains scoped to the unit's actual source URL.
-  const published=await getPublishedUnitProfiles(army).catch(()=>({}));
+  let published=await getPublishedUnitProfiles(army).catch(()=>({}));
   if(!active())return;
-  sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
+  sourceProfiles={...mergeUnitProfiles(published,await getCachedUnitProfiles(army)),...selectedPublishedProfiles};
   if(!active())return;
   applyProfileReferences(army,sourceProfiles);
   render();
@@ -672,7 +688,7 @@ async function refreshCurrentSource(force=false){
   if(!active())return;
   if(cached.entries.length){
    applyIndexedReferences(army,cached.entries);
-   sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
+   sourceProfiles={...mergeUnitProfiles(published,await getCachedUnitProfiles(army)),...selectedPublishedProfiles};
    if(!active())return;
    applyProfileReferences(army,sourceProfiles);
    render();
@@ -684,7 +700,7 @@ async function refreshCurrentSource(force=false){
   if(!active())return;
   if(latest.entries.length){
    applyIndexedReferences(army,latest.entries);
-   sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
+   sourceProfiles={...mergeUnitProfiles(published,await getCachedUnitProfiles(army)),...selectedPublishedProfiles};
    if(!active())return;
    applyProfileReferences(army,sourceProfiles);
    render();
@@ -701,7 +717,7 @@ async function refreshCurrentSource(force=false){
   }
   const pages=await checkPageChanges(army,{force,maxPages:12});
   if(!active())return;
-  sourceProfiles=mergeUnitProfiles(published,await getCachedUnitProfiles(army));
+  sourceProfiles={...mergeUnitProfiles(published,await getCachedUnitProfiles(army)),...selectedPublishedProfiles};
   if(!active())return;
   applyProfileReferences(army,sourceProfiles);
   render();
@@ -857,14 +873,14 @@ $('extractListBtn').addEventListener('click',()=>{
  if(!extracted){showError('Could not identify a single clean export. Copy only the army list from your builder.');return;}
  $('sourceText').value=extracted.text;
  $('format').value='auto';
- current=null;sourceProfiles={};unitDataRecords={};
+ current=null;sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};
  $('result').hidden=true;$('resumeGameBtn').hidden=true;$('saveBtn').disabled=true;$('jsonBtn').disabled=true;
  showError('');updateFormatDetection();
  $('sourceText').focus();
 });
 $('parseBtn').addEventListener('click',async()=>{
  showError('');$('parseBtn').disabled=true;
- try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};const restoring=restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});await restoring;if(current)render();void refreshCurrentSource(false);}
+ try{const input=$('sourceText').value; if(input.trim().length<10||input.length>500000)throw Error('Provide a list between 10 and 500,000 characters.'); if(isGameManagerPageText(input))throw Error('This is a copied Game Manager page, not just an army export. Use the recovery option above or paste the original army list.'); current=parseArmy(input,sourceOverride());applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};const restoring=restoreCurrentBattleSession();render();$('result').scrollIntoView({behavior:'smooth'});await restoring;if(current)render();void refreshCurrentSource(false);}
  catch(e){showError(e.message);}finally{$('parseBtn').disabled=false;}
 });
 $('unmatchedOnly').addEventListener('change',render);
@@ -878,7 +894,7 @@ $('saveBtn').addEventListener('click',async()=>{
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
  for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};await restoreCurrentBattleSession();$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};await restoreCurrentBattleSession();$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
   const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }

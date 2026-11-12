@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261111-reported-wood-elves-v1';
+const CACHE_NAME='game-manager-v1-shell-20261112-import-first-profiles-v7';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -22,6 +22,14 @@ const APP_SHELL=[
  './army-roster-page.js',
  './game-screen-model.js',
  './defence-engine.js',
+ './source-printed-armour.js',
+ './source-defensive-rules.js',
+ './mount-armour-choice.js',
+ './selected-armour-candidates.js',
+ './resolve-selected-mount-profiles.js',
+ './published-mount-benefits.js',
+ './selected-mount-profile-rows.js',
+ './imported-unit-display.js',
  './spell-engine.js',
  './spell-controls.js',
  './effects-engine.js',

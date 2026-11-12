@@ -592,3 +592,34 @@
  .game-offensive-effect-name{font-size:14px}
  .game-offensive-effect-detail{font-size:13px}
 }
+
+/* Selected mount model rows are visibly grouped, but keep published rider stats unchanged. */
+.army-profile-table .army-profile-mount-heading th{
+ background:#dfebf3;color:#234a64;font-weight:800;text-align:left;
+ position:static;white-space:normal;border-top:2px solid #b5ccd9;
+}
+.army-profile-table .army-profile-mount-row{background:#f3f8fb}
+.army-profile-table .army-profile-mount-row>th:first-child{background:#e9f2f7}
+
+/* Compact, accessible unit references: characteristics and game effects stay visible. */
+.army-unit-compact-details{
+ margin:10px 0 0;border:1px solid #d8e4ed;border-radius:9px;
+ background:#f8fbfd;overflow:hidden;
+}
+.army-unit-compact-details>summary{
+ display:list-item;cursor:pointer;min-height:44px;
+ padding:11px 13px;color:#285676;font-size:13px;font-weight:750;
+}
+.army-unit-compact-details[open]>summary{border-bottom:1px solid #dce7ee}
+.army-unit-compact-content,.army-unit-compact-details>.army-unit-source-body,
+.army-unit-compact-details>.army-unit-source-meta{
+ padding:10px 12px 13px;
+}
+.army-unit-compact-details .army-unit-source-meta{margin-top:0}
+.army-unit-compact-details .army-ref-group:last-child{margin-bottom:0}
+.army-unit-compact-details .army-selection-list{margin:0}
+.army-unit-compact-details:focus-within{outline-offset:2px}
+@media(max-width:480px){
+ .army-unit-compact-details{margin-top:8px}
+ .army-unit-compact-details>summary{padding:12px;font-size:13px}
+}
