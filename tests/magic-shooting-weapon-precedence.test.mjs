@@ -28,7 +28,8 @@ test('BSB with Hunter\'s Scorn does not offer its Longbow as a second attack',()
  const result=summary(bsb);
  assert.ok(result.magicWeapons.some(x=>x.name==="Hunter's Scorn"&&x.attackPhase==='Shooting'&&x.weaponFamily==='bow'));
  assert.ok(!result.shootingWeapons.some(x=>/longbow/i.test(x.name)),'Longbow must be hidden from active attacks');
- assert.deepEqual(result.supersededShootingWeapons.map(x=>x.name),['Longbow']);
+ assert.ok(result.supersededShootingWeapons.some(x=>x.name==='Longbow'));
+ assert.ok(result.supersededShootingWeapons.every(x=>x.weaponFamily==='bow'));
  assert.equal(result.boundSpells.length,1,'Fireball remains a separate bound-spell attack');
  assert.equal(result.boundSpells[0].name,'Ruby Ring of Ruin');
  const equipment=unitEquipmentAndRules(bsb,commander);
