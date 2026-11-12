@@ -61,8 +61,9 @@ try{
  assert.ok(await sea.locator('.game-published-rules-reference').count(),
   'Other source special rules are visible as reference-only, not silently omitted');
  await page.locator('#gameUnitFocusBack').click();
- await ishaya.locator('.game-unit-expand-toggle').click();
- await ishaya.locator('.character-unit-picker').selectOption('');
+ const picker=ishaya.locator('.character-unit-picker');
+ if(!await picker.isVisible())await ishaya.locator('.game-unit-expand-toggle').click();
+ await picker.selectOption('');
  await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]').count(),0);
  assert.deepEqual(errors,[]);
