@@ -20,7 +20,7 @@ try{
  await page.locator('#viewRosterBtn').click();
  await showUnitsAndExpand(page);
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
- assert.match(await page.locator('.army-screen-mode').innerText(),/BATTLE COMPANION/);
+ assert.match(await page.locator('.army-screen-mode').innerText(),/NORMAL PLAY/);
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),1);
  assert.match(await page.locator('#armyRosterList').innerText(),/Lothern Sea Guard/);
  assert.equal(await page.locator('#gameCharacters').count(),1);
