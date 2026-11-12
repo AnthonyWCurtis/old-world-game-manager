@@ -32,6 +32,12 @@ try{
  await sea.locator('.game-unit-expand-toggle').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting');
+ const shootingBS=seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-ballistic-skill');
+ assert.equal(await shootingBS.isVisible(),true);
+ assert.match(await shootingBS.innerText(),/Sea Guard.*BS.*4/s);
+ assert.match(await shootingBS.innerText(),/Sea Master.*BS.*5/s);
+ assert.equal(await shootingBS.locator('.game-attack-model').count(),2,
+  'Selected champion has its own published BS, not an averaged value');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="combat"] > h5').innerText(),'Combat');
  assert.match(await seaAttackPanel.locator('[data-attack-phase="combat"]').innerText(),/Base melee characteristics/);
  const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
@@ -80,6 +86,9 @@ try{
  const bsbShooting=bsbAttacks.locator('[data-attack-phase="shooting"]');
  const bsbCombat=bsbAttacks.locator('[data-attack-phase="combat"]');
  assert.match(await bsbShooting.innerText(),/Ruby Ring of Ruin.*Fireball/s);
+ assert.equal(await bsbShooting.locator('.game-attack-bound .game-attack-stat')
+  .filter({hasText:'BS'}).count(),0,
+  'Fireball must use casting rather than the bearer\'s Ballistic Skill');
  assert.match(await bsbShooting.innerText(),/Hunter's Scorn/);
  assert.match(await bsbCombat.innerText(),/Base melee characteristics/);
  assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
