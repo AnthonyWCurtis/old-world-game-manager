@@ -11,7 +11,7 @@ import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects} from './effects-ui.js';
-import {renderUnitAttackPanel} from './unit-attack-panel.js';
+import {renderUnitAttackPanel,unitAttackSummary} from './unit-attack-panel.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -21,7 +21,7 @@ import {renderUnitAttackPanel} from './unit-attack-panel.js';
  * with textContent; external links are explicitly restricted to tow.whfb.app.
  */
 /** Visible, independent version of the unit profile display (not the importer). */
-export const UNIT_PROFILES_VERSION='0.9';
+export const UNIT_PROFILES_VERSION='0.10';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;
@@ -87,7 +87,7 @@ function sourceRefRow(doc,title,refs){
  group.append(items);
  return group;
 }
-function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{},mountProfileGroups=[]){
+function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{},mountProfileGroups=[],effects=[]){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
  const header=el(doc,'header','army-unit-head');
@@ -264,18 +264,27 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  }
 
  const loadout=unitEquipmentAndRules(unit,record);
- if(loadout.count){
+ // The army importer still retains every original selection; in battle view
+ // suppress only an exact, source-backed mundane missile weapon superseded
+ // by a magic weapon carried by the same shooter.
+ const inactiveWeaponUrls=new Set(unitAttackSummary(unit,record,fallback,effects)
+  .supersededShootingWeapons.map(w=>w.sourceUrl));
+ const shownEquipment=loadout.groups.equipment.filter(item=>
+  !inactiveWeaponUrls.has(item.sourceUrl));
+ const shownCount=shownEquipment.length+loadout.groups.rules.length+
+  loadout.groups.upgrades.length;
+ if(shownCount){
   const panel=el(doc,'section','army-unit-unified-loadout');
   const heading=el(doc,'div','army-unit-loadout-heading');
   heading.append(el(doc,'h4','','Equipment & special rules'));
-  heading.append(el(doc,'span','',loadout.count+' entries'));
+  heading.append(el(doc,'span','',shownCount+' entries'));
   panel.append(heading);
   for(const [key,label] of [
    ['equipment','Equipment & items'],
    ['rules','Special rules'],
    ['upgrades','Command & other selections']
   ]){
-   const items=loadout.groups[key];
+   const items=key==='equipment'?shownEquipment:loadout.groups[key];
    if(!items?.length)continue;
    const group=el(doc,'div','army-unit-loadout-group');
    group.append(el(doc,'strong','',label));
@@ -408,7 +417,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  summary.append(el(doc,'small','',points(character.points)));
  panel.append(summary);
  const body=el(doc,'div','game-attached-character-body');
- const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session,null,false,()=>{},mountProfileGroups);
+ const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session,null,false,()=>{},mountProfileGroups,effects);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
  body.append(renderUnitAttackPanel(doc,imported,record,fallback,effects));
@@ -639,12 +648,12 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   if(!imported)continue;
   const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
   const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles,imported);
+  const effects=effectProjection.byUnit?.[entry.id]||[];
   const card=unitCard(doc,imported,entry.index,records[entry.id],
    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
-   openCards.has(entry.id),onToggle,mountRows);
+   openCards.has(entry.id),onToggle,mountRows,effects);
   card.classList.add('game-character-card');
   const defence=evaluateDefences(army,session,entry.id);
-  const effects=effectProjection.byUnit?.[entry.id]||[];
   appendCompactStatus(doc,card,defence,0,effects);
   const content=card.querySelector('.game-unit-expandable');
   content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
@@ -688,12 +697,12 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    if(!imported)continue;
    const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
    const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles,imported);
+   const effects=effectProjection.byUnit?.[entry.id]||[];
    const card=unitCard(doc,imported,entry.index,records[entry.id],
     fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
-    openCards.has(entry.id),onToggle,mountRows);
+    openCards.has(entry.id),onToggle,mountRows,effects);
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
    const defence=evaluateDefences(army,session,entry.id);
-   const effects=effectProjection.byUnit?.[entry.id]||[];
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
