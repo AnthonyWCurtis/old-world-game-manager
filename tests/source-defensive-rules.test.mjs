@@ -14,10 +14,12 @@ const record={
  optionalRules:[{name:'Regeneration (4+)',sourceUrl:'https://tow.whfb.app/special-rules/regeneration'}]
 };
 test('separates published defensive rules from unselected options',()=>{
- const rules=sourceDefensiveRules(record);
+ const base=sourceDefensiveRules(record);
+ assert.equal(base.length,2,'Unselected optional regeneration must not appear');
+ const rules=sourceDefensiveRules(record,{selections:[{name:'Regeneration (4+)'}]});
  assert.equal(rules.length,3);
  assert.ok(rules.some(r=>r.name==='Armoured Hide (2)'&&r.classification==='source-listed standard rule'));
- assert.ok(rules.some(r=>r.name==='Regeneration (4+)'&&r.classification.includes('not selected automatically')));
+ assert.ok(rules.some(r=>r.name==='Regeneration (4+)'&&r.classification.includes('selected option')));
  assert.ok(rules.every(r=>r.scope.includes('No armour, Ward or Regeneration value applied')));
 });
 test('troop-type ceiling is a reference rather than a calculated save',()=>{
@@ -37,7 +39,7 @@ test('Defence Summary presents source references without passing them to equipme
  const ui=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
  const engine=readFileSync(new URL('../docs/defence-engine.js',import.meta.url),'utf8');
  const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
- assert.match(ui,/sourceDefensiveRules\(record\)/);
+ assert.match(ui,/sourceDefensiveRules\(record,importedUnit\)/);
  assert.match(ui,/Source troop-type armour ceiling:/);
  assert.match(sw,/\.\/source-defensive-rules\.js/);
  assert.doesNotMatch(engine,/sourceDefensiveRules|sourceArmourCap/);
