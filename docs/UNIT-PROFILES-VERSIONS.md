@@ -4,6 +4,20 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.7 — 12 November 2026
+
+- Organised the Attacks panel into **Shooting** and **Combat** phase groups,
+  using the official phase distinctions from tow.whfb.app.
+- Shooting lists imported, source-verified warbows, shortbows, longbows and
+  crossbows with their published range, Strength and AP; bound Magic Missiles
+  such as Ruby Ring of Ruin's Fireball; and verified shooting magic weapons.
+- Combat shows published base WS/S/A for selected models plus explicitly
+  verified combat magic weapons.
+- Offensive benefits that may apply in either phase remain outside the phase
+  groups, with their original conditions and source citations.
+- Unknown weapon phases remain unclassified rather than being guessed.
+- No modifications to saves, point values, battle state or attack calculation.
+
 ## v0.6 — 12 November 2026
 
 - Separate **Attacks** and **Defence** within independent characters, regiments
