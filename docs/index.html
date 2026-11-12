@@ -138,7 +138,7 @@
   <span class="army-screen-mode">BATTLE COMPANION</span>
  </div>
  <header class="army-screen-hero">
-  <p class="army-screen-kicker">Your army · Live game companion preview</p>
+  <p class="army-screen-kicker">Your army · Normal Play</p>
   <h1 id="armyRosterHeading">Game Screen</h1>
   <p id="armyRosterFaction" class="army-screen-faction"></p>
   <div id="armyRosterSummary" class="army-summary-metrics" aria-label="Imported army totals"></div>
@@ -146,14 +146,14 @@
  <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
  <p id="battleSessionStatus" class="game-battle-status" role="status" aria-live="polite">Assignments are stored separately from imported army data.</p>
  <nav id="gameWorkspaceNav" class="game-workspace-nav" role="tablist" aria-label="Battle companion sections">
-  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
-  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">▤</span><span>Units</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">▤</span><span>My Army</span></button>
   <button type="button" class="game-nav-tab" id="gameNavMagic" data-game-tab="magic" role="tab" aria-controls="gameMagicPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">✦</span><span>Magic</span></button>
  </nav>
- <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview">
+ <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview" hidden>
   <div id="gameOverviewContent"></div>
  </section>
- <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits" hidden>
+ <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits">
   <div class="game-unit-profile-release" aria-label="Unit Profiles version">
    <span class="game-unit-profile-release-label">Unit Profiles <strong id="unitProfilesVersion">v0.10</strong></span>
    <details class="game-unit-profile-release-notes">
