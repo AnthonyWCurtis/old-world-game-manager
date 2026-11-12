@@ -41,13 +41,17 @@ test('Ship\'s Company retains starting warbows unless source-backed replacements
  assert.ok(names(base,'rules').includes('Open Order'));
  assert.ok(names(base,'rules').includes('Valour of Ages'));
  assert.ok(!names(base,'rules').includes('Skirmishers'));
- const edited={...shipUnit,selections:[...shipUnit.selections,
+ const edited={...shipUnit,selections:[...shipUnit.selections.filter(s=>
+  !/^warbows$/i.test(s.name||'')),
   {name:'Thrusting spears',kind:'equipment'},
   {name:'Shields',kind:'equipment'},
   {name:'Skirmishers',kind:'option',reference:{url:'https://tow.whfb.app/unusual-formations/skirmish-formation'}}]};
  const selected=unitEquipmentAndRules(edited,ship);
  assert.ok(!names(selected,'equipment').some(x=>x.toLowerCase()==='warbows'));
  assert.ok(!names(selected,'rules').includes('Open Order'));
+ const contradictory=unitEquipmentAndRules({...edited,selections:[...edited.selections,{name:'Warbows',kind:'equipment'}]},ship);
+ assert.ok(names(contradictory,'equipment').includes('Warbows'),
+  'Conflicting imported equipment must never be silently removed');
  assert.ok(names(selected,'rules').includes('Skirmishers'));
 });
 
