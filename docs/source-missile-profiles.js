@@ -7,14 +7,15 @@
 import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
 
 const origin='https://tow.whfb.app/weapons-of-war/';
-const profile=(slug,range,strength,ap)=>Object.freeze({
- sourceUrl:origin+slug,range,strength,ap,verificationStatus:'source-reviewed'
+const profile=(slug,range,strength,ap,weaponFamily)=>Object.freeze({
+ sourceUrl:origin+slug,range,strength,ap,weaponFamily,
+ verificationStatus:'source-reviewed'
 });
 export const REVIEWED_MISSILE_WEAPONS=Object.freeze({
- [origin+'warbow']:profile('warbow','24"','S','–'),
- [origin+'shortbow']:profile('shortbow','18"','3','–'),
- [origin+'longbow']:profile('longbow','30"','3','–'),
- [origin+'crossbow']:profile('crossbow','30"','4','–')
+ [origin+'warbow']:profile('warbow','24"','S','–','bow'),
+ [origin+'shortbow']:profile('shortbow','18"','3','–','bow'),
+ [origin+'longbow']:profile('longbow','30"','3','–','bow'),
+ [origin+'crossbow']:profile('crossbow','30"','4','–','crossbow')
 });
 export function selectedMissileWeapons(unit,record){
  const loadout=unitEquipmentAndRules(unit,record);
@@ -25,7 +26,7 @@ export function selectedMissileWeapons(unit,record){
   if(!info||seen.has(entry.sourceUrl))continue;
   seen.add(entry.sourceUrl);
   result.push({name:entry.name,sourceUrl:info.sourceUrl,
-   range:info.range,strength:info.strength,armourPiercing:info.ap,
+   range:info.range,strength:info.strength,armourPiercing:info.ap,weaponFamily:info.weaponFamily,
    scope:entry.scope,verificationStatus:info.verificationStatus});
  }
  return result;
