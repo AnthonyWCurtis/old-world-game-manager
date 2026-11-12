@@ -16,7 +16,7 @@ export function sourceDefensiveRules(record,unit){
  const results=[],seen=new Set();
  for(const [key,classification] of [
   ['startingRules','source-listed standard rule'],
-  ['optionalRules','source-listed option (not selected automatically)']
+  ['optionalRules','source-listed selected option (conditions unverified)']
  ]){
   for(const item of Array.isArray(record[key])?record[key]:[]){
    const name=String(item?.name||'').trim(),url=item?.sourceUrl;
