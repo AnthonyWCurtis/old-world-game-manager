@@ -90,11 +90,11 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
  combat.append(el(doc,'h5','','Combat'));
  let shootingCount=0,combatCount=0;
 
- // A bound Magic Missile (for example Fireball) uses casting, not BS.
- // Show base BS only alongside selected ballistic shooting weapons.
- const ballisticWeapons=data.shootingWeapons.length+
-  data.magicWeapons.filter(x=>x.attackPhase==='Shooting').length;
- if(ballisticWeapons&&data.shootingModels.length){
+ // BS is a model characteristic, not a weapon characteristic. Keep it
+ // visible for every source-backed profile with a published BS, including
+ // troops with an as-yet unreviewed shooting weapon. Magic Missiles use
+ // casting rather than the displayed Ballistic Skill.
+ if(data.shootingModels.some(profile=>profile.ballisticSkill!=='—')){
   const group=el(doc,'div','game-attack-group game-attack-ballistic-skill');
   group.append(el(doc,'strong','','Base Ballistic Skill'));
   const rows=el(doc,'div','game-attack-models');
@@ -107,6 +107,8 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
    rows.append(row);
   }
   group.append(rows);
+  group.append(el(doc,'p','game-attack-caution',
+   'Published base BS for weapon shooting; Bound Spells use casting instead.'));
   shooting.append(group);
  }
 
