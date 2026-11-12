@@ -4,27 +4,26 @@ import {readFileSync} from 'node:fs';
 const ui=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
 const css=readFileSync(new URL('../docs/styles.css',import.meta.url),'utf8');
 
-test('the characteristics table remains the primary model data, with optional mount rows',()=>{
+test('model characteristics and optional selected mount profiles remain above the unified panel',()=>{
  assert.match(ui,/Model characteristics/);
  assert.match(ui,/Selected mount: /);
  assert.match(ui,/army-profile-mount-row/);
  assert.match(ui,/Published base profiles/);
 });
-test('imported selections and published source rules are native collapsible sections',()=>{
- assert.match(ui,/el\(doc,'details','army-import-selections army-unit-compact-details'\)/);
- assert.match(ui,/Imported selections · /);
- assert.match(ui,/el\(doc,'details','army-unit-source-details army-unit-compact-details'\)/);
- assert.match(ui,/Published equipment & rules · /);
- assert.match(ui,/el\(doc,'details','army-unit-compact-details army-source-meta-details'\)/);
- assert.match(ui,/Unit source details/);
- assert.match(css,/\.army-unit-compact-details>summary/);
+test('one consolidated panel replaces both overlapping equipment and source disclosures',()=>{
+ assert.match(ui,/unitEquipmentAndRules\(unit,record\)/);
+ assert.match(ui,/army-unit-unified-loadout/);
+ assert.match(ui,/Equipment & special rules/);
+ assert.match(ui,/Equipment & items/);
+ assert.match(ui,/Special rules/);
+ assert.match(ui,/Command & other selections/);
+ assert.doesNotMatch(ui,/Imported selections · /);
+ assert.doesNotMatch(ui,/Published equipment & rules · /);
+ assert.match(css,/\.army-unit-unified-loadout/);
 });
-test('source-backed default rules and selected upgrades remain inside disclosures',()=>{
- assert.match(ui,/chosenBody\.append\(list\)/);
- assert.match(ui,/chosenBody\.append\(groupArea\)/);
- assert.match(ui,/chosen\.append\(chosenBody\)/);
- assert.match(ui,/\['Standard special rules',record\.startingRules\]/);
- assert.match(ui,/\['Selected optional special rules — review conditions',selectedOptionalRules\]/);
- assert.match(ui,/sourceRefRow\(doc,heading,refs\)/);
- assert.match(ui,/if\(wasOpen\)extra\.open=true/);
+test('all known and unknown imports remain represented, while source details stay available',()=>{
+ assert.match(ui,/item\.scope\?item\.scope/);
+ assert.match(ui,/army-unit-loadout-unmatched/);
+ assert.match(ui,/Unit source details/);
+ assert.match(ui,/Published unit\/chassis armour reference/);
 });
