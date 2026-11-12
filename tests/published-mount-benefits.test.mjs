@@ -54,7 +54,8 @@ test('exact selected mount source attaches its benefit register with unresolved 
  const selected={...u,selections:[...u.selections,{name:'Regeneration (5+)'}]};
  const added=resolveSelectedMountProfiles(selected,{[url]:record},{},5);
  assert.equal(added[0].publishedBenefits.specialRules.length,3);
- assert.ok(added[0].publishedBenefits.specialRules.some(x=>x.name==='Regeneration (5+)'));
+ assert.ok(added[0].publishedBenefits.specialRules.some(x=>x.name==='Regeneration (5+)'&&
+  x.classification.includes('selected optional mount rule')));
 });
 test('UI and offline cache include mount benefits while defence engine remains unchanged',()=>{
  const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
