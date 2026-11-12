@@ -19,12 +19,12 @@ test('imported selections and published source rules are native collapsible sect
  assert.match(ui,/Unit source details/);
  assert.match(css,/\.army-unit-compact-details>summary/);
 });
-test('source references and imported selections are preserved inside the disclosures',()=>{
+test('source-backed default rules and selected upgrades remain inside disclosures',()=>{
  assert.match(ui,/chosenBody\.append\(list\)/);
  assert.match(ui,/chosenBody\.append\(groupArea\)/);
  assert.match(ui,/chosen\.append\(chosenBody\)/);
  assert.match(ui,/\['Standard special rules',record\.startingRules\]/);
- assert.match(ui,/\['Optional rules — not active automatically',record\.optionalRules\]/);
+ assert.match(ui,/\['Selected optional special rules — review conditions',record\.optionalRules\]/);
  assert.match(ui,/sourceRefRow\(doc,heading,refs\)/);
  assert.match(ui,/if\(wasOpen\)extra\.open=true/);
 });
