@@ -52,7 +52,7 @@ body.tactical-ui{
 .tactical-panel-heading h2{font-size:22px;color:var(--tc-type);margin:5px 0 4px;letter-spacing:-.025em}
 .tactical-panel-heading p{color:var(--tc-secondary);margin:0;font-size:13px}
 .tactical-ui .section-label{color:var(--tc-type);margin-bottom:8px}
-.tactical-ui #sourceText{background:#0a192a;min-height:190px;max-width:100%;border-color:#405973;color:#ecf3fa;line-height:1.6;font-size:14px;padding:14px}
+.tactical-ui #sourceText{background:#0a192a;min-height:190px;max-width:100%;border-color:#405973;color:#ecf3fa;line-height:1.6;font-size:16px;padding:14px}
 .tactical-ui :is(.selectwrap label,.example-row label,.checkfilter,.manual-format label){color:var(--tc-secondary)}
 .tactical-ui :is(.format-detection,.manual-format,.notice,.roster-entry,.debug-report-container){background:var(--tc-elevated);color:var(--tc-type);border-color:var(--tc-line)}
 .tactical-ui :is(.format-detection-details,.source-status,.debug-explanation){color:var(--tc-secondary)}
@@ -214,6 +214,8 @@ body.tactical-ui{
 .tactical-ui .notice{border-left:3px solid var(--tc-gold);color:var(--tc-secondary)}
 /* Mobile: wide click areas, compact headers and protected safe areas. */
 @media(max-width:650px){
+ .tactical-ui :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px}
+
  .tactical-ui :is(input,select,textarea){font-size:16px!important}
  .tactical-ui .wrap{padding-left:12px;padding-right:12px}
  .tactical-ui .tactical-brandbar{gap:8px}
