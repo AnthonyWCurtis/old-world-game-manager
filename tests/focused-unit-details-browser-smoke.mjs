@@ -71,7 +71,7 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
   const height=await page.locator('#gameUnitFocusBack').evaluate(el=>el.getBoundingClientRect().height);
-  assert.ok(height>=44,'Back action stays touch accessible');
+  assert.ok(height>=44,'Back action stays touch accessible at '+viewport.width+': '+height+'px');
  }
  assert.deepEqual(errors,[]);
  console.log('Focused Normal Play view, source profile tiles, four panels, duplicate units, Back and offline reload: PASS');
