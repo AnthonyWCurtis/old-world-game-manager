@@ -1,3 +1,4 @@
+import {importedSelectionMatchesName} from './imported-unit-display.js';
 /**
  * Published defensive special-rule references for a unit; read-only.
  * Separates a rule printed as standard from a rule only offered as an option.
@@ -10,7 +11,7 @@ const isSourceUrl=url=>{
   /^\/[a-z0-9-]+(?:\/[a-z0-9-]+)*$/.test(u.pathname);}
  catch{return false;}
 };
-export function sourceDefensiveRules(record){
+export function sourceDefensiveRules(record,unit){
  if(!isSourceUrl(record?.source?.sourceUrl))return [];
  const results=[],seen=new Set();
  for(const [key,classification] of [
@@ -20,6 +21,7 @@ export function sourceDefensiveRules(record){
   for(const item of Array.isArray(record[key])?record[key]:[]){
    const name=String(item?.name||'').trim(),url=item?.sourceUrl;
    if(!defensive.test(name)||!isSourceUrl(url))continue;
+   if(key==='optionalRules'&&!importedSelectionMatchesName(unit,name))continue;
    const id=classification+':'+name.toLowerCase()+':'+url;
    if(seen.has(id))continue;
    seen.add(id);
