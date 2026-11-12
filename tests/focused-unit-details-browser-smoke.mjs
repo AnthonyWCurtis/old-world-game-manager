@@ -74,10 +74,15 @@ try{
   const diagnostics=await page.evaluate(()=>{
    const root=document.querySelector('#armyRosterPage'),panel=document.querySelector('#gameUnitsPanel'),
     toolbar=document.querySelector('#gameUnitFocus'),button=document.querySelector('#gameUnitFocusBack');
+   const ancestry=[];
+   for(let el=button;el&&ancestry.length<9;el=el.parentElement){
+    const style=getComputedStyle(el);
+    ancestry.push({tag:el.tagName,id:el.id,cls:String(el.className).slice(0,48),
+     hidden:el.hidden,display:style.display,visibility:style.visibility,
+     height:Math.round(el.getBoundingClientRect().height),minHeight:style.minHeight});
+   }
    return {rootHidden:root.hidden,panelHidden:panel.hidden,toolbarHidden:toolbar.hidden,
-    rootDisplay:getComputedStyle(root).display,panelDisplay:getComputedStyle(panel).display,
-    toolbarDisplay:getComputedStyle(toolbar).display,buttonDisplay:getComputedStyle(button).display,
-    unitId:document.querySelector('#armyRosterList')?.dataset.focusUnit};
+    ancestry,unitId:document.querySelector('#armyRosterList')?.dataset.focusUnit};
   });
   assert.ok(height>=44,'Back touch target '+viewport.width+': '+height+'px '+JSON.stringify(diagnostics));
  }
