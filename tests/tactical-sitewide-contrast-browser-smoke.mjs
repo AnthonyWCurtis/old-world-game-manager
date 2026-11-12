@@ -66,7 +66,7 @@ try{
     const val=raw|| (input?(el.value||el.getAttribute('placeholder')||'').trim():'');
     if(!val||!raw&&!input)continue;
     const foreground=rgba(getComputedStyle(el).color);
-    if(!foreground)continue;
+    // Some controls use transparent source text and a visible ::before icon.\n    // Do not treat deliberately non-rendered source text as painted content.\n    if(!foreground||foreground[3]<.05)continue;
     const background=bg(el);
     const blended=compose(foreground,background);
     const ratio=contrast(blended,background);
