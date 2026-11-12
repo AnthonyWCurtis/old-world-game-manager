@@ -5,6 +5,7 @@
  * Read-only: never edits source records, roster points or combat rules.
  */
 import {selectedPublishedOptionalRules} from './imported-unit-display.js';
+import {selectedCommandRuleLink} from './selected-command-rule-links.js';
 
 const norm=s=>String(s??'').normalize('NFKC').toLowerCase()
  .replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
@@ -99,8 +100,13 @@ export function unitEquipmentAndRules(unit,record){
   const matchedRule=!!ref&&(rules.includes(ref)||optional.includes(ref));
   const matchedGear=!!ref&&eq.includes(ref);
   const category=categoryOf(selection,matchedRule,matchedGear);
+  const command=category==='upgrades'&&sourceVerified?
+   selectedCommandRuleLink(selection,unit,record):null;
   groups[category].push({
-   name,sourceUrl:refOf(ref)||url,origin:'imported',scope,
+   name,sourceUrl:command?.sourceUrl||refOf(ref)||url,
+   commandRole:command?.role||null,
+   ruleTitle:command?.ruleTitle||null,
+   origin:'imported',scope,
    status:selection?.matchStatus||'unmatched'
   });
  }

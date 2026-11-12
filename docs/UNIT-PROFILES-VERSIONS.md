@@ -4,6 +4,17 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.3 — 12 November 2026
+
+- Added source-backed links for explicitly selected command-group upgrades:
+  unit champions (including army-specific champion titles), standard bearers and musicians.
+- Each command link opens its correct universal `tow.whfb.app/command-groups/`
+  rules page; unit-specific champion characteristics remain in the model table.
+- A command role is inferred only when the actual published unit upgrade option
+  confirms it. Missing or mismatched source evidence retains the existing
+  imported selection without inventing a role or a reference.
+- No automatic combat results, extra effects, points changes or legality claims.
+
 ## v0.2 — 12 November 2026
 
 - Replaced the two duplicate `Imported selections` and `Published equipment & rules`
