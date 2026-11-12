@@ -6,6 +6,7 @@ import {sourceDefensiveRules,sourceArmourCap} from './source-defensive-rules.js'
 import {selectedArmourSourceCandidates} from './selected-armour-candidates.js';
 import {resolveSelectedMountProfiles} from './resolve-selected-mount-profiles.js';
 import {selectedMountProfileGroups} from './selected-mount-profile-rows.js';
+import {displayModelProfiles,selectedPublishedOptionalRules} from './imported-unit-display.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
@@ -149,7 +150,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  card.classList.toggle('game-unit-open',expanded);
  card.append(header,expandable);
 
- const profiles=statProfile(record,fallback);
+ const profiles=displayModelProfiles(unit,record,fallback);
  const details=el(doc,'div','army-unit-card-body');
  if(profiles.length||mountProfileGroups.length){
   const caption=el(doc,'div','army-profile-caption');
@@ -217,8 +218,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  if(magic?.verificationStatus==='source-page-extracted'&&
     magic.sourceUrl===record?.source?.sourceUrl&&
     Number.isInteger(magic.baseLevel)&&magic.baseLevel>=1&&magic.baseLevel<=4){
-  const group=el(doc,'section','army-ref-group');
-  group.append(el(doc,'strong','','Published wizard information (not selected automatically)'));
+  const group=el(doc,'details','army-unit-compact-details');
+  group.append(el(doc,'summary','','Additional wizard source information'));
   group.append(el(doc,'p','','Source base level: '+magic.baseLevel));
   if(magic.availableLores?.length){
    const links=el(doc,'div','army-ref-items');
@@ -236,8 +237,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  // Never transfer it to an attached rider, crew model, or regiment.
  const printedArmour=sourcePrintedArmour(record,fallback);
  if(printedArmour){
-  const section=el(doc,'section','army-ref-group');
-  section.append(el(doc,'strong','','Source-printed armour value: '+printedArmour.value+'+'));
+  const section=el(doc,'details','army-unit-compact-details');
+  section.append(el(doc,'summary','','Published unit/chassis armour reference · '+printedArmour.value+'+'));
   section.append(el(doc,'p','','Published unit/chassis value only. Model scope, rider equipment, armour modifiers and final saves are not calculated.'));
   section.append(safeLink(doc,'Original armour source',printedArmour.sourceUrl,'army-ref-pill'));
   details.append(section);
@@ -292,17 +293,18 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  chosen.append(chosenBody);
  details.append(chosen);
 
- if(record?.startingEquipment?.length||record?.startingRules?.length||record?.optionalRules?.length){
+ const selectedOptionalRules=selectedPublishedOptionalRules(unit,record);
+ if(record?.startingEquipment?.length||record?.startingRules?.length||selectedOptionalRules.length){
   const extra=el(doc,'details','army-unit-source-details army-unit-compact-details');
   if(wasOpen)extra.open=true;
   extra.append(el(doc,'summary','','Published equipment & rules · '+(
    (record.startingEquipment||[]).length+(record.startingRules||[]).length+
-   (record.optionalRules||[]).length)+' references'));
+   selectedOptionalRules.length)+' relevant references'));
   const content=el(doc,'div','army-unit-source-body');
   for(const [heading,refs] of [
    ['Starting equipment',record.startingEquipment],
    ['Standard special rules',record.startingRules],
-   ['Optional rules — not active automatically',record.optionalRules]
+   ['Selected optional special rules — review conditions',selectedOptionalRules]
   ]){
    const row=sourceRefRow(doc,heading,refs);
    if(row)content.append(row);
