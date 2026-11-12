@@ -29,18 +29,14 @@ const flatSelections=unit=>{
  }
  walk(unit?.selections);
  for(const group of Array.isArray(unit?.modelGroups)?unit.modelGroups:[])
-  walk(group.selections,group.name||'Model group');
+  walk(group.selections,(Number.isSafeInteger(group.quantity)?group.quantity+'× ':'')+(group.name||'Model group'));
  return result;
 };
 const nonInformational=({selection})=>selection?.matchStatus!=='informational'&&
  norm(selection?.name||selection?.raw)!=='on foot';
 const selected=unit=>flatSelections(unit).filter(nonInformational);
-const selectedName=(selections,name)=>selections.some(({selection})=>
- same(selection.name||selection.raw,name));
 const selectedReference=(selections,ref)=>selections.some(({selection})=>
- refOf(selection)===refOf(ref)||same(selection.name||selection.raw,ref.name));
-const normalizedSelectedRule=(selections,ref)=>selections.some(({selection})=>
- same(selection.name||selection.raw,ref.name));
+ (refOf(ref)&&refOf(selection)===refOf(ref))||same(selection.name||selection.raw,ref.name));
 
 /**
  * Only a published replacement option for the same unit permits dropping a
