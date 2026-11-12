@@ -163,7 +163,7 @@ function printSummary(r){
   ...r.mostCommonReferenceOnly.map(x=>'- '+x.name+': '+x.referenceOnlyStartingOccurrences+' — '+x.sourceUrl),
   '',
   'IMPORTANT: Reviewed manual reminders do not compute rules or battle results.',
-  'A source link does NOT mean an effect is computed. This audit'
+  'A source link does NOT mean an effect is computed. This audit',
   'does not verify legality, equipment selections, formations, combat results,',
   'or the correctness of rules in other independently implemented subsystems.'
  ];
