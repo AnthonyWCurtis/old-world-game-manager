@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-9';
+const CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-10';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
