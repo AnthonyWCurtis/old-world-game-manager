@@ -24,7 +24,7 @@ export function selectedCommandRuleLink(selection,unit,record){
  if(!selected)return null;
  const options=(record.upgradeGroups||[]).flatMap(g=>g.options||[]);
  const sourceOption=options.some(o=>{
-  const description=normalize(o?.description).replace(/^or:\\s*/,'');
+  const description=normalize(o?.description).replace(/^or:\s*/,'');
   if(selected==='standard bearer')
    return /^upgrade one model to an? standard bearer\b/.test(description);
   if(selected==='musician')
