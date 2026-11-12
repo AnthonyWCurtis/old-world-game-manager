@@ -9,6 +9,7 @@ import {resolveSelectedMountProfiles} from './resolve-selected-mount-profiles.js
 import {selectedMountProfileGroups} from './selected-mount-profile-rows.js';
 import {displayModelProfiles,selectedPublishedOptionalRules} from './imported-unit-display.js';
 import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
+import {referenceOnlyPublishedRules} from './source-special-rule-effects.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects} from './effects-ui.js';
@@ -341,28 +342,37 @@ function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
  for(const note of (defence?.spellMovementNotes||[]).slice(0,2))
   status.append(el(doc,'span','game-card-chip game-card-chip-movement',
    'Movement: '+note.name));
- const items=effects.filter(e=>e.kind!=='Spell');
- for(const effect of items.filter(e=>e.effectGroup==='offensive'&&e.quickLabel)){
-  const chip=el(doc,'span','game-card-chip game-card-chip-offensive',effect.quickLabel);
-  chip.title=effect.quickDetail||effect.description;
+ // Show named, source-reviewed benefits rather than vague "2 conditional" counts.
+ // High-priority joined buffs and attack effects appear first. Every record,
+ // including overflow, remains available with conditions in the Effects tab.
+ const itemEffects=effects.filter(e=>e.kind!=='Spell');
+ const priority=e=>e.kind==='Special rule'&&e.shared?0:
+  e.effectGroup==='offensive'?1:e.status==='active'?2:3;
+ const sorted=[...itemEffects].sort((a,b)=>priority(a)-priority(b));
+ const LIMIT=6;
+ for(const effect of sorted.slice(0,LIMIT)){
+  const isAttack=effect.effectGroup==='offensive'&&effect.quickLabel;
+  let name=effect.quickLabel||effect.name;
+  if(effect.scope?.includes('Champion bearer only'))name+=' (champion only)';
+  // Existing players and the battle-status controls use "Active: Name".
+  if(effect.status==='active')name='Active: '+name;
+  const state=effect.status==='conditional'?' · conditional':
+   effect.status==='ready'?' · ready':
+   effect.status==='spent'?' · spent':
+   effect.status==='equipped'?' · equipped':'';
+  if(effect.status==='bound-spell')name='Bound: '+(effect.boundSpell?.name||effect.name);
+  const cls=isAttack?'game-card-chip-offensive':
+   effect.status==='spent'?'game-card-chip-spent':
+   effect.status==='active'?'game-card-chip-magic':'game-card-chip-item';
+  const chip=el(doc,'span','game-card-chip '+cls,name+state);
+  chip.dataset.effectId=effect.id;
+  chip.title=[effect.description,effect.scope,'Source: '+effect.sourceUrl]
+   .filter(Boolean).join(' · ');
   status.append(chip);
  }
- for(const [statusName,label,className] of [
-  ['equipped','equipped','game-card-chip-item'],
-  ['conditional','conditional','game-card-chip-item'],
-  ['ready','one-use ready','game-card-chip-item'],
-  ['spent','spent','game-card-chip-spent']
- ]){
-  const count=items.filter(e=>e.status===statusName).length;
-  if(count)status.append(el(doc,'span','game-card-chip '+className,
-   count+' '+label));
- }
- for(const item of items.filter(e=>e.status==='active').slice(0,2))
-  status.append(el(doc,'span','game-card-chip game-card-chip-magic',
-   'Active: '+item.name));
- for(const item of items.filter(e=>e.status==='bound-spell').slice(0,1))
+ if(sorted.length>LIMIT)
   status.append(el(doc,'span','game-card-chip game-card-chip-item',
-   'Bound: '+(item.boundSpell?.name||item.name)));
+   '+'+(sorted.length-LIMIT)+' more named effects in unit details'));
  if(status.childNodes.length)header.querySelector('.army-unit-names')?.append(status);
 }
 
@@ -431,7 +441,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  if(profile)body.append(profile);
  body.append(renderUnitAttackPanel(doc,imported,record,fallback,effects));
  body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record,[],[],imported));
- body.append(renderUnitEffects(doc,effects,effectActions));
+ body.append(renderUnitEffects(doc,effects,effectActions,referenceOnlyPublishedRules(imported,record)));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
  remove.type='button';
  remove.addEventListener('click',()=>onAssignment(character.id,null));
@@ -671,7 +681,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
     resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles,defence.armour?.value),imported));
-  content.append(renderUnitEffects(doc,effects,itemActions));
+  content.append(renderUnitEffects(doc,effects,itemActions,referenceOnlyPublishedRules(imported,records[entry.id])));
   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
   const target=displayId.get(assignments[entry.id]);
@@ -719,7 +729,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    content.append(renderDefencePanel(doc,defence,onShieldUse,
     sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],[],[],imported));
-   content.append(renderUnitEffects(doc,effects,itemActions));
+   content.append(renderUnitEffects(doc,effects,itemActions,referenceOnlyPublishedRules(imported,records[entry.id])));
    const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
    if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
    const memberArea=el(doc,'section','game-assigned-characters');

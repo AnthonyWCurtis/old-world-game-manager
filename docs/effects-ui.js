@@ -113,8 +113,9 @@ export function renderUnitOffensiveEffects(doc,unitEffects=[]){
   rule.append(el(doc,'p','game-offensive-effect-detail',effect.quickDetail));
   rule.append(el(doc,'p','game-offensive-effect-scope',effect.scope));
   const links=el(doc,'div','game-effect-source-links');
-  links.append(sourceLink(doc,'Item source',effect.sourceUrl));
-  if(effect.ruleUrl)links.append(sourceLink(doc,'How '+effect.quickLabel+' works',effect.ruleUrl));
+  links.append(sourceLink(doc,effect.kind==='Special rule'?'Special rule source':'Item source',effect.sourceUrl));
+  if(effect.ruleUrl&&effect.ruleUrl!==effect.sourceUrl)
+   links.append(sourceLink(doc,'How '+effect.quickLabel+' works',effect.ruleUrl));
   rule.append(links);
   section.append(rule);
  }
@@ -123,18 +124,34 @@ export function renderUnitOffensiveEffects(doc,unitEffects=[]){
  return section;
 }
 
-export function renderUnitEffects(doc,unitEffects,actionsHandlers={}){
+function appendPublishedRules(doc,area,refs){
+ if(!refs?.length)return;
+ const detail=el(doc,'details','game-published-rules-reference');
+ detail.append(el(doc,'summary','',
+  'Other published special rules ('+refs.length+') · source reference only'));
+ detail.append(el(doc,'p','game-effect-caution',
+  'These verified source rules are references, not projected buffs. The Effects panel does not interpret their conditions automatically; check each linked rule.'));
+ const list=el(doc,'ul','game-published-rules-list');
+ for(const rule of refs){
+  const item=el(doc,'li');
+  item.append(sourceLink(doc,rule.name,rule.sourceUrl));
+  list.append(item);
+ }
+ detail.append(list);area.append(detail);
+}
+export function renderUnitEffects(doc,unitEffects,actionsHandlers={},referenceRules=[]){
  const area=el(doc,'section','game-effects-panel');
  area.append(el(doc,'h4','','Effects, items & banners'));
  if(!unitEffects?.length){
   area.append(el(doc,'p','game-effect-empty',
    'No supported source-reviewed effects detected for this unit. Other imported selections are listed above; unmatched or unreviewed items do not gain guessed bonuses.'));
+  appendPublishedRules(doc,area,referenceRules);
   return area;
  }
  const spell=unitEffects.filter(e=>e.kind==='Spell');
  const equipment=unitEffects.filter(e=>e.kind!=='Spell');
  const head=el(doc,'p','game-effect-counts',
-  equipment.length+' equipment effect'+(equipment.length===1?'':'s')+
+  equipment.length+' item or special-rule effect'+(equipment.length===1?'':'s')+
   ' · '+spell.length+' recorded spell effect'+(spell.length===1?'':'s'));
  area.append(head);
  const list=el(doc,'div','game-effects-list');
@@ -144,6 +161,7 @@ export function renderUnitEffects(doc,unitEffects,actionsHandlers={}){
  area.append(list);
  area.append(el(doc,'p','game-effect-caution',
   'Source-verified descriptions only. Effects are not automatically applied to imported base characteristics, rolls or combat results.'));
+ appendPublishedRules(doc,area,referenceRules);
  return area;
 }
 export function renderMagicItemAbilities(container,projection,session,handlers={}){

@@ -9,6 +9,7 @@
  */
 import {createGameScreenModel} from './game-screen-model.js';
 import {SPELL_RULES,spellEffectsFor} from './spell-engine.js';
+import {projectReviewedCharacterRules} from './source-special-rule-effects.js';
 
 const SOURCE='https://tow.whfb.app/';
 const item=(id,name,kind,mode,description,extra={})=>Object.freeze({
@@ -23,16 +24,20 @@ export const ITEM_EFFECT_RULES=Object.freeze({
    ruleUrl:SOURCE+'special-rules/armour-bane',faqUrl:SOURCE+'faq/universal-special-rules'}),
  'banner-of-confidence':item('banner-of-confidence','Banner of Confidence','Magic standard','conditional',
   'A unit carrying this standard does not suffer the usual -1 To Hit modifier when making a Stand & Shoot charge reaction.',
-  {scope:'standard'}),
+  {scope:'standard',quickLabel:'Stand & Shoot: ignore -1 To Hit',
+   quickDetail:'The carrying unit ignores the usual -1 To Hit for Stand & Shoot; sharing depends on a recorded, legal join.'}),
  'the-loremasters-cloak':item('the-loremasters-cloak',"The Loremaster's Cloak",'Talisman','conditional',
   'The bearer and any unit they have joined have a 4+ Ward save against wounds caused by Magic Missiles only. It is not a general Ward save.',
-  {scope:'joined-unit'}),
+  {scope:'joined-unit',quickLabel:'4+ Ward vs Magic Missiles',
+   quickDetail:'Only the bearer and a legally joined unit. Not a general Ward save; champion bearer does not imply regiment-wide protection.'}),
  'charmed-shield':item('charmed-shield','Charmed Shield','Magic armour','single-use',
   'This is a shield; once per game its bearer may use a 5+ Ward save against a single wound. After use it becomes an ordinary non-magical shield.',
-  {scope:'bearer',usesExistingShieldState:true}),
+  {scope:'bearer',usesExistingShieldState:true,quickLabel:'5+ Ward (one use)',
+   quickDetail:'Once per game the bearer gets a 5+ Ward against one wound, then the shield becomes ordinary.'}),
  'seed-of-rebirth':item('seed-of-rebirth','Seed of Rebirth','Enchanted item','passive',
   'The bearer gains Regeneration (5+). This benefit belongs to its bearer, not automatically to a joined regiment.',
-  {scope:'bearer'}),
+  {scope:'bearer',quickLabel:'Regeneration (5+)',
+   quickDetail:'Seed of Rebirth grants the bearer Regeneration (5+), not an entire regiment.'}),
  'ruby-ring-of-ruin':item('ruby-ring-of-ruin','Ruby Ring of Ruin','Enchanted item','bound-spell',
   'The bearer can cast Fireball as a Bound spell at Power Level 1. Fireball is a 24" Magic Missile (casting value 8+) causing 2D6 Strength 4 hits with Flaming Attacks and no AP modifier. Casting and damage are not resolved automatically.',
   {scope:'bearer',boundSpell:{name:'Fireball',url:SOURCE+'spell/fireball',
@@ -188,7 +193,7 @@ const added=(list,entry,recipient,scope)=>{
  list.push({...entry,beneficiaryId:recipient,shared:recipient!==entry.ownerId,
   scope:recipient===entry.ownerId?entry.scope:scope,joinedFrom:recipient!==entry.ownerId?entry.ownerId:null});
 };
-export function projectArmyEffects(army,session){
+export function projectArmyEffects(army,session,unitRecords={}){
  const model=createGameScreenModel(army);
  const byUnit=Object.fromEntries(model.units.map(u=>[u.id,[]]));
  const entryById=new Map(model.units.map(u=>[u.id,u]));
@@ -214,6 +219,9 @@ export function projectArmyEffects(army,session){
    added(byUnit[beneficiary],entry,beneficiary,scope);
   }
  }
+ // Project source-reviewed character-granted special rules from the matching
+ // published records only, never from guessed unit names or missing data.
+ projectReviewedCharacterRules(army,session,unitRecords,byUnit);
  // Normalize active spell records in the SAME unit-facing shape. Existing
  // specialised spell/defence engines remain the source of numeric effects.
  for(const unit of model.units){
