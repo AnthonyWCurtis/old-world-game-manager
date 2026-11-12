@@ -172,7 +172,9 @@ export function attachRosterReorder(container,army,groups,search,refreshRoster){
     if(gesture?.card===card)event.preventDefault();
    });
    header.addEventListener('click',event=>{
-    if(Date.now()<suppressUntil){
+    // Suppress only a synthetic click on the dragged card itself.
+    // A deliberate tap on Open unit or another real control must still work.
+    if(Date.now()<suppressUntil&&!isControl(event.target)){
      event.preventDefault();
      event.stopImmediatePropagation();
     }
