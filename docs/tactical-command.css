@@ -214,6 +214,7 @@ body.tactical-ui{
 .tactical-ui .notice{border-left:3px solid var(--tc-gold);color:var(--tc-secondary)}
 /* Mobile: wide click areas, compact headers and protected safe areas. */
 @media(max-width:650px){
+ .tactical-ui :is(input,select,textarea){font-size:16px!important}
  .tactical-ui .wrap{padding-left:12px;padding-right:12px}
  .tactical-ui .tactical-brandbar{gap:8px}
  .tactical-brand-version{display:none}
