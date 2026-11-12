@@ -328,6 +328,12 @@ function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
  const status=el(doc,'div','game-card-status');
  if(assignedCount)status.append(el(doc,'span','game-card-chip',
   assignedCount+' assigned character'+(assignedCount===1?'':'s')));
+ if(Number.isInteger(defence?.armour?.value)){
+  const chip=el(doc,'span','game-card-chip game-card-chip-armour',
+   'Equipment armour '+defence.armour.label);
+  chip.title=defence.armour.note;
+  status.append(chip);
+ }
  const ongoing=new Set((defence?.activeSpellEffects||[]).map(e=>e.name).filter(Boolean));
  for(const name of [...ongoing].slice(0,3))
   status.append(el(doc,'span','game-card-chip game-card-chip-magic','Active: '+name));
