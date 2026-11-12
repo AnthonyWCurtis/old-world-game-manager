@@ -5,7 +5,7 @@ import {parseArmy} from '../docs/parser.js';
 import {GAME_TABS,loadGameLayout,saveGameLayout,setActiveTab,setUnitExpanded} from '../docs/game-layout.js';
 
 const fixture=id=>parseArmy(readFileSync(new URL('../docs/examples/'+id+'.txt',import.meta.url),'utf8'));
-test('View preferences default Overview and scope to one exact imported army',()=>{
+test('View preferences default Units and scope to one exact imported army',()=>{
  const storage=new Map();
  globalThis.localStorage={
   getItem:key=>storage.get(key)||null,
@@ -15,7 +15,7 @@ test('View preferences default Overview and scope to one exact imported army',()
  const other=fixture('single-sea-guard');
  assert.deepEqual(GAME_TABS,['overview','units','magic']);
  const fresh=loadGameLayout(army);
- assert.equal(fresh.tab,'overview');
+ assert.equal(fresh.tab,'units');
  assert.deepEqual(fresh.expandedUnits,[]);
  const one=setUnitExpanded(fresh,army.units[0].id,true);
  assert.deepEqual(one.expandedUnits,[army.units[0].id]);
@@ -24,7 +24,7 @@ test('View preferences default Overview and scope to one exact imported army',()
  assert.equal(changed.scroll.overview,246);
  assert.equal(loadGameLayout(army).tab,'magic');
  assert.deepEqual(loadGameLayout(army).expandedUnits,[army.units[0].id]);
- assert.equal(loadGameLayout(other).tab,'overview');
+ assert.equal(loadGameLayout(other).tab,'units');
  assert.deepEqual(loadGameLayout(other).expandedUnits,[]);
  const collapsed=setUnitExpanded(changed,army.units[0].id,false);
  assert.deepEqual(loadGameLayout(army).expandedUnits,[]);
@@ -38,10 +38,10 @@ test('Tampered preferences cannot reveal old unit IDs or invalid tabs',()=>{
   setItem:()=>{}
  };
  const saved=loadGameLayout(army);
- assert.equal(saved.tab,'overview');
+ assert.equal(saved.tab,'units');
  assert.deepEqual(saved.expandedUnits,[army.units[0].id]);
  assert.deepEqual(saved.scroll,{overview:0,units:10000000,magic:0});
- assert.equal(setActiveTab(saved,'invalid',10).tab,'overview');
+ assert.equal(setActiveTab(saved,'invalid',10).tab,'units');
 });
 test('Blocked browser storage must not interrupt battles',()=>{
  const army=fixture('single-sea-guard');
