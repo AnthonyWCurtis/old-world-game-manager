@@ -6,7 +6,7 @@
  */
 const norm=v=>String(v??'').normalize('NFKC').toLowerCase()
  .replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
-const words=v=>' '+norm(v).replace(/[^\\p{L}\\p{N}]+/gu,' ').trim()+' ';
+const words=v=>' '+norm(v).replace(/[^\p{L}\p{N}]+/gu,' ').trim()+' ';
 const selectionsOf=unit=>{
  const result=[];
  const walk=items=>{
@@ -23,8 +23,8 @@ export function importedSelectionMatchesName(unit,name){
  const needle=norm(name);
  if(!needle)return false;
  return selectionsOf(unit).some(value=>{
-  const selected=value.replace(/^\\d+\\s*(?:x|×)\\s*/i,'')
-   .replace(/^\\d+\\s+/,'');
+  const selected=value.replace(/^\d+\s*(?:x|×)\s*/i,'')
+   .replace(/^\d+\s+/,'');
   return selected===needle||selected===needle+'s'||
    selected.startsWith(needle+' (')||selected.startsWith(needle+' [');
  });
@@ -36,8 +36,8 @@ function isSourceListedOptionalModel(profile,record){
   (group?.options||[]).some(option=>{
    const description=norm(option?.description);
    const nameInSource=words(description).includes(words(name));
-   return nameInSource&&/\\b(?:upgrade|champion)\\b/.test(description)&&
-    /\\b(?:model|character|crew|warrior)\\b/.test(description);
+   return nameInSource&&/\b(?:upgrade|champion)\b/.test(description)&&
+    /\b(?:model|character|crew|warrior)\b/.test(description);
   }));
 }
 export function displayModelProfiles(unit,record,fallback){
