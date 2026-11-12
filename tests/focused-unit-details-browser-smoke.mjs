@@ -70,14 +70,11 @@ try{
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
-   const stableTouch=await page.waitForFunction(async()=>{
+   const stableTouch=await page.waitForFunction(()=>{
     const button=document.querySelector('#gameUnitFocusBack');
-    if(!button||!document.querySelector('#armyRosterList')?.classList.contains('game-unit-focused'))return false;
-    for(let n=0;n<3;n++){
-     await new Promise(resolve=>requestAnimationFrame(resolve));
-     if(!button.isConnected||button.getBoundingClientRect().height<44)return false;
-    }
-    return {height:button.getBoundingClientRect().height,visible:getComputedStyle(button).visibility};
+    if(!button||!button.isConnected||!document.querySelector('#armyRosterList')?.classList.contains('game-unit-focused'))return false;
+    const rect=button.getBoundingClientRect(),visibility=getComputedStyle(button).visibility;
+    return rect.height>=44&&visibility==='visible'?{height:rect.height,visibility}:false;
    },null,{timeout:12000});
    const measured=await stableTouch.jsonValue();
    assert.ok(measured.height>=44&&measured.visible==='visible',
