@@ -34,7 +34,7 @@ try{
  await page.locator('#gameCharacters .game-character-card[data-unit-id="'+firstCharacter+'"] select.character-unit-picker').selectOption(firstRegiment);
  assert.equal(await assigned(firstRegiment).count(),1);
  assert.match(await membership(firstCharacter),/Assigned to/);
- assert.match(await page.locator('#battleSessionStatus').innerText(),/saved automatically|Saving/);
+ assert.match(await page.locator('#battleSessionStatus').textContent(),/saved automatically|Saving/);
 
  // From a regiment: add a second, independent character.
  await page.locator('#gameRegiments article[data-unit-id="'+firstRegiment+'"] select.regiment-character-picker').selectOption(secondCharacter);
@@ -72,7 +72,7 @@ try{
  assert.equal(await assigned(secondRegiment).count(),1);
  assert.equal(await assigned(secondRegiment).first().getAttribute('data-character-id'),firstCharacter);
  assert.equal(await characters.count(),7,'Characters section never loses a character after joining');
- assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
+ assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
  assert.deepEqual(pageErrors,[]);
  console.log('Stage 3 two-way assignments, nested profiles, removal and offline restoration: PASS');
