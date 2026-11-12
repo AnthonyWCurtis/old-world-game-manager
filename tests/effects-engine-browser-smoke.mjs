@@ -39,6 +39,9 @@ try{
  assert.equal(await shootingBS.locator('.game-attack-model').count(),2,
   'Selected champion has its own published BS, not an averaged value');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="combat"] > h5').innerText(),'Combat');
+ assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-weapon')
+  .filter({hasText:'Warbows'}).count(),1,
+  'Ordinary regiment shooters still have their selected Warbows');
  assert.match(await seaAttackPanel.locator('[data-attack-phase="combat"]').innerText(),/Base melee characteristics/);
  const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
@@ -90,6 +93,11 @@ try{
   .filter({hasText:'BS'}).count(),0,
   'Fireball must use casting rather than the bearer\'s Ballistic Skill');
  assert.match(await bsbShooting.innerText(),/Hunter's Scorn/);
+ assert.equal(await bsbShooting.locator('.game-attack-weapon').filter({hasText:'Longbow'}).count(),0,
+  'Longbow cannot remain a separate shooting weapon for the bearer of Hunter\'s Scorn');
+ assert.equal(await bsbShooting.locator('.game-attack-weapon').filter({hasText:"Hunter's Scorn"}).count(),1);
+ assert.match(await bsbShooting.locator('.game-attack-weapon-choice').innerText(),
+  /Longbow.*retained in equipment.*Hunter's Scorn/s);
  assert.match(await bsbCombat.innerText(),/Base melee characteristics/);
  assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
