@@ -21,9 +21,11 @@ import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
 import {GAME_TABS,loadGameLayout,saveGameLayout,setActiveTab,setUnitExpanded} from './game-layout.js';
 import {renderGameOverview} from './game-overview.js';
+import {wireTacticalHome} from './tactical-command.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {unitDisplayName} from './player-customization.js';
 const $=id=>document.getElementById(id);
+wireTacticalHome(document);
 const ACTIVE_TAB_ARMY_KEY='old-world-game-manager-active-army-v1';
 let current=null;
 const anonymousReports=wireReportUI(()=>current);
@@ -443,6 +445,7 @@ function renderArmyScreen(){
  applyGameTab();
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
+ $('tacticalArmyPoints').textContent=overview.displayedTotal==null?'— pts':points(overview.displayedTotal);
  const version=$('unitProfilesVersion');
  if(version)version.textContent='v'+UNIT_PROFILES_VERSION;
  const faction=label(current.army.faction);
@@ -514,6 +517,7 @@ function showPageForHash({scroll=false}={}){
  const roster=!!current&&window.location.hash==='#army-roster';
  $('importPage').hidden=roster;
  $('armyRosterPage').hidden=!roster;
+ document.body.classList.toggle('tactical-in-game',roster);
  if(roster)renderArmyScreen();
  if(scroll){
   const saved=roster?ensureGameLayout()?.scroll?.[gameLayout.tab]||0:0;

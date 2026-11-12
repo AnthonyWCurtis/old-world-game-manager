@@ -70,21 +70,15 @@ try{
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
-  const height=await page.locator('#gameUnitFocusBack').evaluate(el=>el.getBoundingClientRect().height);
-  const diagnostics=await page.evaluate(()=>{
-   const root=document.querySelector('#armyRosterPage'),panel=document.querySelector('#gameUnitsPanel'),
-    toolbar=document.querySelector('#gameUnitFocus'),button=document.querySelector('#gameUnitFocusBack');
-   const ancestry=[];
-   for(let el=button;el&&ancestry.length<9;el=el.parentElement){
-    const style=getComputedStyle(el);
-    ancestry.push({tag:el.tagName,id:el.id,cls:String(el.className).slice(0,48),
-     hidden:el.hidden,display:style.display,visibility:style.visibility,
-     height:Math.round(el.getBoundingClientRect().height),minHeight:style.minHeight});
-   }
-   return {rootHidden:root.hidden,panelHidden:panel.hidden,toolbarHidden:toolbar.hidden,
-    ancestry,unitId:document.querySelector('#armyRosterList')?.dataset.focusUnit};
-  });
-  assert.ok(height>=44,'Back touch target '+viewport.width+': '+height+'px '+JSON.stringify(diagnostics));
+   const stableTouch=await page.waitForFunction(()=>{
+    const button=document.querySelector('#gameUnitFocusBack');
+    if(!button||!button.isConnected||!document.querySelector('#armyRosterList')?.classList.contains('game-unit-focused'))return false;
+    const rect=button.getBoundingClientRect(),visibility=getComputedStyle(button).visibility;
+    return rect.height>=44&&visibility==='visible'?{height:rect.height,visibility}:false;
+   },null,{timeout:12000});
+   const measured=await stableTouch.jsonValue();
+   assert.ok(measured.height>=44&&measured.visibility==='visible',
+    'Back action must be >=44px and visible at '+viewport.width+': '+JSON.stringify(measured));
  }
  const selected=page.locator('#armyRosterList .game-focus-selected');
  await selected.locator('.game-rename-toggle').click();

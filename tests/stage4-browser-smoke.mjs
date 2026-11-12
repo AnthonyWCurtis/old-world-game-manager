@@ -25,7 +25,7 @@ try{
  assert.match(await seaDef.locator('[data-save="ward"]').innerText(),/Not established/);
  assert.match(await seaDef.locator('[data-save="regeneration"]').innerText(),/Not established/);
  assert.match(await seaDef.locator('.game-defence-champion').textContent(),/Sea Master.*4\+.*Magic Missiles/i);
- assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
+ assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
 
  const sky=page.locator('#gameCharacters .game-character-card').filter({hasText:'283 pts'}).first();
  const skyId=await sky.getAttribute('data-unit-id');
@@ -68,7 +68,7 @@ try{
  assert.equal(await restored.locator('.game-defence-shield-used input').isChecked(),true);
  assert.match(await restored.locator('[data-save="ward"]').innerText(),/Spent/);
  assert.equal(await page.locator('#gameRegiments article[data-unit-id="'+seaId+'"] details.game-attached-character[data-character-id="'+skyId+'"]').count(),1);
- assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
+ assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
  assert.deepEqual(errors,[]);
  console.log('Stage 4 armour, conditional Ward, Regeneration, bearer-only joins and offline one-use state: PASS');

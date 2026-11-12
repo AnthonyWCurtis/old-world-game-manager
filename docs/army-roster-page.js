@@ -121,6 +121,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   form.append(input,save,reset);main.append(toggle,form);
  }
  const headingMeta=el(doc,'div','army-unit-meta');
+ if(unit.quantity?.value==null)headingMeta.classList.add('tactical-count-unknown');
  headingMeta.append(el(doc,'span','army-model-number',modelCountLabel(unit)));
  if(unit.quantity?.origin==='derived')
   headingMeta.append(el(doc,'span','army-quantity-note','From imported model groups'));

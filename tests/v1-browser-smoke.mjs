@@ -20,7 +20,7 @@ try{
  await page.locator('#viewRosterBtn').click();
  await showUnitsAndExpand(page);
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
- assert.match(await page.locator('.army-screen-mode').innerText(),/BATTLE COMPANION/);
+ assert.match(await page.locator('.army-screen-mode').innerText(),/NORMAL PLAY/);
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),1);
  assert.match(await page.locator('#armyRosterList').innerText(),/Lothern Sea Guard/);
  assert.equal(await page.locator('#gameCharacters').count(),1);
@@ -48,7 +48,7 @@ try{
  await page.locator('.game-character-card').first().waitFor({state:'attached',timeout:10000});
  assert.ok(await page.locator('.game-character-card').count()>0);
  assert.ok(await page.locator('#gameRegiments .army-unit-card').count()>0);
- await page.locator('#gameScreenJumpCharacters').click();
+ await page.locator('.game-roster-section-toggle').first().click();
  assert.equal(await page.locator('#armyRosterPage').isVisible(),true);
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
   'Game Screen must not cause page-level horizontal scrolling');

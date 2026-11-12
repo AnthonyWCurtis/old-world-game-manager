@@ -53,7 +53,7 @@ try{
  assert.equal(await control.locator('.game-active-spell').count(),1);
  assert.match(await seaWard().textContent(),/5\+.*all wounds/i);
  assert.match(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-defence-movement').textContent(),/Cannot march.*Cannot charge/s);
- assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
+ assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-defence-panel .game-defence-incoming').count(),0);
 
  // Glittering Robe is Self, only becomes unit-wide after explicitly joining Mage.
@@ -95,7 +95,7 @@ try{
  const restoredSea=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+seaId+'"]');
  assert.equal(await restoredControl.locator('.game-active-spell').count(),1);
  assert.match(await restoredSea.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="ward"]').textContent(),/5\+.*all wounds/i);
- assert.match(await page.locator('#armyRosterSummary').innerText(),/2,599/);
+ assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
  await restoredControl.locator('.game-spell-expire').click();
  assert.equal(await restoredControl.locator('.game-active-spell').count(),0);
  assert.match(await restoredSea.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="ward"]').textContent(),/Not established/);

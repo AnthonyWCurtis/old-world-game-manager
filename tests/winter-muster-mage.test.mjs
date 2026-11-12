@@ -178,7 +178,7 @@ test('Game Manager v0.4.4 wires the Mage fix after loading its reference shard',
  const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
  assert.match(app,/appVersion:'1\.0\.0-alpha\.5'/);
- assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/Old World Companion · Tactical Command/);
  assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5/);
  assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.5/);
 });

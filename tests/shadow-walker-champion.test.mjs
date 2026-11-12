@@ -132,6 +132,6 @@ test('v0.4.5 browser includes source-scoped champion fix with fresh asset keys',
  assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.5/);
  assert.match(app,/applySourceScopedSelectionReferences\(army,unitDataRecords\)/);
  assert.match(app,/appVersion:'1\.0\.0-alpha\.5'/);
- assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/Old World Companion · Tactical Command/);
  assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5/);
 });

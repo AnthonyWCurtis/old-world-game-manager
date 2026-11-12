@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#18344d">
+<meta name="theme-color" content="#091321">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Game Manager">
-<title>Old World Game Manager · v1 Game Screen preview</title>
+<meta name="apple-mobile-web-app-title" content="Old World Companion">
+<title>Old World Companion · Tactical Command</title>
 <link rel="stylesheet" href="./styles.css?v=1.0.0-alpha.5">
 <link rel="stylesheet" href="./mobile.css?v=1.0.0-mobile.1">
+<link rel="stylesheet" href="./tactical-command.css?v=2.0.0">
 <script>
 /* Even an older cached app bundle can display this prompt: index.html is online-first. */
 (()=>{
@@ -31,19 +32,27 @@
  },{once:true});
 })();
 </script>
-<script type="module" src="./app.js?v=1.0.0-alpha.5"></script>
+<script type="module" src="./app.js?v=1.0.0-alpha.5-tactical-v2"></script>
 </head>
-<body>
+<body class="tactical-ui">
 <div id="appUpdateNotice" class="gm-update-notice" role="status" aria-live="polite" hidden>
  <div><strong>Updated Game Manager is ready</strong><span>Save any unsaved army list first, then reload for the latest import and source-reference fixes.</span></div>
  <button id="appUpdateReloadBtn" type="button" class="gm-update-reload">Reload updated app</button>
 </div>
-<header class="topbar"><div class="wrap"><span class="brand">Warhammer: The Old World</span><span class="muted">Game Manager · v1 preview</span></div></header>
-<main class="wrap" id="importPage">
- <h1>Import army list</h1>
- <button id="resumeGameBtn" type="button" class="resume-game-screen" aria-controls="armyRosterPage" hidden>Return to Game Screen →</button>
- <p class="intro">Paste a list from Old World Builder, Ingude, New Recruit or Old World Rankings. Automatic detection supports 15 named layouts, including New Recruit TOW points-first lists with wrapped lines, model groups and quoted unit nicknames. Nothing is checked for army legality.</p>
- <section class="panel">
+<header class="topbar"><div class="wrap tactical-brandbar"><div class="tactical-brandmark" aria-hidden="true">✦</div><div class="tactical-brand-identity"><strong class="brand">Old World Companion</strong><span class="tactical-brand-tag">THE OLD WORLD · TACTICAL COMMAND</span></div><span class="tactical-brand-version">TACTICAL V2</span></div></header>
+<main class="wrap tactical-home" id="importPage">
+ <section class="tactical-landing" aria-labelledby="tacticalHomeTitle">
+  <div class="tactical-eyebrow">COMMAND DECK <span aria-hidden="true">/</span> YOUR ARMIES</div>
+  <h1 id="tacticalHomeTitle">Prepare for battle.</h1>
+  <p class="tactical-landing-intro">Import your army, pick up a saved game, or return to the table.</p>
+  <nav class="tactical-home-actions" aria-label="Command deck destinations">
+   <button id="tacticalImportNav" class="tactical-home-link tactical-home-link-primary" type="button"><span aria-hidden="true">⊞</span> Import army</button>
+   <button id="tacticalSavedNav" class="tactical-home-link" type="button"><span aria-hidden="true">▤</span> My armies</button>
+  </nav>
+  <button id="resumeGameBtn" type="button" class="resume-game-screen tactical-continue" aria-controls="armyRosterPage" hidden>Continue current battle <span aria-hidden="true">→</span></button>
+ </section>
+ <section class="panel tactical-import-panel" id="tacticalImportPanel">
+  <div class="tactical-panel-heading"><span class="tactical-eyebrow">01 / IMPORT</span><h2>Add an army</h2><p>Paste your exported army list below. The original export stays intact.</p></div>
   <label for="sourceText" class="section-label">Paste exported list</label>
   <textarea id="sourceText" spellcheck="false" placeholder="Paste a full army list here…" aria-label="Army list text"></textarea>
   <div class="example-row"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
@@ -126,35 +135,34 @@
   </details>
   <details class="panel raw"><summary>Readable army list</summary><p class="muted small">The decoded roster is shown for readability. Your exact original clipboard text remains preserved in saved imports and JSON exports.</p><pre id="rawText"></pre><details id="encodedPanel" hidden><summary>Original encoded clipboard text</summary><pre id="encodedText"></pre></details></details>
  </section>
- <section class="panel saved"><div class="line"><h2>Saved imports</h2><div><button id="backupBtn" class="smallbtn" type="button">Backup all JSON</button> <button id="refreshBtn" class="smallbtn" type="button">Refresh</button></div></div>
+ <section class="panel saved tactical-saved-panel" id="tacticalSavedArmies"><div class="line"><h2>My armies</h2><div><button id="backupBtn" class="smallbtn" type="button">Backup all JSON</button> <button id="refreshBtn" class="smallbtn" type="button">Refresh</button></div></div>
   <p class="muted small">Stored in this browser on this device (IndexedDB), not on GitHub. Export JSON backups if you want to keep or move them. Private Browsing or clearing website data may erase them.</p>
   <div id="savedList"></div>
  </section>
 </main>
-<main id="armyRosterPage" class="wrap army-screen" hidden aria-labelledby="armyRosterHeading">
+<main id="armyRosterPage" class="wrap army-screen tactical-play" hidden aria-labelledby="armyRosterHeading">
  <div class="army-screen-toolbar">
-  <button id="backToImporterBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Back to importer</button>
-  <button id="gameScreenSaveBtn" type="button" class="army-back-button game-screen-save">Save on this device</button>
-  <span class="army-screen-mode">BATTLE COMPANION</span>
+  <div class="tactical-session-identity"><span class="tactical-session-mark" aria-hidden="true">✦</span><span class="army-screen-mode">NORMAL PLAY <span class="tactical-session-subtitle">/ BATTLE COMPANION</span></span></div>
+  <div class="tactical-session-actions">
+   <button id="gameScreenSaveBtn" type="button" class="army-back-button game-screen-save"><span aria-hidden="true">▣</span> Save</button>
+   <button id="backToImporterBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Armies</button>
+  </div>
  </div>
  <header class="army-screen-hero">
-  <p class="army-screen-kicker">Your army · Normal Play</p>
-  <h1 id="armyRosterHeading">Game Screen</h1>
-  <p id="armyRosterFaction" class="army-screen-faction"></p>
-  <div id="armyRosterSummary" class="army-summary-metrics" aria-label="Imported army totals"></div>
- </header>
- <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
- <p id="battleSessionStatus" class="game-battle-status" role="status" aria-live="polite">Assignments are stored separately from imported army data.</p>
- <nav id="gameWorkspaceNav" class="game-workspace-nav" role="tablist" aria-label="Battle companion sections">
-  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
-  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">▤</span><span>My Army</span></button>
-  <button type="button" class="game-nav-tab" id="gameNavMagic" data-game-tab="magic" role="tab" aria-controls="gameMagicPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">✦</span><span>Magic</span></button>
- </nav>
- <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview" hidden>
-  <div id="gameOverviewContent"></div>
- </section>
- <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits">
-  <div class="game-unit-profile-release" aria-label="Unit Profiles version">
+  <div class="tactical-army-heading">
+   <div class="tactical-army-heading-copy">
+    <p class="army-screen-kicker">YOUR ARMY <span aria-hidden="true">/</span> NORMAL PLAY</p>
+    <h1 id="armyRosterHeading">Game Screen</h1>
+    <p id="armyRosterFaction" class="army-screen-faction"></p>
+   </div>
+   <div id="tacticalArmyPoints" class="tactical-army-points" aria-label="Imported army points">— pts</div>
+  </div>
+  <details id="tacticalArmyAudit" class="tactical-army-audit">
+   <summary><span aria-hidden="true">ⓘ</span> Army information <span class="tactical-audit-subtitle">Profiles · counts · sources</span></summary>
+   <div id="armyRosterSummary" class="army-summary-metrics" aria-label="Imported army totals"></div>
+   <p id="armyRosterDataStatus" class="army-screen-data-status" role="status" aria-live="polite"></p>
+   <p id="battleSessionStatus" class="game-battle-status" role="status" aria-live="polite">Assignments are stored separately from imported army data.</p>
+   <div id="tacticalAuditExtras"><div class="game-unit-profile-release" aria-label="Unit Profiles version">
    <span class="game-unit-profile-release-label">Unit Profiles <strong id="unitProfilesVersion">v0.10</strong></span>
    <details class="game-unit-profile-release-notes">
     <summary>What’s new?</summary>
@@ -165,12 +173,23 @@
    <p class="game-rule-warning">Character assignments are <strong>recorded, not rules-verified</strong>. Rules on <a href="https://tow.whfb.app/characters/characters-and-units" target="_blank" rel="noopener noreferrer">joining units</a>, <a href="https://tow.whfb.app/special-rules/fly" target="_blank" rel="noopener noreferrer">Fly</a> and <a href="https://tow.whfb.app/special-rules/ethereal" target="_blank" rel="noopener noreferrer">Ethereal</a> can restrict joins. The game must not infer equipment, buffs or legality from membership alone.</p>
    <p class="army-roster-quality">Personal unit names and wizard spell selections save separately on this device and never modify the original import. Profiles are published <strong>base characteristics</strong>. Selected equipment, spells and upgrades do not automatically alter them; this is not a legality or points calculator.</p>
    <p class="game-defence-overview">Defence summaries distinguish equipment-only armour and source-backed conditional Ward and Regeneration effects. Magic Missile-only saves are not universal. Source-reviewed banners and magic items show their exact scope and any conditions; other selections are not automatically assigned effects. One-use items need manual confirmation. A Ward against Magic Missiles is not a universal Ward; Charmed Shield is a once-per-game item. Enemy AP, targeting, automatic casting and legal joins are not assumed.</p>
+  </details></div>
   </details>
+ </header>
+ <nav id="gameWorkspaceNav" class="game-workspace-nav" role="tablist" aria-label="Battle companion sections">
+  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">▤</span><span>My Army</span></button>
+  <button type="button" class="game-nav-tab" id="gameNavMagic" data-game-tab="magic" role="tab" aria-controls="gameMagicPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">✦</span><span>Magic</span></button>
+ </nav>
+ <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview" hidden>
+  <div id="gameOverviewContent"></div>
+ </section>
+ <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits">
   <nav class="game-screen-jump" aria-label="Unit list sections">
    <button id="gameScreenJumpCharacters" type="button">Characters</button>
    <button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button>
   </nav>
-  <p class="game-units-hint">Tap a unit header for its details. Wide characteristics tables can be swiped sideways.</p>
+  <p class="game-units-hint">Select a unit to view its complete profile, attacks, defence and effects.</p>
   <div id="armyRosterList" class="army-screen-list"></div>
  </section>
  <section id="gameMagicPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavMagic" hidden>
@@ -181,7 +200,7 @@
    <p class="game-spell-policy">Tick spells known by each Wizard in the spellbooks below, then record successful casts and legal targets above. Earthen Ramparts, Plague of Rust and Glittering Robe expire at your next Start of Turn; Drain Magic remains in play until ended; Travel Mystical Pathway resolves immediately in the Movement phase. These are player-confirmed records: check range, target, phase and dice at the table.</p>
   </details>
  </section>
- <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to importer</button></div>
+ <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to armies</button></div>
 </main>
 <footer class="wrap footer">Game Manager · Touch-first battle companion. Imported rosters, known spells, assignments and recorded active magic save locally. Rules, targeting and combat results still require player verification.</footer>
 </body>

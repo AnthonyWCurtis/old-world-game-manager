@@ -1,0 +1,256 @@
+/*
+ * OLD WORLD COMPANION — TACTICAL COMMAND V2
+ * Single design authority for the public shell and Normal Play hierarchy.
+ * Original styles.css remains a compatibility sheet for rules/source widgets.
+ * No external assets: every screen works offline after the app shell caches.
+ */
+body.tactical-ui{
+ --bg:#091321;--panel:#142438;--text:#eef3f7;--muted:#a7b5c5;
+ --border:#34495f;--accent:#d9b77a;--subtle:#1b3047;
+ --ok:#79cab8;--warn:#f1c77d;--err:#f29b9d;
+ --tc-bg:#091321;--tc-deep:#0c1929;--tc-surface:#122237;
+ --tc-elevated:#182a40;--tc-hover:#21364c;--tc-line:#32465b;
+ --tc-gold:#d9b77a;--tc-gold-text:#f1d3a1;--tc-type:#edf3fa;
+ --tc-secondary:#b6c4d3;--tc-muted:#90a4b8;--tc-teal:#8bdfce;
+ color-scheme:dark;background:rgb(9,19,33);color:var(--tc-type);
+ font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ font-size:15px;line-height:1.48;
+}
+.tactical-ui .wrap{max-width:1020px}
+.tactical-ui :is(button,input,select,textarea,summary){font:inherit}
+.tactical-ui button{min-height:44px;background:var(--tc-elevated);color:var(--tc-type);border:1px solid var(--tc-line);border-radius:10px}
+.tactical-ui button:hover:not(:disabled){background:var(--tc-hover);color:var(--tc-type);border-color:#577089}
+.tactical-ui button:focus-visible,.tactical-ui a:focus-visible,.tactical-ui input:focus-visible,.tactical-ui select:focus-visible,.tactical-ui textarea:focus-visible,.tactical-ui summary:focus-visible{outline:3px solid var(--tc-gold);outline-offset:2px}
+.tactical-ui a{color:var(--tc-gold-text);text-underline-offset:3px}
+.tactical-ui :is(input,select,textarea){background:#0c1b2d;color:#edf4fc;border:1px solid #466075;border-radius:10px}
+.tactical-ui :is(input,select,textarea)::placeholder{color:#96a8b9}
+.tactical-ui :is(p,small){overflow-wrap:anywhere}
+.tactical-ui :is(.muted,.small,.intro){color:var(--tc-secondary)}
+.tactical-ui .topbar{background:#0d1a2a;border-color:#263c53}
+.tactical-ui .tactical-brandbar{display:flex;align-items:center;gap:11px;justify-content:start;padding-top:12px;padding-bottom:12px;min-width:0}
+.tactical-brandmark,.tactical-session-mark{width:40px;height:40px;display:grid;place-items:center;flex:0 0 auto;border:1px solid #795f3c;border-radius:11px;background:#392e23;color:var(--tc-gold);font-size:21px}
+.tactical-brand-identity{display:flex;flex-direction:column;min-width:0;gap:2px}
+.tactical-ui .brand{font-size:16px;color:var(--tc-type);line-height:1.2;white-space:nowrap;font-weight:820}
+.tactical-brand-tag{font-size:10px;line-height:1.25;letter-spacing:.1em;color:var(--tc-muted);font-weight:740}
+.tactical-brand-version{margin-left:auto;color:var(--tc-gold);font-size:10px;font-weight:780;letter-spacing:.12em;border:1px solid #554932;padding:6px 8px;border-radius:7px;white-space:nowrap}
+.tactical-home{padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))}
+.tactical-landing{margin:24px 0 20px;padding:clamp(20px,4vw,36px);background:linear-gradient(122deg,#142943 0%,#0d1d30 73%);border:1px solid #3b5267;border-top:3px solid var(--tc-gold);border-radius:17px;box-shadow:0 14px 40px #0003}
+.tactical-eyebrow{display:block;color:var(--tc-gold);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.tactical-eyebrow span{color:#8798a8;margin:0 5px}
+.tactical-landing h1{color:var(--tc-type);font-size:clamp(27px,5vw,41px);letter-spacing:-.035em;line-height:1.12;margin:12px 0 10px}
+.tactical-landing-intro{color:var(--tc-secondary);font-size:15px;margin:0;max-width:560px}
+.tactical-home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px;max-width:520px}
+.tactical-ui .tactical-home-link{min-height:55px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:.01em;background:#1e354d;border:1px solid #49637c;color:var(--tc-type)}
+.tactical-ui .tactical-home-link-primary{background:var(--tc-gold);border-color:var(--tc-gold);color:#152435}
+.tactical-ui .tactical-home-link-primary:hover{background:#f1d5a2;color:#152435}
+.tactical-home-link>span{font-size:21px;line-height:1}
+.tactical-ui .tactical-continue{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:12px;min-height:50px;max-width:520px;border-color:#398b7e;background:#173b3e;color:#acf3e4;padding:11px 16px}
+.tactical-ui :is(.panel,.group){background:var(--tc-surface);color:var(--tc-type);border:1px solid var(--tc-line);box-shadow:none}
+.tactical-ui .panel{border-radius:15px;padding:clamp(16px,3.5vw,24px);margin:14px 0}
+.tactical-ui .tactical-import-panel{scroll-margin-top:16px}
+.tactical-panel-heading{padding-bottom:14px;margin-bottom:17px;border-bottom:1px solid #30465d}
+.tactical-panel-heading h2{font-size:22px;color:var(--tc-type);margin:5px 0 4px;letter-spacing:-.025em}
+.tactical-panel-heading p{color:var(--tc-secondary);margin:0;font-size:13px}
+.tactical-ui .section-label{color:var(--tc-type);margin-bottom:8px}
+.tactical-ui #sourceText{background:#0a192a;min-height:190px;max-width:100%;border-color:#405973;color:#ecf3fa;line-height:1.6;font-size:16px;padding:14px}
+.tactical-ui :is(.selectwrap label,.example-row label,.checkfilter,.manual-format label){color:var(--tc-secondary)}
+.tactical-ui :is(.format-detection,.manual-format,.notice,.roster-entry,.debug-report-container){background:var(--tc-elevated);color:var(--tc-type);border-color:var(--tc-line)}
+.tactical-ui :is(.format-detection-details,.source-status,.debug-explanation){color:var(--tc-secondary)}
+.tactical-ui .primary,.tactical-ui #parseBtn,.tactical-ui .army-launch-button{background:var(--tc-gold);color:#172638;border-color:var(--tc-gold);font-weight:830}
+.tactical-ui .primary:hover:not(:disabled),.tactical-ui #parseBtn:hover:not(:disabled),.tactical-ui .army-launch-button:hover{background:#eed09a;color:#172638}
+.tactical-ui .controls{gap:9px}
+.tactical-ui .controls button{min-height:48px}
+.tactical-ui .result{margin-top:25px}
+.tactical-ui .army-roster-launch{background:linear-gradient(110deg,#1a3549,#13263a);border:1px solid #48657a;border-radius:15px;color:var(--tc-type)}
+.tactical-ui .army-launch-text,.tactical-ui .army-launch-text strong{color:var(--tc-type)}
+.tactical-ui .army-launch-eyebrow{color:var(--tc-gold)}
+.tactical-ui .army-launch-text span{color:var(--tc-secondary)}
+.tactical-ui .army-launch-button span{color:inherit}
+.tactical-ui .saved,.tactical-saved-panel{scroll-margin-top:15px}
+.tactical-ui #savedList{margin:12px 0}
+.tactical-ui #savedList .row-item{background:#172b42;border:1px solid #364f65;border-radius:11px;margin:8px 0;padding:12px}
+.tactical-ui #savedList .row-item strong{color:var(--tc-type)}
+.tactical-ui :is(.roster-entry-head,.section-heading,.roster-heading,.row-item){border-color:var(--tc-line);color:var(--tc-type)}
+.tactical-ui .status{color:var(--tc-gold-text);background:#35422f;border:1px solid #6d6444}
+.tactical-ui :is(.technical,.raw){border-color:#35485b}
+.tactical-ui .source-panel,.tactical-ui .technical{background:#101f30}
+.tactical-ui .footer{color:var(--tc-muted)}
+/* Normal Play replaces a separate site header with its own command strip. */
+.tactical-ui.tactical-in-game .topbar{display:none}
+.tactical-ui .tactical-play{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+.tactical-ui .army-screen-toolbar{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:14px 0 9px;border-bottom:1px solid #33495e;flex-wrap:wrap}
+.tactical-session-identity{display:flex;align-items:center;gap:9px;min-width:0}
+.tactical-session-mark{width:34px;height:34px;font-size:17px;border-radius:9px}
+.tactical-ui .army-screen-mode{font-size:11px;letter-spacing:.105em;color:var(--tc-gold);font-weight:840;white-space:nowrap}
+.tactical-session-subtitle{color:var(--tc-muted);font-weight:650}
+.tactical-session-actions{display:flex;align-items:center;gap:7px;flex:0 0 auto}
+.tactical-ui .army-screen-toolbar .army-back-button{min-height:44px;padding:9px 11px;background:#192f46;border-color:#3f5970;color:var(--tc-type);font-size:13px}
+.tactical-ui .army-screen-toolbar .game-screen-save{border-color:#816a48;color:var(--tc-gold-text);background:#302a25}
+.tactical-ui .army-screen-hero{margin:10px 0 13px;padding:17px 19px 10px;background:linear-gradient(110deg,#142c44,#102033);border:1px solid #3c576d;border-radius:15px;box-shadow:none;color:var(--tc-type)}
+.tactical-army-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+.tactical-army-heading-copy{min-width:0;flex:1}
+.tactical-ui .army-screen-kicker{color:var(--tc-gold);font-size:10px;letter-spacing:.12em;margin:0 0 5px;font-weight:850}
+.tactical-ui .army-screen-hero h1{color:var(--tc-type);font-size:clamp(22px,3.6vw,29px);line-height:1.15;margin:0 0 5px;letter-spacing:-.023em}
+.tactical-ui .army-screen-faction{color:var(--tc-secondary);font-size:13px;margin:0}
+.tactical-army-points{font-size:clamp(16px,3vw,21px);font-weight:870;white-space:nowrap;color:var(--tc-gold-text);border:1px solid #7c664b;background:#362e28;border-radius:11px;padding:8px 10px;line-height:1.3;font-variant-numeric:tabular-nums}
+.tactical-ui .tactical-army-audit{margin-top:11px;border-top:1px solid #354b60;padding-top:2px}
+.tactical-ui .tactical-army-audit>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tc-secondary);min-height:42px;font-weight:710}
+.tactical-army-audit>summary::-webkit-details-marker{display:none}
+.tactical-army-audit>summary::after{content:"⌄";font-size:20px;color:var(--tc-gold);margin-left:auto;transition:transform .16s}
+.tactical-army-audit[open]>summary::after{transform:rotate(180deg)}
+.tactical-audit-subtitle{margin-left:auto;font-size:11px;color:var(--tc-muted);font-weight:500}
+.tactical-ui .army-summary-metrics{margin:8px 0}
+.tactical-ui .army-summary-metric{background:#21364a;border-color:#425b70}
+.tactical-ui .army-summary-metric strong{color:var(--tc-type)}
+.tactical-ui .army-summary-metric span{color:var(--tc-secondary)}
+.tactical-ui .army-screen-data-status,.tactical-ui .game-battle-status{background:#142c3f;color:var(--tc-secondary);border:0;border-left:2px solid #786843;padding:9px;font-size:12px}
+.tactical-ui #tacticalAuditExtras{padding-top:8px;border-top:1px solid #334a62}
+.tactical-ui .game-unit-profile-release{background:transparent;color:var(--tc-secondary);border-color:var(--tc-line)}
+.tactical-ui .game-unit-profile-release *{color:inherit}
+.tactical-ui .game-guidance{background:#172a3e;border-color:#3b5367;color:var(--tc-type)}
+.tactical-ui .game-guidance>summary{color:var(--tc-gold-text)}
+.tactical-ui .game-guidance p{color:var(--tc-secondary)}
+/* Bottom game workspace navigation is the sole global battle navigation. */
+.tactical-ui .game-workspace-nav{background:#101f30;border:1px solid #36506b;border-bottom:0;border-radius:15px 15px 0 0;box-shadow:0 -7px 25px #0007;gap:6px;padding:7px max(12px,env(safe-area-inset-right,0px)) calc(7px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));max-width:800px}
+.tactical-ui .game-nav-tab{color:var(--tc-secondary);min-height:56px;border-radius:10px}
+.tactical-ui .game-nav-tab .game-nav-icon{color:var(--tc-muted);font-size:22px}
+.tactical-ui .game-nav-tab.game-nav-selected{background:#3a342c;border-color:#846b48;color:var(--tc-gold-text)}
+.tactical-ui .game-nav-tab.game-nav-selected .game-nav-icon{color:var(--tc-gold)}
+.tactical-ui :is(.game-screen-jump,.game-units-hint,.army-screen-bottom){display:none!important}
+.tactical-ui .game-workspace-panel{padding-top:3px}
+.tactical-ui :is(.game-overview-heading h2,.game-overview-section h3,.game-overview-section h4){color:var(--tc-type)}
+.tactical-ui .game-overview-caption,.tactical-ui .game-overview-empty{color:var(--tc-secondary)}
+.tactical-ui :is(.game-overview-section,.game-overview-metric,.game-overview-effect){background:var(--tc-surface);border-color:var(--tc-line);color:var(--tc-type)}
+.tactical-ui .game-overview-metric strong{color:var(--tc-gold-text)}
+.tactical-ui .game-overview-metric span{color:var(--tc-secondary)}
+.tactical-ui .game-overview-action{background:#334b60;color:var(--tc-type);border-color:#71859a}
+/* Roster: one search, one section fold, one unit open action. */
+.tactical-ui .game-roster-search{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;margin:11px 0}
+.tactical-ui .game-roster-search-label{color:var(--tc-secondary);grid-column:1/-1;font-size:12px;font-weight:720}
+.tactical-ui .game-roster-search-input{background:#102338;border:1px solid #455e75;color:var(--tc-type);min-height:48px;padding:10px 13px}
+.tactical-ui .game-roster-search-status{color:var(--tc-muted);font-size:11px}
+.tactical-ui .game-roster-section{background:transparent;border:1px solid #344c63;border-radius:13px;margin:10px 0 13px}
+.tactical-ui .game-roster-section-heading.army-section-heading{background:#162a40;border:0;min-height:49px}
+.tactical-ui .game-roster-section-heading.army-section-heading h2{min-width:0}
+.tactical-ui .game-roster-section-toggle{color:var(--tc-type);font-weight:840;border:0;background:transparent;min-height:50px;font-size:14px;padding:10px 13px}
+.tactical-ui .game-roster-section-toggle:hover{background:#1e364d;color:var(--tc-type)}
+.tactical-ui .game-roster-section-arrow{color:var(--tc-gold);font-size:20px}
+.tactical-ui .game-roster-section-heading.army-section-heading>span{color:var(--tc-muted);background:transparent;border:0;font-size:10px;padding:2px 4px}
+.tactical-ui .game-roster-section-content{padding:5px;min-width:0}
+.tactical-ui .game-roster-section-content>.army-unit-card{margin:5px 0;border:1px solid #2d475b;border-radius:10px;background:#132539;box-shadow:none;transition:background .1s}
+.tactical-ui .game-roster-section-content>.army-unit-card:hover{background:#1a3044}
+.tactical-ui .army-unit-card{color:var(--tc-type);background:#132539;border-color:#344e63;box-shadow:none}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-head{display:grid;grid-template-columns:minmax(0,1fr) auto 46px 46px;align-items:center;column-gap:6px;row-gap:0;padding:10px 10px 10px 12px;background:transparent;min-height:70px;cursor:pointer}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-identity{grid-column:1;grid-row:1;min-width:0;gap:8px;align-items:center}
+.tactical-ui .army-unit-index{background:#283e51;color:var(--tc-gold-text);border:1px solid #516078;width:28px;height:28px;border-radius:7px;font-size:10px}
+.tactical-ui .game-character-card .army-unit-index{background:#46382b;border-color:#7c6348}
+.tactical-ui .army-unit-names{min-width:0}
+.tactical-ui .army-unit-names h3{color:var(--tc-type);font-size:15px;line-height:1.35;font-weight:780;margin:0}
+.tactical-ui .army-unit-nickname{color:var(--tc-secondary);font-size:11px;line-height:1.45}
+.tactical-ui .army-unit-meta{margin-top:2px}
+.tactical-ui .army-model-number{color:var(--tc-secondary);font-size:11px;font-weight:620}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-points{grid-column:2;grid-row:1;min-width:0;max-width:125px;text-align:right;padding:0;border:0;display:block}
+.tactical-ui .army-unit-points strong{font-size:15px;line-height:1.2;white-space:nowrap;color:var(--tc-gold-text)}
+.tactical-ui .army-unit-points span{color:var(--tc-muted)}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-rename-toggle,
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-rename{display:none!important}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-expand-toggle{display:grid!important;place-items:center;grid-column:3;grid-row:1;justify-self:end;align-self:center;min-width:46px;width:46px;min-height:46px;height:46px;padding:0;border:0;background:transparent;color:transparent;font-size:0;border-radius:9px}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-expand-toggle::before{content:"•••";font-size:17px;letter-spacing:1px;color:var(--tc-muted);line-height:1}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-expand-toggle:hover{background:#283f54}
+.tactical-ui #armyRosterList.game-unit-focused .game-unit-expand-toggle{display:none!important}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open{grid-column:4;grid-row:1;justify-self:end;align-self:center;display:grid;place-items:center;min-width:46px;width:46px;height:46px;min-height:46px;border:0;border-radius:9px;background:transparent;color:transparent;font-size:0;padding:0}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open::before{content:"›";color:var(--tc-gold);font-size:29px;font-weight:350;line-height:1}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open:hover{background:#283f54}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-card-status{max-height:24px;overflow:hidden;gap:5px;margin:5px 0 0}
+.tactical-ui .game-card-chip{background:#233f44;color:#a8e8da;border:1px solid #406966;padding:2px 6px;border-radius:6px;font-size:10px;line-height:1.5}
+.tactical-ui .game-card-chip-magic{background:#214c43;color:#b4f6df;border-color:#3b7062}
+.tactical-ui .game-card-chip-offensive{background:#3f3827;color:#f4d7a7;border-color:#6d6041}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .tactical-count-unknown .army-model-number{display:none}
+.tactical-ui .game-roster-section-content[hidden],.tactical-ui .game-roster-section[hidden]{display:none!important}
+/* Focused unit: local tabs instead of the old unbroken information page. */
+.tactical-ui .game-unit-focus-toolbar{position:sticky;top:0;z-index:8;padding:11px;background:#102137;border:1px solid #3d556b;border-radius:13px;box-shadow:0 8px 22px #0006}
+.tactical-ui .game-unit-focus-kicker{color:var(--tc-gold);font-size:10px;letter-spacing:.1em}
+.tactical-ui .game-unit-focus-title{color:var(--tc-type);font-size:19px}
+.tactical-ui .game-unit-focus-back{min-height:48px;background:#3c352c;border:1px solid #8b7656;color:var(--tc-gold-text);font-weight:780}
+.tactical-ui .game-unit-focus-tab{color:var(--tc-secondary);background:#172b40;border:1px solid #344e62;min-height:48px;font-size:13px}
+.tactical-ui .game-unit-focus-tab[aria-pressed=true]{color:#192a3c;background:var(--tc-gold);border-color:var(--tc-gold)}
+.tactical-ui #armyRosterList.game-unit-focused .game-roster-section.game-focus-section{background:transparent;border:0}
+.tactical-ui #armyRosterList.game-unit-focused .game-roster-section-content>.army-unit-card.game-focus-selected{background:#14283b;border:1px solid #3d5569;border-radius:12px;overflow:hidden}
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-head{background:#1b3044;padding:12px}
+.tactical-ui #armyRosterList.game-unit-focused .game-rename-toggle{min-height:48px;background:#213c55;border:1px solid #4c6a7f;color:var(--tc-gold-text);font-size:12px;padding:8px 12px}
+.tactical-ui .game-unit-expandable{border-color:var(--tc-line)}
+.tactical-ui .army-unit-card-body{color:var(--tc-type);background:transparent}
+.tactical-ui :is(.army-profile-caption strong,.army-unit-loadout-heading h4,.army-unit-loadout-group strong,.game-profile-stat-group h4){color:var(--tc-type)}
+.tactical-ui :is(.army-profile-caption span,.army-unit-quick-facts,.army-unit-loadout-note,.army-quiet,.army-unit-footer){color:var(--tc-secondary)}
+.tactical-ui :is(.game-profile-stat-group,.game-profile-stat,.game-focused-disclosure){background:#192c42;color:var(--tc-type);border-color:#3c566d}
+.tactical-ui .game-profile-stat-name{color:var(--tc-secondary)}
+.tactical-ui .game-profile-stat-value{color:var(--tc-gold-text)}
+.tactical-ui .game-profile-stat-note{color:var(--tc-secondary)}
+.tactical-ui .game-focused-disclosure>summary{color:var(--tc-gold-text)}
+.tactical-ui .army-profile-scroll{background:#142a3d;border-color:#40596e}
+.tactical-ui .army-profile-table :is(th,td){border-color:#34485e;color:var(--tc-type);background:#132539}
+.tactical-ui .army-profile-table thead th{background:#223c53;color:var(--tc-gold-text)}
+.tactical-ui :is(.army-unit-unified-loadout,.army-unit-loadout-group,.army-unit-source-meta,.army-unit-compact-details){background:transparent;color:var(--tc-type);border-color:var(--tc-line)}
+.tactical-ui .army-ref-pill{background:#223448;color:var(--tc-gold-text);border:1px solid #5c654f}
+.tactical-ui .army-unit-loadout-default{opacity:.84}
+.tactical-ui .army-profile-missing{background:#233042;border:1px solid #697179;color:var(--tc-type)}
+/* Battle engine panels retain their real controls and source warnings. */
+.tactical-ui :is(.game-attack-panel,.game-defence-panel,.game-effects-panel,.game-assigned-characters,.game-wizard-spellbook,.game-spell-panel,.game-magic-known-drawer,.game-wizard-spellbook-body,.game-spell-caster,.game-spell-caster-body,.game-magic-wizard-book){color:var(--tc-type);background:#162b40;border-color:#38546b}
+.tactical-ui :is(.game-attack-panel,.game-defence-panel,.game-effects-panel,.game-assigned-characters,.game-wizard-spellbook,.game-spell-panel) :is(h2,h3,h4,strong){color:var(--tc-type)}
+.tactical-ui :is(.game-attack-panel,.game-defence-panel,.game-effects-panel,.game-assigned-characters,.game-spell-panel) :is(p,small,span){color:inherit}
+.tactical-ui .game-defence-stat{background:#203a50;border-color:#415b6d;color:var(--tc-type)}
+.tactical-ui .game-defence-stat strong{color:var(--tc-gold-text)}
+.tactical-ui .game-defence-values{gap:7px}
+.tactical-ui :is(.game-attack-weapon-conditions,.game-defence-details,.game-attack-weapon,.game-attack-summary,.game-effects-item,.game-active-spell,.game-wizard-spell-row,.game-spell-event){border-color:#425b6c;color:var(--tc-type);background:#192d40}
+.tactical-ui :is(.game-attack-weapon,.game-attack-summary,.game-defence-details,.game-spell-caster) summary{color:var(--tc-gold-text)}
+.tactical-ui .game-attack-panel a,.tactical-ui .game-defence-panel a,.tactical-ui .game-effects-panel a{color:var(--tc-gold-text)}
+.tactical-ui :is(.game-defence-panel,.game-attack-panel,.game-effects-panel) .muted{color:var(--tc-secondary)}
+.tactical-ui .game-assignment-editor,.tactical-ui .game-assigned-characters{border-color:#3e566a}
+.tactical-ui .game-spell-panel select,.tactical-ui .game-spell-panel input{color:var(--tc-type);background:#0d2032;border-color:#526a7d}
+.tactical-ui .game-spell-panel button{min-height:44px}
+.tactical-ui .game-magic-known-heading{color:var(--tc-gold-text)}
+.tactical-ui .game-magic-wizard-book h3{color:var(--tc-type)}
+.tactical-ui .game-card-status .game-card-chip-item{background:#343226;color:#e9d4aa;border-color:#65583f}
+.tactical-ui .notice{border-left:3px solid var(--tc-gold);color:var(--tc-secondary)}
+/* Mobile: wide click areas, compact headers and protected safe areas. */
+@media(max-width:650px){
+ .tactical-ui :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px}
+
+ .tactical-ui :is(input,select,textarea){font-size:16px!important}
+ .tactical-ui .wrap{padding-left:12px;padding-right:12px}
+ .tactical-ui .tactical-brandbar{gap:8px}
+ .tactical-brand-version{display:none}
+ .tactical-ui .tactical-landing{margin:12px 0;padding:19px 16px}
+ .tactical-ui .tactical-landing h1{font-size:30px}
+ .tactical-ui .tactical-home-link{padding:9px 8px}
+ .tactical-ui .tactical-session-subtitle{display:none}
+ .tactical-ui .army-screen-toolbar{gap:5px}
+ .tactical-ui .army-screen-hero{padding:15px 13px 8px}
+ .tactical-ui .tactical-army-points{padding:8px;font-size:16px}
+ .tactical-ui .tactical-audit-subtitle{font-size:10px}
+ .tactical-ui .game-workspace-nav{width:100%;left:0;transform:none}
+ .tactical-ui .game-roster-section-heading.army-section-heading>span{font-size:10px;padding:2px 3px}
+ .tactical-ui .game-roster-search{grid-template-columns:minmax(0,1fr)}
+ .tactical-ui .game-roster-search-status{text-align:left}
+ .tactical-ui .game-unit-focus-toolbar{padding:8px;top:0}
+ .tactical-ui .game-unit-focus-title{font-size:16px}
+ .tactical-ui .game-unit-focus-tab{font-size:12px;padding:7px 2px}
+}
+@media(max-width:380px){
+ .tactical-ui .tactical-home-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .tactical-ui .tactical-army-heading{align-items:flex-start}
+ .tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-head{grid-template-columns:minmax(0,1fr) auto 46px 46px;gap:3px;padding:9px 5px}
+ .tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open{width:46px;min-width:46px}
+ .tactical-ui .army-unit-index{width:24px;height:24px;font-size:10px}
+ .tactical-ui .army-unit-names h3{font-size:14px}
+ .tactical-ui .army-unit-points strong{font-size:13px}
+}
+@media(orientation:landscape) and (max-height:520px){
+ .tactical-ui .game-workspace-nav .game-nav-tab{min-height:46px}
+ .tactical-ui .army-screen-hero{margin:7px 0;padding:12px 15px 6px}
+ .tactical-ui .army-screen-toolbar{padding:7px 0}
+ .tactical-ui .game-unit-focus-toolbar{position:relative}
+}
+@media(prefers-reduced-motion:reduce){
+ .tactical-ui *{transition:none!important;scroll-behavior:auto!important}
+}
