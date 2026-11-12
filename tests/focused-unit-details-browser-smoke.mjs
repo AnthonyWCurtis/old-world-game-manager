@@ -86,8 +86,20 @@ try{
   });
   assert.ok(height>=44,'Back touch target '+viewport.width+': '+height+'px '+JSON.stringify(diagnostics));
  }
+ const selected=page.locator('#armyRosterList .game-focus-selected');
+ await selected.locator('.game-rename-toggle').click();
+ await selected.locator('.game-unit-rename-input').fill('Centre Sea Guard');
+ await selected.locator('.game-unit-rename-save').click();
+ await page.waitForFunction(()=>document.querySelector('.game-unit-focus-title')?.textContent==='Centre Sea Guard',
+  null,{timeout:10000});
+ assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId,
+  'Renaming must preserve the imported unit identity and focused view');
+ assert.match(await page.locator('.game-focus-selected .army-unit-nickname').first().innerText(),/Official: Lothern Sea Guard/);
+ assert.equal(await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').getAttribute('aria-pressed'),'true',
+  'Focus tab survives a battle-state rerender');
+
  assert.deepEqual(errors,[]);
- console.log('Focused Normal Play view, source profile tiles, four panels, duplicate units, Back and offline reload: PASS');
+ console.log('Focused Normal Play, source tiles, four panels, duplicates, offline reload and live rename: PASS');
 }finally{
  await browser.close();
 }
