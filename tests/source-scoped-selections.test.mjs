@@ -175,5 +175,5 @@ test('Published unit matcher is wired after shard loading and reports correct ve
  assert.ok(app.indexOf('unitDataRecords=result.records;')<
   app.indexOf('applySourceScopedSelectionReferences(army,unitDataRecords)'));
  assert.match(app,/appVersion:'1\.0\.0-alpha\.5'/);
- assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/Old World Companion · Tactical Command/);
 });
