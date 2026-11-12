@@ -21,7 +21,7 @@ import {renderUnitAttackPanel} from './unit-attack-panel.js';
  * with textContent; external links are explicitly restricted to tow.whfb.app.
  */
 /** Visible, independent version of the unit profile display (not the importer). */
-export const UNIT_PROFILES_VERSION='0.6';
+export const UNIT_PROFILES_VERSION='0.7';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;

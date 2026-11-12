@@ -30,6 +30,10 @@ try{
   'Collapsed Sea Guard must name its offensive standard instead of showing only a generic item count');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
+ const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
+ assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting');
+ assert.equal(await seaAttackPanel.locator('[data-attack-phase="combat"] > h5').innerText(),'Combat');
+ assert.match(await seaAttackPanel.locator('[data-attack-phase="combat"]').innerText(),/Base melee characteristics/);
  const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
  const order=await sea.locator('.game-unit-expandable').evaluate(area=>{
@@ -73,6 +77,12 @@ try{
  await bsb.locator('.game-unit-expand-toggle').click();
  const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await bsbAttacks.isVisible(),true);
+ const bsbShooting=bsbAttacks.locator('[data-attack-phase="shooting"]');
+ const bsbCombat=bsbAttacks.locator('[data-attack-phase="combat"]');
+ assert.match(await bsbShooting.innerText(),/Ruby Ring of Ruin.*Fireball/s);
+ assert.match(await bsbShooting.innerText(),/Hunter's Scorn/);
+ assert.match(await bsbCombat.innerText(),/Base melee characteristics/);
+ assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
  assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);
  assert.match(await bsbAttacks.innerText(),/Casting\s*8\+/);

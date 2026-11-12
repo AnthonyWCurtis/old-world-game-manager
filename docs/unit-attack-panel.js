@@ -5,6 +5,7 @@
  */
 import {displayModelProfiles} from './imported-unit-display.js';
 import {renderUnitOffensiveEffects} from './effects-ui.js';
+import {selectedMissileWeapons} from './source-missile-profiles.js';
 
 const el=(doc,tag,cls='',label)=>{
  const node=doc.createElement(tag);
@@ -28,6 +29,7 @@ const safeStat=v=>hasValue(v)?String(v):'—';
 /** Pure projection: no mutation of the source, imported unit or effect rows. */
 export function unitAttackSummary(unit,record,fallback,effects=[]){
  const profiles=displayModelProfiles(unit,record,fallback);
+ const shootingWeapons=selectedMissileWeapons(unit,record);
  const melee=profiles.map(profile=>({
   name:profile.name,
   weaponSkill:safeStat(profile.characteristics?.WS),
@@ -50,9 +52,10 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
    spell:{...e.boundSpell}
   }));
  const magicWeapons=attacking.filter(e=>e.kind==='Magic weapon').map(e=>({
-  name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope
+  name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope,
+  attackPhase:e.attackPhase||null
  }));
- return {melee,boundSpells,otherBoundSpells,magicWeapons,
+ return {melee,shootingWeapons,boundSpells,otherBoundSpells,magicWeapons,
   offensiveEffects:(Array.isArray(effects)?effects:[]).filter(e=>
    e.effectGroup==='offensive'&&e.quickLabel&&e.quickDetail&&e.status!=='spent')};
 }
@@ -68,31 +71,39 @@ const detailsOf=spell=>{
  if(hasValue(spell.powerLevel))parts.push('Power Level '+spell.powerLevel);
  return parts.join(' · ');
 };
+/** Visible hierarchy follows the Shooting and Combat phases in tow.whfb.app. */
 export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
  const data=unitAttackSummary(unit,record,fallback,effects);
  const section=el(doc,'section','game-attack-panel');
  section.setAttribute('aria-label','Attacks');
  section.append(el(doc,'h4','','Attacks'));
+ const shooting=el(doc,'div','game-attack-phase game-attack-shooting');
+ shooting.dataset.attackPhase='shooting';
+ shooting.append(el(doc,'h5','','Shooting'));
+ const combat=el(doc,'div','game-attack-phase game-attack-combat');
+ combat.dataset.attackPhase='combat';
+ combat.append(el(doc,'h5','','Combat'));
+ let shootingCount=0,combatCount=0;
 
- if(data.melee.length){
-  const melee=el(doc,'div','game-attack-group');
-  melee.append(el(doc,'strong','','Base melee characteristics'));
-  const rows=el(doc,'div','game-attack-models');
-  for(const profile of data.melee){
-   const row=el(doc,'div','game-attack-model');
-   row.append(el(doc,'span','game-attack-model-name',profile.name));
-   const stats=el(doc,'div','game-attack-stats');
-   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'S',profile.strength),
-    stat(doc,'A',profile.attacks));
-   row.append(stats);
-   rows.append(row);
+ if(data.shootingWeapons.length){
+  const group=el(doc,'div','game-attack-group');
+  group.append(el(doc,'strong','','Missile weapons'));
+  for(const weapon of data.shootingWeapons){
+   const line=el(doc,'div','game-attack-weapon');
+   line.append(sourceLink(doc,weapon.name,weapon.sourceUrl));
+   const metrics=el(doc,'div','game-attack-stats');
+   metrics.append(stat(doc,'Range',weapon.range),stat(doc,'S',weapon.strength),
+    stat(doc,'AP',weapon.armourPiercing));
+   line.append(metrics);
+   group.append(line);
+   shootingCount++;
   }
-  melee.append(rows);
-  section.append(melee);
+  shooting.append(group);
  }
- // A bound spell can be an attack or another type of spell. Only confirmed
- // offensive magic missiles are in this attack section.
- for(const entry of data.boundSpells){
+
+ // Bound Magic Missiles are attacks in Shooting, not extra Attacks or an
+ // ordinary missile weapon. Unknown bound spell types are not classified.
+ for(const entry of data.boundSpells.filter(e=>e.spell?.phase==='Shooting')){
   const spell=entry.spell,group=el(doc,'div','game-attack-bound');
   group.append(el(doc,'strong','',entry.name+' — '+spell.name));
   group.append(el(doc,'p','game-attack-subtitle',detailsOf(spell)));
@@ -110,28 +121,64 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   links.append(sourceLink(doc,'Spell rules',spell.url));
   links.append(sourceLink(doc,'Item rules',entry.sourceUrl));
   group.append(links);
-  section.append(group);
+  shooting.append(group);
+  shootingCount++;
  }
- if(data.magicWeapons.length){
+
+ const weaponSection=(entries,container)=>{
+  if(!entries.length)return 0;
   const group=el(doc,'div','game-attack-group');
   group.append(el(doc,'strong','','Selected magic weapons'));
-  for(const entry of data.magicWeapons){
+  for(const entry of entries){
    const line=el(doc,'div','game-attack-weapon');
    line.append(sourceLink(doc,entry.name,entry.sourceUrl));
    line.append(el(doc,'p','',entry.description));
    group.append(line);
   }
-  section.append(group);
+  container.append(group);
+  return entries.length;
+ };
+ shootingCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Shooting'),shooting);
+
+ if(data.melee.length){
+  const melee=el(doc,'div','game-attack-group');
+  melee.append(el(doc,'strong','','Base melee characteristics'));
+  const rows=el(doc,'div','game-attack-models');
+  for(const profile of data.melee){
+   const row=el(doc,'div','game-attack-model');
+   row.append(el(doc,'span','game-attack-model-name',profile.name));
+   const stats=el(doc,'div','game-attack-stats');
+   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'S',profile.strength),
+    stat(doc,'A',profile.attacks));
+   row.append(stats);
+   rows.append(row);
+   combatCount++;
+  }
+  melee.append(rows);
+  combat.append(melee);
+ }
+ combatCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Combat'),combat);
+
+ // No guessed phase for a source-listed weapon lacking phase verification.
+ const unclassified=data.magicWeapons.filter(x=>!['Shooting','Combat'].includes(x.attackPhase));
+ if(!shootingCount)
+  shooting.append(el(doc,'p','game-attack-caution',
+   'No source-reviewed shooting attack established for this unit.'));
+ if(!combatCount)
+  combat.append(el(doc,'p','game-attack-caution',
+   'No published melee characteristics or source-reviewed combat weapon established.'));
+ section.append(shooting,combat);
+ if(unclassified.length){
+  const unknown=el(doc,'div','game-attack-group game-attack-unclassified');
+  unknown.append(el(doc,'strong','','Weapon references — phase not yet verified'));
+  weaponSection(unclassified,unknown);
+  section.append(unknown);
  }
  if(data.offensiveEffects.length){
   const effectsPanel=renderUnitOffensiveEffects(doc,data.offensiveEffects);
   if(effectsPanel)section.append(effectsPanel);
  }
- if(!data.melee.length&&!data.boundSpells.length&&!data.magicWeapons.length&&
-    !data.offensiveEffects.length)
-  section.append(el(doc,'p','game-attack-caution',
-   'No source-backed attack profile established for this imported unit.'));
  section.append(el(doc,'p','game-attack-caution',
-  'Base attacks are not adjusted for weapon choice, fighting rank or model contact. Ordinary missile weapon profiles are linked under Equipment & special rules; no attack rolls or damage are calculated here.'));
+  'Weapon selection, line of sight, eligible shooters, fighting ranks and contact are not resolved automatically. Combat statistics are base values; no attack rolls or damage are calculated here.'));
  return section;
 }
