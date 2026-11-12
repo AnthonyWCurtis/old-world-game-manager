@@ -75,10 +75,10 @@ try{
  assert.equal(await bsbAttacks.isVisible(),true);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
  assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);
- assert.match(await bsbAttacks.innerText(),/Casting\\s*8\\+/);
- assert.match(await bsbAttacks.innerText(),/Range\\s*24/);
- assert.match(await bsbAttacks.innerText(),/Hits\\s*2D6/);
- assert.match(await bsbAttacks.innerText(),/Strength\\s*4/);
+ assert.match(await bsbAttacks.innerText(),/Casting\s*8\+/);
+ assert.match(await bsbAttacks.innerText(),/Range\s*24/);
+ assert.match(await bsbAttacks.innerText(),/Hits\s*2D6/);
+ assert.match(await bsbAttacks.innerText(),/Strength\s*4/);
  assert.match(await bsbAttacks.innerText(),/Flaming Attacks/);
  assert.equal(await bsbAttacks.locator('a').filter({hasText:'Spell rules'}).getAttribute('href'),
   'https://tow.whfb.app/spell/fireball');
