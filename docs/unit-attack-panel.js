@@ -29,7 +29,7 @@ const safeStat=v=>hasValue(v)?String(v):'—';
 /** Pure projection: no mutation of the source, imported unit or effect rows. */
 export function unitAttackSummary(unit,record,fallback,effects=[]){
  const profiles=displayModelProfiles(unit,record,fallback);
- const shootingWeapons=selectedMissileWeapons(unit,record);
+ const availableMundaneWeapons=selectedMissileWeapons(unit,record);
  // Keep Ballistic Skill tied to its published model profile. A champion or
  // crew can have a different BS, and no weapon To Hit roll is inferred here.
  const shootingModels=profiles.map(profile=>({
@@ -58,9 +58,24 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
   }));
  const magicWeapons=attacking.filter(e=>e.kind==='Magic weapon').map(e=>({
   name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope,
-  attackPhase:e.attackPhase||null
+  attackPhase:e.attackPhase||null,weaponFamily:e.weaponFamily||null,
+  ownerIsCharacter:e.ownerIsCharacter===true
  }));
- return {melee,shootingModels,shootingWeapons,boundSpells,otherBoundSpells,magicWeapons,
+ // The magic weapon is mandatory over its mundane equivalent for its bearer.
+ // Apply replacement to a whole unit only when it is a single character or a
+ // confirmed single-model entry: champion-only upgrades cannot remove the
+ // bows belonging to ordinary models in a larger regiment.
+ const soleShooter=magicWeapons.some(e=>e.ownerIsCharacter)||
+  (unit?.quantity?.value===1&&!unit?.modelGroups?.length);
+ const magicFamilies=new Set(soleShooter?magicWeapons
+  .filter(e=>e.attackPhase==='Shooting'&&e.weaponFamily)
+  .map(e=>e.weaponFamily):[]);
+ const shootingWeapons=availableMundaneWeapons.filter(weapon=>
+  !weapon.weaponFamily||!magicFamilies.has(weapon.weaponFamily));
+ const supersededShootingWeapons=availableMundaneWeapons.filter(weapon=>
+  weapon.weaponFamily&&magicFamilies.has(weapon.weaponFamily));
+ return {melee,shootingModels,shootingWeapons,supersededShootingWeapons,
+  boundSpells,otherBoundSpells,magicWeapons,
   offensiveEffects:(Array.isArray(effects)?effects:[]).filter(e=>
    e.effectGroup==='offensive'&&e.quickLabel&&e.quickDetail&&e.status!=='spent')};
 }
@@ -166,6 +181,15 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   return entries.length;
  };
  shootingCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Shooting'),shooting);
+ if(data.supersededShootingWeapons.length){
+  const magicNames=data.magicWeapons.filter(x=>x.attackPhase==='Shooting'&&
+   data.supersededShootingWeapons.some(y=>y.weaponFamily===x.weaponFamily))
+   .map(x=>x.name);
+  const names=data.supersededShootingWeapons.map(x=>x.name);
+  shooting.append(el(doc,'p','game-attack-caution game-attack-weapon-choice',
+   names.join(', ')+' retained in equipment, but not shown as a separate shooting attack while '+
+   magicNames.join(' / ')+' is equipped.'));
+ }
 
  if(data.melee.length){
   const melee=el(doc,'div','game-attack-group');
