@@ -53,6 +53,7 @@ export function buildRuleEffectCoverage({index,shards,magicIndex}){
    rules.set(ref.sourceUrl,x);
   }
   x[field]++;
+  if(field!=='optionalOccurrences')x.startingOccurrences++;
   if(x.examples.length<3&&!x.examples.includes(unit.name))
    x.examples.push(unit.name);
  };
