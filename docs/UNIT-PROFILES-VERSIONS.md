@@ -4,6 +4,22 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.9 — 12 November 2026
+
+- A selected, source-reviewed magic missile weapon is now the displayed
+  shooting weapon instead of a mundane equivalent carried by the same model.
+- Applies by generic weapon family, not by army or character name: for example,
+  Hunter's Scorn supersedes the BSB's Longbow, and the Reaver Bow or Bow of
+  the Seafarer supersedes an ordinary Warbow.
+- Keep all mundane equipment and imported list details unchanged in Equipment
+  & Special Rules; explain the suppressed attack choice within Shooting.
+- Do not suppress ordinary shooting from other models in a regiment merely
+  because its champion carries a magic bow. Unrelated weapon families and
+  magic combat weapons do not remove ordinary missile attacks.
+- Fireball remains a Bound Spell in Shooting and never inherits the weapon's
+  Ballistic Skill or replaces ordinary ballistic attacks.
+- This is display-only; no attack rolls, army points or game state are changed.
+
 ## v0.8 — 12 November 2026
 
 - Display each source-backed selected model's base **Ballistic Skill (BS)** directly
