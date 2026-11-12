@@ -98,9 +98,9 @@ try{
  assert.equal(await bsbShooting.locator('.game-attack-weapon').filter({hasText:"Hunter's Scorn"}).count(),1);
  const hunterCard=bsbShooting.locator('.game-attack-weapon')
   .filter({hasText:"Hunter's Scorn"});
- assert.match(await hunterCard.innerText(),/Range\\s*30"/);
- assert.match(await hunterCard.innerText(),/Strength\\s*5/);
- assert.match(await hunterCard.innerText(),/AP\\s*-1/);
+ assert.match(await hunterCard.innerText(),/Range\s*30"/);
+ assert.match(await hunterCard.innerText(),/Strength\s*5/);
+ assert.match(await hunterCard.innerText(),/AP\s*-1/);
  assert.equal(await hunterCard.locator('.game-attack-weapon-conditions').count(),1);
  assert.equal(await hunterCard.locator('.game-attack-weapon-conditions').evaluate(x=>x.open),false);
  assert.equal(await hunterCard.locator('a.game-attack-source').getAttribute('href'),
