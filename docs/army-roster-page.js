@@ -1,4 +1,5 @@
 import {createGameScreenModel} from './game-screen-model.js';
+import {decorateCompactRoster} from './roster-compact-navigation.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
 import {sourcePrintedArmour} from './source-printed-armour.js';
@@ -95,6 +96,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  identity.append(el(doc,'span','army-unit-index',String(index).padStart(2,'0')));
  const main=el(doc,'div','army-unit-names');
  const customName=unitDisplayName(unit,session);
+ card.dataset.rosterSearch=[customName,unit.name,unit.nickname,String(index),String(index).padStart(2,'0')].filter(Boolean).join(' ');
  main.append(el(doc,'h3','',customName));
  if(customName!==unit.name)main.append(el(doc,'span','army-unit-nickname','Official: '+unit.name));
  if(unit.nickname&&customName!==unit.nickname)
@@ -738,5 +740,6 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  if(!model.regiments.length)
   regiments.append(el(doc,'p','army-quiet','No additional units were identified in this import.'));
  container.append(regiments);
+ decorateCompactRoster(container,army);
  return overview;
 }

@@ -23,7 +23,7 @@ test('version history is available and the offline shell is revised',()=>{
  const notes=source('docs/UNIT-PROFILES-VERSIONS.md');
  const sw=source('docs/sw.js');
  assert.match(notes,/## v0\.10 — 12 November 2026/);
- assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-10'/);
+ assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261112-compact-normal-roster'/);
  assert.match(sw,/'\.\/army-roster-page\.js'/);
  assert.match(sw,/'\.\/index\.html'/);
 });

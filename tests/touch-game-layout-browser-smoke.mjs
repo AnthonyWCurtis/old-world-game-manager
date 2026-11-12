@@ -16,9 +16,10 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
- assert.equal(await page.locator('#gameOverviewPanel').isVisible(),true,'New army opens Overview');
- assert.equal(await page.locator('#gameUnitsPanel').isVisible(),false);
+ assert.equal(await page.locator('#gameOverviewPanel').isVisible(),false,'Normal Play opens with army roster');
+ assert.equal(await page.locator('#gameUnitsPanel').isVisible(),true);
  assert.equal(await page.locator('#gameMagicPanel').isVisible(),false);
+ await page.locator('#gameNavOverview').click();
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/Battle overview/);
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/No ongoing spell effects/);
  assert.equal(await page.locator('#gameWorkspaceNav [role=tab]').count(),3);
@@ -67,7 +68,7 @@ try{
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
 
- // Returning to game uses the previous section; another army defaults Overview.
+ // Returning to game uses the previous section; another army defaults Units.
  await page.locator('#gameNavMagic').click();
  await page.locator('#backToImporterBtn').click();
  await page.locator('#resumeGameBtn').click();
