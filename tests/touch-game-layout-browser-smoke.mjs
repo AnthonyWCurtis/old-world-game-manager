@@ -63,8 +63,9 @@ try{
  await page.locator('#gameNavUnits').click();
  assert.equal(await sea.locator('.game-unit-expand-toggle').getAttribute('aria-expanded'),'true');
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
+ await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').click();
  assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
- await sea.locator('.game-unit-expand-toggle').click();
+ await page.locator('#gameUnitFocusBack').click();
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
 
