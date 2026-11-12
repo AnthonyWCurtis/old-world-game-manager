@@ -1,6 +1,7 @@
 import {sourcePrintedArmour} from './source-printed-armour.js';
 import {compareRiderMountArmour} from './mount-armour-choice.js';
 import {publishedMountBenefits} from './published-mount-benefits.js';
+import {importedSelectionMatchesName} from './imported-unit-display.js';
 const norm=s=>String(s||'').normalize('NFKC').toLowerCase().trim();
 const validSource=url=>typeof url==='string'&&
  /^https:\/\/tow\.whfb\.app\/unit\/[a-z0-9-]+$/.test(url);
@@ -33,9 +34,13 @@ export function resolveSelectedMountProfiles(unit,recordsByUrl={},fallbackProfil
       mountValue:printed?.value??null,mountSourceUrl:printed?.sourceUrl,
       modelScopeVerified:false
      });
+     const publishedBenefits=publishedMountBenefits(record,type);
+     if(publishedBenefits)
+      publishedBenefits.specialRules=publishedBenefits.specialRules.filter(rule=>
+       rule.status!=='not-selected'||importedSelectionMatchesName(unit,rule.name));
      result.push({name:String(item.name||item.raw||record.name),sourceUrl:url,
       mountType:type,printedArmour:printed,comparison,
-      publishedBenefits:publishedMountBenefits(record,type),
+      publishedBenefits,
       status:'source-linked candidate; mounted-model association and eligibility unverified',
       ruleUrl:comparison.ruleUrl});
     }
