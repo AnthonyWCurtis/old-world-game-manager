@@ -1,12 +1,14 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261112-focused-unit-details';
+const CACHE_NAME='game-manager-v1-shell-20261112-tactical-command-v2';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
  './index.html',
  './styles.css',
  './mobile.css',
+ './tactical-command.css',
  './app.js',
+ './tactical-command.js',
  './parser.js',
  './import-guard.js',
  './unmatched-debug.js',
