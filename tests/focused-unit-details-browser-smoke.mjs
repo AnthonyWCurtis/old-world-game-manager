@@ -70,9 +70,18 @@ try{
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
-  const minHeight=await page.locator('#gameUnitFocusBack').evaluate(el=>
-  parseFloat(getComputedStyle(el).minHeight));
- assert.ok(minHeight>=44,'Back action touch target minimum at '+viewport.width+': '+minHeight+'px');
+   const stableTouch=await page.waitForFunction(async()=>{
+    const button=document.querySelector('#gameUnitFocusBack');
+    if(!button||!document.querySelector('#armyRosterList')?.classList.contains('game-unit-focused'))return false;
+    for(let n=0;n<3;n++){
+     await new Promise(resolve=>requestAnimationFrame(resolve));
+     if(!button.isConnected||button.getBoundingClientRect().height<44)return false;
+    }
+    return {height:button.getBoundingClientRect().height,visible:getComputedStyle(button).visibility};
+   },null,{timeout:12000});
+   const measured=await stableTouch.jsonValue();
+   assert.ok(measured.height>=44&&measured.visible==='visible',
+    'Back action must be >=44px and visible at '+viewport.width+': '+JSON.stringify(measured));
  }
  const selected=page.locator('#armyRosterList .game-focus-selected');
  await selected.locator('.game-rename-toggle').click();
