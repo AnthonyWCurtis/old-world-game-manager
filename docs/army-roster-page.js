@@ -20,7 +20,7 @@ import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
  * with textContent; external links are explicitly restricted to tow.whfb.app.
  */
 /** Visible, independent version of the unit profile display (not the importer). */
-export const UNIT_PROFILES_VERSION='0.3';
+export const UNIT_PROFILES_VERSION='0.4';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;
@@ -207,7 +207,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
    reference.append(safeLink(doc,'Mount source',group.sourceUrl,'army-source-link'));
    details.append(reference);
   }
-  details.append(el(doc,'p','army-profile-swipe','Swipe the table sideways to see all characteristics.'));
+
  }else{
   const missing=el(doc,'div','army-profile-missing');
   missing.append(el(doc,'strong','','Profile not available'));
@@ -247,17 +247,22 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(section);
  }
  if(record){
+  const unitFacts=[];
+  if(record.classification?.troopType?.length)unitFacts.push(record.classification.troopType.join(' / '));
+  if(record.classification?.baseSize)unitFacts.push('Base '+record.classification.baseSize);
+  if(unitFacts.length)
+   details.append(el(doc,'p','army-unit-quick-facts',unitFacts.join(' · ')));
+
   const sourceNotes=el(doc,'details','army-unit-compact-details army-source-meta-details');
-  sourceNotes.append(el(doc,'summary','','Unit source details · '+
-   (record.extractionWarnings?.length?record.extractionWarnings.length+' review flag(s)':'source-extracted')));
+  const warnings=record.extractionWarnings?.length||0;
+  sourceNotes.append(el(doc,'summary','',warnings?
+   'Source details · '+warnings+' review flag(s)':'Source details'));
   const sourceNotesBody=el(doc,'div','army-unit-source-meta');
-  const bits=[];
-  if(record.classification?.troopType?.length)bits.push(record.classification.troopType.join(' / '));
-  if(record.classification?.baseSize)bits.push('Base '+record.classification.baseSize);
-  if(record.basePoints?.sourceText)bits.push('Source: '+record.basePoints.sourceText);
-  if(bits.length)sourceNotesBody.append(el(doc,'span','',bits.join(' · ')));
-  sourceNotesBody.append(el(doc,'span','army-source-status',
-   (record.extractionWarnings?.length?'Source data has '+record.extractionWarnings.length+' review flag(s)':'Source-extracted · not rules-verified')));
+  if(record.basePoints?.sourceText)
+   sourceNotesBody.append(el(doc,'span','','Published base cost: '+record.basePoints.sourceText));
+  sourceNotesBody.append(el(doc,'span','army-source-status',warnings?
+   'Source data has '+warnings+' review flag(s)':
+   'Source-extracted; selected upgrades and army legality not verified'));
   sourceNotes.append(sourceNotesBody);
   details.append(sourceNotes);
  }
