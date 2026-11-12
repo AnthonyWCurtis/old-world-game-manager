@@ -541,3 +541,19 @@ body.tactical-ui{
 .tactical-ui .game-wizard-signature,
 .tactical-ui .game-wizard-lore-tag{background:#2a4737;color:#d9f5dd}
 .tactical-ui .game-wizard-lore-tag{background:#29415a;color:#dbeafe}
+
+
+/* Fine-grained contrast: sticky profile headers, source-version tag and editors. */
+.tactical-ui .army-profile-table tr>th:first-child{
+ background:#203b51;color:#eef4fa;
+}
+.tactical-ui .army-profile-table thead th:first-child{
+ background:#29445b;color:#eef4fa;
+}
+.tactical-ui .game-unit-profile-release-label strong{
+ background:#324e65;color:#eef4fa;
+ border:1px solid #5b778e;
+}
+.tactical-ui .game-assignment-editor label{color:#e4eef7}
+.tactical-ui .army-unit-loadout-heading>span{color:#c4d4e2}
+.tactical-ui .game-overview-caution{color:#bacbd9}
