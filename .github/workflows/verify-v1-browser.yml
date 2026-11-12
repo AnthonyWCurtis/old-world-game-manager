@@ -5,6 +5,7 @@ on:
       - feat/v1-game-manager-foundation
     paths:
       - 'docs/**'
+      - 'tests/compact-roster-browser-smoke.mjs'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
       - 'tests/stage4-browser-smoke.mjs'
