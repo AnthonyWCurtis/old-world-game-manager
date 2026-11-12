@@ -12,6 +12,7 @@ import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 import {REVIEWED_CHARACTER_RULES,REVIEWED_CONTAGIOUS_RULES} from '../docs/source-special-rule-effects.js';
 import {ITEM_EFFECT_RULES} from '../docs/effects-engine.js';
+import {reviewedCoreRule,REVIEWED_CORE_RULES} from '../docs/source-core-rule-effects.js';
 
 const ORIGIN='https://tow.whfb.app';
 const RULE_URL=/^https:\/\/tow\.whfb\.app\/special-rules\/[a-z0-9-]+\/?$/;
@@ -42,13 +43,13 @@ export function buildRuleEffectCoverage({index,shards,magicIndex}){
  const rules=new Map(),problems=[];
  let verifiedUnitRecords=0,missingUnitRecords=0,unverifiedUnitRecords=0,
   warningUnitRecords=0,startingSpecialRuleOccurrences=0,
-  reviewedStartingOccurrences=0,optionalSpecialRuleOccurrences=0,
+  reviewedStartingOccurrences=0,manualStartingOccurrences=0,optionalSpecialRuleOccurrences=0,
   otherStartingReferenceOccurrences=0;
  const mark=(ref,field,unit)=>{
   let x=rules.get(ref.sourceUrl);
   if(!x){
    x={name:ref.name,sourceUrl:ref.sourceUrl,startingOccurrences:0,
-    reviewedStartingOccurrences:0,referenceOnlyStartingOccurrences:0,
+    reviewedStartingOccurrences:0,manualStartingOccurrences:0,referenceOnlyStartingOccurrences:0,
     optionalOccurrences:0,examples:[]};
    rules.set(ref.sourceUrl,x);
   }
@@ -77,7 +78,9 @@ export function buildRuleEffectCoverage({index,shards,magicIndex}){
    startingSpecialRuleOccurrences++;
    const reviewed=reviewedStartingRule(record,ref);
    if(reviewed)reviewedStartingOccurrences++;
-   mark(ref,reviewed?'reviewedStartingOccurrences':'referenceOnlyStartingOccurrences',record);
+   const manual=!reviewed&&!!reviewedCoreRule(ref);
+   if(manual)manualStartingOccurrences++;
+   mark(ref,reviewed?'reviewedStartingOccurrences':manual?'manualStartingOccurrences':'referenceOnlyStartingOccurrences',record);
   }
   // Optional rule references are not necessarily selected by a player.
   for(const ref of record.optionalRules||[]){
@@ -86,8 +89,9 @@ export function buildRuleEffectCoverage({index,shards,magicIndex}){
   }
  }
  const sorted=[...rules.values()].map(r=>({
-  ...r,reviewStatus:r.reviewedStartingOccurrences&&r.referenceOnlyStartingOccurrences?
-   'mixed-by-owner-and-scope':r.reviewedStartingOccurrences?'reviewed-conditional':'source-reference-only'
+  ...r,reviewStatus:[r.reviewedStartingOccurrences,r.manualStartingOccurrences,r.referenceOnlyStartingOccurrences].filter(Boolean).length>1?
+   'mixed-by-owner-and-scope':r.reviewedStartingOccurrences?'reviewed-conditional':
+   r.manualStartingOccurrences?'reviewed-manual':'source-reference-only'
  })).sort(compare);
  const catalogue=magicIndex.entries.filter(e=>e.kind==='item-or-ability');
  const catalogueUrls=new Set(catalogue.map(e=>e.url));
@@ -105,11 +109,12 @@ export function buildRuleEffectCoverage({index,shards,magicIndex}){
    indexedUnits:index.entries.length,verifiedUnitRecords,
    missingUnitRecords,unverifiedUnitRecords,warningUnitRecords,
    distinctStartingOrOptionalRules:rules.size,
-   startingSpecialRuleOccurrences,reviewedStartingOccurrences,
-   referenceOnlyStartingOccurrences:startingSpecialRuleOccurrences-reviewedStartingOccurrences,
+   startingSpecialRuleOccurrences,reviewedStartingOccurrences,manualStartingOccurrences,
+   referenceOnlyStartingOccurrences:startingSpecialRuleOccurrences-reviewedStartingOccurrences-manualStartingOccurrences,
    optionalSpecialRuleOccurrences,otherStartingReferenceOccurrences,
    reviewedCharacterRuleDescriptors:characterRules.length,
    reviewedContagiousRuleDescriptors:contagiousRules.length,
+   reviewedManualRuleDescriptors:Object.keys(REVIEWED_CORE_RULES).length,
    reviewedItemEffectDescriptors:reviewedItems.length,
    sourceIndexedItemOrAbilityPages:catalogue.length,
    reviewedItemSourceUrlsInCatalogue:reviewedCatalogueMatches
@@ -147,7 +152,8 @@ function printSummary(r){
   'Records with extraction warnings: '+c.warningUnitRecords,
   'Published starting special-rule occurrences: '+c.startingSpecialRuleOccurrences,
   'Reviewed character/inherited effect occurrences: '+c.reviewedStartingOccurrences,
-  'Starting rule occurrences still reference-only in this effect projector: '+c.referenceOnlyStartingOccurrences,
+  'Reviewed manual-only starting-rule occurrences: '+c.manualStartingOccurrences,
+  'Starting rule occurrences still reference-only in these projectors: '+c.referenceOnlyStartingOccurrences,
   'Optional special-rule references (NOT necessarily selected): '+c.optionalSpecialRuleOccurrences,
   'Effect descriptors for imported magic items: '+c.reviewedItemEffectDescriptors,
   'Indexed item/ability reference pages (NOT all magic items): '+c.sourceIndexedItemOrAbilityPages,
@@ -156,7 +162,8 @@ function printSummary(r){
   'Most common reference-only starting rules (occurrences, not rule importance):',
   ...r.mostCommonReferenceOnly.map(x=>'- '+x.name+': '+x.referenceOnlyStartingOccurrences+' — '+x.sourceUrl),
   '',
-  'Important: A source link does NOT mean an effect is computed. This audit',
+  'IMPORTANT: Reviewed manual reminders do not compute rules or battle results.',
+  'A source link does NOT mean an effect is computed. This audit'
   'does not verify legality, equipment selections, formations, combat results,',
   'or the correctness of rules in other independently implemented subsystems.'
  ];
