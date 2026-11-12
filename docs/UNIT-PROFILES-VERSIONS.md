@@ -4,6 +4,23 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.10 — 12 November 2026
+
+- Present equipped, source-reviewed magic shooting/combat weapons as compact
+  **Range / Strength / AP** cards, with their important conditional rules in
+  an expandable **Rules & conditions** section and a direct source link.
+- Use structured attack profiles in the shared, source-reviewed effect registry,
+  not hardcoded army-specific rendering.
+- Hide a character's superseded mundane bow from the everyday **Equipment &
+  special rules** panel as well as **Shooting**. The original imported
+  selections and complete source records are not modified or discarded.
+- Remove the repeated Longbow replacement notice from Shooting.
+- Within Shooting, show the selected magic weapon before separately cast
+  Magic Missiles, such as Ruby Ring of Ruin's Fireball.
+- Preserve single-bearer scope: a champion's magic bow must never hide the
+  regiment's own mundane missile weapons.
+- No change to calculated attacks, army points, spells, defence or persistence.
+
 ## v0.9 — 12 November 2026
 
 - A selected, source-reviewed magic missile weapon is now the displayed

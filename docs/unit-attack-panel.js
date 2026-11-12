@@ -59,6 +59,7 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
  const magicWeapons=attacking.filter(e=>e.kind==='Magic weapon').map(e=>({
   name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope,
   attackPhase:e.attackPhase||null,weaponFamily:e.weaponFamily||null,
+  attackProfile:e.attackProfile?{...e.attackProfile}:null,
   ownerIsCharacter:e.ownerIsCharacter===true
  }));
  // The magic weapon is mandatory over its mundane equivalent for its bearer.
@@ -143,6 +144,33 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   shooting.append(group);
  }
 
+ const weaponSection=(entries,container)=>{
+  if(!entries.length)return 0;
+  const group=el(doc,'div','game-attack-group');
+  group.append(el(doc,'strong','','Selected magic weapons'));
+  for(const entry of entries){
+   const line=el(doc,'div','game-attack-weapon');
+   line.append(sourceLink(doc,entry.name,entry.sourceUrl));
+   const profile=entry.attackProfile;
+   if(profile&&profile.sourceUrl===entry.sourceUrl){
+    const metrics=el(doc,'div','game-attack-stats game-attack-magic-weapon-stats');
+    metrics.append(stat(doc,'Range',profile.range),stat(doc,'Strength',profile.strength),
+     stat(doc,'AP',profile.armourPiercing));
+    line.append(metrics);
+    const extra=el(doc,'details','game-attack-weapon-conditions');
+    extra.append(el(doc,'summary','','Rules & conditions'));
+    extra.append(el(doc,'p','',entry.description));
+    line.append(extra);
+   }else{
+    line.append(el(doc,'p','',entry.description));
+   }
+   group.append(line);
+  }
+  container.append(group);
+  return entries.length;
+ };
+ shootingCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Shooting'),shooting);
+
  // Bound Magic Missiles are attacks in Shooting, not extra Attacks or an
  // ordinary missile weapon. Unknown bound spell types are not classified.
  for(const entry of data.boundSpells.filter(e=>e.spell?.phase==='Shooting')){
@@ -167,29 +195,7 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   shootingCount++;
  }
 
- const weaponSection=(entries,container)=>{
-  if(!entries.length)return 0;
-  const group=el(doc,'div','game-attack-group');
-  group.append(el(doc,'strong','','Selected magic weapons'));
-  for(const entry of entries){
-   const line=el(doc,'div','game-attack-weapon');
-   line.append(sourceLink(doc,entry.name,entry.sourceUrl));
-   line.append(el(doc,'p','',entry.description));
-   group.append(line);
-  }
-  container.append(group);
-  return entries.length;
- };
- shootingCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Shooting'),shooting);
- if(data.supersededShootingWeapons.length){
-  const magicNames=data.magicWeapons.filter(x=>x.attackPhase==='Shooting'&&
-   data.supersededShootingWeapons.some(y=>y.weaponFamily===x.weaponFamily))
-   .map(x=>x.name);
-  const names=data.supersededShootingWeapons.map(x=>x.name);
-  shooting.append(el(doc,'p','game-attack-caution game-attack-weapon-choice',
-   names.join(', ')+' retained in equipment, but not shown as a separate shooting attack while '+
-   magicNames.join(' / ')+' is equipped.'));
- }
+
 
  if(data.melee.length){
   const melee=el(doc,'div','game-attack-group');

@@ -96,8 +96,22 @@ try{
  assert.equal(await bsbShooting.locator('.game-attack-weapon').filter({hasText:'Longbow'}).count(),0,
   'Longbow cannot remain a separate shooting weapon for the bearer of Hunter\'s Scorn');
  assert.equal(await bsbShooting.locator('.game-attack-weapon').filter({hasText:"Hunter's Scorn"}).count(),1);
- assert.match(await bsbShooting.locator('.game-attack-weapon-choice').innerText(),
-  /Longbow.*retained in equipment.*Hunter's Scorn/s);
+ const hunterCard=bsbShooting.locator('.game-attack-weapon')
+  .filter({hasText:"Hunter's Scorn"});
+ assert.match(await hunterCard.innerText(),/Range\s*30"/);
+ assert.match(await hunterCard.innerText(),/Strength\s*5/);
+ assert.match(await hunterCard.innerText(),/AP\s*-1/);
+ assert.equal(await hunterCard.locator('.game-attack-weapon-conditions').count(),1);
+ assert.equal(await hunterCard.locator('.game-attack-weapon-conditions').evaluate(x=>x.open),false);
+ assert.equal(await hunterCard.locator('a.game-attack-source').getAttribute('href'),
+  'https://tow.whfb.app/magic-item/hunters-scorn');
+ assert.equal(await bsbShooting.locator('.game-attack-weapon-choice').count(),0,
+  'Redundant mundane weapon replacement message should no longer occupy the battle view');
+ assert.equal(await bsb.locator('.army-unit-unified-loadout .army-unit-loadout-pill')
+  .filter({hasText:'Longbow'}).count(),0,
+  'Superseded Longbow must not be shown in the BSB battle equipment panel');
+ assert.equal(await bsb.locator('.army-unit-unified-loadout .army-unit-loadout-pill')
+  .filter({hasText:"Hunter's Scorn"}).count(),1);
  assert.match(await bsbCombat.innerText(),/Base melee characteristics/);
  assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);

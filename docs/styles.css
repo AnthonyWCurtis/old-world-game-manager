@@ -771,3 +771,15 @@
  padding:7px 9px;border-left:3px solid #8da7bc;
  background:#f1f6fa;border-radius:5px;
 }
+
+/* Unit Profiles v0.10 — compact, source-reviewed magic weapon stat cards. */
+.game-attack-magic-weapon-stats{margin:2px 0 3px;gap:6px}
+.game-attack-magic-weapon-stats .game-attack-stat{min-width:65px}
+.game-attack-weapon-conditions{border-top:1px solid #dce6ed;padding-top:5px}
+.game-attack-weapon-conditions>summary{
+ color:#285d7e;font-weight:700;font-size:12px;
+ cursor:pointer;min-height:40px;display:list-item;align-content:center;
+}
+.game-attack-weapon-conditions>p{
+ margin:5px 0 2px;color:#405a6d;font-size:12px;line-height:1.5;
+}

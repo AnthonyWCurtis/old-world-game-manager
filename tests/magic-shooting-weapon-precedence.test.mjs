@@ -80,11 +80,43 @@ test('Magic combat weapons, unrelated weapon classes, and foreign item effects d
  assert.ok(shared.shootingWeapons.some(x=>x.name==='Longbow'));
 });
 
-test('Versioned Shooting UI explains active magic-weapon precedence without changing combat stats',()=>{
+test('Shooting uses compact verified weapon profiles without a Longbow notice',()=>{
  const attack=read('docs/unit-attack-panel.js');
+ const roster=read('docs/army-roster-page.js');
  assert.match(attack,/supersededShootingWeapons/);
- assert.match(attack,/retained in equipment, but not shown as a separate shooting attack/);
- assert.match(attack,/availableMundaneWeapons\.filter/);
+ assert.doesNotMatch(attack,/retained in equipment, but not shown as a separate shooting attack/);
+ assert.match(attack,/game-attack-magic-weapon-stats/);
+ assert.match(attack,/game-attack-weapon-conditions/);
+ assert.match(attack,/stat\(doc,'Range',profile\.range\)/);
+ assert.match(attack,/stat\(doc,'Strength',profile\.strength\)/);
+ assert.match(attack,/stat\(doc,'AP',profile\.armourPiercing\)/);
+ assert.match(roster,/shownEquipment=loadout\.groups\.equipment\.filter/);
+ assert.match(roster,/!inactiveWeaponUrls\.has\(item\.sourceUrl\)/);
+ assert.match(roster,/mountRows,effects\)/);
  assert.match(attack,/ownerIsCharacter/);
  assert.match(attack,/section\.append\(shooting,combat\)/);
+});
+test('All reviewed magic weapons have faithful, source-matched attack profiles',()=>{
+ const expected={
+  'mathlanns-ire':['Combat','S+1','-2'],
+  'hunters-scorn':['30"','5','-1'],
+  'bow-of-the-seafarer':['30"','5','-3'],
+  'reaver-bow':['30"','S+1','–']
+ };
+ const rows=projection.owned;
+ for(const [id,[range,strength,ap]] of Object.entries(expected)){
+  const row=rows.find(x=>x.id===id);
+  assert.ok(row,'Missing source-reviewed item '+id);
+  assert.deepEqual(
+   [row.attackProfile.range,row.attackProfile.strength,row.attackProfile.armourPiercing],
+   [range,strength,ap]
+  );
+  assert.equal(row.attackProfile.sourceUrl,row.sourceUrl);
+  assert.equal(row.attackProfile.verifiedOn,'2026-11-12');
+ }
+ const bsb=summary(character("Hunter's Scorn"));
+ const hunter=bsb.magicWeapons.find(x=>x.name==="Hunter's Scorn");
+ assert.equal(hunter.attackProfile.range,'30"');
+ assert.equal(hunter.attackProfile.strength,'5');
+ assert.equal(hunter.attackProfile.armourPiercing,'-1');
 });
