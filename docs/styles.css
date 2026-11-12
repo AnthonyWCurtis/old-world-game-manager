@@ -644,3 +644,34 @@
 @media(max-width:480px){
  .game-unit-profile-release{align-items:flex-start}
 }
+
+/* Unit Profiles v0.2 — one compact, import-first equipment & rules panel. */
+.army-unit-unified-loadout{
+ margin:12px 0;padding:12px 13px;
+ border:1px solid #cadbe5;border-radius:11px;background:#f7fafc;
+ display:grid;gap:11px;min-width:0;
+}
+.army-unit-loadout-heading{
+ display:flex;flex-wrap:wrap;align-items:baseline;
+ justify-content:space-between;gap:4px 10px;
+}
+.army-unit-loadout-heading h4{margin:0;color:#244c68;font-size:14px}
+.army-unit-loadout-heading>span{font-size:11px;color:#668093}
+.army-unit-loadout-group{display:grid;gap:5px;min-width:0}
+.army-unit-loadout-group>strong{
+ font-size:11px;letter-spacing:.045em;text-transform:uppercase;color:#566e80
+}
+.army-unit-loadout-items{display:flex;flex-wrap:wrap;gap:6px;min-width:0;margin:0}
+.army-unit-loadout-pill{
+ display:inline-flex;align-items:center;min-height:34px;
+ border:1px solid #d7e5ed;background:#fff;padding:6px 9px;
+ border-radius:7px;color:#224f70;font-size:12px;
+ max-width:100%;overflow-wrap:anywhere;text-decoration:none;
+}
+.army-unit-loadout-default{background:#eaf3f7}
+.army-unit-loadout-unmatched{border-style:dashed;color:#4d6272}
+.army-unit-loadout-note{margin:0;font-size:11px;line-height:1.5}
+@media(max-width:480px){
+ .army-unit-unified-loadout{padding:10px;gap:10px}
+ .army-unit-loadout-pill{min-height:38px}
+}
