@@ -245,7 +245,9 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible',timeout:10000});
+ await page.locator('#gameRosterSearch').fill('Primal Warherds');
  const special=page.locator('#armyRosterList .army-unit-card').filter({hasText:'Primal Warherds'}).first();
+ await special.locator('.game-unit-expand-toggle').click();
  assert.match(await special.innerText(),/21 models/);
  assert.match(await special.innerText(),/11× Gor/);
  assert.match(await special.innerText(),/10× Ungor/);
