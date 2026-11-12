@@ -70,3 +70,40 @@ Record the source, target, owner, trigger and FAQ exceptions per rule. Keep
 manual, conditional and fully calculated effects separate. Only include
 numeric calculations in the combat engine when every prerequisite has a
 verified interpretation and a test. No faction-specific engine branches.
+
+
+## Reviewed manual-reference rules — 12 November 2026
+
+The next reviewed source-rule layer gives player-facing **manual-only**
+interpretations to common starting rules. It is a reusable rules registry,
+not faction-specific implementation. These are *not* automatic calculations:
+
+| Source rule | How the reminder is scoped | Canonical rule URL |
+| --- | --- | --- |
+| Close Order | Formation permission; actual formation and all models still require checking | https://tow.whfb.app/special-rules/close-order |
+| Swiftstride | Charge/Flee/Pursuit choice; **entire** unit requirement, including joined characters | https://tow.whfb.app/special-rules/swiftstride |
+| Regeneration (X+) | Individual model recovery after losing a Wound; still counts in combat resolution | https://tow.whfb.app/special-rules/regeneration |
+| Impact Hits (X) | Charging model, moved at least 3", in base contact; early automatic hits | https://tow.whfb.app/special-rules/impact-hits |
+| Stomp Attacks (X) | Individual model in base contact; automatic hits after all Initiative steps | https://tow.whfb.app/special-rules/stomp-attacks |
+| Armour Bane (X) | Natural 6 To Wound on eligible model's weapon; not a flat AP modifier | https://tow.whfb.app/special-rules/armour-bane |
+
+The matched rule must be in a source-extracted unit record's
+**startingRules** with exact tow.whfb.app link, and the record's source URL
+must match the imported unit's official URL. A rule present only in
+**optionalRules** never appears as selected or active. No inherited special
+rule is assumed from the regiment to a joined character or vice versa.
+
+A compact unit card continues to show actual reviewed item effects and
+recorded character effects only, not these general manual reminders.
+They are in the **Effects** tab, clearly labelled **Reviewed · manual**
+with a phase and source. Existing save/attack subsystems are not overwritten.
+Users must still establish eligible models, dice, formations and timing.
+
+The audit now keeps three disjoint counts:
+1. Reviewed character-granted/inherited effect occurrences
+2. Reviewed manual-only starting-rule occurrences
+3. Starting-rule occurrences remaining reference-only
+
+None of these is a percentage of automatically implemented combat mechanics,
+because other subsystems implement independent mechanics and a single source
+reference may cover more than one combat step.
