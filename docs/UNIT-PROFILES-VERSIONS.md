@@ -4,6 +4,21 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.6 — 12 November 2026
+
+- Separate **Attacks** and **Defence** within independent characters, regiments
+  and characters assigned to regiments.
+- Attacks show published base WS/S/A per actually selected model, selected
+  magic weapons, source-reviewed offensive bonuses and equipped Bound Spell
+  Magic Missiles without adding spell hits to ordinary Attacks.
+- The Ruby Ring of Ruin's Fireball draws its source-verified type, phase,
+  casting value, range, hits, Strength, AP and Flaming Attacks from the
+  existing item-effect registry, not a special case in the UI.
+- Defence keeps existing equipment-only armour, Ward, Regeneration, magic
+  effects and explicit source-scope warnings.
+- Casting, damage, eligibility, ordinary missile profiles and derived combat
+  statistics are not auto-calculated; no source or imported data is changed.
+
 ## v0.5 — 12 November 2026
 
 - Removed the redundant **Source details** disclosure from everyday Unit Profiles.
