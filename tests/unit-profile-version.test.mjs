@@ -10,7 +10,7 @@ test('Unit Profiles displays v0.8',()=>{
  assert.match(html,/<section id="gameUnitsPanel"/);
  assert.match(html,/id="unitProfilesVersion">v0\.8<\/strong>/);
  assert.match(html,/What’s new\?/);
- assert.match(html,/Shooting now displays the published Ballistic Skill (BS)/);
+ assert.match(html,/Shooting now displays the published Ballistic Skill/);
 });
 test('the visible version is wired to a single profile-display version constant',()=>{
  const app=source('docs/app.js');
