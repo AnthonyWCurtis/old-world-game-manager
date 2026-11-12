@@ -51,7 +51,7 @@ try{
  await attackRule.waitFor({state:'visible'});
  assert.match(await attackRule.innerText(),/AP \+1/);
  await page.locator('#gameUnitFocusTabs [data-focus-tab="effects"]').click();
- const row=sea.locator('.game-effect-card[data-effect-id="precision-strikes"]');
+ const row=sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]');
  await row.waitFor({state:'visible'});
  assert.match(await row.locator('summary').innerText(),/Conditional/);
  await row.locator('summary').click();
@@ -64,7 +64,7 @@ try{
  await ishaya.locator('.game-unit-expand-toggle').click();
  await ishaya.locator('.character-unit-picker').selectOption('');
  await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
- assert.equal(await sea.locator('.game-effect-card[data-effect-id="precision-strikes"]').count(),0);
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]').count(),0);
  assert.deepEqual(errors,[]);
  console.log('Ishaya Precision Strikes source-verified join, attack and Effects tabs, remove and named benefits: PASS');
 }finally{await browser.close();}
