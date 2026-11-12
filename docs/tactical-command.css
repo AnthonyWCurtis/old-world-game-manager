@@ -212,6 +212,74 @@ body.tactical-ui{
 .tactical-ui .game-magic-wizard-book h3{color:var(--tc-type)}
 .tactical-ui .game-card-status .game-card-chip-item{background:#343226;color:#e9d4aa;border-color:#65583f}
 .tactical-ui .notice{border-left:3px solid var(--tc-gold);color:var(--tc-secondary)}
+/* Source-backed item cards: the legacy light stylesheet has white surfaces.
+ * Normal Play uses pale type, so both the surfaces AND status palette must be
+ * dark. Scope to real effect components to cover Magic, Unit Effects and Overview. */
+.tactical-ui .game-effect-card{
+ background:#172b40;color:#edf3fa;border:1px solid #466075;
+}
+.tactical-ui .game-effect-summary{
+ background:transparent;color:#edf3fa;min-height:60px;
+}
+.tactical-ui .game-effect-card .game-effect-title strong{
+ color:#f2f6fb;font-size:16px;font-weight:780;line-height:1.35;
+}
+.tactical-ui .game-effect-card .game-effect-kind{
+ color:#bdcddd;font-size:13px;line-height:1.4;
+}
+.tactical-ui .game-effect-card .game-effect-badge{
+ background:#263f54;color:#f0f6fc;
+ border:1px solid #648097;
+ font-size:12px;font-weight:800;line-height:1.35;
+}
+.tactical-ui .game-effect-card .game-effect-badge-ready{
+ background:#1b3b4f;color:#c4edff;border-color:#497b98;
+}
+.tactical-ui .game-effect-card .game-effect-badge-conditional{
+ background:#48371f;color:#ffe5b3;border-color:#887043;
+}
+.tactical-ui .game-effect-card .game-effect-badge-bound-spell{
+ background:#342f53;color:#e6daff;border-color:#7367a3;
+}
+.tactical-ui .game-effect-card .game-effect-badge-active{
+ background:#183e38;color:#b5f6e1;border-color:#477c70;
+}
+.tactical-ui .game-effect-card .game-effect-badge-spent{
+ background:#443034;color:#ffdad6;border-color:#84585c;
+}
+.tactical-ui .game-effect-details{
+ border-top:1px solid #465d71;background:transparent;
+}
+.tactical-ui .game-effect-card .game-effect-description{
+ color:#ecf3f9;font-size:14px;line-height:1.55;
+}
+.tactical-ui .game-effect-card .game-effect-scope{
+ color:#c2d2df;font-size:13px;
+}
+.tactical-ui .game-effect-card .game-effect-caution{
+ color:#f3d6a6;font-size:13px;
+}
+.tactical-ui .game-effect-card .game-effect-source{
+ color:#f1d3a1;
+}
+.tactical-ui .game-effect-card .game-effect-action{
+ background:#25455c;color:#f1f7fc;border-color:#688298;
+ font-size:14px;
+}
+.tactical-ui .game-effect-card .game-effect-action:hover{
+ background:#31576e;color:#fff;
+}
+.tactical-ui .game-spell-panel .game-spell-heading > span{
+ background:#413626;color:#ffe6b7;border:1px solid #857044;
+ font-size:12px;font-weight:820;
+}
+.tactical-ui .game-magic-item-group{
+ border-top-color:#41596f;
+}
+.tactical-ui .game-magic-item-group h3{
+ color:#edf3fa;font-size:15px;
+}
+
 /* Mobile: wide click areas, compact headers and protected safe areas. */
 @media(max-width:650px){
  .tactical-ui :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px}
