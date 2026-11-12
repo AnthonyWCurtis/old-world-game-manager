@@ -24,6 +24,8 @@ test('one consolidated panel replaces both overlapping equipment and source disc
 test('all known and unknown imports remain represented, while source details stay available',()=>{
  assert.match(ui,/item\.scope\?item\.scope/);
  assert.match(ui,/army-unit-loadout-unmatched/);
- assert.match(ui,/Unit source details/);
+ assert.match(ui,/Source details/);
+ assert.match(ui,/army-unit-quick-facts/);
+ assert.match(ui,/Published base cost:/);
  assert.match(ui,/Published unit\/chassis armour reference/);
 });

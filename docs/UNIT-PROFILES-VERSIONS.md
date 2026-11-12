@@ -4,6 +4,18 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.4 — 12 November 2026
+
+- Show verified troop type and base size as one short line directly beneath
+  the characteristics table, where they're useful during a tabletop game.
+- Remove the repeated "Swipe the table sideways" instruction from individual
+  unit cards; explain horizontal scrolling once in the Units tab.
+- Rename the technical disclosure to **Source details** and keep published
+  base points per model and extraction/verification information available there.
+- Make extraction-review warnings visible on the collapsed disclosure heading.
+- Do not change imported unit points, saved selections, source values or
+  combat calculations.
+
 ## v0.3 — 12 November 2026
 
 - Added source-backed links for explicitly selected command-group upgrades:
