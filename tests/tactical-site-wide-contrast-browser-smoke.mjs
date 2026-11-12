@@ -95,14 +95,39 @@ try{
  for(const tab of ['profile','attacks','defence','effects']){
   await page.locator('#gameUnitFocusTabs [data-focus-tab="'+tab+'"]').click();
   await audit('unit '+tab);
+  if(tab==='profile'){
+   const extra=sea.locator('details.game-focused-disclosure').first();
+   if(await extra.count()){
+    await extra.locator(':scope > summary').click();
+    await audit('unit expanded published profile');
+   }
+  }else if(tab==='defence'){
+   const defence=sea.locator('details.game-defence-details').first();
+   if(await defence.count()){
+    await defence.locator(':scope > summary').click();
+    await audit('unit expanded defence sources');
+   }
+  }
  }
  await page.locator('#gameUnitFocusBack').click();
  await page.locator('#gameNavMagic').click();
  await audit('magic');
  await page.locator('#gameItemAbilities .game-effect-card').first().locator('summary').click();
  await audit('magic expanded item');
+ const spellbook=page.locator('#gameKnownSpellbookDrawer');
+ if(await spellbook.count()){
+  await spellbook.locator(':scope > summary').click();
+  const firstBook=spellbook.locator('details.game-wizard-spellbook').first();
+  if(await firstBook.count())await firstBook.locator(':scope > summary').click();
+  await audit('magic expanded wizard spellbook');
+ }
  await page.locator('#gameNavOverview').click();
  await audit('overview');
+ const overviewDrawer=page.locator('details.game-overview-item-drawer').first();
+ if(await overviewDrawer.count()){
+  await overviewDrawer.locator(':scope > summary').click();
+  await audit('overview expanded equipment');
+ }
  for(const width of [320,390,956]){
   await page.setViewportSize({width,height:width===956?440:844});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
