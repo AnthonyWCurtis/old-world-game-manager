@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {parseArmy} from '../docs/parser.js';
 import {restoreBattleSession,assignCharacter} from '../docs/battle-session.js';
 import {projectArmyEffects} from '../docs/effects-engine.js';
+import {referenceOnlyPublishedRules} from '../docs/source-special-rule-effects.js';
 
 const fixture=()=>parseArmy(readFileSync(new URL('../docs/examples/owb-regular.txt',import.meta.url),'utf8'));
 const shard=JSON.parse(readFileSync(new URL('../docs/unit-data/shards/1e.json',import.meta.url),'utf8'));
@@ -18,6 +19,12 @@ test('Shipped Ishaya source record contains Precision Strikes at its real, revie
  assert.equal(ishayaRecord.source.verificationStatus,'source-extracted');
  assert.ok(ishayaRecord.startingRules.some(rule=>rule.name==='Precision Strikes'&&
   rule.sourceUrl==='https://tow.whfb.app/special-rules/precision-strikes'));
+ const army=fixture(),ishaya=person(army,'Ishaya Vess');
+ const refs=referenceOnlyPublishedRules(ishaya,ishayaRecord);
+ assert.ok(refs.some(x=>x.name==='Commanding Voice'));
+ assert.ok(refs.some(x=>x.name==='Rallying Cry'));
+ assert.equal(refs.some(x=>x.name==='Precision Strikes'),false,
+  'Implemented benefits are shown as Effects, all other published source rules remain reviewable');
 });
 test('Precision Strikes follows the actual assigned unit and is distinct from Razor Standard',()=>{
  const army=fixture(),before=JSON.stringify(army);
