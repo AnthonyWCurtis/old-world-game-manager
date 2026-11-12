@@ -77,7 +77,7 @@ try{
     return rect.height>=44&&visibility==='visible'?{height:rect.height,visibility}:false;
    },null,{timeout:12000});
    const measured=await stableTouch.jsonValue();
-   assert.ok(measured.height>=44&&measured.visible==='visible',
+   assert.ok(measured.height>=44&&measured.visibility==='visible',
     'Back action must be >=44px and visible at '+viewport.width+': '+JSON.stringify(measured));
  }
  const selected=page.locator('#armyRosterList .game-focus-selected');
