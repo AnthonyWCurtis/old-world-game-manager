@@ -434,7 +434,7 @@ function handleWizardKnownSpell(unitId,spellId,known){
 function renderArmyScreen(){
  if(!current)return;
  const state=ensureGameLayout();
- const effectProjection=projectArmyEffects(current,battleSession);
+ const effectProjection=projectArmyEffects(current,battleSession,unitDataRecords);
  const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState,selectedUnitSourceRecords);
  renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear,onItemState:handleItemEffectState,onShieldUse:handleShieldUsage},magicIndex,effectProjection);
  renderMagicItemAbilities($('gameItemAbilities'),effectProjection,battleSession,{
