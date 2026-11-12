@@ -9,7 +9,7 @@ import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5';
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
-import {renderArmyRosterPage} from './army-roster-page.js?v=1.0.0-alpha.5';
+import {renderArmyRosterPage, UNIT_PROFILES_VERSION} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {renderSpellControls} from './spell-controls.js';
 import {projectArmyEffects,setItemEffectState} from './effects-engine.js';
 import {renderMagicItemAbilities} from './effects-ui.js';
@@ -443,6 +443,8 @@ function renderArmyScreen(){
  applyGameTab();
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
+ const version=$('unitProfilesVersion');
+ if(version)version.textContent='v'+UNIT_PROFILES_VERSION;
  const faction=label(current.army.faction);
  $('armyRosterFaction').textContent=faction==='Unknown'?
    'Faction not specified by the exporter':faction;

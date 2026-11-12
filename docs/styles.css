@@ -623,3 +623,24 @@
  .army-unit-compact-details{margin-top:8px}
  .army-unit-compact-details>summary{padding:12px;font-size:13px}
 }
+
+/* Independent version label for the imported Unit Profiles feature. */
+.game-unit-profile-release{
+ display:flex;align-items:center;justify-content:space-between;gap:10px;
+ flex-wrap:wrap;margin:10px 0 12px;padding:9px 12px;
+ border:1px solid #d5e2eb;border-radius:10px;background:#f5f9fc;
+ color:#31536b;font-size:12px;
+}
+.game-unit-profile-release-label{font-weight:650}
+.game-unit-profile-release-label strong{
+ margin-left:5px;padding:3px 7px;border-radius:6px;
+ background:#e0ebf3;color:#204964;font-weight:800;font-variant-numeric:tabular-nums;
+}
+.game-unit-profile-release-notes>summary{
+ cursor:pointer;min-height:40px;display:list-item;align-content:center;
+ color:#245b7e;font-weight:650;
+}
+.game-unit-profile-release-notes p{max-width:44rem;margin:6px 0 3px;line-height:1.5}
+@media(max-width:480px){
+ .game-unit-profile-release{align-items:flex-start}
+}
