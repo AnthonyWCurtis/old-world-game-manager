@@ -322,3 +322,238 @@ body.tactical-ui{
 @media(prefers-reduced-motion:reduce){
  .tactical-ui *{transition:none!important;scroll-behavior:auto!important}
 }
+
+
+/* V2 contrast contract: legacy source widgets still shipped white backgrounds
+ * and dark foregrounds. Every source/interaction surface below is themed as a
+ * complete pair (background AND foreground), not just text globally. */
+.tactical-ui{
+ --tc-content:#edf4fc;
+ --tc-content-muted:#c3d2e0;
+ --tc-content-accent:#f3d49e;
+ --tc-content-surface:#162b40;
+ --tc-content-elevated:#20384f;
+ --tc-content-border:#475e73;
+}
+
+/* Roster: outrank the v1 selector that explicitly painted unopened headers #fff. */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-roster-section-content > .army-unit-card:not(.game-unit-open) .army-unit-head,
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-roster-section-content > .army-unit-card.game-unit-open .army-unit-head{
+ background:var(--tc-content-surface);
+ color:var(--tc-content);
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-roster-section-content > .army-unit-card{
+ background:#122539;
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .army-unit-names h3,
+.tactical-ui .army-unit-card .army-unit-nickname{color:var(--tc-content)}
+.tactical-ui .army-unit-card .army-unit-nickname{color:var(--tc-content-muted)}
+.tactical-ui .army-unit-card .army-model-number{color:var(--tc-content-muted)}
+.tactical-ui .army-unit-card .army-unit-points strong{color:var(--tc-content-accent)}
+
+/* Importer: imported reference tables, selections and page links. */
+.tactical-ui #importPage .unit,
+.tactical-ui #importPage .unit-data-details{
+ background:var(--tc-content-surface);
+ color:var(--tc-content);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui #importPage .unit summary,
+.tactical-ui #importPage .unit-data-summary{
+ background:var(--tc-content-elevated);
+ color:var(--tc-content);
+}
+.tactical-ui #importPage .unit-data-summary{color:var(--tc-content-accent)}
+.tactical-ui #importPage :is(.unit-data-body,.unit-data-body h4,.unit-data-stats,.unit-data-eligibility,.unit-data-option,.unit-ref-group){
+ color:var(--tc-content);
+}
+.tactical-ui #importPage .unit-data-stats :is(th,td){
+ background:var(--tc-content-surface);
+ color:var(--tc-content);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui #importPage .unit-data-stats thead th{
+ background:#29425a;
+ color:var(--tc-content);
+}
+.tactical-ui #importPage :is(.unit-data-meta,.unit-data-armies,.unit-data-provenance,.unit-data-footer,.unit-data-status,.unit-data-option-links,.unit-ref-note){
+ color:var(--tc-content-muted);
+}
+.tactical-ui #importPage :is(.unit-data-caveat,.unit-data-warnings){
+ background:#3a3023;
+ color:#ffe2af;
+ border:1px solid #887048;
+}
+.tactical-ui #importPage :is(.unit-data-details,.unit-data-stats,.unit-data-caveat,.unit-data-warnings) a{
+ color:var(--tc-content-accent);
+}
+.tactical-ui #importPage :is(.unit-data-warnings,.unit-data-caveat) :is(strong,li,p){
+ color:#ffe4b9;
+}
+
+/* Source and army info disclosures (visible across all workspaces). */
+.tactical-ui .game-unit-profile-release{
+ background:#213b51;
+ color:var(--tc-content-muted);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .game-guidance :is(.game-rule-warning,.army-roster-quality),
+.tactical-ui :is(.game-rule-warning,.army-roster-quality){
+ background:#362e21;
+ color:#f5d9aa;
+ border-color:#92784e;
+}
+.tactical-ui .game-guidance :is(.game-rule-warning,.army-roster-quality) strong,
+.tactical-ui :is(.game-rule-warning,.army-roster-quality) strong{color:#ffe5bd}
+.tactical-ui .game-guidance a,
+.tactical-ui :is(.game-rule-warning,.army-roster-quality) a{color:#f6d8a3}
+
+/* Overview item drawer and its nested source-linked labels. */
+.tactical-ui .game-overview-item-drawer{
+ background:var(--tc-content-surface);
+ border-color:var(--tc-content-border);
+ color:var(--tc-content);
+}
+.tactical-ui .game-overview-item-drawer>summary,
+.tactical-ui .game-overview-item strong{color:var(--tc-content)}
+.tactical-ui .game-overview-item{border-color:var(--tc-content-border)}
+.tactical-ui .game-overview-item span{color:var(--tc-content-muted)}
+.tactical-ui .game-overview-item small{color:#f3d6a6}
+.tactical-ui .game-overview-item a{color:var(--tc-content-accent)}
+
+/* Combat attacks: the v1 phase/model/stat/weapon cards were all white. */
+.tactical-ui :is(.game-attack-phase,.game-attack-model,.game-attack-bound,.game-attack-weapon,.game-attack-unclassified,.game-attack-weapon-choice){
+ background:var(--tc-content-surface);
+ color:var(--tc-content);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .game-attack-panel :is(.game-attack-group,.game-attack-group>strong,.game-attack-bound>strong,.game-attack-model-name,.game-attack-phase>h5,.game-attack-panel>h4){
+ color:var(--tc-content);
+}
+.tactical-ui .game-attack-phase>h5{
+ color:var(--tc-content-accent);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .game-attack-stat{
+ background:#244159;
+ border:1px solid #537087;
+ color:var(--tc-content);
+}
+.tactical-ui .game-attack-stat>span{color:#c1d2e0}
+.tactical-ui .game-attack-stat>strong{color:var(--tc-content)}
+.tactical-ui .game-attack-panel :is(.game-attack-caution,.game-attack-subtitle,.game-attack-weapon-conditions>p){
+ color:var(--tc-content-muted);
+}
+.tactical-ui .game-attack-weapon-conditions>summary,
+.tactical-ui .game-attack-source{color:var(--tc-content-accent)}
+.tactical-ui .game-attack-panel .game-offensive-effects-panel{
+ background:#1a3146;
+ color:var(--tc-content);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .game-offensive-effects-panel h4,
+.tactical-ui .game-offensive-effect-name{color:var(--tc-content)}
+.tactical-ui .game-offensive-effect-detail{color:var(--tc-content)}
+.tactical-ui .game-offensive-effect-scope{color:var(--tc-content-muted)}
+.tactical-ui .game-offensive-effect{border-color:var(--tc-content-border)}
+.tactical-ui .game-offensive-effect a{color:var(--tc-content-accent)}
+.tactical-ui .game-offensive-effects-panel .game-effect-caution{color:#f6d6a2}
+
+/* Defence: base stats, cautions and champion exceptions are different surfaces. */
+.tactical-ui :is(.game-defence-overview,.game-defence-detail-body,.game-defence-disclaimer){
+ color:var(--tc-content-muted);
+}
+.tactical-ui .game-defence-heading :is(strong,span){color:var(--tc-content)}
+.tactical-ui .game-defence-details>summary{color:var(--tc-content-accent)}
+.tactical-ui .game-defence-detail-body>p,
+.tactical-ui .game-defence-detail-body>span{color:var(--tc-content-muted)}
+.tactical-ui .game-defence-champion{
+ background:#3a3022;
+ color:#ffe4b6;
+ border-left-color:#a78b56;
+}
+.tactical-ui .game-defence-champion :is(strong,span,p){color:#ffe4b6}
+.tactical-ui .game-defence-conditional{
+ background:#1f3c50;
+ color:var(--tc-content);
+ border-left-color:#7ab0ce;
+}
+.tactical-ui .game-defence-conditional :is(strong,span,p){color:var(--tc-content)}
+.tactical-ui .game-defence-source{color:var(--tc-content-accent)}
+.tactical-ui .game-defence-shield-used{
+ background:#223c53;
+ color:var(--tc-content);
+ border-color:#698198;
+}
+.tactical-ui :is(.game-defence-incoming,.game-defence-movement){
+ background:#28304b;
+ color:#e8e5ff;
+ border-color:#625e8d;
+}
+
+/* Magic spellbooks and tracking, including known-spell choices and warnings. */
+.tactical-ui :is(.game-wizard-spellbook,.game-wizard-spell-list,.game-wizard-spell-row,.game-spell-caster,.game-spell-event){
+ background:var(--tc-content-surface);
+ color:var(--tc-content);
+ border-color:var(--tc-content-border);
+}
+.tactical-ui .game-wizard-spellbook>summary,
+.tactical-ui .game-wizard-spell-row :is(strong,span),
+.tactical-ui .game-spell-caster>summary,
+.tactical-ui .game-spell-target-label,
+.tactical-ui .game-active-spells h3{
+ color:var(--tc-content);
+}
+.tactical-ui :is(.game-spell-activity,.game-spell-disclosure,.game-spell-policy,.game-spell-empty,.game-spell-confirm-label){
+ color:var(--tc-content-muted);
+}
+.tactical-ui .game-spell-warning{
+ background:#382d20;
+ color:#f5d8a9;
+ border-color:#967d51;
+}
+.tactical-ui .game-spell-source{color:var(--tc-content-accent)}
+.tactical-ui .game-active-spell{
+ background:#1c3d37;
+ color:#ccf8e6;
+ border-color:#518477;
+}
+.tactical-ui .game-active-spell>strong{color:#ccf8e6}
+.tactical-ui .game-spell-end{
+ background:#24415a;
+ color:var(--tc-content);
+ border-color:#6a849c;
+}
+.tactical-ui .game-spell-expire{
+ background:#393451;
+ color:#efe8ff;
+ border-color:#776c9d;
+}
+.tactical-ui .game-unit-active-magic{
+ background:#1b3933;
+ color:#c6f8e2;
+ border-color:#537f70;
+}
+.tactical-ui .game-unit-active-magic>strong{color:#d6ffe9}
+.tactical-ui .game-unit-magic-chip{background:#255247;color:#d4faed;border-color:#54887b}
+.tactical-ui .game-unit-magic-movement{background:#25435b;color:#d5e9fa;border-color:#6186a0}
+.tactical-ui .game-wizard-signature,
+.tactical-ui .game-wizard-lore-tag{background:#2a4737;color:#d9f5dd}
+.tactical-ui .game-wizard-lore-tag{background:#29415a;color:#dbeafe}
+
+
+/* Fine-grained contrast: sticky profile headers, source-version tag and editors. */
+.tactical-ui .army-profile-table tr>th:first-child{
+ background:#203b51;color:#eef4fa;
+}
+.tactical-ui .army-profile-table thead th:first-child{
+ background:#29445b;color:#eef4fa;
+}
+.tactical-ui .game-unit-profile-release-label strong{
+ background:#324e65;color:#eef4fa;
+ border:1px solid #5b778e;
+}
+.tactical-ui .game-assignment-editor label{color:#e4eef7}
+.tactical-ui .army-unit-loadout-heading>span{color:#c4d4e2}
+.tactical-ui .game-overview-caution{color:#bacbd9}
