@@ -42,7 +42,7 @@ test('roster renders chosen mount below the rider, including attached characters
  assert.match(ui,/Selected mount: /);
  assert.match(ui,/army-profile-mount-row/);
  assert.match(ui,/Selected mount source profiles/);
- assert.match(ui,/selectedMountProfileGroups\(linkedMounts,selectedUnitRecords,fallbackProfiles\)/);
+ assert.match(ui,/selectedMountProfileGroups\(linkedMounts,selectedUnitRecords,fallbackProfiles,imported\)/);
  assert.match(ui,/selectedMountProfileGroups\(\s*resolveSelectedMountProfiles\(original,selectedUnitRecords,fallbackProfiles\)/);
  assert.match(sw,/\.\/selected-mount-profile-rows\.js/);
 });
