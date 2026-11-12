@@ -87,7 +87,7 @@ test('Browser route, action, back buttons and data refresh wiring are present',(
  const html=readFileSync(new URL('index.html',base),'utf8');
  const app=readFileSync(new URL('app.js',base),'utf8');
  const css=readFileSync(new URL('styles.css',base),'utf8');
- assert.match(html,/v1 Game Screen preview/);
+ assert.match(html,/Old World Companion · Tactical Command/);
  for(const id of ['importPage','armyRosterPage','viewRosterBtn','backToImporterBtn',
   'backToImporterBottomBtn','armyRosterHeading','armyRosterSummary','armyRosterList',
   'armyRosterDataStatus']){
