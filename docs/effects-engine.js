@@ -10,6 +10,7 @@
 import {createGameScreenModel} from './game-screen-model.js';
 import {SPELL_RULES,spellEffectsFor} from './spell-engine.js';
 import {projectReviewedCharacterRules} from './source-special-rule-effects.js';
+import {projectReviewedCoreRules} from './source-core-rule-effects.js';
 
 const SOURCE='https://tow.whfb.app/';
 const item=(id,name,kind,mode,description,extra={})=>Object.freeze({
@@ -222,6 +223,9 @@ export function projectArmyEffects(army,session,unitRecords={}){
  // Project source-reviewed character-granted special rules from the matching
  // published records only, never from guessed unit names or missing data.
  projectReviewedCharacterRules(army,session,unitRecords,byUnit);
+ // Informational, individually scoped published-rule reminders. No
+ // automatic hit/save/formation computation and no join inheritance.
+ projectReviewedCoreRules(army,unitRecords,byUnit);
  // Normalize active spell records in the SAME unit-facing shape. Existing
  // specialised spell/defence engines remain the source of numeric effects.
  for(const unit of model.units){

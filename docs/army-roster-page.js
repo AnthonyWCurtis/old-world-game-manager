@@ -345,7 +345,7 @@ function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
  // Show named, source-reviewed benefits rather than vague "2 conditional" counts.
  // High-priority joined buffs and attack effects appear first. Every record,
  // including overflow, remains available with conditions in the Effects tab.
- const itemEffects=effects.filter(e=>e.kind!=='Spell');
+ const itemEffects=effects.filter(e=>e.kind!=='Spell'&&e.mode!=='manual-reference');
  const priority=e=>e.kind==='Special rule'&&e.shared?0:
   e.effectGroup==='offensive'?1:e.status==='active'?2:3;
  const sorted=[...itemEffects].sort((a,b)=>priority(a)-priority(b));

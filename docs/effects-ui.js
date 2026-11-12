@@ -10,7 +10,7 @@ const el=(doc,tag,cls='',label)=>{
 const statusLabel={
  equipped:'Equipped',conditional:'Conditional',ready:'Ready to use',
  active:'Active — recorded',spent:'Used / spent','bound-spell':'Bound spell',
- resolved:'Resolved movement'
+ resolved:'Resolved movement',manual:'Reviewed · manual'
 };
 function sourceLink(doc,name,url){
  const node=el(doc,'a','game-effect-source',name);
@@ -75,6 +75,9 @@ export function renderEffectRow(doc,row,{onItemState=()=>{},onShieldUse=()=>{}}=
   body.append(el(doc,'p','game-effect-caution',
    'Shared from another imported model/unit. Joining was recorded manually and is not rules-verified.'));
  if(row.duration)body.append(el(doc,'p','game-effect-scope','Duration: '+row.duration));
+ if(row.mode==='manual-reference')body.append(el(doc,'p','game-effect-caution',
+  'Source-reviewed reminder only. The rule is not applied to rolls, saves, movement, formations or combat totals. Confirm eligible models and conditions at the table.'));
+ if(row.phase)body.append(el(doc,'p','game-effect-scope','Relevant phase: '+row.phase));
  if(row.status==='conditional')
   body.append(el(doc,'p','game-effect-caution',
    'Conditional benefit: apply only when its stated conditions are met. It is not a permanently activated buff.'));
