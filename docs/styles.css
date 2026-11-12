@@ -810,3 +810,65 @@
  .game-roster-section-content{padding:4px 6px 7px}
  .game-roster-section-content .army-unit-head{padding:9px 10px}
 }
+
+/* Focused Normal Play: the real unit card remains the sole source of controls and data. */
+#armyRosterList .game-unit-focus-toolbar[hidden]{display:none!important}
+.game-unit-focus-toolbar{position:sticky;top:0;z-index:6;min-width:0;border:1px solid #c6d6e2;border-radius:14px;background:#fff;box-shadow:0 3px 14px rgba(26,54,76,.08);padding:11px;margin:5px 0 12px}
+.game-unit-focus-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.game-unit-focus-back{min-height:52px;border-color:#aac3d5;color:#1c4b69;background:#f1f7fb;font-size:14px;font-weight:800;flex-shrink:0}
+.game-unit-focus-heading{min-width:0;flex:1}
+.game-unit-focus-kicker{margin:0;font-size:10px;letter-spacing:.08em;font-weight:800;color:#648096}
+.game-unit-focus-title{margin:2px 0;font-size:18px;line-height:1.3;overflow-wrap:anywhere;color:#1b364c}
+.game-unit-focus-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:10px}
+.game-unit-focus-tab{font-size:13px;font-weight:750;padding:9px 4px;min-width:0;min-height:48px;border:1px solid #ccdae5;border-radius:9px;color:#35566b;background:#f9fbfd}
+.game-unit-focus-tab-active,.game-unit-focus-tab[aria-pressed="true"]{background:#224e70;color:#fff;border-color:#224e70}
+.game-unit-focus-open{grid-column:1;grid-row:2;justify-self:start;align-self:center;min-height:44px;min-width:110px;background:#23516f;color:#fff;border-color:#23516f;font-size:13px;font-weight:800}
+.game-unit-focus-open:hover:not(:disabled){background:#173e57;color:#fff}
+#armyRosterList:not(.game-unit-focused) > #gameRegiments > .game-section-header,
+#armyRosterList:not(.game-unit-focused) > #gameCharacters > .game-section-header{display:none}
+#armyRosterList:not(.game-unit-focused) .game-roster-section-content > .army-unit-card:not(.game-unit-open) .army-unit-head{background:#fff}
+#armyRosterList:not(.game-unit-focused) .game-unit-expand-toggle{background:transparent;color:#597286;border-color:#d7e0e7;font-weight:650}
+#armyRosterList:not(.game-unit-focused) .game-roster-section-content .army-unit-card{margin:5px 0;border-radius:10px;box-shadow:none}
+#armyRosterList.game-unit-focused > .game-roster-search,
+#armyRosterList.game-unit-focused > #gameCharacters:not(.game-focus-owner),
+#armyRosterList.game-unit-focused > #gameRegiments:not(.game-focus-owner),
+#armyRosterList.game-unit-focused .game-roster-section:not(.game-focus-section),
+#armyRosterList.game-unit-focused .game-roster-section-heading,
+#armyRosterList.game-unit-focused .game-roster-section-content > .army-unit-card:not(.game-focus-selected),
+#armyRosterList.game-unit-focused .game-section-header,
+#armyRosterList.game-unit-focused .game-unit-expand-toggle,
+#armyRosterList.game-unit-focused .game-unit-focus-open{display:none!important}
+#armyRosterList.game-unit-focused .game-roster-section-content > .army-unit-card.game-focus-selected{display:block!important;border:0;box-shadow:none;margin:0}
+#armyRosterList.game-unit-focused .game-roster-section.game-focus-section{border:0;background:transparent;margin:0;overflow:visible}
+#armyRosterList.game-unit-focused .game-roster-section-content{padding:0}
+#armyRosterList.game-unit-focused .game-unit-expandable > [hidden]{display:none!important}
+#armyRosterList.game-unit-focused .army-unit-head{background:#f4f7fa;padding:13px}
+#armyRosterList.game-unit-focused .game-unit-expandable{border-top:1px solid #d8e4ed}
+#armyRosterPage.game-unit-detail-mode .army-screen-hero,
+#armyRosterPage.game-unit-detail-mode .army-screen-data-status,
+#armyRosterPage.game-unit-detail-mode .game-battle-status,
+#armyRosterPage.game-unit-detail-mode #gameUnitsPanel > .game-unit-profile-release,
+#armyRosterPage.game-unit-detail-mode #gameUnitsPanel > .game-guidance,
+#armyRosterPage.game-unit-detail-mode #gameUnitsPanel > .game-screen-jump,
+#armyRosterPage.game-unit-detail-mode #gameUnitsPanel > .game-units-hint{display:none!important}
+.game-focused-profiles{display:grid;gap:12px;margin:8px 0}
+.game-profile-stat-group{min-width:0;border:1px solid #dce5ed;background:#fff;border-radius:11px;padding:10px}
+.game-profile-stat-group h4{margin:0 0 9px;font-size:14px;color:#203f58}
+.game-profile-stat-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.game-profile-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;border-radius:7px;background:#edf3f8;min-height:56px;padding:6px 3px}
+.game-profile-stat-name{font-size:10px;color:#567186;font-weight:800}
+.game-profile-stat-value{font-size:20px;line-height:1.1;color:#193950;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.game-profile-stat-note{font-size:12px;line-height:1.5;color:#617888;margin:3px 0 8px}
+.game-focused-disclosure{border:1px solid #dde5ec;border-radius:9px;margin:10px 0;background:#fbfdfe;padding:0 10px 10px}
+.game-focused-disclosure:not([open]){padding-bottom:0}
+.game-focused-disclosure>summary{min-height:46px;display:list-item;align-content:center;cursor:pointer;color:#28506b;font-weight:730;font-size:13px}
+@media(max-width:650px){
+ .game-unit-focus-toolbar{padding:9px;top:0}
+ .game-unit-focus-top{gap:6px}
+ .game-unit-focus-back{min-height:52px;padding:10px;font-size:12px}
+ .game-unit-focus-title{font-size:16px}
+ .game-unit-focus-tab{padding:8px 2px;font-size:12px;min-height:46px}
+ .game-profile-stat-grid{gap:4px}
+ .game-profile-stat-value{font-size:18px}
+ .game-unit-focus-open{min-width:100px}
+}
