@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "sourceOrigin": "https://tow.whfb.app",
-  "generatedAt": "2026-11-12T06:15:45.026Z",
+  "generatedAt": "2026-11-12T12:57:02.840Z",
   "note": "Model names and separately sourced wizard/printed armour facts only. No inferred army legality, equipment saves, or attack-specific saves.",
   "profiles": {
     "https://tow.whfb.app/unit/ancient-stegadon": {
@@ -926,6 +926,25 @@
       ],
       "wizardLevels": []
     },
+    "https://tow.whfb.app/unit/flamers-of-tzeentch": {
+      "url": "https://tow.whfb.app/unit/flamers-of-tzeentch",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Flamer"
+        },
+        {
+          "name": "Pyroclaster"
+        },
+        {
+          "name": "Exalted Flamer"
+        }
+      ],
+      "wizardLevels": []
+    },
     "https://tow.whfb.app/unit/forsaken": {
       "url": "https://tow.whfb.app/unit/forsaken",
       "source": "tow.whfb.app",
@@ -935,6 +954,19 @@
       "models": [
         {
           "name": "Forsaken"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/galrauch": {
+      "url": "https://tow.whfb.app/unit/galrauch",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Galrauch"
         }
       ],
       "wizardLevels": []
@@ -981,6 +1013,86 @@
       ],
       "wizardLevels": []
     },
+    "https://tow.whfb.app/unit/gnoblar-scraplauncher": {
+      "url": "https://tow.whfb.app/unit/gnoblar-scraplauncher",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Scraplauncher"
+        },
+        {
+          "name": "Gnoblar Scrapper (x7)"
+        },
+        {
+          "name": "Rhinox (x1)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/gnoblar-scraplauncher",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/goblin-oddgit": {
+      "url": "https://tow.whfb.app/unit/goblin-oddgit",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Goblin Oddgit"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/goblin-oddnob": {
+      "url": "https://tow.whfb.app/unit/goblin-oddnob",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Goblin Oddnob"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/goblin-wolf-chariot": {
+      "url": "https://tow.whfb.app/unit/goblin-wolf-chariot",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chariot"
+        },
+        {
+          "name": "Goblin Crew (x3)"
+        },
+        {
+          "name": "Giant Wolves (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 5,
+        "label": "5+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/goblin-wolf-chariot",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
     "https://tow.whfb.app/unit/gor-herd": {
       "url": "https://tow.whfb.app/unit/gor-herd",
       "source": "tow.whfb.app",
@@ -997,6 +1109,33 @@
       ],
       "wizardLevels": []
     },
+    "https://tow.whfb.app/unit/gorebeast-chariot": {
+      "url": "https://tow.whfb.app/unit/gorebeast-chariot",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chariot"
+        },
+        {
+          "name": "Chaos Charioteer (x2)"
+        },
+        {
+          "name": "Gorebeast (x1)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 3,
+        "label": "3+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/gorebeast-chariot",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
     "https://tow.whfb.app/unit/great-bray-shaman": {
       "url": "https://tow.whfb.app/unit/great-bray-shaman",
       "source": "tow.whfb.app",
@@ -1006,6 +1145,32 @@
       "models": [
         {
           "name": "Great Bray-Shaman"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/great-unclean-one": {
+      "url": "https://tow.whfb.app/unit/great-unclean-one",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Great Unclean One"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/grey-seer": {
+      "url": "https://tow.whfb.app/unit/grey-seer",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Grey Seer"
         }
       ],
       "wizardLevels": []
@@ -1035,6 +1200,60 @@
         }
       ],
       "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/hellcannon": {
+      "url": "https://tow.whfb.app/unit/hellcannon",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Hellcannon"
+        },
+        {
+          "name": "Chaos Dwarf Handlers (x3)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/hellcannon",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/hellflayer-of-slaanesh": {
+      "url": "https://tow.whfb.app/unit/hellflayer-of-slaanesh",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Hellflayer"
+        },
+        {
+          "name": "Exalted Alluress"
+        },
+        {
+          "name": "Daemonette Crew (x2)"
+        },
+        {
+          "name": "Steed of Slaanesh (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 5,
+        "label": "5+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/hellflayer-of-slaanesh",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
     },
     "https://tow.whfb.app/unit/herdstone": {
       "url": "https://tow.whfb.app/unit/herdstone",
@@ -1110,6 +1329,36 @@
       ],
       "wizardLevels": []
     },
+    "https://tow.whfb.app/unit/ironblaster": {
+      "url": "https://tow.whfb.app/unit/ironblaster",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ironblaster"
+        },
+        {
+          "name": "Leadbelcher (x1)"
+        },
+        {
+          "name": "Gnoblar Scrapper (x1)"
+        },
+        {
+          "name": "Rhinox (x1)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/ironblaster",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
     "https://tow.whfb.app/unit/ishaya-vess": {
       "url": "https://tow.whfb.app/unit/ishaya-vess",
       "source": "tow.whfb.app",
@@ -1119,6 +1368,136 @@
       "models": [
         {
           "name": "Ishaya Vess"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/keeper-of-secrets": {
+      "url": "https://tow.whfb.app/unit/keeper-of-secrets",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Keeper of Secrets"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/kharibdyss": {
+      "url": "https://tow.whfb.app/unit/kharibdyss",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Kharibdyss"
+        },
+        {
+          "name": "Beastmaster Handlers (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 5,
+        "label": "5+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/kharibdyss",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/khemrian-warsphinx": {
+      "url": "https://tow.whfb.app/unit/khemrian-warsphinx",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Khemrian Warsphinx"
+        },
+        {
+          "name": "Tomb Guard Crew (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 5,
+        "label": "5+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/khemrian-warsphinx",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/kralmaw-the-prophet-of-ruin": {
+      "url": "https://tow.whfb.app/unit/kralmaw-the-prophet-of-ruin",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Kralmaw, the Prophet of Ruin"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/lady-elisse-duchaard": {
+      "url": "https://tow.whfb.app/unit/lady-elisse-duchaard",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Lady Élisse Duchaard"
+        },
+        {
+          "name": "Ariandir"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/lion-chariot-of-chrace": {
+      "url": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Lion Chariot"
+        },
+        {
+          "name": "Lion Charioteer (x2)"
+        },
+        {
+          "name": "War Lion (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/lion-chariot-of-chrace",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/lord-of-change": {
+      "url": "https://tow.whfb.app/unit/lord-of-change",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Lord of Change"
         }
       ],
       "wizardLevels": []
@@ -1171,6 +1550,88 @@
       ],
       "wizardLevels": []
     },
+    "https://tow.whfb.app/unit/master-mage": {
+      "url": "https://tow.whfb.app/unit/master-mage",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Master Mage"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/master-necromancer": {
+      "url": "https://tow.whfb.app/unit/master-necromancer",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Master Necromancer"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/miao-ying": {
+      "url": "https://tow.whfb.app/unit/miao-ying",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Human Form"
+        },
+        {
+          "name": "Dragon Form"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/mortis-engine": {
+      "url": "https://tow.whfb.app/unit/mortis-engine",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Mortis Engine"
+        },
+        {
+          "name": "Banshees (x3)"
+        },
+        {
+          "name": "Spirit Horde"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/mortis-engine",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/mortuary-priest": {
+      "url": "https://tow.whfb.app/unit/mortuary-priest",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Mortuary Priest"
+        }
+      ],
+      "wizardLevels": []
+    },
     "https://tow.whfb.app/unit/necrolith-colossus": {
       "url": "https://tow.whfb.app/unit/necrolith-colossus",
       "source": "tow.whfb.app",
@@ -1180,6 +1641,161 @@
       "models": [
         {
           "name": "Necrolith Colossus"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/necromantic-acolyte": {
+      "url": "https://tow.whfb.app/unit/necromantic-acolyte",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Necromantic Acolyte"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/night-goblin-oddgit": {
+      "url": "https://tow.whfb.app/unit/night-goblin-oddgit",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Night Goblin Oddgit"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/night-goblin-oddnob": {
+      "url": "https://tow.whfb.app/unit/night-goblin-oddnob",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Night Goblin Oddnob"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/ogdruz-swampdigga": {
+      "url": "https://tow.whfb.app/unit/ogdruz-swampdigga",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Ogdruz Swampdigga"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/orc-boar-chariot": {
+      "url": "https://tow.whfb.app/unit/orc-boar-chariot",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Chariot"
+        },
+        {
+          "name": "Orc Crew (x2)"
+        },
+        {
+          "name": "War Boars (x2)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/orc-boar-chariot",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/orc-weirdboy": {
+      "url": "https://tow.whfb.app/unit/orc-weirdboy",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Orc Weirdboy"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/orc-weirdnob": {
+      "url": "https://tow.whfb.app/unit/orc-weirdnob",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Orc Weirdnob"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/outcast-wizard": {
+      "url": "https://tow.whfb.app/unit/outcast-wizard",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Outcast Wizards"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/plague-furnace": {
+      "url": "https://tow.whfb.app/unit/plague-furnace",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Plague Furnace"
+        },
+        {
+          "name": "Plague Monk Crew (x3)"
+        }
+      ],
+      "wizardLevels": [],
+      "publishedArmour": {
+        "value": 4,
+        "label": "4+",
+        "appliesTo": "published unit/chassis (model scope unverified)",
+        "sourceUrl": "https://tow.whfb.app/unit/plague-furnace",
+        "verificationStatus": "source-page-extracted",
+        "evidence": "Explicit Armour Value field on the source unit page"
+      }
+    },
+    "https://tow.whfb.app/unit/plague-priest": {
+      "url": "https://tow.whfb.app/unit/plague-priest",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Plague Priest"
         }
       ],
       "wizardLevels": []
@@ -1212,6 +1828,19 @@
       "models": [
         {
           "name": "Prince"
+        }
+      ],
+      "wizardLevels": []
+    },
+    "https://tow.whfb.app/unit/prophetess": {
+      "url": "https://tow.whfb.app/unit/prophetess",
+      "source": "tow.whfb.app",
+      "schemaVersion": 2,
+      "sourceCheckedAt": "2026-11-12T12:57:02.840Z",
+      "verificationStatus": "source-extracted",
+      "models": [
+        {
+          "name": "Prophetess"
         }
       ],
       "wizardLevels": []
