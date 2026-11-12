@@ -740,5 +740,6 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  if(!model.regiments.length)
   regiments.append(el(doc,'p','army-quiet','No additional units were identified in this import.'));
  container.append(regiments);
+ decorateCompactRoster(container,army);
  return overview;
 }
