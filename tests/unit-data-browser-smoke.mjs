@@ -252,7 +252,7 @@ try{
  assert.match(await special.innerText(),/21 models/);
  assert.match(await special.innerText(),/11× Gor/);
  assert.match(await special.innerText(),/10× Ungor/);
- await page.locator('#backToImporterBottomBtn').click();
+ await page.locator('#backToImporterBtn').click();
  await page.locator('#importPage').waitFor({state:'visible',timeout:10000});
  // Page content fits a phone; only the characteristics table can scroll inside.
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
