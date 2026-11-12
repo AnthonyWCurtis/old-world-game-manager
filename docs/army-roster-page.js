@@ -7,6 +7,7 @@ import {selectedArmourSourceCandidates} from './selected-armour-candidates.js';
 import {resolveSelectedMountProfiles} from './resolve-selected-mount-profiles.js';
 import {selectedMountProfileGroups} from './selected-mount-profile-rows.js';
 import {displayModelProfiles,selectedPublishedOptionalRules} from './imported-unit-display.js';
+import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
@@ -261,60 +262,42 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   details.append(sourceNotes);
  }
 
- const selections=collectSelections(unit.selections);
- const chosen=el(doc,'details','army-import-selections army-unit-compact-details');
- const modelSelections=(unit.modelGroups||[]).reduce((n,g)=>n+collectSelections(g.selections).length,0);
- chosen.append(el(doc,'summary','','Imported selections · '+(selections.length+modelSelections)));
- const chosenBody=el(doc,'div','army-unit-compact-content');
- if(selections.length){
-  const list=el(doc,'ul','army-selection-list');
-  for(const item of selections){
-   const li=el(doc,'li',item.informational?'army-selection-informational':'');
-   if(item.depth)li.classList.add('army-selection-nested');
-   li.append(el(doc,'span','',item.text));
-   if(item.informational)li.append(el(doc,'small','','Info only'));
-   list.append(li);
-  }
-  chosenBody.append(list);
- }else{
-  chosenBody.append(el(doc,'p','army-quiet','No selections were included in this export.'));
- }
- for(const group of unit.modelGroups||[]){
-  const groupArea=el(doc,'div','army-model-group');
-  groupArea.append(el(doc,'strong','',group.quantity+'× '+group.name));
-  if(group.pointsPerModel!=null)groupArea.append(el(doc,'span','', ' · listed '+points(group.pointsPerModel)+' each'));
-  const list=el(doc,'ul','army-selection-list');
-  for(const option of collectSelections(group.selections)){
-   const li=el(doc,'li','',option.text);
-   if(option.depth)li.classList.add('army-selection-nested');
-   list.append(li);
-  }
-  if(list.children.length)groupArea.append(list);
-  chosenBody.append(groupArea);
- }
- chosen.append(chosenBody);
- details.append(chosen);
-
- const selectedOptionalRules=selectedPublishedOptionalRules(unit,record);
- if(record?.startingEquipment?.length||record?.startingRules?.length||selectedOptionalRules.length){
-  const extra=el(doc,'details','army-unit-source-details army-unit-compact-details');
-  if(wasOpen)extra.open=true;
-  extra.append(el(doc,'summary','','Published equipment & rules · '+(
-   (record.startingEquipment||[]).length+(record.startingRules||[]).length+
-   selectedOptionalRules.length)+' relevant references'));
-  const content=el(doc,'div','army-unit-source-body');
-  for(const [heading,refs] of [
-   ['Starting equipment',record.startingEquipment],
-   ['Standard special rules',record.startingRules],
-   ['Selected optional special rules — review conditions',selectedOptionalRules]
+ const loadout=unitEquipmentAndRules(unit,record);
+ if(loadout.count){
+  const panel=el(doc,'section','army-unit-unified-loadout');
+  const heading=el(doc,'div','army-unit-loadout-heading');
+  heading.append(el(doc,'h4','','Equipment & special rules'));
+  heading.append(el(doc,'span','',loadout.count+' entries'));
+  panel.append(heading);
+  for(const [key,label] of [
+   ['equipment','Equipment & items'],
+   ['rules','Special rules'],
+   ['upgrades','Command & other selections']
   ]){
-   const row=sourceRefRow(doc,heading,refs);
-   if(row)content.append(row);
+   const items=loadout.groups[key];
+   if(!items?.length)continue;
+   const group=el(doc,'div','army-unit-loadout-group');
+   group.append(el(doc,'strong','',label));
+   const chips=el(doc,'div','army-ref-items army-unit-loadout-items');
+   for(const item of items){
+    const caption=(item.scope?item.scope+': ':'')+item.name;
+    const chip=safeLink(doc,caption,item.sourceUrl,'army-ref-pill army-unit-loadout-pill');
+    chip.title=item.origin==='published-default'?'Published standard equipment/rule':
+     'Imported selection; source matching and conditions may require review';
+    if(item.origin==='published-default')chip.classList.add('army-unit-loadout-default');
+    if(item.status==='unmatched')chip.classList.add('army-unit-loadout-unmatched');
+    chips.append(chip);
+   }
+   group.append(chips);
+   panel.append(group);
   }
-  extra.append(content);
-  details.append(extra);
+  panel.append(el(doc,'p','army-quiet army-unit-loadout-note',
+   loadout.sourceVerified?
+   'Imported choices and published defaults shown together. Selected effects and legality are not automatically verified.':
+   'Imported choices shown; source defaults are unavailable or still loading.'));
+  details.append(panel);
  }
-
+ 
  const url=record?.source?.sourceUrl||unit.reference?.url||fallback?.url;
  if(url){
   const footer=el(doc,'div','army-unit-footer');
