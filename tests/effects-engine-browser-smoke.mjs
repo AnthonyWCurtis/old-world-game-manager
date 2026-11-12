@@ -19,8 +19,7 @@ try{
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/Equipment, banners & item effects/);
  assert.ok((await page.locator('#gameOverviewPanel .game-overview-item').count())>=12,
   'Overview has a collapsible, source-reviewed item register');
- assert.equal(await page.locator('#gameUnitsPanel').isVisible(),false);
- await page.locator('#gameNavUnits').click();
+ assert.equal(await page.locator('#gameUnitsPanel').isVisible(),true,'Normal Play opens with army roster');
  const sea=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const seaId=await sea.getAttribute('data-unit-id');
