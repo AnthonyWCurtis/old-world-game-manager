@@ -495,3 +495,15 @@ body.tactical-ui{
 /* Fixed theme colours also apply to the source-based interactive controls. */
 .tactical-ui .game-unit-loadout-unmatched,
 .tactical-ui .army-unit-loadout-unmatched{color:#e6cba5}
+
+
+/* Overview's equipment reference drawer was still a pale legacy island. */
+.tactical-ui .game-overview-item-drawer{
+ background:#1b3045;color:#eaf3fa;border-color:#4b6378;
+}
+.tactical-ui .game-overview-item-drawer>summary{color:#f1d3a1}
+.tactical-ui .game-overview-item{
+ background:transparent;color:#eef4fb;border-top-color:#455d72;
+}
+.tactical-ui .game-overview-item :is(strong,span,small){color:#e9f2fa}
+.tactical-ui .game-overview-item a{color:#f1d3a1}
