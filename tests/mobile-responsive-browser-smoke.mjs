@@ -86,8 +86,9 @@ try{
    }));
    assert.ok(wide.scroll>wide.client&&wide.table>=620,
     'Full stats must remain legible and scroll only within the table at '+v.width+'px: '+JSON.stringify(wide));
-   const hint=page.locator('.army-profile-swipe').first();
+   const hint=page.locator('#gameUnitsPanel .game-units-hint');
    assert.equal(await hint.isVisible(),true);
+   assert.match(await hint.innerText(),/swiped sideways/);
   }
  }
  await page.setViewportSize({width:390,height:844});
