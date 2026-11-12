@@ -17,7 +17,6 @@ body.tactical-ui{
  font-size:15px;line-height:1.48;
 }
 .tactical-ui .wrap{max-width:1020px}
-.tactical-ui [hidden]{display:none!important}
 .tactical-ui :is(button,input,select,textarea,summary){font:inherit}
 .tactical-ui button{min-height:44px;background:var(--tc-elevated);color:var(--tc-type);border:1px solid var(--tc-line);border-radius:10px}
 .tactical-ui button:hover:not(:disabled){background:var(--tc-hover);color:var(--tc-type);border-color:#577089}
