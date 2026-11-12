@@ -30,15 +30,15 @@ try{
   'Collapsed Sea Guard must name its offensive standard instead of showing only a generic item count');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
- const offence=sea.locator(':scope > .game-unit-expandable > .game-offensive-effects-panel');
+ const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
  const order=await sea.locator('.game-unit-expandable').evaluate(area=>{
   const children=[...area.children];
-  return {offence:children.findIndex(el=>el.classList.contains('game-offensive-effects-panel')),
+  return {offence:children.findIndex(el=>el.classList.contains('game-attack-panel')),
    defence:children.findIndex(el=>el.classList.contains('game-defence-panel'))};
  });
  assert.ok(order.offence>=0&&order.defence>order.offence,
-  'Offensive effects should appear before Defence summary: '+JSON.stringify(order));
+  'Attacks should appear before Defence: '+JSON.stringify(order));
  const razorQuick=offence.locator('.game-offensive-effect[data-effect-id="razor-standard"]');
  assert.equal(await razorQuick.count(),1);
  assert.match(await razorQuick.innerText(),/Armour Bane \(2\)/);
@@ -71,6 +71,17 @@ try{
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
  await bsb.locator('.game-unit-expand-toggle').click();
+ const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
+ assert.equal(await bsbAttacks.isVisible(),true);
+ assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
+ assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);
+ assert.match(await bsbAttacks.innerText(),/Casting\s*8\+/);
+ assert.match(await bsbAttacks.innerText(),/Range\s*24/);
+ assert.match(await bsbAttacks.innerText(),/Hits\s*2D6/);
+ assert.match(await bsbAttacks.innerText(),/Strength\s*4/);
+ assert.match(await bsbAttacks.innerText(),/Flaming Attacks/);
+ assert.equal(await bsbAttacks.locator('a').filter({hasText:'Spell rules'}).getAttribute('href'),
+  'https://tow.whfb.app/spell/fireball');
  assert.equal(await bsb.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),1);
  assert.equal(await sea.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),0);
  await bsb.locator('.character-unit-picker').selectOption(seaId);
@@ -82,6 +93,8 @@ try{
   'A character joined to Sea Guard receives the unit standard effect');
  assert.equal(await bsb.locator('.game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
   'Joined characters see shared Armour Bane in the same visible Offensive effects panel');
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-attack-bound').count(),0,
+  'Joined character bound spell must never appear as a regiment attack');
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="ruby-ring-of-ruin"]').count(),0,
   'The BSB ring is not shared as a unit-wide magic item');
 

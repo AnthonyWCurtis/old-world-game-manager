@@ -690,3 +690,50 @@
  background:#fff8ed;border-radius:5px;color:#654a27;font-size:12px;
  line-height:1.4;overflow-wrap:anywhere;
 }
+
+/* Unit Profiles v0.6: attack summary, separated from the existing save engine. */
+.game-attack-panel{
+ margin:10px 12px 12px;padding:12px;border:1px solid #bfcede;
+ border-radius:11px;background:#f5f9fc;min-width:0;display:grid;gap:11px;
+ overflow-wrap:anywhere;
+}
+.game-attack-panel>h4{font-size:15px;color:#234d6b;margin:0}
+.game-attack-group,.game-attack-bound{display:grid;gap:7px;min-width:0}
+.game-attack-group>strong,.game-attack-bound>strong{
+ color:#244c66;font-size:13px;line-height:1.4
+}
+.game-attack-bound{border:1px solid #d4e1ec;background:white;
+ padding:11px;border-radius:9px}
+.game-attack-bound>strong{font-size:14px}
+.game-attack-models{display:grid;gap:6px}
+.game-attack-model{
+ display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+ border:1px solid #dce8ef;background:white;padding:7px 9px;
+ border-radius:8px;gap:7px
+}
+.game-attack-model-name{font-size:12px;font-weight:700}
+.game-attack-stats{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.game-attack-stat{
+ display:flex;flex-direction:column;gap:2px;
+ align-items:center;min-width:45px;padding:6px 7px;
+ border-radius:7px;background:#eaf1f7;
+}
+.game-attack-stat>span{font-size:10px;color:#536f83;font-weight:650}
+.game-attack-stat>strong{font-size:14px;color:#193e59}
+.game-attack-bound-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.game-attack-caution,.game-attack-subtitle{
+ font-size:11px;color:#586b7a;line-height:1.5;margin:0
+}
+.game-attack-links{display:flex;flex-wrap:wrap;gap:7px}
+.game-attack-source{font-size:12px;font-weight:700;color:#2d648a;overflow-wrap:anywhere}
+.game-attack-weapon{padding:8px;border:1px solid #dce8ef;background:white;border-radius:7px}
+.game-attack-weapon>p{font-size:12px;line-height:1.55;margin:5px 0 0}
+.game-attack-panel .game-offensive-effects-panel{
+ margin:0;padding:9px;border:1px solid #d5e1ec;border-radius:8px;background:#eaf2f8;
+}
+.game-attack-panel .game-offensive-effects-panel h4{font-size:13px;margin:0 0 6px}
+@media(max-width:480px){
+ .game-attack-panel{margin:9px 9px 11px;padding:10px}
+ .game-attack-model{align-items:flex-start}
+ .game-attack-bound-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}

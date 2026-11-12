@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-5';
+const CACHE_NAME='game-manager-v1-shell-20261112-unit-profiles-v0-6';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -31,6 +31,7 @@ const APP_SHELL=[
  './selected-mount-profile-rows.js',
  './imported-unit-display.js',
  './unit-equipment-and-rules.js',
+ './unit-attack-panel.js',
  './selected-command-rule-links.js',
  './spell-engine.js',
  './spell-controls.js',

@@ -10,7 +10,8 @@ import {displayModelProfiles,selectedPublishedOptionalRules} from './imported-un
 import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
-import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
+import {renderUnitEffects} from './effects-ui.js';
+import {renderUnitAttackPanel} from './unit-attack-panel.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -20,7 +21,7 @@ import {renderUnitEffects,renderUnitOffensiveEffects} from './effects-ui.js';
  * with textContent; external links are explicitly restricted to tow.whfb.app.
  */
 /** Visible, independent version of the unit profile display (not the importer). */
-export const UNIT_PROFILES_VERSION='0.5';
+export const UNIT_PROFILES_VERSION='0.6';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;
@@ -410,8 +411,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session,null,false,()=>{},mountProfileGroups);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
- const offensive=renderUnitOffensiveEffects(doc,effects);
- if(offensive)body.append(offensive);
+ body.append(renderUnitAttackPanel(doc,imported,record,fallback,effects));
  body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record,[],[],imported));
  body.append(renderUnitEffects(doc,effects,effectActions));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
@@ -431,7 +431,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  const panel=el(doc,'section','game-defence-panel');
  panel.dataset.unitId=defence.id;
  const heading=el(doc,'div','game-defence-heading');
- heading.append(el(doc,'strong','','Defence summary'));
+ heading.append(el(doc,'strong','','Defence'));
  heading.append(el(doc,'span','','Equipment-only armour · source-backed conditional saves'));
  panel.append(heading);
 
@@ -647,8 +647,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const effects=effectProjection.byUnit?.[entry.id]||[];
   appendCompactStatus(doc,card,defence,0,effects);
   const content=card.querySelector('.game-unit-expandable');
-  const offensive=renderUnitOffensiveEffects(doc,effects);
-  if(offensive)content.append(offensive);
+  content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
+   fallbackProfiles[imported.reference?.url],effects));
   content.append(renderDefencePanel(doc,defence,onShieldUse,
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
@@ -696,8 +696,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const effects=effectProjection.byUnit?.[entry.id]||[];
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    const content=card.querySelector('.game-unit-expandable');
-   const offensive=renderUnitOffensiveEffects(doc,effects);
-   if(offensive)content.append(offensive);
+   content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
+    fallbackProfiles[imported.reference?.url],effects));
    content.append(renderDefencePanel(doc,defence,onShieldUse,
     sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],[],[],imported));
