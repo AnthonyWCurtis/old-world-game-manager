@@ -30,6 +30,11 @@ const safeStat=v=>hasValue(v)?String(v):'—';
 export function unitAttackSummary(unit,record,fallback,effects=[]){
  const profiles=displayModelProfiles(unit,record,fallback);
  const shootingWeapons=selectedMissileWeapons(unit,record);
+ // Keep Ballistic Skill tied to its published model profile. A champion or
+ // crew can have a different BS, and no weapon To Hit roll is inferred here.
+ const shootingModels=profiles.map(profile=>({
+  name:profile.name,ballisticSkill:safeStat(profile.characteristics?.BS)
+ }));
  const melee=profiles.map(profile=>({
   name:profile.name,
   weaponSkill:safeStat(profile.characteristics?.WS),
@@ -55,7 +60,7 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
   name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope,
   attackPhase:e.attackPhase||null
  }));
- return {melee,shootingWeapons,boundSpells,otherBoundSpells,magicWeapons,
+ return {melee,shootingModels,shootingWeapons,boundSpells,otherBoundSpells,magicWeapons,
   offensiveEffects:(Array.isArray(effects)?effects:[]).filter(e=>
    e.effectGroup==='offensive'&&e.quickLabel&&e.quickDetail&&e.status!=='spent')};
 }
@@ -84,6 +89,28 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
  combat.dataset.attackPhase='combat';
  combat.append(el(doc,'h5','','Combat'));
  let shootingCount=0,combatCount=0;
+
+ // BS is a model characteristic, not a weapon characteristic. Keep it
+ // visible for every source-backed profile with a published BS, including
+ // troops with an as-yet unreviewed shooting weapon. Magic Missiles use
+ // casting rather than the displayed Ballistic Skill.
+ if(data.shootingModels.some(profile=>profile.ballisticSkill!=='—')){
+  const group=el(doc,'div','game-attack-group game-attack-ballistic-skill');
+  group.append(el(doc,'strong','','Base Ballistic Skill'));
+  const rows=el(doc,'div','game-attack-models');
+  for(const profile of data.shootingModels){
+   const row=el(doc,'div','game-attack-model');
+   row.append(el(doc,'span','game-attack-model-name',profile.name));
+   const stats=el(doc,'div','game-attack-stats');
+   stats.append(stat(doc,'BS',profile.ballisticSkill));
+   row.append(stats);
+   rows.append(row);
+  }
+  group.append(rows);
+  group.append(el(doc,'p','game-attack-caution',
+   'Published base BS for weapon shooting; Bound Spells use casting instead.'));
+  shooting.append(group);
+ }
 
  if(data.shootingWeapons.length){
   const group=el(doc,'div','game-attack-group');
@@ -179,6 +206,6 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   if(effectsPanel)section.append(effectsPanel);
  }
  section.append(el(doc,'p','game-attack-caution',
-  'Weapon selection, line of sight, eligible shooters, fighting ranks and contact are not resolved automatically. Combat statistics are base values; no attack rolls or damage are calculated here.'));
+  'Shown BS and Combat characteristics are published base values. Weapon selection, line of sight, eligible shooters, fighting ranks and contact are not resolved automatically; no attack rolls or damage are calculated here.'));
  return section;
 }

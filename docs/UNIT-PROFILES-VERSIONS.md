@@ -4,6 +4,19 @@ This version is **for the Unit Profiles display inside the Game Manager's Units 
 It is deliberately independent of the army-list importer, game rules engine,
 source-data snapshot version and offline-cache identifier.
 
+## v0.8 — 12 November 2026
+
+- Display each source-backed selected model's base **Ballistic Skill (BS)** directly
+  in the **Shooting** section, above missile and magical shooting attacks.
+- Show different BS values for selected champion, crew or other source profiles
+  independently, without reusing a unit average or inventing adjustments.
+- Keep BS visible even if that unit's specific missile weapon has not yet been
+  reviewed and added to the weapons registry; don't infer eligible shooters.
+- Bound Spells such as Ruby Ring of Ruin's Fireball use their separate casting
+  rules and never derive a casting or To Hit value from displayed BS.
+- No changes to imported statistics, normal attacks, combat, saved game state
+  or automatic shooting calculations.
+
 ## v0.7 — 12 November 2026
 
 - Organised the Attacks panel into **Shooting** and **Combat** phase groups,
