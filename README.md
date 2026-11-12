@@ -171,3 +171,7 @@ Imported army lists are parsed in the browser and are not automatically uploaded
 **Not yet available:** automatic join-legality verification, full spell lore coverage, automatic casting/buff validation, full offline rules text, combat-effective saves, attacks, combat resolution, independent points validation or army legality validation. These remain future stages rather than claims about the current site.
 
 This is a fan-made project, not an official Games Workshop product.
+
+## Stage 1 rules coverage baseline
+
+See [coverage report](docs/rules-coverage/report.md), [methodology](docs/rules-coverage/methodology.md), [audit](docs/rules-coverage/audit.md) and [dependency-ordered backlog](docs/rules-coverage/backlog.md). Rebuild with `node scripts/build-rules-coverage.mjs`; verify with `node scripts/build-rules-coverage.mjs --check`. Source indexing, manual reminders and partial calculations are separate from complete implementation; a whole-game denominator is not yet established.
