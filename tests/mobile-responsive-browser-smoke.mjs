@@ -74,10 +74,11 @@ try{
   await page.setViewportSize({width:v.width,height:v.height});
   await assertPageFits(page,'Game Screen',v);
   const buttons=['gameNavOverview','gameNavUnits','gameNavMagic','backToImporterBtn','gameScreenSaveBtn',
-   'gameScreenJumpCharacters','gameScreenJumpRegiments'];
+   'gameUnitFocusBack'];
   if(v.width<=650){
    for(const id of buttons){
-    const h=await page.locator('#'+id).evaluate(el=>el.getBoundingClientRect().height);
+    const target=id==='gameUnitFocusBack'?page.locator('.game-roster-section-toggle').first():page.locator('#'+id);
+    const h=await target.evaluate(el=>el.getBoundingClientRect().height);
     assert.ok(h>=44,'Game Screen touch target '+id+' too small: '+h+'px');
    }
    const wide=await page.locator('.army-profile-scroll').first().evaluate(el=>({
@@ -86,9 +87,8 @@ try{
    }));
    assert.ok(wide.scroll>wide.client&&wide.table>=620,
     'Full stats must remain legible and scroll only within the table at '+v.width+'px: '+JSON.stringify(wide));
-   const hint=page.locator('#gameUnitsPanel .game-units-hint');
-   assert.equal(await hint.isVisible(),true);
-   assert.match(await hint.innerText(),/swiped sideways/);
+   assert.equal(await page.locator('.game-roster-search-input').isVisible(),true,'Unit search is primary navigation');
+   assert.equal(await page.locator('#gameUnitsPanel .game-screen-jump').isVisible(),false,'Legacy redundant jump navigation is hidden');
   }
  }
  await page.setViewportSize({width:390,height:844});
