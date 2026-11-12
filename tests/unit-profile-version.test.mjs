@@ -4,8 +4,8 @@ import {readFileSync} from 'node:fs';
 import {UNIT_PROFILES_VERSION} from '../docs/army-roster-page.js';
 
 const source=(p)=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-test('Unit Profiles displays v0.4',()=>{
- assert.equal(UNIT_PROFILES_VERSION,'0.4');
+test('Unit Profiles displays v0.5',()=>{
+ assert.equal(UNIT_PROFILES_VERSION,'0.5');
  const html=source('docs/index.html');
  assert.match(html,/<section id="gameUnitsPanel"/);
  assert.match(html,/id="unitProfilesVersion">v0\.5<\/strong>/);
