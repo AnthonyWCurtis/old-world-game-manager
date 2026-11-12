@@ -37,9 +37,9 @@ try{
  assert.equal(await page.locator('#gameUnitFocusTabs button').count(),4);
  await page.locator('#gameUnitFocusBack').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),false);
- await page.locator('#tacticalArmyAudit summary').click();
+ await page.locator('#tacticalArmyAudit > summary').click();
  assert.equal(await page.locator('#armyRosterSummary').isVisible(),true,'Imported metrics can still be reviewed');
- await page.locator('#tacticalArmyAudit summary').click();
+ await page.locator('#tacticalArmyAudit > summary').click();
  for(const viewport of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
