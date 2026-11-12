@@ -24,7 +24,7 @@ test('source-backed default rules and selected upgrades remain inside disclosure
  assert.match(ui,/chosenBody\.append\(groupArea\)/);
  assert.match(ui,/chosen\.append\(chosenBody\)/);
  assert.match(ui,/\['Standard special rules',record\.startingRules\]/);
- assert.match(ui,/\['Selected optional special rules — review conditions',record\.optionalRules\]/);
+ assert.match(ui,/\['Selected optional special rules — review conditions',selectedOptionalRules\]/);
  assert.match(ui,/sourceRefRow\(doc,heading,refs\)/);
  assert.match(ui,/if\(wasOpen\)extra\.open=true/);
 });
