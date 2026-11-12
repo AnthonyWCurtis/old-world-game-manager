@@ -21,7 +21,7 @@ test('View preferences default Units and scope to one exact imported army',()=>{
  assert.deepEqual(one.expandedUnits,[army.units[0].id]);
  const changed=setActiveTab(one,'magic',246);
  assert.equal(changed.tab,'magic');
- assert.equal(changed.scroll.overview,246);
+ assert.equal(changed.scroll.units,246);
  assert.equal(loadGameLayout(army).tab,'magic');
  assert.deepEqual(loadGameLayout(army).expandedUnits,[army.units[0].id]);
  assert.equal(loadGameLayout(other).tab,'units');
@@ -50,7 +50,7 @@ test('Blocked browser storage must not interrupt battles',()=>{
   setItem:()=>{throw Error('Storage blocked');}
  };
  const state=loadGameLayout(army);
- assert.equal(state.tab,'overview');
+ assert.equal(state.tab,'units');
  assert.doesNotThrow(()=>saveGameLayout(state));
  assert.doesNotThrow(()=>setUnitExpanded(state,army.units[0].id,true));
 });
