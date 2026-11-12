@@ -66,6 +66,22 @@ try{
  await picker.selectOption('');
  await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]').count(),0);
+ // The already loaded, exact-source reference shard and the recorded
+ // assignment must recover without network after an iPhone offline reload.
+ if(!await picker.isVisible())await ishaya.locator('.game-unit-expand-toggle').click();
+ await picker.selectOption(seaId);
+ await page.waitForFunction(id=>
+  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
+ await page.locator('#gameScreenSaveBtn').click();
+ await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
+ await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
+ await ctx.setOffline(true);
+ await page.reload({waitUntil:'domcontentloaded'});
+ if(await page.locator('#importPage').isVisible())
+  await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
+ await page.locator('#armyRosterPage').waitFor({state:'visible'});
+ await page.waitForFunction(id=>
+  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId,{timeout:20000});
  assert.deepEqual(errors,[]);
- console.log('Ishaya Precision Strikes source-verified join, attack and Effects tabs, remove and named benefits: PASS');
+ console.log('Ishaya Precision Strikes source-verified join, attack and Effects tabs, remove, offline restore and named benefits: PASS');
 }finally{await browser.close();}
