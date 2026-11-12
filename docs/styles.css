@@ -675,3 +675,11 @@
  .army-unit-unified-loadout{padding:10px;gap:10px}
  .army-unit-loadout-pill{min-height:38px}
 }
+
+/* Unit Profiles v0.4: only tabletop-relevant source facts beneath the table. */
+.army-unit-quick-facts{
+ margin:7px 2px 12px;color:#506f80;font-size:12px;
+ line-height:1.5;font-weight:600;overflow-wrap:anywhere;
+}
+.army-source-meta-details{margin-top:7px}
+.army-source-meta-details>summary{font-size:12px}
