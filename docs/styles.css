@@ -829,7 +829,6 @@
 #armyRosterList:not(.game-unit-focused) .game-roster-section-content > .army-unit-card:not(.game-unit-open) .army-unit-head{background:#fff}
 #armyRosterList:not(.game-unit-focused) .game-unit-expand-toggle{background:transparent;color:#597286;border-color:#d7e0e7;font-weight:650}
 #armyRosterList:not(.game-unit-focused) .game-roster-section-content .army-unit-card{margin:5px 0;border-radius:10px;box-shadow:none}
-#armyRosterList:not(.game-unit-focused) .game-card-status .game-card-chip:nth-child(n+5){display:none}
 #armyRosterList.game-unit-focused > .game-roster-search,
 #armyRosterList.game-unit-focused > #gameCharacters:not(.game-focus-owner),
 #armyRosterList.game-unit-focused > #gameRegiments:not(.game-focus-owner),
