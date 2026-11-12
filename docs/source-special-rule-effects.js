@@ -9,6 +9,7 @@
  * Exclusive factual source: https://tow.whfb.app (reviewed 2026-11-12).
  */
 import {createGameScreenModel} from './game-screen-model.js';
+import {reviewedCoreRule} from './source-core-rule-effects.js';
 
 const SOURCE='https://tow.whfb.app/';
 const isRuleSource=url=>typeof url==='string'&&
@@ -80,7 +81,7 @@ export function referenceOnlyPublishedRules(unit,record){
  if(/characters?/i.test(unit?.section||''))
   for(const rule of Object.values(REVIEWED_CONTAGIOUS_RULES))
    modelled.add(rule.sourceUrl);
- return available.filter(ref=>!modelled.has(ref.sourceUrl));
+ return available.filter(ref=>!modelled.has(ref.sourceUrl)&&!reviewedCoreRule(ref));
 }
 
 function candidateSourceRule(owner,record,rule){
