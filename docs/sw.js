@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261112-tactical-contrast-audit';
+const CACHE_NAME='game-manager-v1-shell-20261112-roster-drag-order';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -23,6 +23,7 @@ const APP_SHELL=[
  './wizard-references.js',
  './army-roster-page.js',
  './roster-compact-navigation.js',
+ './roster-drag-reorder.js',
  './unit-focus-view.js',
  './game-screen-model.js',
  './defence-engine.js',
