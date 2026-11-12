@@ -47,9 +47,14 @@ test('exact selected mount source attaches its benefit register with unresolved 
  const u={reference:{url:character},selections:[{name:'Example Chariot',reference:{url}}]};
  const matches=resolveSelectedMountProfiles(u,{[url]:record},{},5);
  assert.equal(matches.length,1);
- assert.equal(matches[0].publishedBenefits.specialRules.length,3);
+ assert.equal(matches[0].publishedBenefits.specialRules.length,2,
+  'Unselected optional mount rule must not clutter the imported model');
  assert.match(matches[0].status,/unverified/);
  assert.equal(matches[0].comparison.status,'unresolved');
+ const selected={...u,selections:[...u.selections,{name:'Regeneration (5+)'}]};
+ const added=resolveSelectedMountProfiles(selected,{[url]:record},{},5);
+ assert.equal(added[0].publishedBenefits.specialRules.length,3);
+ assert.ok(added[0].publishedBenefits.specialRules.some(x=>x.name==='Regeneration (5+)'));
 });
 test('UI and offline cache include mount benefits while defence engine remains unchanged',()=>{
  const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
