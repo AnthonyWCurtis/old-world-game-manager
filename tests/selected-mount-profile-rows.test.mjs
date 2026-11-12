@@ -46,3 +46,14 @@ test('roster renders chosen mount below the rider, including attached characters
  assert.match(ui,/selectedMountProfileGroups\(\s*resolveSelectedMountProfiles\(original,selectedUnitRecords,fallbackProfiles\)/);
  assert.match(sw,/\.\/selected-mount-profile-rows\.js/);
 });
+
+test('mount profiles also hide source-listed unselected optional crew variants',()=>{
+ const optional={...record,modelProfiles:[{name:'Crew',characteristics:{WS:3}},
+  {name:'Master Crew',characteristics:{WS:4}}],
+  upgradeGroups:[{options:[{description:'Upgrade one model to a Master Crew (champion)'}]}]};
+ const without=selectedMountProfileGroups([candidate],{[mount]:optional},{},{selections:[]});
+ assert.deepEqual(without[0].profiles.map(x=>x.name),['Crew']);
+ const withChampion=selectedMountProfileGroups([candidate],{[mount]:optional},{},
+  {selections:[{name:'Master Crew (champion)'}]});
+ assert.deepEqual(withChampion[0].profiles.map(x=>x.name),['Crew','Master Crew']);
+});
