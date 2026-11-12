@@ -21,11 +21,11 @@ test('one consolidated panel replaces both overlapping equipment and source disc
  assert.doesNotMatch(ui,/Published equipment & rules · /);
  assert.match(css,/\.army-unit-unified-loadout/);
 });
-test('all known and unknown imports remain represented, while source details stay available',()=>{
+test('all known and unknown imports remain represented without technical source drawer',()=>{
  assert.match(ui,/item\.scope\?item\.scope/);
  assert.match(ui,/army-unit-loadout-unmatched/);
- assert.match(ui,/Source details/);
+ assert.doesNotMatch(ui,/army-source-meta-details/);
  assert.match(ui,/army-unit-quick-facts/);
- assert.match(ui,/Published base cost:/);
+ assert.doesNotMatch(ui,/Published base cost:/);
  assert.match(ui,/Published unit\/chassis armour reference/);
 });
