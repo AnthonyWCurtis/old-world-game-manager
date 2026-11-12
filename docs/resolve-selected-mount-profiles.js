@@ -36,8 +36,12 @@ export function resolveSelectedMountProfiles(unit,recordsByUrl={},fallbackProfil
      });
      const publishedBenefits=publishedMountBenefits(record,type);
      if(publishedBenefits)
-      publishedBenefits.specialRules=publishedBenefits.specialRules.filter(rule=>
-       rule.status!=='not-selected'||importedSelectionMatchesName(unit,rule.name));
+      publishedBenefits.specialRules=publishedBenefits.specialRules
+       .filter(rule=>rule.status!=='not-selected'||importedSelectionMatchesName(unit,rule.name))
+       .map(rule=>rule.status==='not-selected'?{
+        ...rule,classification:'selected optional mount rule (conditions unverified)',
+        status:'requires-rule-review'
+       }:rule);
      result.push({name:String(item.name||item.raw||record.name),sourceUrl:url,
       mountType:type,printedArmour:printed,comparison,
       publishedBenefits,
