@@ -6,7 +6,6 @@
  */
 const norm=v=>String(v??'').normalize('NFKC').toLowerCase()
  .replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
-const words=v=>' '+norm(v).replace(/[^\p{L}\p{N}]+/gu,' ').trim()+' ';
 const selectionsOf=unit=>{
  const result=[];
  const walk=items=>{
@@ -35,9 +34,14 @@ function isSourceListedOptionalModel(profile,record){
  return (record?.upgradeGroups||[]).some(group=>
   (group?.options||[]).some(option=>{
    const description=norm(option?.description);
-   const nameInSource=words(description).includes(words(name));
-   return nameInSource&&/\b(?:upgrade|champion)\b/.test(description)&&
-    /\b(?:model|character|crew|warrior)\b/.test(description);
+   // Match the named result of an upgrade, not a substring: "Crew"
+   // must not be mistaken for a separately offered "Master Crew".
+   const targetIndex=description.lastIndexOf(' to ');
+   if(targetIndex<0||!/\b(?:upgrade|upgraded)\b/.test(description)||
+      !/\b(?:model|character|crew|warrior)\b/.test(description))return false;
+   const target=description.slice(targetIndex+4).replace(/^(?:an?|the)\s+/,'');
+   return target===name||target.startsWith(name+' (')||
+    target.startsWith(name+' champion');
   }));
 }
 export function displayModelProfiles(unit,record,fallback){
