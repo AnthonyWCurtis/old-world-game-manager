@@ -216,6 +216,7 @@ try{
  assert.match(page.url(),/#army-roster$/);
  assert.equal(await page.locator('#armyRosterHeading').innerText(),'Test');
  assert.match(await page.locator('#armyRosterList .army-unit-card').first().innerText(),/Lothern Sea Guard/);
+ await page.locator('#tacticalArmyAudit > summary').click();
  const armyMetrics=await page.locator('#armyRosterSummary').innerText();
  assert.match(armyMetrics,/387 pts/);
  assert.match(armyMetrics,/1\s*Unit entries/);
