@@ -7,7 +7,7 @@ const roster=source('docs/army-roster-page.js');
 const html=source('docs/index.html');
 const css=source('docs/styles.css');
 
-test('table guidance is only at the Units screen level',()=>{
+test('table hint occurs only once at Units screen level',()=>{
  assert.doesNotMatch(roster,/Swipe the table sideways to see all characteristics/);
  assert.doesNotMatch(roster,/army-profile-swipe/);
  assert.match(html,/Wide characteristics tables can be swiped sideways/);
@@ -16,21 +16,30 @@ test('table guidance is only at the Units screen level',()=>{
  assert.match(roster,/scroller\.tabIndex=0/);
 });
 
-test('troop type and base size are concise, present after model stats, and never repeated in source disclosure',()=>{
- const posTable=roster.indexOf('table.append(tbody);scroller.append(table);details.append(scroller);');
- const posQuick=roster.indexOf("details.append(el(doc,'p','army-unit-quick-facts'");
- const posSource=roster.indexOf("const sourceNotes=el(doc,'details','army-unit-compact-details army-source-meta-details')");
- assert.ok(posTable>=0&&posQuick>posTable&&posSource>posQuick);
+test('troop type and base size remain directly beneath characteristics table',()=>{
+ const table=roster.indexOf('table.append(tbody);scroller.append(table);details.append(scroller);');
+ const facts=roster.indexOf("details.append(el(doc,'p','army-unit-quick-facts'");
+ assert.ok(table>=0&&facts>table);
  assert.match(roster,/record\.classification\?\.troopType\?\.length/);
  assert.match(roster,/record\.classification\?\.baseSize/);
  assert.match(css,/\.army-unit-quick-facts/);
 });
 
-test('published base cost and source review details stay available but collapsed by default',()=>{
- assert.match(roster,/record\.basePoints\?\.sourceText/);
- assert.match(roster,/Published base cost:/);
- assert.match(roster,/Source-extracted; selected upgrades and army legality not verified/);
- assert.match(roster,/Source details · '\+warnings\+' review flag\(s\)'/);
- assert.match(roster,/sourceNotes\.append\(sourceNotesBody\)/);
- assert.doesNotMatch(roster,/sourceNotes\.open=true/);
+test('no redundant source-details panel, published base cost or routine extraction note',()=>{
+ assert.doesNotMatch(roster,/sourceNotes/);
+ assert.doesNotMatch(roster,/Published base cost:/);
+ assert.doesNotMatch(roster,/Source-extracted; selected upgrades and army legality not verified/);
+ assert.doesNotMatch(roster,/army-source-meta-details/);
+ assert.doesNotMatch(roster,/source\.basePoints/);
+ assert.match(roster,/if\(record\?\.extractionWarnings\?\.length\)/);
+ assert.match(roster,/Published profile may be incomplete/);
+ assert.match(roster,/army-unit-source-warning/);
+ assert.match(css,/\.army-unit-source-warning/);
+});
+
+test('published source data and its base points remain intact for debugging',()=>{
+ const record=JSON.parse(source('docs/unit-data/shards/0f.json')).records['unit:lothern-sea-guard'];
+ assert.equal(record.basePoints.sourceText,'10 points per model');
+ assert.equal(record.source.verificationStatus,'source-extracted');
+ assert.equal(record.source.sourceUrl,'https://tow.whfb.app/unit/lothern-sea-guard');
 });
