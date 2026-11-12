@@ -1,6 +1,7 @@
 /** View-only Normal Play roster navigation; never changes army, rules or battle state. */
 import {armySessionKey} from './battle-session.js';
 import {attachFocusedUnitView} from './unit-focus-view.js';
+import {attachRosterReorder} from './roster-drag-reorder.js';
 
 const PREF_PREFIX='old-world-game-manager-roster-sections-v1:';
 const queries=new Map();
@@ -144,6 +145,7 @@ export function decorateCompactRoster(container,army){
   transient.clear();
   refresh();
  });
+ attachRosterReorder(container,army,groups,search,refresh);
  refresh();
  attachFocusedUnitView(container,army,groups,refresh);
 }
