@@ -71,7 +71,15 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
   const height=await page.locator('#gameUnitFocusBack').evaluate(el=>el.getBoundingClientRect().height);
-  assert.ok(height>=44,'Back action stays touch accessible at '+viewport.width+': '+height+'px');
+  const diagnostics=await page.evaluate(()=>{
+   const root=document.querySelector('#armyRosterPage'),panel=document.querySelector('#gameUnitsPanel'),
+    toolbar=document.querySelector('#gameUnitFocus'),button=document.querySelector('#gameUnitFocusBack');
+   return {rootHidden:root.hidden,panelHidden:panel.hidden,toolbarHidden:toolbar.hidden,
+    rootDisplay:getComputedStyle(root).display,panelDisplay:getComputedStyle(panel).display,
+    toolbarDisplay:getComputedStyle(toolbar).display,buttonDisplay:getComputedStyle(button).display,
+    unitId:document.querySelector('#armyRosterList')?.dataset.focusUnit};
+  });
+  assert.ok(height>=44,'Back touch target '+viewport.width+': '+height+'px '+JSON.stringify(diagnostics));
  }
  assert.deepEqual(errors,[]);
  console.log('Focused Normal Play view, source profile tiles, four panels, duplicate units, Back and offline reload: PASS');
