@@ -354,11 +354,12 @@ function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
   const isAttack=effect.effectGroup==='offensive'&&effect.quickLabel;
   let name=effect.quickLabel||effect.name;
   if(effect.scope?.includes('Champion bearer only'))name+=' (champion only)';
+  // Existing players and the battle-status controls use "Active: Name".
+  if(effect.status==='active')name='Active: '+name;
   const state=effect.status==='conditional'?' · conditional':
    effect.status==='ready'?' · ready':
    effect.status==='spent'?' · spent':
-   effect.status==='equipped'?' · equipped':
-   effect.status==='active'?' · active':'';
+   effect.status==='equipped'?' · equipped':'';
   if(effect.status==='bound-spell')name='Bound: '+(effect.boundSpell?.name||effect.name);
   const cls=isAttack?'game-card-chip-offensive':
    effect.status==='spent'?'game-card-chip-spent':
