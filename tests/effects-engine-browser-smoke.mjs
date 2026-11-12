@@ -30,15 +30,15 @@ try{
   'Collapsed Sea Guard must name its offensive standard instead of showing only a generic item count');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
- const offence=sea.locator(':scope > .game-unit-expandable > .game-offensive-effects-panel');
+ const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
  const order=await sea.locator('.game-unit-expandable').evaluate(area=>{
   const children=[...area.children];
-  return {offence:children.findIndex(el=>el.classList.contains('game-offensive-effects-panel')),
+  return {offence:children.findIndex(el=>el.classList.contains('game-attack-panel')),
    defence:children.findIndex(el=>el.classList.contains('game-defence-panel'))};
  });
  assert.ok(order.offence>=0&&order.defence>order.offence,
-  'Offensive effects should appear before Defence summary: '+JSON.stringify(order));
+  'Attacks should appear before Defence: '+JSON.stringify(order));
  const razorQuick=offence.locator('.game-offensive-effect[data-effect-id="razor-standard"]');
  assert.equal(await razorQuick.count(),1);
  assert.match(await razorQuick.innerText(),/Armour Bane \(2\)/);
