@@ -71,6 +71,17 @@ try{
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
  await bsb.locator('.game-unit-expand-toggle').click();
+ const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
+ assert.equal(await bsbAttacks.isVisible(),true);
+ assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
+ assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);
+ assert.match(await bsbAttacks.innerText(),/Casting\\s*8\\+/);
+ assert.match(await bsbAttacks.innerText(),/Range\\s*24/);
+ assert.match(await bsbAttacks.innerText(),/Hits\\s*2D6/);
+ assert.match(await bsbAttacks.innerText(),/Strength\\s*4/);
+ assert.match(await bsbAttacks.innerText(),/Flaming Attacks/);
+ assert.equal(await bsbAttacks.locator('a').filter({hasText:'Spell rules'}).getAttribute('href'),
+  'https://tow.whfb.app/spell/fireball');
  assert.equal(await bsb.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),1);
  assert.equal(await sea.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),0);
  await bsb.locator('.character-unit-picker').selectOption(seaId);
@@ -82,6 +93,8 @@ try{
   'A character joined to Sea Guard receives the unit standard effect');
  assert.equal(await bsb.locator('.game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
   'Joined characters see shared Armour Bane in the same visible Offensive effects panel');
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-attack-bound').count(),0,
+  'Joined character bound spell must never appear as a regiment attack');
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="ruby-ring-of-ruin"]').count(),0,
   'The BSB ring is not shared as a unit-wide magic item');
 
