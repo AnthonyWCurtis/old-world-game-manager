@@ -652,7 +652,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const imported=byId.get(entry.id);
   if(!imported)continue;
   const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
-  const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles);
+  const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles,imported);
   const card=unitCard(doc,imported,entry.index,records[entry.id],
    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
    openCards.has(entry.id),onToggle,mountRows);
@@ -701,7 +701,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const imported=byId.get(entry.id);
    if(!imported)continue;
    const linkedMounts=resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles);
-   const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles);
+   const mountRows=selectedMountProfileGroups(linkedMounts,selectedUnitRecords,fallbackProfiles,imported);
    const card=unitCard(doc,imported,entry.index,records[entry.id],
     fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
     openCards.has(entry.id),onToggle,mountRows);
@@ -732,7 +732,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
       effectProjection.byUnit?.[character.id]||[],itemActions,
       selectedMountProfileGroups(
        resolveSelectedMountProfiles(original,selectedUnitRecords,fallbackProfiles),
-       selectedUnitRecords,fallbackProfiles)));
+       selectedUnitRecords,fallbackProfiles,original)));
    }
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
