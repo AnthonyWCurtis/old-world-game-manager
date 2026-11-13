@@ -43,11 +43,23 @@ try{
  assert.equal(await sea.locator('.game-unit-focus-open').isVisible(),false);
  assert.equal(await sea.locator('.game-unit-open .game-unit-expand-toggle').count(),0,
   'There must be only one unit fold, not nested unit folds');
- const charcoal=await sea.evaluate(el=>getComputedStyle(el).backgroundColor);
- const channels=charcoal.match(/\d+/g)?.slice(0,3).map(Number)||[];
- assert.equal(channels.length,3);
- assert.ok(channels.every(channel=>channel<=12),
-  'Expanded unit card uses the approved near-black canvas: '+charcoal);
+ // Structural approval did not authorize replacing Tactical V2's theme.
+ // Wait for the existing card transition and compare the exact shared
+ // navy surface token rather than assuming preview charcoal colours.
+ const themed=await page.waitForFunction(()=>{
+  const card=document.querySelector('#armyRosterList .game-focus-selected');
+  if(!card)return false;
+  const colour=getComputedStyle(card).backgroundColor;
+  const surface=getComputedStyle(document.body).getPropertyValue('--tc-surface').trim();
+  const probe=document.createElement('span');
+  probe.style.backgroundColor=surface;
+  document.body.append(probe);
+  const expected=getComputedStyle(probe).backgroundColor;
+  probe.remove();
+  return colour===expected?{colour,expected}:false;
+ },null,{timeout:12000});
+ assert.ok((await themed.jsonValue()).colour,
+  'Expanded card must use the existing navy Tactical V2 surface');
  assert.deepEqual(await sea.locator('.army-unit-loadout-group>strong').allTextContents().then(x=>
   x.filter(value=>value==='Equipment'||value==='Special Rules')),
   ['Equipment','Special Rules']);
