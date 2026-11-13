@@ -40,5 +40,6 @@ test('app callbacks handle activations, individual endings, and player-selected 
  assert.match(app,/handleSpellEnd/);
  assert.match(app,/handleSpellsExpire/);
  assert.match(app,/handleSpellEventClear/);
- assert.match(app,/writeBattleSession\(state\)/);
+ assert.match(app,/writeSourceSafeSession\(army,nextState\)/);
+ assert.match(app,/if\(!await readyBattleSession\(army\)\)return;/);
 });

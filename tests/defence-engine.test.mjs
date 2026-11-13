@@ -84,7 +84,8 @@ test('attached characters do not give a regiment their armour, Charmed Shield Wa
 
 test('character cloak applies conditionally to joined regiment, but is removed on detachment',()=>{
  const army=fresh(),sea=unit(army,'Lothern Sea Guard'),c=unit(army,'Ishaya Vess');
- c.selections.push({name:"The Loremaster's Cloak",children:[],kind:'magic-item'});
+ c.selections.push({name:"The Loremaster's Cloak",children:[],kind:'magic-item',
+  reference:{url:'https://tow.whfb.app/magic-item/the-loremasters-cloak'}});
  const attached=assignCharacter(army,restoreBattleSession(army),c.id,sea.id);
  const result=evaluateDefences(army,attached,sea.id);
  assert.deepEqual(result.sharedWard.map(e=>e.value),[4]);
@@ -101,7 +102,9 @@ test('only explicitly selected equipment counts; shield can be conditional with 
  assert.equal(evaluateDefences(army,restoreBattleSession(army),ship.id).armour.value,6);
  const unknown=structuredClone(ship);
  unknown.id='new';
- unknown.selections=[{name:'Warbow'},{name:'Great weapon'},{name:'Shield'}];
+ unknown.selections=[{name:'Warbow'},
+  {name:'Great weapon',reference:{url:'https://tow.whfb.app/weapons-of-war/great-weapon'}},
+  {name:'Shield',reference:{url:'https://tow.whfb.app/weapons-of-war/shield'}}];
  army.units.push(unknown);
  const eq=evaluateDefences(army,restoreBattleSession(army),unknown.id);
  assert.equal(eq.armour.value,6,'Unarmoured 7+ improved to 6+ by shield');

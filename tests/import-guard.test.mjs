@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {isGameManagerPageText, extractArmyFromPage} from '../docs/import-guard.js';
 
 const raw=readFileSync(new URL('../docs/examples/nr-tow-footer.txt',import.meta.url),'utf8');
+const normalizedLines=text=>text.replace(/\r\n/g,'\n');
 const appHead='Warhammer: The Old World\nGame Manager · Browser Edition v0.2.3\nImport army list\n';
 const page=exportText=>appHead+
   'Paste exported list\n'+exportText+'\nTry a supplied test list\nLoad example\nAnalyse import\n'+
@@ -18,7 +19,7 @@ test('A whole-page copy is detected even if it contains a genuine New Recruit fo
  assert.equal(isGameManagerPageText(paste),true);
  const extracted=extractArmyFromPage(paste);
  assert.ok(extracted,'One intact export must be recoverable');
- assert.equal(extracted.text,raw.trim());
+ assert.equal(normalizedLines(extracted.text),normalizedLines(raw.trim()));
  assert.equal(extracted.unitCount,9);
  assert.equal(extracted.derivedPoints,1979);
  assert.equal(extracted.format.exporter,'new-recruit');
@@ -29,7 +30,7 @@ test('Nested old Game Manager page recovers original export, not the page itself
  assert.equal(isGameManagerPageText(nested),true);
  const extracted=extractArmyFromPage(nested);
  assert.ok(extracted);
- assert.equal(extracted.text,raw.trim());
+ assert.equal(normalizedLines(extracted.text),normalizedLines(raw.trim()));
  assert.equal(extracted.unitCount,9);
  assert.equal(extracted.derivedPoints,1979);
 });

@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-compact-full-ref-viewer';
+const CACHE_NAME='game-manager-v1-shell-20261113-compact-full-stage2-selection';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -30,6 +30,7 @@ const APP_SHELL=[
  './unit-view-modes.js',
  './game-screen-model.js',
  './defence-engine.js',
+ './selection-resolver.js',
  './source-printed-armour.js',
  './source-defensive-rules.js',
  './mount-armour-choice.js',
@@ -40,8 +41,6 @@ const APP_SHELL=[
  './imported-unit-display.js',
  './unit-equipment-and-rules.js',
  './unit-attack-panel.js',
- './source-special-attack-rows.js',
- './unit-wound-tracker.js',
  './source-missile-profiles.js',
  './selected-command-rule-links.js',
  './spell-engine.js',
@@ -60,7 +59,32 @@ const APP_SHELL=[
  './battle-session-store.js',
  './offline.js',
  './catalog.js',
- './examples/manifest.json'
+ './source-profiles.json',
+ './examples/manifest.json',
+ './examples/single-sea-guard.txt',
+ './examples/owb-regular.txt',
+ './examples/owb-compact.txt',
+ './examples/owb-minimalist.txt',
+ './examples/owb-regular-discord.txt',
+ './examples/owb-compact-discord.txt',
+ './examples/owb-minimalist-discord.txt',
+ './examples/ingude-simple.txt',
+ './examples/ingude-compact.txt',
+ './examples/ingude-markdown.txt',
+ './examples/nr-tow.txt',
+ './examples/nr-nr.txt',
+ './examples/nr-simple.txt',
+ './examples/bb-compact.txt',
+ './examples/bb-detailed.txt',
+ './examples/bb-tournament.txt',
+ './examples/wood-elves.txt',
+ './examples/warriors-chaos.txt',
+ './examples/barrow-kingdoms.txt',
+ './examples/nr-tow-wrapped.txt',
+ './examples/nr-tow-model-groups.txt',
+ './examples/nr-tow-footer.txt',
+ './examples/owb-minimalist-nicknames.txt',
+ './examples/northside-warriors.txt'
 ];
 const scopePath=new URL('./',self.registration.scope).pathname;
 const appPaths=new Set(APP_SHELL.map(path=>new URL(path,self.registration.scope).pathname));

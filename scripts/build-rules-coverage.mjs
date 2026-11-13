@@ -12,7 +12,7 @@ import {REVIEWED_MISSILE_WEAPONS} from '../docs/source-missile-profiles.js';
 import {loadShippedRuleEffectCoverage} from './audit-rule-effect-coverage.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
-const read=path=>readFileSync(resolve(ROOT,path),'utf8');
+const read=path=>readFileSync(resolve(ROOT,path),'utf8').replace(/\r\n/g,'\n');
 const json=path=>JSON.parse(read(path));
 const hash=content=>createHash('sha256').update(content).digest('hex');
 const compare=(a,b)=>a<b?-1:a>b?1:0;
@@ -120,6 +120,12 @@ export async function loadCoverage(){
    e.implementation={mode:group.mode,code:[group.code],locator:group.registry+'['+key+']',tests:group.tests,missing:group.missing,questions:['Verify all atomic obligations and exceptional interactions before completion']};
    e.conditions=[r.scope,r.trigger,r.targeting,r.description,r.effectSummary].filter(Boolean);
   }
+ }
+ for(const [url,support] of Object.entries(reviews.stage2Evidence||{})){
+  const e=entries.get(canonicalId(url));
+  if(!e||!e.implementation)throw Error('Unknown Stage 2 evidence '+url);
+  e.implementation={...e.implementation,code:sorted([...e.implementation.code,...support.code]),
+   tests:sorted([...e.implementation.tests,...support.tests]),obligations:support.obligations};
  }
  for(const e of entries.values()){
   e.scope.unitRecordIds=sorted(e.scope.unitRecordIds);
