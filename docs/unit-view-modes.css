@@ -531,3 +531,10 @@
 .tactical-ui #armyRosterList .army-unit-head .owc-manage-characters:hover{
  background:#2a4358;border:0;
 }
+
+/* Compact roster shows regiment equipment and source-backed shared buffs only.
+   The separate per-character equipment drawer is redundant here; individual
+   character data and assignment controls remain available elsewhere. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-assigned-drawer{
+ display:none!important;
+}
