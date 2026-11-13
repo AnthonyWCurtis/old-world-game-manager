@@ -30,6 +30,15 @@ try{
  const firstHandle=await cards.first().locator('.army-unit-index').boundingBox();
  assert.ok(firstHandle,'Source index badge is a safe non-control drag handle');
  const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
+ const unitGeometry=await first.evaluate(card=>{
+   const rect=cls=>card.querySelector(cls)?.getBoundingClientRect().toJSON();
+   const header=card.querySelector('.army-unit-head');
+   return {card:card.getBoundingClientRect().toJSON(),
+    header:rect('.army-unit-head'),identity:rect('.army-unit-identity'),
+    index:rect('.army-unit-index'),counter:rect('.game-compact-wounds'),
+    button:rect('.game-wound-step'),focus:rect('.game-unit-focus-open'),
+    grid:getComputedStyle(header).gridTemplateColumns,display:getComputedStyle(header).display};
+ });
  const targetInfo=await page.evaluate(({x,y})=>{
   const e=document.elementFromPoint(x,y);
   return {tag:e?.tagName,cls:typeof e?.className==='string'?e.className:null,
@@ -38,7 +47,7 @@ try{
    x,y,rect:e?.getBoundingClientRect().toJSON()};
  },from);
  assert.equal(targetInfo.inHeader,true,'Expected header drag point, got '+JSON.stringify(targetInfo));
- assert.equal(targetInfo.blockedControl,false,'Drag hit an interactive control '+JSON.stringify(targetInfo));
+ assert.equal(targetInfo.blockedControl,false,'Drag hit an interactive control '+JSON.stringify({targetInfo,unitGeometry}));
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
  const dragReady=await page.locator('#armyRosterList').evaluate(el=>el.classList.contains('game-roster-reordering'));
