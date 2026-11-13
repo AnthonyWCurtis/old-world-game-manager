@@ -436,3 +436,78 @@
  background:#393353;border-color:#cba968;color:#f0dcaf;
  font-weight:750;
 }
+
+/* Roster visual language: neutral navy mundane rules; source-classified gold
+   magic items; purple character abilities; green spells; cyan protection;
+   amber conditional item effects. Source links and scope are unchanged. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words a.owc-compact-word:not(.owc-magic-item),
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word:not(.owc-magic-item){
+ background:#1c344f;border-color:#587796;color:#f0f5ff;font-weight:500;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words .owc-compact-word.owc-magic-item,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word.owc-magic-item{
+ background:#292b32;border-color:#d5a54e;color:#ffe29f;font-weight:750;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character{
+ background:#432f3e;border-color:#bf83ad;color:#f6c9e9;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-conditional{
+ background:#393120;border-color:#c59344;color:#ffdb91;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-magic,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-magic{
+ background:#193d34;border-color:#5daf87;color:#a9f1cc;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-protective,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-protective{
+ background:#223e50;border-color:#5da6cb;color:#b8e8ff;font-weight:700;
+}
+/* Preserve a generous mobile touch target while keeping the visible control
+   icon-only. Located beside the existing character count in the header. */
+.tactical-ui #armyRosterList .owc-manage-characters{
+ width:44px;min-width:44px;min-height:44px;height:44px;
+ padding:0;margin:0 0 0 8px;border-radius:9px;
+ background:#203550;border-color:#ad8949;color:#f2d28c;
+ vertical-align:middle;flex-shrink:0;
+}
+.tactical-ui #armyRosterList .owc-manage-characters svg{
+ display:block;width:20px;height:20px;pointer-events:none;
+}
+.tactical-ui #armyRosterList .owc-manage-characters:hover{
+ background:#2d4563;border-color:#f2d28c;
+}
+
+/* A conditional character ability retains its conditional status and tooltip,
+   but is visually differentiated from conditional magic-item effects. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character-conditional{
+ background:#432f3e;border-color:#bf83ad;color:#f6c9e9;font-weight:700;
+}
+
+/* CSS-only enhancement: retain the tested character-manager button,
+   accessible label, state restoration and click handler unchanged. */
+.tactical-ui #armyRosterList .owc-manage-characters{
+ font-size:0;line-height:0;overflow:hidden;color:transparent;
+}
+.tactical-ui #armyRosterList .owc-manage-characters::after{
+ content:"";display:block;width:22px;height:22px;flex:0 0 22px;
+ background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f2d28c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='7' r='4'/%3E%3Cpath d='M2 20v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 4 2M19 8v9M14.5 12.5h9'/%3E%3C/svg%3E");
+}
+.tactical-ui #armyRosterList .owc-manage-characters:hover::after{
+ filter:brightness(1.15);
+}
+/* Conditional source-backed character abilities (e.g. rules, not items)
+   use purple, while magic-item conditional effects retain amber. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words a.owc-effect-conditional:not([href*="/magic-item/"]),
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words a.owc-effect-conditional:not([href*="/magic-item/"]){
+ background:#432f3e;border-color:#bf83ad;color:#f6c9e9;font-weight:700;
+}
+/* Defensive spell hint from already surfaced source scope/description.
+   This only changes colour; the spell remains an active spell, with its
+   original source, details and status unmodified. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words a.owc-effect-magic:is([title*="ward save" i],[title*="obstacle" i]),
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words a.owc-effect-magic:is([title*="ward save" i],[title*="obstacle" i]){
+ background:#223e50;border-color:#5da6cb;color:#b8e8ff;font-weight:700;
+}
