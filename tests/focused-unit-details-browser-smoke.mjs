@@ -71,7 +71,7 @@ try{
  await open.click();
  await search.fill("Ship's Company");
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
- const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Ship\\'s Company")')});
+ const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3').filter({hasText:"Ship's Company"})});
  const second=ships.nth(1);
  await second.locator('.game-unit-focus-open').click();
  assert.equal(await second.evaluate(el=>el.classList.contains('owc-view-full')),true);
