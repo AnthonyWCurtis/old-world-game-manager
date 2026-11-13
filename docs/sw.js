@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-approved-stage2-card';
+const CACHE_NAME='game-manager-v1-shell-20261113-stage2-theme-restored';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
