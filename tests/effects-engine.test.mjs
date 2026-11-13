@@ -182,6 +182,6 @@ test('Razor Standard is indexed as an offensive rule with a conditional natural-
  assert.match(ui,/renderUnitOffensiveEffects/);
  assert.match(ui,/game-offensive-effect-detail/);
  const roster=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
- assert.match(roster,/entry\\?\\.status==='active'/);
+ assert.match(roster,/entry\?\.status==='active'/);
  assert.doesNotMatch(roster,/game-card-chip-offensive/);
 });
