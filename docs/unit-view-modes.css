@@ -436,3 +436,45 @@
  background:#393353;border-color:#cba968;color:#f0dcaf;
  font-weight:750;
 }
+
+/* Roster visual language: neutral navy mundane rules; source-classified gold
+   magic items; purple character abilities; green spells; cyan protection;
+   amber conditional item effects. Source links and scope are unchanged. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words a.owc-compact-word:not(.owc-magic-item),
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word:not(.owc-magic-item){
+ background:#1c344f;border-color:#587796;color:#f0f5ff;font-weight:500;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words .owc-compact-word.owc-magic-item,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word.owc-magic-item{
+ background:#292b32;border-color:#d5a54e;color:#ffe29f;font-weight:750;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character{
+ background:#432f3e;border-color:#bf83ad;color:#f6c9e9;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-conditional{
+ background:#393120;border-color:#c59344;color:#ffdb91;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-magic,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-magic{
+ background:#193d34;border-color:#5daf87;color:#a9f1cc;font-weight:700;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-protective,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-protective{
+ background:#223e50;border-color:#5da6cb;color:#b8e8ff;font-weight:700;
+}
+/* Preserve a generous mobile touch target while keeping the visible control
+   icon-only. Located beside the existing character count in the header. */
+.tactical-ui #armyRosterList .owc-manage-characters{
+ width:44px;min-width:44px;min-height:44px;height:44px;
+ padding:0;margin:0 0 0 8px;border-radius:9px;
+ background:#203550;border-color:#ad8949;color:#f2d28c;
+ vertical-align:middle;flex-shrink:0;
+}
+.tactical-ui #armyRosterList .owc-manage-characters svg{
+ display:block;width:20px;height:20px;pointer-events:none;
+}
+.tactical-ui #armyRosterList .owc-manage-characters:hover{
+ background:#2d4563;border-color:#f2d28c;
+}
