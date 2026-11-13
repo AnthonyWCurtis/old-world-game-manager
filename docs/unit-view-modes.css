@@ -321,3 +321,32 @@
 .tactical-ui #armyRosterList .owc-model-group-values{
  margin:4px 0 0;font-size:12px;line-height:1.65;color:#e3eaf0;
 }
+
+/* Source-backed attached-character benefits in Compact and Full headers.
+   Personal equipment remains inside the existing character drawer. */
+.tactical-ui #armyRosterList .owc-compact-effect-strip{
+ margin-top:12px;padding-top:10px;border-top:1px solid #40516a;
+}
+.tactical-ui #armyRosterList .owc-compact-effect-words{
+ gap:5px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-pill,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-pill{
+ min-height:28px;padding:4px 8px;font-size:11px;
+ font-weight:650;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character{
+ background:#393353;color:#e1d0fa;border-color:#706094;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-conditional{
+ background:#453821;color:#f0d29b;border-color:#866b42;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-magic,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-magic{
+ background:#214638;color:#b7ebc6;border-color:#539a71;
+}
+.tactical-ui #armyRosterList .owc-compact-effect-words a.owc-effect-pill:focus-visible{
+ outline:2px solid #f0d29b;outline-offset:2px;
+}
