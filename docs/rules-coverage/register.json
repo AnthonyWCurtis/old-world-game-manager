@@ -10,7 +10,7 @@
     },
     {
       "file": "docs/army-roster-page.js",
-      "sha256": "e2fe2f9b2d8210d86236e4376e1a7452af87d081e9a79daee93a23d0be54daaf"
+      "sha256": "ea733f3e5040de4e74f30584411b114e03caa8e581116ea143319811612b514c"
     },
     {
       "file": "docs/army-state.js",
@@ -446,7 +446,7 @@
     },
     {
       "file": "docs/unit-wound-tracker.js",
-      "sha256": "680487b431ebe60e3f55d006f00ffed6bb121490a8e3d7407880501f4ea7967c"
+      "sha256": "4662f2c078cbf9c00307a51b3e70e878b13f783c6d64b9ed037c7448b9a1bc9c"
     },
     {
       "file": "docs/unmatched-debug.js",
