@@ -698,6 +698,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const toughness=card.querySelector('.game-defence-toughness');
   if(toughness)toughness.textContent=spec.toughness??'—';
   const wound=card.querySelector('.game-defence-wounds-remaining');
+  if(wound&&spec.kind==='models')wound.parentElement?.querySelector('span')?.replaceChildren(doc.createTextNode('Models remaining'));
+
   if(wound)wound.textContent=remaining===null?'—':
    remaining+'/'+spec.max+(spec.kind==='models'?' models':'');
   if(spec.note){
