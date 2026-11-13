@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261112-reviewed-core-rules';
+const CACHE_NAME='game-manager-v1-shell-20261113-compact-unit-cards';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -7,6 +7,7 @@ const APP_SHELL=[
  './styles.css',
  './mobile.css',
  './tactical-command.css',
+ './unit-card-ux.css',
  './app.js',
  './tactical-command.js',
  './parser.js',
@@ -37,6 +38,8 @@ const APP_SHELL=[
  './imported-unit-display.js',
  './unit-equipment-and-rules.js',
  './unit-attack-panel.js',
+ './source-special-attack-rows.js',
+ './unit-wound-tracker.js',
  './source-missile-profiles.js',
  './selected-command-rule-links.js',
  './spell-engine.js',
