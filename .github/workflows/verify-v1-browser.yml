@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - feat/v1-game-manager-foundation
-      - feat/compact-unit-ux-wounds-20261113
     paths:
       - 'docs/**'
       - 'tests/tactical-site-wide-contrast-browser-smoke.mjs'
