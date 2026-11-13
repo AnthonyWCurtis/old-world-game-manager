@@ -94,7 +94,7 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
   const name=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'unit';
   content.hidden=false;
   card.classList.add('game-unit-open');
-  setUnitView(card,'compact',{remember:false});
+  // prepareUnitCompactCard restores the current in-memory unit view on rerenders.
   const sync=()=>{
    const full=card.classList.contains('owc-view-full');
    content.hidden=false;
@@ -106,7 +106,8 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    header.setAttribute('aria-label',name+' — '+(full?'Full':'Compact')+' view');
   };
   const change=()=>{
-   setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full',{remember:false});
+   // Keep the chosen view through assignment, wound and magic rerenders.
+   setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full');
    sync();
   };
   // Capture before the old fold and header handlers. Every other interactive
