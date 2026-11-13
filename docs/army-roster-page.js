@@ -498,6 +498,10 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   const item=el(doc,'div','game-defence-stat');
   item.dataset.save=key;
   item.append(el(doc,'span','',name),el(doc,'strong','',display));
+  if(display==='—')item.append(el(doc,'small','game-defence-save-note','Not established'));
+  else if(display==='Conditional')item.append(el(doc,'small','game-defence-save-note','Conditions apply'));
+  else if(display==='Spent')item.append(el(doc,'small','game-defence-save-note','Already used'));
+  else if(key==='armour')item.append(el(doc,'small','game-defence-save-note','Equipment only'));
   item.title=key==='armour'?defence.armour.note:key==='ward'?wardPreview:regenPreview;
   metrics.append(item);
  }
