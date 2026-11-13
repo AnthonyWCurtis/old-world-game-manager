@@ -35,6 +35,7 @@ export function prepareUnitCompactCard(card,army){
   else equipment.push(...links);
  }
  const summary=make(doc,'section','owc-compact-loadout');
+ summary.append(make(doc,'h4','owc-compact-heading','✧ Equipment & Special Rules'));
  for(const [label,items] of [['Equipment & Upgrades',equipment],['Special Rules',rules]]){
   if(!items.length)continue;
   summary.append(make(doc,'h4','owc-compact-label',label),wordList(doc,items));
