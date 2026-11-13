@@ -81,12 +81,17 @@ try{
     const h=await target.evaluate(el=>el.getBoundingClientRect().height);
     assert.ok(h>=44,'Game Screen touch target '+id+' too small: '+h+'px');
    }
-   const wide=await page.locator('.army-profile-scroll').first().evaluate(el=>({
+   // The approved single-card view replaces the horizontally scrolling
+   // profile table with nine compact source-backed characteristic tiles.
+   const grid=page.locator('#armyRosterList .game-profile-stat-grid:visible').first();
+   const stats=await grid.evaluate(el=>({
     client:el.clientWidth,scroll:el.scrollWidth,
-    table:el.querySelector('table')?.getBoundingClientRect().width
+    columns:getComputedStyle(el).gridTemplateColumns.split(' ').length,
+    tiles:el.querySelectorAll('.game-profile-stat').length
    }));
-   assert.ok(wide.scroll>wide.client&&wide.table>=620,
-    'Full stats must remain legible and scroll only within the table at '+v.width+'px: '+JSON.stringify(wide));
+   assert.ok(stats.client>0&&stats.scroll<=stats.client+1&&
+    stats.columns===9&&stats.tiles===9,
+    'All nine characteristics must fit without horizontal scrolling at '+v.width+'px: '+JSON.stringify(stats));
    assert.equal(await page.locator('.game-roster-search-input').isVisible(),true,'Unit search is primary navigation');
    assert.equal(await page.locator('#gameUnitsPanel .game-screen-jump').isVisible(),false,'Legacy redundant jump navigation is hidden');
   }
@@ -110,5 +115,5 @@ try{
  await assertPageFits(page,'offline restored Game Screen',viewports[2]);
  assert.equal(await page.locator('link[href*="mobile.css"]').count(),1);
  assert.deepEqual(errors,[]);
- console.log('Adaptive mobile, tablet, portrait, landscape, touch targets, scrollable tables and offline: PASS');
+ console.log('Adaptive mobile, tablet, portrait, landscape, touch targets, nine-stat tiles and offline: PASS');
 }finally{await browser.close();}
