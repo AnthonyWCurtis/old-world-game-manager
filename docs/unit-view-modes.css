@@ -121,9 +121,10 @@
 .tactical-ui #armyRosterList .owc-assigned-drawer > .game-assigned-characters > h4{
  display:none;
 }
-/* Compact mode normally hides extra source blocks. Preserve those inside
-   an explicitly opened character's details, where their owner is clear. */
-.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .owc-assigned-drawer .game-attached-character-body .army-unit-card-body > .army-unit-unified-loadout{
+/* Compact mode hides extra blocks and Full hides the original unit
+   loadout. An explicitly opened assigned character must retain its own
+   equipment/rules in BOTH modes. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-assigned-drawer .game-attached-character-body .army-unit-card-body > .army-unit-unified-loadout{
  display:block!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-assigned-drawer .game-attached-character .army-unit-loadout-pill{
