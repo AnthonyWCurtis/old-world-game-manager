@@ -105,16 +105,18 @@ export function installRuleViewer(container){
  close.type='button';
  head.append(title,close);
  const notice=make(doc,'p','owc-rule-notice','Live original text from tow.whfb.app. If this site blocks embedded pages, use Open original.');
+ const frameWrap=make(doc,'div','owc-rule-frame-wrap');
  const frame=make(doc,'iframe','owc-rule-frame');
  frame.title='Original tow.whfb.app reference';
  frame.referrerPolicy='no-referrer';
+ frameWrap.append(frame);
  const footer=make(doc,'div','owc-rule-footer');
  const original=make(doc,'a','owc-rule-original','Open original ↗');
  original.target='_blank';original.rel='noopener noreferrer';
  const done=make(doc,'button','owc-rule-close','Close');
  done.type='button';
  footer.append(original,done);
- shell.append(head,notice,frame,footer);dialog.append(shell);
+ shell.append(head,notice,frameWrap,footer);dialog.append(shell);
  doc.body.append(dialog);
  let returnFocus=null;
  function dismiss(){
