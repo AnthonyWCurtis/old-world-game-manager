@@ -55,10 +55,8 @@ export function compactBeneficialEffects(effects=[]){
   // semantics, never faction, unit, spell or character names.
   const defensiveSpell=magic&&/\b(?:ward save|regeneration|armour save|linear obstacle|defended obstacle|cannot march|cannot charge)\b/i.test(
    [effect.quickDetail,effect.description].filter(Boolean).join(' '));
-  const conditionalItem=!magic&&effect.status==='conditional'&&
-   isPublishedMagicItemUrl(effect.sourceUrl);
   const category=magic?(defensiveSpell?'protective':'magic'):
-   conditionalItem?'conditional':'character';
+   effect.status==='conditional'?'conditional':'character';
   const label=effect.quickLabel||effect.name;
   const key=category+'|'+effect.sourceUrl+'|'+label;
   const source=String(effect.ownerName||'Unknown character');
@@ -82,7 +80,10 @@ function compactEffectPills(doc,effects){
  section.append(make(doc,'h4','owc-compact-label','Character Buffs & Active Effects'));
  const line=make(doc,'div','owc-compact-words owc-compact-effect-words');
  for(const item of items){
-  let element=make(doc,'span','owc-compact-word owc-effect-pill owc-effect-'+item.category,item.label);
+  const conditionalAbility=item.category==='conditional'&&!isPublishedMagicItemUrl(item.url);
+  const classes='owc-compact-word owc-effect-pill owc-effect-'+item.category+
+   (conditionalAbility?' owc-effect-character-conditional':'');
+  let element=make(doc,'span',classes,item.label);
   try{
    const url=new URL(item.url);
    if(url.origin==='https://tow.whfb.app'&&!url.search&&!url.hash&&
