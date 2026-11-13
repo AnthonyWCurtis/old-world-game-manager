@@ -249,7 +249,7 @@ try{
  await page.locator('#gameRosterSearch').fill('Primal Warherds');
  const special=page.locator('#armyRosterList .army-unit-card').filter({hasText:'Primal Warherds'}).first();
  await special.locator('.game-unit-expand-toggle').click();
- assert.match(await special.innerText(),/21 models/);
+ assert.match(await special.innerText(),/21\/21/);
  assert.match(await special.innerText(),/11× Gor/);
  assert.match(await special.innerText(),/10× Ungor/);
  await page.locator('#backToImporterBtn').click();
