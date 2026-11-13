@@ -167,13 +167,11 @@ body.tactical-ui{
 .tactical-ui .game-card-chip-offensive{background:#3f3827;color:#f4d7a7;border-color:#6d6041}
 .tactical-ui #armyRosterList:not(.game-unit-focused) .tactical-count-unknown .army-model-number{display:none}
 .tactical-ui .game-roster-section-content[hidden],.tactical-ui .game-roster-section[hidden]{display:none!important}
-/* Focused unit: local tabs instead of the old unbroken information page. */
+/* Focused unit: one expanded card with every section in normal reading order. */
 .tactical-ui .game-unit-focus-toolbar{position:sticky;top:0;z-index:8;padding:11px;background:#102137;border:1px solid #3d556b;border-radius:13px;box-shadow:0 8px 22px #0006}
 .tactical-ui .game-unit-focus-kicker{color:var(--tc-gold);font-size:10px;letter-spacing:.1em}
 .tactical-ui .game-unit-focus-title{color:var(--tc-type);font-size:19px}
 .tactical-ui .game-unit-focus-back{min-height:48px;background:#3c352c;border:1px solid #8b7656;color:var(--tc-gold-text);font-weight:780}
-.tactical-ui .game-unit-focus-tab{color:var(--tc-secondary);background:#172b40;border:1px solid #344e62;min-height:48px;font-size:13px}
-.tactical-ui .game-unit-focus-tab[aria-pressed=true]{color:#192a3c;background:var(--tc-gold);border-color:var(--tc-gold)}
 .tactical-ui #armyRosterList.game-unit-focused .game-roster-section.game-focus-section{background:transparent;border:0}
 .tactical-ui #armyRosterList.game-unit-focused .game-roster-section-content>.army-unit-card.game-focus-selected{background:#14283b;border:1px solid #3d5569;border-radius:12px;overflow:hidden}
 .tactical-ui #armyRosterList.game-unit-focused .army-unit-head{background:#1b3044;padding:12px}
