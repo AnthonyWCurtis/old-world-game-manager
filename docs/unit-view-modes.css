@@ -539,3 +539,75 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-assigned-drawer{
  display:none!important;
 }
+
+
+/* Slim battle counter — retained per-unit model/wound state, refreshed
+   presentation only. The label sits above one quiet navy-and-gold pill.
+   Smaller visual buttons have extended invisible tap areas for mobile. */
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds:not(.game-compact-wounds-unresolved){
+ display:grid!important;
+ grid-template-columns:30px minmax(46px,max-content) 30px;
+ grid-template-rows:13px 34px;
+ position:relative;align-items:stretch;justify-items:stretch;
+ width:max-content;max-width:100%;min-width:0;
+ gap:0!important;justify-self:end;white-space:nowrap;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds:not(.game-compact-wounds-unresolved)::before{
+ content:"";position:absolute;left:0;right:0;top:13px;height:34px;
+ background:#21384b;border:1px solid #455d76;border-radius:9px;
+ box-sizing:border-box;pointer-events:none;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step{
+ grid-row:2;position:relative;z-index:1;
+ display:grid!important;place-items:center;
+ width:30px!important;min-width:30px!important;
+ height:34px!important;min-height:34px!important;
+ margin:0!important;padding:0!important;
+ border:0!important;border-radius:8px!important;
+ background:transparent!important;box-shadow:none!important;
+ color:#e8d0a1!important;font-size:18px!important;font-weight:500!important;
+ line-height:1!important;cursor:pointer;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step:first-of-type{grid-column:1}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step:last-of-type{grid-column:3}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step::before{
+ content:"";position:absolute;inset:-5px -6px;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step:hover:not(:disabled){
+ background:#314b65!important;color:#f5e3bf!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step:disabled{
+ opacity:.38!important;cursor:default;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step:focus-visible{
+ outline:2px solid #e8c781;outline-offset:2px;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-counter-value{
+ grid-column:2;grid-row:1/span 2;
+ position:relative;z-index:1;
+ display:flex!important;flex-direction:column-reverse!important;
+ align-items:center;justify-content:flex-end!important;
+ gap:0!important;min-width:0!important;height:47px;
+ margin:0!important;padding:0!important;text-align:center;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-counter-value>small{
+ display:block;height:13px;line-height:13px!important;
+ color:#d8b768!important;font-size:9px!important;font-weight:650;
+ letter-spacing:.075em;text-transform:uppercase;
+}
+.tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-counter-value>strong{
+ display:grid;place-items:center;height:34px;min-height:34px;
+ color:#f5e8c8!important;font-size:15px!important;font-weight:750!important;
+ line-height:1!important;font-variant-numeric:tabular-nums;
+}
+@media(max-width:380px){
+ .tactical-ui #armyRosterList .army-unit-card .game-compact-wounds:not(.game-compact-wounds-unresolved){
+  grid-template-columns:27px minmax(43px,max-content) 27px;
+ }
+ .tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-step{
+  width:27px!important;min-width:27px!important;
+ }
+ .tactical-ui #armyRosterList .army-unit-card .game-compact-wounds .game-wound-counter-value>strong{
+  font-size:14px!important;
+ }
+}
