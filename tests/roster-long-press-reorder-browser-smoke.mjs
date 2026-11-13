@@ -27,7 +27,9 @@ try{
  const one=await cards.nth(0).boundingBox(),two=await cards.nth(1).boundingBox();
  assert.ok(one&&two,'Touch targets are in viewport');
  const client=await context.newCDPSession(page);
- const from={x:one.x+65,y:one.y+one.height/2,id:1},toY=two.y+two.height/2+12;
+ const firstHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ assert.ok(firstHandle,'Source index badge is a safe non-control drag handle');
+ const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...from,y:toY}]});
@@ -61,7 +63,9 @@ try{
  const header=cards.first().locator('.army-unit-head');
  await header.scrollIntoViewIfNeeded();
  const one2=await cards.nth(0).boundingBox(),two2=await cards.nth(1).boundingBox();
- const point={x:one2.x+65,y:one2.y+one2.height/2,id:2};
+ const secondHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ assert.ok(secondHandle);
+ const point={x:secondHandle.x+secondHandle.width/2,y:secondHandle.y+secondHandle.height/2,id:2};
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
  await page.waitForTimeout(480);
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...point,y:two2.y+two2.height/2+12}]});
