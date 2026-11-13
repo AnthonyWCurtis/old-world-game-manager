@@ -114,9 +114,9 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
   };
   const change=()=>{
    if(content.hidden){
-    // First tap reveals a collapsed card as Compact, keeping the single fold.
+    // The Full View action always reveals Full, even if the card was folded.
     collapse?.click();
-    setUnitView(card,'compact',{remember:false});
+    setUnitView(card,'full',{remember:false});
    }else{
     setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full',{remember:false});
    }
