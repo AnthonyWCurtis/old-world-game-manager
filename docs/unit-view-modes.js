@@ -63,7 +63,7 @@ function compactEffectPills(doc,effects){
   try{
    const url=new URL(item.url);
    if(url.origin==='https://tow.whfb.app'&&!url.search&&!url.hash&&
-      /^\\/[a-z0-9-]+(?:\\/[a-z0-9-]+)*\\/?$/.test(url.pathname)){
+      url.pathname.split('/').filter(Boolean).every(segment=>/^[a-z0-9-]+$/.test(segment))){
     element=make(doc,'a',element.className,item.label);
     element.href=url.href;element.target='_blank';element.rel='noopener noreferrer';
    }
