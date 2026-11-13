@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-single-fold-unit-detail';
+const CACHE_NAME='game-manager-v1-shell-20261113-single-fold-pencil-rename';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
