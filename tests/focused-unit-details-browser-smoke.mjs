@@ -40,7 +40,9 @@ try{
   'https://tow.whfb.app/special-rules/drilled');
  await page.locator('.owc-rule-close').first().click();
  const originalCompact=await sea.locator('.owc-compact-loadout').innerText();
- const open=sea.locator('.game-unit-focus-open');
+ const open=sea.locator('.game-unit-expand-toggle');
+ assert.equal(await open.getAttribute('aria-expanded'),'false','Down arrow means Compact roster view');
+ assert.equal(await sea.locator('.game-unit-focus-open').count(),0,'No separate Full View button');
  await open.click();
  assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-full')),true);
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true,
@@ -62,22 +64,23 @@ try{
  await open.click();
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
- // The single fold can still collapse everything, while the Full action works from folded state.
- const fold=sea.locator('.game-unit-expand-toggle');
- await fold.click();
- assert.equal(await content.isVisible(),false);
+ assert.equal(await open.getAttribute('aria-expanded'),'false');
+ assert.equal(await content.isVisible(),true,'Compact view never collapses to name only');
  await open.click();
+ assert.equal(await open.getAttribute('aria-expanded'),'true');
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
  await open.click();
+ assert.equal(await content.isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await search.fill("Ship's Company");
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
  const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3').filter({hasText:"Ship's Company"})});
  const second=ships.nth(1);
- await second.locator('.game-unit-focus-open').click();
+ await second.locator('.game-unit-expand-toggle').click();
  assert.equal(await second.evaluate(el=>el.classList.contains('owc-view-full')),true);
  assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-compact')),true,
   'Other cards keep independent view state');
- await second.locator('.game-unit-focus-open').click();
+ await second.locator('.game-unit-expand-toggle').click();
  await search.fill('Lothern Sea Guard');
  // Source link, wound counter and gameplay session are preserved through offline reload.
  await page.locator('#gameScreenSaveBtn').click();
