@@ -217,3 +217,17 @@
 .tactical-ui #armyRosterList .game-unit-victory-points>strong{
  color:var(--tc-secondary);font-weight:600;
 }
+
+
+/* This project does not define a generic sr-only utility. The per-counter
+ * live region must remain accessible without consuming the header grid:
+ * otherwise its long status sentence widens the counter column and crushes
+ * unit names into a 4px column on iPhone. */
+.tactical-ui #armyRosterList .game-compact-wounds .sr-only{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+.tactical-ui #armyRosterList .game-compact-wounds{
+ position:relative;min-width:0;max-width:100%;
+}
