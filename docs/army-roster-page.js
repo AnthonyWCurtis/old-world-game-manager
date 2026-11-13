@@ -14,6 +14,7 @@ import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderUnitEffects} from './effects-ui.js';
 import {renderUnitAttackPanel,unitAttackSummary} from './unit-attack-panel.js';
+import {trackingDefinition,readTrackedRemaining,renderUnitCounter} from './unit-wound-tracker.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
  *
@@ -98,7 +99,9 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  const main=el(doc,'div','army-unit-names');
  const customName=unitDisplayName(unit,session);
  card.dataset.rosterSearch=[customName,unit.name,unit.nickname,String(index),String(index).padStart(2,'0')].filter(Boolean).join(' ');
- main.append(el(doc,'h3','',customName));
+ const nameLine=el(doc,'div','game-unit-name-line');
+ nameLine.append(el(doc,'h3','',customName));
+ main.append(nameLine);
  if(customName!==unit.name)main.append(el(doc,'span','army-unit-nickname','Official: '+unit.name));
  if(unit.nickname&&customName!==unit.nickname)
   main.append(el(doc,'span','army-unit-nickname','Imported label: '+unit.nickname));
@@ -136,7 +139,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  const expandable=el(doc,'div','game-unit-expandable');
  expandable.hidden=!expanded;
  expandable.id='game-unit-content-'+index;
- const toggle=el(doc,'button','game-unit-expand-toggle',expanded?'Hide details':'Show details');
+ const toggle=el(doc,'button','game-unit-expand-toggle',expanded?'⌃':'⌄');
  toggle.type='button';
  toggle.setAttribute('aria-label',(expanded?'Collapse ':'Expand ')+customName+' details');
  toggle.setAttribute('aria-expanded',String(expanded));
@@ -145,12 +148,12 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   const open=expandable.hidden;
   expandable.hidden=!open;
   card.classList.toggle('game-unit-open',open);
-  toggle.textContent=open?'Hide details':'Show details';
+  toggle.textContent=open?'⌃':'⌄';
   toggle.setAttribute('aria-label',(open?'Collapse ':'Expand ')+customName+' details');
   toggle.setAttribute('aria-expanded',String(open));
   onToggle(unit.id,open);
  });
- header.append(toggle);
+ nameLine.append(toggle);
  header.addEventListener('click',event=>{
   if(event.target.closest('button,a,input,select,label,form'))return;
   toggle.click();
@@ -462,6 +465,16 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  heading.append(el(doc,'strong','','Defence'));
  heading.append(el(doc,'span','','Equipment-only armour · source-backed conditional saves'));
  panel.append(heading);
+ // Primary resilience tiles are populated only from proven source profiles.
+ // The compact counter attaches after all source/mount records are resolved.
+ const resilience=el(doc,'div','game-defence-resilience');
+ for(const [title,css] of [['Toughness','game-defence-toughness'],['Wounds remaining','game-defence-wounds-remaining']]){
+  const tile=el(doc,'div','game-defence-resilience-tile');
+  tile.append(el(doc,'span','',title),el(doc,'strong',css,'—'));
+  resilience.append(tile);
+ }
+ panel.append(resilience);
+ panel.append(el(doc,'div','game-defence-saves-heading','Saving throws'));
 
  const activeWard=[...defence.ward,...defence.sharedWard].filter(entry=>entry.available);
  const wardPreview=activeWard.length?
@@ -478,6 +491,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   const item=el(doc,'div','game-defence-stat');
   item.dataset.save=key;
   item.append(el(doc,'span','',name),el(doc,'strong','',display));
+  item.title=key==='armour'?defence.armour.note:key==='ward'?wardPreview:regenPreview;
   metrics.append(item);
  }
  panel.append(metrics);
@@ -655,6 +669,24 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  const itemActions={onItemState,onShieldUse};
  container.replaceChildren();
 
+ // Cosmetic counter updates are stored in a separate namespaced local
+ // ledger. This avoids mutating Stage 2's shared rules/selection state.
+ const attachTracker=(card,imported,record,fallback,mountRows)=>{
+  const spec=trackingDefinition(imported,record,fallback,mountRows);
+  const remaining=readTrackedRemaining(army,imported.id,spec);
+  const header=card.querySelector('.army-unit-head');
+  const counter=renderUnitCounter(doc,army,imported,spec,card);
+  header?.append(counter);
+  const toughness=card.querySelector('.game-defence-toughness');
+  if(toughness)toughness.textContent=spec.toughness??'—';
+  const wound=card.querySelector('.game-defence-wounds-remaining');
+  if(wound)wound.textContent=remaining===null?'—':
+   remaining+'/'+spec.max+(spec.kind==='models'?' models':'');
+  if(spec.note){
+   const note=el(doc,'p','game-defence-tracker-note',spec.note);
+   card.querySelector('.game-defence-panel')?.append(note);
+  }
+ };
  const characters=el(doc,'section','game-character-group');
  characters.id='gameCharacters';
  const charHead=el(doc,'div','army-section-heading game-section-header');
@@ -689,6 +721,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    target?'Assigned to '+unitDisplayName(target,session)+' · entry '+target.index:'Independent · no regiment assigned'));
   if(model.regiments.length)
    content.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
+  attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
   characters.append(card);
  }
  container.append(characters);
@@ -751,6 +784,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
    content.append(memberArea);
+   attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
    regiments.append(card);
   }
  }
