@@ -91,7 +91,7 @@ try{
  await page.locator('#gameUnitsPanel').waitFor({state:'visible'});
  await audit('army roster');
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
- await sea.locator('.game-unit-focus-open').click();
+ await sea.locator('.game-unit-expand-toggle').click();
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0);
  await audit('unit full expanded card');
  const defence=sea.locator('details.game-defence-details').first();
@@ -99,8 +99,7 @@ try{
   await defence.locator(':scope > summary').click();
   await audit('unit expanded defence sources');
  }
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,
-  'The full unit remains inline when changing navigation tabs');
+ await sea.locator('.game-unit-expand-toggle').click();
  await page.locator('#gameNavMagic').click();
  await audit('magic');
  await page.locator('#gameItemAbilities .game-effect-card').first().locator('summary').click();

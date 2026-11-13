@@ -24,22 +24,20 @@ try{
  assert.match(await page.locator('#gameOverviewPanel').innerText(),/No ongoing spell effects/);
  assert.equal(await page.locator('#gameWorkspaceNav [role=tab]').count(),3);
 
- // Unit cards begin expanded in Compact mode, and the single arrow folds them.
+ // Unit cards begin as Compact in the roster and expand to Full in place.
  await page.locator('#gameNavUnits').click();
  const sea=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const id=await sea.getAttribute('data-unit-id');
  const state=sea.locator('.game-unit-expand-toggle');
- assert.equal(await state.getAttribute('aria-expanded'),'true');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
- await state.click();
  assert.equal(await state.getAttribute('aria-expanded'),'false');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await sea.locator('.army-unit-head h3').click();
  assert.equal(await state.getAttribute('aria-expanded'),'true');
  assert.equal(await sea.locator('.army-unit-expandable').count(),0);
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
- await sea.locator('.game-unit-focus-open').click();
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
  const originalCount=await page.locator('#armyRosterList .army-unit-card').count();
  assert.equal(originalCount,17);
 
@@ -70,7 +68,8 @@ try{
  assert.equal(await sea.locator('.game-defence-panel').isVisible(),true);
  assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
  await sea.locator('.game-unit-expand-toggle').click();
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
 
  // Returning to game uses the previous section; another army defaults Units.
@@ -90,10 +89,8 @@ try{
   null,{timeout:15000});
  assert.match(await magic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
  await page.locator('#gameNavUnits').click();
- assert.equal(await sea.locator('.game-unit-expand-toggle').getAttribute('aria-expanded'),'true',
-  'Offline reload restores the roster in its default expanded Compact card state');
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,
-  'Gameplay state survives offline without persisting cosmetic Full View');
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,
+  'Compact unit card must remain available after reloading');
 
  // Verify bottom navigation and unit toggle remain easy to touch in both orientations.
  for(const viewport of [{width:390,height:844},{width:956,height:440},{width:320,height:740}]){
@@ -104,6 +101,8 @@ try{
     return {width:r.width,height:r.height};
    });
    assert.ok(rect.height>=44,selector+' must have at least 44px touch height: '+JSON.stringify(rect));
+   if(selector==='.game-unit-expand-toggle')
+    assert.ok(rect.width>=44,selector+' must have at least 44px touch width: '+JSON.stringify(rect));
   }
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
    'No page-wide horizontal overflow at '+viewport.width+'px');

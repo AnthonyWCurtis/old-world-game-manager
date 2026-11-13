@@ -36,6 +36,19 @@ export function prepareUnitCompactCard(card,army){
  }
  const summary=make(doc,'section','owc-compact-loadout');
  summary.append(make(doc,'h4','owc-compact-heading','✧ Equipment & Special Rules'));
+ // Mixed-model regiments retain the importer's explicit model-group counts.
+ // This is data display, not inferred legal composition or profiles.
+ const importedUnit=(army?.units||[]).find(unit=>unit.id===card.dataset.unitId);
+ const modelGroups=(importedUnit?.modelGroups||[])
+  .filter(group=>group?.name&&Number.isSafeInteger(group.quantity));
+ if(modelGroups.length){
+  const groups=make(doc,'div','owc-model-groups');
+  groups.append(make(doc,'h4','owc-compact-label','Model Groups'));
+  groups.append(make(doc,'p','owc-model-group-values',
+   modelGroups.map(group=>group.quantity+'× '+group.name).join(' · ')));
+  summary.append(groups);
+ }
+
  for(const [label,items] of [['Equipment & Upgrades',equipment],['Special Rules',rules]]){
   if(!items.length)continue;
   summary.append(make(doc,'h4','owc-compact-label',label),wordList(doc,items));
@@ -92,16 +105,18 @@ export function installRuleViewer(container){
  close.type='button';
  head.append(title,close);
  const notice=make(doc,'p','owc-rule-notice','Live original text from tow.whfb.app. If this site blocks embedded pages, use Open original.');
+ const frameWrap=make(doc,'div','owc-rule-frame-wrap');
  const frame=make(doc,'iframe','owc-rule-frame');
  frame.title='Original tow.whfb.app reference';
  frame.referrerPolicy='no-referrer';
+ frameWrap.append(frame);
  const footer=make(doc,'div','owc-rule-footer');
  const original=make(doc,'a','owc-rule-original','Open original ↗');
  original.target='_blank';original.rel='noopener noreferrer';
  const done=make(doc,'button','owc-rule-close','Close');
  done.type='button';
  footer.append(original,done);
- shell.append(head,notice,frame,footer);dialog.append(shell);
+ shell.append(head,notice,frameWrap,footer);dialog.append(shell);
  doc.body.append(dialog);
  let returnFocus=null;
  function dismiss(){

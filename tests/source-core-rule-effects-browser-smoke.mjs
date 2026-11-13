@@ -24,7 +24,7 @@ try{
  id,{timeout:25000});
  assert.doesNotMatch((await sea.locator('.game-card-status .game-card-chip').allTextContents()).join(' '),/Close Order/,
   'Published manual reminders must not be falsely shown as active buffs');
- await sea.locator('.game-unit-focus-open').click();
+ await sea.locator('.game-unit-expand-toggle').click();
  const effect=sea.locator('.game-effect-card[data-effect-id="published-close-order"]');
  await effect.waitFor({state:'visible'});
  assert.match(await effect.locator('summary').innerText(),/Reviewed · manual/);
@@ -41,8 +41,7 @@ try{
   'Unreviewed source rules remain present');
  assert.equal(await sea.locator('.game-attack-panel .game-offensive-effect[data-effect-id="published-close-order"]').count(),0,
   'Manual formation permission must not be transformed into an attack bonus');
- await sea.locator('.game-unit-focus-open').click();
- assert.equal(await sea.evaluate(card=>card.classList.contains('owc-view-compact')),true);
+ await sea.locator('.game-unit-expand-toggle').click();
  await page.locator('#gameScreenSaveBtn').click();
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
