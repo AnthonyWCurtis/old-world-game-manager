@@ -21,7 +21,7 @@ try{
   const card=document.querySelector('#gameCharacters article[data-unit-id="'+id+'"]');
   return card?.querySelector('.army-unit-unified-loadout')?.textContent?.includes('Precision Strikes');
  },ishayaId,{timeout:25000});
- assert.equal(await sea.locator('.game-card-status').innerText().then(s=>s.includes('Precision Strikes')),false,
+ assert.equal(await sea.locator('.game-card-status .game-card-chip').allTextContents().then(x=>x.some(s=>s.includes('Precision Strikes'))),false,
   'Source rule should not apply without a recorded join');
  await ishaya.locator('.game-unit-focus-open').click();
  const own=ishaya.locator('.game-effect-card[data-effect-id="precision-strikes"]');
@@ -32,18 +32,15 @@ try{
  await page.locator('#gameUnitFocusBack').click();
 
  await ishaya.locator('.game-unit-expand-toggle').click();
+ await ishaya.locator('.game-unit-focus-open').click();
  await ishaya.locator('.character-unit-picker').selectOption(seaId);
- await page.waitForFunction(id=>{
-  return [...document.querySelectorAll('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip')]
-   .some(x=>x.textContent.includes('Precision Strikes'));
- },seaId,{timeout:20000});
- const chip=sea.locator('.game-card-chip').filter({hasText:'Precision Strikes'});
- assert.equal(await chip.count(),1);
- assert.match(await chip.innerText(),/AP \+1/);
- const seaStatus=await sea.locator('.game-card-status').innerText();
- assert.match(seaStatus,/Armour Bane \(2\)/,'Razor Standard retained separately');
- assert.doesNotMatch(seaStatus,/\b1 equipped\b|\b2 conditional\b/,
-  'Primary compact card should name benefits instead of only generic counts');
+ await page.waitForFunction(id=>
+  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),
+  seaId,{timeout:20000});
+ assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
+  'Conditional Precision Strikes and Armour Bane remain in attack references, not active buffs');
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
+  'Razor Standard persists as a separate source-backed offensive effect');
  await sea.locator('.game-unit-focus-open').click();
  const attackRule=sea.locator('.game-offensive-effect[data-effect-id="precision-strikes"]');
  await attackRule.waitFor({state:'visible'});
@@ -59,16 +56,22 @@ try{
   'Other source special rules are visible as reference-only, not silently omitted');
  await page.locator('#gameUnitFocusBack').click();
  const picker=ishaya.locator('.character-unit-picker');
- if(!await picker.isVisible())await ishaya.locator('.game-unit-expand-toggle').click();
+ if(!await picker.isVisible()){
+  if(await ishaya.locator('.game-unit-expandable').isHidden())await ishaya.locator('.game-unit-expand-toggle').click();
+  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-focus-open').click();
+ }
  await picker.selectOption('');
- await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
+ await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),seaId);
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]').count(),0);
  // The already loaded, exact-source reference shard and the recorded
  // assignment must recover without network after an iPhone offline reload.
- if(!await picker.isVisible())await ishaya.locator('.game-unit-expand-toggle').click();
+ if(!await picker.isVisible()){
+  if(await ishaya.locator('.game-unit-expandable').isHidden())await ishaya.locator('.game-unit-expand-toggle').click();
+  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-focus-open').click();
+ }
  await picker.selectOption(seaId);
  await page.waitForFunction(id=>
-  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId);
+  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),seaId);
  await page.locator('#gameScreenSaveBtn').click();
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
@@ -78,7 +81,7 @@ try{
   await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  await page.waitForFunction(id=>
-  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-card-chip-offensive[data-effect-id="precision-strikes"]'),seaId,{timeout:20000});
+  !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),seaId,{timeout:20000});
  assert.deepEqual(errors,[]);
  console.log('Ishaya Precision Strikes source-verified join, attack and Effects tabs, remove, offline restore and named benefits: PASS');
 }finally{await browser.close();}

@@ -222,7 +222,7 @@ try{
  assert.match(armyMetrics,/1\s*Unit entries/);
  assert.match(armyMetrics,/33\s*Models with known counts/);
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),1);
- assert.match(await page.locator('.army-unit-card .army-unit-head').innerText(),/33 models/);
+ assert.match(await page.locator('.army-unit-card .army-unit-head').innerText(),/33\/33/);
  assert.match(await page.locator('.army-unit-card .army-unit-head').innerText(),/387 pts/);
  assert.equal(await page.locator('.army-profile-table thead th').allTextContents().then(x=>x.join(' ')),
   'Model M WS BS S T W I A Ld');
@@ -249,7 +249,7 @@ try{
  await page.locator('#gameRosterSearch').fill('Primal Warherds');
  const special=page.locator('#armyRosterList .army-unit-card').filter({hasText:'Primal Warherds'}).first();
  await special.locator('.game-unit-expand-toggle').click();
- assert.match(await special.innerText(),/21 models/);
+ assert.match(await special.innerText(),/21\/21/);
  assert.match(await special.innerText(),/11× Gor/);
  assert.match(await special.innerText(),/10× Ungor/);
  await page.locator('#backToImporterBtn').click();

@@ -23,12 +23,11 @@ try{
  const sea=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const seaId=await sea.getAttribute('data-unit-id');
- assert.match(await sea.locator('.game-card-status').innerText(),/equipped/);
- assert.match(await sea.locator('.game-card-status').innerText(),/conditional/);
- assert.match(await sea.locator('.game-card-status').innerText(),/Armour Bane \(2\)/,
-  'Collapsed Sea Guard must name its offensive standard instead of showing only a generic item count');
+ assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
+  'Only currently active effects belong in the header; passive rules move to the compact source list');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
+ await sea.locator('.game-unit-focus-open').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting Attacks');
  const shootingBS=seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-ballistic-skill');
@@ -75,6 +74,7 @@ try{
  const company=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator("h3:text-is(\"Ship's Company\")")}).first();
  await company.locator('.game-unit-expand-toggle').click();
+ await company.locator('.game-unit-focus-open').click();
  assert.match(await company.locator('.game-effect-empty').innerText(),/No supported source-reviewed effects/);
 
  // A Battle Standard carries its own item, and joins are recorded rather than guessed.
@@ -83,6 +83,7 @@ try{
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
  await bsb.locator('.game-unit-expand-toggle').click();
+ await bsb.locator('.game-unit-focus-open').click();
  const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await bsbAttacks.isVisible(),true);
  const bsbShooting=bsbAttacks.locator('[data-attack-phase="shooting"]');
@@ -128,7 +129,8 @@ try{
  const sharedBanner=sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="banner-of-confidence"]');
  assert.equal(await sharedBanner.count(),1);
  assert.equal(await sharedBanner.getAttribute('data-shared'),'true');
- assert.match(await sea.locator('.game-card-status').innerText(),/conditional/);
+ assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
+  'Recorded conditional item remains available in Full but is not an active buff');
  assert.equal(await bsb.locator('.game-effect-card[data-effect-id="razor-standard"]').count(),1,
   'A character joined to Sea Guard receives the unit standard effect');
  assert.equal(await bsb.locator('.game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
@@ -159,6 +161,8 @@ try{
   .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
  if(await storm.locator('.game-unit-expandable').isHidden())
   await storm.locator('.game-unit-expand-toggle').click();
+ if(await storm.evaluate(e=>e.classList.contains('owc-view-compact')))
+  await storm.locator('.game-unit-focus-open').click();
  assert.equal(await storm.locator('.game-effect-card[data-effect-id="scroll-of-invocation"]')
   .getAttribute('data-status'),'spent');
 
@@ -166,12 +170,15 @@ try{
  const elixir=page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'153 pts'}).first();
  await elixir.locator('.game-unit-expand-toggle').click();
+ await elixir.locator('.game-unit-focus-open').click();
  const potion=elixir.locator('.game-effect-card[data-effect-id="elixir-of-power"]');
  assert.equal(await potion.getAttribute('data-status'),'ready');
  await potion.locator('summary').click();
  await potion.locator('button.game-effect-action').filter({hasText:'Confirm consumed'}).click();
  assert.equal(await potion.getAttribute('data-status'),'active');
- assert.match(await elixir.locator('.game-card-status').innerText(),/Active: Elixir of Power/);
+ assert.match(await elixir.locator('.game-card-status').innerText(),/Elixir of Power/);
+ assert.equal(await elixir.locator('.game-card-status a.owc-active-rule-link').count(),1,
+  'An active item opens its original reference without turning the effect off');
  await page.locator('#gameNavMagic').click();
  assert.match(await page.locator('#spellControlPanel .game-spell-heading').innerText(),/1 items active/);
  assert.equal(await page.locator('#spellControlPanel .game-active-items .game-effect-card[data-effect-id="elixir-of-power"]').count(),1);
@@ -182,7 +189,8 @@ try{
  await potion.locator('summary').click();
  await potion.locator('button.game-effect-action').filter({hasText:'Finish effect'}).click();
  assert.equal(await potion.getAttribute('data-status'),'spent');
- assert.match(await elixir.locator('.game-card-status').innerText(),/spent/);
+ assert.equal(await elixir.locator('.game-card-status .owc-active-rule-link').count(),0,
+  'Spent item no longer appears as an active header badge');
 
  // Charmed Shield continues using its existing item-use record, not a new flag.
  const shield=bsb.locator('.game-effect-card[data-effect-id="charmed-shield"]');

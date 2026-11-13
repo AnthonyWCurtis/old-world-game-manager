@@ -21,21 +21,33 @@ try{
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId);
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),1,'A focused unit is the only visible card');
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'Unit detail must have no section tabs');
- const tiles=sea.locator('.game-profile-stat-group');
- await tiles.first().waitFor({state:'visible',timeout:20000});
- assert.ok(await tiles.count()>=2,'Published Sea Guard and Sea Master each have a separate profile');
- assert.match(await tiles.first().innerText(),/Sea Guard/);
- assert.match(await tiles.nth(1).innerText(),/Sea Master/);
- assert.match(await tiles.first().innerText(),/BS\s*4/);
- assert.match(await tiles.nth(1).innerText(),/BS\s*5/);
-
- // Approved Stage 2 visual contract: nine tiles per model, one always-visible
- // Shooting and Combat section, pencil and wound tracker in the unit heading.
- const profileGrid=sea.locator('.game-profile-stat-grid').first();
- assert.equal(await profileGrid.locator('.game-profile-stat').count(),9);
- assert.equal(await profileGrid.evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),9);
- assert.equal(await sea.locator('.army-profile-scroll').isVisible(),false,
-  'The original wide profile table must not appear in expanded units');
+ const table=sea.locator('.army-unit-card-body > .army-profile-scroll .army-profile-table');
+ await table.waitFor({state:'visible',timeout:20000});
+ const profiles=table.locator('tbody tr:not(.army-profile-mount-row):not(.army-profile-mount-heading)');
+ assert.ok(await profiles.count()>=2,'Sea Guard and champion share a compact characteristic table');
+ assert.match(await profiles.first().innerText(),/Sea Guard/);
+ assert.match(await profiles.nth(1).innerText(),/Sea Master/);
+ assert.equal(await profiles.first().locator('th,td').count(),10,'One model column plus nine stats');
+ assert.equal(await profiles.nth(1).locator('.owc-different-stat').count(),2,
+  'Champion BS and Attacks differences are highlighted in gold');
+ assert.equal(await page.locator('.owc-view-picker button[aria-pressed="true"]').innerText(),'Full View');
+ await page.locator('.owc-view-picker button').filter({hasText:'Compact View'}).click();
+ assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
+ assert.equal(await sea.locator('.army-profile-scroll').isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,
+  'Compact view shows source-linked loadout and characteristics, not the entire full card');
+ const drilled=sea.locator('.owc-compact-word[href$="/special-rules/drilled"]').first();
+ assert.ok(await drilled.count()>0,'Drilled has a source-backed reference');
+ await drilled.click();
+ assert.equal(await page.locator('.owc-rule-dialog').evaluate(d=>d.open),true,
+  'Source pages open inside the same Game Manager');
+ assert.equal(await page.locator('.owc-rule-original').getAttribute('href'),
+  'https://tow.whfb.app/special-rules/drilled');
+ await page.locator('.owc-rule-close').first().click();
+ assert.equal(await page.locator('.owc-rule-dialog').evaluate(d=>d.open),false);
+ await page.locator('.owc-view-picker button').filter({hasText:'Full View'}).click();
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
+ // Shared name, wounds, effects and all original gameplay controls are unchanged.
  assert.deepEqual(await sea.locator('.game-attack-phase>h5').allTextContents(),
   ['Shooting Attacks','Combat Attacks']);
  assert.equal(await sea.locator('.game-unit-name-line .game-rename-toggle').isVisible(),true);

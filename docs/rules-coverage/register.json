@@ -10,7 +10,7 @@
     },
     {
       "file": "docs/army-roster-page.js",
-      "sha256": "8af69bb1fd0c27c837d3728dbf54cd8f80c26a9247a8c799f621f5a48c88b283"
+      "sha256": "22381c922907354e7ee48c38a57cf00e8b496687eb3fffd608e60a27474df6f8"
     },
     {
       "file": "docs/army-state.js",
@@ -282,7 +282,7 @@
     },
     {
       "file": "docs/sw.js",
-      "sha256": "7ed4cf7d7454b93214917708f2e429e5aa7c9563f7737f79e7b10ed4284358be"
+      "sha256": "55463e0e2c7cd21896b907257f9079a05f8833d1acd870b96117c89c8268beeb"
     },
     {
       "file": "docs/tactical-command.js",
@@ -438,11 +438,15 @@
     },
     {
       "file": "docs/unit-focus-view.js",
-      "sha256": "da07261c515c3d3e08b6b2e87f77380bf8e3e073c81d51a881e0645daddff41d"
+      "sha256": "61237b7581c27b7c69681cab9457ed79c24b0d83a6b8b2ac7ec318ce5f60bc73"
     },
     {
       "file": "docs/unit-selection-matcher.js",
       "sha256": "cd0f0d70f94ea4d48da57acbef738886e537aa3b11619694a4cb87fc70674dff"
+    },
+    {
+      "file": "docs/unit-view-modes.js",
+      "sha256": "e71253ce7a2b00a2d1ec49fd00bbfd789fe68c08b782b059acaf853bff54034a"
     },
     {
       "file": "docs/unit-wound-tracker.js",
@@ -478,7 +482,7 @@
     },
     {
       "file": "tests/effects-engine.test.mjs",
-      "sha256": "58f6660bfa4401bb6c7bb06a4d9db92664f42bb7c675c93e41c318c779414e15"
+      "sha256": "5afb99715ec00e4fe55570f204ad44c1e72d064f21e4af7252f3bc1e1b34e476"
     },
     {
       "file": "tests/imported-rule-coverage.test.mjs",
@@ -490,7 +494,7 @@
     },
     {
       "file": "tests/source-core-rule-effects.test.mjs",
-      "sha256": "b60ea8a5df8d57a68fe6c286bd63cfdf8c899a5ce258c414388bc2b76a426b4b"
+      "sha256": "28595e849c7f293c5d18b1581c53300e119eb729675b5d40d254362e49524ad9"
     },
     {
       "file": "tests/source-special-rule-effects.test.mjs",

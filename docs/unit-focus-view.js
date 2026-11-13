@@ -1,5 +1,6 @@
 /** Normal Play's focused unit screen. DOM-only navigation, never a rules calculator. */
 import {armySessionKey} from './battle-session.js';
+import {prepareUnitCompactCard,setUnitView,installRuleViewer} from './unit-view-modes.js';
 
 const PREFIX='old-world-game-manager-focused-unit-v1:';
 const make=(doc,tag,cls='',label)=>{
@@ -83,9 +84,9 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
  const key=PREFIX+armySessionKey(army);
  const allCards=groups.flatMap(group=>group.cards);
  const byId=new Map(allCards.map(card=>[card.dataset.unitId,card]));
- // The approved tile profile is the single expanded-card layout everywhere,
- // including inline expansion outside the focused view.
- for(const card of allCards)enhanceFocusedProfile(card);
+ // One source-backed compact summary per original card; leave original controls in place.
+ for(const card of allCards)prepareUnitCompactCard(card,army);
+ installRuleViewer(container);
  let active=null;
  const toolbar=make(doc,'section','game-unit-focus-toolbar');
  toolbar.id='gameUnitFocus';
@@ -101,12 +102,35 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
  heading.append(title);
  top.append(back,heading);
  toolbar.append(top);
+ const modes=make(doc,'nav','owc-view-picker');
+ modes.setAttribute('aria-label','Unit detail view');
+ const compact=make(doc,'button','','Compact View');
+ const full=make(doc,'button','','Full View');
+ compact.type=full.type='button';
+ modes.append(compact,full);
+ toolbar.append(modes);
  container.prepend(toolbar);
+ let preferredMode='full';
+ const preferenceKey='old-world-game-manager-unit-view-v1:'+armySessionKey(army);
+ try{
+  if(localStorage.getItem(preferenceKey)==='compact')preferredMode='compact';
+ }catch{/* View preference is cosmetic. */}
+ function chooseMode(mode){
+  preferredMode=mode==='compact'?'compact':'full';
+  compact.setAttribute('aria-pressed',String(preferredMode==='compact'));
+  full.setAttribute('aria-pressed',String(preferredMode==='full'));
+  if(active)setUnitView(active.card,preferredMode);
+  try{localStorage.setItem(preferenceKey,preferredMode)}catch{/* View choice remains in memory. */}
+ }
+ compact.addEventListener('click',()=>chooseMode('compact'));
+ full.addEventListener('click',()=>chooseMode('full'));
+ chooseMode(preferredMode);
 
  function closeFocus({focusBack=true}={}){
   if(!active)return;
   const previous=active;
   active=null;
+  setUnitView(previous.card,'compact');
   for(const [node,hidden] of previous.originalChildren)node.hidden=hidden;
   for(const group of groups)group.wrapper.classList.remove('game-focus-section');
   for(const owner of container.querySelectorAll('#gameCharacters,#gameRegiments'))
@@ -148,6 +172,7 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   title.textContent=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'Unit details';
   toolbar.hidden=false;
   active={card,content,group,originalChildren};
+  chooseMode(preferredMode);
   saveFocus(key,{unitId:card.dataset.unitId});
   if(!restoring)toolbar.scrollIntoView({block:'start',behavior:'instant'});
  }
@@ -156,12 +181,29 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   const header=card.querySelector('.army-unit-head');
   if(!header)continue;
   const name=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'unit';
-  const open=make(doc,'button','game-unit-focus-open','Open unit');
+  const open=make(doc,'button','game-unit-focus-open','Full view');
   open.type='button';
   open.setAttribute('aria-label','Open '+name+' unit details');
-  open.addEventListener('click',event=>{event.stopPropagation();openFocus(card);});
+  open.addEventListener('click',event=>{
+   event.stopPropagation();
+   // In an expanded army card, switch views in place instead of navigating.
+   // A collapsed card still opens the focused unit screen.
+   if(card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
+    const mode=card.classList.contains('owc-view-full')?'compact':'full';
+    setUnitView(card,mode);
+    open.textContent=mode==='full'?'Compact view':'Full view';
+    open.setAttribute('aria-label',(mode==='full'?'Show compact':'Show full')+' view for '+name);
+   }else openFocus(card);
+  });
+  card.querySelector('.game-unit-expand-toggle')?.addEventListener('click',()=>{
+   if(!card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
+    setUnitView(card,'compact');
+    open.textContent='Full view';
+    open.setAttribute('aria-label','Open '+name+' unit details');
+   }
+  });
   header.append(open);
-  // Primary tap on a card opens the focused view; legacy expansion remains optional.
+  // Primary tap on a card opens focused detail; single fold remains available.
   header.addEventListener('click',event=>{
    if(event.target.closest('button,a,input,select,label,form,textarea'))return;
    event.stopImmediatePropagation();

@@ -353,55 +353,27 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
 function appendCompactStatus(doc,card,defence,assignedCount=0,effects=[]){
  const header=card.querySelector('.army-unit-head');
  if(!header)return;
+ if(assignedCount)header.querySelector('.army-unit-meta')?.append(
+  el(doc,'span','game-assigned-count',assignedCount+' assigned character'+(assignedCount===1?'':'s')));
  const status=el(doc,'div','game-card-status');
- if(assignedCount)status.append(el(doc,'span','game-card-chip',
-  assignedCount+' assigned character'+(assignedCount===1?'':'s')));
- if(Number.isInteger(defence?.armour?.value)){
-  const chip=el(doc,'span','game-card-chip game-card-chip-armour',
-   'Equipment armour '+defence.armour.label);
-  chip.title=defence.armour.note;
+ const active=new Map();
+ // Both sources are source-reviewed projections, not guessed from army names.
+ for(const entry of defence?.activeSpellEffects||[]){
+  if(entry?.name&&!active.has(entry.name))
+   active.set(entry.name,entry.sourceUrl||null);
+ }
+ for(const entry of effects||[]){
+  if(entry?.status==='active'&&entry.name&&!active.has(entry.name))
+   active.set(entry.name,entry.sourceUrl||null);
+ }
+ for(const [name,url] of active){
+  const chip=safeLink(doc,'✦ '+name,url,
+   'game-card-chip game-card-chip-magic owc-active-rule-link');
+  chip.title='Active effect — tap for the original source rule';
   status.append(chip);
  }
- const ongoing=new Set((defence?.activeSpellEffects||[]).map(e=>e.name).filter(Boolean));
- for(const name of [...ongoing].slice(0,3))
-  status.append(el(doc,'span','game-card-chip game-card-chip-magic','Active: '+name));
- for(const note of (defence?.spellMovementNotes||[]).slice(0,2))
-  status.append(el(doc,'span','game-card-chip game-card-chip-movement',
-   'Movement: '+note.name));
- // Show named, source-reviewed benefits rather than vague "2 conditional" counts.
- // High-priority joined buffs and attack effects appear first. Every record,
- // including overflow, remains available with conditions in the Effects tab.
- const itemEffects=effects.filter(e=>e.kind!=='Spell'&&e.mode!=='manual-reference');
- const priority=e=>e.kind==='Special rule'&&e.shared?0:
-  e.effectGroup==='offensive'?1:e.status==='active'?2:3;
- const sorted=[...itemEffects].sort((a,b)=>priority(a)-priority(b));
- const LIMIT=6;
- for(const effect of sorted.slice(0,LIMIT)){
-  const isAttack=effect.effectGroup==='offensive'&&effect.quickLabel;
-  let name=effect.quickLabel||effect.name;
-  if(effect.scope?.includes('Champion bearer only'))name+=' (champion only)';
-  // Existing players and the battle-status controls use "Active: Name".
-  if(effect.status==='active')name='Active: '+name;
-  const state=effect.status==='conditional'?' · conditional':
-   effect.status==='ready'?' · ready':
-   effect.status==='spent'?' · spent':
-   effect.status==='equipped'?' · equipped':'';
-  if(effect.status==='bound-spell')name='Bound: '+(effect.boundSpell?.name||effect.name);
-  const cls=isAttack?'game-card-chip-offensive':
-   effect.status==='spent'?'game-card-chip-spent':
-   effect.status==='active'?'game-card-chip-magic':'game-card-chip-item';
-  const chip=el(doc,'span','game-card-chip '+cls,name+state);
-  chip.dataset.effectId=effect.id;
-  chip.title=[effect.description,effect.scope,'Source: '+effect.sourceUrl]
-   .filter(Boolean).join(' · ');
-  status.append(chip);
- }
- if(sorted.length>LIMIT)
-  status.append(el(doc,'span','game-card-chip game-card-chip-item',
-   '+'+(sorted.length-LIMIT)+' more named effects in unit details'));
  if(status.childNodes.length)header.querySelector('.army-unit-names')?.append(status);
 }
-
 /**
  * Re-render into the roster screen, preserving expanded published-rule panels
  * as async source references arrive and unit cards are updated.

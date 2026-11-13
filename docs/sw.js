@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-stage2-theme-restored';
+const CACHE_NAME='game-manager-v1-shell-20261113-compact-full-ref-viewer';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -8,6 +8,7 @@ const APP_SHELL=[
  './mobile.css',
  './tactical-command.css',
  './unit-card-ux.css',
+ './unit-view-modes.css',
  './app.js',
  './tactical-command.js',
  './parser.js',
@@ -26,6 +27,7 @@ const APP_SHELL=[
  './roster-compact-navigation.js',
  './roster-drag-reorder.js',
  './unit-focus-view.js',
+ './unit-view-modes.js',
  './game-screen-model.js',
  './defence-engine.js',
  './source-printed-armour.js',

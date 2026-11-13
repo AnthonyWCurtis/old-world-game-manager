@@ -123,7 +123,8 @@ test('Manual reviewed references are not presented as active compact buffs or co
  const roster=readFileSync(new URL('../docs/army-roster-page.js',import.meta.url),'utf8');
  const ui=readFileSync(new URL('../docs/effects-ui.js',import.meta.url),'utf8');
  const src=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
- assert.match(roster,/e\.mode!=='manual-reference'/);
+ assert.match(roster,/entry\?\.status==='active'/);
+ assert.doesNotMatch(roster,/game-card-chip-item/);
  assert.match(ui,/manual:'Reviewed · manual'/);
  assert.match(ui,/rule is not applied to rolls, saves, movement, formations or combat totals/);
  assert.match(src,/source-core-rule-effects\.js/);

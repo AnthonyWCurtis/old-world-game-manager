@@ -22,7 +22,7 @@ try{
  await page.waitForFunction(unitId=>
   !!document.querySelector('#gameRegiments article[data-unit-id="'+unitId+'"] .game-effect-card[data-effect-id="published-close-order"]'),
  id,{timeout:25000});
- assert.doesNotMatch(await sea.locator('.game-card-status').innerText(),/Close Order/,
+ assert.doesNotMatch((await sea.locator('.game-card-status .game-card-chip').allTextContents()).join(' '),/Close Order/,
   'Published manual reminders must not be falsely shown as active buffs');
  await sea.locator('.game-unit-focus-open').click();
  const effect=sea.locator('.game-effect-card[data-effect-id="published-close-order"]');

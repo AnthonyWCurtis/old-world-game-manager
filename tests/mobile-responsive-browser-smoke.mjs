@@ -81,17 +81,20 @@ try{
     const h=await target.evaluate(el=>el.getBoundingClientRect().height);
     assert.ok(h>=44,'Game Screen touch target '+id+' too small: '+h+'px');
    }
-   // The approved single-card view replaces the horizontally scrolling
-   // profile table with nine compact source-backed characteristic tiles.
-   const grid=page.locator('#armyRosterList .game-profile-stat-grid:visible').first();
-   const stats=await grid.evaluate(el=>({
-    client:el.clientWidth,scroll:el.scrollWidth,
-    columns:getComputedStyle(el).gridTemplateColumns.split(' ').length,
-    tiles:el.querySelectorAll('.game-profile-stat').length
-   }));
+   // Approved two-row characteristics table: one model column plus nine
+   // evenly sized statistic columns; no horizontal scrolling.
+   const table=page.locator('#gameRegiments .army-unit-card')
+    .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first()
+    .locator('.army-profile-table:visible');
+   const stats=await table.evaluate(el=>{
+    const viewport=el.closest('.army-profile-scroll');
+    return {client:viewport.clientWidth,scroll:viewport.scrollWidth,
+     columns:el.querySelectorAll('thead th').length,
+     rows:el.querySelectorAll('tbody tr').length};
+   });
    assert.ok(stats.client>0&&stats.scroll<=stats.client+1&&
-    stats.columns===9&&stats.tiles===9,
-    'All nine characteristics must fit without horizontal scrolling at '+v.width+'px: '+JSON.stringify(stats));
+    stats.columns===10&&stats.rows>=2,
+    'Both model rows and nine characteristics must fit at '+v.width+'px: '+JSON.stringify(stats));
    assert.equal(await page.locator('.game-roster-search-input').isVisible(),true,'Unit search is primary navigation');
    assert.equal(await page.locator('#gameUnitsPanel .game-screen-jump').isVisible(),false,'Legacy redundant jump navigation is hidden');
   }
