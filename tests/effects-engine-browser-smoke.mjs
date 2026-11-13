@@ -25,7 +25,8 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
   'Only currently active effects belong in the header; passive rules move to the compact source list');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
  await sea.locator('.game-unit-focus-open').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
