@@ -29,9 +29,8 @@ try{
  assert.match(await own.locator('summary').innerText(),/Precision Strikes/);
  assert.equal(await ishaya.locator('.game-attack-panel .game-offensive-effect[data-effect-id="precision-strikes"]').count(),0,
   'Ishaya is the rule source, not automatically the AP beneficiary');
- await page.locator('#gameUnitFocusBack').click();
+ await ishaya.locator('.game-unit-focus-open').click();
 
- await ishaya.locator('.game-unit-expand-toggle').click();
  await ishaya.locator('.game-unit-focus-open').click();
  await ishaya.locator('.character-unit-picker').selectOption(seaId);
  await page.waitForFunction(id=>
@@ -54,7 +53,7 @@ try{
   'https://tow.whfb.app/special-rules/precision-strikes');
  assert.ok(await sea.locator('.game-published-rules-reference').count(),
   'Other source special rules are visible as reference-only, not silently omitted');
- await page.locator('#gameUnitFocusBack').click();
+ await sea.locator('.game-unit-focus-open').click();
  const picker=ishaya.locator('.character-unit-picker');
  if(!await picker.isVisible()){
   if(await ishaya.locator('.game-unit-expandable').isHidden())await ishaya.locator('.game-unit-expand-toggle').click();
