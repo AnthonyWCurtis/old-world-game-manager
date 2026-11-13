@@ -25,7 +25,7 @@ try{
  assert.equal(await page.locator('#gameUnitFocusBack').count(),0,'No separate unit details navigation');
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),17,'Other army units remain in roster');
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
  // Only the regiment's own equipment and special rules appear in its pills,
  // even though attached characters have their own nested source cards.
  const ownPills=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body > .owc-compact-loadout > .owc-compact-words .owc-compact-word');
@@ -80,7 +80,7 @@ try{
  assert.equal(await sea.locator('.owc-compact-loadout').innerText(),originalCompact);
  assert.equal(await table.isVisible(),true);
  for(const selector of ['.game-attack-panel','.game-defence-panel','.game-effects-panel']){
-  assert.equal(await sea.locator(selector).first().isVisible(),true,selector+' must appear below Compact View');
+  assert.equal(await content.locator(':scope > '+selector).isVisible(),true,selector+' must appear below Compact View');
  }
  assert.equal(await assigned.evaluate(el=>el.open),false,'Full View retains the assigned-character fold');
  await assigned.locator(':scope > summary').click();
@@ -91,21 +91,21 @@ try{
  assert.ok(position('army-unit-card-body')<position('game-attack-panel')&&
   position('game-attack-panel')<position('game-defence-panel'),
   'The expanded unit keeps Compact View at the top, with battle details beneath');
- assert.deepEqual(await sea.locator('.game-attack-phase>h5').allTextContents(),
+ assert.deepEqual(await content.locator(':scope > .game-attack-panel .game-attack-phase>h5').allTextContents(),
   ['Shooting Attacks','Combat Attacks']);
  assert.equal(await sea.locator('.game-unit-name-line .game-rename-toggle').isVisible(),true);
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
  await open.click();
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
  assert.equal(await open.getAttribute('aria-expanded'),'false');
  assert.equal(await content.isVisible(),true,'Compact view never collapses to name only');
  await open.click();
  assert.equal(await open.getAttribute('aria-expanded'),'true');
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),true);
  await open.click();
  assert.equal(await content.isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
  await search.fill("Ship's Company");
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
  const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3').filter({hasText:"Ship's Company"})});
