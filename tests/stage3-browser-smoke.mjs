@@ -28,6 +28,10 @@ try{
  const secondRegiment=await regiments.nth(1).getAttribute('data-unit-id');
  const membership=async(charId)=>page.locator('#gameCharacters .game-character-card[data-unit-id="'+charId+'"] .game-membership-label').innerText();
  const assigned=(regId)=>page.locator('#gameRegiments article[data-unit-id="'+regId+'"] details.game-attached-character');
+ const openAssigned=async(regId)=>{
+  const drawer=page.locator('#gameRegiments article[data-unit-id="'+regId+'"] .owc-assigned-drawer');
+  if(!await drawer.evaluate(el=>el.open))await drawer.locator(':scope > summary').click();
+ };
  assert.match(await membership(firstCharacter),/Independent/);
 
  // From a character: assign to a regiment.
@@ -37,6 +41,7 @@ try{
  assert.match(await page.locator('#battleSessionStatus').textContent(),/saved automatically|Saving/);
 
  // From a regiment: add a second, independent character.
+ await openAssigned(firstRegiment);
  await page.locator('#gameRegiments article[data-unit-id="'+firstRegiment+'"] select.regiment-character-picker').selectOption(secondCharacter);
  assert.equal(await assigned(firstRegiment).count(),2);
  assert.equal(await assigned(firstRegiment).nth(1).getAttribute('data-character-id'),secondCharacter);
@@ -45,6 +50,7 @@ try{
  await page.locator('#gameCharacters .game-character-card[data-unit-id="'+firstCharacter+'"] select.character-unit-picker').selectOption(secondRegiment);
  assert.equal(await assigned(firstRegiment).count(),1);
  assert.equal(await assigned(secondRegiment).count(),1);
+ await openAssigned(secondRegiment);
  const nested=assigned(secondRegiment).first();
  await nested.locator('summary').first().click();
  assert.match(await nested.innerText(),/Equipment[\s\S]*Special Rules/i);
@@ -53,6 +59,7 @@ try{
  assert.match(await membership(firstCharacter),/Independent/);
 
  // Reassign from the regiment side then allow autosave to commit.
+ await openAssigned(secondRegiment);
  await page.locator('#gameRegiments article[data-unit-id="'+secondRegiment+'"] select.regiment-character-picker').selectOption(firstCharacter);
  assert.equal(await assigned(secondRegiment).count(),1);
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('saved automatically'),null,{timeout:15000});

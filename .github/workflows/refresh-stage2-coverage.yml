@@ -1,0 +1,33 @@
+name: Stage 2 one-time coverage rebuild
+on:
+  push:
+    branches:
+      - feat/stage-2-selection-scope-modifiers
+    paths:
+      - .github/workflows/refresh-stage2-coverage.yml
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate rule register
+        run: node scripts/build-rules-coverage.mjs
+      - name: Commit register
+        shell: bash
+        run: |
+          git add docs/rules-coverage/register.json
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Stage 2: rebuild rules coverage after latest main'
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
+      - name: Verify reproducibility
+        run: node scripts/build-rules-coverage.mjs --check
