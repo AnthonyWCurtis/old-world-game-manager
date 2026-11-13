@@ -24,7 +24,6 @@ try{
  assert.equal(await sea.locator('.game-card-status').innerText().then(s=>s.includes('Precision Strikes')),false,
   'Source rule should not apply without a recorded join');
  await ishaya.locator('.game-unit-focus-open').click();
- await page.locator('#gameUnitFocusTabs [data-focus-tab="effects"]').click();
  const own=ishaya.locator('.game-effect-card[data-effect-id="precision-strikes"]');
  await own.waitFor({state:'visible'});
  assert.match(await own.locator('summary').innerText(),/Precision Strikes/);
@@ -46,11 +45,9 @@ try{
  assert.doesNotMatch(seaStatus,/\b1 equipped\b|\b2 conditional\b/,
   'Primary compact card should name benefits instead of only generic counts');
  await sea.locator('.game-unit-focus-open').click();
- await page.locator('#gameUnitFocusTabs [data-focus-tab="attacks"]').click();
  const attackRule=sea.locator('.game-offensive-effect[data-effect-id="precision-strikes"]');
  await attackRule.waitFor({state:'visible'});
  assert.match(await attackRule.innerText(),/AP \+1/);
- await page.locator('#gameUnitFocusTabs [data-focus-tab="effects"]').click();
  const row=sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="precision-strikes"]');
  await row.waitFor({state:'visible'});
  assert.match(await row.locator('summary').innerText(),/Conditional/);
