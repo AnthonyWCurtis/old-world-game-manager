@@ -1,0 +1,161 @@
+/* Stage 2 approved Compact / Full cards; strictly Game Screen-scoped. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-scroll{
+ display:block!important;max-width:100%;border:0;border-radius:0;overflow-x:auto;
+ background:transparent;padding:0;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table{
+ min-width:285px;width:100%;table-layout:fixed;white-space:normal;
+ border-collapse:separate;border-spacing:2px;font-variant-numeric:tabular-nums;
+ font-size:11px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table :is(th,td){
+ position:static!important;min-width:0!important;height:39px;padding:7px 1px!important;
+ border:0!important;background:#233950!important;color:#f0e7d6!important;
+ text-align:center;vertical-align:middle;font-size:11px;font-weight:550;
+ word-break:normal;overflow-wrap:normal;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table thead th{
+ height:28px;background:#1b3047!important;color:#d8b777!important;font-size:10px;font-weight:750;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table tr>*:first-child{
+ width:86px;text-align:left!important;padding-left:6px!important;
+ white-space:normal!important;line-height:1.25;font-weight:650;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table tbody td.owc-different-stat{
+ color:#f0c57a!important;font-weight:750;
+}
+.tactical-ui #armyRosterList .owc-champion-note{
+ display:block;font-size:9px;color:#e6bf78;font-weight:500;margin-top:3px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact > .game-unit-expandable > :not(.army-unit-card-body){
+ display:none!important;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact > .game-unit-expandable > .army-unit-card-body{
+ padding:11px 10px 14px;background:transparent;color:#eef0f3;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing){
+ display:none!important;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > .owc-compact-loadout{
+ display:block!important;
+}
+.tactical-ui #armyRosterList .owc-compact-loadout{
+ margin:0 0 13px;padding:0;background:transparent;color:#dce5ef;
+}
+.tactical-ui #armyRosterList .owc-compact-label{
+ margin:0 0 4px;color:#d8b777;font-size:11px;font-weight:750;
+ text-transform:uppercase;letter-spacing:.055em;
+}
+.tactical-ui #armyRosterList .owc-compact-label:not(:first-child){margin-top:10px}
+.tactical-ui #armyRosterList .owc-compact-words{
+ line-height:1.8;font-size:12px;color:#e3eaf0;overflow-wrap:anywhere;
+}
+.tactical-ui #armyRosterList .owc-compact-word{font-size:inherit;color:#e3eaf0}
+.tactical-ui #armyRosterList a.owc-compact-word{
+ text-decoration:underline dotted #96a9bd;text-underline-offset:4px;
+}
+.tactical-ui #armyRosterList a.owc-compact-word:hover{color:#f2ce90}
+.tactical-ui #armyRosterList .owc-word-separator{color:#8499ad;white-space:pre}
+.tactical-ui #armyRosterList .owc-compact-unavailable{font-size:11px;color:#9fb4c8}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption{
+ margin:12px 0 8px;padding:0;border:0;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption:before{display:none}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption strong{
+ color:#f1dfba;font-size:14px;font-weight:750;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption span{display:none}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .owc-compact-loadout{
+ display:none!important;
+}
+/* Keep the header focused on the recorded ACTIVE effects; other rules are linked below. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-card-status{
+ display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin:7px 0 0;max-height:none;overflow:visible;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-card-chip-magic.owc-active-rule-link{
+ display:inline-flex;min-height:27px;align-items:center;
+ color:#b9edc9;background:#204638;border:1px solid #37634e;
+ border-radius:5px;padding:4px 8px;text-decoration:none;font-size:11px;font-weight:650;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-card-chip-magic.owc-active-rule-link:hover{
+ border-color:#b9edc9;color:#fff;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-assigned-count{
+ color:#9db5cb;font-size:11px;margin-left:6px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-model-number{display:none!important}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .game-unit-focus-open{
+ display:inline-flex!important;position:static!important;
+ font-size:11px;min-width:0;min-height:34px;width:auto;height:auto;
+ padding:6px 10px;border-radius:6px;background:#263e55;
+ color:#f0d7a9;border:1px solid #536781;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .game-unit-focus-open::before{
+ content:none!important;
+}
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-card.owc-view-compact .game-unit-focus-open{display:none!important}
+.tactical-ui #armyRosterList .owc-view-picker{
+ display:flex;gap:3px;margin-top:9px;padding:3px;border:1px solid #496079;
+ background:#172c40;border-radius:8px;width:fit-content;max-width:100%;
+}
+.tactical-ui #armyRosterList .owc-view-picker button{
+ border:0;border-radius:6px;background:transparent;color:#c4d2de;
+ padding:8px 14px;min-height:38px;font-size:12px;font-weight:750;
+}
+.tactical-ui #armyRosterList .owc-view-picker button[aria-pressed="true"]{
+ background:#cba96c;color:#13243a;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-unit-card-body{
+ padding:12px 10px 13px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-profile-caption{
+ margin:0 0 7px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-profile-caption>strong{
+ font-size:15px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-profile-caption:before{display:none}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-attack-phase{
+ padding:13px 0 15px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-defence-resilience-tile{
+ min-height:64px;padding:8px 4px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-defence-stat{
+ min-height:65px;padding:8px 4px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-attack-phase>h5,
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-defence-heading>strong{
+ font-size:16px;
+}
+/* Native dialog overlays the current army; no new tab unless embedding is blocked. */
+.owc-rule-dialog{
+ padding:0;inset:0;margin:auto;width:min(95vw,740px);max-width:none;
+ height:min(88dvh,850px);max-height:none;
+ border:1px solid #b0935e;border-radius:12px;
+ background:#14283e;color:#f1e2c5;box-shadow:0 18px 75px #000b;
+}
+.owc-rule-dialog::backdrop{background:#06101de5}
+.owc-rule-shell{height:100%;display:flex;flex-direction:column;min-height:0;font-family:system-ui,-apple-system,sans-serif}
+.owc-rule-head,.owc-rule-footer{
+ flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;
+}
+.owc-rule-title{font-size:16px;color:#f1d9ab}
+.owc-rule-close{border:1px solid #60738b;border-radius:6px;background:#2c435a;color:#f1e2c5;min-height:40px;padding:7px 12px}
+.owc-rule-notice{flex-shrink:0;padding:8px 13px;margin:0;background:#1c334a;border-block:1px solid #3d536b;font-size:11px;color:#b9ccdc}
+.owc-rule-frame{display:block;width:100%;flex:1;min-height:0;border:0;background:white}
+.owc-rule-footer{border-top:1px solid #3d536b;font-size:12px}
+.owc-rule-original{color:#f2d096;text-decoration:underline}
+@media(max-width:380px){
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table{
+  min-width:265px;
+ }
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table tr>*:first-child{
+  width:75px;padding-left:3px!important;font-size:10px;
+ }
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table :is(th,td){
+  font-size:10px;padding:6px 0!important;
+ }
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table thead th{font-size:9px}
+ .owc-rule-dialog{width:98vw;height:94dvh}
+}
