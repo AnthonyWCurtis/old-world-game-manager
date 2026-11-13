@@ -239,3 +239,30 @@
  padding:0!important;margin:-1px!important;overflow:hidden!important;
  clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
 }
+
+/* Inline rename affordance: visible in the expanded/focused unit, not the list. */
+.tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle{
+ display:inline-grid;place-items:center;flex:0 0 40px;
+ width:40px;min-width:40px;height:44px;min-height:44px;
+ margin:0;padding:0;border:0;border-radius:8px;
+ background:transparent;color:var(--tc-gold-text);cursor:pointer;
+}
+.tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle svg{
+ width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+.tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle:hover,
+.tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle[aria-expanded="true"]{
+ background:#2a4358;
+}
+.tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle:focus-visible{
+ outline:3px solid var(--tc-gold-text);outline-offset:2px;
+}
+
+/* Collapsed list remains compact; the expanded single-card header has its pencil. */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-open .game-unit-name-line .game-rename-toggle{
+ display:inline-grid!important;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-open .game-unit-rename:not([hidden]){
+ display:flex!important;
+}
