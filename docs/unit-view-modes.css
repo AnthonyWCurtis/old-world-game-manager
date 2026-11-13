@@ -84,8 +84,8 @@
  color:#9db5cb;font-size:11px;margin-left:6px;
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-model-number{display:none!important}
-.tactical-ui #armyRosterList .army-unit-card.owc-view-full .game-unit-focus-open,
-.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .game-unit-focus-open{
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-card.owc-view-full .game-unit-focus-open,
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-card.owc-view-compact .game-unit-focus-open{
  display:inline-flex!important;position:static!important;
  font-size:11px;min-width:0;min-height:44px;width:auto;height:auto;
  padding:6px 10px;border-radius:6px;background:#263e55;
