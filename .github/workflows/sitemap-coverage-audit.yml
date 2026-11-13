@@ -7,19 +7,23 @@ on:
     paths:
       - 'scripts/audit-sitemap-coverage.mjs'
       - 'scripts/audit-reference-collections.mjs'
+      - 'scripts/render-sitemap-audit.mjs'
       - 'docs/reference-records/**'
       - 'docs/unit-data/**'
       - 'tests/*coverage-audit.test.mjs'
       - 'tests/reference-collections-audit.test.mjs'
+      - 'tests/sitemap-audit-summary.test.mjs'
       - '.github/workflows/sitemap-coverage-audit.yml'
   pull_request:
     paths:
       - 'scripts/audit-sitemap-coverage.mjs'
       - 'scripts/audit-reference-collections.mjs'
+      - 'scripts/render-sitemap-audit.mjs'
       - 'docs/reference-records/**'
       - 'docs/unit-data/**'
       - 'tests/*coverage-audit.test.mjs'
       - 'tests/reference-collections-audit.test.mjs'
+      - 'tests/sitemap-audit-summary.test.mjs'
       - '.github/workflows/sitemap-coverage-audit.yml'
 permissions:
   contents: read
@@ -32,15 +36,20 @@ jobs:
         with:
           node-version: '22'
       - name: Verify audit implementation and existing stored data
-        run: node --test tests/sitemap-coverage-audit.test.mjs tests/reference-collections-audit.test.mjs
+        run: node --test tests/sitemap-coverage-audit.test.mjs tests/reference-collections-audit.test.mjs tests/sitemap-audit-summary.test.mjs
       - name: Produce machine-readable coverage report
         if: always()
         run: node scripts/audit-sitemap-coverage.mjs artifacts/sitemap-coverage.json
+      - name: Generate readable warning summary
+        if: always()
+        run: node scripts/render-sitemap-audit.mjs artifacts/sitemap-coverage.json artifacts/sitemap-summary.md
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sitemap-coverage
-          path: artifacts/sitemap-coverage.json
+          path: |
+            artifacts/sitemap-coverage.json
+            artifacts/sitemap-summary.md
           if-no-files-found: warn
           retention-days: 30
