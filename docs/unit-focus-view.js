@@ -85,7 +85,7 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
  const allCards=groups.flatMap(group=>group.cards);
  const byId=new Map(allCards.map(card=>[card.dataset.unitId,card]));
  // One source-backed compact summary per original card; leave original controls in place.
- for(const card of allCards)prepareUnitCompactCard(card);
+ for(const card of allCards)prepareUnitCompactCard(card,army);
  installRuleViewer(container);
  let active=null;
  const toolbar=make(doc,'section','game-unit-focus-toolbar');
