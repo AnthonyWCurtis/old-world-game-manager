@@ -27,12 +27,11 @@ try{
  await sea.getByRole('button',{name:'Record one casualty for Lothern Sea Guard'}).click();
  assert.equal(await amount.innerText(),(before[0]-1)+'/'+before[1]);
  const expand=sea.locator('.game-unit-expand-toggle');
- if(await expand.getAttribute('aria-expanded')==='false')await expand.click();
- assert.equal(await expand.getAttribute('aria-expanded'),'true');
+ assert.equal(await expand.getAttribute('aria-expanded'),'false');
  assert.ok(await sea.locator('.owc-compact-loadout').isVisible(),'Compact view keeps source-linked equipment and rules');
  assert.ok(await sea.locator('.army-profile-scroll').isVisible(),'Compact view shows the two-row characteristics');
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,'Combat detail is reserved for Full View');
- await sea.locator('.game-unit-focus-open').click();
+ await expand.click();
  assert.ok(await sea.evaluate(el=>el.classList.contains('owc-view-full')),'Full view opens inside the same unit');
  assert.ok(await sea.locator('.game-attack-phase[data-attack-phase="shooting"]').isVisible());
  assert.ok(await sea.locator('.game-attack-phase[data-attack-phase="combat"]').isVisible());
@@ -41,7 +40,8 @@ try{
  assert.equal(await sea.locator('.game-defence-wounds-remaining').innerText(),
   (before[0]-1)+'/'+before[1]+' models');
  await expand.click();
- assert.equal(await expand.getAttribute('aria-expanded'),'false','One fold collapses either view');
+ assert.equal(await expand.getAttribute('aria-expanded'),'false','The chevron returns to Compact without hiding the card');
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
  assert.equal(await amount.innerText(),(before[0]-1)+'/'+before[1],
   'Counter remains accessible when card is folded');
  await page.locator('#gameScreenSaveBtn').click();
