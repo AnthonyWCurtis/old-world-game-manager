@@ -40,14 +40,14 @@ jobs:
 
 
   regenerate-ux-coverage-once:
-    if: github.event_name == 'pull_request' && github.event.pull_request.number == 65
+    if: github.event_name == 'push' && github.ref_name == 'feat/compact-unit-ux-wounds-20261113'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.ref_name }}
           persist-credentials: true
       - uses: actions/setup-node@v4
         with:
@@ -61,5 +61,5 @@ jobs:
           git add docs/rules-coverage/register.json docs/rules-coverage/metrics.json docs/rules-coverage/report.md docs/rules-coverage/imported-selections.json
           if ! git diff --cached --quiet; then
             git commit -m 'Regenerate source-indexed rules coverage evidence for Units UX'
-            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+            git push origin HEAD:${{ github.ref_name }}
           fi
