@@ -15,7 +15,7 @@ const wholeStat=value=>{
  return /^[1-9][0-9]?$/.test(s)?Number(s):null;
 };
 const bonusStat=value=>{
- const m=/^\\?\(\s*\+([1-9][0-9]?)\s*\)$/.exec(String(value??'').trim());
+ const m=/^\(\s*\+([1-9][0-9]?)\)$/.exec(String(value??'').trim());
  return m?Number(m[1]):null;
 };
 const sourceProfile=(unit,record,fallback)=>displayModelProfiles(unit,record,fallback)[0]||null;
