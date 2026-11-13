@@ -429,7 +429,7 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment,se
  return row;
 }
 
-function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session,effects=[],effectActions={},mountProfileGroups=[]){
+function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session,effects=[],effectActions={},mountProfileGroups=[],selectedUnitRecords={}){
  const panel=el(doc,'details','game-attached-character');
  panel.dataset.characterId=character.id;
  panel.dataset.regimentId=unitId;
@@ -442,7 +442,7 @@ function attachedCharacter(doc,character,imported,record,fallback,unitId,open,on
  const sourceCard=unitCard(doc,imported,character.index,record,fallback,false,session,null,false,()=>{},mountProfileGroups,effects);
  const profile=sourceCard.querySelector('.army-unit-card-body');
  if(profile)body.append(profile);
- body.append(renderUnitAttackPanel(doc,imported,record,fallback,effects));
+ body.append(renderUnitAttackPanel(doc,imported,record,fallback,effects,mountProfileGroups,selectedUnitRecords));
  body.append(renderDefencePanel(doc,defence,onShieldUse,sourcePrintedArmour(record,fallback),record,[],[],imported));
  body.append(renderUnitEffects(doc,effects,effectActions,referenceOnlyPublishedRules(imported,record)));
  const remove=el(doc,'button','game-character-remove','Remove from unit');
@@ -708,7 +708,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   appendCompactStatus(doc,card,defence,0,effects);
   const content=card.querySelector('.game-unit-expandable');
   content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
-   fallbackProfiles[imported.reference?.url],effects));
+   fallbackProfiles[imported.reference?.url],effects,mountRows,selectedUnitRecords));
   content.append(renderDefencePanel(doc,defence,onShieldUse,
    sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
@@ -758,7 +758,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
-    fallbackProfiles[imported.reference?.url],effects));
+    fallbackProfiles[imported.reference?.url],effects,mountRows,selectedUnitRecords));
    content.append(renderDefencePanel(doc,defence,onShieldUse,
     sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],[],[],imported));
@@ -779,7 +779,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
       effectProjection.byUnit?.[character.id]||[],itemActions,
       selectedMountProfileGroups(
        resolveSelectedMountProfiles(original,selectedUnitRecords,fallbackProfiles),
-       selectedUnitRecords,fallbackProfiles,original)));
+       selectedUnitRecords,fallbackProfiles,original),selectedUnitRecords));
    }
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
