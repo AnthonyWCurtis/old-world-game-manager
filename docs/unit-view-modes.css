@@ -66,6 +66,11 @@
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption span{display:none}
 .tactical-ui #armyRosterList .army-unit-card.owc-view-full .owc-compact-loadout{
+ display:block!important;
+}
+/* Compact is the top of Full, not a replacement panel: the published
+   loadout stays linked once, followed by the same characteristics table. */
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-unit-unified-loadout{
  display:none!important;
 }
 /* Keep the header focused on the recorded ACTIVE effects; other rules are linked below. */
@@ -175,4 +180,15 @@
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-unit-focus-open[aria-pressed="true"]{
  background:#cba96c;color:#13243a;border-color:#cba96c;
+}
+
+.tactical-ui #armyRosterList .owc-compact-heading{
+ color:#f1d9a8;font-size:14px;line-height:1.35;font-weight:750;
+ margin:0 0 12px;letter-spacing:0;text-transform:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-compact-loadout{
+ padding:0 0 4px;margin:0 0 8px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-profile-caption{
+ margin-top:10px;
 }
