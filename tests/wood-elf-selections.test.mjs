@@ -24,8 +24,8 @@ function fixture(){
   .replace('- A Resplendence of Luminescents',
    '- The Briar-bow\n- A Resplendence of Luminescents')
   .replace('- Swiftshiver Shards','- Swiftshiver Shards\n- The Kinbands of Modryn\n- Lord\'s Bowmen')
-  .replace('8 Wardancers [128 pts]\n- Hand weapon',
-   '8 Wardancers [128 pts]\n- Hand weapon\n- 9x Additional hand weapon');
+  .replace(/8 Wardancers \[128 pts\]\r?\n- Hand weapon/,
+   match=>match+(match.includes('\r\n')?'\r\n':'\n')+'- 9x Additional hand weapon');
 }
 function prepared(){
  const army=parseArmy(fixture());

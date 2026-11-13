@@ -101,6 +101,8 @@ try{
     return {width:r.width,height:r.height};
    });
    assert.ok(rect.height>=44,selector+' must have at least 44px touch height: '+JSON.stringify(rect));
+   if(selector==='.game-unit-expand-toggle')
+    assert.ok(rect.width>=44,selector+' must have at least 44px touch width: '+JSON.stringify(rect));
   }
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
    'No page-wide horizontal overflow at '+viewport.width+'px');

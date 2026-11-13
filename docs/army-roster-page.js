@@ -635,9 +635,19 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   addRule({...entry,name:entry.name+' (from '+entry.fromCharacterName+')'});
  }
  for(const champion of defence.champions){
-  for(const entry of champion.ward){
+  for(const entry of [...champion.ward,...champion.regeneration]){
    addRule({...entry,name:champion.name+': '+entry.name},'game-defence-champion');
   }
+ }
+ // Keep conflicting and unresolved references discoverable without suggesting
+ // that any unsupported selection has supplied a usable save.
+ const issues=new Set();
+ for(const issue of defence.selectionIssues||[]){
+  const message=(issue.name||'Selection')+': '+issue.reason;
+  if(issues.has(message))continue;
+  issues.add(message);
+  const warning=el(doc,'p','game-defence-disclaimer','Unresolved selection — '+message);
+  body.append(warning);
  }
  for(const rule of defence.otherEffects)addRule(rule,'game-defence-conditional');
  for(const rule of defence.attackModifiers||[])
@@ -729,7 +739,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
    openCards.has(entry.id),onToggle,mountRows,effects);
   card.classList.add('game-character-card');
-  const defence=evaluateDefences(army,session,entry.id);
+  const defence=evaluateDefences(army,session,entry.id,records);
   appendCompactStatus(doc,card,defence,0,effects);
   const content=card.querySelector('.game-unit-expandable');
   content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
@@ -780,7 +790,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     fallbackProfiles[imported.reference?.url],opened.has(entry.id),session,onRename,
     openCards.has(entry.id),onToggle,mountRows,effects);
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
-   const defence=evaluateDefences(army,session,entry.id);
+   const defence=evaluateDefences(army,session,entry.id,records);
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
@@ -801,7 +811,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     memberArea.append(attachedCharacter(doc,character,original,records[character.id],
      fallbackProfiles[original.reference?.url],entry.id,
      openMembers.has(entry.id+':'+character.id),onAssignment,
-      evaluateDefences(army,session,character.id),onShieldUse,session,
+      evaluateDefences(army,session,character.id,records),onShieldUse,session,
       effectProjection.byUnit?.[character.id]||[],itemActions,
       selectedMountProfileGroups(
        resolveSelectedMountProfiles(original,selectedUnitRecords,fallbackProfiles),

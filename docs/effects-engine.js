@@ -11,6 +11,7 @@ import {createGameScreenModel} from './game-screen-model.js';
 import {SPELL_RULES,spellEffectsFor} from './spell-engine.js';
 import {projectReviewedCharacterRules} from './source-special-rule-effects.js';
 import {projectReviewedCoreRules} from './source-core-rule-effects.js';
+import {resolveSelections,itemEligible} from './selection-resolver.js';
 
 const SOURCE='https://tow.whfb.app/';
 const item=(id,name,kind,mode,description,extra={})=>Object.freeze({
@@ -69,32 +70,6 @@ export const ITEM_EFFECT_RULES=Object.freeze({
   {scope:'bearer',trackUse:true})
 });
 
-const norm=v=>String(v??'').normalize('NFKC').toLowerCase()
- .replace(/\s+/g,' ').replace(/[’‘]/g,"'").trim();
-const byName=new Map(Object.values(ITEM_EFFECT_RULES).map(rule=>[norm(rule.name),rule]));
-function selectionsFor(unit){
- const selected=[];
- const visit=(list,parent='',group='')=>{
-  if(!Array.isArray(list))return;
-  for(const selection of list){
-   if(!selection||typeof selection!=='object')continue;
-   const current={selection,parent,group};
-   selected.push(current);
-   visit(selection.children,selection.name||selection.raw||'',group);
-  }
- };
- visit(unit?.selections);
- for(const group of unit?.modelGroups||[])visit(group.selections,'',group.name||'');
- return selected;
-}
-function sourceMatches(selection,rule){
- // An explicit, conflicting magic-item URL must never be turned into an
- // effect for another magic item. Unmatched exports can still use the
- // name-to-reviewed-source register without requiring a live site request.
- const ref=selection?.reference?.url;
- return typeof ref!=='string'||!ref.startsWith(SOURCE+'magic-item/')||
-  ref.replace(/\/$/,'')===rule.sourceUrl;
-}
 function stateFor(rule,ownerId,session){
  if(rule.usesExistingShieldState)
   return session?.usedCharmedShields?.[ownerId]?'spent':'ready';
@@ -122,31 +97,37 @@ function scopeFor(rule,owner,ctx){
  return owner.isCharacter?'Bearer only':
   ctx.champion?'Champion bearer only':'Imported bearer only; model not individually identified';
 }
-export function ownedItemEffects(army,session){
+export function ownedItemEffects(army,session,unitRecords={}){
  const model=createGameScreenModel(army),byId=new Map(model.units.map(u=>[u.id,u]));
  const found=[];
- for(const unit of army?.units||[]){
-  const owner=byId.get(unit.id);
-  if(!owner)continue;
-  const seen=new Set();
-  for(const {selection,parent,group} of selectionsFor(unit)){
-   const rule=byName.get(norm(selection.name||selection.raw));
-   if(!rule||!sourceMatches(selection,rule)||seen.has(rule.id))continue;
-   const champion=/champion|sea master/i.test(parent+' '+group);
-   // A standard buried under an explicitly non-standard model is not
-   // projected across an entire regiment by guessing its bearer.
-   const standardBearer=/(?:standard bearer|battle standard bearer|bsb)/i.test(parent+' '+group);
-   const unresolvedStandard=rule.scope==='standard'&&!owner.isCharacter&&!standardBearer&&!(!parent&&!group);
-   seen.add(rule.id);
+ for(const resolved of resolveSelections(army,{catalogue:ITEM_EFFECT_RULES,unitRecords})){
+   if(!itemEligible(resolved))continue;
+   const rule=resolved.selectedItem;
+   if(!ITEM_EFFECT_RULES[rule?.id])continue;
+   const unit=(army.units||[]).find(u=>u.id===resolved.ownerUnitId);
+   const owner=byId.get(resolved.ownerUnitId);
+   if(!owner||!unit)continue;
+   const champion=resolved.scope.role==='champion';
+   const mountChoiceUnknown=rule.id==='charmed-shield'&&
+    resolved.scope.mountedArmourChoice==='unresolved';
+   const oneUseState=stateFor(rule,owner.id,session);
+   const unresolvedStandard=rule.scope==='standard'&&!owner.isCharacter&&
+    resolved.scope.kind==='model-role'&&resolved.scope.role!=='standardBearer';
    found.push({
     id:rule.id,name:rule.name,kind:rule.kind,mode:rule.mode,
     description:rule.description,sourceUrl:rule.sourceUrl,
     verifiedOn:rule.verifiedOn,faqUrl:rule.faqUrl||null,
     ownerId:owner.id,ownerName:unit.name,ownerIsCharacter:owner.isCharacter,
     beneficiaryId:owner.id,scope:scopeFor(rule,owner,{champion}),
-    sourceSelection:selection.name||selection.raw,
+    sourceSelection:resolved.selection.name||resolved.selection.raw,
+    ownerModel:resolved.ownerModel,scopeKind:resolved.scope.kind,
+    sourceProvenance:resolved.sourceProvenance,
+    verificationStatus:resolved.verificationStatus,
     champion,unresolvedStandard,
-    status:stateFor(rule,owner.id,session),
+    status:oneUseState,oneUseState:rule.usesExistingShieldState?oneUseState:null,
+    availability:mountChoiceUnknown?(oneUseState==='spent'?'unavailable':'conditional'):'verified-selection',
+    availabilityReason:mountChoiceUnknown?
+     'Mounted character must choose rider armour to use Charmed Shield benefits; mount armour choice unresolved.':null,
     boundSpell:rule.boundSpell||null,
     attackPhase:rule.attackPhase||null,
     attackProfile:rule.attackProfile||null,
@@ -157,12 +138,11 @@ export function ownedItemEffects(army,session){
     usesExistingShieldState:rule.usesExistingShieldState===true,
     shared:false,joinedFrom:null
    });
-  }
  }
  return found;
 }
-export function sanitizeItemStates(army,stored){
- const eligible=new Set(ownedItemEffects(army,null)
+export function sanitizeItemStates(army,stored,unitRecords={}){
+ const eligible=new Set(ownedItemEffects(army,null,unitRecords)
   .filter(e=>e.trackUse).map(e=>e.ownerId+':'+e.id));
  const result={};
  if(!stored||typeof stored!=='object'||Array.isArray(stored))return result;
@@ -178,13 +158,13 @@ export function sanitizeItemStates(army,stored){
  }
  return result;
 }
-export function setItemEffectState(army,session,ownerId,id,status){
- const item=ownedItemEffects(army,session)
+export function setItemEffectState(army,session,ownerId,id,status,unitRecords={}){
+ const item=ownedItemEffects(army,session,unitRecords)
   .find(entry=>entry.ownerId===ownerId&&entry.id===id);
  if(!item||!item.trackUse)throw Error('Select a supported one-use item in this imported unit.');
  const allowed=item.mode==='timed-single-use'?['ready','active','spent']:['ready','spent'];
  if(!allowed.includes(status))throw Error('Invalid item-use status.');
- const current=sanitizeItemStates(army,session?.itemStates);
+ const current=sanitizeItemStates(army,session?.itemStates,unitRecords);
  const next={...current,[ownerId]:{...current[ownerId]}};
  if(status==='ready')delete next[ownerId][id];else next[ownerId][id]=status;
  if(!Object.keys(next[ownerId]).length)delete next[ownerId];
@@ -199,7 +179,8 @@ export function projectArmyEffects(army,session,unitRecords={}){
  const byUnit=Object.fromEntries(model.units.map(u=>[u.id,[]]));
  const entryById=new Map(model.units.map(u=>[u.id,u]));
  const assignments=session?.assignments||{};
- const owned=ownedItemEffects(army,session);
+ const selected=resolveSelections(army,{catalogue:ITEM_EFFECT_RULES,unitRecords});
+ const owned=ownedItemEffects(army,session,unitRecords);
  for(const entry of owned){
   added(byUnit[entry.ownerId],entry,entry.ownerId,entry.scope);
   const owner=entryById.get(entry.ownerId);
@@ -264,6 +245,10 @@ export function projectArmyEffects(army,session,unitRecords={}){
   else if(item.status==='bound-spell')counts.boundSpells++;
  }
  return {owned,byUnit,counts,
+  selectionIssues:selected.filter(e=>e.conflict||e.unresolved).map(e=>({
+   ownerId:e.ownerUnitId,selection:e.selection.name||e.selection.raw,
+   status:e.verificationStatus,reason:e.conflict||e.unresolved,
+   sourceUrl:e.sourceProvenance.importedUrl,scope:e.scope})),
   boundSpells:owned.filter(e=>e.boundSpell),
   trackedItems:owned.filter(e=>e.trackUse||e.usesExistingShieldState)};
 }

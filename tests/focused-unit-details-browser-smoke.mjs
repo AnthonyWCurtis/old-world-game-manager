@@ -137,6 +137,7 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
  }
+ await page.setViewportSize({width:390,height:844});
  await restored.locator('.game-rename-toggle').click();
  await restored.locator('.game-unit-rename-input').fill('Centre Sea Guard');
  await restored.locator('.game-unit-rename-save').click();

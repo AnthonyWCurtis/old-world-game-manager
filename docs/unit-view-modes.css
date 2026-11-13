@@ -321,3 +321,9 @@
 .tactical-ui #armyRosterList .owc-model-group-values{
  margin:4px 0 0;font-size:12px;line-height:1.65;color:#e3eaf0;
 }
+/* Counter the smaller icon sizing in the existing narrow-screen card header.
+   The single Compact/Full chevron must retain its actual touch area. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{
+ flex:0 0 45px;width:45px;min-width:45px;height:45px;min-height:45px;
+ display:inline-grid;place-items:center;
+}

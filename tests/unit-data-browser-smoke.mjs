@@ -249,6 +249,8 @@ try{
  await page.locator('#gameRosterSearch').fill('Primal Warherds');
  const special=page.locator('#armyRosterList .army-unit-card').filter({hasText:'Primal Warherds'}).first();
  await special.locator('.game-unit-expand-toggle').click();
+ assert.equal(await special.evaluate(card=>card.classList.contains('owc-view-full')),true,
+  'Full view keeps imported model-group details readable');
  assert.match(await special.innerText(),/21\/21/);
  assert.match(await special.innerText(),/11× Gor/);
  assert.match(await special.innerText(),/10× Ungor/);
