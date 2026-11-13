@@ -36,6 +36,19 @@ export function prepareUnitCompactCard(card,army){
  }
  const summary=make(doc,'section','owc-compact-loadout');
  summary.append(make(doc,'h4','owc-compact-heading','✧ Equipment & Special Rules'));
+ // Mixed-model regiments retain the importer's explicit model-group counts.
+ // This is data display, not inferred legal composition or profiles.
+ const importedUnit=(army?.units||[]).find(unit=>unit.id===card.dataset.unitId);
+ const modelGroups=(importedUnit?.modelGroups||[])
+  .filter(group=>group?.name&&Number.isSafeInteger(group.quantity));
+ if(modelGroups.length){
+  const groups=make(doc,'div','owc-model-groups');
+  groups.append(make(doc,'h4','owc-compact-label','Model Groups'));
+  groups.append(make(doc,'p','owc-model-group-values',
+   modelGroups.map(group=>group.quantity+'× '+group.name).join(' · ')));
+  summary.append(groups);
+ }
+
  for(const [label,items] of [['Equipment & Upgrades',equipment],['Special Rules',rules]]){
   if(!items.length)continue;
   summary.append(make(doc,'h4','owc-compact-label',label),wordList(doc,items));
