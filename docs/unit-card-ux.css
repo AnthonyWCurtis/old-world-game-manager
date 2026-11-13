@@ -268,18 +268,18 @@
 }
 
 /*
- * Approved Stage 2 unit-card visual baseline, 13 November 2026.
+ * Approved Stage 2 unit-card layout in the existing Tactical V2 navy-and-gold theme.
  * Scope to expanded cards only: do not restyle the importer or battle engine.
  * Source records, saves, wound state, assignments and magic controls stay intact.
  */
 .tactical-ui #armyRosterList{
- --stage2-bg:#050505;--stage2-card:#242424;--stage2-border:#292929;
- --stage2-text:#fafafa;--stage2-muted:#bababa;
+ --stage2-bg:var(--tc-surface);--stage2-card:var(--tc-elevated);--stage2-border:var(--tc-line);
+ --stage2-text:var(--tc-type);--stage2-muted:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open,
 .tactical-ui #armyRosterList.game-unit-focused .game-roster-section-content>.army-unit-card.game-focus-selected{
  background:var(--stage2-bg);color:var(--stage2-text);
- border:1px solid #303030;border-radius:19px;overflow:hidden;
+ border:1px solid var(--tc-line);border-radius:19px;overflow:hidden;
  box-shadow:none;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-head,
@@ -288,7 +288,7 @@
  display:grid;grid-template-columns:minmax(0,1fr) auto;
  align-items:center;column-gap:6px;row-gap:2px;
  padding:15px 13px;min-height:84px;
- background:#050505!important;color:#fafafa;
+ background:var(--tc-surface)!important;color:var(--tc-type);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-identity{
  grid-column:1;grid-row:1;display:block;min-width:0;
@@ -302,59 +302,59 @@
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line>h3{
  min-width:0;flex:0 1 auto;margin:0;
- color:#fafafa;font-size:clamp(16px,4.2vw,22px);
+ color:var(--tc-type);font-size:clamp(16px,4.2vw,22px);
  font-weight:750;line-height:1.24;letter-spacing:-.025em;
  overflow-wrap:break-word;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-classification{
- display:block;order:1;font-size:12px;line-height:1.4;color:#b7b7b7;
+ display:block;order:1;font-size:12px;line-height:1.4;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .game-unit-classification{display:none}
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-nickname{
- order:2;font-size:11px;color:#acacac;
+ order:2;font-size:11px;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-meta{
- order:3;margin:0;font-size:11px;color:#b8b8b8;
+ order:3;margin:0;font-size:11px;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-points{
  grid-column:1;grid-row:2;padding:0;display:block;min-width:0;
  text-align:left;border:0;margin:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-points strong{
- font-size:11px;font-weight:550;color:#aaa;
+ font-size:11px;font-weight:550;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-compact-wounds{
  grid-column:2;grid-row:1/span 2;align-self:center;gap:3px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-step{
  width:36px;min-width:36px;height:44px;min-height:44px;
- border-radius:50%;background:#090909;border:1px solid #515151;
- color:#f0f0f0;font-weight:400;font-size:24px;line-height:1;
+ border-radius:50%;background:var(--tc-deep);border:1px solid var(--tc-line);
+ color:var(--tc-type);font-weight:400;font-size:24px;line-height:1;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-step:disabled{
- color:#5c5c5c;border-color:#292929;
+ color:var(--tc-muted);border-color:var(--tc-line);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-counter-value{
  min-width:42px;gap:2px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-counter-value>strong{
- color:#fafafa;font-size:19px;font-weight:750;
+ color:var(--tc-type);font-size:19px;font-weight:750;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-counter-value>small{
- color:#b7b7b7;font-size:11px;
+ color:var(--tc-secondary);font-size:11px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-unit-expand-toggle{
  display:inline-grid!important;place-items:center!important;
  position:static;flex:0 0 24px;min-width:24px;width:24px;
  height:44px;min-height:44px;margin:0;padding:0;
- border:0;border-radius:7px;color:#bcbcbc;background:transparent;
+ border:0;border-radius:7px;color:var(--tc-secondary);background:transparent;
  font-size:21px;line-height:1;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-unit-expand-toggle::before{content:none!important}
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-rename-toggle{
  display:inline-grid!important;place-items:center;
  flex:0 0 30px;width:30px;min-width:30px;height:44px;min-height:44px;
- margin:0;padding:0;background:transparent;border:0;color:#bcbcbc;
+ margin:0;padding:0;background:transparent;border:0;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-rename-toggle svg{
  width:17px;height:17px;
@@ -363,22 +363,22 @@
  display:none!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-expandable{
- background:#050505;border-top:1px solid #222;
- color:#fafafa;min-width:0;
+ background:var(--tc-surface);border-top:1px solid var(--tc-line);
+ color:var(--tc-type);min-width:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-card-body{
  padding:20px 13px 23px;background:transparent;
- color:#f6f6f6;min-width:0;
+ color:var(--tc-type);min-width:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-profile-caption{
  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
  padding:0;margin:0 0 13px;border:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-profile-caption::before{
- content:"▦";font-size:20px;line-height:1;color:#bebebe;
+ content:"▦";font-size:20px;line-height:1;color:var(--tc-secondary);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-profile-caption>strong{
- color:#fafafa;font-weight:750;font-size:19px;line-height:1.25;
+ color:var(--tc-type);font-weight:750;font-size:19px;line-height:1.25;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-profile-caption>span{
  display:none;
@@ -391,7 +391,7 @@
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-stat-group h4,
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-mounted-heading{
- margin:0 0 8px;color:#f7f7f7;font-weight:600;font-size:16px;line-height:1.3;
+ margin:0 0 8px;color:var(--tc-type);font-weight:600;font-size:16px;line-height:1.3;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-stat-grid{
  display:grid;grid-template-columns:repeat(9,minmax(0,1fr));
@@ -404,24 +404,24 @@
  padding:7px 1px;text-align:center;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-stat-name{
- color:#b9b9b9;font-size:10px;font-weight:450;line-height:1.15;
+ color:var(--tc-secondary);font-size:10px;font-weight:450;line-height:1.15;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-stat-value{
- color:#fafafa;font-size:clamp(12px,3.55vw,17px);
+ color:var(--tc-type);font-size:clamp(12px,3.55vw,17px);
  font-weight:700;line-height:1.2;white-space:nowrap;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-stat-note,
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-profile-mount-unresolved{
- margin:10px 0 0;color:#bcbcbc;font-size:12px;line-height:1.45;
+ margin:10px 0 0;color:var(--tc-secondary);font-size:12px;line-height:1.45;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-quick-facts,
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-source-meta{
- color:#aaa;font-size:12px;
+ color:var(--tc-secondary);font-size:12px;
 }
 /* Distinct Shooting and Combat sections; each weapon or mount is a visible card. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-panel{
- border:0;border-top:1px solid #202020;border-radius:0;
- padding:0 13px;background:transparent;color:#fafafa;margin:0;
+ border:0;border-top:1px solid var(--tc-line);border-radius:0;
+ padding:0 13px;background:transparent;color:var(--tc-type);margin:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-panel>h4{display:none}
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-phase{
@@ -429,24 +429,24 @@
  background:transparent;border:0;border-radius:0;margin:0;padding:23px 0 24px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-phase+.game-attack-phase{
- border-top:1px solid #202020;
+ border-top:1px solid var(--tc-line);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-phase>h5{
  margin:0 0 5px;padding:0;border:0;
- color:#fafafa;font-size:19px;font-weight:750;line-height:1.3;
+ color:var(--tc-type);font-size:19px;font-weight:750;line-height:1.3;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-shooting>h5::before{
- content:"⊙";color:#bcbcbc;margin-right:10px;font-size:22px;
+ content:"⊙";color:var(--tc-secondary);margin-right:10px;font-size:22px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-combat>h5::before{
- content:"⚔";color:#bcbcbc;margin-right:10px;font-size:19px;
+ content:"⚔";color:var(--tc-secondary);margin-right:10px;font-size:19px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-group{
  display:flex;flex-direction:column;gap:9px;margin:0;padding:0;
- color:#f5f5f5;background:transparent;border:0;
+ color:var(--tc-type);background:transparent;border:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-group>strong{
- color:#bbb;font-size:12px;font-weight:600;
+ color:var(--tc-secondary);font-size:12px;font-weight:600;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-models{
  display:flex;flex-direction:column;gap:10px;min-width:0;
@@ -454,17 +454,17 @@
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-attack-model.game-attack-profile-card,.game-attack-special-card,.game-attack-weapon,.game-attack-bound){
  display:flex;flex-direction:column;align-items:stretch;
  gap:8px;margin:0;border:0;border-radius:13px;
- background:#242424;color:#fafafa;padding:15px 12px;
+ background:var(--tc-elevated);color:var(--tc-type);padding:15px 12px;
  min-width:0;box-shadow:none;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-attack-model-name,.game-attack-special-title>a,.game-attack-weapon>a,.game-attack-bound>strong){
- color:#fafafa;font-size:17px;font-weight:700;line-height:1.25;
+ color:var(--tc-type);font-size:17px;font-weight:700;line-height:1.25;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-special-title{
  display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-special-title>small{
- color:#bbb;font-size:12px;
+ color:var(--tc-secondary);font-size:12px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-attack-profile-card .game-attack-stats,.game-attack-special-stats){
  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;width:100%;
@@ -477,68 +477,68 @@
  text-align:center;min-width:0;overflow-wrap:normal;word-break:normal;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-stat>span{
- display:block;color:#b9b9b9;font-size:11px;font-weight:450;
+ display:block;color:var(--tc-secondary);font-size:11px;font-weight:450;
  line-height:1.25;margin-bottom:5px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-stat>strong{
- color:#fafafa;font-size:15px;font-weight:700;
+ color:var(--tc-type);font-size:15px;font-weight:700;
  line-height:1.18;overflow-wrap:break-word;word-break:normal;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-attack-caution,.game-attack-subtitle){
- color:#b9b9b9;font-size:12px;line-height:1.45;
+ color:var(--tc-secondary);font-size:12px;line-height:1.45;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-attack-caution{
  margin:4px 0 0;
 }
 /* Large resilience tiles and compact saving throw row. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-panel{
- background:transparent;border:0;border-top:1px solid #202020;
- border-radius:0;color:#fafafa;margin:0;padding:23px 13px;
+ background:transparent;border:0;border-top:1px solid var(--tc-line);
+ border-radius:0;color:var(--tc-type);margin:0;padding:23px 13px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-heading{
  margin:0 0 14px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-heading>strong{
- color:#fafafa;font-size:19px;font-weight:750;
+ color:var(--tc-type);font-size:19px;font-weight:750;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-heading>strong::before{
- content:"♢";font-size:21px;color:#bcbcbc;margin-right:10px;
+ content:"♢";font-size:21px;color:var(--tc-secondary);margin-right:10px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-resilience{
  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
  margin:0 0 14px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-resilience-tile{
- background:#242424;border:0;border-radius:13px;padding:14px 5px;
+ background:var(--tc-elevated);border:0;border-radius:13px;padding:14px 5px;
  gap:4px;min-height:90px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-resilience-tile>span{
- color:#bababa;font-size:12px;font-weight:450;
+ color:var(--tc-secondary);font-size:12px;font-weight:450;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-resilience-tile>strong{
- color:#fff;font-weight:750;font-size:30px;
+ color:var(--tc-type);font-weight:750;font-size:30px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-saves-heading{
- color:#b8b8b8;margin:8px 0 11px;font-size:12px;letter-spacing:.02em;
+ color:var(--tc-secondary);margin:8px 0 11px;font-size:12px;letter-spacing:.02em;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-values{
  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-stat{
- background:#242424;border:0;border-radius:13px;min-width:0;
+ background:var(--tc-elevated);border:0;border-radius:13px;min-width:0;
  padding:13px 4px;min-height:88px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-stat>span{
- color:#bababa;font-size:12px;font-weight:450;
+ color:var(--tc-secondary);font-size:12px;font-weight:450;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-stat>strong{
- color:#fafafa;font-size:23px;font-weight:700;
+ color:var(--tc-type);font-size:23px;font-weight:700;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-save-note{
- color:#bababa;font-size:11px;
+ color:var(--tc-secondary);font-size:11px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-defence-tracker-note{
- color:#bcbcbc;font-size:12px;
+ color:var(--tc-secondary);font-size:12px;
 }
 /* Source-backed Equipment and Special Rules remain separate visible sections. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-unified-loadout{
@@ -548,15 +548,15 @@
  display:none;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-group{
- display:block;background:transparent;border:0;border-top:1px solid #202020;
+ display:block;background:transparent;border:0;border-top:1px solid var(--tc-line);
  margin:0;padding:22px 0 24px;min-width:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-group>strong{
- display:block;color:#fafafa;font-size:19px;font-weight:750;
+ display:block;color:var(--tc-type);font-size:19px;font-weight:750;
  text-transform:none;margin:0 0 14px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-group>strong::before{
- content:"▤";color:#bcbcbc;margin-right:10px;
+ content:"▤";color:var(--tc-secondary);margin-right:10px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-group:nth-of-type(3)>strong::before{
  content:"♧";
@@ -565,34 +565,34 @@
  display:flex;flex-wrap:wrap;gap:6px 9px;min-width:0;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-pill{
- border:0;border-bottom:1px solid #5e5e5e;border-radius:0;
- color:#f3f3f3;background:transparent;min-height:27px;
+ border:0;border-bottom:1px solid var(--tc-line);border-radius:0;
+ color:var(--tc-type);background:transparent;min-height:27px;
  font-size:13px;padding:3px 0;opacity:1;
  overflow-wrap:break-word;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-pill:focus-visible{
- outline:2px solid #fff;outline-offset:3px;
+ outline:2px solid var(--tc-type);outline-offset:3px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-loadout-note{
- color:#b8b8b8;font-size:12px;margin:0 0 13px;
+ color:var(--tc-secondary);font-size:12px;margin:0 0 13px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-victory-points{
- border-top:1px solid #202020;color:#b8b8b8;
+ border-top:1px solid var(--tc-line);color:var(--tc-secondary);
  margin:0 13px;padding:20px 0 22px;font-size:14px;
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-victory-points>strong{
- color:#b8b8b8;font-weight:450;
+ color:var(--tc-secondary);font-weight:450;
 }
 /* Retain extra magic, status and assignment controls without adding nested
  * top-level unit navigation; they inherit the charcoal card surface. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-effects-panel,.game-assigned-characters,.game-wizard-spellbook,.game-membership-label,.game-assignment-editor){
- background:transparent;color:#eee;border-color:#292929;
+ background:transparent;color:var(--tc-type);border-color:var(--tc-line);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-footer{
- background:transparent;color:#bcbcbc;border-color:#292929;
+ background:transparent;color:var(--tc-secondary);border-color:var(--tc-line);
 }
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.army-ref-pill,.game-attack-panel a,.game-defence-panel a){
- color:#f2f2f2;
+ color:var(--tc-type);
 }
 @media(max-width:380px){
  .tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-head{padding:12px 8px;column-gap:3px}
@@ -603,4 +603,17 @@
  .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-counter-value{min-width:37px}
  .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-rename-toggle{width:27px;min-width:27px;flex-basis:27px}
  .tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line .game-unit-expand-toggle{width:22px;min-width:22px;flex-basis:22px}
+}
+
+/* Keep the app's existing gold accents visible throughout this unit layout. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line :is(.game-unit-expand-toggle,.game-rename-toggle),
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .army-unit-points strong,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open :is(.game-attack-panel a,.game-defence-panel a,.army-unit-loadout-pill){
+ color:var(--tc-gold-text);
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-wound-step:hover:not(:disabled){
+ border-color:var(--tc-gold);color:var(--tc-gold-text);
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .game-unit-name-line :is(.game-unit-expand-toggle,.game-rename-toggle):focus-visible{
+ outline:3px solid var(--tc-gold);
 }
