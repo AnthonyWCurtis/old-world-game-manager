@@ -483,7 +483,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  const regenPreview=defence.regeneration.length?
   defence.regeneration.map(entry=>entry.label+' · bearer only').join(' / '):'Not established';
  const conciseSave=(value)=>{
-  const found=String(value||'').match(/(?:^|\\s)([2-6]\\+)(?=\\s|$|\\s*·)/);
+  const found=String(value||'').match(/(?:^|\s)([2-6]\+)(?=\s|$|\s*·)/);
   return found?found[1]:value==='Spent or not currently available'?'Spent':
    value==='Not established'?'—':'Conditional';
  };
