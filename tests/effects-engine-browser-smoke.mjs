@@ -214,6 +214,9 @@ try{
   .getAttribute('data-status'),'spent');
  assert.equal(await page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'202 pts'}).first().locator('.game-defence-shield-used input').isChecked(),true);
+ // Reload opens the army in Compact; expand Full to measure touch controls.
+ await page.locator('#gameCharacters .game-character-card').filter({hasText:'202 pts'}).first()
+  .locator('.game-unit-expand-toggle').click();
  for(const v of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(v);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
