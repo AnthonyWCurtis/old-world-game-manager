@@ -76,14 +76,15 @@ try{
   before.slice(0,2).map(x=>x.id),'Keyboard can reorder without dragging');
  assert.equal(await reset.isDisabled(),true,'Restoring source order clears the personal preference');
  await cards.first().locator('.game-unit-expand-toggle').click();
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),before[0].id);
+ assert.equal(await cards.first().evaluate(el=>el.classList.contains('owc-view-full')),true,
+  'Chevron opens Full View inline without a separate focus page');
  await cards.first().locator('.game-unit-expand-toggle').click();
 
  // Arrange the first unit again, then persist through a full offline reload.
  const header=cards.first().locator('.army-unit-head');
  await header.scrollIntoViewIfNeeded();
  const one2=await cards.nth(0).boundingBox(),two2=await cards.nth(1).boundingBox();
- const secondHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ const secondHandle=await cards.first().locator('.army-unit-names h3').boundingBox();
  assert.ok(secondHandle);
  const point={x:secondHandle.x+secondHandle.width/2,y:secondHandle.y+secondHandle.height/2,id:2};
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
