@@ -82,7 +82,8 @@ export function prepareUnitCompactCard(card,army){
  }
  body.prepend(summary);
  // Highlight numerical profile differences, not presumed bonuses from unverified selections.
- const rows=[...body.querySelectorAll('.army-profile-table tbody > tr')]
+ const ownProfile=$(body,':scope > .army-profile-scroll .army-profile-table');
+ const rows=[...(ownProfile?.querySelectorAll('tbody > tr')||[])]
   .filter(row=>!row.classList.contains('army-profile-mount-heading')&&
    !row.classList.contains('army-profile-mount-row')&&row.children.length===10);
  if(rows.length>1){
