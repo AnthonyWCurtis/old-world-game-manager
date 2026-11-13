@@ -38,8 +38,8 @@ try{
  assert.equal(await card.locator('.game-unit-rename-input').isVisible(),true,'Inline pencil opens the rename editor');
  await card.locator('.game-rename-toggle').click();
  assert.equal(await card.locator('.game-compact-wounds').count(),1,'Wound or model tracker is visible beside unit header');
- assert.equal(await card.locator('.game-unit-focus-open').isVisible(),true,'One clear primary open unit action');
- await card.locator('.game-unit-focus-open').click();
+ assert.equal(await card.locator('.game-unit-focus-open').count(),0,'No separate Full View button');
+ await card.locator('.game-unit-expand-toggle').click();
  assert.equal(await card.locator('.game-attack-panel').isVisible(),true);
  const renameIcon=card.locator('.game-rename-toggle');
  assert.equal(await renameIcon.isVisible(),true,'Pencil rename is available within focused unit');
@@ -51,7 +51,7 @@ try{
  await renameIcon.click();
  assert.equal(await card.locator('.game-unit-rename-input').isVisible(),false,'Pencil closes the rename editor');
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'No click-through detail tabs');
- await card.locator('.game-unit-focus-open').click();
+ await card.locator('.game-unit-expand-toggle').click();
  assert.equal(await card.locator('.game-attack-panel').isVisible(),false);
  await page.locator('#tacticalArmyAudit > summary').click();
  assert.equal(await page.locator('#armyRosterSummary').isVisible(),true,'Imported metrics can still be reviewed');
