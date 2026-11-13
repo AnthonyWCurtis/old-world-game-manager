@@ -106,9 +106,22 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  if(unit.nickname&&customName!==unit.nickname)
   main.append(el(doc,'span','army-unit-nickname','Imported label: '+unit.nickname));
  if(onRename){
-  const toggle=el(doc,'button','game-rename-toggle','Rename');
+  const toggle=el(doc,'button','game-rename-toggle');
   toggle.type='button';
+  toggle.title='Rename '+customName;
   toggle.setAttribute('aria-label','Rename '+customName);
+  toggle.setAttribute('aria-expanded','false');
+  const pencil=doc.createElementNS('http://www.w3.org/2000/svg','svg');
+  pencil.setAttribute('viewBox','0 0 24 24');
+  pencil.setAttribute('aria-hidden','true');
+  pencil.setAttribute('focusable','false');
+  for(const pathData of ['M12 20h9','M16.5 3.5a2.121 2.121 0 0 1 3 3L9 17l-4 1 1-4Z']){
+   const path=doc.createElementNS('http://www.w3.org/2000/svg','path');
+   path.setAttribute('d',pathData);
+   pencil.append(path);
+  }
+  toggle.append(pencil);
+  nameLine.append(toggle);
   const form=el(doc,'form','game-unit-rename');
   form.hidden=true;
   const input=el(doc,'input','game-unit-rename-input');
@@ -121,8 +134,12 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   reset.type='button';
   reset.addEventListener('click',()=>onRename(unit.id,null));
   form.addEventListener('submit',event=>{event.preventDefault();onRename(unit.id,input.value);});
-  toggle.addEventListener('click',()=>{form.hidden=!form.hidden;if(!form.hidden)input.focus();});
-  form.append(input,save,reset);main.append(toggle,form);
+  toggle.addEventListener('click',()=>{
+   form.hidden=!form.hidden;
+   toggle.setAttribute('aria-expanded',String(!form.hidden));
+   if(!form.hidden)input.focus();
+  });
+  form.append(input,save,reset);main.append(form);
  }
  const headingMeta=el(doc,'div','army-unit-meta');
  if(unit.quantity?.value==null)headingMeta.classList.add('tactical-count-unknown');
