@@ -1,0 +1,31 @@
+name: One-time Stage 2 coverage regeneration
+on:
+  push:
+    branches:
+      - feat/approved-stage2-unit-visual-parity-20261113
+    paths:
+      - .github/workflows/refresh-stage2-coverage.yml
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/approved-stage2-unit-visual-parity-20261113
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild deterministic source-evidence outputs
+        run: node scripts/build-rules-coverage.mjs
+      - name: Commit only regenerated evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/rules-coverage/
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh Stage 2 UI source evidence"
+            git push origin HEAD:feat/approved-stage2-unit-visual-parity-20261113
+          fi
