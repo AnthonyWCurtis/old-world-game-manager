@@ -119,7 +119,7 @@ export function renderUnitCounter(doc,army,unit,spec,card){
  const draw=value=>{
   amount.textContent=value+'/'+spec.max;
   minus.disabled=value===0;plus.disabled=value===spec.max;
-  for(const el of card.querySelectorAll('.game-defence-wounds-remaining'))el.textContent=value+'/'+spec.max;
+  for(const el of card.querySelectorAll('.game-defence-wounds-remaining'))el.textContent=value+'/'+spec.max+(spec.kind==='models'?' models':'');
   live.textContent=label+' remaining: '+value+' of '+spec.max;
  };
  let current=remaining;
