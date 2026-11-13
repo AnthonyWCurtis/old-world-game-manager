@@ -39,7 +39,7 @@ try{
   seaId,{timeout:20000});
  assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
   'Conditional Precision Strikes and Armour Bane remain in attack references, not active buffs');
- assert.equal(await sea.locator('.game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
+ assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
   'Razor Standard persists as a separate source-backed offensive effect');
  await sea.locator('.game-unit-focus-open').click();
  const attackRule=sea.locator('.game-offensive-effect[data-effect-id="precision-strikes"]');
