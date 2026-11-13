@@ -37,29 +37,3 @@ jobs:
           path: |
             docs/rules-coverage/*.json
             docs/rules-coverage/*.md
-
-
-  regenerate-ux-coverage-once:
-    if: github.event_name == 'push' && github.ref_name == 'feat/compact-unit-ux-wounds-20261113'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref_name }}
-          persist-credentials: true
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Regenerate Stage 1 evidence artifacts on PR branch
-        run: node scripts/build-rules-coverage.mjs
-      - name: Commit only regenerated coverage files to PR branch
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/rules-coverage/register.json docs/rules-coverage/metrics.json docs/rules-coverage/report.md docs/rules-coverage/imported-selections.json
-          if ! git diff --cached --quiet; then
-            git commit -m 'Regenerate source-indexed rules coverage evidence for Units UX'
-            git push origin HEAD:${{ github.ref_name }}
-          fi
