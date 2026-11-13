@@ -1,4 +1,5 @@
 name: Refresh chevron view coverage integrity
+# Rerun after restoring model-group visibility and final test edits.
 on:
   push:
     branches:
