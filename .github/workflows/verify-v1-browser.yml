@@ -11,6 +11,7 @@ on:
       - 'tests/focused-unit-details-browser-smoke.mjs'
       - 'tests/roster-long-press-reorder-browser-smoke.mjs'
       - 'tests/compact-roster-browser-smoke.mjs'
+      - 'tests/compact-unit-wound-browser-smoke.mjs'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
       - 'tests/stage4-browser-smoke.mjs'
@@ -31,6 +32,7 @@ on:
       - 'docs/**'
       - 'tests/focused-unit-details-browser-smoke.mjs'
       - 'tests/compact-roster-browser-smoke.mjs'
+      - 'tests/compact-unit-wound-browser-smoke.mjs'
       - 'tests/v1-browser-smoke.mjs'
       - 'tests/stage3-browser-smoke.mjs'
       - 'tests/stage4-browser-smoke.mjs'
@@ -74,6 +76,7 @@ jobs:
           node tests/focused-unit-details-browser-smoke.mjs
           node tests/roster-long-press-reorder-browser-smoke.mjs
           node tests/compact-roster-browser-smoke.mjs
+          node tests/compact-unit-wound-browser-smoke.mjs
           node tests/v1-browser-smoke.mjs
           node tests/stage3-browser-smoke.mjs
           node tests/stage4-browser-smoke.mjs
