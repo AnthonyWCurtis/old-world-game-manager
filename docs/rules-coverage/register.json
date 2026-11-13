@@ -438,7 +438,7 @@
     },
     {
       "file": "docs/unit-focus-view.js",
-      "sha256": "0846ba658187d38db9d3b43e1c3d9286c71a5e1c86ead56f6534cc20fedbd017"
+      "sha256": "61237b7581c27b7c69681cab9457ed79c24b0d83a6b8b2ac7ec318ce5f60bc73"
     },
     {
       "file": "docs/unit-selection-matcher.js",
@@ -446,7 +446,7 @@
     },
     {
       "file": "docs/unit-view-modes.js",
-      "sha256": "db55e5936146e6400f7044219045bcabeedec901af424625fe7036c21bb58101"
+      "sha256": "e71253ce7a2b00a2d1ec49fd00bbfd789fe68c08b782b059acaf853bff54034a"
     },
     {
       "file": "docs/unit-wound-tracker.js",
