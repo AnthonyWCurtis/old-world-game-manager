@@ -99,7 +99,7 @@ try{
   await defence.locator(':scope > summary').click();
   await audit('unit expanded defence sources');
  }
- await page.locator('#gameUnitFocusBack').click();
+ await sea.locator('.game-unit-focus-open').click();
  await page.locator('#gameNavMagic').click();
  await audit('magic');
  await page.locator('#gameItemAbilities .game-effect-card').first().locator('summary').click();
