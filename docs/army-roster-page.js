@@ -869,13 +869,30 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const defence=evaluateDefences(army,session,entry.id,records);
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    if(model.characters.length){
-    const manage=el(doc,'button','owc-manage-characters',
-     'Manage Characters ('+memberList.length+')');
+    const manage=el(doc,'button','owc-manage-characters');
     manage.type='button';
-    manage.setAttribute('aria-label','Manage characters attached to '+unitDisplayName(entry,session));
+    manage.title='Manage assigned characters';
+    manage.setAttribute('aria-label','Manage characters attached to '+unitDisplayName(entry,session)+
+     ' ('+memberList.length+' assigned)');
+    const symbol=doc.createElementNS('http://www.w3.org/2000/svg','svg');
+    symbol.setAttribute('viewBox','0 0 24 24');
+    symbol.setAttribute('width','20');
+    symbol.setAttribute('height','20');
+    symbol.setAttribute('fill','none');
+    symbol.setAttribute('stroke','currentColor');
+    symbol.setAttribute('stroke-width','1.8');
+    symbol.setAttribute('stroke-linecap','round');
+    symbol.setAttribute('stroke-linejoin','round');
+    symbol.setAttribute('aria-hidden','true');
+    for(const d of ['M14 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1','M8 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8','M19 8v8','M15 12h8']){
+     const path=doc.createElementNS('http://www.w3.org/2000/svg','path');
+     path.setAttribute('d',d);symbol.append(path);
+    }
+    manage.append(symbol);
     manage.addEventListener('click',()=>manageRegimentCharacters(
      doc,container,currentArmyKey,entry,model.characters,assignments,displayId,onAssignment,session));
-    card.querySelector('.army-unit-names')?.append(manage);
+    const assignedCount=card.querySelector('.game-assigned-count');
+    (assignedCount?.parentElement||card.querySelector('.army-unit-names'))?.append(manage);
    }
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
