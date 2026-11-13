@@ -15,7 +15,7 @@ export function isPublishedMagicItemUrl(url){
  try{
   const ref=new URL(url);
   return ref.origin==='https://tow.whfb.app'&&
-   /^\\/magic-items?\\/[a-z0-9-]+\\/?$/.test(ref.pathname)&&
+   /^\/magic-items?\/[a-z0-9-]+\/?$/.test(ref.pathname)&&
    !ref.search&&!ref.hash;
  }catch{return false;}
 }
