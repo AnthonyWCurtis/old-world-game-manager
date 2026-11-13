@@ -37,7 +37,15 @@ try{
  assert.equal(await card.locator('.game-unit-focus-open').isVisible(),true,'One clear primary open unit action');
  await card.locator('.game-unit-focus-open').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),true);
- assert.equal(await page.locator('.game-focus-selected .game-rename-toggle').isVisible(),true,'Rename available within focused unit');
+ const renameIcon=page.locator('.game-focus-selected .game-rename-toggle');
+ assert.equal(await renameIcon.isVisible(),true,'Pencil rename is available within focused unit');
+ assert.equal(await renameIcon.locator('svg[aria-hidden="true"]').count(),1,'Rename trigger has pencil icon rather than button text');
+ assert.equal(await renameIcon.evaluate(el=>el.previousElementSibling?.tagName),'H3','Pencil sits immediately beside the unit name');
+ assert.equal(await renameIcon.getAttribute('aria-label')!==null,true,'Icon-only rename has an accessible label');
+ await renameIcon.click();
+ assert.equal(await page.locator('.game-focus-selected .game-unit-rename-input').isVisible(),true,'Pencil opens the existing rename editor');
+ await renameIcon.click();
+ assert.equal(await page.locator('.game-focus-selected .game-unit-rename-input').isVisible(),false,'Pencil closes the rename editor');
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'No click-through detail tabs');
  await page.locator('#gameUnitFocusBack').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),false);
