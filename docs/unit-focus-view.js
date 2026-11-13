@@ -138,6 +138,13 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    change();
   });
   header.tabIndex=0;
+  // A tap on the compact characteristics area also reveals the full card.
+  // Source links and every battle control still handle their own actions.
+  content.addEventListener('click',event=>{
+   if(!card.classList.contains('owc-view-compact'))return;
+   if(event.target.closest('button,a,input,select,label,form,textarea,summary,details'))return;
+   if(event.target.closest('.army-unit-card-body'))change();
+  });
   collapse?.addEventListener('click',()=>{
    if(content.hidden)setUnitView(card,'compact',{remember:false});
    sync();
