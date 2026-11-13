@@ -33,15 +33,15 @@ try{
  assert.ok(await sea.locator('.army-profile-scroll').isVisible(),'Compact view shows the two-row characteristics');
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,'Combat detail is reserved for Full View');
  await sea.locator('.game-unit-focus-open').click();
- assert.equal(await page.locator('.owc-view-picker button[aria-pressed="true"]').innerText(),'Full View');
+ assert.ok(await sea.evaluate(el=>el.classList.contains('owc-view-full')),'Full view opens inside the same unit');
  assert.ok(await sea.locator('.game-attack-phase[data-attack-phase="shooting"]').isVisible());
  assert.ok(await sea.locator('.game-attack-phase[data-attack-phase="combat"]').isVisible());
  assert.ok(await sea.locator('.game-defence-resilience').isVisible());
  assert.ok(await sea.locator('.game-defence-values .game-defence-stat').count()===3);
  assert.equal(await sea.locator('.game-defence-wounds-remaining').innerText(),
   (before[0]-1)+'/'+before[1]+' models');
- await page.locator('#gameUnitFocusBack').click();
- assert.equal(await expand.getAttribute('aria-expanded'),'false','Returning to army collapses the focused unit');
+ await expand.click();
+ assert.equal(await expand.getAttribute('aria-expanded'),'false','One fold collapses either view');
  assert.equal(await amount.innerText(),(before[0]-1)+'/'+before[1],
   'Counter remains accessible when card is folded');
  await page.locator('#gameScreenSaveBtn').click();
