@@ -33,6 +33,12 @@ try{
  assert.equal(await more.isVisible(),true,'Advanced source details remain reachable via small overflow affordance');
  assert.equal(await more.evaluate(el=>el.parentElement?.classList.contains('game-unit-name-line')),true,'Expand arrow belongs directly beside unit name');
  assert.notEqual(await more.evaluate(el=>getComputedStyle(el).fontSize),'0px','Unit arrow is directly visible for one-tap expansion');
+ await more.click();
+ assert.equal(await card.locator('.game-rename-toggle').isVisible(),true,'Expanded single card shows pencil beside unit name');
+ await card.locator('.game-rename-toggle').click();
+ assert.equal(await card.locator('.game-unit-rename-input').isVisible(),true,'Inline pencil opens the rename editor');
+ await card.locator('.game-rename-toggle').click();
+ await more.click();
  assert.equal(await card.locator('.game-compact-wounds').count(),1,'Wound or model tracker is visible beside unit header');
  assert.equal(await card.locator('.game-unit-focus-open').isVisible(),true,'One clear primary open unit action');
  await card.locator('.game-unit-focus-open').click();
