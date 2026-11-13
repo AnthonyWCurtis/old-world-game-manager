@@ -28,7 +28,6 @@ try{
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
- await sea.locator('.game-unit-focus-open').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting Attacks');
  const shootingBS=seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-ballistic-skill');
@@ -75,7 +74,6 @@ try{
  const company=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator("h3:text-is(\"Ship's Company\")")}).first();
  await company.locator('.game-unit-expand-toggle').click();
- await company.locator('.game-unit-focus-open').click();
  assert.match(await company.locator('.game-effect-empty').innerText(),/No supported source-reviewed effects/);
 
  // A Battle Standard carries its own item, and joins are recorded rather than guessed.
@@ -84,7 +82,6 @@ try{
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
  await bsb.locator('.game-unit-expand-toggle').click();
- await bsb.locator('.game-unit-focus-open').click();
  const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await bsbAttacks.isVisible(),true);
  const bsbShooting=bsbAttacks.locator('[data-attack-phase="shooting"]');
@@ -163,7 +160,6 @@ try{
  if(await storm.locator('.game-unit-expandable').isHidden())
   await storm.locator('.game-unit-expand-toggle').click();
  if(await storm.evaluate(e=>e.classList.contains('owc-view-compact')))
-  await storm.locator('.game-unit-focus-open').click();
  assert.equal(await storm.locator('.game-effect-card[data-effect-id="scroll-of-invocation"]')
   .getAttribute('data-status'),'spent');
 
@@ -171,7 +167,6 @@ try{
  const elixir=page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'153 pts'}).first();
  await elixir.locator('.game-unit-expand-toggle').click();
- await elixir.locator('.game-unit-focus-open').click();
  const potion=elixir.locator('.game-effect-card[data-effect-id="elixir-of-power"]');
  assert.equal(await potion.getAttribute('data-status'),'ready');
  await potion.locator('summary').click();
