@@ -27,3 +27,5 @@ jobs:
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh coverage after chevron unit view change'
             git push
           fi
+
+# Refresh after preserving inline view state on battle rerenders.
