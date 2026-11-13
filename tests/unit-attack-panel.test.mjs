@@ -69,7 +69,7 @@ test('attack rendering and offline support are present for every roster scope',(
  const ui=read('docs/army-roster-page.js');
  const attack=read('docs/unit-attack-panel.js');
  const sw=read('docs/sw.js');
- assert.match(ui,/body\.append\(renderUnitAttackPanel\(doc,imported,record,fallback,effects\)\)/);
+ assert.match(ui,/body\.append\(renderUnitAttackPanel\(doc,imported,record,fallback,effects,mountProfileGroups,selectedUnitRecords\)\)/);
  assert.match(ui,/content\.append\(renderUnitAttackPanel\(doc,imported,records\[entry\.id\]/);
  assert.match(ui,/heading\.append\(el\(doc,'strong','','Defence'\)\)/);
  assert.match(attack,/Not a normal weapon attack|not a normal weapon attack/);

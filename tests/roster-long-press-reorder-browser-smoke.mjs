@@ -27,9 +27,31 @@ try{
  const one=await cards.nth(0).boundingBox(),two=await cards.nth(1).boundingBox();
  assert.ok(one&&two,'Touch targets are in viewport');
  const client=await context.newCDPSession(page);
- const from={x:one.x+65,y:one.y+one.height/2,id:1},toY=two.y+two.height/2+12;
+ const firstHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ assert.ok(firstHandle,'Source index badge is a safe non-control drag handle');
+ const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
+ const unitGeometry=await first.evaluate(card=>{
+   const rect=cls=>card.querySelector(cls)?.getBoundingClientRect().toJSON();
+   const header=card.querySelector('.army-unit-head');
+   return {card:card.getBoundingClientRect().toJSON(),
+    header:rect('.army-unit-head'),identity:rect('.army-unit-identity'),
+    index:rect('.army-unit-index'),counter:rect('.game-compact-wounds'),
+    button:rect('.game-wound-step'),focus:rect('.game-unit-focus-open'),
+    grid:getComputedStyle(header).gridTemplateColumns,display:getComputedStyle(header).display};
+ });
+ const targetInfo=await page.evaluate(({x,y})=>{
+  const e=document.elementFromPoint(x,y);
+  return {tag:e?.tagName,cls:typeof e?.className==='string'?e.className:null,
+   inHeader:!!e?.closest('.army-unit-head'),
+   blockedControl:!!e?.closest('button,a,input,select,textarea,label,summary,[contenteditable="true"]'),
+   x,y,rect:e?.getBoundingClientRect().toJSON()};
+ },from);
+ assert.equal(targetInfo.inHeader,true,'Expected header drag point, got '+JSON.stringify(targetInfo));
+ assert.equal(targetInfo.blockedControl,false,'Drag hit an interactive control '+JSON.stringify({targetInfo,unitGeometry}));
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
+ const dragReady=await page.locator('#armyRosterList').evaluate(el=>el.classList.contains('game-roster-reordering'));
+ assert.equal(dragReady,true,'Long press on source index badge must begin a reorder drag (not trigger a button)');
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...from,y:toY}]});
  await page.waitForTimeout(90);
  await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
@@ -61,7 +83,9 @@ try{
  const header=cards.first().locator('.army-unit-head');
  await header.scrollIntoViewIfNeeded();
  const one2=await cards.nth(0).boundingBox(),two2=await cards.nth(1).boundingBox();
- const point={x:one2.x+65,y:one2.y+one2.height/2,id:2};
+ const secondHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ assert.ok(secondHandle);
+ const point={x:secondHandle.x+secondHandle.width/2,y:secondHandle.y+secondHandle.height/2,id:2};
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
  await page.waitForTimeout(480);
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...point,y:two2.y+two2.height/2+12}]});

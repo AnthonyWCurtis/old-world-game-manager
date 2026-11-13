@@ -30,18 +30,18 @@ try{
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
- assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting');
+ assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting Attacks');
  const shootingBS=seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-ballistic-skill');
  assert.equal(await shootingBS.isVisible(),true);
  assert.match(await shootingBS.innerText(),/Sea Guard.*BS.*4/s);
  assert.match(await shootingBS.innerText(),/Sea Master.*BS.*5/s);
  assert.equal(await shootingBS.locator('.game-attack-model').count(),2,
   'Selected champion has its own published BS, not an averaged value');
- assert.equal(await seaAttackPanel.locator('[data-attack-phase="combat"] > h5').innerText(),'Combat');
+ assert.equal(await seaAttackPanel.locator('[data-attack-phase="combat"] > h5').innerText(),'Combat Attacks');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-weapon')
   .filter({hasText:'Warbows'}).count(),1,
   'Ordinary regiment shooters still have their selected Warbows');
- assert.match(await seaAttackPanel.locator('[data-attack-phase="combat"]').innerText(),/Base melee characteristics/);
+ assert.match(await seaAttackPanel.locator('[data-attack-phase="combat"]').innerText(),/Published melee attack components/);
  const offence=sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effects-panel');
  assert.equal(await offence.isVisible(),true);
  const order=await sea.locator('.game-unit-expandable').evaluate(area=>{
@@ -111,7 +111,7 @@ try{
   'Superseded Longbow must not be shown in the BSB battle equipment panel');
  assert.equal(await bsb.locator('.army-unit-unified-loadout .army-unit-loadout-pill')
   .filter({hasText:"Hunter's Scorn"}).count(),1);
- assert.match(await bsbCombat.innerText(),/Base melee characteristics/);
+ assert.match(await bsbCombat.innerText(),/Published melee attack components/);
  assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
  assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);

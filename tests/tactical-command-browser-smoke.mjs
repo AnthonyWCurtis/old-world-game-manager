@@ -31,7 +31,9 @@ try{
  assert.equal(await card.locator('.game-rename-toggle').isVisible(),false,'Rename belongs in focused detail, not list row');
  const more=card.locator('.game-unit-expand-toggle');
  assert.equal(await more.isVisible(),true,'Advanced source details remain reachable via small overflow affordance');
- assert.equal(await more.evaluate(el=>getComputedStyle(el).fontSize),'0px','Legacy Show details text is not a second big visible button');
+ assert.equal(await more.evaluate(el=>el.parentElement?.classList.contains('game-unit-name-line')),true,'Expand arrow belongs directly beside unit name');
+ assert.notEqual(await more.evaluate(el=>getComputedStyle(el).fontSize),'0px','Unit arrow is directly visible for one-tap expansion');
+ assert.equal(await card.locator('.game-compact-wounds').count(),1,'Wound or model tracker is visible beside unit header');
  assert.equal(await card.locator('.game-unit-focus-open').isVisible(),true,'One clear primary open unit action');
  await card.locator('.game-unit-focus-open').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),true);

@@ -22,8 +22,10 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  const seaDef=sea.locator(':scope > .game-unit-expandable > .game-defence-panel');
  assert.match(await seaDef.locator('[data-save="armour"]').innerText(),/5\+/);
- assert.match(await seaDef.locator('[data-save="ward"]').innerText(),/Not established/);
- assert.match(await seaDef.locator('[data-save="regeneration"]').innerText(),/Not established/);
+ assert.match(await seaDef.locator('[data-save="ward"]').innerText(),/Ward\s*—/);
+ assert.match(await seaDef.locator('[data-save="ward"]').getAttribute('title'),/Not established/);
+ assert.match(await seaDef.locator('[data-save="regeneration"]').innerText(),/Regeneration\s*—/);
+ assert.match(await seaDef.locator('[data-save="regeneration"]').getAttribute('title'),/Not established/);
  assert.match(await seaDef.locator('.game-defence-champion').textContent(),/Sea Master.*4\+.*Magic Missiles/i);
  assert.match(await page.locator('#armyRosterSummary').textContent(),/2,599/);
 
@@ -41,7 +43,7 @@ try{
  await sky.locator('select.character-unit-picker').selectOption(seaId);
  const seaAgain=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+seaId+'"]');
  assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="armour"]').innerText(),/5\+/);
- assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="regeneration"]').innerText(),/Not established/);
+ assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="regeneration"]').innerText(),/Regeneration\s*—/);
  assert.equal(await seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]').count(),1);
  const attached=seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]');
  await attached.locator(':scope > summary').click();

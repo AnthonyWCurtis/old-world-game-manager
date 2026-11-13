@@ -1,0 +1,241 @@
+/*
+ * Old World Companion — compact, one-fold Units card.
+ * Scope every override to the Game Manager; retain existing focus/navigation
+ * and source diagnostics for backward compatibility.
+ */
+.tactical-ui #armyRosterList .army-unit-head{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;
+ column-gap:10px;row-gap:3px;
+ padding:11px 12px;
+ min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-identity{
+ grid-column:1;grid-row:1;min-width:0;align-self:center;
+}
+.tactical-ui #armyRosterList .army-unit-points{
+ grid-column:1;grid-row:2;max-width:none;
+ padding:0 0 0 36px;text-align:left;
+ border:0;font-size:12px;min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-points strong{
+ font-size:12px;color:var(--tc-gold-text);
+}
+.tactical-ui #armyRosterList .army-unit-points span{display:none}
+.tactical-ui #armyRosterList .game-unit-name-line{
+ display:flex;align-items:center;gap:2px;min-width:0;
+}
+.tactical-ui #armyRosterList .game-unit-name-line>h3{
+ min-width:0;overflow-wrap:anywhere;line-height:1.3;
+}
+.tactical-ui #armyRosterList .game-unit-name-line .game-unit-expand-toggle{
+ display:inline-grid!important;
+ grid-column:auto;grid-row:auto;place-items:center;
+ position:static;flex:0 0 36px;
+ width:36px;min-width:36px;height:44px;min-height:44px;
+ padding:0;margin:0;
+ border:0;background:transparent;color:var(--tc-gold-text);
+ font-size:24px;font-weight:600;line-height:1;
+}
+.tactical-ui #armyRosterList .game-unit-name-line .game-unit-expand-toggle::before{content:none!important}
+.tactical-ui #armyRosterList .game-unit-name-line .game-unit-expand-toggle:hover{
+ background:#263c50;color:#fff;
+}
+.tactical-ui #armyRosterList.game-unit-focused .game-unit-name-line .game-unit-expand-toggle{
+ display:inline-grid!important;
+}
+.tactical-ui #armyRosterList .game-compact-wounds{
+ grid-column:2;grid-row:1/span 2;
+ display:flex;align-items:center;justify-content:flex-end;
+ gap:3px;min-width:0;white-space:nowrap;
+}
+.tactical-ui #armyRosterList .game-wound-step{
+ display:grid;place-items:center;
+ width:40px;min-width:40px;height:44px;min-height:44px;
+ font-size:21px;font-weight:650;padding:0;
+ border:1px solid #46617a;border-radius:9px;
+ background:#1a344c;color:var(--tc-type);
+}
+.tactical-ui #armyRosterList .game-wound-step:disabled{opacity:.42}
+.tactical-ui #armyRosterList .game-wound-counter-value{
+ min-width:45px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:0;text-align:center;
+}
+.tactical-ui #armyRosterList .game-wound-counter-value>strong{
+ color:var(--tc-type);font-size:14px;font-variant-numeric:tabular-nums;
+}
+.tactical-ui #armyRosterList .game-wound-counter-value>small{
+ font-size:10px;line-height:1.3;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-compact-wounds-unresolved{
+ max-width:115px;white-space:normal;
+}
+.tactical-ui #armyRosterList .game-compact-wounds-unresolved-text{
+ font-size:12px;color:var(--tc-muted);text-align:right;
+}
+.tactical-ui #armyRosterList .game-unit-focus-open{
+ grid-column:2;grid-row:3;
+ min-width:0;width:auto;height:32px;min-height:32px;
+ padding:3px 8px;border:1px solid #3b576e;
+ border-radius:8px;justify-self:end;
+}
+.tactical-ui #armyRosterList .game-unit-focus-open::before{
+ content:"Full view";font-size:11px;line-height:1.2;
+ color:var(--tc-secondary);font-weight:700;
+}
+.tactical-ui #armyRosterList.game-unit-focused .game-unit-focus-open{display:none}
+.tactical-ui #armyRosterList .army-unit-card-body{
+ padding:11px 12px;
+}
+.tactical-ui #armyRosterList .game-attack-panel{padding:10px 12px}
+.tactical-ui #armyRosterList .game-attack-panel>h4{
+ margin:0 0 8px;font-size:13px;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-attack-phase{
+ border:0;padding:6px 0 12px;background:transparent;
+ gap:9px;
+}
+.tactical-ui #armyRosterList .game-attack-phase>h5{
+ margin:0;padding:2px 0 7px;font-size:14px;
+ color:var(--tc-gold-text);border-bottom:1px solid var(--tc-line);
+}
+.tactical-ui #armyRosterList .game-attack-model.game-attack-profile-card,
+.tactical-ui #armyRosterList .game-attack-special-card{
+ display:flex;flex-direction:column;align-items:stretch;
+ gap:8px;background:#1c344a;border:1px solid #455f75;
+ border-radius:11px;padding:10px;min-width:0;
+}
+.tactical-ui #armyRosterList .game-attack-special-title{
+ display:flex;align-items:baseline;justify-content:space-between;
+ flex-wrap:wrap;gap:5px;
+}
+.tactical-ui #armyRosterList .game-attack-special-title>a{font-weight:800;font-size:13px}
+.tactical-ui #armyRosterList .game-attack-special-title>small{
+ font-size:11px;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-attack-profile-card .game-attack-stats,
+.tactical-ui #armyRosterList .game-attack-special-stats{
+ width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;
+}
+.tactical-ui #armyRosterList .game-attack-profile-card .game-attack-stat,
+.tactical-ui #armyRosterList .game-attack-special-stats .game-attack-stat{
+ padding:5px 2px;background:#223f56;
+ min-width:0;overflow-wrap:anywhere;
+}
+.tactical-ui #armyRosterList .game-attack-profile-card .game-attack-stat>strong,
+.tactical-ui #armyRosterList .game-attack-special-stats .game-attack-stat>strong{
+ font-size:14px;font-variant-numeric:tabular-nums;
+}
+.tactical-ui #armyRosterList .game-defence-resilience{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px;margin:9px 0;
+}
+.tactical-ui #armyRosterList .game-defence-resilience-tile{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:5px;min-height:76px;padding:9px 4px;
+ border:1px solid var(--tc-line);border-radius:10px;
+ background:#1d354a;
+}
+.tactical-ui #armyRosterList .game-defence-resilience-tile>span{
+ font-size:12px;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-defence-resilience-tile>strong{
+ font-size:23px;line-height:1.25;color:var(--tc-type);
+ font-variant-numeric:tabular-nums;
+}
+.tactical-ui #armyRosterList .game-defence-saves-heading{
+ margin:11px 0 7px;font-size:11px;font-weight:800;
+ text-transform:uppercase;letter-spacing:.07em;color:var(--tc-gold-text);
+}
+.tactical-ui #armyRosterList .game-defence-values{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;
+}
+.tactical-ui #armyRosterList .game-defence-stat{
+ display:flex;align-items:center;justify-content:center;text-align:center;
+ background:#1d354a;border-color:var(--tc-line);
+ min-height:82px;gap:5px;padding:8px 3px;
+}
+.tactical-ui #armyRosterList .game-defence-stat>span{
+ color:var(--tc-secondary);font-size:11px;font-weight:700;
+}
+.tactical-ui #armyRosterList .game-defence-stat>strong{
+ color:var(--tc-type);font-size:19px;line-height:1.2;
+ overflow-wrap:anywhere;
+}
+.tactical-ui #armyRosterList .game-defence-tracker-note{
+ color:var(--tc-secondary);font-size:11px;margin:8px 0;
+}
+@media(max-width:560px){
+ .tactical-ui #armyRosterList .army-unit-head{column-gap:5px;padding:9px 8px}
+ .tactical-ui #armyRosterList .army-unit-identity{gap:6px}
+ .tactical-ui #armyRosterList .army-unit-points{padding-left:32px}
+ .tactical-ui #armyRosterList .game-wound-step{width:38px;min-width:38px}
+ .tactical-ui #armyRosterList .game-wound-counter-value{min-width:41px}
+ .tactical-ui #armyRosterList .game-unit-name-line .game-unit-expand-toggle{
+  min-width:30px;width:30px;flex-basis:30px;
+ }
+ .tactical-ui #armyRosterList .game-attack-panel{padding:9px}
+}
+@media(max-width:380px){
+ .tactical-ui #armyRosterList .army-unit-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
+ .tactical-ui #armyRosterList .army-unit-points{width:auto;max-width:none;border:0;display:block;padding:0 0 0 32px}
+}
+
+
+/* Precedence over the earlier Tactical V2 four-column roster header. */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-head,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-head{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;column-gap:7px;row-gap:3px;
+ padding:10px 11px;min-width:0;min-height:67px;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-identity,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-identity{
+ grid-column:1;grid-row:1;min-width:0;align-items:center;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-points,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-points{
+ grid-column:1;grid-row:2;max-width:none;min-width:0;width:auto;
+ text-align:left;border:0;padding:0 0 0 36px;display:block;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open{
+ grid-column:2;grid-row:3;justify-self:end;
+ min-width:0;width:auto;min-height:32px;height:32px;
+ padding:3px 8px;border:1px solid #3b576e;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open::before{
+ content:"Full view";font-size:11px;line-height:1.2;
+ color:var(--tc-secondary);font-weight:700;
+}
+.tactical-ui #armyRosterList .game-unit-victory-points{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:8px;padding:10px 12px;margin-top:10px;
+ border-top:1px solid var(--tc-line);
+ font-size:12px;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-unit-victory-points>strong{
+ color:var(--tc-secondary);font-weight:600;
+}
+
+
+/* This project does not define a generic sr-only utility. The per-counter
+ * live region must remain accessible without consuming the header grid:
+ * otherwise its long status sentence widens the counter column and crushes
+ * unit names into a 4px column on iPhone. */
+.tactical-ui #armyRosterList .game-compact-wounds .sr-only{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+.tactical-ui #armyRosterList .game-compact-wounds{
+ position:relative;min-width:0;max-width:100%;
+}
+
+
+/* ARIA status must remain accessible but cannot enlarge the grid counter. */
+.tactical-ui #armyRosterList .game-compact-wounds .sr-only{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}

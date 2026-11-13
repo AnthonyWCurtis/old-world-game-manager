@@ -6,6 +6,7 @@
 import {displayModelProfiles} from './imported-unit-display.js';
 import {renderUnitOffensiveEffects} from './effects-ui.js';
 import {selectedMissileWeapons} from './source-missile-profiles.js';
+import {reviewedSpecialAttackRows} from './source-special-attack-rows.js';
 
 const el=(doc,tag,cls='',label)=>{
  const node=doc.createElement(tag);
@@ -40,6 +41,7 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
   weaponSkill:safeStat(profile.characteristics?.WS),
   strength:safeStat(profile.characteristics?.S),
   attacks:safeStat(profile.characteristics?.A),
+  initiative:safeStat(profile.characteristics?.I),
   sourceUrl:record?.source?.sourceUrl||fallback?.url||null
  }));
  // Bound spells belong to their actual owner, never automatically to a joined
@@ -93,17 +95,17 @@ const detailsOf=spell=>{
  return parts.join(' · ');
 };
 /** Visible hierarchy follows the Shooting and Combat phases in tow.whfb.app. */
-export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
+export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[],mountGroups=[],mountRecords={}){
  const data=unitAttackSummary(unit,record,fallback,effects);
  const section=el(doc,'section','game-attack-panel');
  section.setAttribute('aria-label','Attacks');
  section.append(el(doc,'h4','','Attacks'));
  const shooting=el(doc,'div','game-attack-phase game-attack-shooting');
  shooting.dataset.attackPhase='shooting';
- shooting.append(el(doc,'h5','','Shooting'));
+ shooting.append(el(doc,'h5','','Shooting Attacks'));
  const combat=el(doc,'div','game-attack-phase game-attack-combat');
  combat.dataset.attackPhase='combat';
- combat.append(el(doc,'h5','','Combat'));
+ combat.append(el(doc,'h5','','Combat Attacks'));
  let shootingCount=0,combatCount=0;
 
  // BS is a model characteristic, not a weapon characteristic. Keep it
@@ -115,7 +117,7 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   group.append(el(doc,'strong','','Base Ballistic Skill'));
   const rows=el(doc,'div','game-attack-models');
   for(const profile of data.shootingModels){
-   const row=el(doc,'div','game-attack-model');
+   const row=el(doc,'div','game-attack-model game-attack-profile-card');
    row.append(el(doc,'span','game-attack-model-name',profile.name));
    const stats=el(doc,'div','game-attack-stats');
    stats.append(stat(doc,'BS',profile.ballisticSkill));
@@ -197,16 +199,27 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
 
 
 
- if(data.melee.length){
+ // Source-linked mount profiles are separate attack components, not extra
+ // rider attacks. Unknown WS/A values are not presented as usable attacks.
+ const mountMelee=(mountGroups||[]).flatMap(mount=>(mount.profiles||[]).filter(p=>
+  p.characteristics?.A!==undefined&&p.characteristics?.A!=='-'&&
+  p.characteristics?.WS!==undefined&&p.characteristics?.WS!=='-').map(p=>({
+   name:p.name,weaponSkill:safeStat(p.characteristics.WS),
+   strength:safeStat(p.characteristics.S),attacks:safeStat(p.characteristics.A),
+   initiative:safeStat(p.characteristics.I),sourceUrl:mount.sourceUrl
+  })));
+ const allMelee=[...data.melee,...mountMelee];
+ if(allMelee.length){
   const melee=el(doc,'div','game-attack-group');
-  melee.append(el(doc,'strong','','Base melee characteristics'));
+  melee.append(el(doc,'strong','','Published melee attack components'));
   const rows=el(doc,'div','game-attack-models');
-  for(const profile of data.melee){
+  for(const profile of allMelee){
    const row=el(doc,'div','game-attack-model');
    row.append(el(doc,'span','game-attack-model-name',profile.name));
    const stats=el(doc,'div','game-attack-stats');
-   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'S',profile.strength),
-    stat(doc,'A',profile.attacks));
+   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'A',profile.attacks),
+    stat(doc,'S',profile.strength),stat(doc,'I',profile.initiative),
+    stat(doc,'AP','—'));
    row.append(stats);
    rows.append(row);
    combatCount++;
@@ -215,6 +228,24 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[]){
   combat.append(melee);
  }
  combatCount+=weaponSection(data.magicWeapons.filter(x=>x.attackPhase==='Combat'),combat);
+
+ // Stomps and reviewed breath weapons are displayed only when their precise
+ // source URL occurs as a starting rule/equipment on a source-extracted unit
+ // or an exact source-linked selected mount. No dice or use is assumed.
+ const special=reviewedSpecialAttackRows(record,mountGroups,mountRecords);
+ const specialCard=(attack,phase)=>{
+  const box=el(doc,'div','game-attack-special-card');
+  const title=el(doc,'div','game-attack-special-title');
+  title.append(sourceLink(doc,attack.name,attack.sourceUrl));
+  if(attack.owner)title.append(el(doc,'small','',attack.owner));
+  box.append(title);
+  const stats=el(doc,'div','game-attack-stats game-attack-special-stats');
+  for(const [name,value] of attack.stats)stats.append(stat(doc,name,value));
+  box.append(stats,el(doc,'p','game-attack-caution',attack.note));
+  phase.append(box);
+ };
+ for(const attack of special.shooting){specialCard(attack,shooting);shootingCount++;}
+ for(const attack of special.combat){specialCard(attack,combat);combatCount++;}
 
  // No guessed phase for a source-listed weapon lacking phase verification.
  const unclassified=data.magicWeapons.filter(x=>!['Shooting','Combat'].includes(x.attackPhase));
