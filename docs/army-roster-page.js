@@ -188,7 +188,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  const details=el(doc,'div','army-unit-card-body');
  if(profiles.length||mountProfileGroups.length){
   const caption=el(doc,'div','army-profile-caption');
-  caption.append(el(doc,'strong','','Model characteristics'));
+  caption.append(el(doc,'strong','','Model Characteristics'));
   const note=profiles.length?(record?'Published base profiles':'Cached source base profiles'):'Rider profile unavailable';
   caption.append(el(doc,'span','',note+' · selected options not applied'));
   details.append(caption);
