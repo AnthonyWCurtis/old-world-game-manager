@@ -92,22 +92,12 @@ try{
  await audit('army roster');
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  await sea.locator('.game-unit-focus-open').click();
- for(const tab of ['profile','attacks','defence','effects']){
-  await page.locator('#gameUnitFocusTabs [data-focus-tab="'+tab+'"]').click();
-  await audit('unit '+tab);
-  if(tab==='profile'){
-   const extra=sea.locator('details.game-focused-disclosure').first();
-   if(await extra.count()){
-    await extra.locator(':scope > summary').click();
-    await audit('unit expanded published profile');
-   }
-  }else if(tab==='defence'){
-   const defence=sea.locator('details.game-defence-details').first();
-   if(await defence.count()){
-    await defence.locator(':scope > summary').click();
-    await audit('unit expanded defence sources');
-   }
-  }
+ assert.equal(await page.locator('#gameUnitFocusTabs').count(),0);
+ await audit('unit full expanded card');
+ const defence=sea.locator('details.game-defence-details').first();
+ if(await defence.count()){
+  await defence.locator(':scope > summary').click();
+  await audit('unit expanded defence sources');
  }
  await page.locator('#gameUnitFocusBack').click();
  await page.locator('#gameNavMagic').click();
