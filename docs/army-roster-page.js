@@ -1,4 +1,5 @@
 import {createGameScreenModel} from './game-screen-model.js';
+import {armySessionKey} from './battle-session.js';
 import {decorateCompactRoster} from './roster-compact-navigation.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
@@ -431,9 +432,12 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment,se
 /** Modal replaces the Full View-only assignment editor. Every action uses
  * the existing persisted onAssignment callback; no local assignment ledger.
  */
-function manageRegimentCharacters(doc,container,regiment,characters,assignments,regimentNames,onAssignment,session){
+function manageRegimentCharacters(doc,container,armyKey,regiment,characters,assignments,regimentNames,onAssignment,session){
  const existing=activeCharacterManager?.dialog;
- if(existing)existing.remove();
+ if(existing){
+  if(existing.open&&typeof existing.close==='function')existing.close();
+  existing.remove();
+ }
  const dialog=el(doc,'dialog','owc-character-manager');
  dialog.setAttribute('aria-label','Manage characters for '+unitDisplayName(regiment,session));
  const shell=el(doc,'div','owc-character-manager-shell');
@@ -475,7 +479,7 @@ function manageRegimentCharacters(doc,container,regiment,characters,assignments,
  shell.append(el(doc,'p','owc-character-manager-note',
   'Recorded assignments only. The game does not verify character joining eligibility.'));
  dialog.append(shell);doc.body.append(dialog);
- activeCharacterManager={container,unitId:regiment.id,dialog};
+ activeCharacterManager={container,armyKey,unitId:regiment.id,dialog};
  dialog.addEventListener('close',()=>{
   if(activeCharacterManager?.dialog===dialog)activeCharacterManager=null;
   dialog.remove();
@@ -741,9 +745,16 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  const displayId=new Map(model.units.map(entry=>[entry.id,entry]));
  const assignments=session?.assignments||{};
  const itemActions={onItemState,onShieldUse};
- const restoreManagedUnit=activeCharacterManager?.container===container?
+ const currentArmyKey=armySessionKey(army);
+ const restoreManagedUnit=activeCharacterManager?.container===container&&
+  activeCharacterManager.armyKey===currentArmyKey?
   activeCharacterManager.unitId:null;
- if(restoreManagedUnit)activeCharacterManager.dialog?.remove();
+ if(activeCharacterManager?.container===container){
+  const oldDialog=activeCharacterManager.dialog;
+  if(oldDialog?.open&&typeof oldDialog.close==='function')oldDialog.close();
+  oldDialog?.remove();
+  if(!restoreManagedUnit)activeCharacterManager=null;
+ }
  container.replaceChildren();
 
  // Cosmetic counter updates are stored in a separate namespaced local
@@ -849,11 +860,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    appendCompactStatus(doc,card,defence,memberList.length,effects);
    if(model.characters.length){
     const manage=el(doc,'button','owc-manage-characters',
-     '♙ Manage Characters ('+memberList.length+')');
+     'Manage Characters ('+memberList.length+')');
     manage.type='button';
     manage.setAttribute('aria-label','Manage characters attached to '+unitDisplayName(entry,session));
     manage.addEventListener('click',()=>manageRegimentCharacters(
-     doc,container,entry,model.characters,assignments,displayId,onAssignment,session));
+     doc,container,currentArmyKey,entry,model.characters,assignments,displayId,onAssignment,session));
     card.querySelector('.army-unit-names')?.append(manage);
    }
    const content=card.querySelector('.game-unit-expandable');
