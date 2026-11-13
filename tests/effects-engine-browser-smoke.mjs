@@ -25,9 +25,9 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
   'Only currently active effects belong in the header; passive rules move to the compact source list');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await sea.locator('.game-unit-expand-toggle').click();
- await sea.locator('.game-unit-focus-open').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting Attacks');
  const shootingBS=seaAttackPanel.locator('[data-attack-phase="shooting"] .game-attack-ballistic-skill');
@@ -74,7 +74,6 @@ try{
  const company=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator("h3:text-is(\"Ship's Company\")")}).first();
  await company.locator('.game-unit-expand-toggle').click();
- await company.locator('.game-unit-focus-open').click();
  assert.match(await company.locator('.game-effect-empty').innerText(),/No supported source-reviewed effects/);
 
  // A Battle Standard carries its own item, and joins are recorded rather than guessed.
@@ -83,7 +82,6 @@ try{
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
  await bsb.locator('.game-unit-expand-toggle').click();
- await bsb.locator('.game-unit-focus-open').click();
  const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await bsbAttacks.isVisible(),true);
  const bsbShooting=bsbAttacks.locator('[data-attack-phase="shooting"]');
@@ -162,7 +160,6 @@ try{
  if(await storm.locator('.game-unit-expandable').isHidden())
   await storm.locator('.game-unit-expand-toggle').click();
  if(await storm.evaluate(e=>e.classList.contains('owc-view-compact')))
-  await storm.locator('.game-unit-focus-open').click();
  assert.equal(await storm.locator('.game-effect-card[data-effect-id="scroll-of-invocation"]')
   .getAttribute('data-status'),'spent');
 
@@ -170,7 +167,6 @@ try{
  const elixir=page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'153 pts'}).first();
  await elixir.locator('.game-unit-expand-toggle').click();
- await elixir.locator('.game-unit-focus-open').click();
  const potion=elixir.locator('.game-effect-card[data-effect-id="elixir-of-power"]');
  assert.equal(await potion.getAttribute('data-status'),'ready');
  await potion.locator('summary').click();
@@ -218,6 +214,9 @@ try{
   .getAttribute('data-status'),'spent');
  assert.equal(await page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'202 pts'}).first().locator('.game-defence-shield-used input').isChecked(),true);
+ // Reload opens the army in Compact; expand Full to measure touch controls.
+ await page.locator('#gameCharacters .game-character-card').filter({hasText:'202 pts'}).first()
+  .locator('.game-unit-expand-toggle').click();
  for(const v of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(v);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,

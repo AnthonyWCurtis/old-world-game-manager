@@ -78,56 +78,43 @@ function enhanceFocusedProfile(card){
   tiles.remove();
  };
 }
-/** Render the approved Compact card directly in the roster.
- * Full View is a second state of that same card, never a separate screen.
- * Only presentation DOM changes; battle counters, assignments and rules remain intact.
+/** The roster always shows Compact; its one chevron toggles Full in place.
+ * Do not trigger the original collapse handler: no name-only state is allowed,
+ * and changing the display must not mutate recorded gameplay state.
  */
 export function attachFocusedUnitView(container,army,groups,_restoreRoster){
- const doc=container.ownerDocument||document;
- const allCards=groups.flatMap(group=>group.cards);
+ const cards=groups.flatMap(group=>group.cards);
  installRuleViewer(container);
- for(const card of allCards){
+ for(const card of cards){
   prepareUnitCompactCard(card,army);
   const content=card.querySelector(':scope > .game-unit-expandable');
-  const collapse=card.querySelector('.game-unit-expand-toggle');
+  const chevron=card.querySelector('.game-unit-expand-toggle');
   const header=card.querySelector('.army-unit-head');
-  if(!content||!header)continue;
+  if(!content||!chevron||!header)continue;
   const name=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'unit';
-  // The roster itself is the Compact View. Do not trigger the old toggle:
-  // doing so would persist a cosmetic open state into gameplay/session data.
   content.hidden=false;
   card.classList.add('game-unit-open');
-  if(collapse){
-   collapse.textContent='⌃';
-   collapse.setAttribute('aria-expanded','true');
-   collapse.setAttribute('aria-label','Collapse '+name+' card');
-  }
-  setUnitView(card,'compact',{remember:false});
-  const switchView=make(doc,'button','game-unit-focus-open','Full view');
-  switchView.type='button';
+  // prepareUnitCompactCard restores the current in-memory unit view on rerenders.
   const sync=()=>{
    const full=card.classList.contains('owc-view-full');
-   switchView.textContent=full?'Compact view':'Full view';
-   switchView.setAttribute('aria-label',(full?'Show compact':'Show full')+' view for '+name);
-   switchView.setAttribute('aria-pressed',String(full));
-   header.setAttribute('aria-label',name+' — '+(full?'Full':'Compact')+' view; tap to switch');
+   content.hidden=false;
+   card.classList.add('game-unit-open');
+   chevron.textContent=full?'⌃':'⌄';
+   chevron.setAttribute('aria-expanded',String(full));
+   chevron.setAttribute('aria-label',(full?'Show compact':'Show full')+' view for '+name);
+   chevron.setAttribute('title',full?'Compact View':'Full View');
+   header.setAttribute('aria-label',name+' — '+(full?'Full':'Compact')+' view');
   };
   const change=()=>{
-   if(content.hidden){
-    // First tap reveals a collapsed card as Compact, keeping the single fold.
-    collapse?.click();
-    setUnitView(card,'compact',{remember:false});
-   }else{
-    setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full',{remember:false});
-   }
+   // Keep the chosen view through assignment, wound and magic rerenders.
+   setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full');
    sync();
   };
-  switchView.addEventListener('click',event=>{event.stopPropagation();change();});
-  header.append(switchView);
-  // The entire non-interactive heading is a touch target. Links, the name
-  // pencil and the wound counter retain their independent controls.
+  // Capture before the old fold and header handlers. Every other interactive
+  // control (rename, counters, links, assignment editors) retains its action.
   header.addEventListener('click',event=>{
-   if(event.target.closest('button,a,input,select,label,form,textarea'))return;
+   if(event.target.closest('button,a,input,select,label,form,textarea')&&
+      !event.target.closest('.game-unit-expand-toggle'))return;
    event.preventDefault();
    event.stopImmediatePropagation();
    change();
@@ -138,17 +125,6 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    change();
   });
   header.tabIndex=0;
-  // A tap on the compact characteristics area also reveals the full card.
-  // Source links and every battle control still handle their own actions.
-  content.addEventListener('click',event=>{
-   if(!card.classList.contains('owc-view-compact'))return;
-   if(event.target.closest('button,a,input,select,label,form,textarea,summary,details'))return;
-   if(event.target.closest('.army-unit-card-body'))change();
-  });
-  collapse?.addEventListener('click',()=>{
-   if(content.hidden)setUnitView(card,'compact',{remember:false});
-   sync();
-  });
   sync();
  }
 }

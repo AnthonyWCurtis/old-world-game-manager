@@ -192,3 +192,17 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-profile-caption{
  margin-top:10px;
 }
+
+/* One chevron controls the additional Full View sections. The Compact body
+   is never folded away; there is no separate Full View button. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-unit-expand-toggle{
+ min-width:44px;min-height:44px;
+ color:#edcf93;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-unit-expand-toggle:focus-visible{
+ outline:2px solid #edcf93;outline-offset:2px;
+}
+.tactical-ui #armyRosterList .owc-model-groups{margin-top:10px}
+.tactical-ui #armyRosterList .owc-model-group-values{
+ margin:4px 0 0;font-size:12px;line-height:1.65;color:#e3eaf0;
+}

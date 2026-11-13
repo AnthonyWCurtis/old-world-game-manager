@@ -29,7 +29,7 @@ try{
   await card.locator('.game-rename-toggle').click();
   await card.locator('.game-unit-rename-input').fill(name);
   await card.locator('.game-unit-rename-save').click();
-  await page.locator('#gameUnitFocusBack').click();
+  await card.locator('.game-unit-expand-toggle').click();
  };
  await rename(first,'Left Flank');
  assert.equal(await page.locator('#gameRegiments .army-unit-card[data-unit-id="'+first+'"] h3').innerText(),'Left Flank');

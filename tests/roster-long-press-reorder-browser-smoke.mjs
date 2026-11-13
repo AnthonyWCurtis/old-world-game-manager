@@ -27,8 +27,8 @@ try{
  const one=await cards.nth(0).boundingBox(),two=await cards.nth(1).boundingBox();
  assert.ok(one&&two,'Touch targets are in viewport');
  const client=await context.newCDPSession(page);
- const firstHandle=await cards.first().locator('.army-unit-index').boundingBox();
- assert.ok(firstHandle,'Source index badge is a safe non-control drag handle');
+ const firstHandle=await cards.first().locator('.army-unit-names h3').boundingBox();
+ assert.ok(firstHandle,'Unit title is a safe non-control drag handle');
  const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
  const unitGeometry=await first.evaluate(card=>{
    const rect=cls=>card.querySelector(cls)?.getBoundingClientRect().toJSON();
@@ -36,7 +36,7 @@ try{
    return {card:card.getBoundingClientRect().toJSON(),
     header:rect('.army-unit-head'),identity:rect('.army-unit-identity'),
     index:rect('.army-unit-index'),counter:rect('.game-compact-wounds'),
-    button:rect('.game-wound-step'),focus:rect('.game-unit-focus-open'),
+    button:rect('.game-wound-step'),focus:rect('.game-unit-expand-toggle'),
     grid:getComputedStyle(header).gridTemplateColumns,display:getComputedStyle(header).display};
  });
  const targetInfo=await page.evaluate(({x,y})=>{
@@ -51,7 +51,7 @@ try{
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
  const dragReady=await page.locator('#armyRosterList').evaluate(el=>el.classList.contains('game-roster-reordering'));
- assert.equal(dragReady,true,'Long press on source index badge must begin a reorder drag (not trigger a button)');
+ assert.equal(dragReady,true,'Long press on unit title must begin a reorder drag (not trigger the Full View toggle)');
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...from,y:toY}]});
  await page.waitForTimeout(90);
  await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
@@ -75,15 +75,16 @@ try{
  assert.deepEqual(await cards.evaluateAll(els=>els.slice(0,2).map(e=>e.dataset.unitId)),
   before.slice(0,2).map(x=>x.id),'Keyboard can reorder without dragging');
  assert.equal(await reset.isDisabled(),true,'Restoring source order clears the personal preference');
- await cards.first().locator('.game-unit-focus-open').click();
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),before[0].id);
- await page.locator('#gameUnitFocusBack').click();
+ await cards.first().locator('.game-unit-expand-toggle').click();
+ assert.equal(await cards.first().evaluate(el=>el.classList.contains('owc-view-full')),true,
+  'Chevron opens Full View inline without a separate focus page');
+ await cards.first().locator('.game-unit-expand-toggle').click();
 
  // Arrange the first unit again, then persist through a full offline reload.
  const header=cards.first().locator('.army-unit-head');
  await header.scrollIntoViewIfNeeded();
  const one2=await cards.nth(0).boundingBox(),two2=await cards.nth(1).boundingBox();
- const secondHandle=await cards.first().locator('.army-unit-index').boundingBox();
+ const secondHandle=await cards.first().locator('.army-unit-names h3').boundingBox();
  assert.ok(secondHandle);
  const point={x:secondHandle.x+secondHandle.width/2,y:secondHandle.y+secondHandle.height/2,id:2};
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
