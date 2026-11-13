@@ -181,3 +181,39 @@
  .tactical-ui #armyRosterList .army-unit-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
  .tactical-ui #armyRosterList .army-unit-points{width:auto;max-width:none;border:0;display:block;padding:0 0 0 32px}
 }
+
+
+/* Precedence over the earlier Tactical V2 four-column roster header. */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-head,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-head{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;column-gap:7px;row-gap:3px;
+ padding:10px 11px;min-width:0;min-height:67px;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-identity,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-identity{
+ grid-column:1;grid-row:1;min-width:0;align-items:center;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .army-unit-points,
+.tactical-ui #armyRosterList.game-unit-focused .army-unit-points{
+ grid-column:1;grid-row:2;max-width:none;min-width:0;width:auto;
+ text-align:left;border:0;padding:0 0 0 36px;display:block;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open{
+ grid-column:2;grid-row:3;justify-self:end;
+ min-width:0;width:auto;min-height:32px;height:32px;
+ padding:3px 8px;border:1px solid #3b576e;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-focus-open::before{
+ content:"Full view";font-size:11px;line-height:1.2;
+ color:var(--tc-secondary);font-weight:700;
+}
+.tactical-ui #armyRosterList .game-unit-victory-points{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:8px;padding:10px 12px;margin-top:10px;
+ border-top:1px solid var(--tc-line);
+ font-size:12px;color:var(--tc-secondary);
+}
+.tactical-ui #armyRosterList .game-unit-victory-points>strong{
+ color:var(--tc-secondary);font-weight:600;
+}
