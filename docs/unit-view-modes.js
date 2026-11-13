@@ -127,8 +127,8 @@ export function prepareUnitCompactCard(card,army){
   const count=memberArea.querySelectorAll(':scope > .game-attached-character').length;
   const drawer=make(doc,'details','owc-assigned-drawer');
   const heading=make(doc,'summary','owc-assigned-summary');
-  heading.append(make(doc,'strong','','Assigned Characters ('+count+')'),
-   make(doc,'span','','Individual equipment & special rules'));
+  heading.append(make(doc,'strong','','Individual Equipment & Special Rules'),
+   make(doc,'span','',count+' assigned character'+(count===1?'':'s')));
   drawer.append(heading,memberArea);
   const drawerKey=key+'::assigned';
   drawer.open=assignedDrawerPreferences.get(drawerKey)||false;
