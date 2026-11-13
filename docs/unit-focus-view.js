@@ -96,6 +96,10 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    chevron.hidden=true;
    chevron.tabIndex=-1;
    chevron.setAttribute('aria-hidden','true');
+   chevron.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopImmediatePropagation();
+   },true);
   }
   // Suppress the legacy header collapse handler without interfering with
   // rename, counters, links or the new character-management button.
