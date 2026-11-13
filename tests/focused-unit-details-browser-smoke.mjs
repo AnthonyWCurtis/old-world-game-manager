@@ -17,9 +17,10 @@ try{
  const search=page.locator('#gameRosterSearch');
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const seaId=await sea.getAttribute('data-unit-id');
- await sea.locator('.game-unit-focus-open').click();
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId);
- assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),1,'A focused unit is the only visible card');
+ const visibleRosterCount=await page.locator('#armyRosterList .army-unit-card:visible').count();
+ assert.ok(visibleRosterCount>1,'Compact View keeps the whole army roster available');
+ assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),null,'There is no separate focused unit screen');
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,'Compact details are inline by default');
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'Unit detail must have no section tabs');
  const table=sea.locator('.army-unit-card-body > .army-profile-scroll .army-profile-table');
  await table.waitFor({state:'visible',timeout:20000});
@@ -30,8 +31,7 @@ try{
  assert.equal(await profiles.first().locator('th,td').count(),10,'One model column plus nine stats');
  assert.equal(await profiles.nth(1).locator('.owc-different-stat').count(),2,
   'Champion BS and Attacks differences are highlighted in gold');
- assert.equal(await page.locator('.owc-view-picker button[aria-pressed="true"]').innerText(),'Full View');
- await page.locator('.owc-view-picker button').filter({hasText:'Compact View'}).click();
+ assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-compact')),true,'Roster opens in Compact View');
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
  assert.equal(await sea.locator('.army-profile-scroll').isVisible(),true);
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,
@@ -45,21 +45,28 @@ try{
   'https://tow.whfb.app/special-rules/drilled');
  await page.locator('.owc-rule-close').first().click();
  assert.equal(await page.locator('.owc-rule-dialog').evaluate(d=>d.open),false);
- await page.locator('.owc-view-picker button').filter({hasText:'Full View'}).click();
+ const switchView=sea.locator('.game-unit-focus-open');
+ assert.equal(await switchView.isVisible(),true,'Inline Full View control is reachable');
+ assert.match(await switchView.getAttribute('aria-label'),/^Show full view/);
+ assert.equal(await switchView.getAttribute('aria-pressed'),'false');
+ await switchView.click();
+ assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-full')),true,'Full View expands this same card');
+ assert.equal(await switchView.getAttribute('aria-pressed'),'true');
+ assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),visibleRosterCount,
+  'Full View keeps other units accessible in the roster');
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
  // Shared name, wounds, effects and all original gameplay controls are unchanged.
  assert.deepEqual(await sea.locator('.game-attack-phase>h5').allTextContents(),
   ['Shooting Attacks','Combat Attacks']);
  assert.equal(await sea.locator('.game-unit-name-line .game-rename-toggle').isVisible(),true);
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
- assert.equal(await sea.locator('.game-unit-focus-open').isVisible(),false);
- assert.equal(await sea.locator('.game-unit-open .game-unit-expand-toggle').count(),0,
-  'There must be only one unit fold, not nested unit folds');
+ assert.equal(await sea.locator('.game-unit-expand-toggle').count(),1,
+  'There is one collapse arrow for the entire inline unit');
  // Structural approval did not authorize replacing Tactical V2's theme.
  // Wait for the existing card transition and compare the exact shared
  // navy surface token rather than assuming preview charcoal colours.
- const themed=await page.waitForFunction(()=>{
-  const card=document.querySelector('#armyRosterList .game-focus-selected');
+ const themed=await page.waitForFunction(id=>{
+  const card=document.querySelector('#armyRosterList .army-unit-card[data-unit-id="'+id+'"]');
   if(!card)return false;
   const colour=getComputedStyle(card).backgroundColor;
   const surface=getComputedStyle(document.body).getPropertyValue('--tc-surface').trim();
@@ -69,15 +76,14 @@ try{
   const expected=getComputedStyle(probe).backgroundColor;
   probe.remove();
   return colour===expected?{colour,expected}:false;
- },null,{timeout:12000});
+ },seaId,{timeout:12000});
  assert.ok((await themed.jsonValue()).colour,
-  'Expanded card must use the existing navy Tactical V2 surface');
- assert.deepEqual(await sea.locator('.army-unit-loadout-group>strong').allTextContents().then(x=>
-  x.filter(value=>value==='Equipment'||value==='Special Rules')),
-  ['Equipment','Special Rules']);
+  'Full card must use the existing navy Tactical V2 surface');
+ assert.deepEqual(await sea.locator('.owc-compact-loadout .owc-compact-label').allTextContents(),
+  ['Equipment & Upgrades','Special Rules'],'Full View retains the source-linked loadout above characteristics');
  for(const selector of [
   '.army-unit-card-body','.game-attack-panel','.game-defence-panel',
-  '.army-unit-unified-loadout','.game-effects-panel','.game-assigned-characters',
+  '.owc-compact-loadout','.game-effects-panel','.game-assigned-characters',
   '.game-unit-victory-points'
  ]){
   assert.equal(await sea.locator(selector).first().isVisible(),true,
@@ -98,66 +104,89 @@ try{
  await fold.click();
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false,
   'The single unit arrow collapses the entire card body');
+ assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true,'Wound tracking remains available when folded');
  await fold.click();
+ assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true,
+  'Reopening the unit restores Compact View in the same card');
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ await switchView.click();
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),true,
-  'Reopening the unit restores all sections without extra clicks');
+  'Full View remains available after folding and reopening');
 
- await page.locator('#gameUnitFocusBack').click();
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),null);
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false,'Back does not leave a giant inline panel open');
  await search.fill("Ship's Company");
- assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
+ assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3,'Search narrows the roster without entering a focused screen');
  const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Ship\'s Company")')});
+ const firstId=await ships.nth(0).getAttribute('data-unit-id');
  const secondId=await ships.nth(1).getAttribute('data-unit-id');
+ assert.notEqual(firstId,secondId,'Repeated regiments retain separate imported identities');
+ assert.equal(await ships.first().evaluate(el=>el.classList.contains('owc-view-compact')),true);
  await ships.nth(1).locator('.game-unit-focus-open').click();
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),secondId,'Duplicate regiment instances stay independent');
- await page.locator('#gameUnitFocusBack').click();
+ assert.equal(await ships.nth(1).evaluate(el=>el.classList.contains('owc-view-full')),true,
+  'Only the selected duplicate switches to Full View');
+ assert.equal(await ships.first().evaluate(el=>el.classList.contains('owc-view-compact')),true,
+  'Switching one duplicate leaves the other in Compact View');
+ assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
+ await ships.nth(1).locator('.game-unit-focus-open').click();
+ assert.equal(await ships.nth(1).evaluate(el=>el.classList.contains('owc-view-compact')),true);
  assert.equal(await search.inputValue(),"Ship's Company");
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
 
  await search.fill('Lothern Sea Guard');
- await sea.locator('.game-unit-focus-open').click();
+ assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-full')),true,'Sea Guard keeps its current inline view while searching');
  await page.locator('#gameScreenSaveBtn').click();
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
+ await page.waitForFunction(()=>!document.querySelector('#armyRosterPage')?.hidden||
+  document.querySelectorAll('#savedList .row-item').length>0,null,{timeout:20000});
  if(await page.locator('#importPage').isVisible())
   await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId,'Offline reload restores focused unit');
+ assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),null,'Offline reload keeps roster-first navigation');
+ assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true,'Offline reload restores the Compact card');
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),false,'Full detail is opt-in after reloading');
+ await sea.locator('.game-unit-focus-open').click();
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),true,'Attacks restored offline');
  assert.equal(await sea.locator('.game-defence-panel').isVisible(),true,'Defence restored offline');
  for(const viewport of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
    'No global horizontal overflow at '+viewport.width);
-   const stableTouch=await page.waitForFunction(()=>{
-    const button=document.querySelector('#gameUnitFocusBack');
-    if(!button||!button.isConnected||!document.querySelector('#armyRosterList')?.classList.contains('game-unit-focused'))return false;
-    const rect=button.getBoundingClientRect(),visibility=getComputedStyle(button).visibility;
-    return rect.height>=44&&visibility==='visible'?{height:rect.height,visibility}:false;
-   },null,{timeout:12000});
+   const stableTouch=await page.waitForFunction(id=>{
+    const card=document.querySelector('#armyRosterList .army-unit-card[data-unit-id="'+id+'"]');
+    const buttons=[card?.querySelector('.game-unit-expand-toggle'),card?.querySelector('.game-unit-focus-open')];
+    if(buttons.some(button=>!button||!button.isConnected))return false;
+    const heights=buttons.map(button=>button.getBoundingClientRect().height);
+    const visible=buttons.every(button=>getComputedStyle(button).visibility==='visible');
+    return heights.every(height=>height>=44)&&visible?{heights,visible}:false;
+   },seaId,{timeout:12000});
    const measured=await stableTouch.jsonValue();
-   assert.ok(measured.height>=44&&measured.visibility==='visible',
-    'Back action must be >=44px and visible at '+viewport.width+': '+JSON.stringify(measured));
+   assert.ok(measured.heights.every(height=>height>=44)&&measured.visible,
+    'Inline fold and view controls must be >=44px and visible at '+viewport.width+': '+JSON.stringify(measured));
  }
- const selected=page.locator('#armyRosterList .game-focus-selected');
+ const selected=page.locator('#armyRosterList .army-unit-card[data-unit-id="'+seaId+'"]');
  await selected.locator('.game-rename-toggle').click();
  await selected.locator('.game-unit-rename-input').fill('Centre Sea Guard');
  await selected.locator('.game-unit-rename-save').click();
- await page.waitForFunction(()=>document.querySelector('.game-unit-focus-title')?.textContent==='Centre Sea Guard',
-  null,{timeout:10000});
- assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId,
-  'Renaming must preserve the imported unit identity and focused view');
- assert.match(await page.locator('.game-focus-selected .army-unit-nickname').first().innerText(),/Official: Lothern Sea Guard/);
+ await page.waitForFunction(id=>document.querySelector('#armyRosterList .army-unit-card[data-unit-id="'+id+'"] h3')?.textContent==='Centre Sea Guard',
+  seaId,{timeout:10000});
+ assert.equal(await selected.getAttribute('data-unit-id'),seaId,'Renaming preserves imported unit identity');
+ assert.match(await selected.locator('.army-unit-nickname').first().innerText(),/Official: Lothern Sea Guard/);
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,
   'The full unit remains a single section without tabs after a state rerender');
+ assert.equal(await selected.evaluate(el=>el.classList.contains('owc-view-full')),true,
+  'Renaming rerenders the roster without resetting the selected Full View');
  assert.equal(await selected.locator('.game-attack-panel').isVisible(),true);
  assert.equal(await selected.locator('.game-defence-panel').isVisible(),true);
+ await selected.locator('.game-unit-focus-open').click();
+ assert.equal(await selected.locator('.game-attack-panel').isVisible(),false,
+  'The view control still switches back to Compact after a state redraw');
+ await selected.locator('.game-unit-focus-open').click();
+ assert.equal(await selected.locator('.game-attack-panel').isVisible(),true);
 
  assert.deepEqual(errors,[]);
- console.log('Focused Normal Play single-fold unit, all visible panels, duplicates, offline reload and live rename: PASS');
+ console.log('Inline Compact/Full unit profiles, rule links, single fold, duplicates, offline reload and rename: PASS');
 }finally{
  await browser.close();
 }

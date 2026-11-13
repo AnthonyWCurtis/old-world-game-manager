@@ -34,7 +34,10 @@ try{
  assert.ok(skyId);
  const skyDef=sky.locator(':scope > .game-unit-expandable > .game-defence-panel');
  assert.match(await skyDef.locator('[data-save="armour"]').innerText(),/4\+/);
- assert.match(await skyDef.locator('[data-save="ward"]').innerText(),/5\+/);
+ assert.match(await skyDef.locator('[data-save="ward"]').innerText(),/Not established/,
+  'Mounted rider/mount armour choice must remain unresolved');
+ assert.match(await skyDef.textContent(),/Charmed Shield\s*—\s*5\+/,
+  'The verified bearer-only conditional Ward is still listed with its source');
  assert.match(await skyDef.locator('[data-save="regeneration"]').innerText(),/5\+/);
  const shield=skyDef.locator('.game-defence-shield-used input');
  assert.equal(await shield.isChecked(),false);

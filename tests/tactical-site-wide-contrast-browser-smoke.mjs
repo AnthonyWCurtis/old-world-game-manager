@@ -99,7 +99,8 @@ try{
   await defence.locator(':scope > summary').click();
   await audit('unit expanded defence sources');
  }
- await page.locator('#gameUnitFocusBack').click();
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,
+  'The full unit remains inline when changing navigation tabs');
  await page.locator('#gameNavMagic').click();
  await audit('magic');
  await page.locator('#gameItemAbilities .game-effect-card').first().locator('summary').click();

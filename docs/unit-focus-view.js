@@ -102,7 +102,8 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    collapse.setAttribute('aria-expanded','true');
    collapse.setAttribute('aria-label','Collapse '+name+' card');
   }
-  setUnitView(card,'compact',{remember:false});
+  // prepareUnitCompactCard restored the per-army, per-unit view preference.
+  // Keep it across roster redraws caused by battle-state changes.
   const switchView=make(doc,'button','game-unit-focus-open','Full view');
   switchView.type='button';
   const sync=()=>{
@@ -116,9 +117,9 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    if(content.hidden){
     // First tap reveals a collapsed card as Compact, keeping the single fold.
     collapse?.click();
-    setUnitView(card,'compact',{remember:false});
+    setUnitView(card,'compact');
    }else{
-    setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full',{remember:false});
+    setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full');
    }
    sync();
   };
@@ -146,7 +147,7 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
    if(event.target.closest('.army-unit-card-body'))change();
   });
   collapse?.addEventListener('click',()=>{
-   if(content.hidden)setUnitView(card,'compact',{remember:false});
+   if(content.hidden)setUnitView(card,'compact');
    sync();
   });
   sync();

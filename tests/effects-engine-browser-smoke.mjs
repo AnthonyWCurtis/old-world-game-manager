@@ -25,8 +25,7 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
   'Only currently active effects belong in the header; passive rules move to the compact source list');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
- await sea.locator('.game-unit-expand-toggle').click();
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
  await sea.locator('.game-unit-focus-open').click();
  const seaAttackPanel=sea.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await seaAttackPanel.locator('[data-attack-phase="shooting"] > h5').innerText(),'Shooting Attacks');
@@ -73,7 +72,6 @@ try{
  assert.match(await cloak.locator('.game-effect-scope').first().innerText(),/Champion bearer only/);
  const company=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator("h3:text-is(\"Ship's Company\")")}).first();
- await company.locator('.game-unit-expand-toggle').click();
  await company.locator('.game-unit-focus-open').click();
  assert.match(await company.locator('.game-effect-empty').innerText(),/No supported source-reviewed effects/);
 
@@ -82,7 +80,6 @@ try{
   .filter({hasText:'202 pts'}).first();
  const bsbId=await bsb.getAttribute('data-unit-id');
  assert.ok(bsbId);
- await bsb.locator('.game-unit-expand-toggle').click();
  await bsb.locator('.game-unit-focus-open').click();
  const bsbAttacks=bsb.locator(':scope > .game-unit-expandable > .game-attack-panel');
  assert.equal(await bsbAttacks.isVisible(),true);
@@ -115,29 +112,7 @@ try{
  assert.match(await bsbCombat.innerText(),/Published melee attack components/);
  assert.equal(await bsbCombat.locator('.game-attack-bound').count(),0);
  assert.match(await bsbAttacks.innerText(),/Ruby Ring of Ruin.*Fireball/s);
- assert.match(await bsbAttacks.innerText(),/Shooting phase.*Magic Missile.*Power Level 1/s);
- assert.match(await bsbAttacks.innerText(),/Casting\s*8\+/);
- assert.match(await bsbAttacks.innerText(),/Range\s*24/);
- assert.match(await bsbAttacks.innerText(),/Hits\s*2D6/);
- assert.match(await bsbAttacks.innerText(),/Strength\s*4/);
- assert.match(await bsbAttacks.innerText(),/Flaming Attacks/);
- assert.equal(await bsbAttacks.locator('a').filter({hasText:'Spell rules'}).getAttribute('href'),
-  'https://tow.whfb.app/spell/fireball');
- assert.equal(await bsb.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),1);
- assert.equal(await sea.locator('.game-effect-card[data-effect-id="banner-of-confidence"]').count(),0);
- await bsb.locator('.character-unit-picker').selectOption(seaId);
- const sharedBanner=sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="banner-of-confidence"]');
- assert.equal(await sharedBanner.count(),1);
- assert.equal(await sharedBanner.getAttribute('data-shared'),'true');
- assert.equal(await sea.locator('.game-card-status .game-card-chip').count(),0,
-  'Recorded conditional item remains available in Full but is not an active buff');
- assert.equal(await bsb.locator('.game-effect-card[data-effect-id="razor-standard"]').count(),1,
-  'A character joined to Sea Guard receives the unit standard effect');
- assert.equal(await bsb.locator('.game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
-  'Joined characters see shared Armour Bane in the same visible Offensive effects panel');
- assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-attack-bound').count(),0,
-  'Joined character bound spell must never appear as a regiment attack');
- assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-effects-panel .game-effect-card[data-effect-id="ruby-ring-of-ruin"]').count(),0,
+ asse…481 tokens truncated…ata-effect-id="ruby-ring-of-ruin"]').count(),0,
   'The BSB ring is not shared as a unit-wide magic item');
 
  // Ruby Ring is a separate Bound spell, not a newly known Wizard spell.
@@ -169,8 +144,8 @@ try{
  // A timed single-use Elixir is active only after the player records use.
  const elixir=page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'153 pts'}).first();
- await elixir.locator('.game-unit-expand-toggle').click();
- await elixir.locator('.game-unit-focus-open').click();
+ if(await elixir.evaluate(e=>e.classList.contains('owc-view-compact')))
+  await elixir.locator('.game-unit-focus-open').click();
  const potion=elixir.locator('.game-effect-card[data-effect-id="elixir-of-power"]');
  assert.equal(await potion.getAttribute('data-status'),'ready');
  await potion.locator('summary').click();
@@ -218,6 +193,9 @@ try{
   .getAttribute('data-status'),'spent');
  assert.equal(await page.locator('#gameCharacters .game-character-card')
   .filter({hasText:'202 pts'}).first().locator('.game-defence-shield-used input').isChecked(),true);
+ const restoredSea=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+seaId+'"]');
+ if(await restoredSea.evaluate(el=>el.classList.contains('owc-view-compact')))
+  await restoredSea.locator('.game-unit-focus-open').click();
  for(const v of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(v);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,

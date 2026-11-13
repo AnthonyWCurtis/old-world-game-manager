@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-compact-full-stage2-selection';
+const CACHE_NAME='game-manager-v1-shell-20261113-stage2-offline-import-closure';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -41,6 +41,8 @@ const APP_SHELL=[
  './imported-unit-display.js',
  './unit-equipment-and-rules.js',
  './unit-attack-panel.js',
+ './source-special-attack-rows.js',
+ './unit-wound-tracker.js',
  './source-missile-profiles.js',
  './selected-command-rule-links.js',
  './spell-engine.js',

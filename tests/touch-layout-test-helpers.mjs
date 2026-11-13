@@ -3,17 +3,22 @@
 export async function showUnitsAndExpand(page){
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  await page.locator('#gameNavUnits').click();
- await page.locator('#armyRosterList .game-unit-expand-toggle').evaluateAll(buttons=>{
-  for(const button of buttons){
-   if(button.getAttribute('aria-expanded')==='false')button.click();
-  }
- });
  // Legacy combat regression scenarios intentionally exercise every detailed
  // battle control. Switch their opened cards to Full, while production's
  // default remains the newly approved Compact display.
- await page.locator('#armyRosterList:not(.game-unit-focused) .army-unit-card.game-unit-open.owc-view-compact .game-unit-focus-open').evaluateAll(buttons=>{
-  for(const button of buttons)button.click();
- });
+ const ids=await page.locator('#armyRosterList .army-unit-card').evaluateAll(
+  cards=>cards.map(card=>card.dataset.unitId));
+ for(const id of ids){
+  const card=page.locator('#armyRosterList .army-unit-card[data-unit-id="'+id+'"]');
+  // Section accordions may hide an entire group. Those cards can be expanded
+  // when their section is opened; Playwright should only click visible cards.
+  if(!await card.isVisible())continue;
+  const arrow=card.locator('.game-unit-expand-toggle');
+  if(await arrow.getAttribute('aria-expanded')==='false')await arrow.click();
+  if(await card.evaluate(el=>el.classList.contains('owc-view-compact'))&&
+     await card.locator('.game-unit-focus-open').isVisible())
+   await card.locator('.game-unit-focus-open').click();
+ }
 }
 export async function showMagic(page){
  await page.locator('#armyRosterPage').waitFor({state:'visible'});

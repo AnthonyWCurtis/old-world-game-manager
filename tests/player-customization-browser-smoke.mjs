@@ -23,13 +23,10 @@ try{
  const second=await ships.nth(1).getAttribute('data-unit-id');
  const rename=async(id,name)=>{
   const card=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+id+'"]');
-  // Inline-expanded cards intentionally have no second Open unit control.
-  // Tapping their heading opens the same focused view without an extra button.
-  await card.locator('.army-unit-names h3').click();
+  // The pencil edits the unit directly within its single expandable card.
   await card.locator('.game-rename-toggle').click();
   await card.locator('.game-unit-rename-input').fill(name);
   await card.locator('.game-unit-rename-save').click();
-  await page.locator('#gameUnitFocusBack').click();
  };
  await rename(first,'Left Flank');
  assert.equal(await page.locator('#gameRegiments .army-unit-card[data-unit-id="'+first+'"] h3').innerText(),'Left Flank');
