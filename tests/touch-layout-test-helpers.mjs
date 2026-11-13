@@ -8,6 +8,12 @@ export async function showUnitsAndExpand(page){
    if(button.getAttribute('aria-expanded')==='false')button.click();
   }
  });
+ // Legacy combat regression scenarios intentionally exercise every detailed
+ // battle control. Switch their opened cards to Full, while production's
+ // default remains the newly approved Compact display.
+ await page.locator('#armyRosterList:not(.game-unit-focused) .army-unit-card.game-unit-open.owc-view-compact .game-unit-focus-open').evaluateAll(buttons=>{
+  for(const button of buttons)button.click();
+ });
 }
 export async function showMagic(page){
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
