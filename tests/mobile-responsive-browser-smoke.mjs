@@ -83,7 +83,9 @@ try{
    }
    // Approved two-row characteristics table: one model column plus nine
    // evenly sized statistic columns; no horizontal scrolling.
-   const table=page.locator('#armyRosterList .owc-unit-view .army-profile-table:visible').first();
+   const table=page.locator('#gameRegiments .army-unit-card')
+    .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first()
+    .locator('.army-profile-table:visible');
    const stats=await table.evaluate(el=>{
     const viewport=el.closest('.army-profile-scroll');
     return {client:viewport.clientWidth,scroll:viewport.scrollWidth,
