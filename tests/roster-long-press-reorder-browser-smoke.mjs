@@ -32,6 +32,8 @@ try{
  const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
+ const dragReady=await page.locator('#armyRosterList').evaluate(el=>el.classList.contains('game-roster-reordering'));
+ assert.equal(dragReady,true,'Long press on source index badge must begin a reorder drag (not trigger a button)');
  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...from,y:toY}]});
  await page.waitForTimeout(90);
  await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
