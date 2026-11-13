@@ -77,7 +77,7 @@ try{
  assert.equal(await reset.isDisabled(),true,'Restoring source order clears the personal preference');
  await cards.first().locator('.game-unit-focus-open').click();
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),before[0].id);
- await page.locator('#gameUnitFocusBack').click();
+ await cards.first().locator('.game-unit-focus-open').click();
 
  // Arrange the first unit again, then persist through a full offline reload.
  const header=cards.first().locator('.army-unit-head');
