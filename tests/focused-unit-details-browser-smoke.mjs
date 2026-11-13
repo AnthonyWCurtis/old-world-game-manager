@@ -26,6 +26,23 @@ try{
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),17,'Other army units remain in roster');
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ // Only the regiment's own equipment and special rules appear in its pills,
+ // even though attached characters have their own nested source cards.
+ const ownPills=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body > .owc-compact-loadout > .owc-compact-words .owc-compact-word');
+ assert.ok(await ownPills.count()>0);
+ assert.ok(!(await ownPills.allTextContents()).some(label=>/Mathlann's Ire|Hunter's Scorn|Elixir of Power/.test(label)),
+  'Character selections must not be merged into the Sea Guard pills');
+ const assigned=sea.locator('.owc-assigned-drawer');
+ assert.equal(await assigned.count(),1,'Regiment has a single reusable assigned-character drawer');
+ assert.equal(await assigned.evaluate(el=>el.open),false,'Assigned characters start collapsed');
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),false);
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await assigned.evaluate(el=>el.open),true);
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ assert.equal(await sea.locator('.game-assignment-editor').isVisible(),true,
+  'Original character assignment controls remain accessible');
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await assigned.evaluate(el=>el.open),false);
  const profiles=table.locator('tbody tr:not(.army-profile-mount-row):not(.army-profile-mount-heading)');
  assert.ok(await profiles.count()>=2);
  assert.match(await profiles.first().innerText(),/Sea Guard/);
@@ -49,9 +66,13 @@ try{
   'Equipment and Special Rules stay above characteristics in Full View');
  assert.equal(await sea.locator('.owc-compact-loadout').innerText(),originalCompact);
  assert.equal(await table.isVisible(),true);
- for(const selector of ['.game-attack-panel','.game-defence-panel','.game-effects-panel','.game-assigned-characters']){
+ for(const selector of ['.game-attack-panel','.game-defence-panel','.game-effects-panel']){
   assert.equal(await sea.locator(selector).first().isVisible(),true,selector+' must appear below Compact View');
  }
+ assert.equal(await assigned.evaluate(el=>el.open),false,'Full View retains the assigned-character fold');
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ await assigned.locator(':scope > summary').click();
  const order=await content.evaluate(node=>[...node.children].map(c=>c.className));
  const position=cls=>order.findIndex(x=>typeof x==='string'&&x.split(' ').includes(cls));
  assert.ok(position('army-unit-card-body')<position('game-attack-panel')&&
