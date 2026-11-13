@@ -90,6 +90,56 @@
 }
 .tactical-ui #armyRosterList .owc-word-separator{display:none}
 .tactical-ui #armyRosterList .owc-compact-unavailable{font-size:11px;color:#9fb4c8}
+/* Assigned characters are a single optional drawer below the regiment's
+   own pills. Reuse the existing nested character controls and source links. */
+.tactical-ui #armyRosterList .owc-assigned-drawer{
+ margin-top:14px;border:1px solid #34495f;border-radius:9px;
+ background:#122237;min-width:0;overflow:hidden;color:#eef3f7;
+}
+.tactical-ui #armyRosterList .owc-assigned-summary{
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ padding:11px 12px;min-height:48px;cursor:pointer;list-style:none;
+}
+.tactical-ui #armyRosterList .owc-assigned-summary::-webkit-details-marker{display:none}
+.tactical-ui #armyRosterList .owc-assigned-summary strong{
+ color:#f1d3a1;font-size:13px;font-weight:750;
+}
+.tactical-ui #armyRosterList .owc-assigned-summary span{
+ color:#b6c4d3;font-size:11px;text-align:right;
+}
+.tactical-ui #armyRosterList .owc-assigned-summary::after{
+ content:"⌄";color:#d9b77a;font-size:18px;flex:none;
+}
+.tactical-ui #armyRosterList .owc-assigned-drawer[open] > .owc-assigned-summary::after{content:"⌃"}
+.tactical-ui #armyRosterList .owc-assigned-summary:focus-visible{
+ outline:2px solid #d9b77a;outline-offset:-3px;
+}
+.tactical-ui #armyRosterList .owc-assigned-drawer > .game-assigned-characters{
+ margin:0;padding:2px 10px 12px;border:0;border-top:1px solid #34495f;
+ min-width:0;background:transparent;
+}
+.tactical-ui #armyRosterList .owc-assigned-drawer > .game-assigned-characters > h4{
+ display:none;
+}
+/* Compact mode hides extra blocks and Full hides the original unit
+   loadout. An explicitly opened assigned character must retain its own
+   equipment/rules in BOTH modes. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-assigned-drawer .game-attached-character-body .army-unit-card-body > .army-unit-unified-loadout{
+ display:block!important;
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-assigned-drawer .game-attached-character .army-unit-loadout-pill{
+ display:inline-flex;align-items:center;min-height:30px;padding:5px 9px;
+ border:1px solid #536781;border-radius:7px;background:#1b3047;
+ color:#e4c48a;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-assigned-drawer .game-attached-character .army-unit-loadout-pill:hover{
+ border-color:#d9b77a;background:#263e55;color:#f1d3a1;
+}
+@media(max-width:380px){
+ .tactical-ui #armyRosterList .owc-assigned-summary{flex-wrap:wrap}
+ .tactical-ui #armyRosterList .owc-assigned-summary span{text-align:left}
+}
+
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption{
  margin:12px 0 8px;padding:0;border:0;
 }

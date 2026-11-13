@@ -46,6 +46,7 @@ try{
  assert.match(await seaAgain.locator(':scope > .game-unit-expandable > .game-defence-panel [data-save="regeneration"]').innerText(),/Regeneration\s*—/);
  assert.equal(await seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]').count(),1);
  const attached=seaAgain.locator('.game-attached-character[data-character-id="'+skyId+'"]');
+ await seaAgain.locator('.owc-assigned-drawer > summary').click();
  await attached.locator(':scope > summary').click();
  assert.match(await attached.locator('.game-defence-panel [data-save="regeneration"]').innerText(),/5\+/);
 

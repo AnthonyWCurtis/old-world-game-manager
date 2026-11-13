@@ -17,7 +17,7 @@ try{
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const seaId=await sea.getAttribute('data-unit-id');
  const content=sea.locator(':scope > .game-unit-expandable');
- const table=sea.locator('.army-unit-card-body .army-profile-table');
+ const table=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body > .army-profile-scroll .army-profile-table');
  await table.waitFor({state:'visible',timeout:20000});
  assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-compact')),true,
   'The army roster opens with the approved Compact card by default');
@@ -25,7 +25,37 @@ try{
  assert.equal(await page.locator('#gameUnitFocusBack').count(),0,'No separate unit details navigation');
  assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),17,'Other army units remain in roster');
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
+ // Only the regiment's own equipment and special rules appear in its pills,
+ // even though attached characters have their own nested source cards.
+ const ownPills=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body > .owc-compact-loadout > .owc-compact-words .owc-compact-word');
+ assert.ok(await ownPills.count()>0);
+ assert.ok(!(await ownPills.allTextContents()).some(label=>/Mathlann's Ire|Hunter's Scorn|Elixir of Power/.test(label)),
+  'Character selections must not be merged into the Sea Guard pills');
+ const assigned=sea.locator('.owc-assigned-drawer');
+ assert.equal(await assigned.count(),1,'Regiment has a single reusable assigned-character drawer');
+ assert.equal(await assigned.evaluate(el=>el.open),false,'Assigned characters start collapsed');
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),false);
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await assigned.evaluate(el=>el.open),true);
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ assert.equal(await sea.locator('.game-assignment-editor').isVisible(),true,
+  'Original character assignment controls remain accessible');
+ const picker=assigned.locator('.regiment-character-picker');
+ const ishayaId=await picker.locator('option').filter({hasText:'Ishaya Vess'}).getAttribute('value');
+ assert.ok(ishayaId,'Fixture offers Ishaya Vess as a possible assignment');
+ await picker.selectOption(ishayaId);
+ assert.match(await assigned.locator(':scope > summary').innerText(),/Assigned Characters \(1\)/);
+ assert.equal(await assigned.evaluate(el=>el.open),true,'Assignment rerender preserves opened drawer');
+ const attached=assigned.locator('.game-attached-character').first();
+ await attached.locator(':scope > summary').click();
+ assert.equal(await attached.locator('.army-unit-loadout-pill').filter({hasText:"Mathlann's Ire"}).count(),1,
+  'The character keeps their own linked equipment inside their details');
+ assert.ok(!(await ownPills.allTextContents()).some(label=>/Mathlann's Ire/.test(label)),
+  'Assigning a character never injects their rules into the regiment pills');
+ await attached.locator(':scope > summary').click();
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await assigned.evaluate(el=>el.open),false);
  const profiles=table.locator('tbody tr:not(.army-profile-mount-row):not(.army-profile-mount-heading)');
  assert.ok(await profiles.count()>=2);
  assert.match(await profiles.first().innerText(),/Sea Guard/);
@@ -49,29 +79,37 @@ try{
   'Equipment and Special Rules stay above characteristics in Full View');
  assert.equal(await sea.locator('.owc-compact-loadout').innerText(),originalCompact);
  assert.equal(await table.isVisible(),true);
- for(const selector of ['.game-attack-panel','.game-defence-panel','.game-effects-panel','.game-assigned-characters']){
-  assert.equal(await sea.locator(selector).first().isVisible(),true,selector+' must appear below Compact View');
+ for(const selector of ['.game-attack-panel','.game-defence-panel','.game-effects-panel']){
+  assert.equal(await content.locator(':scope > '+selector).isVisible(),true,selector+' must appear below Compact View');
  }
+ assert.equal(await assigned.evaluate(el=>el.open),false,'Full View retains the assigned-character fold');
+ await assigned.locator(':scope > summary').click();
+ assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ await attached.locator(':scope > summary').click();
+ assert.equal(await attached.locator('.army-unit-loadout-pill').filter({hasText:"Mathlann's Ire"}).isVisible(),true,
+  'Attached character equipment remains visible in Full View too');
+ await attached.locator(':scope > summary').click();
+ await assigned.locator(':scope > summary').click();
  const order=await content.evaluate(node=>[...node.children].map(c=>c.className));
  const position=cls=>order.findIndex(x=>typeof x==='string'&&x.split(' ').includes(cls));
  assert.ok(position('army-unit-card-body')<position('game-attack-panel')&&
   position('game-attack-panel')<position('game-defence-panel'),
   'The expanded unit keeps Compact View at the top, with battle details beneath');
- assert.deepEqual(await sea.locator('.game-attack-phase>h5').allTextContents(),
+ assert.deepEqual(await content.locator(':scope > .game-attack-panel .game-attack-phase>h5').allTextContents(),
   ['Shooting Attacks','Combat Attacks']);
  assert.equal(await sea.locator('.game-unit-name-line .game-rename-toggle').isVisible(),true);
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
  await open.click();
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
  assert.equal(await sea.locator('.owc-compact-loadout').isVisible(),true);
  assert.equal(await open.getAttribute('aria-expanded'),'false');
  assert.equal(await content.isVisible(),true,'Compact view never collapses to name only');
  await open.click();
  assert.equal(await open.getAttribute('aria-expanded'),'true');
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),true);
  await open.click();
  assert.equal(await content.isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
+ assert.equal(await content.locator(':scope > .game-attack-panel').isVisible(),false);
  await search.fill("Ship's Company");
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),3);
  const ships=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3').filter({hasText:"Ship's Company"})});
