@@ -69,6 +69,25 @@
 .tactical-ui #armyRosterList a.owc-compact-word:focus-visible{
  outline:2px solid #d9b77a;outline-offset:2px;
 }
+/* The Stage 2 expanded-card selector in unit-card-ux.css is more specific
+   than the ordinary pill selector and strips its border/background. Restore
+   the same pills in Full View without changing the underlying rule links. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words .owc-compact-word{
+ display:inline-flex;align-items:center;max-width:100%;min-height:30px;
+ padding:5px 9px;border:1px solid #34495f;border-radius:7px;
+ background:#182a40;color:#b6c4d3;font-size:12px;
+ line-height:1.3;opacity:1;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word{
+ background:#1b3047;border:1px solid #536781;border-radius:7px;
+ color:#e4c48a;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word:hover{
+ background:#263e55;border-color:#d9b77a;color:#f1d3a1;
+}
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word:focus-visible{
+ outline:2px solid #d9b77a;outline-offset:2px;
+}
 .tactical-ui #armyRosterList .owc-word-separator{display:none}
 .tactical-ui #armyRosterList .owc-compact-unavailable{font-size:11px;color:#9fb4c8}
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption{
