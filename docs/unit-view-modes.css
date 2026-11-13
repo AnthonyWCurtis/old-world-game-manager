@@ -171,6 +171,9 @@
 .owc-rule-frame{
  display:block;width:100%;flex:1;min-height:0;border:0;
  background:var(--owc-rule-navy);color:var(--owc-rule-text);
+ /* Visually darken the cross-origin source without changing or copying its
+    live text. Blue links shift toward gold; source images also shift colour. */
+ filter:invert(1) hue-rotate(180deg);
 }
 .owc-rule-footer{border-top:1px solid #3d536b;font-size:12px}
 .owc-rule-original{color:var(--owc-rule-gold);text-decoration:underline;text-underline-offset:3px}
