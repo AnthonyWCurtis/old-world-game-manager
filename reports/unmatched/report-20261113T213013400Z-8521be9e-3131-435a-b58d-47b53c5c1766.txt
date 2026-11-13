@@ -1,0 +1,81 @@
+Warhammer: The Old World — Unmatched Source Reference Report
+Report ID: 8521be9e-3131-435a-b58d-47b53c5c1766
+Submitted: 2026-11-13T21:30:13.400Z
+Export format: old-world-builder / regular-text
+Faction: Wood Elf Realms
+Unmatched entries: 12
+
+Each item is an unmatched source reference, not a declaration of invalid army composition.
+No player name, original army list, IP address or matched selections included.
+
+[1] UNIT: Gargantuan Treeman Ancient
+  Parent unit: Gargantuan Treeman Ancient
+  Kind: unknown
+  Source line: 8
+  Parent unit reference: -
+
+[2] SELECTION: Huge oaken fists
+  Parent unit: Gargantuan Treeman Ancient
+  Kind: option
+  Source line: 9
+  Parent unit reference: -
+
+[3] SELECTION: Root eruption
+  Parent unit: Gargantuan Treeman Ancient
+  Kind: option
+  Source line: 10
+  Parent unit reference: -
+
+[4] SELECTION: Blessings of the Oak
+  Parent unit: Gargantuan Treeman Ancient
+  Kind: option
+  Source line: 16
+  Parent unit reference: -
+
+[5] SELECTION: The Kinbands of Modryn
+  Parent unit: Deepwood Scouts
+  Kind: option
+  Source line: 36
+  Parent unit reference: https://tow.whfb.app/unit/deepwood-scouts
+
+[6] SELECTION: The Kinbands of Modryn
+  Parent unit: Deepwood Scouts
+  Kind: option
+  Source line: 43
+  Parent unit reference: https://tow.whfb.app/unit/deepwood-scouts
+
+[7] UNIT: Gargantuan Treeman
+  Parent unit: Gargantuan Treeman
+  Kind: unknown
+  Source line: 54
+  Parent unit reference: -
+
+[8] SELECTION: Huge oaken fists
+  Parent unit: Gargantuan Treeman
+  Kind: option
+  Source line: 55
+  Parent unit reference: -
+
+[9] SELECTION: Root eruption
+  Parent unit: Gargantuan Treeman
+  Kind: option
+  Source line: 56
+  Parent unit reference: -
+
+[10] UNIT: Gargantuan Treeman
+  Parent unit: Gargantuan Treeman
+  Kind: unknown
+  Source line: 61
+  Parent unit reference: -
+
+[11] SELECTION: Huge oaken fists
+  Parent unit: Gargantuan Treeman
+  Kind: option
+  Source line: 62
+  Parent unit reference: -
+
+[12] SELECTION: Root eruption
+  Parent unit: Gargantuan Treeman
+  Kind: option
+  Source line: 63
+  Parent unit reference: -
