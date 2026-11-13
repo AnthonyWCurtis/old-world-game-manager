@@ -161,3 +161,18 @@
  .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table thead th{font-size:9px}
  .owc-rule-dialog{width:98vw;height:94dvh}
 }
+/* Roster-first navigation: Compact is visible on the army screen; a tap
+   changes the same original card to Full without introducing a new page. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .army-unit-head{
+ cursor:pointer;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .army-unit-head:focus-visible{
+ outline:2px solid #e5c17e;outline-offset:2px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption,
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-scroll{
+ cursor:pointer;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-unit-focus-open[aria-pressed="true"]{
+ background:#cba96c;color:#13243a;border-color:#cba96c;
+}
