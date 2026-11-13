@@ -78,139 +78,70 @@ function enhanceFocusedProfile(card){
   tiles.remove();
  };
 }
-/** Attaches to the original imported cards; never clones any interactive controls. */
-export function attachFocusedUnitView(container,army,groups,restoreRoster){
+/** Render the approved Compact card directly in the roster.
+ * Full View is a second state of that same card, never a separate screen.
+ * Only presentation DOM changes; battle counters, assignments and rules remain intact.
+ */
+export function attachFocusedUnitView(container,army,groups,_restoreRoster){
  const doc=container.ownerDocument||document;
- const key=PREFIX+armySessionKey(army);
  const allCards=groups.flatMap(group=>group.cards);
- const byId=new Map(allCards.map(card=>[card.dataset.unitId,card]));
- // One source-backed compact summary per original card; leave original controls in place.
- for(const card of allCards)prepareUnitCompactCard(card,army);
  installRuleViewer(container);
- let active=null;
- const toolbar=make(doc,'section','game-unit-focus-toolbar');
- toolbar.id='gameUnitFocus';
- toolbar.hidden=true;
- toolbar.setAttribute('aria-label','Focused unit details');
- const top=make(doc,'div','game-unit-focus-top');
- const back=make(doc,'button','game-unit-focus-back','← Back to army');
- back.id='gameUnitFocusBack';
- back.type='button';
- const heading=make(doc,'div','game-unit-focus-heading');
- heading.append(make(doc,'p','game-unit-focus-kicker','NORMAL PLAY · UNIT DETAILS'));
- const title=make(doc,'h2','game-unit-focus-title');
- heading.append(title);
- top.append(back,heading);
- toolbar.append(top);
- const modes=make(doc,'nav','owc-view-picker');
- modes.setAttribute('aria-label','Unit detail view');
- const compact=make(doc,'button','','Compact View');
- const full=make(doc,'button','','Full View');
- compact.type=full.type='button';
- modes.append(compact,full);
- toolbar.append(modes);
- container.prepend(toolbar);
- let preferredMode='full';
- const preferenceKey='old-world-game-manager-unit-view-v1:'+armySessionKey(army);
- try{
-  if(localStorage.getItem(preferenceKey)==='compact')preferredMode='compact';
- }catch{/* View preference is cosmetic. */}
- function chooseMode(mode){
-  preferredMode=mode==='compact'?'compact':'full';
-  compact.setAttribute('aria-pressed',String(preferredMode==='compact'));
-  full.setAttribute('aria-pressed',String(preferredMode==='full'));
-  if(active)setUnitView(active.card,preferredMode);
-  try{localStorage.setItem(preferenceKey,preferredMode)}catch{/* View choice remains in memory. */}
- }
- compact.addEventListener('click',()=>chooseMode('compact'));
- full.addEventListener('click',()=>chooseMode('full'));
- chooseMode(preferredMode);
-
- function closeFocus({focusBack=true}={}){
-  if(!active)return;
-  const previous=active;
-  active=null;
-  setUnitView(previous.card,'compact');
-  for(const [node,hidden] of previous.originalChildren)node.hidden=hidden;
-  for(const group of groups)group.wrapper.classList.remove('game-focus-section');
-  for(const owner of container.querySelectorAll('#gameCharacters,#gameRegiments'))
-   owner.classList.remove('game-focus-owner');
-  previous.card.classList.remove('game-focus-selected');
-  container.classList.remove('game-unit-focused');
-  container.removeAttribute('data-focus-unit');
-  container.closest('#armyRosterPage')?.classList.remove('game-unit-detail-mode');
-  toolbar.hidden=true;
-  const collapse=previous.card.querySelector('.game-unit-expand-toggle');
-  if(collapse?.getAttribute('aria-expanded')==='true')collapse.click();
-  saveFocus(key,null);
-  restoreRoster();
-  if(focusBack){
-   previous.card.querySelector('.game-unit-focus-open')?.focus({preventScroll:true});
-   previous.card.scrollIntoView({block:'nearest',behavior:'instant'});
-  }
- }
- function openFocus(card,{restoring=false}={}){
-  if(active&&active.card!==card)closeFocus({focusBack:false});
-  if(active?.card===card)return;
-  const content=card.querySelector(':scope > .game-unit-expandable');
-  if(!content)return;
-  const toggle=card.querySelector('.game-unit-expand-toggle');
-  if(content.hidden)toggle?.click();
-  const group=groups.find(item=>item.cards.includes(card));
-  if(!group)return;
-  const originalChildren=new Map([...content.children].map(child=>[child,child.hidden]));
-  group.wrapper.hidden=false;
-  group.body.hidden=false;
-  card.hidden=false;
-  for(const item of groups)item.wrapper.classList.toggle('game-focus-section',item===group);
-  for(const owner of container.querySelectorAll('#gameCharacters,#gameRegiments'))
-   owner.classList.toggle('game-focus-owner',owner.contains(card));
-  card.classList.add('game-focus-selected');
-  container.classList.add('game-unit-focused');
-  container.dataset.focusUnit=card.dataset.unitId;
-  container.closest('#armyRosterPage')?.classList.add('game-unit-detail-mode');
-  title.textContent=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'Unit details';
-  toolbar.hidden=false;
-  active={card,content,group,originalChildren};
-  chooseMode(preferredMode);
-  saveFocus(key,{unitId:card.dataset.unitId});
-  if(!restoring)toolbar.scrollIntoView({block:'start',behavior:'instant'});
- }
- back.addEventListener('click',()=>closeFocus());
  for(const card of allCards){
+  prepareUnitCompactCard(card,army);
+  const content=card.querySelector(':scope > .game-unit-expandable');
+  const collapse=card.querySelector('.game-unit-expand-toggle');
   const header=card.querySelector('.army-unit-head');
-  if(!header)continue;
+  if(!content||!header)continue;
   const name=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'unit';
-  const open=make(doc,'button','game-unit-focus-open','Full view');
-  open.type='button';
-  open.setAttribute('aria-label','Open '+name+' unit details');
-  open.addEventListener('click',event=>{
-   event.stopPropagation();
-   // In an expanded army card, switch views in place instead of navigating.
-   // A collapsed card still opens the focused unit screen.
-   if(card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
-    const mode=card.classList.contains('owc-view-full')?'compact':'full';
-    setUnitView(card,mode);
-    open.textContent=mode==='full'?'Compact view':'Full view';
-    open.setAttribute('aria-label',(mode==='full'?'Show compact':'Show full')+' view for '+name);
-   }else openFocus(card);
-  });
-  card.querySelector('.game-unit-expand-toggle')?.addEventListener('click',()=>{
-   if(!card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
-    setUnitView(card,'compact');
-    open.textContent='Full view';
-    open.setAttribute('aria-label','Open '+name+' unit details');
+  // The roster itself is the Compact View. Do not trigger the old toggle:
+  // doing so would persist a cosmetic open state into gameplay/session data.
+  content.hidden=false;
+  card.classList.add('game-unit-open');
+  if(collapse){
+   collapse.textContent='⌃';
+   collapse.setAttribute('aria-expanded','true');
+   collapse.setAttribute('aria-label','Collapse '+name+' card');
+  }
+  setUnitView(card,'compact',{remember:false});
+  const switchView=make(doc,'button','game-unit-focus-open','Full view');
+  switchView.type='button';
+  const sync=()=>{
+   const full=card.classList.contains('owc-view-full');
+   switchView.textContent=full?'Compact view':'Full view';
+   switchView.setAttribute('aria-label',(full?'Show compact':'Show full')+' view for '+name);
+   switchView.setAttribute('aria-pressed',String(full));
+   header.setAttribute('aria-label',name+' — '+(full?'Full':'Compact')+' view; tap to switch');
+  };
+  const change=()=>{
+   if(content.hidden){
+    // First tap reveals a collapsed card as Compact, keeping the single fold.
+    collapse?.click();
+    setUnitView(card,'compact',{remember:false});
+   }else{
+    setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full',{remember:false});
    }
-  });
-  header.append(open);
-  // Primary tap on a card opens focused detail; single fold remains available.
+   sync();
+  };
+  switchView.addEventListener('click',event=>{event.stopPropagation();change();});
+  header.append(switchView);
+  // The entire non-interactive heading is a touch target. Links, the name
+  // pencil and the wound counter retain their independent controls.
   header.addEventListener('click',event=>{
    if(event.target.closest('button,a,input,select,label,form,textarea'))return;
-   event.stopImmediatePropagation();
    event.preventDefault();
-   openFocus(card);
+   event.stopImmediatePropagation();
+   change();
   },true);
+  header.addEventListener('keydown',event=>{
+   if(event.target!==header||!['Enter',' '].includes(event.key))return;
+   event.preventDefault();
+   change();
+  });
+  header.tabIndex=0;
+  collapse?.addEventListener('click',()=>{
+   if(content.hidden)setUnitView(card,'compact',{remember:false});
+   sync();
+  });
+  sync();
  }
- const saved=storedFocus(key,new Set(byId.keys()));
- if(saved)openFocus(byId.get(saved.unitId),{restoring:true});
 }
