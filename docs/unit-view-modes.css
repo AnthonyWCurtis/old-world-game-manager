@@ -150,7 +150,7 @@
 .owc-rule-original{color:#f2d096;text-decoration:underline}
 @media(max-width:380px){
  .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table{
-  min-width:265px;
+  min-width:0;
  }
  .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-table tr>*:first-child{
   width:75px;padding-left:3px!important;font-size:10px;
