@@ -19,19 +19,32 @@ export function isPublishedMagicItemUrl(url){
    !ref.search&&!ref.hash;
  }catch{return false;}
 }
-function isPublishedMagicItemLink(link){
- return isPublishedMagicItemUrl(link.getAttribute('href'));
+/** Categorise display links from source URLs and generic command roles,
+ * never from an army-specific champion-name dictionary. */
+export function compactLinkCategory(url,label='',section='equipment'){
+ if(isPublishedMagicItemUrl(url))return 'magic';
+ let publishedCommand=false;
+ if(typeof url==='string'){
+  try{
+   const ref=new URL(url);
+   publishedCommand=ref.origin==='https://tow.whfb.app'&&!ref.search&&!ref.hash&&
+    /^\/command-groups\/(?:champions|standard-bearers|musicians)\/?$/.test(ref.pathname);
+  }catch{/* Unlinked imported selections remain visible as plain text. */}
+ }
+ const selected=String(label||'').trim();
+ if(publishedCommand||/(?:^|:\s*)(?:standard bearer|musician)$/i.test(selected)||
+    /\(champion\)$/i.test(selected))return 'command';
+ return section==='rules'?'rule':'equipment';
 }
-function wordList(doc,items){
+function wordList(doc,items,section){
  const line=make(doc,'div','owc-compact-words');
  items.forEach((item,i)=>{
   if(i)line.append(make(doc,'span','owc-word-separator',' · '));
   const word=item.cloneNode(true);
   word.removeAttribute('id');
   word.classList.add('owc-compact-word');
-  // Highlight only published magic-item page references. A purchased
-  // mundane upgrade (e.g. heavy armour) is not necessarily magical.
-  if(isPublishedMagicItemLink(word))word.classList.add('owc-magic-item');
+  word.classList.add('owc-link-'+compactLinkCategory(word.getAttribute('href'),
+   word.textContent,section));
   line.append(word);
  });
  return line;
@@ -114,7 +127,6 @@ export function prepareUnitCompactCard(card,army){
   else equipment.push(...links);
  }
  const summary=make(doc,'section','owc-compact-loadout');
- summary.append(make(doc,'h4','owc-compact-heading','✧ Equipment & Special Rules'));
  // Mixed-model regiments retain the importer's explicit model-group counts.
  // This is data display, not inferred legal composition or profiles.
  const importedUnit=(army?.units||[]).find(unit=>unit.id===card.dataset.unitId);
@@ -130,7 +142,8 @@ export function prepareUnitCompactCard(card,army){
 
  for(const [label,items] of [['Equipment & Upgrades',equipment],['Special Rules',rules]]){
   if(!items.length)continue;
-  summary.append(make(doc,'h4','owc-compact-label',label),wordList(doc,items));
+  summary.append(make(doc,'h4','owc-compact-label',label),
+    wordList(doc,items,label==='Special Rules'?'rules':'equipment'));
  }
  if(!equipment.length&&!rules.length)
   summary.append(make(doc,'p','owc-compact-unavailable','No source-backed equipment or special rules available.'));
@@ -156,6 +169,24 @@ export function prepareUnitCompactCard(card,army){
   summary.append(drawer);
  }
  body.prepend(summary);
+ // Copy the already-scoped Defence values, never recompute saves or promote
+ // character-only saves to the regiment. Rebuilt on battle-state rerender.
+ const originalSaves=$(card,':scope > .game-unit-expandable > .game-defence-panel .game-defence-values');
+ const header=$(card,':scope > .army-unit-head');
+ if(originalSaves&&header){
+  const strip=originalSaves.cloneNode(true);
+  strip.classList.add('owc-save-strip');
+  strip.setAttribute('role','group');
+  strip.setAttribute('aria-label','Saving throws — equipment-only armour and conditional saves');
+  for(const stat of strip.querySelectorAll('.game-defence-stat')){
+   const heading=stat.querySelector('span')?.textContent?.trim()||'Save';
+   const value=stat.querySelector('strong')?.textContent?.trim()||'—';
+   const condition=stat.querySelector('small')?.textContent?.trim()||'';
+   stat.setAttribute('aria-label',heading+': '+value+
+    (condition?' — '+condition:'')+(stat.title?' — '+stat.title:''));
+  }
+  header.after(strip);
+ }
  // Highlight numerical profile differences, not presumed bonuses from unverified selections.
  const ownProfile=$(body,':scope > .army-profile-scroll .army-profile-table');
  const rows=[...(ownProfile?.querySelectorAll('tbody > tr')||[])]
