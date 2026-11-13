@@ -290,7 +290,7 @@
     },
     {
       "file": "docs/sw.js",
-      "sha256": "352fd65a7c3adcfcdcde01bda753dc5a4a4ffe8bc4b3bf79bb03bb809db887f8"
+      "sha256": "3168405d5ea07b14d393cfc307f39a3b9110e9980a0d921696da55b130cf31f0"
     },
     {
       "file": "docs/tactical-command.js",
@@ -446,7 +446,7 @@
     },
     {
       "file": "docs/unit-focus-view.js",
-      "sha256": "eabbb6bd5ab5ea0ffa0f87bc5221a84966aa18c24b181d0dd5e437b175741ece"
+      "sha256": "3fc02de3797263ddf66d7cbf63a0960c5c4d154c75503a299d02d6097fdd8117"
     },
     {
       "file": "docs/unit-selection-matcher.js",
