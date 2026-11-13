@@ -83,6 +83,9 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
  const key=PREFIX+armySessionKey(army);
  const allCards=groups.flatMap(group=>group.cards);
  const byId=new Map(allCards.map(card=>[card.dataset.unitId,card]));
+ // The approved tile profile is the single expanded-card layout everywhere,
+ // including inline expansion outside the focused view.
+ for(const card of allCards)enhanceFocusedProfile(card);
  let active=null;
  const toolbar=make(doc,'section','game-unit-focus-toolbar');
  toolbar.id='gameUnitFocus';
@@ -104,7 +107,6 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   if(!active)return;
   const previous=active;
   active=null;
-  previous.profileCleanup();
   for(const [node,hidden] of previous.originalChildren)node.hidden=hidden;
   for(const group of groups)group.wrapper.classList.remove('game-focus-section');
   for(const owner of container.querySelectorAll('#gameCharacters,#gameRegiments'))
@@ -145,7 +147,7 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   container.closest('#armyRosterPage')?.classList.add('game-unit-detail-mode');
   title.textContent=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'Unit details';
   toolbar.hidden=false;
-  active={card,content,group,originalChildren,profileCleanup:enhanceFocusedProfile(card)};
+  active={card,content,group,originalChildren};
   saveFocus(key,{unitId:card.dataset.unitId});
   if(!restoring)toolbar.scrollIntoView({block:'start',behavior:'instant'});
  }
