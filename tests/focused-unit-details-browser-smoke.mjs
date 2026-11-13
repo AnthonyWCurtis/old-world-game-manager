@@ -17,7 +17,7 @@ try{
  const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const seaId=await sea.getAttribute('data-unit-id');
  const content=sea.locator(':scope > .game-unit-expandable');
- const table=sea.locator('.army-unit-card-body .army-profile-table');
+ const table=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body > .army-profile-scroll .army-profile-table');
  await table.waitFor({state:'visible',timeout:20000});
  assert.equal(await sea.evaluate(el=>el.classList.contains('owc-view-compact')),true,
   'The army roster opens with the approved Compact card by default');
