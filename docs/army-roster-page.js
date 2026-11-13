@@ -93,6 +93,8 @@ function sourceRefRow(doc,title,refs){
 function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{},mountProfileGroups=[],effects=[]){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
+ // Reuse the authoritative, source-reviewed effect projection for Compact View.
+ card.owcCompactEffects=effects;
  const header=el(doc,'header','army-unit-head');
  const identity=el(doc,'div','army-unit-identity');
  identity.append(el(doc,'span','army-unit-index',String(index).padStart(2,'0')));
