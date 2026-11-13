@@ -23,7 +23,7 @@ test('version history is available and the offline shell is revised',()=>{
  const notes=source('docs/UNIT-PROFILES-VERSIONS.md');
  const sw=source('docs/sw.js');
  assert.match(notes,/## v0\.10 — 12 November 2026/);
- assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261113-single-fold-pencil-rename'/);
+ assert.match(sw,/CACHE_NAME='game-manager-v1-shell-20261113-approved-stage2-card'/);
  assert.match(sw,/'\.\/army-roster-page\.js'/);
  assert.match(sw,/'\.\/index\.html'/);
 });
