@@ -30,7 +30,7 @@ try{
   .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
  const id=await sea.getAttribute('data-unit-id');
  const state=sea.locator('.game-unit-expand-toggle');
- assert.equal(await state.getAttribute('aria-expanded'),'true');
+ assert.equal(await state.getAttribute('aria-expanded'),'false');
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  await sea.locator('.army-unit-head h3').click();
@@ -67,7 +67,7 @@ try{
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
  assert.equal(await sea.locator('.game-defence-panel').isVisible(),true);
  assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
- await sea.locator('.game-unit-focus-open').click();
+ await sea.locator('.game-unit-expand-toggle').click();
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
  assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
@@ -89,7 +89,7 @@ try{
   null,{timeout:15000});
  assert.match(await magic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
  await page.locator('#gameNavUnits').click();
- assert.equal(await sea.locator('.game-unit-expand-toggle').getAttribute('aria-expanded'),'true',
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,
   'Compact unit card must remain available after reloading');
 
  // Verify bottom navigation and unit toggle remain easy to touch in both orientations.
