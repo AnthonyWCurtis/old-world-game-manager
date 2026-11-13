@@ -1,0 +1,28 @@
+name: Temporary single-fold coverage refresh
+on:
+  push:
+    branches: [fix/single-expandable-unit-detail-20261113]
+    paths: ['.github/workflows/temporary-single-fold-coverage.yml']
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/single-expandable-unit-detail-20261113
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Regenerate offline evidence artifacts
+        run: node scripts/build-rules-coverage.mjs
+      - name: Commit regenerated baseline to the isolated fix branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/rules-coverage/register.json docs/rules-coverage/metrics.json docs/rules-coverage/report.md docs/rules-coverage/imported-selections.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate evidence hashes for single-fold UI changes"
+            git push origin HEAD:fix/single-expandable-unit-detail-20261113
+          fi
