@@ -41,6 +41,19 @@ try{
  assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
  assert.equal(await sea.locator('.game-assignment-editor').isVisible(),true,
   'Original character assignment controls remain accessible');
+ const picker=assigned.locator('.regiment-character-picker');
+ const ishayaId=await picker.locator('option').filter({hasText:'Ishaya Vess'}).getAttribute('value');
+ assert.ok(ishayaId,'Fixture offers Ishaya Vess as a possible assignment');
+ await picker.selectOption(ishayaId);
+ assert.match(await assigned.locator(':scope > summary').innerText(),/Assigned Characters \(1\)/);
+ assert.equal(await assigned.evaluate(el=>el.open),true,'Assignment rerender preserves opened drawer');
+ const attached=assigned.locator('.game-attached-character').first();
+ await attached.locator(':scope > summary').click();
+ assert.equal(await attached.locator('.army-unit-loadout-pill').filter({hasText:"Mathlann's Ire"}).count(),1,
+  'The character keeps their own linked equipment inside their details');
+ assert.ok(!(await ownPills.allTextContents()).some(label=>/Mathlann's Ire/.test(label)),
+  'Assigning a character never injects their rules into the regiment pills');
+ await attached.locator(':scope > summary').click();
  await assigned.locator(':scope > summary').click();
  assert.equal(await assigned.evaluate(el=>el.open),false);
  const profiles=table.locator('tbody tr:not(.army-profile-mount-row):not(.army-profile-mount-heading)');
