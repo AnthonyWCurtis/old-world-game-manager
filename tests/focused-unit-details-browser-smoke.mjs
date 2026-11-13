@@ -20,8 +20,7 @@ try{
  await sea.locator('.game-unit-focus-open').click();
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId);
  assert.equal(await page.locator('#armyRosterList .army-unit-card:visible').count(),1,'A focused unit is the only visible card');
- assert.equal(await page.locator('#gameUnitFocusTabs button').count(),4);
- assert.equal(await page.locator('#gameUnitFocusTabs [data-focus-tab="profile"]').getAttribute('aria-pressed'),'true');
+ assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'Unit detail must have no section tabs');
  const tiles=sea.locator('.game-profile-stat-group');
  await tiles.first().waitFor({state:'visible',timeout:20000});
  assert.ok(await tiles.count()>=2,'Published Sea Guard and Sea Master each have a separate profile');
@@ -29,16 +28,32 @@ try{
  assert.match(await tiles.nth(1).innerText(),/Sea Master/);
  assert.match(await tiles.first().innerText(),/BS\s*4/);
  assert.match(await tiles.nth(1).innerText(),/BS\s*5/);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
- await page.locator('#gameUnitFocusTabs [data-focus-tab="attacks"]').click();
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
- assert.equal(await sea.locator('.game-defence-panel').isVisible(),false);
- await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').click();
- assert.equal(await sea.locator('.game-defence-panel').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
- await page.locator('#gameUnitFocusTabs [data-focus-tab="effects"]').click();
- assert.equal(await sea.locator('.game-effects-panel').isVisible(),true);
- assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ for(const selector of [
+  '.army-unit-card-body','.game-attack-panel','.game-defence-panel',
+  '.army-unit-unified-loadout','.game-effects-panel','.game-assigned-characters',
+  '.game-unit-victory-points'
+ ]){
+  assert.equal(await sea.locator(selector).first().isVisible(),true,
+   selector+' must be visible without opening another tab or section');
+ }
+ assert.equal(await sea.locator('details.game-focused-disclosure').count(),0,
+  'There is no second accordion around the characteristics or loadout');
+ const order=await sea.locator(':scope > .game-unit-expandable').evaluate(content=>
+  [...content.children].map(node=>node.className));
+ const orderOf=cls=>order.findIndex(value=>typeof value==='string'&&value.split(' ').includes(cls));
+ assert.ok(orderOf('army-unit-card-body')<orderOf('game-attack-panel')&&
+  orderOf('game-attack-panel')<orderOf('game-defence-panel')&&
+  orderOf('game-defence-panel')<orderOf('army-unit-unified-loadout')&&
+  orderOf('army-unit-unified-loadout')<orderOf('game-effects-panel'),
+  'One card reads top-to-bottom: characteristics, attacks, defence, equipment, effects');
+ const fold=sea.locator('.game-unit-expand-toggle');
+ assert.equal(await fold.getAttribute('aria-expanded'),'true');
+ await fold.click();
+ assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false,
+  'The single unit arrow collapses the entire card body');
+ await fold.click();
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),true,
+  'Reopening the unit restores all sections without extra clicks');
 
  await page.locator('#gameUnitFocusBack').click();
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),null);
@@ -55,7 +70,6 @@ try{
 
  await search.fill('Lothern Sea Guard');
  await sea.locator('.game-unit-focus-open').click();
- await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').click();
  await page.locator('#gameScreenSaveBtn').click();
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
@@ -65,7 +79,8 @@ try{
   await page.locator('#savedList .row-item button').filter({hasText:'Open'}).first().click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId,'Offline reload restores focused unit');
- assert.equal(await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').getAttribute('aria-pressed'),'true','Focused tab restored offline');
+ assert.equal(await sea.locator('.game-attack-panel').isVisible(),true,'Attacks restored offline');
+ assert.equal(await sea.locator('.game-defence-panel').isVisible(),true,'Defence restored offline');
  for(const viewport of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
@@ -89,11 +104,13 @@ try{
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),seaId,
   'Renaming must preserve the imported unit identity and focused view');
  assert.match(await page.locator('.game-focus-selected .army-unit-nickname').first().innerText(),/Official: Lothern Sea Guard/);
- assert.equal(await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').getAttribute('aria-pressed'),'true',
-  'Focus tab survives a battle-state rerender');
+ assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,
+  'The full unit remains a single section without tabs after a state rerender');
+ assert.equal(await selected.locator('.game-attack-panel').isVisible(),true);
+ assert.equal(await selected.locator('.game-defence-panel').isVisible(),true);
 
  assert.deepEqual(errors,[]);
- console.log('Focused Normal Play, source tiles, four panels, duplicates, offline reload and live rename: PASS');
+ console.log('Focused Normal Play single-fold unit, all visible panels, duplicates, offline reload and live rename: PASS');
 }finally{
  await browser.close();
 }

@@ -25,7 +25,6 @@ try{
  assert.doesNotMatch(await sea.locator('.game-card-status').innerText(),/Close Order/,
   'Published manual reminders must not be falsely shown as active buffs');
  await sea.locator('.game-unit-focus-open').click();
- await page.locator('#gameUnitFocusTabs [data-focus-tab="effects"]').click();
  const effect=sea.locator('.game-effect-card[data-effect-id="published-close-order"]');
  await effect.waitFor({state:'visible'});
  assert.match(await effect.locator('summary').innerText(),/Reviewed · manual/);
@@ -40,7 +39,6 @@ try{
   'Reviewed source rule is not duplicated in unreviewed reference-only list');
  assert.ok(await sea.locator('.game-published-rules-list li').filter({hasText:'Naval Discipline'}).count(),
   'Unreviewed source rules remain present');
- await page.locator('#gameUnitFocusTabs [data-focus-tab="attacks"]').click();
  assert.equal(await sea.locator('.game-attack-panel .game-offensive-effect[data-effect-id="published-close-order"]').count(),0,
   'Manual formation permission must not be transformed into an attack bonus');
  await page.locator('#gameUnitFocusBack').click();

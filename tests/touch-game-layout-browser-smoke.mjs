@@ -39,7 +39,7 @@ try{
  const originalCount=await page.locator('#armyRosterList .army-unit-card').count();
  assert.equal(originalCount,17);
 
- // Any live source refresh must preserve expanded card and tab.
+ // Live source refresh must preserve the expanded full unit card.
  await page.locator('#gameNavMagic').click();
  assert.equal(await page.locator('#gameMagicPanel').isVisible(),true);
  const known=page.locator('#gameKnownSpellbookDrawer');
@@ -63,7 +63,7 @@ try{
  await page.locator('#gameNavUnits').click();
  assert.equal(await sea.locator('.game-unit-expand-toggle').getAttribute('aria-expanded'),'true');
  assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
- await page.locator('#gameUnitFocusTabs [data-focus-tab="defence"]').click();
+ assert.equal(await sea.locator('.game-defence-panel').isVisible(),true);
  assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
  await page.locator('#gameUnitFocusBack').click();
  assert.equal(await sea.locator('.game-unit-expandable').isVisible(),false);
