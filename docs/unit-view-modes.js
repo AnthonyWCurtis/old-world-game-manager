@@ -51,7 +51,14 @@ export function compactBeneficialEffects(effects=[]){
    ['equipped','conditional','active'].includes(effect.status);
   if(!magic&&!joined)continue;
   // Conditional rules are available, not a confirmed current modifier.
-  const category=magic?'magic':effect.status==='conditional'?'conditional':'character';
+  // Presentation-only categories derive from source provenance and effect
+  // semantics, never faction, unit, spell or character names.
+  const defensiveSpell=magic&&/\\b(?:ward save|regeneration|armour save|linear obstacle|defended obstacle|cannot march|cannot charge)\\b/i.test(
+   [effect.quickDetail,effect.description].filter(Boolean).join(' '));
+  const conditionalItem=!magic&&effect.status==='conditional'&&
+   isPublishedMagicItemUrl(effect.sourceUrl);
+  const category=magic?(defensiveSpell?'protective':'magic'):
+   conditionalItem?'conditional':'character';
   const label=effect.quickLabel||effect.name;
   const key=category+'|'+effect.sourceUrl+'|'+label;
   const source=String(effect.ownerName||'Unknown character');
