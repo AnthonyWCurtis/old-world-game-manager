@@ -1,4 +1,6 @@
 /** Presentation-only Compact / Full unit cards. No edits to imported army or battle state. */
+import {armySessionKey} from './battle-session.js';
+const unitViewPreferences=new Map();
 const $=(root,selector)=>root.querySelector(selector);
 const make=(doc,tag,cls='',text)=>{
  const node=doc.createElement(tag);
@@ -18,7 +20,9 @@ function wordList(doc,items){
  return line;
 }
 /** Reuse the source-resolved links already rendered by unitEquipmentAndRules. */
-export function prepareUnitCompactCard(card){
+export function prepareUnitCompactCard(card,army){
+ const key=armySessionKey(army)+'::'+card.dataset.unitId;
+ card.dataset.owcViewKey=key;
  const body=$(card,':scope > .game-unit-expandable > .army-unit-card-body');
  if(!body||$(body,'.owc-compact-loadout'))return;
  const doc=card.ownerDocument;
@@ -60,11 +64,18 @@ export function prepareUnitCompactCard(card){
    name.append(make(doc,'small','owc-champion-note','Champion'));
   }
  }
- card.classList.add('owc-unit-view','owc-view-compact');
+ card.classList.add('owc-unit-view');
+ setUnitView(card,unitViewPreferences.get(key)||'compact',{remember:false});
 }
-export function setUnitView(card,mode){
- card.classList.toggle('owc-view-full',mode==='full');
- card.classList.toggle('owc-view-compact',mode!=='full');
+export function setUnitView(card,mode,{remember=true}={}){
+ const full=mode==='full';
+ card.classList.toggle('owc-view-full',full);
+ card.classList.toggle('owc-view-compact',!full);
+ const key=card.dataset.owcViewKey;
+ if(remember&&key){
+  unitViewPreferences.set(key,full?'full':'compact');
+  if(unitViewPreferences.size>512)unitViewPreferences.delete(unitViewPreferences.keys().next().value);
+ }
 }
 /** A single scoped, reusable original-source viewer. The source text is never copied. */
 export function installRuleViewer(container){
