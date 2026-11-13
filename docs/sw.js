@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261113-hide-character-drawer-v3';
+const CACHE_NAME='game-manager-v1-shell-20261113-inline-name-actions-v4';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
