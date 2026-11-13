@@ -53,7 +53,7 @@ export function compactBeneficialEffects(effects=[]){
   // Conditional rules are available, not a confirmed current modifier.
   // Presentation-only categories derive from source provenance and effect
   // semantics, never faction, unit, spell or character names.
-  const defensiveSpell=magic&&/\\b(?:ward save|regeneration|armour save|linear obstacle|defended obstacle|cannot march|cannot charge)\\b/i.test(
+  const defensiveSpell=magic&&/\b(?:ward save|regeneration|armour save|linear obstacle|defended obstacle|cannot march|cannot charge)\b/i.test(
    [effect.quickDetail,effect.description].filter(Boolean).join(' '));
   const conditionalItem=!magic&&effect.status==='conditional'&&
    isPublishedMagicItemUrl(effect.sourceUrl);
