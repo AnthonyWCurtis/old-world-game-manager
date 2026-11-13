@@ -168,11 +168,11 @@
  flex-shrink:0;padding:8px 13px;margin:0;background:var(--owc-rule-panel);
  border-block:1px solid #3d536b;font-size:11px;color:var(--owc-rule-muted);
 }
-/* Blend original cross-origin rule pages onto the app's actual dark navy
-   background (#091321), not the brighter blue-grey raised panel colour. */
+/* Source page sits on the exact unit-name header navy (--tc-surface/#122237).
+   This preserves the original live site and existing softened text blend. */
 .owc-rule-frame-wrap{
  flex:1;min-height:0;position:relative;overflow:hidden;
- background:var(--owc-rule-navy);isolation:isolate;
+ background:#122237;isolation:isolate;
 }
 .owc-rule-frame{
  display:block;width:100%;height:100%;border:0;
