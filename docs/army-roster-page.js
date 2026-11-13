@@ -482,11 +482,18 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   defence.ward.some(entry=>entry.available===false)?'Spent or not currently available':'Not established';
  const regenPreview=defence.regeneration.length?
   defence.regeneration.map(entry=>entry.label+' · bearer only').join(' / '):'Not established';
+ const conciseSave=(value)=>{
+  const found=String(value||'').match(/(?:^|\\s)([2-6]\\+)(?=\\s|$|\\s*·)/);
+  return found?found[1]:value==='Spent or not currently available'?'Spent':
+   value==='Not established'?'—':'Conditional';
+ };
  const metrics=el(doc,'div','game-defence-values');
  for(const [name,display,key] of [
-  ['Armour',defence.armour.label,'armour'],
-  ['Ward',wardPreview,'ward'],
-  ['Regeneration',regenPreview,'regeneration']
+  ['Armour',conciseSave(defence.armour.label),'armour'],
+  ['Ward',activeWard.length===1&&defence.isCharacter?conciseSave(wardPreview):
+   activeWard.length?'Conditional':conciseSave(wardPreview),'ward'],
+  ['Regeneration',defence.regeneration.length===1&&defence.isCharacter?
+   conciseSave(regenPreview):defence.regeneration.length?'Conditional':'—','regeneration']
  ]){
   const item=el(doc,'div','game-defence-stat');
   item.dataset.save=key;
@@ -671,6 +678,17 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
 
  // Cosmetic counter updates are stored in a separate namespaced local
  // ledger. This avoids mutating Stage 2's shared rules/selection state.
+ const moveLoadoutAfterDefence=(card)=>{
+  const content=card.querySelector('.game-unit-expandable');
+  const loadout=content?.querySelector('.army-unit-unified-loadout');
+  const defence=content?.querySelector('.game-defence-panel');
+  if(loadout&&defence)defence.after(loadout);
+  const footer=content?.querySelector('.army-unit-footer');
+  if(footer&&loadout)loadout.after(footer);
+  const vp=el(doc,'div','game-unit-victory-points');
+  vp.append(el(doc,'span','','Victory points'),el(doc,'strong','','Not calculated'));
+  content?.append(vp);
+ };
  const attachTracker=(card,imported,record,fallback,mountRows)=>{
   const spec=trackingDefinition(imported,record,fallback,mountRows);
   const remaining=readTrackedRemaining(army,imported.id,spec);
@@ -721,6 +739,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    target?'Assigned to '+unitDisplayName(target,session)+' · entry '+target.index:'Independent · no regiment assigned'));
   if(model.regiments.length)
    content.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
+  moveLoadoutAfterDefence(card);
   attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
   characters.append(card);
  }
@@ -784,6 +803,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    if(model.characters.length)
     memberArea.append(regimentEditor(doc,entry,model.characters,assignments,displayId,onAssignment,session));
    content.append(memberArea);
+   moveLoadoutAfterDefence(card);
    attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
    regiments.append(card);
   }
