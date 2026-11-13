@@ -482,7 +482,7 @@
     },
     {
       "file": "tests/effects-engine.test.mjs",
-      "sha256": "923ecd4625dccf50814bf304d2a9890ceb990742bf88f0887970c6dec74cfe91"
+      "sha256": "5afb99715ec00e4fe55570f204ad44c1e72d064f21e4af7252f3bc1e1b34e476"
     },
     {
       "file": "tests/imported-rule-coverage.test.mjs",
