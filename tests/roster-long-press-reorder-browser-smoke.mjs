@@ -36,7 +36,7 @@ try{
    return {card:card.getBoundingClientRect().toJSON(),
     header:rect('.army-unit-head'),identity:rect('.army-unit-identity'),
     index:rect('.army-unit-index'),counter:rect('.game-compact-wounds'),
-    button:rect('.game-wound-step'),focus:rect('.game-unit-focus-open'),
+    button:rect('.game-wound-step'),focus:rect('.game-unit-expand-toggle'),
     grid:getComputedStyle(header).gridTemplateColumns,display:getComputedStyle(header).display};
  });
  const targetInfo=await page.evaluate(({x,y})=>{
@@ -75,9 +75,9 @@ try{
  assert.deepEqual(await cards.evaluateAll(els=>els.slice(0,2).map(e=>e.dataset.unitId)),
   before.slice(0,2).map(x=>x.id),'Keyboard can reorder without dragging');
  assert.equal(await reset.isDisabled(),true,'Restoring source order clears the personal preference');
- await cards.first().locator('.game-unit-focus-open').click();
+ await cards.first().locator('.game-unit-expand-toggle').click();
  assert.equal(await page.locator('#armyRosterList').getAttribute('data-focus-unit'),before[0].id);
- await cards.first().locator('.game-unit-focus-open').click();
+ await cards.first().locator('.game-unit-expand-toggle').click();
 
  // Arrange the first unit again, then persist through a full offline reload.
  const header=cards.first().locator('.army-unit-head');
