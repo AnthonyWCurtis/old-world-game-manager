@@ -23,15 +23,15 @@ try{
  },ishayaId,{timeout:25000});
  assert.equal(await sea.locator('.game-card-status .game-card-chip').allTextContents().then(x=>x.some(s=>s.includes('Precision Strikes'))),false,
   'Source rule should not apply without a recorded join');
- await ishaya.locator('.game-unit-focus-open').click();
+ await ishaya.locator('.game-unit-expand-toggle').click();
  const own=ishaya.locator('.game-effect-card[data-effect-id="precision-strikes"]');
  await own.waitFor({state:'visible'});
  assert.match(await own.locator('summary').innerText(),/Precision Strikes/);
  assert.equal(await ishaya.locator('.game-attack-panel .game-offensive-effect[data-effect-id="precision-strikes"]').count(),0,
   'Ishaya is the rule source, not automatically the AP beneficiary');
- await ishaya.locator('.game-unit-focus-open').click();
+ await ishaya.locator('.game-unit-expand-toggle').click();
 
- await ishaya.locator('.game-unit-focus-open').click();
+ await ishaya.locator('.game-unit-expand-toggle').click();
  await ishaya.locator('.character-unit-picker').selectOption(seaId);
  await page.waitForFunction(id=>
   !!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),
@@ -40,7 +40,7 @@ try{
   'Conditional Precision Strikes and Armour Bane remain in attack references, not active buffs');
  assert.equal(await sea.locator(':scope > .game-unit-expandable > .game-attack-panel .game-offensive-effect[data-effect-id="razor-standard"]').count(),1,
   'Razor Standard persists as a separate source-backed offensive effect');
- await sea.locator('.game-unit-focus-open').click();
+ await sea.locator('.game-unit-expand-toggle').click();
  const attackRule=sea.locator('.game-offensive-effect[data-effect-id="precision-strikes"]');
  await attackRule.waitFor({state:'visible'});
  assert.match(await attackRule.innerText(),/AP \+1/);
@@ -53,11 +53,11 @@ try{
   'https://tow.whfb.app/special-rules/precision-strikes');
  assert.ok(await sea.locator('.game-published-rules-reference').count(),
   'Other source special rules are visible as reference-only, not silently omitted');
- await sea.locator('.game-unit-focus-open').click();
+ await sea.locator('.game-unit-expand-toggle').click();
  const picker=ishaya.locator('.character-unit-picker');
  if(!await picker.isVisible()){
   if(await ishaya.locator('.game-unit-expandable').isHidden())await ishaya.locator('.game-unit-expand-toggle').click();
-  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-focus-open').click();
+  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-expand-toggle').click();
  }
  await picker.selectOption('');
  await page.waitForFunction(id=>!document.querySelector('#gameRegiments article[data-unit-id="'+id+'"] .game-offensive-effect[data-effect-id="precision-strikes"]'),seaId);
@@ -66,7 +66,7 @@ try{
  // assignment must recover without network after an iPhone offline reload.
  if(!await picker.isVisible()){
   if(await ishaya.locator('.game-unit-expandable').isHidden())await ishaya.locator('.game-unit-expand-toggle').click();
-  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-focus-open').click();
+  if(await ishaya.evaluate(e=>e.classList.contains('owc-view-compact')))await ishaya.locator('.game-unit-expand-toggle').click();
  }
  await picker.selectOption(seaId);
  await page.waitForFunction(id=>
