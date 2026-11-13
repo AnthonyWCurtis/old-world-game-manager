@@ -99,7 +99,7 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[],mountG
  const data=unitAttackSummary(unit,record,fallback,effects);
  const section=el(doc,'section','game-attack-panel');
  section.setAttribute('aria-label','Attacks');
- section.append(el(doc,'h4','','Attacks'));
+ // Separate always-visible Shooting and Combat sections; no nested toggles.
  const shooting=el(doc,'div','game-attack-phase game-attack-shooting');
  shooting.dataset.attackPhase='shooting';
  shooting.append(el(doc,'h5','','Shooting Attacks'));
@@ -214,10 +214,10 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[],mountG
   melee.append(el(doc,'strong','','Published melee attack components'));
   const rows=el(doc,'div','game-attack-models');
   for(const profile of allMelee){
-   const row=el(doc,'div','game-attack-model');
+   const row=el(doc,'div','game-attack-model game-attack-profile-card');
    row.append(el(doc,'span','game-attack-model-name',profile.name));
    const stats=el(doc,'div','game-attack-stats');
-   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'A',profile.attacks),
+   stats.append(stat(doc,'WS',profile.weaponSkill),stat(doc,'Attacks',profile.attacks),
     stat(doc,'S',profile.strength),stat(doc,'I',profile.initiative),
     stat(doc,'AP','—'));
    row.append(stats);

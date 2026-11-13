@@ -10,7 +10,7 @@
     },
     {
       "file": "docs/army-roster-page.js",
-      "sha256": "216f63dab91054bf33dce8cb43a8bdc66c0a6dd6ae27ae33fb76f81b1c606594"
+      "sha256": "8af69bb1fd0c27c837d3728dbf54cd8f80c26a9247a8c799f621f5a48c88b283"
     },
     {
       "file": "docs/army-state.js",
@@ -262,7 +262,7 @@
     },
     {
       "file": "docs/source-profiles.json",
-      "sha256": "7db09976a482bc8842b34fc059f2b48e1e18bbe77e5b6fc455ccc260ee079cb3"
+      "sha256": "694ebab8d3cd37d7cd0a17e971a405e58c2f57aa5caa6361e3999efd7a6a710d"
     },
     {
       "file": "docs/source-special-attack-rows.js",
@@ -282,7 +282,7 @@
     },
     {
       "file": "docs/sw.js",
-      "sha256": "687730d96dd2282412cc889d54d03b985b2ea4a0cc05020e7a800686dd790aa6"
+      "sha256": "32481573bccc84c246c97bd515a0b761e42c833b27ba171e7047bedade833936"
     },
     {
       "file": "docs/tactical-command.js",
@@ -290,7 +290,7 @@
     },
     {
       "file": "docs/unit-attack-panel.js",
-      "sha256": "ec42bd1714c201976c6bc7e44e5703820d173eb2a77ee471ce25db3e70b2e1b3"
+      "sha256": "28b9ae40b430a057f9061b65fe63a4b0787e91b6c8b980333d2d602724b578b6"
     },
     {
       "file": "docs/unit-data.js",
@@ -438,7 +438,7 @@
     },
     {
       "file": "docs/unit-focus-view.js",
-      "sha256": "ae86995c44b3da0755b4341723dd8bf84f963afe1c4d80a69386a5e64e9a11b6"
+      "sha256": "da07261c515c3d3e08b6b2e87f77380bf8e3e073c81d51a881e0645daddff41d"
     },
     {
       "file": "docs/unit-selection-matcher.js",

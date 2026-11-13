@@ -147,6 +147,12 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  if(unit.quantity?.origin==='derived')
   headingMeta.append(el(doc,'span','army-quantity-note','From imported model groups'));
  main.append(headingMeta);
+ // Use only published classifications; an imported nickname or General
+ // designation must never be inferred from a sample card.
+ const classification=[...(record?.classification?.unitCategory||[]),
+  ...(record?.classification?.troopType||[])].filter(Boolean);
+ if(classification.length)main.append(el(doc,'span','game-unit-classification',
+  [...new Set(classification)].join(' · ')));
  identity.append(main);
  header.append(identity);
  const price=el(doc,'div','army-unit-points');
@@ -182,7 +188,7 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
  const details=el(doc,'div','army-unit-card-body');
  if(profiles.length||mountProfileGroups.length){
   const caption=el(doc,'div','army-profile-caption');
-  caption.append(el(doc,'strong','','Model characteristics'));
+  caption.append(el(doc,'strong','','Model Characteristics'));
   const note=profiles.length?(record?'Published base profiles':'Cached source base profiles'):'Rider profile unavailable';
   caption.append(el(doc,'span','',note+' · selected options not applied'));
   details.append(caption);
@@ -304,8 +310,8 @@ function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=n
   heading.append(el(doc,'span','',shownCount+' entries'));
   panel.append(heading);
   for(const [key,label] of [
-   ['equipment','Equipment & items'],
-   ['rules','Special rules'],
+   ['equipment','Equipment'],
+   ['rules','Special Rules'],
    ['upgrades','Command & other selections']
   ]){
    const items=key==='equipment'?shownEquipment:loadout.groups[key];

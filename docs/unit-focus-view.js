@@ -33,9 +33,22 @@ function enhanceFocusedProfile(card){
  const rows=[...(table?.querySelectorAll('tbody tr')||[])];
  const tiles=make(doc,'div','game-focused-profiles');
  tiles.setAttribute('aria-label','Published base model characteristics, not selected modifiers');
+ let converted=0;
  for(const row of rows){
   const cells=[...row.children];
-  if(cells.length!==headings.length+1||!headings.length||cells.slice(1).some(c=>c.tagName!=='TD'))continue;
+  // Mount selection headers and unresolved source rows must survive the
+  // tile conversion. Otherwise a mixed rider/mount table fell back to a
+  // horizontally scrolling desktop table on phones.
+  if(row.classList.contains('army-profile-mount-heading')){
+   tiles.append(make(doc,'h4','game-profile-mounted-heading',row.textContent.trim()));
+   continue;
+  }
+  if(cells.length!==headings.length+1||!headings.length||cells.slice(1).some(c=>c.tagName!=='TD')){
+   const note=row.textContent.trim();
+   if(note)tiles.append(make(doc,'p','game-profile-mount-unresolved',note));
+   continue;
+  }
+  converted++;
   const group=make(doc,'section','game-profile-stat-group');
   group.append(make(doc,'h4','',cells[0].textContent.trim()));
   const grid=make(doc,'div','game-profile-stat-grid');
@@ -49,12 +62,12 @@ function enhanceFocusedProfile(card){
   tiles.append(group);
  }
  // Do not hide any model rows when a table cannot be converted completely.
- if(!rows.length||tiles.childElementCount!==rows.length)return ()=>{};
+ if(!converted)return ()=>{};
  const previousHidden=scroller.hidden;
  const note=make(doc,'p','game-profile-stat-note',
   'Published base characteristics only. Equipment, magic and selected options are not applied.');
- panel.insertBefore(note,scroller);
  panel.insertBefore(tiles,scroller);
+ panel.insertBefore(note,scroller);
  // The complete model/mount characteristics are already represented as tiles;
  // hiding the duplicated source table avoids introducing a second fold.
  scroller.hidden=true;
@@ -70,6 +83,9 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
  const key=PREFIX+armySessionKey(army);
  const allCards=groups.flatMap(group=>group.cards);
  const byId=new Map(allCards.map(card=>[card.dataset.unitId,card]));
+ // The approved tile profile is the single expanded-card layout everywhere,
+ // including inline expansion outside the focused view.
+ for(const card of allCards)enhanceFocusedProfile(card);
  let active=null;
  const toolbar=make(doc,'section','game-unit-focus-toolbar');
  toolbar.id='gameUnitFocus';
@@ -91,7 +107,6 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   if(!active)return;
   const previous=active;
   active=null;
-  previous.profileCleanup();
   for(const [node,hidden] of previous.originalChildren)node.hidden=hidden;
   for(const group of groups)group.wrapper.classList.remove('game-focus-section');
   for(const owner of container.querySelectorAll('#gameCharacters,#gameRegiments'))
@@ -132,7 +147,7 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   container.closest('#armyRosterPage')?.classList.add('game-unit-detail-mode');
   title.textContent=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'Unit details';
   toolbar.hidden=false;
-  active={card,content,group,originalChildren,profileCleanup:enhanceFocusedProfile(card)};
+  active={card,content,group,originalChildren};
   saveFocus(key,{unitId:card.dataset.unitId});
   if(!restoring)toolbar.scrollIntoView({block:'start',behavior:'instant'});
  }

@@ -28,6 +28,29 @@ try{
  assert.match(await tiles.nth(1).innerText(),/Sea Master/);
  assert.match(await tiles.first().innerText(),/BS\s*4/);
  assert.match(await tiles.nth(1).innerText(),/BS\s*5/);
+
+ // Approved Stage 2 visual contract: nine tiles per model, one always-visible
+ // Shooting and Combat section, pencil and wound tracker in the unit heading.
+ const profileGrid=sea.locator('.game-profile-stat-grid').first();
+ assert.equal(await profileGrid.locator('.game-profile-stat').count(),9);
+ assert.equal(await profileGrid.evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),9);
+ assert.equal(await sea.locator('.army-profile-scroll').isVisible(),false,
+  'The original wide profile table must not appear in expanded units');
+ assert.deepEqual(await sea.locator('.game-attack-phase>h5').allTextContents(),
+  ['Shooting Attacks','Combat Attacks']);
+ assert.equal(await sea.locator('.game-unit-name-line .game-rename-toggle').isVisible(),true);
+ assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
+ assert.equal(await sea.locator('.game-unit-focus-open').isVisible(),false);
+ assert.equal(await sea.locator('.game-unit-open .game-unit-expand-toggle').count(),0,
+  'There must be only one unit fold, not nested unit folds');
+ const charcoal=await sea.evaluate(el=>getComputedStyle(el).backgroundColor);
+ const channels=charcoal.match(/\d+/g)?.slice(0,3).map(Number)||[];
+ assert.equal(channels.length,3);
+ assert.ok(channels.every(channel=>channel<=12),
+  'Expanded unit card uses the approved near-black canvas: '+charcoal);
+ assert.deepEqual(await sea.locator('.army-unit-loadout-group>strong').allTextContents().then(x=>
+  x.filter(value=>value==='Equipment'||value==='Special Rules')),
+  ['Equipment','Special Rules']);
  for(const selector of [
   '.army-unit-card-body','.game-attack-panel','.game-defence-panel',
   '.army-unit-unified-loadout','.game-effects-panel','.game-assigned-characters',
