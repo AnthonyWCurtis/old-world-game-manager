@@ -47,15 +47,29 @@
  text-transform:uppercase;letter-spacing:.055em;
 }
 .tactical-ui #armyRosterList .owc-compact-label:not(:first-child){margin-top:10px}
+/* Compact and Full share the same linked equipment/rules, displayed as
+   small touch-friendly pills rather than long underlined text runs. */
 .tactical-ui #armyRosterList .owc-compact-words{
- line-height:1.8;font-size:12px;color:#e3eaf0;overflow-wrap:anywhere;
+ display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+ line-height:1.35;font-size:12px;color:#e3eaf0;min-width:0;
 }
-.tactical-ui #armyRosterList .owc-compact-word{font-size:inherit;color:#e3eaf0}
+.tactical-ui #armyRosterList .owc-compact-word{
+ display:inline-flex;align-items:center;max-width:100%;min-height:30px;
+ padding:5px 9px;border-radius:7px;border:1px solid #34495f;
+ background:#182a40;color:#b6c4d3;font-size:inherit;
+ line-height:1.3;overflow-wrap:anywhere;text-decoration:none;
+}
 .tactical-ui #armyRosterList a.owc-compact-word{
- text-decoration:underline dotted #96a9bd;text-underline-offset:4px;
+ background:#1b3047;border-color:#536781;
+ color:#e4c48a;text-decoration:none;
 }
-.tactical-ui #armyRosterList a.owc-compact-word:hover{color:#f2ce90}
-.tactical-ui #armyRosterList .owc-word-separator{color:#8499ad;white-space:pre}
+.tactical-ui #armyRosterList a.owc-compact-word:hover{
+ background:#263e55;border-color:#d9b77a;color:#f1d3a1;
+}
+.tactical-ui #armyRosterList a.owc-compact-word:focus-visible{
+ outline:2px solid #d9b77a;outline-offset:2px;
+}
+.tactical-ui #armyRosterList .owc-word-separator{display:none}
 .tactical-ui #armyRosterList .owc-compact-unavailable{font-size:11px;color:#9fb4c8}
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption{
  margin:12px 0 8px;padding:0;border:0;
