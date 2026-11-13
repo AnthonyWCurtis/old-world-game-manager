@@ -138,8 +138,8 @@
 /* Native source viewer: navy background, white/grey copy and gold links.
    Only our dialog chrome can be themed: the cross-origin iframe owns its CSS. */
 .owc-rule-dialog{
- --owc-rule-navy:#14283e;
- --owc-rule-panel:#1c334a;
+ --owc-rule-navy:#091321;
+ --owc-rule-panel:#122237;
  --owc-rule-text:#eef0f3;
  --owc-rule-muted:#b9ccdc;
  --owc-rule-gold:#d8b777;
@@ -168,18 +168,16 @@
  flex-shrink:0;padding:8px 13px;margin:0;background:var(--owc-rule-panel);
  border-block:1px solid #3d536b;font-size:11px;color:var(--owc-rule-muted);
 }
-/* Screen-blend the visually inverted source over the same blue-grey as our
-   native panels: white source backgrounds become navy, dark text stays light,
-   and blue source links become warm gold. Cross-origin DOM stays untouched. */
+/* Blend original cross-origin rule pages onto the app's actual dark navy
+   background (#091321), not the brighter blue-grey raised panel colour. */
 .owc-rule-frame-wrap{
  flex:1;min-height:0;position:relative;overflow:hidden;
- background:#1c334a;isolation:isolate;
+ background:var(--owc-rule-navy);isolation:isolate;
 }
 .owc-rule-frame{
  display:block;width:100%;height:100%;border:0;
  background:white;
- /* Keep the existing #1c334a unit-card blue-grey while reducing the
-    cross-origin page's stark white text and overly bright links. */
+ /* Preserve the softened text and warm links while changing only the base navy. */
  filter:invert(1);
  mix-blend-mode:screen;
  opacity:.84;
