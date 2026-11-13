@@ -13,7 +13,10 @@ test('version 2 preserves old saved snapshots and creates separate battle_sessio
 test('assignments are restored for imported and previously saved rosters, never included in imported units',()=>{
  const src=app();
  assert.match(src,/readBattleSession\(armySessionKey\(army\)\)/);
- assert.match(src,/writeBattleSession\(state\)/);
+ assert.match(src,/writeSourceSafeSession\(army,state/);
+ assert.match(src,/await sessionReadPending/);
+ assert.match(src,/if\(!await readyBattleSession\(army\)\)return;/);
+ assert.match(src,/writeBattleSession\(pendingSourceSession\)/);
  assert.match(src,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,battleSession/);
  assert.match(src,/await restoreCurrentBattleSession\(\)/);
  assert.match(src,/battleSessionStatus/);

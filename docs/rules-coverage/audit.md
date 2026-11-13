@@ -2,6 +2,14 @@
 
 Audited 2026-11-12 against `main` at `fbff8957e25de1bac222a5ca5f63211d2f16b909`. Exclusive rules authority: https://tow.whfb.app. This document records implementation evidence and limitations; it does not freshly verify every source page or implement missing gameplay mechanics.
 
+## Stage 2 scoped implementation update — 2026-11-13
+
+Stage 1 PR #64 was merged into `main` before this work began. The Stage 2 resolver in `docs/selection-resolver.js` now supplies selection identity, original provenance, owner model/component scope, duplicates, verified published defaults and explicit unresolved/conflicting evidence to both `docs/defence-engine.js` and `docs/effects-engine.js`. `docs/battle-session.js` uses the same evidence for Charmed Shield one-use state. It preserves version 1 of the saved battle-state format. `docs/modifier-contract.js` adds a separate, opt-in and evidence-gated numerical modifier contract; it does not automatically evaluate combat or saves.
+
+The specific obligations improved are: consistent item identity for selected Charmed Shield and Seed of Rebirth; correct owner for nested selections and champion items; source-checked shield and armour equipment-only evidence; rejection of missing/mismatched references and unidentified bearer scope; retention of one-use Charmed Shield state; and explicit condition/phase/model/natural-dice handling for a narrow modifier example. Regression and negative tests are in `tests/selection-consistency.test.mjs`, `tests/defence-engine.test.mjs` and `tests/modifier-contract.test.mjs`. Source inspection details and remaining limitations are in [Stage 2 verification](stage-2-verification.md).
+
+The **canonical coverage classification remains unchanged**: a verified resolver establishes evidence ownership and exclusions, not complete interpretation of any rule page. Individual group/item save mechanics, legal joins, model identity within ordinary units, split profiles, conditional interactions, timing and combat outcome remain partial or unresolved. The modifier contract remains opt-in and is not a new completed rule.
+
 ## What the baseline establishes
 
 The generated [register](register.json), [metrics](metrics.json), [report](report.md) and [imported selection report](imported-selections.json) separate source discovery, interpreted descriptions, implemented behavior and tests. [Methodology](methodology.md) defines the deterministic status rules and update procedure.

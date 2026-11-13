@@ -2,6 +2,8 @@
 
 Stage 1, 2026-11-12. These twenty priorities are dependency-ordered engineering slices, not twenty already verified complete rule specifications. Source targets below are existing indexed/registered tow.whfb.app URLs; they require text, scope, FAQ and version verification before mechanics are coded. No rule semantics should be inferred solely from a title or URL.
 
+Stage 2 PR scope (2026-11-13): implemented the shared selection identity and model-scope foundation in priority 2 and a narrow opt-in modifier representation from priority 4. Verification and remaining exclusions are recorded in [Stage 2 verification](stage-2-verification.md). Priority 1's complete catalogue/FAQ closure, priority 3's legal join and split-profile identity, priority 4's complete operation/stacking rules, and priorities 5–20 remain open. The register keeps whole canonical rules Partial/Conditional/Unresolved pending separate verified obligations and tests.
+
 The generic engine must remain army-agnostic. Represent faction/unit/item exceptions as verified declarative data containing source, owner, target, trigger, conditions, modifier operation and exclusions. Do not add faction-name switches, special-character branches or faction-specific champion regexes to the generic engine.
 
 Counts and example frequencies inform impact but do not override prerequisites or correctness. Each completed slice must update the register's obligations, implementation locators, tests, missing functionality and unresolved questions; limited helper completion must not promote a whole canonical page without exhaustive evidence.

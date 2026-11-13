@@ -407,3 +407,12 @@
  .owc-character-manager-row{padding:8px;gap:6px}
  .owc-character-manager-action{padding:7px 8px}
 }
+
+/* Counter the smaller icon sizing in the existing narrow-screen card header.
+   The single Compact/Full chevron must retain its actual touch area. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{
+ flex:0 0 45px;width:45px;min-width:45px;height:45px;min-height:45px;
+ display:inline-grid;place-items:center;
+}
+/* Compact-only mode supersedes the older chevron touch-area rule. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{display:none!important;}

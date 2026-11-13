@@ -15,7 +15,7 @@ import {projectArmyEffects,setItemEffectState} from './effects-engine.js';
 import {renderMagicItemAbilities} from './effects-ui.js';
 import {activateSpell,endSpell,expireAtNextStartOfTurn,clearSpellEvent} from './spell-engine.js';
 import {restoreStoredImport} from './army-state.js';
-import {armySessionKey,restoreBattleSession,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
+import {armySessionKey,restoreBattleSession,preservePendingUseState,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
 import {indexedSpells} from './player-customization.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
@@ -34,6 +34,10 @@ let unitDataRecords={};
 let selectedUnitSourceRecords={};
 let selectedPublishedProfiles={};
 let battleSession=null;
+// Keep raw saved item usage until the matching source records finish loading.
+let pendingSourceSession=null;
+let sessionReadPending=null;
+let sessionChangedDuringSourceLoad=false;
 let magicIndex=null;
 let gameLayout=null;
 let gameLayoutArmyKey=null;
@@ -272,15 +276,42 @@ function battleStateStatus(message,status='ready'){
  node.textContent=message;
  node.dataset.status=status;
 }
+// Keep an opaque saved one-use flag during initial source lookup. A gameplay
+// effect can use it only after restoreBattleSession verifies its provenance.
+async function writeSourceSafeSession(army,state,change={}){
+ // An edit made before IndexedDB finishes reading must never overwrite the
+ // saved one-use state before it can be carried forward and source-checked.
+ if(current===army&&sessionReadPending){
+  try{await sessionReadPending;}catch{/* Restore reports storage errors. */}
+ }
+ const latest=current===army?battleSession:state;
+ if(current!==army||!pendingSourceSession)return writeBattleSession(latest);
+ pendingSourceSession=preservePendingUseState(army,latest,pendingSourceSession,change);
+ return writeBattleSession(pendingSourceSession);
+}
 async function restoreCurrentBattleSession(){
  const army=current;
  if(!army)return;
- battleSession=restoreBattleSession(army);
+ sessionChangedDuringSourceLoad=false;
+ pendingSourceSession=null;
+ battleSession=restoreBattleSession(army,undefined,unitDataRecords);
  battleStateStatus('Loading saved character assignments…','saving');
+ const reading=readBattleSession(armySessionKey(army));
+ sessionReadPending=reading;
  try{
-  const stored=await readBattleSession(armySessionKey(army));
+  const stored=await reading;
   if(current!==army)return;
-  battleSession=restoreBattleSession(army,stored);
+  // A player action while IndexedDB was reading must not be overwritten by
+  // the older snapshot. Retain any deferred item flags for later checking.
+  pendingSourceSession=sessionChangedDuringSourceLoad?
+   preservePendingUseState(army,battleSession,stored):stored;
+  if(!sessionChangedDuringSourceLoad)
+   battleSession=restoreBattleSession(army,stored,unitDataRecords);
+  else if(Object.keys(unitDataRecords).length){
+   // Source resolution may have finished before IndexedDB returned.
+   battleSession=restoreBattleSession(army,pendingSourceSession,unitDataRecords);
+   pendingSourceSession=null;
+  }
   battleStateStatus(stored?
    'Character assignments recovered · saved locally on this device.':
    'Character assignments will save automatically on this device.');
@@ -288,18 +319,31 @@ async function restoreCurrentBattleSession(){
   if(current!==army)return;
   battleStateStatus('Local saving unavailable: '+(error?.message||error)+
    '. Assignments will last only until this page closes.','error');
+ }finally{
+  if(current===army&&sessionReadPending===reading)sessionReadPending=null;
  }
+}
+// User actions must start from the loaded session, even when a player taps
+// immediately after opening a saved roster. Otherwise an early edit can
+// replace unrelated assignments, custom names or active spells with defaults.
+async function readyBattleSession(army){
+ if(sessionReadPending){
+  try{await sessionReadPending;}catch{/* Restore reports storage errors. */}
+ }
+ return current===army;
 }
 async function handleCharacterAssignment(characterId,unitId){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
-  battleSession=assignCharacter(army,battleSession,characterId,unitId);
+  battleSession=assignCharacter(army,battleSession,characterId,unitId,unitDataRecords);
+  sessionChangedDuringSourceLoad=true;
   const state=battleSession;
   renderArmyScreen();
   battleStateStatus('Saving character assignments…','saving');
   try{
-   await writeBattleSession(state);
+   await writeSourceSafeSession(army,state);
    if(current===army&&battleSession===state)
     battleStateStatus('Character assignments saved automatically on this device.');
   }catch(error){
@@ -314,13 +358,15 @@ async function handleCharacterAssignment(characterId,unitId){
 async function handleShieldUsage(characterId,used){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
-  battleSession=markCharmedShieldUsed(army,battleSession,characterId,used);
+  battleSession=markCharmedShieldUsed(army,battleSession,characterId,used,unitDataRecords);
+  sessionChangedDuringSourceLoad=true;
   const state=battleSession;
   renderArmyScreen();
   battleStateStatus('Saving one-use item status…','saving');
   try{
-   await writeBattleSession(state);
+   await writeSourceSafeSession(army,state,{shieldUse:{ownerId:characterId,used}});
    if(current===army&&battleSession===state)
     battleStateStatus('Character assignments and one-use items saved automatically on this device.');
   }catch(error){
@@ -335,10 +381,11 @@ async function handleShieldUsage(characterId,used){
 /** The player confirms spell knowledge, casting and targeting; do not invent dice rolls. */
 async function persistSpellChange(army,nextState){
  battleSession=nextState;
+ sessionChangedDuringSourceLoad=true;
  renderArmyScreen();
  battleStateStatus('Saving spell activity…','saving');
  try{
-  await writeBattleSession(nextState);
+  await writeSourceSafeSession(army,nextState);
   if(current===army&&battleSession===nextState)
    battleStateStatus('Known spells and battle activity saved automatically on this device.');
  }catch(error){
@@ -349,13 +396,15 @@ async function persistSpellChange(army,nextState){
 async function handleItemEffectState(ownerId,itemId,status){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
-  const next=setItemEffectState(army,battleSession,ownerId,itemId,status);
+  const next=setItemEffectState(army,battleSession,ownerId,itemId,status,unitDataRecords);
   battleSession=next;
+  sessionChangedDuringSourceLoad=true;
   renderArmyScreen();
   battleStateStatus('Saving one-use item activity…','saving');
   try{
-   await writeBattleSession(next);
+   await writeSourceSafeSession(army,next,{itemUse:{ownerId,itemId,status}});
    if(current===army&&battleSession===next)
     battleStateStatus('One-use item activity saved automatically on this device.');
   }catch(error){
@@ -367,33 +416,37 @@ async function handleItemEffectState(ownerId,itemId,status){
   battleStateStatus('Item status unchanged: '+(error?.message||error),'error');
  }
 }
-function handleSpellCast(spec){
+async function handleSpellCast(spec){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
   const next=activateSpell(army,battleSession,spec);
   void persistSpellChange(army,next);
  }catch(error){battleStateStatus('Spell not recorded: '+(error?.message||error),'error');}
 }
-function handleSpellEnd({spellId,casterId}){
+async function handleSpellEnd({spellId,casterId}){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
   const next=endSpell(army,battleSession,spellId,casterId);
   void persistSpellChange(army,next);
  }catch(error){battleStateStatus('Spell not ended: '+(error?.message||error),'error');}
 }
-function handleSpellEventClear({spellId,casterId,targetId}){
+async function handleSpellEventClear({spellId,casterId,targetId}){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
   const next=clearSpellEvent(army,battleSession,spellId,casterId,targetId);
   void persistSpellChange(army,next);
  }catch(error){battleStateStatus('Movement record not cleared: '+(error?.message||error),'error');}
 }
-function handleSpellsExpire(){
+async function handleSpellsExpire(){
  if(!current)return;
  const army=current;
+ if(!await readyBattleSession(army))return;
  try{
   const next=expireAtNextStartOfTurn(army,battleSession);
   void persistSpellChange(army,next);
@@ -401,10 +454,11 @@ function handleSpellsExpire(){
 }
 async function persistPlayerCustomization(army,state,description,render=true){
  battleSession=state;
+ sessionChangedDuringSourceLoad=true;
  if(render)renderArmyScreen();
  battleStateStatus('Saving '+description+'…','saving');
  try{
-  await writeBattleSession(state);
+  await writeSourceSafeSession(army,state);
   if(current===army&&battleSession===state)
    battleStateStatus('Personal unit names and wizard spellbooks saved automatically on this device.');
  }catch(error){
@@ -412,19 +466,21 @@ async function persistPlayerCustomization(army,state,description,render=true){
    '. Changes will be lost when this page closes unless storage recovers.','error');
  }
 }
-function handleUnitName(unitId,name){
+async function handleUnitName(unitId,name){
  if(!current)return;
  try{
   const army=current;
-  const state=setUnitDisplayName(army,battleSession,unitId,name);
+  if(!await readyBattleSession(army))return;
+  const state=setUnitDisplayName(army,battleSession,unitId,name,unitDataRecords);
   void persistPlayerCustomization(army,state,'unit name');
  }catch(error){battleStateStatus('Unit not renamed: '+(error?.message||error),'error');}
 }
-function handleWizardKnownSpell(unitId,spellId,known){
+async function handleWizardKnownSpell(unitId,spellId,known){
  if(!current)return;
  try{
   const army=current;
-  const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,magicIndex);
+  if(!await readyBattleSession(army))return;
+  const state=setWizardKnownSpell(army,battleSession,unitId,spellId,known,magicIndex,unitDataRecords);
   void persistPlayerCustomization(army,state,'known spells',true);
  }catch(error){
   battleStateStatus('Spell selection not saved: '+(error?.message||error),'error');
@@ -656,6 +712,10 @@ async function refreshCurrentSource(force=false){
    if(!active())return;
    unitDataRecords=result.records;
    applySourceScopedSelectionReferences(army,unitDataRecords);
+   // Source-only defaults could not be checked at first load. Revalidate
+   // their saved use flags once source provenance becomes available.
+   battleSession=restoreBattleSession(army,pendingSourceSession||battleSession,unitDataRecords);
+   pendingSourceSession=null;
    render();
    // Main unit records are ready: do not hold their status hostage to
    // optional selected-mount reference or fallback snapshot retrieval.

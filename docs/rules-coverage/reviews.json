@@ -5,21 +5,290 @@
   "reviewEvidence": "docs/rules-coverage/methodology.md",
   "policy": "Retain prior source review dates; this audit checks implementation scope, not fresh verification of every upstream rule.",
   "groups": [
-    {"registry":"REVIEWED_CORE_RULES","mode":"manual","code":"docs/source-core-rule-effects.js","tests":["tests/source-core-rule-effects.test.mjs"],"missing":["Model eligibility, dice, timing and numerical resolution remain manual"]},
-    {"registry":"REVIEWED_CHARACTER_RULES","mode":"conditional","code":"docs/source-special-rule-effects.js","tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Legal joins, model scope and attack calculations are not enforced"]},
-    {"registry":"REVIEWED_CONTAGIOUS_RULES","mode":"conditional","code":"docs/source-special-rule-effects.js","tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Leadership tests, failed-test restrictions and legal joins are not resolved"]},
-    {"registry":"ITEM_EFFECT_RULES","mode":"partial","code":"docs/effects-engine.js","tests":["tests/effects-engine.test.mjs"],"missing":["Full item mechanics, eligibility, timing, stacking and exceptional interactions not established","Defence and effects selection/scope resolution can disagree"]},
-    {"registry":"SPELL_RULES","mode":"partial","code":"docs/spell-engine.js","tests":["tests/spell-engine.test.mjs"],"missing":["Casting, dispelling, range, legal targets and full effect enforcement remain manual"]},
-    {"registry":"REVIEWED_MISSILE_WEAPONS","mode":"partial","code":"docs/source-missile-profiles.js","tests":["tests/attack-phase-groups.test.mjs"],"missing":["Profile display only; attack eligibility, shots, hit/wound/save/damage resolution not established"]}
+    {
+      "registry": "REVIEWED_CORE_RULES",
+      "mode": "manual",
+      "code": "docs/source-core-rule-effects.js",
+      "tests": [
+        "tests/source-core-rule-effects.test.mjs"
+      ],
+      "missing": [
+        "Model eligibility, dice, timing and numerical resolution remain manual"
+      ]
+    },
+    {
+      "registry": "REVIEWED_CHARACTER_RULES",
+      "mode": "conditional",
+      "code": "docs/source-special-rule-effects.js",
+      "tests": [
+        "tests/source-special-rule-effects.test.mjs"
+      ],
+      "missing": [
+        "Legal joins, model scope and attack calculations are not enforced"
+      ]
+    },
+    {
+      "registry": "REVIEWED_CONTAGIOUS_RULES",
+      "mode": "conditional",
+      "code": "docs/source-special-rule-effects.js",
+      "tests": [
+        "tests/source-special-rule-effects.test.mjs"
+      ],
+      "missing": [
+        "Leadership tests, failed-test restrictions and legal joins are not resolved"
+      ]
+    },
+    {
+      "registry": "ITEM_EFFECT_RULES",
+      "mode": "partial",
+      "code": "docs/effects-engine.js",
+      "tests": [
+        "tests/effects-engine.test.mjs"
+      ],
+      "missing": [
+        "Full item mechanics, eligibility, timing, stacking and exceptional interactions not established",
+        "Unknown individual bearers, mounts/crew and legal joins remain unresolved; conditional save/wound resolution is not automatic"
+      ]
+    },
+    {
+      "registry": "SPELL_RULES",
+      "mode": "partial",
+      "code": "docs/spell-engine.js",
+      "tests": [
+        "tests/spell-engine.test.mjs"
+      ],
+      "missing": [
+        "Casting, dispelling, range, legal targets and full effect enforcement remain manual"
+      ]
+    },
+    {
+      "registry": "REVIEWED_MISSILE_WEAPONS",
+      "mode": "partial",
+      "code": "docs/source-missile-profiles.js",
+      "tests": [
+        "tests/attack-phase-groups.test.mjs"
+      ],
+      "missing": [
+        "Profile display only; attack eligibility, shots, hit/wound/save/damage resolution not established"
+      ]
+    }
   ],
   "gaps": [
-    {"id":"gap:faq-errata","name":"Complete FAQ and errata catalogue","category":"faq-errata","question":"No committed FAQ index; enumerate permitted public FAQ/errata pages, versions and affected rules before asserting closure."},
-    {"id":"gap:exceptional-interactions","name":"Complete exceptional interaction catalogue","category":"interaction","question":"Atomic conditions and exceptional rule combinations have not been enumerated."},
-    {"id":"gap:semantic-rule-identity","name":"Atomic canonical rule decomposition and semantic aliases","category":"catalogue","question":"Pages may contain multiple mechanics or duplicate other pages; cross-URL equivalence remains unverified."},
-    {"id":"gap:special-rule-scope","name":"Universal versus army/unit special-rule scope","category":"special-rule","question":"Index titles do not establish scope; verify universal, faction and unit eligibility from rule text."}
+    {
+      "id": "gap:faq-errata",
+      "name": "Complete FAQ and errata catalogue",
+      "category": "faq-errata",
+      "question": "No committed FAQ index; enumerate permitted public FAQ/errata pages, versions and affected rules before asserting closure."
+    },
+    {
+      "id": "gap:exceptional-interactions",
+      "name": "Complete exceptional interaction catalogue",
+      "category": "interaction",
+      "question": "Atomic conditions and exceptional rule combinations have not been enumerated."
+    },
+    {
+      "id": "gap:semantic-rule-identity",
+      "name": "Atomic canonical rule decomposition and semantic aliases",
+      "category": "catalogue",
+      "question": "Pages may contain multiple mechanics or duplicate other pages; cross-URL equivalence remains unverified."
+    },
+    {
+      "id": "gap:special-rule-scope",
+      "name": "Universal versus army/unit special-rule scope",
+      "category": "special-rule",
+      "question": "Index titles do not establish scope; verify universal, faction and unit eligibility from rule text."
+    }
   ],
   "interactions": [
-    {"id":"interaction:precision-strikes-armour-bane","name":"Precision Strikes with Armour Bane","sourceUrls":["https://tow.whfb.app/special-rules/precision-strikes","https://tow.whfb.app/special-rules/armour-bane"],"mode":"conditional","code":["docs/source-special-rule-effects.js"],"tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Separate reminders only; AP stacking and natural-six resolution are not calculated"]},
-    {"id":"interaction:stupidity-recorded-join","name":"Stupidity inherited through recorded character join","sourceUrls":["https://tow.whfb.app/special-rules/stupidity","https://tow.whfb.app/faq/universal-special-rules"],"mode":"conditional","code":["docs/source-special-rule-effects.js"],"tests":["tests/source-special-rule-effects.test.mjs"],"missing":["Legal join and psychology outcome enforcement remain manual"]}
-  ]
+    {
+      "id": "interaction:precision-strikes-armour-bane",
+      "name": "Precision Strikes with Armour Bane",
+      "sourceUrls": [
+        "https://tow.whfb.app/special-rules/precision-strikes",
+        "https://tow.whfb.app/special-rules/armour-bane"
+      ],
+      "mode": "conditional",
+      "code": [
+        "docs/source-special-rule-effects.js"
+      ],
+      "tests": [
+        "tests/source-special-rule-effects.test.mjs"
+      ],
+      "missing": [
+        "Separate reminders only; AP stacking and natural-six resolution are not calculated"
+      ]
+    },
+    {
+      "id": "interaction:stupidity-recorded-join",
+      "name": "Stupidity inherited through recorded character join",
+      "sourceUrls": [
+        "https://tow.whfb.app/special-rules/stupidity",
+        "https://tow.whfb.app/faq/universal-special-rules"
+      ],
+      "mode": "conditional",
+      "code": [
+        "docs/source-special-rule-effects.js"
+      ],
+      "tests": [
+        "tests/source-special-rule-effects.test.mjs"
+      ],
+      "missing": [
+        "Legal join and psychology outcome enforcement remain manual"
+      ]
+    }
+  ],
+  "stage2Evidence": {
+    "https://tow.whfb.app/magic-item/charmed-shield": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js",
+        "docs/battle-session.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs",
+        "tests/defence-engine.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "verified-bearer-identity-nested-selection-and-once-per-game-availability",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs",
+            "tests/defence-engine.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/magic-item/seed-of-rebirth": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "verified-bearer-specific-regeneration-projection",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/magic-item/the-loremasters-cloak": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs",
+        "tests/effects-engine.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "recorded-champion-and-joined-unit-conditional-ward-scope",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs",
+            "tests/effects-engine.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/magic-item/razor-standard": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/effects-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs",
+        "tests/effects-engine.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "source-matched-unit-standard-ownership-only",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs",
+            "tests/effects-engine.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/special-rules/armour-bane": {
+      "code": [
+        "docs/modifier-contract.js"
+      ],
+      "tests": [
+        "tests/modifier-contract.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "opt-in-natural-six-ap-modifier-with-evidence-and-exclusions",
+          "implemented": true,
+          "tests": [
+            "tests/modifier-contract.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/weapons-of-war/shield": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs",
+        "tests/defence-engine.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "source-matched-equipment-only-shield-component",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs",
+            "tests/defence-engine.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/weapons-of-war/light-armour": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "source-matched-equipment-only-light-armour",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs"
+          ]
+        }
+      ]
+    },
+    "https://tow.whfb.app/weapons-of-war/heavy-armour": {
+      "code": [
+        "docs/selection-resolver.js",
+        "docs/defence-engine.js"
+      ],
+      "tests": [
+        "tests/selection-consistency.test.mjs"
+      ],
+      "obligations": [
+        {
+          "id": "source-matched-equipment-only-heavy-armour",
+          "implemented": true,
+          "tests": [
+            "tests/selection-consistency.test.mjs"
+          ]
+        }
+      ]
+    }
+  }
 }

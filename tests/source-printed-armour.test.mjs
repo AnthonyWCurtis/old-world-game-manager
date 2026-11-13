@@ -34,4 +34,5 @@ test('offline app shell includes every added Defence Summary module',()=>{
  const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
  assert.match(sw,/['"]\.\/source-printed-armour\.js['"]/);
  assert.match(sw,/CACHE_NAME='game-manager-v1-shell-[^']+'/);
+ assert.match(sw,/['"]\.\/selection-resolver\.js['"]/);
 });
