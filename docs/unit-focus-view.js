@@ -184,7 +184,24 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
   const open=make(doc,'button','game-unit-focus-open','Full view');
   open.type='button';
   open.setAttribute('aria-label','Open '+name+' unit details');
-  open.addEventListener('click',event=>{event.stopPropagation();openFocus(card);});
+  open.addEventListener('click',event=>{
+   event.stopPropagation();
+   // In an expanded army card, switch views in place instead of navigating.
+   // A collapsed card still opens the focused unit screen.
+   if(card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
+    const mode=card.classList.contains('owc-view-full')?'compact':'full';
+    setUnitView(card,mode);
+    open.textContent=mode==='full'?'Compact view':'Full view';
+    open.setAttribute('aria-label',(mode==='full'?'Show compact':'Show full')+' view for '+name);
+   }else openFocus(card);
+  });
+  card.querySelector('.game-unit-expand-toggle')?.addEventListener('click',()=>{
+   if(!card.classList.contains('game-unit-open')){
+    setUnitView(card,'compact');
+    open.textContent='Full view';
+    open.setAttribute('aria-label','Open '+name+' unit details');
+   }
+  });
   header.append(open);
   // Primary tap on a card opens focused detail; single fold remains available.
   header.addEventListener('click',event=>{
