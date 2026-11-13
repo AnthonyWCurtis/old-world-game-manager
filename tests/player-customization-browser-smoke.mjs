@@ -23,7 +23,11 @@ try{
  const second=await ships.nth(1).getAttribute('data-unit-id');
  const rename=async(id,name)=>{
   const card=page.locator('#gameRegiments .army-unit-card[data-unit-id="'+id+'"]');
-  await card.locator('.game-unit-focus-open').click();
+  // Inline-expanded cards intentionally have no second Open unit control.
+  // Tapping their heading opens the same focused view without an extra button.
+  const open=card.locator('.game-unit-focus-open');
+  if(await open.isVisible())await open.click();
+  else await card.locator('.army-unit-names h3').click();
   await card.locator('.game-rename-toggle').click();
   await card.locator('.game-unit-rename-input').fill(name);
   await card.locator('.game-unit-rename-save').click();
