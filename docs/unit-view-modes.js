@@ -88,6 +88,7 @@ function compactEffectPills(doc,effects){
  section.append(make(doc,'h4','owc-compact-label','Character Buffs & Active Effects'));
  const line=make(doc,'div','owc-compact-words owc-compact-effect-words');
  for(const item of items){
+  if(line.childElementCount)line.append(make(doc,'span','owc-word-separator',' · '));
   let element=make(doc,'span','owc-compact-word owc-effect-pill owc-effect-'+item.category,item.label);
   try{
    const url=new URL(item.url);
