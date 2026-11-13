@@ -416,3 +416,10 @@
 }
 /* Compact-only mode supersedes the older chevron touch-area rule. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{display:none!important;}
+
+/* Active magic already appears in the Compact View's source-linked
+   Character Buffs & Active Effects strip. Do not duplicate it in the banner.
+   This is presentation-only: spell state and effect projection are unchanged. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .army-unit-head .game-card-status{
+ display:none!important;
+}
