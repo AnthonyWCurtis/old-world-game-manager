@@ -41,7 +41,7 @@ try{
   'Unreviewed source rules remain present');
  assert.equal(await sea.locator('.game-attack-panel .game-offensive-effect[data-effect-id="published-close-order"]').count(),0,
   'Manual formation permission must not be transformed into an attack bonus');
- await page.locator('#gameUnitFocusBack').click();
+ await sea.locator('.game-unit-focus-open').click();
  await page.locator('#gameScreenSaveBtn').click();
  await page.waitForFunction(()=>document.querySelectorAll('#savedList .row-item').length>0);
  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,null,{timeout:20000});
