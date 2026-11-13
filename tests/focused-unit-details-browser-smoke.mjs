@@ -85,6 +85,10 @@ try{
  assert.equal(await assigned.evaluate(el=>el.open),false,'Full View retains the assigned-character fold');
  await assigned.locator(':scope > summary').click();
  assert.equal(await sea.locator('.game-assigned-characters').isVisible(),true);
+ await attached.locator(':scope > summary').click();
+ assert.equal(await attached.locator('.army-unit-loadout-pill').filter({hasText:"Mathlann's Ire"}).isVisible(),true,
+  'Attached character equipment remains visible in Full View too');
+ await attached.locator(':scope > summary').click();
  await assigned.locator(':scope > summary').click();
  const order=await content.evaluate(node=>[...node.children].map(c=>c.className));
  const position=cls=>order.findIndex(x=>typeof x==='string'&&x.split(' ').includes(cls));
