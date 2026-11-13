@@ -1,6 +1,7 @@
 /** Presentation-only Compact / Full unit cards. No edits to imported army or battle state. */
 import {armySessionKey} from './battle-session.js';
 const unitViewPreferences=new Map();
+const assignedDrawerPreferences=new Map();
 const $=(root,selector)=>root.querySelector(selector);
 const make=(doc,tag,cls='',text)=>{
  const node=doc.createElement(tag);
@@ -26,7 +27,12 @@ export function prepareUnitCompactCard(card,army){
  const body=$(card,':scope > .game-unit-expandable > .army-unit-card-body');
  if(!body||$(body,'.owc-compact-loadout'))return;
  const doc=card.ownerDocument;
- const sourceGroups=[...card.querySelectorAll('.army-unit-unified-loadout .army-unit-loadout-group')];
+ // Only the regiment's own loadout. A broad card-wide query also finds
+ // nested attached-character cards and incorrectly mixes all their rules in.
+ const sourceLoadout=$(card,':scope > .game-unit-expandable > .army-unit-unified-loadout')||
+  $(body,':scope > .army-unit-unified-loadout');
+ const sourceGroups=sourceLoadout?
+  [...sourceLoadout.querySelectorAll(':scope > .army-unit-loadout-group')]:[];
  const equipment=[],rules=[];
  for(const group of sourceGroups){
   const heading=group.querySelector(':scope > strong')?.textContent?.trim()||'';
@@ -55,6 +61,25 @@ export function prepareUnitCompactCard(card,army){
  }
  if(!equipment.length&&!rules.length)
   summary.append(make(doc,'p','owc-compact-unavailable','No source-backed equipment or special rules available.'));
+ // Reuse the existing attached-character details and assignment editor:
+ // character-specific equipment stays with each character, never the regiment.
+ const memberArea=$(card,':scope > .game-unit-expandable > .game-assigned-characters');
+ if(memberArea){
+  const count=memberArea.querySelectorAll(':scope > .game-attached-character').length;
+  const drawer=make(doc,'details','owc-assigned-drawer');
+  const heading=make(doc,'summary','owc-assigned-summary');
+  heading.append(make(doc,'strong','','Assigned Characters ('+count+')'),
+   make(doc,'span','','Individual equipment & special rules'));
+  drawer.append(heading,memberArea);
+  const drawerKey=key+'::assigned';
+  drawer.open=assignedDrawerPreferences.get(drawerKey)||false;
+  drawer.addEventListener('toggle',()=>{
+   assignedDrawerPreferences.set(drawerKey,drawer.open);
+   if(assignedDrawerPreferences.size>512)
+    assignedDrawerPreferences.delete(assignedDrawerPreferences.keys().next().value);
+  });
+  summary.append(drawer);
+ }
  body.prepend(summary);
  // Highlight numerical profile differences, not presumed bonuses from unverified selections.
  const rows=[...body.querySelectorAll('.army-profile-table tbody > tr')]
