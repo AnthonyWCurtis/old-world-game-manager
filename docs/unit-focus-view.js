@@ -78,10 +78,8 @@ function enhanceFocusedProfile(card){
   tiles.remove();
  };
 }
-/** The roster always shows Compact; its one chevron toggles Full in place.
- * Do not trigger the original collapse handler: no name-only state is allowed,
- * and changing the display must not mutate recorded gameplay state.
- */
+/** Compact is the sole visible unit mode for now. Full remains in the
+ * source for later development but cannot be opened from roster headers. */
 export function attachFocusedUnitView(container,army,groups,_restoreRoster){
  const cards=groups.flatMap(group=>group.cards);
  installRuleViewer(container);
@@ -90,41 +88,22 @@ export function attachFocusedUnitView(container,army,groups,_restoreRoster){
   const content=card.querySelector(':scope > .game-unit-expandable');
   const chevron=card.querySelector('.game-unit-expand-toggle');
   const header=card.querySelector('.army-unit-head');
-  if(!content||!chevron||!header)continue;
-  const name=card.querySelector('.army-unit-names h3')?.textContent?.trim()||'unit';
+  if(!content||!header)continue;
+  setUnitView(card,'compact',{remember:false});
   content.hidden=false;
   card.classList.add('game-unit-open');
-  // prepareUnitCompactCard restores the current in-memory unit view on rerenders.
-  const sync=()=>{
-   const full=card.classList.contains('owc-view-full');
-   content.hidden=false;
-   card.classList.add('game-unit-open');
-   chevron.textContent=full?'⌃':'⌄';
-   chevron.setAttribute('aria-expanded',String(full));
-   chevron.setAttribute('aria-label',(full?'Show compact':'Show full')+' view for '+name);
-   chevron.setAttribute('title',full?'Compact View':'Full View');
-   header.setAttribute('aria-label',name+' — '+(full?'Full':'Compact')+' view');
-  };
-  const change=()=>{
-   // Keep the chosen view through assignment, wound and magic rerenders.
-   setUnitView(card,card.classList.contains('owc-view-full')?'compact':'full');
-   sync();
-  };
-  // Capture before the old fold and header handlers. Every other interactive
-  // control (rename, counters, links, assignment editors) retains its action.
+  if(chevron){
+   chevron.hidden=true;
+   chevron.tabIndex=-1;
+   chevron.setAttribute('aria-hidden','true');
+  }
+  // Suppress the legacy header collapse handler without interfering with
+  // rename, counters, links or the new character-management button.
   header.addEventListener('click',event=>{
-   if(event.target.closest('button,a,input,select,label,form,textarea')&&
-      !event.target.closest('.game-unit-expand-toggle'))return;
+   if(event.target.closest('button,a,input,select,label,form,textarea'))return;
    event.preventDefault();
    event.stopImmediatePropagation();
-   change();
   },true);
-  header.addEventListener('keydown',event=>{
-   if(event.target!==header||!['Enter',' '].includes(event.key))return;
-   event.preventDefault();
-   change();
-  });
-  header.tabIndex=0;
-  sync();
+  header.removeAttribute('tabindex');
  }
 }
