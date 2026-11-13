@@ -875,7 +875,12 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     manage.setAttribute('aria-label','Manage characters attached to '+unitDisplayName(entry,session));
     manage.addEventListener('click',()=>manageRegimentCharacters(
      doc,container,currentArmyKey,entry,model.characters,assignments,displayId,onAssignment,session));
-    card.querySelector('.army-unit-names')?.append(manage);
+    // Keep the actions together: unit name → rename pencil → add character.
+    // Insert before the (currently hidden) Full View chevron, preserving it.
+    const nameLine=card.querySelector('.game-unit-name-line');
+    const expand=nameLine?.querySelector('.game-unit-expand-toggle');
+    if(expand)nameLine.insertBefore(manage,expand);
+    else nameLine?.append(manage);
    }
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
