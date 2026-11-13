@@ -258,3 +258,11 @@
 .tactical-ui #armyRosterList .game-unit-name-line .game-rename-toggle:focus-visible{
  outline:3px solid var(--tc-gold-text);outline-offset:2px;
 }
+
+/* Collapsed list remains compact; the expanded single-card header has its pencil. */
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-open .game-unit-name-line .game-rename-toggle{
+ display:inline-grid!important;
+}
+.tactical-ui #armyRosterList:not(.game-unit-focused) .game-unit-open .game-unit-rename:not([hidden]){
+ display:flex!important;
+}
