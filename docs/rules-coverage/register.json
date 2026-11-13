@@ -290,7 +290,7 @@
     },
     {
       "file": "docs/sw.js",
-      "sha256": "3168405d5ea07b14d393cfc307f39a3b9110e9980a0d921696da55b130cf31f0"
+      "sha256": "c377ba09fecc1722bd3cf4ee91a70da0b27d607e953ab10453565db4897467ae"
     },
     {
       "file": "docs/tactical-command.js",
@@ -454,7 +454,7 @@
     },
     {
       "file": "docs/unit-view-modes.js",
-      "sha256": "8de240afae7ce23a8b0762af6fd952354e52e94f866573ec1d12245d9b0d985a"
+      "sha256": "10defc6d79da928348aef0f995923248389d32bcf66372065a707ad7a7e40ce0"
     },
     {
       "file": "docs/unit-wound-tracker.js",
