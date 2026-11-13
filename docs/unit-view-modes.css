@@ -321,9 +321,98 @@
 .tactical-ui #armyRosterList .owc-model-group-values{
  margin:4px 0 0;font-size:12px;line-height:1.65;color:#e3eaf0;
 }
+
+/* Source-backed attached-character benefits in Compact and Full headers.
+   Personal equipment remains inside the existing character drawer. */
+.tactical-ui #armyRosterList .owc-compact-effect-strip{
+ margin-top:12px;padding-top:10px;border-top:1px solid #40516a;
+}
+.tactical-ui #armyRosterList .owc-compact-effect-words{
+ gap:5px;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-pill,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-pill{
+ min-height:28px;padding:4px 8px;font-size:11px;
+ font-weight:650;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character{
+ background:#393353;color:#e1d0fa;border-color:#706094;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-conditional{
+ background:#453821;color:#f0d29b;border-color:#866b42;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-magic,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-magic{
+ background:#214638;color:#b7ebc6;border-color:#539a71;
+}
+.tactical-ui #armyRosterList .owc-compact-effect-words a.owc-effect-pill:focus-visible{
+ outline:2px solid #f0d29b;outline-offset:2px;
+}
+
+/* Compact-only roster character manager. Full UI stays in code, hidden. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .game-unit-expand-toggle{
+ display:none!important;
+}
+.tactical-ui #armyRosterList .owc-manage-characters{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:fit-content;max-width:100%;min-height:36px;margin:7px 0 2px;
+ padding:7px 11px;border:1px solid #b5955d;border-radius:8px;
+ background:#243952;color:#f0d8a9;font-size:12px;font-weight:700;
+ cursor:pointer;
+}
+.tactical-ui #armyRosterList .owc-manage-characters:focus-visible{
+ outline:2px solid #f0d8a9;outline-offset:2px;
+}
+.owc-character-manager{
+ inset:0;margin:auto;width:min(94vw,560px);max-width:none;
+ max-height:min(85dvh,780px);padding:0;
+ border:1px solid #a8874d;border-radius:12px;
+ background:#101e33;color:#eef0f3;box-shadow:0 20px 72px #000b;
+}
+.owc-character-manager::backdrop{background:#06101dde}
+.owc-character-manager-shell{
+ display:flex;flex-direction:column;gap:12px;padding:16px;
+ max-height:min(85dvh,780px);overflow-y:auto;
+}
+.owc-character-manager-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.owc-character-manager-top h3{font-size:18px;color:#f0d8a9;margin:0 0 4px}
+.owc-character-manager-top p{font-size:12px;color:#9fb5cb;margin:0}
+.owc-character-manager-close,
+.owc-character-manager-action{
+ border:1px solid #b5955d;border-radius:7px;padding:7px 12px;min-height:38px;
+ background:#243952;color:#f0d8a9;font-size:12px;font-weight:700;cursor:pointer;
+}
+.owc-character-manager-close:focus-visible,.owc-character-manager-action:focus-visible{
+ outline:2px solid #f0d8a9;outline-offset:2px;
+}
+.owc-character-manager-help,.owc-character-manager-note{
+ font-size:12px;line-height:1.5;color:#a9bed0;margin:0;
+}
+.owc-character-manager-list{display:flex;flex-direction:column;gap:7px;min-width:0}
+.owc-character-manager-row{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;padding:10px;border:1px solid #34495f;
+ background:#1b2d45;border-radius:8px;min-width:0;
+}
+.owc-character-manager-info{display:flex;flex-direction:column;min-width:0;gap:3px}
+.owc-character-manager-info strong{font-size:13px;color:#f3e4cb;overflow-wrap:anywhere}
+.owc-character-manager-info span{font-size:11px;color:#b1c3d4;overflow-wrap:anywhere}
+.owc-character-manager-action{flex-shrink:0}
+.owc-character-manager-action.is-attached{
+ border-color:#587d67;background:#203f34;color:#b5e8c6;
+}
+@media(max-width:370px){
+ .owc-character-manager-row{padding:8px;gap:6px}
+ .owc-character-manager-action{padding:7px 8px}
+}
+
 /* Counter the smaller icon sizing in the existing narrow-screen card header.
    The single Compact/Full chevron must retain its actual touch area. */
 .tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{
  flex:0 0 45px;width:45px;min-width:45px;height:45px;min-height:45px;
  display:inline-grid;place-items:center;
 }
+/* Compact-only mode supersedes the older chevron touch-area rule. */
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open.owc-unit-view .game-unit-name-line .game-unit-expand-toggle{display:none!important;}

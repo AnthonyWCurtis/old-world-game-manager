@@ -20,6 +20,63 @@ function wordList(doc,items){
  });
  return line;
 }
+/**
+ * Compact battle summary from the existing source-reviewed projection.
+ * A character's personal equipment or special rules never become regiment buffs.
+ * Only explicitly projected joins and player-confirmed active target spells qualify.
+ */
+export function compactBeneficialEffects(effects=[]){
+ const merged=new Map();
+ for(const effect of effects){
+  if(!effect?.sourceUrl||!effect.name)continue;
+  const magic=effect.kind==='Spell'&&effect.status==='active';
+  const joined=!magic&&effect.shared===true&&!!effect.joinedFrom&&
+   effect.ownerIsCharacter===true&&
+   ['equipped','conditional','active'].includes(effect.status);
+  if(!magic&&!joined)continue;
+  // Conditional rules are available, not a confirmed current modifier.
+  const category=magic?'magic':effect.status==='conditional'?'conditional':'character';
+  const label=effect.quickLabel||effect.name;
+  const key=category+'|'+effect.sourceUrl+'|'+label;
+  const source=String(effect.ownerName||'Unknown character');
+  if(merged.has(key)){
+   const existing=merged.get(key);
+   if(!existing.providers.includes(source))existing.providers.push(source);
+  }else{
+   merged.set(key,{
+    label,category,url:effect.sourceUrl,providers:[source],
+    detail:effect.quickDetail||effect.description||'',
+    scope:effect.scope||''
+   });
+  }
+ }
+ return [...merged.values()];
+}
+function compactEffectPills(doc,effects){
+ const items=compactBeneficialEffects(effects);
+ if(!items.length)return null;
+ const section=make(doc,'section','owc-compact-effect-strip');
+ section.append(make(doc,'h4','owc-compact-label','Character Buffs & Active Effects'));
+ const line=make(doc,'div','owc-compact-words owc-compact-effect-words');
+ for(const item of items){
+  let element=make(doc,'span','owc-compact-word owc-effect-pill owc-effect-'+item.category,item.label);
+  try{
+   const url=new URL(item.url);
+   if(url.origin==='https://tow.whfb.app'&&!url.search&&!url.hash&&
+      url.pathname.split('/').filter(Boolean).every(segment=>/^[a-z0-9-]+$/.test(segment))){
+    element=make(doc,'a',element.className,item.label);
+    element.href=url.href;element.target='_blank';element.rel='noopener noreferrer';
+   }
+  }catch{/* Unknown source is never linked off-site. */}
+  const condition=item.category==='conditional'?'Conditional · ':'';
+  element.title=condition+'From '+item.providers.join(', ')+
+   (item.scope?' · '+item.scope:'')+(item.detail?' · '+item.detail:'');
+  line.append(element);
+ }
+ section.append(line);
+ return section;
+}
+
 /** Reuse the source-resolved links already rendered by unitEquipmentAndRules. */
 export function prepareUnitCompactCard(card,army){
  const key=armySessionKey(army)+'::'+card.dataset.unitId;
@@ -61,6 +118,8 @@ export function prepareUnitCompactCard(card,army){
  }
  if(!equipment.length&&!rules.length)
   summary.append(make(doc,'p','owc-compact-unavailable','No source-backed equipment or special rules available.'));
+ const benefits=compactEffectPills(doc,card.owcCompactEffects);
+ if(benefits)summary.append(benefits);
  // Reuse the existing attached-character details and assignment editor:
  // character-specific equipment stays with each character, never the regiment.
  const memberArea=$(card,':scope > .game-unit-expandable > .game-assigned-characters');
@@ -68,8 +127,8 @@ export function prepareUnitCompactCard(card,army){
   const count=memberArea.querySelectorAll(':scope > .game-attached-character').length;
   const drawer=make(doc,'details','owc-assigned-drawer');
   const heading=make(doc,'summary','owc-assigned-summary');
-  heading.append(make(doc,'strong','','Assigned Characters ('+count+')'),
-   make(doc,'span','','Individual equipment & special rules'));
+  heading.append(make(doc,'strong','','Individual Equipment & Special Rules'),
+   make(doc,'span','',count+' assigned character'+(count===1?'':'s')));
   drawer.append(heading,memberArea);
   const drawerKey=key+'::assigned';
   drawer.open=assignedDrawerPreferences.get(drawerKey)||false;

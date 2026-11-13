@@ -1,4 +1,5 @@
 import {createGameScreenModel} from './game-screen-model.js';
+import {armySessionKey} from './battle-session.js';
 import {decorateCompactRoster} from './roster-compact-navigation.js';
 import {evaluateDefences} from './defence-engine.js';
 import {unitDisplayName} from './player-customization.js';
@@ -26,6 +27,8 @@ import {trackingDefinition,readTrackedRemaining,renderUnitCounter} from './unit-
 /** Visible, independent version of the unit profile display (not the importer). */
 export const UNIT_PROFILES_VERSION='0.10';
 export const PROFILE_COLUMNS=Object.freeze(['M','WS','BS','S','T','W','I','A','Ld']);
+let activeCharacterManager=null; // presentation-only; survives assignment rerenders
+
 const SOURCE_ORIGIN='https://tow.whfb.app';
 const valueOf=field=>field?.value??null;
 const text=(v,fallback='Not stated')=>v===null||v===undefined||v===''?fallback:String(v);
@@ -93,6 +96,8 @@ function sourceRefRow(doc,title,refs){
 function unitCard(doc,unit,index,record,fallback,wasOpen,session=null,onRename=null,expanded=false,onToggle=()=>{},mountProfileGroups=[],effects=[]){
  const card=el(doc,'article','army-unit-card');
  card.dataset.unitId=unit.id;
+ // Reuse the authoritative, source-reviewed effect projection for Compact View.
+ card.owcCompactEffects=effects;
  const header=el(doc,'header','army-unit-head');
  const identity=el(doc,'div','army-unit-identity');
  identity.append(el(doc,'span','army-unit-index',String(index).padStart(2,'0')));
@@ -424,6 +429,67 @@ function regimentEditor(doc,regiment,characters,assignments,byId,onAssignment,se
  return row;
 }
 
+/** Modal replaces the Full View-only assignment editor. Every action uses
+ * the existing persisted onAssignment callback; no local assignment ledger.
+ */
+function manageRegimentCharacters(doc,container,armyKey,regiment,characters,assignments,regimentNames,onAssignment,session){
+ const existing=activeCharacterManager?.dialog;
+ if(existing){
+  if(existing.open&&typeof existing.close==='function')existing.close();
+  existing.remove();
+ }
+ const dialog=el(doc,'dialog','owc-character-manager');
+ dialog.setAttribute('aria-label','Manage characters for '+unitDisplayName(regiment,session));
+ const shell=el(doc,'div','owc-character-manager-shell');
+ const top=el(doc,'div','owc-character-manager-top');
+ const title=el(doc,'div','');
+ title.append(el(doc,'h3','','Manage Characters'),
+  el(doc,'p','',unitDisplayName(regiment,session)+' · entry '+regiment.index));
+ const close=el(doc,'button','owc-character-manager-close','Close');
+ close.type='button';
+ close.addEventListener('click',()=>dialog.close());
+ top.append(title,close);shell.append(top);
+ shell.append(el(doc,'p','owc-character-manager-help',
+  'Attach or remove characters. A character already with another unit will be moved here.'));
+ const list=el(doc,'div','owc-character-manager-list');
+ if(!characters.length)list.append(el(doc,'p','army-quiet','No imported characters available.'));
+ for(const character of characters){
+  const current=assignments[character.id]||null;
+  const attached=current===regiment.id;
+  const row=el(doc,'div','owc-character-manager-row');
+  const info=el(doc,'div','owc-character-manager-info');
+  info.append(el(doc,'strong','',unitDisplayName(character,session)));
+  let detail='Entry '+character.index;
+  if(current&&!attached)detail+=' · with '+(regimentNames.get(current)||'another unit');
+  else if(attached)detail+=' · attached';
+  else detail+=' · independent';
+  info.append(el(doc,'span','',detail));
+  const action=el(doc,'button','owc-character-manager-action'+(attached?' is-attached':''),
+   attached?'Remove':current?'Move here':'Attach');
+  action.type='button';
+  action.setAttribute('aria-label',(attached?'Remove ':'Attach ')+
+   unitDisplayName(character,session)+(attached?' from ':' to ')+unitDisplayName(regiment,session));
+  action.addEventListener('click',()=>{
+   // Existing handler validates, persists and rerenders the shared state.
+   onAssignment(character.id,attached?null:regiment.id);
+  });
+  row.append(info,action);list.append(row);
+ }
+ shell.append(list);
+ shell.append(el(doc,'p','owc-character-manager-note',
+  'Recorded assignments only. The game does not verify character joining eligibility.'));
+ dialog.append(shell);doc.body.append(dialog);
+ activeCharacterManager={container,armyKey,unitId:regiment.id,dialog};
+ dialog.addEventListener('close',()=>{
+  if(activeCharacterManager?.dialog===dialog)activeCharacterManager=null;
+  dialog.remove();
+ });
+ dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+ if(typeof dialog.showModal==='function')dialog.showModal();
+ else dialog.setAttribute('open','');
+ return dialog;
+}
+
 function attachedCharacter(doc,character,imported,record,fallback,unitId,open,onAssignment,defence,onShieldUse,session,effects=[],effectActions={},mountProfileGroups=[],selectedUnitRecords={}){
  const panel=el(doc,'details','game-attached-character');
  panel.dataset.characterId=character.id;
@@ -689,6 +755,16 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
  const displayId=new Map(model.units.map(entry=>[entry.id,entry]));
  const assignments=session?.assignments||{};
  const itemActions={onItemState,onShieldUse};
+ const currentArmyKey=armySessionKey(army);
+ const restoreManagedUnit=activeCharacterManager?.container===container&&
+  activeCharacterManager.armyKey===currentArmyKey?
+  activeCharacterManager.unitId:null;
+ if(activeCharacterManager?.container===container){
+  const oldDialog=activeCharacterManager.dialog;
+  if(oldDialog?.open&&typeof oldDialog.close==='function')oldDialog.close();
+  oldDialog?.remove();
+  if(!restoreManagedUnit)activeCharacterManager=null;
+ }
  container.replaceChildren();
 
  // Cosmetic counter updates are stored in a separate namespaced local
@@ -792,6 +868,15 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    const memberList=model.characters.filter(c=>assignments[c.id]===entry.id);
    const defence=evaluateDefences(army,session,entry.id,records);
    appendCompactStatus(doc,card,defence,memberList.length,effects);
+   if(model.characters.length){
+    const manage=el(doc,'button','owc-manage-characters',
+     'Manage Characters ('+memberList.length+')');
+    manage.type='button';
+    manage.setAttribute('aria-label','Manage characters attached to '+unitDisplayName(entry,session));
+    manage.addEventListener('click',()=>manageRegimentCharacters(
+     doc,container,currentArmyKey,entry,model.characters,assignments,displayId,onAssignment,session));
+    card.querySelector('.army-unit-names')?.append(manage);
+   }
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
     fallbackProfiles[imported.reference?.url],effects,mountRows,selectedUnitRecords));
@@ -829,5 +914,13 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   regiments.append(el(doc,'p','army-quiet','No additional units were identified in this import.'));
  container.append(regiments);
  decorateCompactRoster(container,army);
+ // Keep the manager usable across the normal synchronous assignment rerender.
+ if(restoreManagedUnit){
+  const manage=[...container.querySelectorAll('.army-unit-card[data-unit-id]')]
+   .find(card=>card.dataset.unitId===restoreManagedUnit)
+   ?.querySelector('.owc-manage-characters');
+  if(manage)manage.click();
+  else activeCharacterManager=null;
+ }
  return overview;
 }
