@@ -490,7 +490,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  const metrics=el(doc,'div','game-defence-values');
  for(const [name,display,key] of [
   ['Armour',conciseSave(defence.armour.label),'armour'],
-  ['Ward',activeWard.length===1&&defence.isCharacter?conciseSave(wardPreview):
+  ['Ward',activeWard.length===1?conciseSave(wardPreview):
    activeWard.length?'Conditional':conciseSave(wardPreview),'ward'],
   ['Regeneration',defence.regeneration.length===1&&defence.isCharacter?
    conciseSave(regenPreview):defence.regeneration.length?'Conditional':'—','regeneration']
@@ -502,6 +502,12 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
   else if(display==='Conditional')item.append(el(doc,'small','game-defence-save-note','Conditions apply'));
   else if(display==='Spent')item.append(el(doc,'small','game-defence-save-note','Already used'));
   else if(key==='armour')item.append(el(doc,'small','game-defence-save-note','Equipment only'));
+  else if(key==='ward'&&activeWard.length===1){
+   const condition=String(activeWard[0].condition||'');
+   const note=/all wounds/i.test(condition)?'all wounds':
+    /magic missiles/i.test(condition)?'Magic Missiles only':'Conditional';
+   item.append(el(doc,'small','game-defence-save-note',note));
+  }
   item.title=key==='armour'?defence.armour.note:key==='ward'?wardPreview:regenPreview;
   metrics.append(item);
  }
