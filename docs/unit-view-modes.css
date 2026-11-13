@@ -478,3 +478,10 @@
 .tactical-ui #armyRosterList .owc-manage-characters:hover{
  background:#2d4563;border-color:#f2d28c;
 }
+
+/* A conditional character ability retains its conditional status and tooltip,
+   but is visually differentiated from conditional magic-item effects. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character-conditional,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character-conditional{
+ background:#432f3e;border-color:#bf83ad;color:#f6c9e9;font-weight:700;
+}
