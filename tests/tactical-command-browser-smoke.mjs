@@ -38,7 +38,7 @@ try{
  await card.locator('.game-unit-focus-open').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),true);
  assert.equal(await page.locator('.game-focus-selected .game-rename-toggle').isVisible(),true,'Rename available within focused unit');
- assert.equal(await page.locator('#gameUnitFocusTabs button').count(),4);
+ assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'No click-through detail tabs');
  await page.locator('#gameUnitFocusBack').click();
  assert.equal(await page.locator('#gameUnitFocus').isVisible(),false);
  await page.locator('#tacticalArmyAudit > summary').click();
