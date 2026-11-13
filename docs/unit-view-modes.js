@@ -9,6 +9,19 @@ const make=(doc,tag,cls='',text)=>{
  if(text!==undefined)node.textContent=text;
  return node;
 };
+/** A URL category is sufficient for styling; no army/item name list. */
+export function isPublishedMagicItemUrl(url){
+ if(typeof url!=='string')return false;
+ try{
+  const ref=new URL(url);
+  return ref.origin==='https://tow.whfb.app'&&
+   /^\/magic-items?\/[a-z0-9-]+\/?$/.test(ref.pathname)&&
+   !ref.search&&!ref.hash;
+ }catch{return false;}
+}
+function isPublishedMagicItemLink(link){
+ return isPublishedMagicItemUrl(link.getAttribute('href'));
+}
 function wordList(doc,items){
  const line=make(doc,'div','owc-compact-words');
  items.forEach((item,i)=>{
@@ -16,6 +29,9 @@ function wordList(doc,items){
   const word=item.cloneNode(true);
   word.removeAttribute('id');
   word.classList.add('owc-compact-word');
+  // Highlight only published magic-item page references. A purchased
+  // mundane upgrade (e.g. heavy armour) is not necessarily magical.
+  if(isPublishedMagicItemLink(word))word.classList.add('owc-magic-item');
   line.append(word);
  });
  return line;

@@ -423,3 +423,16 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .army-unit-head .game-card-status{
  display:none!important;
 }
+
+/* Gold denotes source-classified magic items, not every purchased option.
+   Preserve the navy pill background and leave mundane equipment unchanged. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words .owc-compact-word.owc-magic-item,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-words a.owc-compact-word.owc-magic-item{
+ background:#1b3047;border-color:#cba968;color:#f1d394;
+ font-weight:750;text-decoration:none;
+}
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-effect-words .owc-effect-character,
+.tactical-ui #armyRosterList .army-unit-card.game-unit-open .owc-compact-effect-words .owc-effect-character{
+ background:#393353;border-color:#cba968;color:#f0dcaf;
+ font-weight:750;
+}
