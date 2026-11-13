@@ -196,7 +196,7 @@ export function attachFocusedUnitView(container,army,groups,restoreRoster){
    }else openFocus(card);
   });
   card.querySelector('.game-unit-expand-toggle')?.addEventListener('click',()=>{
-   if(!card.classList.contains('game-unit-open')){
+   if(!card.classList.contains('game-unit-open')&&!container.classList.contains('game-unit-focused')){
     setUnitView(card,'compact');
     open.textContent='Full view';
     open.setAttribute('aria-label','Open '+name+' unit details');
