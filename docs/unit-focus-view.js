@@ -66,8 +66,8 @@ function enhanceFocusedProfile(card){
  const previousHidden=scroller.hidden;
  const note=make(doc,'p','game-profile-stat-note',
   'Published base characteristics only. Equipment, magic and selected options are not applied.');
- panel.insertBefore(note,scroller);
  panel.insertBefore(tiles,scroller);
+ panel.insertBefore(note,scroller);
  // The complete model/mount characteristics are already represented as tiles;
  // hiding the duplicated source table avoids introducing a second fold.
  scroller.hidden=true;
