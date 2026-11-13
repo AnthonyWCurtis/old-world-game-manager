@@ -30,6 +30,15 @@ try{
  const firstHandle=await cards.first().locator('.army-unit-index').boundingBox();
  assert.ok(firstHandle,'Source index badge is a safe non-control drag handle');
  const from={x:firstHandle.x+firstHandle.width/2,y:firstHandle.y+firstHandle.height/2,id:1},toY=two.y+two.height/2+12;
+ const targetInfo=await page.evaluate(({x,y})=>{
+  const e=document.elementFromPoint(x,y);
+  return {tag:e?.tagName,cls:typeof e?.className==='string'?e.className:null,
+   inHeader:!!e?.closest('.army-unit-head'),
+   blockedControl:!!e?.closest('button,a,input,select,textarea,label,summary,[contenteditable="true"]'),
+   x,y,rect:e?.getBoundingClientRect().toJSON()};
+ },from);
+ assert.equal(targetInfo.inHeader,true,'Expected header drag point, got '+JSON.stringify(targetInfo));
+ assert.equal(targetInfo.blockedControl,false,'Drag hit an interactive control '+JSON.stringify(targetInfo));
  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[from]});
  await page.waitForTimeout(480);
  const dragReady=await page.locator('#armyRosterList').evaluate(el=>el.classList.contains('game-roster-reordering'));
