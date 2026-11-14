@@ -33,7 +33,7 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact > .game-unit-expandable > .army-unit-card-body{
  padding:11px 10px 14px;background:transparent;color:#eef0f3;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing){
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing):not(.owc-wizard-magic):not(.owc-owner-items){
  display:none!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > .owc-compact-loadout{
