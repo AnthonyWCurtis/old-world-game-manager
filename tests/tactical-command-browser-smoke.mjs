@@ -57,6 +57,28 @@ try{
  await page.locator('#tacticalArmyAudit > summary').click();
  assert.equal(await page.locator('#armyRosterSummary').isVisible(),true,'Imported metrics can still be reviewed');
  await page.locator('#tacticalArmyAudit > summary').click();
+ // This live mobile smoke exercises the new wizard-owned casting controls
+ // before legacy Full View tests run elsewhere in the workflow.
+ const sea=page.locator('#gameRegiments .army-unit-card')
+  .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
+ const seaId=await sea.getAttribute('data-unit-id');
+ const storm=page.locator('#gameCharacters .game-character-card')
+  .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
+ const inlineMagic=storm.locator('details.owc-wizard-magic');
+ await inlineMagic.locator(':scope > summary').click();
+ const book=inlineMagic.locator('details.game-wizard-spellbook');
+ await book.locator(':scope > summary').click();
+ const earth=book.locator('.game-wizard-spell-row').filter({hasText:'Earthen Ramparts'});
+ await earth.locator('input[type=checkbox]').check();
+ const casting=inlineMagic.locator('.game-spell-caster[data-spell-id="earthen-ramparts"]');
+ await casting.waitFor({state:'visible'});
+ await casting.locator(':scope > summary').click();
+ await casting.locator('.game-spell-target').selectOption(seaId);
+ await casting.locator('.game-spell-confirm').check();
+ await casting.locator('.game-spell-cast').click();
+ await inlineMagic.locator('.game-active-spell').waitFor({state:'visible'});
+ assert.match(await inlineMagic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
+ assert.equal(await sea.locator('.owc-save-strip [data-save="ward"] strong').innerText(),'5+');
  for(const viewport of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(viewport);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),
