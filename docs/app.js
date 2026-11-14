@@ -7,7 +7,7 @@ import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfile
 import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails, getSelectedUnitReferenceDetails} from './unit-data.js?v=0.4.0';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
-import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5';
+import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=20261114-character-mount-profiles';
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
 import {renderArmyRosterPage, UNIT_PROFILES_VERSION} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {projectArmyEffects,setItemEffectState} from './effects-engine.js';
