@@ -90,33 +90,24 @@ try{
  await page.locator('#viewRosterBtn').click();
  await page.locator('#gameUnitsPanel').waitFor({state:'visible'});
  await audit('army roster');
- const sea=page.locator('#gameRegiments .army-unit-card').filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
- await sea.locator('.game-unit-expand-toggle').click();
- assert.equal(await page.locator('#gameUnitFocusTabs').count(),0);
- await audit('unit full expanded card');
- const defence=sea.locator('details.game-defence-details').first();
- if(await defence.count()){
-  await defence.locator(':scope > summary').click();
-  await audit('unit expanded defence sources');
- }
- await sea.locator('.game-unit-expand-toggle').click();
- await page.locator('#gameNavMagic').click();
- await audit('magic');
- await page.locator('#gameItemAbilities .game-effect-card').first().locator('summary').click();
- await audit('magic expanded item');
- const spellbook=page.locator('#gameKnownSpellbookDrawer');
- if(await spellbook.count()){
-  await spellbook.locator(':scope > summary').click();
-  const firstBook=spellbook.locator('details.game-wizard-spellbook').first();
-  if(await firstBook.count())await firstBook.locator(':scope > summary').click();
-  await audit('magic expanded wizard spellbook');
- }
- await page.locator('#gameNavOverview').click();
- await audit('overview');
- const overviewDrawer=page.locator('details.game-overview-item-drawer').first();
- if(await overviewDrawer.count()){
-  await overviewDrawer.locator(':scope > summary').click();
-  await audit('overview expanded equipment');
+ const sea=page.locator('#gameRegiments .army-unit-card')
+  .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
+ assert.equal(await sea.locator('.owc-save-strip .game-defence-stat').count(),3);
+ await audit('compact saves and source links');
+ const storm=page.locator('#gameCharacters .army-unit-card')
+  .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
+ const wizard=storm.locator('.owc-wizard-magic');
+ await wizard.locator(':scope > summary').click();
+ await audit('wizard magic opened');
+ const book=wizard.locator('.game-wizard-spellbook');
+ await book.locator(':scope > summary').click();
+ await audit('wizard source-linked spellbook');
+ const items=page.locator('#armyRosterList .owc-owner-items');
+ if(await items.count()){
+  await items.first().locator(':scope > summary').click();
+  const first=items.first().locator('.game-effect-card').first();
+  if(await first.count())await first.locator('summary').click();
+  await audit('owner magic items');
  }
  for(const width of [320,390,956]){
   await page.setViewportSize({width,height:width===956?440:844});
