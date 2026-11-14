@@ -76,8 +76,9 @@ try{
  await casting.locator('.game-spell-target').selectOption(seaId);
  await casting.locator('.game-spell-confirm').check();
  await casting.locator('.game-spell-cast').click();
- await inlineMagic.locator('.game-active-spell').waitFor({state:'visible'});
- assert.match(await inlineMagic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
+ const activeRow=inlineMagic.locator('.owc-magic-spell.owc-magic-active');
+ await activeRow.waitFor({state:'visible'});
+ assert.match(await activeRow.locator(':scope > summary').innerText(),/Earthen Ramparts/);
  assert.equal(await sea.locator('.owc-save-strip [data-save="ward"] strong').innerText(),'5+');
  for(const viewport of [{width:320,height:740},{width:390,height:844},{width:956,height:440}]){
   await page.setViewportSize(viewport);

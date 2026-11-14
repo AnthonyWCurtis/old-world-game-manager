@@ -814,7 +814,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   const body=card.querySelector(':scope > .game-unit-expandable > .army-unit-card-body');
   if(!body)return;
   const spellbook=renderWizardSpellbook(doc,unit,session,magicIndex,onKnownSpell);
-  let wizardBody=null;
+  let wizardFooter=null;
   if(spellbook){
    const magic=el(doc,'details','owc-wizard-magic');
    magic.dataset.wizardId=unit.id;
@@ -828,13 +828,17 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     known+' known'+(active?' · '+active+' active':'')+
     (movement?' · '+movement+' movement':'') ));
    magic.append(summary);
-   wizardBody=el(doc,'div','owc-wizard-magic-body');
-   spellbook.open=openWizards.has(unit.id);
-   wizardBody.append(spellbook);
+   const wizardBody=el(doc,'div','owc-wizard-magic-body');
    const cast=el(doc,'section','owc-wizard-casting');
    renderSpellControls(cast,army,session,spellActions,magicIndex,effectProjection,
     {wizardId:unit.id,openedKeys:openCasting});
    wizardBody.append(cast);
+   // Spellbook and owned item drawers are secondary text-link actions.
+   // The source-backed spell rows above are the only visible spell list.
+   wizardFooter=el(doc,'div','owc-wizard-magic-footer');
+   spellbook.open=openWizards.has(unit.id);
+   wizardFooter.append(spellbook);
+   wizardBody.append(wizardFooter);
    magic.append(wizardBody);
    body.append(magic);
   }
@@ -848,7 +852,8 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    drawer.dataset.ownerId=unit.id;
    drawer.open=openOwnerItems.has(unit.id);
    drawer.append(el(doc,'summary','',
-    'Magic items & bound spells · '+ownerItems.length));
+    wizardFooter?'Magic items ('+ownerItems.length+')':
+     'Magic items & bound spells · '+ownerItems.length));
    const list=el(doc,'div','owc-owner-item-list');
    for(const item of ownerItems){
     const row=renderEffectRow(doc,item,{onItemState,onShieldUse});
@@ -856,7 +861,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     list.append(row);
    }
    drawer.append(list);
-   (wizardBody||body).append(drawer);
+   (wizardFooter||body).append(drawer);
   }
  };
  const characters=el(doc,'section','game-character-group');

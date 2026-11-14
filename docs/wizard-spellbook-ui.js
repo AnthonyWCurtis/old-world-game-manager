@@ -10,7 +10,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
  const panel=el(doc,'details','game-wizard-spellbook');
  panel.dataset.wizardId=unit.id;
  const selection=new Set(session?.knownSpells?.[unit.id]||[]);
- const summary=el(doc,'summary','', 'Known spells · '+selection.size+' selected');
+ const summary=el(doc,'summary','', 'Edit spells ('+selection.size+')');
  panel.append(summary);
  const body=el(doc,'div','game-wizard-spellbook-body');
  const level=wizard.level?'Level '+wizard.level+' Wizard':'Wizard level not confirmed';
@@ -18,7 +18,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
  body.append(el(doc,'p','game-spell-activity',level+' · '+lore));
 
  body.append(el(doc,'p','game-spell-disclosure',
-  'Select the spells this Wizard knows from the imported lore. Generation, permitted swaps and number known require your confirmation. Selecting is not casting.'));
+  'Choose spells this Wizard knows. Selection never casts a spell; confirm generation and substitutions against the published rules.'));
  const spells=spellsForWizard(unit,index);
  if(!wizard.lores.length){
   body.append(el(doc,'p','game-spell-warning',
@@ -47,7 +47,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
   clear.addEventListener('click',()=>{
    for(const id of outOfLore){selection.delete(id);onKnownSpell(unit.id,id,false);}
    notice.hidden=true;clear.hidden=true;
-   summary.textContent='Known spells · '+selection.size+' selected';
+   summary.textContent='Edit spells ('+selection.size+')';
   });
   body.append(notice,clear);
  }
@@ -74,7 +74,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
   check.addEventListener('change',()=>{
    const next=check.checked;
    if(next)selection.add(spell.id);else selection.delete(spell.id);
-   summary.textContent='Known spells · '+selection.size+' selected';
+   summary.textContent='Edit spells ('+selection.size+')';
    onKnownSpell(unit.id,spell.id,next);
   });
   list.append(row);
@@ -85,7 +85,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
  });
  body.append(list);
  body.append(el(doc,'p','game-spell-disclosure',
-  'Selected spells appear in Cast known spells below. Confirm a successful cast before recording an effect.'));
+  'Selected spells appear in the compact list above. Casting and effect tracking require a separate confirmed action.'));
   panel.append(body);
  return panel;
 }

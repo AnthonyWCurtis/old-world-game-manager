@@ -22,10 +22,194 @@ const phases={Enchantment:'Strategy · Conjuration',Hex:'Strategy · Conjuration
  'Magical Vortex':'Shooting',Assailment:'Combat'};
 const openKey=(spellId,casterId)=>spellId+':'+casterId;
 
+
+/**
+ * Wizard profiles use one compact spell list. An ongoing effect is displayed
+ * in its spell row, never again in a separate "Currently in play" section.
+ * Mechanics and persistence remain delegated to the existing spell engine.
+ */
+const compactEffectCopy=Object.freeze({
+ 'earthen-ramparts':'Ward 5+ · Cannot march/charge',
+ 'glittering-robe':'−1 enemy To Hit',
+ 'plague-of-rust':'−2 armour value',
+ 'travel-mystical-pathway':'Movement recorded',
+ 'drain-magic':'+2 enemy casting value'
+});
+
+function appendWizardCastForm(doc,parent,rule,caster,roster,assignments,session,onCast){
+ let picker=null,enemyInput=null;
+ if(rule.targeting==='friendly-unit'){
+  const label=node(doc,'label','game-spell-target-label','Friendly target unit');
+  picker=node(doc,'select','game-spell-target');
+  picker.id='spell-target-'+caster.casterId+'-'+rule.id;
+  label.htmlFor=picker.id;
+  picker.setAttribute('aria-label','Target for '+rule.name+' cast by '+caster.casterName);
+  const choices=[...roster.regiments,...roster.characters.filter(u=>!assignments[u.id])];
+  for(const unit of choices){
+   const option=node(doc,'option','',unitDisplayName(unit,session)+' · entry '+unit.index);
+   option.value=unit.id;picker.append(option);
+  }
+  parent.append(label,picker);
+ }else if(rule.targeting==='enemy-unit'){
+  const label=node(doc,'label','game-spell-target-label','Enemy target unit');
+  enemyInput=node(doc,'input','game-spell-enemy-name');
+  enemyInput.type='text';enemyInput.maxLength=100;
+  enemyInput.placeholder='Enemy unit name';
+  enemyInput.setAttribute('aria-label','Enemy unit targeted by '+rule.name);
+  label.append(enemyInput);parent.append(label);
+ }else{
+  parent.append(node(doc,'p','game-spell-activity',
+   rule.id==='drain-magic'?'Range Self · Remains in Play; check Wizards within 24".':
+   'Range Self · affects the caster and eligible joined unit.'));
+ }
+ if(rule.id==='travel-mystical-pathway'){
+  parent.append(node(doc,'p','game-spell-warning',
+   'Movement is immediate. Confirm the target has not moved or fled, its placement limits and the restriction on further movement.'));
+ }
+ const confirmation=node(doc,'label','game-spell-confirm-label');
+ const checkbox=node(doc,'input','game-spell-confirm');
+ checkbox.type='checkbox';
+ checkbox.setAttribute('aria-label','I confirm '+caster.casterName+' knows '+rule.name+' and successfully cast it');
+ confirmation.append(checkbox,node(doc,'span','',
+  'I confirm a successful cast and checked range, phase and target.'));
+ parent.append(confirmation);
+ const activate=node(doc,'button','game-spell-cast',
+  rule.lifecycle==='instant'?'Record completed movement':
+  rule.lifecycle==='remains-in-play'?'Mark Remains in Play':'Mark active on target');
+ activate.type='button';activate.disabled=true;
+ const update=()=>{activate.disabled=!checkbox.checked||
+  (rule.targeting==='friendly-unit'&&!picker?.value)||
+  (rule.targeting==='enemy-unit'&&!enemyInput?.value.trim());};
+ checkbox.addEventListener('change',update);
+ enemyInput?.addEventListener('input',update);
+ activate.addEventListener('click',()=>{
+  if(activate.disabled||!checkbox.checked)return;
+  onCast({spellId:rule.id,casterId:caster.casterId,targetId:picker?.value||null,
+   enemyName:enemyInput?.value.trim()||null,confirmed:true});
+ });
+ parent.append(activate);
+}
+
+function renderCompactWizardSpells(container,army,session,actions,magicIndex,wizardId,openedKeys){
+ const {onCast=()=>{},onEnd=()=>{},onExpire=()=>{},onClearEvent=()=>{}}=actions;
+ const doc=container.ownerDocument||document;
+ const roster=createGameScreenModel(army);
+ const entries=new Map(roster.units.map(u=>[u.id,u]));
+ const assignments=session?.assignments||{};
+ const chosen=selectedWizardSpells(army,session,magicIndex)
+  .filter(spell=>spell.casterId===wizardId).map(spell=>({...spell,isKnown:true}));
+ const active=(session?.activeSpells||[]).filter(effect=>effect.casterId===wizardId);
+ const events=(session?.spellEvents||[]).filter(event=>event.casterId===wizardId);
+ const opened=new Set(openedKeys||[...container.querySelectorAll('.game-spell-caster[open]')]
+  .map(el=>openKey(el.dataset.spellId,el.dataset.casterId)));
+ container.replaceChildren();
+ // Retain a way to end an effect or clear movement even if its former known
+ // spell was unchecked afterwards. Such rows are never automatically castable.
+ const all=[...chosen],seen=new Set(chosen.map(s=>s.spellId||s.spellName));
+ for(const record of [...active,...events]){
+  if(seen.has(record.spellId))continue;
+  const rule=SPELL_RULES[record.spellId];
+  if(!rule)continue;
+  all.push({casterId:wizardId,casterName:nameFor(wizardId,entries,session),
+   spellName:rule.name,spellId:rule.id,rule,spellUrl:rule.sourceUrl,isKnown:false});
+  seen.add(record.spellId);
+ }
+ if(!all.length){
+  container.append(node(doc,'p','owc-magic-empty','No known spells yet. Select them in Edit spells below.'));
+  return;
+ }
+ const list=node(doc,'div','owc-magic-spells');
+ for(const caster of all){
+  const rule=caster.rule;
+  const id=rule?.id||caster.spellId||caster.spellName;
+  const effect=active.find(e=>e.spellId===id);
+  const event=events.find(e=>e.spellId===id);
+  const card=node(doc,'details','game-spell-caster owc-magic-spell'+
+   (effect?' owc-magic-active':'')+(event?' owc-magic-recorded':''));
+  card.dataset.casterId=wizardId;card.dataset.spellId=id;
+  card.open=opened.has(openKey(id,wizardId));
+  const summary=node(doc,'summary','owc-magic-spell-summary');
+  const headline=node(doc,'span','owc-magic-spell-headline');
+  headline.append(node(doc,'span','owc-magic-spell-name',caster.spellName));
+  headline.append(node(doc,'span','owc-magic-spell-state'+
+   (effect?' owc-magic-state-active':''),effect?'ACTIVE':event?'RECORDED':
+   !rule?'RULES ONLY':'Cast'));
+  summary.append(headline);
+  if(effect&&rule){
+   const target=rule.targeting==='friendly-unit'?nameFor(effect.targetId,entries,session):
+    rule.targeting==='enemy-unit'?effect.enemyName:
+    nameFor(effect.casterId,entries,session)+
+     (effect.joinedUnitId?' + '+nameFor(effect.joinedUnitId,entries,session):'');
+   summary.append(node(doc,'span','owc-magic-spell-note',
+    target+' · '+(compactEffectCopy[rule.id]||rule.type)));
+  }else if(event&&rule){
+   summary.append(node(doc,'span','owc-magic-spell-note',
+    nameFor(event.targetId,entries,session)+' · Cannot move again this Movement phase'));
+  }
+  card.append(summary);
+  const body=node(doc,'div','game-spell-caster-body owc-magic-spell-body');
+  if(!rule){
+   body.append(node(doc,'p','game-spell-warning',
+    'This selected spell has a source link, but no reviewed battle effect. No effect is applied automatically.'));
+   body.append(safeSource(doc,caster));
+   card.append(body);list.append(card);continue;
+  }
+  body.append(node(doc,'p','game-spell-activity',
+   rule.lore+' · '+rule.type+' · cast '+rule.castingValue+' · range '+rule.range+
+   ' · '+rule.duration));
+  body.append(node(doc,'p','game-spell-activity',
+   'Phase: '+(phases[rule.type]||'Check published rules')));
+  if(rule.effectSummary)body.append(node(doc,'p','game-spell-policy',rule.effectSummary));
+  const warnings=effect?spellEffectsFor(army,session,wizardId).warnings:[];
+  for(const warning of warnings)body.append(node(doc,'p','game-spell-warning',warning));
+  body.append(safeSource(doc,rule));
+  if(effect){
+   const end=node(doc,'button','game-spell-end','End / dispelled');
+   end.type='button';
+   end.setAttribute('aria-label','End '+rule.name+' cast by '+caster.casterName);
+   end.addEventListener('click',()=>onEnd({spellId:id,casterId:wizardId}));
+   body.append(end);
+   if(rule.lifecycle==='duration'){
+    const expire=node(doc,'button','game-spell-expire',
+     'Next Start of Turn · expire all temporary spells');
+    expire.type='button';
+    expire.title='This expires temporary spells for all Wizards. Remains in Play spells are not ended.';
+    expire.addEventListener('click',()=>onExpire());
+    body.append(expire);
+   }
+  }
+  if(event){
+   const clear=node(doc,'button','game-spell-clear-event','Clear movement record');
+   clear.type='button';
+   clear.addEventListener('click',()=>onClearEvent({
+    spellId:event.spellId,casterId:wizardId,targetId:event.targetId}));
+   body.append(clear);
+  }
+  if(caster.isKnown){
+   if(effect||event){
+    const again=node(doc,'details','owc-magic-record-again');
+    again.append(node(doc,'summary','','Record another cast'));
+    const fields=node(doc,'div','owc-magic-record-again-body');
+    appendWizardCastForm(doc,fields,rule,caster,roster,assignments,session,onCast);
+    again.append(fields);body.append(again);
+   }else{
+    appendWizardCastForm(doc,body,rule,caster,roster,assignments,session,onCast);
+   }
+  }else{
+   body.append(node(doc,'p','game-spell-disclosure',
+    'Not currently selected as known. Open Edit spells to restore it to this Wizard’s spellbook.'));
+  }
+  card.append(body);list.append(card);
+ }
+ container.append(list);
+}
+
 export function renderSpellControls(container,army,session,
  {onCast=()=>{},onEnd=()=>{},onExpire=()=>{},onClearEvent=()=>{},
   onItemState=()=>{},onShieldUse=()=>{}}={},magicIndex=null,effectProjection=null,
  {wizardId=null,openedKeys=null}={}){
+ if(wizardId)return renderCompactWizardSpells(container,army,session,
+  {onCast,onEnd,onExpire,onClearEvent},magicIndex,wizardId,openedKeys);
  const doc=container.ownerDocument||document;
  const roster=createGameScreenModel(army),entries=new Map(roster.units.map(u=>[u.id,u]));
  const assignments=session?.assignments||{};
