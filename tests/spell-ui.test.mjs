@@ -45,3 +45,22 @@ test('app callbacks handle activations, individual endings, and player-selected 
  assert.match(app,/writeSourceSafeSession\(army,nextState\)/);
  assert.match(app,/if\(!await readyBattleSession\(army\)\)return;/);
 });
+
+test('Wizard compact list merges active and known spells with footer-based editing',()=>{
+ const controls=read('spell-controls.js');
+ const roster=read('army-roster-page.js');
+ const book=read('wizard-spellbook-ui.js');
+ const css=read('unit-view-modes.css');
+ assert.match(controls,/renderCompactWizardSpells/);
+ assert.match(controls,/if\(wizardId\)return renderCompactWizardSpells/);
+ assert.match(controls,/const all=\[\.\.\.chosen\]/);
+ assert.match(controls,/\.\.\.active,\.\.\.events/);
+ assert.match(controls,/owc-magic-spell-note/);
+ assert.match(controls,/game-spell-confirm/);
+ assert.match(controls,/Record another cast/);
+ assert.match(controls,/Next Start of Turn · expire all temporary spells/);
+ assert.match(roster,/owc-wizard-magic-footer/);
+ assert.match(book,/Edit spells \(/);
+ assert.match(css,/owc-magic-spell>summary/);
+ assert.match(css,/owc-wizard-magic-footer/);
+});
