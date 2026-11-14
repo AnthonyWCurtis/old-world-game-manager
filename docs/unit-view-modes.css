@@ -894,3 +894,6 @@
   gap:5px;font-size:12px;
  }
 }
+
+/* The retired fixed three-tab footer no longer needs a 120px empty gutter. */
+.tactical-ui #armyRosterPage{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
