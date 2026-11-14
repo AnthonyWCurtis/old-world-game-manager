@@ -46,6 +46,20 @@ try{
   'Original published model table, not a replacement summary, appears before saves');
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
 
+ // A selected character mount is a separate published profile below the rider,
+ // even when other imported selections do not have a unit-data reference.
+ const skyCommander=page.locator('#gameCharacters .army-unit-card')
+  .filter({has:page.locator('h3:text-is("Sea Guard Garrison Commander")')}).first();
+ await skyCommander.locator('.army-profile-mount-heading').waitFor({state:'visible',timeout:20000});
+ assert.match(await skyCommander.locator('.army-profile-mount-heading').innerText(),
+  /Lothern Skycutter/);
+ assert.ok(await skyCommander.locator('.army-profile-mount-row').count()>0,
+  'Source-extracted Skycutter model characteristics render below commander');
+ const rows=await skyCommander.locator('.army-profile-table tbody tr').allTextContents();
+ assert.ok(rows.some(row=>row.includes('Sea Guard Garrison Commander'))&&
+  rows.some(row=>row.includes('Skycutter')),
+  'Rider and selected mount remain separate model characteristic rows');
+
  const storm=page.locator('#gameCharacters .army-unit-card')
   .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
  const magic=storm.locator('details.owc-wizard-magic');
