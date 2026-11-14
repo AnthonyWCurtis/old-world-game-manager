@@ -17,7 +17,7 @@ test('assignments are restored for imported and previously saved rosters, never 
  assert.match(src,/await sessionReadPending/);
  assert.match(src,/if\(!await readyBattleSession\(army\)\)return;/);
  assert.match(src,/writeBattleSession\(pendingSourceSession\)/);
- assert.match(src,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,\\s*battleSession/);
+ assert.match(src,/renderArmyRosterPage\(\$\('armyRosterList'\),current,unitDataRecords,sourceProfiles,\s*battleSession/);
  assert.match(src,/await restoreCurrentBattleSession\(\)/);
  assert.match(src,/battleSessionStatus/);
 });
