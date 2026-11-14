@@ -39,3 +39,13 @@ test('compact references use inline colour-coded text without pill decoration',(
  assert.match(css,/\.army-unit-card-body > \.owc-save-strip/);
  assert.match(css,/:not\(\.owc-save-strip\)/);
 });
+
+
+test('saving-throw reorder ships a new offline shell and versioned entrypoints',()=>{
+ const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
+ const worker=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
+ assert.match(html,/unit-view-modes\.css\?v=20261114-saves-before-characteristics/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5-saves-before-characteristics/);
+ assert.match(worker,/game-manager-v1-shell-20261114-saves-before-characteristics/);
+ assert.match(worker,/cache\.addAll\(APP_SHELL/);
+});
