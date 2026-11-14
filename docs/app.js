@@ -4,10 +4,10 @@ import { collectUnmatched, formatUnmatchedDebug } from './unmatched-debug.js?v=0
 import { wireReportUI } from './report-ui.js?v=0.4.2';
 import { hasUnmatchedSelection, unitHasUnmatched, unitMatchState, selectionMatchState } from './match-status.js?v=0.4.2';
 import { loadCachedIndexes, refreshIndexes, applyIndexedReferences, applyProfileReferences, checkPageChanges, getCachedUnitProfiles, getPublishedUnitProfiles, mergeUnitProfiles } from './live-source.js?v=0.4.2';
-import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails, getSelectedUnitReferenceDetails} from './unit-data.js?v=0.4.0';
+import {loadUnitDataIndex, applyUnitDataReferences, getUnitDetails, getSelectedUnitReferenceDetails} from './unit-data.js?v=0.4.0-character-mount-profiles';
 import {renderUnitDataDetails} from './unit-detail-ui.js?v=0.4.0';
 import {isInformationalSelection,applyInformationalPlaceholders} from './selection-information.js?v=0.4.2';
-import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5';
+import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5-character-mount-profiles';
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
 import {renderArmyRosterPage, UNIT_PROFILES_VERSION} from './army-roster-page.js?v=1.0.0-alpha.5';
 import {projectArmyEffects,setItemEffectState} from './effects-engine.js';

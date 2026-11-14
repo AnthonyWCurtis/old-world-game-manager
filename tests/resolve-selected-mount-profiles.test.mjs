@@ -47,3 +47,13 @@ test('app wires source-unit records to roster and preserves offline snapshot beh
  assert.match(roster,/resolveSelectedMountProfiles\(imported,selectedUnitRecords/);
  assert.match(sw,/resolve-selected-mount-profiles\.js/);
 });
+
+test('published character mount selection matcher is loaded with a fresh app shell',()=>{
+ const app=readFileSync(new URL('../docs/app.js',import.meta.url),'utf8');
+ const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
+ const sw=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
+ assert.match(app,/unit-selection-matcher\.js\?v=1\.0\.0-alpha\.5-character-mount-profiles/);
+ assert.match(app,/unit-data\.js\?v=0\.4\.0-character-mount-profiles/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5-character-mount-profiles/);
+ assert.match(sw,/game-manager-v1-shell-20261114-character-mount-profiles/);
+});
