@@ -22,7 +22,8 @@ test('compact saves reuse the existing defence projection, without new save form
  const file=readFileSync(new URL('../docs/unit-view-modes.js',import.meta.url),'utf8');
  assert.match(file,/originalSaves\.cloneNode\(true\)/);
  assert.match(file,/\.game-defence-panel \.game-defence-values/);
- assert.match(file,/header\.after\(strip\)/);
+ assert.match(file,/summary\.after\(strip\)/);
+ assert.doesNotMatch(file,/header\.after\(strip\)/);
  assert.doesNotMatch(file,/✧ Equipment & Special Rules/);
 });
 
@@ -35,5 +36,6 @@ test('compact references use inline colour-coded text without pill decoration',(
  assert.match(css,/\.owc-effect-magic\{\s*color:#a8e7f2!important/);
  assert.match(css,/\.owc-effect-character,.*\.owc-effect-conditional/s);
  assert.match(css,/border:0!important;border-radius:0!important/);
- assert.match(css,/\.owc-save-strip/);
+ assert.match(css,/\.army-unit-card-body > \.owc-save-strip/);
+ assert.match(css,/:not\(\.owc-save-strip\)/);
 });

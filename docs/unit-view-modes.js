@@ -173,8 +173,7 @@ export function prepareUnitCompactCard(card,army){
  // Copy the already-scoped Defence values, never recompute saves or promote
  // character-only saves to the regiment. Rebuilt on battle-state rerender.
  const originalSaves=$(card,':scope > .game-unit-expandable > .game-defence-panel .game-defence-values');
- const header=$(card,':scope > .army-unit-head');
- if(originalSaves&&header){
+ if(originalSaves){
   const strip=originalSaves.cloneNode(true);
   strip.classList.add('owc-save-strip');
   strip.setAttribute('role','group');
@@ -186,7 +185,9 @@ export function prepareUnitCompactCard(card,army){
    stat.setAttribute('aria-label',heading+': '+value+
     (condition?' — '+condition:'')+(stat.title?' — '+stat.title:''));
   }
-  header.after(strip);
+  // Keep the three existing saves immediately above the model table,
+  // after equipment and active effects, in both Compact and Full views.
+  summary.after(strip);
  }
  // Highlight numerical profile differences, not presumed bonuses from unverified selections.
  const ownProfile=$(body,':scope > .army-profile-scroll .army-profile-table');

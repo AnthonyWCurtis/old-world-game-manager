@@ -33,7 +33,7 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact > .game-unit-expandable > .army-unit-card-body{
  padding:11px 10px 14px;background:transparent;color:#eef0f3;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing):not(.owc-wizard-magic):not(.owc-owner-items){
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.owc-save-strip):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing):not(.owc-wizard-magic):not(.owc-owner-items){
  display:none!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > .owc-compact-loadout{
@@ -697,13 +697,13 @@
 /* Read-only, compact saving throws. The numbers, conditional labels and
    titles are copied from the existing Defence panel's source-backed output;
    no extra calculation, scope promotion or new battle-state storage. */
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip{
  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
- gap:0!important;margin:0!important;padding:8px 12px!important;
+ gap:0!important;margin:0 -10px!important;padding:8px 12px!important;
  border-top:1px solid #40566a;border-bottom:1px solid #40566a;
  background:#122237;color:#f1e6d5;min-width:0;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat{
  display:flex!important;flex-direction:column!important;
  align-items:center!important;justify-content:center!important;
  text-align:center!important;gap:2px!important;
@@ -713,25 +713,25 @@
  border-radius:0!important;box-shadow:none!important;
  overflow-wrap:anywhere;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat + .game-defence-stat{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat + .game-defence-stat{
  border-left:1px solid #40566a!important;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat>span{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat>span{
  color:#d9b777!important;font-size:10px!important;
  font-weight:700!important;line-height:1.15!important;
  letter-spacing:.06em;text-transform:uppercase;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat>strong{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat>strong{
  color:#f1e6d5!important;font-size:18px!important;
  font-weight:750!important;line-height:1.2!important;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat>small{
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat>small{
  display:none!important;
 }
 @media(max-width:380px){
- .tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip{padding:7px 8px!important}
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip{padding:7px 8px!important}
  .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .owc-compact-words{font-size:12px!important}
- .tactical-ui #armyRosterList .army-unit-card.owc-unit-view > .owc-save-strip .game-defence-stat>strong{font-size:16px!important}
+ .tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-unit-card-body > .owc-save-strip .game-defence-stat>strong{font-size:16px!important}
 }
 
 

@@ -27,6 +27,17 @@ try{
  const seaId=await sea.getAttribute('data-unit-id');
  assert.ok(seaId);
  assert.equal(await sea.locator('.owc-save-strip .game-defence-stat').count(),3);
+ const compactBody=sea.locator(':scope > .game-unit-expandable > .army-unit-card-body');
+ assert.equal(await compactBody.locator(':scope > .owc-save-strip').isVisible(),true,
+  'Saving throws remain visible in Compact View');
+ const sectionOrder=await compactBody.evaluate(body=>{
+  const parts=[...body.children];
+  return ['owc-compact-loadout','owc-save-strip','army-profile-caption']
+   .map(name=>parts.findIndex(child=>child.classList.contains(name)));
+ });
+ assert.ok(sectionOrder[0]>=0&&sectionOrder[0]<sectionOrder[1]&&
+  sectionOrder[1]<sectionOrder[2],
+  'Equipment and active effects precede saves, which immediately precede Model Characteristics');
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
 
  const storm=page.locator('#gameCharacters .army-unit-card')
