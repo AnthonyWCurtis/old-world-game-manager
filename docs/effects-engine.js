@@ -58,7 +58,7 @@ export const ITEM_EFFECT_RULES=Object.freeze({
   {scope:'bearer',attackPhase:'Shooting',attackProfile:{range:"30\"",strength:"5",armourPiercing:"-3",sourceUrl:SOURCE+'magic-item/bow-of-the-seafarer',verifiedOn:'2026-11-12'},weaponFamily:'bow'}),
  'reaver-bow':item('reaver-bow','Reaver Bow','Magic weapon','conditional',
   '30" shooting weapon, Strength equal to bearer Strength +1, AP -. The bearer may make shooting attacks equal to their Attacks characteristic with no Multiple Shots modifiers. It counts as a Bow of Avelorn.',
-  {scope:'bearer',attackPhase:'Shooting',attackProfile:{range:"30\"",strength:"S+1",armourPiercing:"–",sourceUrl:SOURCE+'magic-item/reaver-bow',verifiedOn:'2026-11-12',shotsMode:'attacks-characteristic'},weaponFamily:'bow'}),
+  {scope:'bearer',attackPhase:'Shooting',attackProfile:{range:"30\"",strength:"S+1",armourPiercing:"–",sourceUrl:SOURCE+'magic-item/reaver-bow',verifiedOn:'2026-11-12'},weaponFamily:'bow'}),
  'lore-familiar':item('lore-familiar','Lore Familiar','Arcane item','conditional',
   'The owner chooses spells from their selected lore, including its signature spell, instead of generating them randomly. This changes spell generation, not the number of successful casts.',
   {scope:'bearer'}),
