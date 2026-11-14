@@ -18,7 +18,7 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
  body.append(el(doc,'p','game-spell-activity',level+' · '+lore));
 
  body.append(el(doc,'p','game-spell-disclosure',
-  'Only spells listed on the imported lore source pages are offered. Their appearance does not verify how the wizard generated or learned them, permitted substitutions, number known, or list legality. Selecting a spell never casts it.'));
+  'Select the spells this Wizard knows from the imported lore. Generation, permitted swaps and number known require your confirmation. Selecting is not casting.'));
  const spells=spellsForWizard(unit,index);
  if(!wizard.lores.length){
   body.append(el(doc,'p','game-spell-warning',
@@ -84,16 +84,8 @@ export function renderWizardSpellbook(doc,unit,session,index,onKnownSpell=()=>{}
   for(const row of list.children)row.hidden=!row.dataset.search.includes(q);
  });
  body.append(list);
- const openCasting=el(doc,'button','game-wizard-open-casting','Go to casting controls');
- openCasting.type='button';
- openCasting.addEventListener('click',()=>{
-  // The casting panel lives in a different tab. Ask the page to show that
-  // workspace before trying to expand or scroll to this Wizard's spell.
-  doc.dispatchEvent(new CustomEvent('game-manager:open-magic',{
-   detail:{wizardId:unit.id}
-  }));
- });
- body.append(openCasting);
- panel.append(body);
+ body.append(el(doc,'p','game-spell-disclosure',
+  'Selected spells appear in Cast known spells below. Confirm a successful cast before recording an effect.'));
+  panel.append(body);
  return panel;
 }
