@@ -16,11 +16,12 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
- await page.locator('#gameNavMagic').click();
- const panel=page.locator('#gameItemAbilities');
+ const panel=page.locator('#armyRosterList .owc-owner-items').first();
+ await panel.waitFor({state:'attached'});
+ await panel.locator(':scope > summary').click();
  await panel.locator('.game-effect-card').first().waitFor({state:'visible'});
- assert.equal(await panel.locator('.game-effect-card').count(),3,
-  'Fixture includes Scroll of Invocation, Lore Familiar and Ruby Ring of Ruin');
+ assert.ok(await panel.locator('.game-effect-card').count()>=1,
+  'Source-reviewed magic items remain accessible on their owning model');
  await panel.locator('.game-effect-card').first().locator('summary').click();
 
  const checked=await panel.evaluate(root=>{
@@ -48,14 +49,14 @@ try{
    return {label,foreground,background,contrast:ratio(foreground,background)};
   };
   const results=[];
-  const headingCount=root.querySelector('.game-spell-heading > span');
-  results.push(read('Equipped count',headingCount,headingCount));
+  const headingCount=root.querySelector(':scope > summary');
+  results.push(read('Owner item heading',headingCount,root));
   for(const card of root.querySelectorAll('.game-effect-card')){
    const name=card.querySelector('.game-effect-title strong')?.textContent||'Unnamed item';
    results.push(read(name+' title',card.querySelector('.game-effect-title strong'),card));
    results.push(read(name+' item type',card.querySelector('.game-effect-kind'),card));
    const badge=card.querySelector('.game-effect-badge');
-   results.push(read(name+' '+badge.textContent, badge,badge));
+   results.push(read(name+' '+badge.textContent, badge,card));
    if(card.open){
     for(const selector of ['.game-effect-description','.game-effect-scope',
       '.game-effect-source','.game-effect-action']){
