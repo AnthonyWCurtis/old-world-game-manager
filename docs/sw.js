@@ -1,5 +1,5 @@
 /* Versioned offline app shell. No upstream rules pages are intercepted or mirrored. */
-const CACHE_NAME='game-manager-v1-shell-20261114-character-mount-profiles';
+const CACHE_NAME='game-manager-v1-shell-20261114-player-importer';
 const CACHE_PREFIX='game-manager-v1-shell-';
 const APP_SHELL=[
  './',
@@ -9,6 +9,7 @@ const APP_SHELL=[
  './tactical-command.css',
  './unit-card-ux.css',
  './unit-view-modes.css',
+ './importer-player.css',
  './app.js',
  './tactical-command.js',
  './parser.js',

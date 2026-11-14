@@ -39,7 +39,7 @@ export function wireReportUI(getArmy){
    if(widgetId!==null&&window.turnstile)window.turnstile.reset(widgetId);
   }
   button.disabled=!config||!n;
-  button.textContent=n?'Report unmatched ('+n+')':'No unmatched references to report';
+  button.textContent='Report issue';
   if(!ready)button.title='Checking whether reporting is available';
   else if(!config)button.title='The project owner has not configured the secure report endpoint';
   else button.title='Submit unmatched reference names without a GitHub account';
@@ -68,7 +68,7 @@ export function wireReportUI(getArmy){
  };
  async function showPanel(){
   if(!config||!getArmy()||!collectUnmatched(getArmy()).length){
-   showStatus('Reporting is not available. Use Copy unmatched debug instead.');
+   showStatus('Direct issue reporting is unavailable at the moment. Please try again later.');
    return;
   }
   panel.hidden=false;
@@ -96,7 +96,7 @@ export function wireReportUI(getArmy){
   const payload=prepareAnonymousReport(army);
   if(!payload.entries.length){showStatus('No unmatched references remain.');return;}
   if(payload.entries.length>100){
-   showStatus('Too many unmatched references for one report. Use Copy unmatched debug instead.');
+   showStatus('This import has too many unmatched references for a single automatic report.');
    return;
   }
   if(!consent.checked){showStatus('Agree to publish the unmatched names before submitting.');return;}
