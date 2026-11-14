@@ -7,11 +7,11 @@ const roster=source('docs/army-roster-page.js');
 const html=source('docs/index.html');
 const css=source('docs/styles.css');
 
-test('unit navigation guidance occurs only once at Units screen level',()=>{
+test('single-page roster avoids redundant unit navigation guidance',()=>{
  assert.doesNotMatch(roster,/Swipe the table sideways to see all characteristics/);
  assert.doesNotMatch(roster,/army-profile-swipe/);
- assert.match(html,/Select a unit to view its complete profile, attacks, defence and effects/);
- assert.equal((html.match(/Select a unit to view its complete profile, attacks, defence and effects/g)||[]).length,1);
+ assert.doesNotMatch(html,/Select a unit to view its complete profile, attacks, defence and effects/);
+ assert.equal((html.match(/Select a unit to view its complete profile, attacks, defence and effects/g)||[]).length,0);
  assert.match(roster,/scroller\.setAttribute\('role','region'\)/);
  assert.match(roster,/scroller\.tabIndex=0/);
 });
