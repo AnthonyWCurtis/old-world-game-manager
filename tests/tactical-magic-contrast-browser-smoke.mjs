@@ -16,7 +16,8 @@ try{
  await page.locator('#exampleBtn').click();
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
- const panel=page.locator('#armyRosterList .owc-owner-items').first();
+ const bsb=page.locator('#gameCharacters .game-character-card').filter({hasText:'202 pts'}).first();
+ const panel=bsb.locator('.owc-owner-items');
  await panel.waitFor({state:'attached'});
  await panel.locator(':scope > summary').click();
  await panel.locator('.game-effect-card').first().waitFor({state:'visible'});
