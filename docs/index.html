@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./tactical-command.css?v=2.0.3-rules">
 <link rel="stylesheet" href="./unit-card-ux.css?v=20261113-theme-restored">
 <link rel="stylesheet" href="./unit-view-modes.css?v=20261114-model-first-save-last">
+<link rel="stylesheet" href="./importer-player.css?v=20261114-player-first">
 <script>
 /* Even an older cached app bundle can display this prompt: index.html is online-first. */
 (()=>{
@@ -57,8 +58,8 @@
   <div class="tactical-panel-heading"><span class="tactical-eyebrow">01 / IMPORT</span><h2>Add an army</h2><p>Paste your exported army list below. The original export stays intact.</p></div>
   <label for="sourceText" class="section-label">Paste exported list</label>
   <textarea id="sourceText" spellcheck="false" placeholder="Paste a full army list here…" aria-label="Army list text"></textarea>
-  <div class="example-row"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
-  <div class="format-detection" id="formatDetection" data-state="empty" role="status" aria-live="polite" aria-atomic="true">
+  <div class="example-row importer-developer-only"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
+  <div class="format-detection importer-quiet-detection" id="formatDetection" data-state="empty" role="status" aria-live="polite" aria-atomic="true">
    <strong id="detectedFormat">Paste an army list to detect its format</strong>
    <span id="formatDetails" class="format-detection-details">The builder and export layout will appear here.</span>
   </div>
@@ -76,11 +77,11 @@
    </select>
   </details>
   <div class="controls">
-   <button id="parseBtn" class="primary">Analyse import</button>
-   <button id="saveBtn" disabled>Save on this device</button>
-   <button id="jsonBtn" disabled>Export JSON</button>
+   <button id="parseBtn" class="primary">Import Army <span aria-hidden="true">→</span></button>
+   <button id="saveBtn" class="importer-developer-only" disabled>Save on this device</button>
+   <button id="jsonBtn" class="importer-developer-only" disabled>Export JSON</button>
   </div>
-  <p class="muted small" id="help">Your pasted army never leaves this browser. Source-backed unit profiles are loaded from versioned local snapshots when available. The catalogue and source links do not validate rules or army legality. Unmatched does not mean invalid.</p>
+  <p class="muted small" id="help">Your army stays on this device. Imported profiles and source references are not army-legality checks.</p>
   <div id="error" class="error" hidden role="alert"></div>
  </section>
  <section class="result" id="result" hidden>
@@ -93,16 +94,16 @@
    <button id="viewRosterBtn" class="army-launch-button" type="button" aria-controls="armyRosterPage">Enter Game Screen <span aria-hidden="true">→</span></button>
   </div>
   <div class="panel">
-   <div class="line"><h2 id="armyTitle">Imported army</h2><span class="status" id="formatLabel"></span></div>
+   <div class="line"><h2 id="armyTitle">Imported army</h2><span class="status importer-developer-only" id="formatLabel"></span></div>
    <p id="armyMeta" class="muted"></p>
    <div id="metrics" class="metrics"></div>
-   <div class="unmatched-debug-actions">
-    <button id="copyUnmatchedBtn" class="smallbtn" type="button" disabled>Copy unmatched debug</button>
-    <button id="reportUnmatchedBtn" class="smallbtn" type="button" disabled>Report unmatched</button>
-    <span id="copyUnmatchedStatus" class="muted small" role="status" aria-live="polite"></span>
+   <div class="unmatched-debug-actions importer-report-actions" id="importReportActions" hidden><p class="importer-warning-summary" id="importWarningSummary"></p>
+    <button id="copyUnmatchedBtn" class="smallbtn importer-developer-only" type="button" disabled>Copy unmatched debug</button>
+    <button id="reportUnmatchedBtn" class="smallbtn" type="button" disabled>Report issue</button>
+    <span id="copyUnmatchedStatus" class="muted small importer-developer-only" role="status" aria-live="polite"></span>
    </div>
-   <p class="muted small debug-explanation">Copies unmatched unit and selection names, source lines, and parent unit details for troubleshooting. Does not copy your full army list.</p>
-   <div class="debug-report-container">
+   <p class="muted small debug-explanation importer-developer-only">Copies unmatched unit and selection names, source lines, and parent unit details for troubleshooting. Does not copy your full army list.</p>
+   <div class="debug-report-container importer-developer-only">
     <button id="selectUnmatchedBtn" type="button" class="smallbtn" hidden>Select report text</button>
     <textarea id="unmatchedDebugFallback" class="debug-fallback" aria-label="Unmatched debug text for manual copying" readonly hidden></textarea>
    </div>
@@ -116,26 +117,26 @@
     <a id="reportSavedLink" href="#" target="_blank" rel="noopener noreferrer" hidden>View saved report on GitHub</a>
    </div>
    <p id="reportUnmatchedStatus" class="muted small" role="status" aria-live="polite"></p>
-   <div class="line"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
-   <div id="diagnostics"></div>
+   <div class="line importer-developer-only"><h3>Import warnings</h3><span id="diagnosticCount" class="muted small"></span></div>
+   <div id="diagnostics" class="importer-developer-only"></div>
   </div>
-  <section class="panel source-panel" aria-label="Live rules source status">
+  <section class="panel source-panel importer-developer-only" aria-label="Live rules source status">
    <div class="line"><h2>Live source references</h2><button id="sourceRefreshBtn" type="button" class="smallbtn">Check for updates now</button></div>
    <p class="muted small">Loads cached source links immediately, then checks the four public indexes for armies, rules, magic and magic items when the cache is older than 15 minutes. Relevant pages are checked hourly in small batches. Use Check for updates now to force a check. Imported points, equipment and selections are never overwritten; detected changes do not automatically modify rules.</p>
    <p id="unitDataStatus" class="source-status" role="status" aria-live="polite">Import or open an army to load 581 versioned unit references from the local database.</p>
     <p id="sourceStatus" class="source-status" role="status" aria-live="polite">Import or open an army to check the source.</p>
   </section>
-  <section class="panel">
+  <section class="panel importer-developer-only">
    <div class="line"><h2>Army roster</h2><span class="muted small">Original list order</span></div>
    <p class="muted small">Units appear in source order, with imported selections left unchanged. Expand View unit source data to inspect profiles, equipment, special rules and published upgrade choices. Repeated units stay separate.</p>
    <div id="roster"></div>
   </section>
-  <details class="panel technical">
+  <details class="panel technical importer-developer-only">
    <summary>Reference matching and import details</summary>
    <div class="line technical-controls"><p class="muted small">Green = a reference URL was identified (catalogue or source-linked unit data). Amber = a name or option still lacks a unique reference. Green does not mean rules, upgrades, points or army legality have been verified.</p><label class="checkfilter"><input type="checkbox" id="unmatchedOnly"> Unmatched only</label></div>
    <div id="units"></div>
   </details>
-  <details class="panel raw"><summary>Readable army list</summary><p class="muted small">The decoded roster is shown for readability. Your exact original clipboard text remains preserved in saved imports and JSON exports.</p><pre id="rawText"></pre><details id="encodedPanel" hidden><summary>Original encoded clipboard text</summary><pre id="encodedText"></pre></details></details>
+  <details class="panel raw importer-developer-only"><summary>Readable army list</summary><p class="muted small">The decoded roster is shown for readability. Your exact original clipboard text remains preserved in saved imports and JSON exports.</p><pre id="rawText"></pre><details id="encodedPanel" hidden><summary>Original encoded clipboard text</summary><pre id="encodedText"></pre></details></details>
  </section>
  <section class="panel saved tactical-saved-panel" id="tacticalSavedArmies"><div class="line"><h2>My armies</h2><div><button id="backupBtn" class="smallbtn" type="button">Backup all JSON</button> <button id="refreshBtn" class="smallbtn" type="button">Refresh</button></div></div>
   <p class="muted small">Stored in this browser on this device (IndexedDB), not on GitHub. Export JSON backups if you want to keep or move them. Private Browsing or clearing website data may erase them.</p>
