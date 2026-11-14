@@ -50,8 +50,8 @@ try{
  await activeRow.waitFor({state:'visible'});
  assert.match(await activeRow.locator(':scope > summary').innerText(),/Earthen Ramparts[\s\S]*ACTIVE/);
  assert.match(await activeRow.locator(':scope > summary').innerText(),/Ward 5\+ · Cannot march\/charge/);
- assert.equal(await magic.locator('.owc-magic-spell').count(),3,
-  'Known spells and active spells share one compact list');
+ assert.equal(await magic.locator('.owc-magic-spell').count(),1,
+  'One selected spell remains one row when activated, never duplicated');
  assert.equal(await magic.locator('.game-active-spells,.owc-wizard-casting-heading').count(),0,
   'No second Currently in play or Cast known spells heading');
  assert.match(await magic.locator('.owc-wizard-magic-footer').innerText(),/Edit spells \(1\)/);
