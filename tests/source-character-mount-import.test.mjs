@@ -35,9 +35,12 @@ async function importSelectedMount(example,characterName,mountName,mountType){
  assert.ok(character,'Missing imported '+characterName+' in '+example);
  const source=recordBySlug[characterName.toLowerCase().replaceAll(' ','-')];
  assert.ok(source);
- applySourceScopedSelectionReferences(army,{[character.id]:source});
  const mount=character.selections.find(selection=>selection.name===mountName);
  assert.ok(mount,'Missing selected '+mountName+' in '+example);
+ // Prove source-scoped resolution even when global matching has no link.
+ mount.reference=null;
+ mount.matchStatus='unmatched';
+ applySourceScopedSelectionReferences(army,{[character.id]:source});
  assert.equal(mount.reference?.url,'https://tow.whfb.app/unit/'+
   (mountName==='Lothern Skycutter'?'lothern-skycutter':'star-dragon'));
  assert.equal(mount.reference.evidence,'published-character-mount-option');
