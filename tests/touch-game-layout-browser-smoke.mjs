@@ -38,7 +38,7 @@ try{
  assert.ok(sectionOrder.every(position=>position>=0)&&
   sectionOrder.every((position,i)=>i===0||sectionOrder[i-1]<position),
   'Model Characteristics must be first, then Equipment / Rules / Effects, then saving throws');
- const sections=await compactBody.locator('.owc-compact-loadout .owc-compact-label').allInnerTexts();
+ const sections=(await compactBody.locator('.owc-compact-loadout .owc-compact-label').allTextContents()).map(s=>s.trim());
  assert.ok(sections.indexOf('Equipment & Upgrades')>=0&&
   sections.indexOf('Equipment & Upgrades')<sections.indexOf('Special Rules'),
   'Equipment appears before Special Rules in the shared loadout');
@@ -75,6 +75,13 @@ try{
  assert.match(await magic.locator('.owc-wizard-magic-footer').innerText(),/Magic items \(1\)/);
  assert.equal(await sea.locator('.owc-save-strip .game-defence-stat[data-save="ward"] strong').innerText(),'5+',
   'The existing scoped Defence projection appears in Compact');
+ const effectsHeading=sea.locator('.owc-compact-loadout .owc-compact-effect-strip .owc-compact-label');
+ assert.match(await effectsHeading.textContent(),/Character Buffs & Active Effects/,
+  'The confirmed spell appears in the active effects section between rules and saves');
+ assert.equal(await sea.locator('.owc-compact-loadout').evaluate(section=>
+  [...section.querySelectorAll(':scope > .owc-compact-label, :scope > .owc-compact-effect-strip .owc-compact-label')]
+   .map(node=>node.textContent.trim()).join(' → ')),
+  'Equipment & Upgrades → Special Rules → Character Buffs & Active Effects');
  assert.equal(await page.locator('#gameMagicPanel').count(),0);
 
  await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')
