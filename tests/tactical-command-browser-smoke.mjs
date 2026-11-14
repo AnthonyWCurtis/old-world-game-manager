@@ -30,17 +30,16 @@ try{
  const card=page.locator('#armyRosterList .army-unit-card:visible').first();
  assert.equal(await card.locator('.game-rename-toggle').isVisible(),true,'Rename pencil belongs directly on the Compact roster card');
  const more=card.locator('.game-unit-expand-toggle');
- assert.equal(await more.isVisible(),true,'Advanced source details remain reachable via small overflow affordance');
- assert.equal(await more.evaluate(el=>el.parentElement?.classList.contains('game-unit-name-line')),true,'Expand arrow belongs directly beside unit name');
- assert.notEqual(await more.evaluate(el=>getComputedStyle(el).fontSize),'0px','Unit arrow is directly visible for one-tap expansion');
- assert.equal(await card.locator('.game-rename-toggle').isVisible(),true,'Compact single card shows pencil beside unit name');
+ assert.equal(await more.isVisible(),false,
+  'The old full-view toggle remains hidden in approved Compact-only mode');
+ assert.equal(await card.locator('.game-rename-toggle').isVisible(),true);
  await card.locator('.game-rename-toggle').click();
- assert.equal(await card.locator('.game-unit-rename-input').isVisible(),true,'Inline pencil opens the rename editor');
+ assert.equal(await card.locator('.game-unit-rename-input').isVisible(),true);
  await card.locator('.game-rename-toggle').click();
- assert.equal(await card.locator('.game-compact-wounds').count(),1,'Wound or model tracker is visible beside unit header');
- assert.equal(await card.locator('.game-unit-focus-open').count(),0,'No separate Full View button');
- await card.locator('.game-unit-expand-toggle').click();
- assert.equal(await card.locator('.game-attack-panel').isVisible(),true);
+ assert.equal(await card.locator('.game-unit-rename-input').isVisible(),false);
+ assert.equal(await card.locator('.game-compact-wounds').count(),1);
+ assert.equal(await card.locator('.game-unit-focus-open').count(),0);
+ assert.equal(await card.locator('.game-attack-panel').isVisible(),false);
  const renameIcon=card.locator('.game-rename-toggle');
  assert.equal(await renameIcon.isVisible(),true,'Pencil rename is available within focused unit');
  assert.equal(await renameIcon.locator('svg[aria-hidden="true"]').count(),1,'Rename trigger has pencil icon rather than button text');
@@ -51,8 +50,10 @@ try{
  await renameIcon.click();
  assert.equal(await card.locator('.game-unit-rename-input').isVisible(),false,'Pencil closes the rename editor');
  assert.equal(await page.locator('#gameUnitFocusTabs').count(),0,'No click-through detail tabs');
- await card.locator('.game-unit-expand-toggle').click();
- assert.equal(await card.locator('.game-attack-panel').isVisible(),false);
+ const wizard=page.locator('#gameCharacters .owc-wizard-magic').first();
+ await wizard.waitFor({state:'visible'});
+ assert.equal(await wizard.locator(':scope > summary').isVisible(),true,
+  'Magic is now reachable from its own Wizard profile');
  await page.locator('#tacticalArmyAudit > summary').click();
  assert.equal(await page.locator('#armyRosterSummary').isVisible(),true,'Imported metrics can still be reviewed');
  await page.locator('#tacticalArmyAudit > summary').click();
