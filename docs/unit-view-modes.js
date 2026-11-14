@@ -170,6 +170,14 @@ export function prepareUnitCompactCard(card,army){
   summary.append(drawer);
  }
  body.prepend(summary);
+ // Put the complete published Model Characteristics block first, immediately
+ // under the card header, with Equipment / Rules / Effects after it. Preserve
+ // the original table nodes, mount rows and source evidence unchanged.
+ const profileCaption=$(body,':scope > .army-profile-caption');
+ const profileScroll=$(body,':scope > .army-profile-scroll');
+ const profileMissing=$(body,':scope > .army-profile-missing');
+ if(profileCaption&&profileScroll)body.prepend(profileCaption,profileScroll);
+ else if(profileMissing)body.prepend(profileMissing);
  // Copy the already-scoped Defence values, never recompute saves or promote
  // character-only saves to the regiment. Rebuilt on battle-state rerender.
  const originalSaves=$(card,':scope > .game-unit-expandable > .game-defence-panel .game-defence-values');
@@ -185,8 +193,8 @@ export function prepareUnitCompactCard(card,army){
    stat.setAttribute('aria-label',heading+': '+value+
     (condition?' — '+condition:'')+(stat.title?' — '+stat.title:''));
   }
-  // Keep the three existing saves immediately above the model table,
-  // after equipment and active effects, in both Compact and Full views.
+  // Last compact summary row: Model Characteristics → Equipment / Special
+  // Rules / Character Buffs & Active Effects → Armour / Ward / Regeneration.
   summary.after(strip);
  }
  // Highlight numerical profile differences, not presumed bonuses from unverified selections.
