@@ -796,10 +796,18 @@ function render(){
  $('formatLabel').textContent=`${current.format.exporter} · ${current.format.layout} · ${current.format.confidence} confidence`;
  const fields=[['Faction',current.army.faction],['Composition',current.army.composition],['Game format',current.army.gameFormat],['Player',current.army.player],['Imported total',current.army.reportedPoints],['Calculated sum',current.army.derivedPoints],['Points limit',current.army.limitPoints]];
  $('armyMeta').textContent=fields.map(([k,f])=>`${k}: ${k.toLowerCase().includes('total')||k.toLowerCase().includes('sum')||k.toLowerCase().includes('limit')?points(f.value):label(f)}`).join('  ·  ');
- const m=$('metrics');m.replaceChildren();for(const [value,title] of [[current.stats.unitCount,'Unit instances'],[current.stats.selectionCount,'Selections (incl. nested)'],[current.stats.matchedSelections,'Matched selections'],[current.stats.unmatchedSelections,'Unmatched selections'],[current.stats.informationalSelections||0,'Informational entries']]){
+ const m=$('metrics');m.replaceChildren();for(const [value,title] of [[points(current.army.reportedPoints?.value ?? current.army.derivedPoints?.value),'Points'],[current.stats.unitCount,'Unit entries'],[current.units.filter(unit=>/character/i.test(current.sections.find(section=>section.id===unit.sectionId)?.name||'')).length,'Characters']]){
   const d=make('div','metric'),v=make('strong','',value),t=make('span','',title);d.append(v,t);m.append(d);
  }
  syncUnmatchedDebug();
+ // Source matching may update after import; refresh the warning from the current state.
+ // This is not an army legality or general diagnostic error count.
+ const unmatchedCount=collectUnmatched(current).length;
+ const reportActions=$('importReportActions');
+ reportActions.hidden=unmatchedCount===0;
+ $('importWarningSummary').textContent=unmatchedCount===1
+   ?'1 reference needs attention. Your army is still playable.'
+   :unmatchedCount+' references need attention. Your army is still playable.';
  const diag=$('diagnostics');diag.replaceChildren();$('diagnosticCount').textContent=`${current.diagnostics.length} messages`;
  if(!current.diagnostics.length)diag.append(make('p','muted small','No structural warnings. This does not mean all reference data is matched.'));
  for(const d of current.diagnostics)diag.append(make('div','notice',`${d.severity.toUpperCase()} · ${d.code}${d.line?' · line '+d.line:''}: ${d.message}`));
