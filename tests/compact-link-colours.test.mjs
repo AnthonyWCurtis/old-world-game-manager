@@ -22,6 +22,7 @@ test('compact saves reuse the existing defence projection, without new save form
  const file=readFileSync(new URL('../docs/unit-view-modes.js',import.meta.url),'utf8');
  assert.match(file,/originalSaves\.cloneNode\(true\)/);
  assert.match(file,/\.game-defence-panel \.game-defence-values/);
+ assert.match(file,/body\.prepend\(profileCaption,profileScroll\)/);
  assert.match(file,/summary\.after\(strip\)/);
  assert.doesNotMatch(file,/header\.after\(strip\)/);
  assert.doesNotMatch(file,/✧ Equipment & Special Rules/);
@@ -41,11 +42,11 @@ test('compact references use inline colour-coded text without pill decoration',(
 });
 
 
-test('saving-throw reorder ships a new offline shell and versioned entrypoints',()=>{
+test('profile/save swap ships a new offline shell and versioned entrypoints',()=>{
  const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
  const worker=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
- assert.match(html,/unit-view-modes\.css\?v=20261114-saves-before-characteristics/);
+ assert.match(html,/unit-view-modes\.css\?v=20261114-model-first-save-last/);
  assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5-saves-before-characteristics/);
- assert.match(worker,/game-manager-v1-shell-20261114-saves-before-characteristics/);
+ assert.match(worker,/game-manager-v1-shell-20261114-model-first-save-last/);
  assert.match(worker,/cache\.addAll\(APP_SHELL/);
 });
