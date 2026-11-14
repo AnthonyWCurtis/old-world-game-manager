@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./mobile.css?v=1.0.0-mobile.1">
 <link rel="stylesheet" href="./tactical-command.css?v=2.0.3-rules">
 <link rel="stylesheet" href="./unit-card-ux.css?v=20261113-theme-restored">
-<link rel="stylesheet" href="./unit-view-modes.css?v=20261113-colour-links-saves-v1">
+<link rel="stylesheet" href="./unit-view-modes.css?v=20261114-wizard-inline-v1">
 <script>
 /* Even an older cached app bundle can display this prompt: index.html is online-first. */
 (()=>{
@@ -34,7 +34,7 @@
  },{once:true});
 })();
 </script>
-<script type="module" src="./app.js?v=1.0.0-alpha.5-colour-links-saves-v1"></script>
+<script type="module" src="./app.js?v=1.0.0-alpha.5-wizard-inline-v1"></script>
 </head>
 <body class="tactical-ui">
 <div id="appUpdateNotice" class="gm-update-notice" role="status" aria-live="polite" hidden>
@@ -178,29 +178,12 @@
   </details></div>
   </details>
  </header>
- <nav id="gameWorkspaceNav" class="game-workspace-nav" role="tablist" aria-label="Battle companion sections">
-  <button type="button" class="game-nav-tab" id="gameNavOverview" data-game-tab="overview" role="tab" aria-controls="gameOverviewPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">⌂</span><span>Overview</span></button>
-  <button type="button" class="game-nav-tab" id="gameNavUnits" data-game-tab="units" role="tab" aria-controls="gameUnitsPanel" aria-selected="true"><span class="game-nav-icon" aria-hidden="true">▤</span><span>My Army</span></button>
-  <button type="button" class="game-nav-tab" id="gameNavMagic" data-game-tab="magic" role="tab" aria-controls="gameMagicPanel" aria-selected="false" tabindex="-1"><span class="game-nav-icon" aria-hidden="true">✦</span><span>Magic</span></button>
- </nav>
- <section id="gameOverviewPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavOverview" hidden>
-  <div id="gameOverviewContent"></div>
- </section>
- <section id="gameUnitsPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavUnits">
+ <section id="gameUnitsPanel" class="game-workspace-panel" aria-label="Army and wizard profiles">
   <nav class="game-screen-jump" aria-label="Unit list sections">
    <button id="gameScreenJumpCharacters" type="button">Characters</button>
    <button id="gameScreenJumpRegiments" type="button">Regiments &amp; units</button>
   </nav>
-  <p class="game-units-hint">Select a unit to view its complete profile, attacks, defence and effects.</p>
   <div id="armyRosterList" class="army-screen-list"></div>
- </section>
- <section id="gameMagicPanel" class="game-workspace-panel" role="tabpanel" aria-labelledby="gameNavMagic" hidden>
-  <section id="spellControlPanel" class="game-spell-panel" aria-label="Active spells and enchantments"></section>
-  <section id="gameItemAbilities" class="game-spell-panel game-magic-items-panel" aria-label="Magic items and Bound spells"></section>
-  <section id="gameKnownSpellbooks" class="game-magic-spellbooks" aria-label="Wizard spellbooks"></section>
-  <details class="game-guidance"><summary>Magic tracking and expiry reminders</summary>
-   <p class="game-spell-policy">Tick spells known by each Wizard in the spellbooks below, then record successful casts and legal targets above. Earthen Ramparts, Plague of Rust and Glittering Robe expire at your next Start of Turn; Drain Magic remains in play until ended; Travel Mystical Pathway resolves immediately in the Movement phase. These are player-confirmed records: check range, target, phase and dice at the table.</p>
-  </details>
  </section>
  <div class="army-screen-bottom"><button id="backToImporterBottomBtn" type="button" class="army-back-button"><span aria-hidden="true">←</span> Return to armies</button></div>
 </main>
