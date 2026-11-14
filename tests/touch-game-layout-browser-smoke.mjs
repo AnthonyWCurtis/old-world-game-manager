@@ -46,8 +46,16 @@ try{
  await casting.locator('.game-spell-target').selectOption(seaId);
  await casting.locator('.game-spell-confirm').check();
  await casting.locator('.game-spell-cast').click();
- await magic.locator('.game-active-spell').waitFor({state:'visible'});
- assert.match(await magic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
+ const activeRow=magic.locator('.owc-magic-spell.owc-magic-active');
+ await activeRow.waitFor({state:'visible'});
+ assert.match(await activeRow.locator(':scope > summary').innerText(),/Earthen Ramparts[\\s\\S]*ACTIVE/);
+ assert.match(await activeRow.locator(':scope > summary').innerText(),/Ward 5\\+ · Cannot march\\/charge/);
+ assert.equal(await magic.locator('.owc-magic-spell').count(),3,
+  'Known spells and active spells share one compact list');
+ assert.equal(await magic.locator('.game-active-spells,.owc-wizard-casting-heading').count(),0,
+  'No second Currently in play or Cast known spells heading');
+ assert.match(await magic.locator('.owc-wizard-magic-footer').innerText(),/Edit spells \\(1\\)/);
+ assert.match(await magic.locator('.owc-wizard-magic-footer').innerText(),/Magic items \\(1\\)/);
  assert.equal(await sea.locator('.owc-save-strip .game-defence-stat[data-save="ward"] strong').innerText(),'5+',
   'The existing scoped Defence projection appears in Compact');
  assert.equal(await page.locator('#gameMagicPanel').count(),0);
@@ -70,7 +78,9 @@ try{
  },null,{timeout:15000});
  assert.match(await restoredMagic.locator(':scope > summary').innerText(),/1 known/);
  await restoredMagic.locator(':scope > summary').click();
- await restoredMagic.locator('.game-active-spell .game-spell-end').click();
+ const restoredActive=restoredMagic.locator('.owc-magic-spell.owc-magic-active');
+ await restoredActive.locator(':scope > summary').click();
+ await restoredActive.locator('.game-spell-end').click();
  await page.waitForFunction(()=>{
   const s=[...document.querySelectorAll('#gameCharacters .army-unit-card')]
    .find(c=>c.querySelector('h3')?.textContent?.trim()==='Storm Weaver');
@@ -84,5 +94,5 @@ try{
    'No page-wide horizontal overflow at '+viewport.width+'px');
  }
  assert.deepEqual(errors,[]);
- console.log('Wizard spell selection, cast, target, active, end, offline restore and single roster: PASS');
+ console.log('Compact wizard spell rows, cast, target, active, end, offline restore and single roster: PASS');
 }finally{await browser.close();}
