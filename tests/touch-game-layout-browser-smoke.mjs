@@ -32,12 +32,18 @@ try{
   'Saving throws remain visible in Compact View');
  const sectionOrder=await compactBody.evaluate(body=>{
   const parts=[...body.children];
-  return ['owc-compact-loadout','owc-save-strip','army-profile-caption']
+  return ['army-profile-caption','army-profile-scroll','owc-compact-loadout','owc-save-strip']
    .map(name=>parts.findIndex(child=>child.classList.contains(name)));
  });
- assert.ok(sectionOrder[0]>=0&&sectionOrder[0]<sectionOrder[1]&&
-  sectionOrder[1]<sectionOrder[2],
-  'Equipment and active effects precede saves, which immediately precede Model Characteristics');
+ assert.ok(sectionOrder.every(position=>position>=0)&&
+  sectionOrder.every((position,i)=>i===0||sectionOrder[i-1]<position),
+  'Model Characteristics must be first, then Equipment / Rules / Effects, then saving throws');
+ const sections=await compactBody.locator('.owc-compact-loadout .owc-compact-label').allInnerTexts();
+ assert.ok(sections.indexOf('Equipment & Upgrades')>=0&&
+  sections.indexOf('Equipment & Upgrades')<sections.indexOf('Special Rules'),
+  'Equipment appears before Special Rules in the shared loadout');
+ assert.equal(await compactBody.locator(':scope > .army-profile-scroll .army-profile-table').isVisible(),true,
+  'Original published model table, not a replacement summary, appears before saves');
  assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
 
  const storm=page.locator('#gameCharacters .army-unit-card')
