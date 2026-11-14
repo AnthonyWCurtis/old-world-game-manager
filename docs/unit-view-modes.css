@@ -897,3 +897,123 @@
 
 /* The retired fixed three-tab footer no longer needs a 120px empty gutter. */
 .tactical-ui #armyRosterPage{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+
+/* Compact Wizard Magic v2: a single spell list, no stacked headings or pills.
+   Only the opened spell shows full casting, expiry and rules controls. */
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-body{
+ display:block!important;padding:0 0 7px!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting{
+ margin:0!important;padding:0!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spells{
+ display:grid;grid-template-columns:minmax(0,1fr);
+ gap:0;margin:0!important;min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell{
+ border:0!important;border-bottom:1px solid #40566a!important;
+ border-radius:0!important;margin:0!important;
+ background:transparent!important;box-shadow:none!important;
+ min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell>summary{
+ position:relative;display:grid;grid-template-columns:minmax(0,1fr) 18px;
+ align-items:center;gap:3px 8px;list-style:none;cursor:pointer;
+ min-height:44px;padding:9px 2px!important;
+ color:#dce7f0!important;text-align:left;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell>summary::-webkit-details-marker{
+ display:none;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell>summary::after{
+ content:"›";grid-column:2;grid-row:1 / 3;
+ color:#d8b777;font-size:20px;line-height:1;text-align:center;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell[open]>summary::after{
+ content:"⌄";font-size:18px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-headline{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:3px 10px;min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-name{
+ color:#e9c68a;font-size:13px;font-weight:700;line-height:1.4;
+ overflow-wrap:anywhere;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-state{
+ margin-left:auto;color:#aebfcf;font-size:10px;font-weight:650;
+ letter-spacing:.025em;white-space:nowrap;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-state.owc-magic-state-active{
+ color:#a8e7d0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-note{
+ display:block;grid-column:1;grid-row:2;min-width:0;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+ color:#b1c9d4;font-size:11px;line-height:1.35;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-casting .owc-magic-spell-body{
+ padding:2px 2px 12px!important;background:transparent!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-body .game-spell-policy{
+ margin:5px 0 9px!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-body .game-spell-source{
+ margin:3px 10px 8px 0;color:#a8e7d0!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-body .game-spell-end,
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-body .game-spell-expire,
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell-body .game-spell-clear-event{
+ margin:4px 8px 4px 0;padding:9px 11px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-record-again{
+ border:0;border-top:1px solid #354c60;margin-top:8px;padding-top:6px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-record-again>summary{
+ display:list-item;cursor:pointer;color:#e9c68a!important;
+ font-size:12px;min-height:40px;padding:10px 0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-record-again-body{
+ padding:0 2px 9px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-empty{
+ margin:5px 0 8px;color:#aebfcf;font-size:12px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer{
+ display:flex;flex-wrap:wrap;align-items:flex-start;gap:2px 16px;
+ border-top:1px solid #40566a;padding:4px 0 0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer>details{
+ flex:1 1 115px;min-width:0;max-width:100%;
+ margin:0!important;border:0!important;border-radius:0!important;
+ padding:0!important;background:transparent!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer>details[open]{
+ flex-basis:100%;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer>details>summary{
+ display:flex!important;align-items:center;justify-content:flex-start;
+ gap:6px;min-height:44px;padding:9px 2px!important;
+ list-style:none;cursor:pointer;color:#e9c68a!important;
+ font-size:12px;font-weight:600;text-align:left;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer>details>summary::-webkit-details-marker{
+ display:none;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer>details>summary::after{
+ display:none!important;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer .game-wizard-spellbook>summary::before{
+ content:"▧";color:#c1d4de;font-size:13px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer .owc-owner-items>summary::before{
+ content:"✧";color:#c1d4de;font-size:13px;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer .game-wizard-spellbook-body,
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer .owc-owner-item-list{
+ padding:6px 0 12px!important;min-width:0;
+}
+.tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer summary:focus-visible,
+.tactical-ui #armyRosterList .army-unit-card .owc-magic-spell>summary:focus-visible{
+ outline:2px solid #e8c781;outline-offset:2px;
+}
