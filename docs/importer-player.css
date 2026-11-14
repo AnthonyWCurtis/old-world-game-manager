@@ -1,0 +1,38 @@
+/* Player-facing importer. Diagnostics remain in the DOM for internal processing,
+   but the default interface exposes only an actionable unmatched-reference report. */
+.tactical-ui #importPage .importer-developer-only{display:none!important}
+.tactical-ui #importReportActions[hidden]{display:none!important}
+.tactical-ui #importPage .tactical-import-panel{max-width:760px;margin:16px auto 20px}
+.tactical-ui #importPage .tactical-landing{max-width:760px;margin:22px auto 16px;text-align:center}
+.tactical-ui #importPage .tactical-home-actions{margin:18px auto 0}
+.tactical-ui #importPage .tactical-continue{margin:12px auto 0}
+.tactical-ui #importPage .tactical-import-panel #sourceText{min-height:152px;resize:vertical}
+.tactical-ui #importPage .format-detection{padding:8px 12px;margin:10px 0;font-size:12px;border:1px solid #31465c}
+.tactical-ui #importPage .format-detection-details{display:none}
+.tactical-ui #importPage .manual-format{font-size:12px;background:transparent;border:0;padding:0;margin:8px 0;color:var(--tc-secondary)}
+.tactical-ui #importPage .manual-format>summary{color:var(--tc-secondary)}
+.tactical-ui #importPage .controls{display:flex}
+.tactical-ui #importPage #parseBtn{width:100%;min-height:52px;font-weight:850}
+.tactical-ui #importPage #help{font-size:11px;margin:12px 0 0}
+.tactical-ui #importPage #result{max-width:760px;margin:14px auto}
+.tactical-ui #importPage #result>.panel{margin-top:12px}
+.tactical-ui #importPage #armyMeta{font-size:12px;line-height:1.5}
+.tactical-ui #importPage #metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.tactical-ui #importPage #metrics .metric{padding:12px 7px;text-align:center}
+.tactical-ui #importPage .army-roster-launch{display:flex;align-items:center;flex-wrap:wrap;gap:13px;padding:18px}
+.tactical-ui #importPage .importer-success-actions{display:flex;flex-direction:column;gap:7px;min-width:min(100%,220px)}
+.tactical-ui #importPage .importer-save-button{min-height:43px;background:#20374d;border-color:#536a7b;color:var(--tc-gold-text);font-size:13px}
+.tactical-ui #importPage .importer-report-actions{margin:14px 0 0;padding:12px;border-top:1px solid #47586d;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tactical-ui #importPage .importer-report-actions .importer-warning-summary{color:#ebd5a4;flex:1 1 200px;font-size:13px;margin:0}
+.tactical-ui #importPage #reportUnmatchedBtn{font-size:13px;min-height:42px;padding:8px 13px;background:#2c3441;border-color:#8b744a;color:#f1d3a1}
+.tactical-ui #importPage #reportUnmatchedPanel{margin-top:12px}
+.tactical-ui #importPage #reportUnmatchedPanel[hidden]{display:none!important}
+.tactical-ui #importPage #reportUnmatchedStatus:empty{display:none}
+@media(max-width:600px){
+ .tactical-ui #importPage .tactical-landing{padding:20px 15px}
+ .tactical-ui #importPage #metrics{gap:5px}
+ .tactical-ui #importPage #metrics .metric{padding:8px 3px}
+ .tactical-ui #importPage .army-roster-launch{display:block}
+ .tactical-ui #importPage .importer-success-actions{margin-top:14px}
+ .tactical-ui #importPage .importer-report-actions{align-items:stretch}
+}
