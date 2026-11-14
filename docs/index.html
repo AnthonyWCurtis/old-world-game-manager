@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="./tactical-command.css?v=2.0.3-rules">
 <link rel="stylesheet" href="./unit-card-ux.css?v=20261113-theme-restored">
 <link rel="stylesheet" href="./unit-view-modes.css?v=20261114-model-first-save-last">
-<link rel="stylesheet" href="./importer-player.css?v=20261114-player-first">
+<link rel="stylesheet" href="./importer-player.css?v=20261114-unified">
 <script>
 /* Even an older cached app bundle can display this prompt: index.html is online-first. */
 (()=>{
@@ -35,19 +35,19 @@
  },{once:true});
 })();
 </script>
-<script type="module" src="./app.js?v=20261114-player-importer"></script>
+<script type="module" src="./app.js?v=20261114-unified-importer"></script>
 </head>
 <body class="tactical-ui">
 <div id="appUpdateNotice" class="gm-update-notice" role="status" aria-live="polite" hidden>
  <div><strong>Updated Game Manager is ready</strong><span>Save any unsaved army list first, then reload for the latest import and source-reference fixes.</span></div>
  <button id="appUpdateReloadBtn" type="button" class="gm-update-reload">Reload updated app</button>
 </div>
-<header class="topbar"><div class="wrap tactical-brandbar"><div class="tactical-brandmark" aria-hidden="true">✦</div><div class="tactical-brand-identity"><strong class="brand">Old World Companion</strong><span class="tactical-brand-tag">THE OLD WORLD · TACTICAL COMMAND</span></div><span class="tactical-brand-version">TACTICAL V2</span></div></header>
+<header class="topbar"><div class="wrap tactical-brandbar"><div class="tactical-brandmark" aria-hidden="true">✦</div><div class="tactical-brand-identity"><strong class="brand">Old World Companion</strong><span class="tactical-brand-tag">THE OLD WORLD · BATTLE COMPANION</span></div></div></header>
 <main class="wrap tactical-home" id="importPage">
  <section class="tactical-landing" aria-labelledby="tacticalHomeTitle">
-  <div class="tactical-eyebrow">COMMAND DECK <span aria-hidden="true">/</span> YOUR ARMIES</div>
-  <h1 id="tacticalHomeTitle">Prepare for battle.</h1>
-  <p class="tactical-landing-intro">Import your army, pick up a saved game, or return to the table.</p>
+  <div class="tactical-eyebrow">✦ OLD WORLD COMPANION ✦</div>
+  <h1 id="tacticalHomeTitle">Prepare for Battle</h1>
+  <p class="tactical-landing-intro">Your armies. Your battles. One companion.</p>
   <nav class="tactical-home-actions" aria-label="Command deck destinations">
    <button id="tacticalImportNav" class="tactical-home-link tactical-home-link-primary" type="button"><span aria-hidden="true">⊞</span> Import army</button>
    <button id="tacticalSavedNav" class="tactical-home-link" type="button"><span aria-hidden="true">▤</span> My armies</button>
@@ -55,9 +55,9 @@
   <button id="resumeGameBtn" type="button" class="resume-game-screen tactical-continue" aria-controls="armyRosterPage" hidden>Continue current battle <span aria-hidden="true">→</span></button>
  </section>
  <section class="panel tactical-import-panel" id="tacticalImportPanel">
-  <div class="tactical-panel-heading"><span class="tactical-eyebrow">01 / IMPORT</span><h2>Add an army</h2><p>Paste your exported army list below. The original export stays intact.</p></div>
-  <label for="sourceText" class="section-label">Paste exported list</label>
-  <textarea id="sourceText" spellcheck="false" placeholder="Paste a full army list here…" aria-label="Army list text"></textarea>
+  <div class="tactical-panel-heading"><h2>Import an Army</h2><p>Paste an army list from your favourite builder.</p></div>
+  <label for="sourceText" class="section-label">Army list</label>
+  <textarea id="sourceText" spellcheck="false" placeholder="Paste your army list here…" aria-label="Army list text"></textarea>
   <div class="example-row importer-developer-only"><label for="examples" class="muted small">Try a supplied test list</label><select id="examples"><option value="">Choose an example…</option></select><button id="exampleBtn" class="smallbtn" type="button">Load example</button></div>
   <div class="format-detection importer-quiet-detection" id="formatDetection" data-state="empty" role="status" aria-live="polite" aria-atomic="true">
    <strong id="detectedFormat">Paste an army list to detect its format</strong>
@@ -138,8 +138,8 @@
   </details>
   <details class="panel raw importer-developer-only"><summary>Readable army list</summary><p class="muted small">The decoded roster is shown for readability. Your exact original clipboard text remains preserved in saved imports and JSON exports.</p><pre id="rawText"></pre><details id="encodedPanel" hidden><summary>Original encoded clipboard text</summary><pre id="encodedText"></pre></details></details>
  </section>
- <section class="panel saved tactical-saved-panel" id="tacticalSavedArmies"><div class="line"><h2>My armies</h2><div><button id="backupBtn" class="smallbtn" type="button">Backup all JSON</button> <button id="refreshBtn" class="smallbtn" type="button">Refresh</button></div></div>
-  <p class="muted small">Stored in this browser on this device (IndexedDB), not on GitHub. Export JSON backups if you want to keep or move them. Private Browsing or clearing website data may erase them.</p>
+ <section class="panel saved tactical-saved-panel" id="tacticalSavedArmies"><div class="line"><h2>My Armies</h2><div class="saved-army-tools"><button id="backupBtn" class="smallbtn" type="button" title="Download a backup of all saved armies">↧ Backup Armies</button> <button id="refreshBtn" class="smallbtn" type="button" title="Refresh saved armies" aria-label="Refresh saved armies">↻</button></div></div>
+  <p class="muted small">Saved on this device. Back up your armies before clearing browser data.</p>
   <div id="savedList"></div>
  </section>
 </main>

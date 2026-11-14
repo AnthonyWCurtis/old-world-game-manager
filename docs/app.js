@@ -884,9 +884,18 @@ $('saveBtn').addEventListener('click',async()=>{
 });
 $('jsonBtn').addEventListener('click',()=>{if(!current)return;downloadJSON('army-import.json',current);});
 async function refresh(){const rows=(await readAll()).sort((a,b)=>b.created_at.localeCompare(a.created_at));const holder=$('savedList');holder.replaceChildren();if(!rows.length){holder.append(make('p','muted small','No saved snapshots yet.'));return;}
- for(const r of rows){const line=make('div','row-item');const info=make('div');info.append(make('strong','',r.title||'Unnamed army'),make('div','muted small',`${r.exporter} · ${r.layout} · ${new Date(r.created_at).toLocaleString()}`));
-  const buttons=make('div');const open=make('button','smallbtn','Open');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};await restoreCurrentBattleSession();$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
-  const del=make('button','smallbtn','Delete');del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
+ for(const r of rows){
+  const line=make('div','row-item');
+  const info=make('div','saved-army-info');
+  const savedArmy=r.result?.army||{};
+  const faction=savedArmy.faction?.value||'';
+  const composition=savedArmy.composition?.value||'';
+  const total=savedArmy.reportedPoints?.value??savedArmy.derivedPoints?.value;
+  const parts=[faction,composition,total==null?'':points(total)];
+  const description=parts.filter(Boolean).join(' · ')||'Saved '+new Date(r.created_at).toLocaleDateString();
+  info.append(make('strong','',r.title||'Unnamed army'),make('div','saved-army-description',description));
+  const buttons=make('div','saved-army-actions');const open=make('button','smallbtn saved-army-open','Open →');open.addEventListener('click',async()=>{try{const loaded=await readOne(r.id);if(!loaded)throw Error('Saved snapshot not found');current=restoreStoredImport(loaded);applyInformationalPlaceholders(current);applyGenericWizardReferences(current);sourceProfiles={};unitDataRecords={};selectedUnitSourceRecords={};selectedPublishedProfiles={};await restoreCurrentBattleSession();$('sourceText').value=current.originalText;$('format').value='auto';updateFormatDetection();render();openArmyRoster();void refreshCurrentSource(false);}catch(e){showError(e.message);}});
+  const del=make('button','smallbtn saved-army-delete','Delete');del.title='Delete this saved army';del.addEventListener('click',async()=>{if(!confirm('Permanently delete this saved snapshot?'))return;await removeOne(r.id);await refresh();});buttons.append(open,del);line.append(info,buttons);holder.append(line);
  }
 }
 $('exampleBtn').addEventListener('click',async()=>{

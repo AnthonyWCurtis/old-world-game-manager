@@ -36,3 +36,90 @@
  .tactical-ui #importPage .importer-success-actions{margin-top:14px}
  .tactical-ui #importPage .importer-report-actions{align-items:stretch}
 }
+
+/* Unified application shell: reuse the same navy surfaces, gold accents and
+   compact touch controls as Normal Play. No layout changes to the battle UI. */
+.tactical-ui #importPage{max-width:1020px}
+.tactical-ui #importPage .tactical-landing{
+ max-width:760px;margin:18px auto 12px;padding:22px 22px 20px;
+ border-radius:15px;border:1px solid #3b5267;border-top:2px solid var(--tc-gold);
+ background:linear-gradient(115deg,#142c44,#102033);box-shadow:none
+}
+.tactical-ui #importPage .tactical-landing h1{
+ margin:7px 0 4px;font-size:clamp(26px,4.1vw,34px);letter-spacing:-.025em
+}
+.tactical-ui #importPage .tactical-landing-intro{max-width:none;font-size:13px}
+.tactical-ui #importPage .tactical-home-actions{gap:8px;max-width:470px;margin:14px auto 0}
+.tactical-ui #importPage .tactical-home-link{min-height:47px;border-radius:9px;font-size:13px}
+.tactical-ui #importPage .tactical-home-link>span{font-size:16px}
+.tactical-ui #importPage .tactical-continue{min-height:44px;font-size:13px}
+.tactical-ui #importPage .tactical-import-panel{
+ max-width:760px;margin:12px auto 14px;border:1px solid #3c576d;
+ background:#14283f;border-radius:15px;padding:clamp(14px,2.5vw,20px)
+}
+.tactical-ui #importPage .tactical-panel-heading{
+ margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #344a60
+}
+.tactical-ui #importPage .tactical-panel-heading h2{
+ font-size:19px;font-weight:800;color:var(--tc-gold-text);margin:0 0 3px
+}
+.tactical-ui #importPage .tactical-panel-heading p{font-size:12px}
+.tactical-ui #importPage .section-label{font-size:12px;font-weight:700;color:var(--tc-secondary)}
+.tactical-ui #importPage .tactical-import-panel #sourceText{
+ min-height:122px;border-radius:9px;border-color:#425b73;background:#0c192b
+}
+.tactical-ui #importPage .format-detection{background:#1b3048}
+.tactical-ui #importPage .tactical-saved-panel{
+ max-width:760px;margin:14px auto;padding:clamp(14px,2.5vw,20px);
+ background:#14283f;border:1px solid #3c576d;border-radius:15px
+}
+.tactical-ui #importPage .tactical-saved-panel>.line{
+ display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+ margin:0 0 9px
+}
+.tactical-ui #importPage .tactical-saved-panel h2{
+ margin:0;color:var(--tc-gold-text);font-size:19px;font-weight:800
+}
+.tactical-ui #importPage .tactical-saved-panel>p{margin:5px 0 10px;font-size:11px}
+.tactical-ui #importPage .saved-army-tools{display:flex;gap:6px}
+.tactical-ui #importPage .saved-army-tools button{
+ padding:7px 10px;min-height:40px;font-size:12px;
+ color:var(--tc-gold-text);background:#1b3048;border-color:#4c6074
+}
+.tactical-ui #importPage #savedList .row-item{
+ display:flex;align-items:center;gap:12px;justify-content:space-between;
+ min-width:0;margin:7px 0;padding:12px;border:1px solid #40576c;
+ border-radius:10px;background:#1c344d
+}
+.tactical-ui #importPage #savedList .saved-army-info{flex:1;min-width:0;overflow-wrap:anywhere}
+.tactical-ui #importPage #savedList .saved-army-info strong{
+ display:block;font-size:14px;color:#f3e8d5;line-height:1.35
+}
+.tactical-ui #importPage #savedList .saved-army-info .saved-army-description{
+ margin-top:4px;color:#b6c6d8;font-size:12px
+}
+.tactical-ui #importPage #savedList .saved-army-actions{display:flex;align-items:center;gap:6px}
+.tactical-ui #importPage #savedList .saved-army-open{
+ color:#152435;background:var(--tc-gold);border-color:var(--tc-gold);
+ font-size:13px;font-weight:800;padding:8px 13px;min-height:42px
+}
+.tactical-ui #importPage #savedList .saved-army-open:hover:not(:disabled){
+ color:#152435;background:#f1d5a2
+}
+.tactical-ui #importPage #savedList .saved-army-delete{
+ color:#b6c4d3;background:transparent;border-color:#40576c;
+ padding:7px 9px;min-height:42px;font-size:12px
+}
+.tactical-ui #importPage #savedList .saved-army-delete:hover{
+ color:#ffd3cf;border-color:#9d6567;background:#432b33
+}
+.tactical-ui #importPage .footer{max-width:760px}
+@media(max-width:600px){
+ .tactical-ui #importPage .tactical-landing{padding:18px 13px;margin-top:10px}
+ .tactical-ui #importPage .tactical-home-link{font-size:12px;min-height:46px}
+ .tactical-ui #importPage .tactical-saved-panel>.line{align-items:center}
+ .tactical-ui #importPage #savedList .row-item{gap:8px;padding:10px}
+ .tactical-ui #importPage #savedList .saved-army-actions{gap:4px}
+ .tactical-ui #importPage #savedList .saved-army-open{padding:8px 9px}
+ .tactical-ui #importPage #savedList .saved-army-delete{padding:7px;font-size:11px}
+}
