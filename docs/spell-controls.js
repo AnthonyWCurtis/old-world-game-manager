@@ -24,23 +24,34 @@ const openKey=(spellId,casterId)=>spellId+':'+casterId;
 
 export function renderSpellControls(container,army,session,
  {onCast=()=>{},onEnd=()=>{},onExpire=()=>{},onClearEvent=()=>{},
-  onItemState=()=>{},onShieldUse=()=>{}}={},magicIndex=null,effectProjection=null){
+  onItemState=()=>{},onShieldUse=()=>{}}={},magicIndex=null,effectProjection=null,
+ {wizardId=null,openedKeys=null}={}){
  const doc=container.ownerDocument||document;
  const roster=createGameScreenModel(army),entries=new Map(roster.units.map(u=>[u.id,u]));
  const assignments=session?.assignments||{};
- const casters=selectedWizardSpells(army,session,magicIndex);
- const active=session?.activeSpells||[],events=session?.spellEvents||[];
- const activeItems=(effectProjection?.owned||[]).filter(item=>item.status==='active');
- const opened=new Set([...container.querySelectorAll('.game-spell-caster[open]')]
+ const casters=selectedWizardSpells(army,session,magicIndex)
+  .filter(spell=>!wizardId||spell.casterId===wizardId);
+ const active=(session?.activeSpells||[]).filter(effect=>!wizardId||effect.casterId===wizardId);
+ const events=(session?.spellEvents||[]).filter(event=>!wizardId||event.casterId===wizardId);
+ const activeItems=(effectProjection?.owned||[])
+  .filter(item=>!wizardId&&item.status==='active');
+ const opened=new Set(openedKeys||[...container.querySelectorAll('.game-spell-caster[open]')]
   .map(el=>openKey(el.dataset.spellId,el.dataset.casterId)));
  container.replaceChildren();
- const head=node(doc,'div','game-spell-heading');
- head.append(node(doc,'h2','','Magic & active effects'));
- head.append(node(doc,'span','',active.length+' spells active · '+activeItems.length+
-  ' items active · '+events.length+' movement'));
- container.append(head);
- container.append(node(doc,'p','game-spell-disclosure',
-  'These are the spells you selected in each Wizard’s spellbook. Tap a spell, choose its target where required, confirm a successful legal cast, then record it. Known does not mean active. Dice, range, phase and eligibility remain player-confirmed.'));
+ if(wizardId){
+  const head=node(doc,'div','owc-wizard-casting-heading');
+  head.append(node(doc,'h4','','Cast known spells'));
+  head.append(node(doc,'span','',active.length+' active · '+events.length+' movement recorded'));
+  container.append(head);
+ }else{
+  const head=node(doc,'div','game-spell-heading');
+  head.append(node(doc,'h2','','Magic & active effects'));
+  head.append(node(doc,'span','',active.length+' spells active · '+activeItems.length+
+   ' items active · '+events.length+' movement'));
+  container.append(head);
+  container.append(node(doc,'p','game-spell-disclosure',
+   'Choose known spells, confirm a successful legal cast, then record targets and effects. Dice, range, phase and eligibility remain player-confirmed.'));
+ }
 
  const activeList=node(doc,'div','game-active-spells');
  activeList.append(node(doc,'h3','','Currently in play'));
@@ -70,7 +81,7 @@ export function renderSpellControls(container,army,session,
   end.addEventListener('click',()=>onEnd({spellId:effect.spellId,casterId:effect.casterId}));
   area.append(end);activeList.append(area);
  }
- if(!active.length)activeList.append(node(doc,'p','game-spell-empty','No ongoing spell effects recorded.'));
+ if(!active.length&&!wizardId)activeList.append(node(doc,'p','game-spell-empty','No ongoing spell effects recorded.'));
  if(activeItems.length){
   const itemPanel=node(doc,'section','game-active-items');
   itemPanel.append(node(doc,'h4','','Active item buffs'));
@@ -98,17 +109,19 @@ export function renderSpellControls(container,army,session,
   activeList.append(resolved);
  }
  if(active.some(s=>SPELL_RULES[s.spellId]?.lifecycle==='duration')||events.length){
-  const expire=node(doc,'button','game-spell-expire','Expire temporary spells at my next Start of Turn');
+  const expire=node(doc,'button','game-spell-expire',wizardId?
+   'Next Start of Turn · expire all temporary spells':
+   'Expire temporary spells at my next Start of Turn');
   expire.type='button';expire.addEventListener('click',()=>onExpire());
   activeList.append(expire);
   activeList.append(node(doc,'p','game-spell-disclosure',
    'Drain Magic remains in play and is NOT cleared by this turn-expiry button. End it individually when appropriate.'));
  }
- container.append(activeList);
-
+ if(active.length||events.length||activeItems.length)container.append(activeList);
  if(!casters.length){
-  container.append(node(doc,'p','game-spell-empty',
-   'No selectable known spells yet. Open the Wizard cards below and tick their spells in Known spells. Once saved, they appear here. The magic index must be available to verify their lores.'));
+  container.append(node(doc,'p','game-spell-empty',wizardId?
+   'Choose a known spell above to enable casting. Selecting a spell does not cast it.':
+   'No selectable known spells yet. Choose spells inside each Wizard profile.'));
   return;
  }
  const grouped=new Map();
@@ -119,7 +132,7 @@ export function renderSpellControls(container,army,session,
  for(const [casterId,known] of grouped){
   const group=node(doc,'section','game-wizard-casting-group');
   group.dataset.casterId=casterId;
-  group.append(node(doc,'h3','',nameFor(casterId,entries,session)+' · '+known.length+' known spells'));
+  if(!wizardId)group.append(node(doc,'h3','',nameFor(casterId,entries,session)+' · '+known.length+' known spells'));
   const candidates=node(doc,'div','game-spell-candidates');
   for(const caster of known){
    const rule=caster.rule;
@@ -129,7 +142,7 @@ export function renderSpellControls(container,army,session,
    card.open=opened.has(openKey(card.dataset.spellId,caster.casterId));
    const isActive=active.some(e=>e.spellId===rule?.id&&e.casterId===casterId);
    const summary=node(doc,'summary','',caster.spellName+
-    (isActive?' · ACTIVE':'')+' · '+nameFor(caster.casterId,entries,session));
+    (isActive?' · ACTIVE':'')+(wizardId?'':' · '+nameFor(caster.casterId,entries,session)));
    card.append(summary);
    const body=node(doc,'div','game-spell-caster-body');
    if(!rule){

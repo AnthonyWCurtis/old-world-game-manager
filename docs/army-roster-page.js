@@ -13,7 +13,8 @@ import {unitEquipmentAndRules} from './unit-equipment-and-rules.js';
 import {referenceOnlyPublishedRules} from './source-special-rule-effects.js';
 import {MOUNT_ARMOUR_RULES} from './mount-armour-choice.js';
 import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
-import {renderUnitEffects} from './effects-ui.js';
+import {renderSpellControls} from './spell-controls.js';
+import {renderUnitEffects,renderEffectRow} from './effects-ui.js';
 import {renderUnitAttackPanel,unitAttackSummary} from './unit-attack-panel.js';
 import {trackingDefinition,readTrackedRemaining,renderUnitCounter} from './unit-wound-tracker.js';
 /**
@@ -738,7 +739,7 @@ function renderDefencePanel(doc,defence,onShieldUse=()=>{},printedArmour=null,re
  return panel;
 }
 
-export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null,expandedCardIds=null,onToggle=()=>{},effectProjection={byUnit:{}},onItemState=()=>{},selectedUnitRecords={}){
+export function renderArmyRosterPage(container,army,records={},fallbackProfiles={},session=null,onAssignment=()=>{},onShieldUse=()=>{},onRename=()=>{},onKnownSpell=()=>{},magicIndex=null,expandedCardIds=null,onToggle=()=>{},effectProjection={byUnit:{}},onItemState=()=>{},selectedUnitRecords={},spellActions={}){
  const doc=container.ownerDocument||document;
  const openCards=new Set(Array.isArray(expandedCardIds)?expandedCardIds:
   [...container.querySelectorAll('article[data-unit-id].game-unit-open')]
@@ -749,6 +750,14 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   .map(d=>d.dataset.regimentId+':'+d.dataset.characterId));
  const openWizards=new Set([...container.querySelectorAll('details.game-wizard-spellbook[open]')]
   .map(d=>d.dataset.wizardId));
+ const openMagicPanels=new Set([...container.querySelectorAll('details.owc-wizard-magic[open]')]
+  .map(d=>d.dataset.wizardId));
+ const openCasting=new Set([...container.querySelectorAll('.game-spell-caster[open]')]
+  .map(d=>d.dataset.spellId+':'+d.dataset.casterId));
+ const openOwnerItems=new Set([...container.querySelectorAll('details.owc-owner-items[open]')]
+  .map(d=>d.dataset.ownerId));
+ const openItemRows=new Set([...container.querySelectorAll('.owc-owner-items .game-effect-card[open]')]
+  .map(d=>d.dataset.ownerId+':'+d.dataset.effectId));
  const model=createGameScreenModel(army,records,fallbackProfiles);
  const overview=rosterOverview(army,records);
  const byId=new Map((army.units||[]).map(unit=>[unit.id,unit]));
@@ -798,6 +807,58 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    card.querySelector('.game-defence-panel')?.append(note);
   }
  };
+ // Keep every Wizard's known-spell selection and casting inside their own
+ // instance card. We reuse the existing source-gated spell controls and
+ // player-declared battle actions; no automatic casting or guessed effects.
+ const appendMagicToCard=(card,unit)=>{
+  const body=card.querySelector(':scope > .game-unit-expandable > .army-unit-card-body');
+  if(!body)return;
+  const spellbook=renderWizardSpellbook(doc,unit,session,magicIndex,onKnownSpell);
+  let wizardBody=null;
+  if(spellbook){
+   const magic=el(doc,'details','owc-wizard-magic');
+   magic.dataset.wizardId=unit.id;
+   magic.open=openMagicPanels.has(unit.id);
+   const known=session?.knownSpells?.[unit.id]?.length||0;
+   const active=(session?.activeSpells||[]).filter(x=>x.casterId===unit.id).length;
+   const movement=(session?.spellEvents||[]).filter(x=>x.casterId===unit.id).length;
+   const summary=el(doc,'summary','owc-wizard-magic-summary');
+   summary.append(el(doc,'strong','','✦ Magic'));
+   summary.append(el(doc,'span','',
+    known+' known'+(active?' · '+active+' active':'')+
+    (movement?' · '+movement+' movement':'') ));
+   magic.append(summary);
+   wizardBody=el(doc,'div','owc-wizard-magic-body');
+   spellbook.open=openWizards.has(unit.id);
+   wizardBody.append(spellbook);
+   const cast=el(doc,'section','owc-wizard-casting');
+   renderSpellControls(cast,army,session,spellActions,magicIndex,effectProjection,
+    {wizardId:unit.id,openedKeys:openCasting});
+   wizardBody.append(cast);
+   magic.append(wizardBody);
+   body.append(magic);
+  }
+  // Source-reviewed bound spells and one-use magic items remain on their
+  // owning unit/character, even if that model is not a Wizard.
+  const ownerItems=(effectProjection?.owned||[]).filter(item=>
+   item.ownerId===unit.id&&!item.shared&&
+   (item.boundSpell||item.trackUse||item.usesExistingShieldState));
+  if(ownerItems.length){
+   const drawer=el(doc,'details','owc-owner-items');
+   drawer.dataset.ownerId=unit.id;
+   drawer.open=openOwnerItems.has(unit.id);
+   drawer.append(el(doc,'summary','',
+    'Magic items & bound spells · '+ownerItems.length));
+   const list=el(doc,'div','owc-owner-item-list');
+   for(const item of ownerItems){
+    const row=renderEffectRow(doc,item,{onItemState,onShieldUse});
+    row.open=openItemRows.has(item.ownerId+':'+item.id);
+    list.append(row);
+   }
+   drawer.append(list);
+   (wizardBody||body).append(drawer);
+  }
+ };
  const characters=el(doc,'section','game-character-group');
  characters.id='gameCharacters';
  const charHead=el(doc,'div','army-section-heading game-section-header');
@@ -825,8 +886,6 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     records[entry.id],selectedArmourSourceCandidates(imported,fallbackProfiles),
     resolveSelectedMountProfiles(imported,selectedUnitRecords,fallbackProfiles,defence.armour?.value),imported));
   content.append(renderUnitEffects(doc,effects,itemActions,referenceOnlyPublishedRules(imported,records[entry.id])));
-  const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
-  if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
   const target=displayId.get(assignments[entry.id]);
   content.append(el(doc,'p','game-membership-label',
    target?'Assigned to '+unitDisplayName(target,session)+' · entry '+target.index:'Independent · no regiment assigned'));
@@ -834,6 +893,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    content.append(assignmentEditor(doc,entry,model.regiments,target?.id||null,onAssignment,session));
   moveLoadoutAfterDefence(card);
   attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
+  appendMagicToCard(card,imported);
   characters.append(card);
  }
  container.append(characters);
@@ -889,8 +949,6 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     sourcePrintedArmour(records[entry.id],fallbackProfiles[imported.reference?.url]),
     records[entry.id],[],[],imported));
    content.append(renderUnitEffects(doc,effects,itemActions,referenceOnlyPublishedRules(imported,records[entry.id])));
-   const spellbook=renderWizardSpellbook(doc,imported,session,magicIndex,onKnownSpell);
-   if(spellbook){spellbook.open=openWizards.has(entry.id);content.append(spellbook);}
    const memberArea=el(doc,'section','game-assigned-characters');
    memberArea.append(el(doc,'h4','','Assigned characters ('+memberList.length+')'));
    if(!memberList.length)
@@ -912,6 +970,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
    content.append(memberArea);
    moveLoadoutAfterDefence(card);
    attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
+   appendMagicToCard(card,imported);
    regiments.append(card);
   }
  }

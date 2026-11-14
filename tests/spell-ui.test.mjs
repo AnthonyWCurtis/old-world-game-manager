@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=file=>readFileSync(new URL('../docs/'+file,import.meta.url),'utf8');
 
-test('Game Screen has spell panel and explicit player confirmation controls',()=>{
+test('Wizard profiles have spell selection and explicit player confirmation controls',()=>{
  const html=read('index.html'),controls=read('spell-controls.js');
- assert.match(html,/id="spellControlPanel"/);
+ assert.doesNotMatch(html,/id="spellControlPanel"/);
+ assert.doesNotMatch(html,/id="gameWorkspaceNav"/);
+ assert.match(read('army-roster-page.js'),/owc-wizard-magic/);
  assert.match(controls,/selectedWizardSpells/);
  assert.match(controls,/game-spell-confirm/);
  assert.match(controls,/game-spell-target/);
@@ -25,14 +27,14 @@ test('Spell UI distinguishes 5+ Ward from -1 incoming To Hit and warns about dur
  assert.match(defence,/attackModifiers/);
  assert.match(defence,/movementRestrictions/);
  assert.match(defence,/spellWarnings/);
- const html=read('index.html');
- assert.match(html,/next.*Start of Turn/i);
- assert.match(html,/player.confirm/i);
+ const controls=read('spell-controls.js');
+ assert.match(controls,/next Start of Turn/i);
+ assert.match(controls,/confirm a successful/i);
 });
 
 test('app callbacks handle activations, individual endings, and player-selected Start of Turn expiration',()=>{
  const app=read('app.js');
- assert.match(app,/renderSpellControls/);
+ assert.match(read('army-roster-page.js'),/renderSpellControls/);
  assert.match(app,/activateSpell/);
  assert.match(app,/endSpell/);
  assert.match(app,/expireAtNextStartOfTurn/);

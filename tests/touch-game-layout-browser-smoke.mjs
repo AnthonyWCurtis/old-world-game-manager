@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 
+/** Approved single-roster workflow: spells live inside the Wizard's card. */
 const browser=await chromium.launch({headless:true});
 try{
  const ctx=await browser.newContext({
   viewport:{width:390,height:844},deviceScaleFactor:3,hasTouch:true,isMobile:true
  });
  const page=await ctx.newPage(),errors=[];
- page.on('pageerror',e=>errors.push(String(e)));
- page.on('dialog',d=>d.accept());
+ page.on('pageerror',error=>errors.push(String(error)));
  await page.route('https://tow.whfb.app/**',route=>route.abort());
  await page.goto('http://127.0.0.1:8787/',{waitUntil:'domcontentloaded'});
  await page.locator('#examples').selectOption('owb-regular');
@@ -16,97 +16,73 @@ try{
  await page.locator('#parseBtn').click();
  await page.locator('#viewRosterBtn').click();
  await page.locator('#armyRosterPage').waitFor({state:'visible'});
- assert.equal(await page.locator('#gameOverviewPanel').isVisible(),false,'Normal Play opens with army roster');
+ assert.equal(await page.locator('#gameWorkspaceNav').count(),0,
+  'The Overview, My Army and Magic tab bar is gone');
  assert.equal(await page.locator('#gameUnitsPanel').isVisible(),true);
- assert.equal(await page.locator('#gameMagicPanel').isVisible(),false);
- await page.locator('#gameNavOverview').click();
- assert.match(await page.locator('#gameOverviewPanel').innerText(),/Battle overview/);
- assert.match(await page.locator('#gameOverviewPanel').innerText(),/No ongoing spell effects/);
- assert.equal(await page.locator('#gameWorkspaceNav [role=tab]').count(),3);
+ assert.equal(await page.locator('#gameOverviewPanel,#gameMagicPanel').count(),0);
+ assert.equal(await page.locator('#armyRosterList .army-unit-card').count(),17);
 
- // Unit cards begin as Compact in the roster and expand to Full in place.
- await page.locator('#gameNavUnits').click();
  const sea=page.locator('#gameRegiments .army-unit-card')
   .filter({has:page.locator('h3:text-is("Lothern Sea Guard")')}).first();
- const id=await sea.getAttribute('data-unit-id');
- const state=sea.locator('.game-unit-expand-toggle');
- assert.equal(await state.getAttribute('aria-expanded'),'false');
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
- await sea.locator('.army-unit-head h3').click();
- assert.equal(await state.getAttribute('aria-expanded'),'true');
- assert.equal(await sea.locator('.army-unit-expandable').count(),0);
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),true);
- const originalCount=await page.locator('#armyRosterList .army-unit-card').count();
- assert.equal(originalCount,17);
+ const seaId=await sea.getAttribute('data-unit-id');
+ assert.ok(seaId);
+ assert.equal(await sea.locator('.owc-save-strip .game-defence-stat').count(),3);
+ assert.equal(await sea.locator('.game-compact-wounds').isVisible(),true);
 
- // Live source refresh must preserve the expanded full unit card.
- await page.locator('#gameNavMagic').click();
- assert.equal(await page.locator('#gameMagicPanel').isVisible(),true);
- const known=page.locator('#gameKnownSpellbookDrawer');
- await known.locator(':scope > summary').click();
- const storm=known.locator('.game-magic-wizard-book')
+ const storm=page.locator('#gameCharacters .army-unit-card')
   .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
- await storm.locator('details.game-wizard-spellbook > summary').click();
- await storm.locator('.game-wizard-spell-row')
-  .filter({hasText:'Earthen Ramparts'})
-  .locator('input[type=checkbox]').check();
- const magic=page.locator('#spellControlPanel');
- const earth=magic.locator('.game-spell-caster[data-spell-id="earthen-ramparts"]');
- assert.equal(await earth.count(),1);
- await earth.locator(':scope > summary').click();
- await earth.locator('.game-spell-target').selectOption(id);
- await earth.locator('.game-spell-confirm').check();
- await earth.locator('.game-spell-cast').click();
+ const magic=storm.locator('details.owc-wizard-magic');
+ await magic.waitFor({state:'attached'});
+ assert.match(await magic.locator(':scope > summary').innerText(),/Magic/);
+ await magic.locator(':scope > summary').click();
+ const book=magic.locator('.game-wizard-spellbook');
+ await book.locator(':scope > summary').click();
+ const earthChoice=book.locator('.game-wizard-spell-row')
+  .filter({hasText:'Earthen Ramparts'});
+ await earthChoice.locator('input[type=checkbox]').check();
+ const casting=magic.locator('.game-spell-caster[data-spell-id="earthen-ramparts"]');
+ await casting.waitFor({state:'visible'});
+ await casting.locator(':scope > summary').click();
+ await casting.locator('.game-spell-target').selectOption(seaId);
+ await casting.locator('.game-spell-confirm').check();
+ await casting.locator('.game-spell-cast').click();
+ await magic.locator('.game-active-spell').waitFor({state:'visible'});
  assert.match(await magic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
- await page.locator('#gameNavOverview').click();
- assert.match(await page.locator('#gameOverviewPanel').innerText(),/Earthen Ramparts/);
- await page.locator('#gameNavUnits').click();
- assert.equal(await sea.locator('.game-unit-expand-toggle').getAttribute('aria-expanded'),'true');
- assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
- assert.equal(await sea.locator('.game-defence-panel').isVisible(),true);
- assert.match(await sea.locator('.game-unit-active-magic').innerText(),/Earthen Ramparts/);
- await sea.locator('.game-unit-expand-toggle').click();
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true);
- assert.equal(await sea.locator('.game-attack-panel').isVisible(),false);
- assert.match(await sea.locator('.game-card-status').innerText(),/Earthen Ramparts/);
+ assert.equal(await sea.locator('.owc-save-strip .game-defence-stat[data-save="ward"] strong').innerText(),'5+',
+  'The existing scoped Defence projection appears in Compact');
+ assert.equal(await page.locator('#gameMagicPanel').count(),0);
 
- // Returning to game uses the previous section; another army defaults Units.
- await page.locator('#gameNavMagic').click();
- await page.locator('#backToImporterBtn').click();
- await page.locator('#resumeGameBtn').click();
- await page.locator('#gameMagicPanel').waitFor({state:'visible',timeout:15000});
- await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('saved automatically'),
-  null,{timeout:15000});
+ await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')
+  ?.textContent?.includes('saved automatically'),null,{timeout:15000});
  await page.waitForFunction(()=>navigator.serviceWorker?.controller!==null,null,{timeout:20000});
  await ctx.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
  await page.locator('#armyRosterPage').waitFor({state:'visible',timeout:20000});
- assert.equal(await page.locator('#gameMagicPanel').isVisible(),true,
-  'Last Game Screen section must restore after offline reload');
- await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')?.textContent?.includes('recovered'),
-  null,{timeout:15000});
- assert.match(await magic.locator('.game-active-spell').innerText(),/Earthen Ramparts/);
- await page.locator('#gameNavUnits').click();
- assert.equal(await sea.locator('.game-unit-expandable').isVisible(),true,
-  'Compact unit card must remain available after reloading');
+ await page.waitForFunction(()=>document.querySelector('#battleSessionStatus')
+  ?.textContent?.includes('recovered'),null,{timeout:15000});
+ const restored=page.locator('#gameCharacters .army-unit-card')
+  .filter({has:page.locator('h3:text-is("Storm Weaver")')}).first();
+ const restoredMagic=restored.locator('.owc-wizard-magic');
+ await page.waitForFunction(()=>{
+  const s=[...document.querySelectorAll('#gameCharacters .army-unit-card')]
+   .find(c=>c.querySelector('h3')?.textContent?.trim()==='Storm Weaver');
+  return s?.querySelector('.owc-wizard-magic-summary')?.textContent?.includes('1 active');
+ },null,{timeout:15000});
+ assert.match(await restoredMagic.locator(':scope > summary').innerText(),/1 known/);
+ await restoredMagic.locator(':scope > summary').click();
+ await restoredMagic.locator('.game-active-spell .game-spell-end').click();
+ await page.waitForFunction(()=>{
+  const s=[...document.querySelectorAll('#gameCharacters .army-unit-card')]
+   .find(c=>c.querySelector('h3')?.textContent?.trim()==='Storm Weaver');
+  return s?.querySelector('.owc-wizard-magic-summary')?.textContent?.includes('1 known')&&
+   !s.querySelector('.owc-wizard-magic-summary')?.textContent?.includes('active');
+ },null,{timeout:15000});
 
- // Verify bottom navigation and unit toggle remain easy to touch in both orientations.
  for(const viewport of [{width:390,height:844},{width:956,height:440},{width:320,height:740}]){
   await page.setViewportSize(viewport);
-  for(const selector of ['#gameNavOverview','#gameNavUnits','#gameNavMagic','.game-unit-expand-toggle']){
-   const rect=await page.locator(selector).first().evaluate(el=>{
-    const r=el.getBoundingClientRect();
-    return {width:r.width,height:r.height};
-   });
-   assert.ok(rect.height>=44,selector+' must have at least 44px touch height: '+JSON.stringify(rect));
-   if(selector==='.game-unit-expand-toggle')
-    assert.ok(rect.width>=44,selector+' must have at least 44px touch width: '+JSON.stringify(rect));
-  }
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,
    'No page-wide horizontal overflow at '+viewport.width+'px');
  }
  assert.deepEqual(errors,[]);
- console.log('Touch layout tabs, compact units, cast/status chips, return, offline persistence and orientation: PASS');
+ console.log('Wizard spell selection, cast, target, active, end, offline restore and single roster: PASS');
 }finally{await browser.close();}

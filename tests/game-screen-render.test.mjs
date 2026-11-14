@@ -14,7 +14,7 @@ test('v1 Game Screen is entered from the import result, with distinct character 
  assert.match(app,/gameScreenJumpCharacters/);
  assert.match(app,/gameScreenJumpRegiments/);
  assert.ok(app.includes("renderArmyRosterPage($('armyRosterList')")&&
-  app.includes('magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState,selectedUnitSourceRecords)'));
+  app.includes('effectProjection,handleItemEffectState,selectedUnitSourceRecords,{'));
 });
 
 test('read-only roster rendering takes imported source and groups known characters without guessing',()=>{

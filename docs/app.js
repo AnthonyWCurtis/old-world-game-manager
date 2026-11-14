@@ -10,20 +10,15 @@ import {isInformationalSelection,applyInformationalPlaceholders} from './selecti
 import {applySourceScopedSelectionReferences} from './unit-selection-matcher.js?v=1.0.0-alpha.5';
 import {applyGenericWizardReferences} from './wizard-references.js?v=1.0.0-alpha.5';
 import {renderArmyRosterPage, UNIT_PROFILES_VERSION} from './army-roster-page.js?v=1.0.0-alpha.5';
-import {renderSpellControls} from './spell-controls.js';
 import {projectArmyEffects,setItemEffectState} from './effects-engine.js';
-import {renderMagicItemAbilities} from './effects-ui.js';
 import {activateSpell,endSpell,expireAtNextStartOfTurn,clearSpellEvent} from './spell-engine.js';
 import {restoreStoredImport} from './army-state.js';
 import {armySessionKey,restoreBattleSession,preservePendingUseState,assignCharacter,markCharmedShieldUsed,setUnitDisplayName,setWizardKnownSpell} from './battle-session.js';
 import {indexedSpells} from './player-customization.js';
 import {readBattleSession,writeBattleSession} from './battle-session-store.js';
 import {registerOfflineSupport} from './offline.js';
-import {GAME_TABS,loadGameLayout,saveGameLayout,setActiveTab,setUnitExpanded} from './game-layout.js';
-import {renderGameOverview} from './game-overview.js';
+import {loadGameLayout,saveGameLayout,setUnitExpanded} from './game-layout.js';
 import {wireTacticalHome} from './tactical-command.js';
-import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
-import {unitDisplayName} from './player-customization.js';
 const $=id=>document.getElementById(id);
 wireTacticalHome(document);
 const ACTIVE_TAB_ARMY_KEY='old-world-game-manager-active-army-v1';
@@ -56,87 +51,9 @@ function rememberGameScroll(){
  gameLayout.scroll[gameLayout.tab]=Math.max(0,Math.round(window.scrollY));
  saveGameLayout(gameLayout);
 }
-function applyGameTab(){
- const state=ensureGameLayout();
- if(!state)return;
- for(const tab of GAME_TABS){
-  const panel=$('game'+tab[0].toUpperCase()+tab.slice(1)+'Panel');
-  const button=document.querySelector('#gameWorkspaceNav [data-game-tab="'+tab+'"]');
-  if(panel)panel.hidden=state.tab!==tab;
-  if(button){
-   button.setAttribute('aria-selected',String(state.tab===tab));
-   button.tabIndex=state.tab===tab?0:-1;
-   button.classList.toggle('game-nav-selected',state.tab===tab);
-  }
- }
-}
-function switchGameTab(tab,{focusCaster=null}={}){
- if(!current||!GAME_TABS.includes(tab))return;
- const previous=ensureGameLayout();
- gameLayout=setActiveTab(previous,tab,window.scrollY);
- applyGameTab();
- const scroll=gameLayout.scroll[tab]||0;
- requestAnimationFrame(()=>{
-  const limit=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
-  window.scrollTo({top:Math.min(scroll,limit),behavior:'instant'});
-  if(tab==='magic'&&focusCaster){
-   const area=$('spellControlPanel');
-   const candidate=[...area.querySelectorAll('.game-spell-caster')]
-    .find(node=>node.dataset.casterId===focusCaster);
-   if(candidate)candidate.open=true;
-   area.scrollIntoView({block:'start',behavior:'smooth'});
-  }
- });
-}
 function handleUnitFoldChange(unitId,open){
  gameLayout=setUnitExpanded(ensureGameLayout(),unitId,open);
 }
-function renderMagicSpellbooks(){
- const holder=$('gameKnownSpellbooks');
- const openBookIds=new Set([...holder.querySelectorAll('details.game-wizard-spellbook[open]')]
-  .map(node=>node.dataset.wizardId));
- const previousDrawer=holder.querySelector('#gameKnownSpellbookDrawer');
- const drawerWasOpen=previousDrawer?.open||false;
- holder.replaceChildren();
- const drawer=make('details','game-magic-known-drawer');
- drawer.id='gameKnownSpellbookDrawer';drawer.open=drawerWasOpen;
- const heading=make('summary','game-magic-known-heading','Choose or change spells each Wizard knows');
- drawer.append(heading);
- const intro=make('p','game-spell-disclosure',
-  'Select source-linked spells known by each imported Wizard. Selecting a spell does not cast it. Known spells appear in casting controls above.');
- drawer.append(intro);
- let wizardCount=0;
- for(const unit of current.units){
-  const book=renderWizardSpellbook(document,unit,battleSession,magicIndex,handleWizardKnownSpell);
-  if(!book)continue;
-  wizardCount++;
-  const block=make('section','game-magic-wizard-book');
-  block.append(make('h3','',unitDisplayName(unit,battleSession)));
-  book.open=openBookIds.has(unit.id);
-  block.append(book);drawer.append(block);
- }
- if(!wizardCount)drawer.append(make('p','game-spell-empty','No Wizards with an indexed lore found in this army.'));
- holder.append(drawer);
-}
-$('gameWorkspaceNav').addEventListener('keydown',event=>{
- if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
- const active=event.target.closest('[data-game-tab]')?.dataset.gameTab;
- if(!active)return;
- event.preventDefault();
- let target=active;
- if(event.key==='Home')target=GAME_TABS[0];
- else if(event.key==='End')target=GAME_TABS[GAME_TABS.length-1];
- else target=GAME_TABS[(GAME_TABS.indexOf(active)+(event.key==='ArrowRight'?1:GAME_TABS.length-1))%GAME_TABS.length];
- switchGameTab(target);
- document.querySelector('#gameWorkspaceNav [data-game-tab="'+target+'"]')?.focus();
-});
-$('armyRosterPage').addEventListener('click',event=>{
- const tab=event.target.closest('[data-game-tab]')?.dataset.gameTab;
- if(tab)switchGameTab(tab);
-});
-document.addEventListener('game-manager:open-magic',event=>{
- if(current)switchGameTab('magic',{focusCaster:event.detail?.wizardId});
-});
 window.addEventListener('scroll',()=>{
  if(window.location.hash!=='#army-roster')return;
  clearTimeout(gameScrollWrite);
@@ -491,14 +408,14 @@ function renderArmyScreen(){
  if(!current)return;
  const state=ensureGameLayout();
  const effectProjection=projectArmyEffects(current,battleSession,unitDataRecords);
- const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,effectProjection,handleItemEffectState,selectedUnitSourceRecords);
- renderSpellControls($('spellControlPanel'),current,battleSession,{onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,onClearEvent:handleSpellEventClear,onItemState:handleItemEffectState,onShieldUse:handleShieldUsage},magicIndex,effectProjection);
- renderMagicItemAbilities($('gameItemAbilities'),effectProjection,battleSession,{
-  onItemState:handleItemEffectState,onShieldUse:handleShieldUsage
- });
- renderGameOverview($('gameOverviewContent'),current,battleSession,magicIndex,effectProjection);
- renderMagicSpellbooks();
- applyGameTab();
+ const overview=renderArmyRosterPage($('armyRosterList'),current,unitDataRecords,sourceProfiles,
+  battleSession,handleCharacterAssignment,handleShieldUsage,handleUnitName,
+  handleWizardKnownSpell,magicIndex,state.expandedUnits,handleUnitFoldChange,
+  effectProjection,handleItemEffectState,selectedUnitSourceRecords,{
+   onCast:handleSpellCast,onEnd:handleSpellEnd,onExpire:handleSpellsExpire,
+   onClearEvent:handleSpellEventClear,
+   onItemState:handleItemEffectState,onShieldUse:handleShieldUsage
+  });
  const name=label(current.army.name);
  $('armyRosterHeading').textContent=name==='Unknown'?'Imported Army Roster':name;
  $('tacticalArmyPoints').textContent=overview.displayedTotal==null?'— pts':points(overview.displayedTotal);

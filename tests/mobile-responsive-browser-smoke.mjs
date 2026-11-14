@@ -73,8 +73,7 @@ try{
  for(const v of viewports){
   await page.setViewportSize({width:v.width,height:v.height});
   await assertPageFits(page,'Game Screen',v);
-  const buttons=['gameNavOverview','gameNavUnits','gameNavMagic','backToImporterBtn','gameScreenSaveBtn',
-   'gameUnitFocusBack'];
+  const buttons=['backToImporterBtn','gameScreenSaveBtn','gameUnitFocusBack'];
   if(v.width<=650){
    for(const id of buttons){
     const target=id==='gameUnitFocusBack'?page.locator('.game-roster-section-toggle').first():page.locator('#'+id);
@@ -100,8 +99,10 @@ try{
   }
  }
  await page.setViewportSize({width:390,height:844});
- const spellbook=page.locator('#gameCharacters .game-character-card .game-wizard-spellbook').first();
- await spellbook.waitFor({state:'attached'});
+ const wizard=page.locator('#gameCharacters .game-character-card .owc-wizard-magic').first();
+ await wizard.waitFor({state:'attached'});
+ await wizard.locator(':scope > summary').click();
+ const spellbook=wizard.locator('.game-wizard-spellbook');
  await spellbook.locator(':scope > summary').click();
  const search=spellbook.locator('.game-wizard-spell-search');
  const searchFont=await search.evaluate(el=>parseFloat(getComputedStyle(el).fontSize));

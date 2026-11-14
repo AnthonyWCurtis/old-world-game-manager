@@ -13,16 +13,16 @@ test('View preferences default Units and scope to one exact imported army',()=>{
  };
  const army=fixture('owb-regular');
  const other=fixture('single-sea-guard');
- assert.deepEqual(GAME_TABS,['overview','units','magic']);
+ assert.deepEqual(GAME_TABS,['units']);
  const fresh=loadGameLayout(army);
  assert.equal(fresh.tab,'units');
  assert.deepEqual(fresh.expandedUnits,[]);
  const one=setUnitExpanded(fresh,army.units[0].id,true);
  assert.deepEqual(one.expandedUnits,[army.units[0].id]);
  const changed=setActiveTab(one,'magic',246);
- assert.equal(changed.tab,'magic');
- assert.equal(changed.scroll.units,246);
- assert.equal(loadGameLayout(army).tab,'magic');
+ assert.equal(changed.tab,'units','Removed legacy tabs cannot become active');
+ assert.equal(changed.scroll.units,0);
+ assert.equal(loadGameLayout(army).tab,'units');
  assert.deepEqual(loadGameLayout(army).expandedUnits,[army.units[0].id]);
  assert.equal(loadGameLayout(other).tab,'units');
  assert.deepEqual(loadGameLayout(other).expandedUnits,[]);
@@ -40,7 +40,7 @@ test('Tampered preferences cannot reveal old unit IDs or invalid tabs',()=>{
  const saved=loadGameLayout(army);
  assert.equal(saved.tab,'units');
  assert.deepEqual(saved.expandedUnits,[army.units[0].id]);
- assert.deepEqual(saved.scroll,{overview:0,units:10000000,magic:0});
+ assert.deepEqual(saved.scroll,{units:10000000});
  assert.equal(setActiveTab(saved,'invalid',10).tab,'units');
 });
 test('Blocked browser storage must not interrupt battles',()=>{
