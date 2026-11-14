@@ -42,11 +42,11 @@ test('compact references use inline colour-coded text without pill decoration',(
 });
 
 
-test('profile/save swap ships a new offline shell and versioned entrypoints',()=>{
+test('character mounts ship a new offline shell and versioned entrypoint',()=>{
  const html=readFileSync(new URL('../docs/index.html',import.meta.url),'utf8');
  const worker=readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
  assert.match(html,/unit-view-modes\.css\?v=20261114-model-first-save-last/);
- assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5-saves-before-characteristics/);
- assert.match(worker,/game-manager-v1-shell-20261114-model-first-save-last/);
+ assert.match(html,/app\.js\?v=1\.0\.0-alpha\.5-character-mount-profiles/);
+ assert.match(worker,/game-manager-v1-shell-20261114-character-mount-profiles/);
  assert.match(worker,/cache\.addAll\(APP_SHELL/);
 });
