@@ -207,7 +207,10 @@ export async function getSelectedUnitReferenceDetails(army,index,{fetcher=fetch}
  const gather=items=>{
   for(const item of Array.isArray(items)?items:[]){
    const url=item?.reference?.url,entry=entries.get(url);
-   if(entry?.id==='unit:'+new URL(entry.sourceUrl).pathname.split('/')[2])
+   // Many imported equipment/command selections have no unit-data link.
+   // Checking entry?.id alone still evaluates the RHS and throws on
+   // entry.sourceUrl when entry is undefined; skip safely instead.
+   if(entry&&entry.id==='unit:'+new URL(entry.sourceUrl).pathname.split('/')[2])
     targets.set(url,entry);
    gather(item?.children);
   }
