@@ -141,7 +141,12 @@
 }
 
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption{
- margin:12px 0 8px;padding:0;border:0;
+ margin:0 0 8px;padding:0;border:0;
+}
+/* Keep an unobtrusive gap after the Model Characteristics table. */
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-scroll + .owc-compact-loadout,
+.tactical-ui #armyRosterList .army-unit-card.owc-unit-view .army-profile-missing + .owc-compact-loadout{
+ margin-top:12px!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption:before{display:none}
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-profile-caption strong{
@@ -151,8 +156,8 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-view-full .owc-compact-loadout{
  display:block!important;
 }
-/* Compact is the top of Full, not a replacement panel: the published
-   loadout stays linked once, followed by the same characteristics table. */
+/* Compact and Full share one source-backed roster: Model Characteristics
+   first, then the linked loadout / active effects, and finally saves. */
 .tactical-ui #armyRosterList .army-unit-card.owc-view-full .army-unit-unified-loadout{
  display:none!important;
 }
