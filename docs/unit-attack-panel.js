@@ -62,7 +62,8 @@ export function unitAttackSummary(unit,record,fallback,effects=[]){
   name:e.name,description:e.description,sourceUrl:e.sourceUrl,scope:e.scope,
   attackPhase:e.attackPhase||null,weaponFamily:e.weaponFamily||null,
   attackProfile:e.attackProfile?{...e.attackProfile}:null,
-  ownerIsCharacter:e.ownerIsCharacter===true
+  ownerIsCharacter:e.ownerIsCharacter===true,
+  ownerModel:e.ownerModel||null,shotsMode:e.attackProfile?.shotsMode||null
  }));
  // The magic weapon is mandatory over its mundane equivalent for its bearer.
  // Apply replacement to a whole unit only when it is a single character or a
@@ -94,6 +95,60 @@ const detailsOf=spell=>{
  if(hasValue(spell.powerLevel))parts.push('Power Level '+spell.powerLevel);
  return parts.join(' · ');
 };
+
+export function magicWeaponAttackLabel(entry,profiles=[]){
+ if(entry?.attackPhase==='Shooting'&&entry?.shotsMode==='attacks-characteristic'&&entry?.attackProfile?.sourceUrl===entry?.sourceUrl){
+  const matches=entry.ownerModel?profiles.filter(p=>p.name===entry.ownerModel):profiles.length===1?profiles:[];
+  const n=matches.length===1?Number(matches[0].attacks):NaN;
+  return Number.isSafeInteger(n)&&n>0?n+' shots':'A-based · verify bearer';
+ }
+ return entry?.attackPhase==='Combat'?'See bearer A':'See rules';
+}
+function compactAttackRows(doc,section,data){
+ section.prepend(el(doc,'h4','game-attack-title','⚔ Weapon Attacks'));
+ const compact=(node,label,count)=>{
+  const details=el(doc,'details','game-attack-compact-entry');
+  const summary=el(doc,'summary','game-attack-compact-summary');
+  summary.append(el(doc,'span','game-attack-compact-name',label),el(doc,'strong','game-attack-compact-count',count));
+  const body=el(doc,'div','game-attack-compact-detail');
+  while(node.firstChild)body.append(node.firstChild);
+  details.append(summary,body);node.replaceWith(details);
+ };
+ for(const phase of section.querySelectorAll('.game-attack-phase')){
+  for(const group of [...phase.querySelectorAll('.game-attack-ballistic-skill')]){
+   const fold=el(doc,'details','game-attack-compact-reference');
+   fold.append(el(doc,'summary','','Base Ballistic Skill · reference'));
+   while(group.firstChild)fold.append(group.firstChild);
+   group.replaceWith(fold);
+  }
+  for(const group of phase.querySelectorAll('.game-attack-group')){
+   for(const node of [...group.querySelectorAll(':scope > .game-attack-weapon')]){
+    const name=node.querySelector('.game-attack-source')?.textContent||'Weapon';
+    const magic=data.magicWeapons.find(e=>e.name===name&&e.attackPhase===(phase.dataset.attackPhase==='shooting'?'Shooting':'Combat'));
+    const count=magic?magicWeaponAttackLabel(magic,data.melee):
+     phase.dataset.attackPhase==='shooting'?'1 shot / eligible model':'See bearer A';
+    compact(node,name,count);
+   }
+  }
+  if(phase.dataset.attackPhase==='combat'){
+   for(const row of [...phase.querySelectorAll('.game-attack-model.game-attack-profile-card')]){
+    const name=row.querySelector('.game-attack-model-name')?.textContent||'Model';
+    const attackTile=[...row.querySelectorAll('.game-attack-stat')].find(c=>c.querySelector('span')?.textContent==='Attacks');
+    const a=attackTile?.querySelector('strong')?.textContent||'—';
+    compact(row,name+' · Melee',a==='—'?'A unresolved':a+' base attacks');
+   }
+  }
+  for(const row of [...phase.querySelectorAll('.game-attack-special-card')]){
+   const name=row.querySelector('.game-attack-special-title')?.textContent?.trim()||'Special attack';
+   const hits=[...row.querySelectorAll('.game-attack-stat')].find(c=>c.querySelector('span')?.textContent==='Hits')?.querySelector('strong')?.textContent;
+   compact(row,name,hits?hits==='Template'?'Template hits':hits+' hits':'Conditional');
+  }
+  for(const row of [...phase.querySelectorAll('.game-attack-bound')]){
+   compact(row,row.querySelector('strong')?.textContent||'Bound spell','Cast required');
+  }
+ }
+}
+
 /** Visible hierarchy follows the Shooting and Combat phases in tow.whfb.app. */
 export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[],mountGroups=[],mountRecords={}){
  const data=unitAttackSummary(unit,record,fallback,effects);
@@ -268,5 +323,6 @@ export function renderUnitAttackPanel(doc,unit,record,fallback,effects=[],mountG
  }
  section.append(el(doc,'p','game-attack-caution',
   'Shown BS and Combat characteristics are published base values. Weapon selection, line of sight, eligible shooters, fighting ranks and contact are not resolved automatically; no attack rolls or damage are calculated here.'));
+ compactAttackRows(doc,section,data);
  return section;
 }
