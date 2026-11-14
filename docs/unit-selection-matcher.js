@@ -199,6 +199,34 @@ function publishedStandardRunesAllowance(record,selection){
  return found.length===1?found[0]:null;
 }
 
+/**
+ * Mounts are choices on the published PARENT character page, not independent
+ * army units selected by a fuzzy global index. Match only an exact option
+ * label linked to one published /unit/ URL from a mounting clause. Bracketed
+ * child selections (e.g. a chariot upgrade) do not change mount identity.
+ * This establishes a reference, never mounting legality or paid points.
+ */
+function publishedMountOption(record,selection){
+ const selected=normalized(selection.name);
+ if(!selected)return null;
+ const matches=[];
+ for(const group of record.upgradeGroups||[]){
+  const mountingGroup=/\bmount(?:ed|s|ing)?\b/i.test(group.eligibilityClause||'');
+  for(const option of group.options||[]){
+   if(!mountingGroup&&!/\bmount(?:ed|s|ing)?\b/i.test(option.description||''))continue;
+   for(const ref of option.linkedReferences||[]){
+    if(!safeRef(ref)||!/^https:\/\/tow\.whfb\.app\/unit\/[a-z0-9-]+$/.test(ref.sourceUrl))continue;
+    const canonical=normalized(ref.name);
+    if(selected===canonical||selected.startsWith(canonical+' [')){
+     matches.push(ref);
+    }
+   }
+  }
+ }
+ const urls=new Set(matches.map(ref=>ref.sourceUrl));
+ return urls.size===1?matches[0]:null;
+}
+
 /** Require an explicit paid Wizard level option on this exact source unit. */
 function optionalWizardLevelOption(record,selection){
  const m=normalized(selection.name).match(/^level ([1-4]) wizard$/);
@@ -294,6 +322,14 @@ function referenceForSelection(unit,record,selection){
     ' points'+(clause?' under "'+clause+'"':'')+
     '. This is a source reference only: standard bearer prerequisites, selected runes, restrictions and points have not been verified.'
   };
+ }
+ const mount=publishedMountOption(record,selection);
+ if(mount){
+  return {id:'unit-scoped:'+record.id+':mount:'+new URL(mount.sourceUrl).pathname.slice('/unit/'.length),
+   name:selection.name,url:mount.sourceUrl,type:'mount',
+   source:'unit-scoped-data',parentSourceUrl:url,
+   verificationStatus:'source-extracted',evidence:'published-character-mount-option',
+   note:'The source character page lists this mount option. Mounting eligibility, selected option points and split-profile rules are not independently verified.'};
  }
  const optionalWizard=optionalWizardLevelOption(record,selection);
  if(optionalWizard){
