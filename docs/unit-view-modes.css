@@ -33,7 +33,7 @@
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact > .game-unit-expandable > .army-unit-card-body{
  padding:11px 10px 14px;background:transparent;color:#eef0f3;
 }
-.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.owc-save-strip):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing):not(.owc-wizard-magic):not(.owc-owner-items){
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > :not(.owc-compact-loadout):not(.owc-save-strip):not(.army-profile-caption):not(.army-profile-scroll):not(.army-profile-missing):not(.owc-wizard-magic):not(.owc-owner-items):not(.owc-compact-weapon-attacks){
  display:none!important;
 }
 .tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > .owc-compact-loadout{
@@ -1021,4 +1021,28 @@
 .tactical-ui #armyRosterList .army-unit-card .owc-wizard-magic-footer summary:focus-visible,
 .tactical-ui #armyRosterList .army-unit-card .owc-magic-spell>summary:focus-visible{
  outline:2px solid #e8c781;outline-offset:2px;
+}
+
+/* Lightweight source-linked attack reference; no nested cards or buttons. */
+.tactical-ui #armyRosterList .army-unit-card.owc-view-compact .army-unit-card-body > .owc-compact-weapon-attacks{
+ display:block!important;margin:12px 0 2px;padding:10px 0 0;border-top:1px solid rgba(224,186,111,.24);
+ color:#e7edf5;max-width:100%;overflow-wrap:anywhere;
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-row{
+ margin:0;padding:7px 0;border-bottom:1px solid rgba(149,168,188,.13);
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-phase{
+ font-size:10px;letter-spacing:.055em;font-weight:650;color:#a9bed2;margin-bottom:3px;
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-sentence{
+ font-size:12px;line-height:1.55;white-space:normal;
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-sentence strong{
+ color:#f1d39e;font-weight:750;
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-link{
+ color:#b7dcff;text-decoration:underline;text-underline-offset:2px;font-weight:700;
+}
+.tactical-ui #armyRosterList .owc-compact-weapon-attacks .owc-weapon-note{
+ font-size:10px;color:#b0c0ce;margin:7px 0 0;
 }
