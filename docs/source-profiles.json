@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "sourceOrigin": "https://tow.whfb.app",
-  "generatedAt": "2026-11-26T14:02:05.383Z",
+  "generatedAt": "2026-11-27T14:00:23.747Z",
   "note": "Model names and separately sourced wizard/printed armour facts only. No inferred army legality, equipment saves, or attack-specific saves.",
   "profiles": {
     "https://tow.whfb.app/unit/ancient-stegadon": {
@@ -526,7 +526,7 @@
       "url": "https://tow.whfb.app/unit/cold-one-chariot",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -553,7 +553,7 @@
       "url": "https://tow.whfb.app/unit/corpse-cart",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -580,7 +580,7 @@
       "url": "https://tow.whfb.app/unit/coven-throne",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -607,7 +607,7 @@
       "url": "https://tow.whfb.app/unit/cult-magister",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -620,7 +620,7 @@
       "url": "https://tow.whfb.app/unit/daemon-prince-daemons-of-chaos",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -633,7 +633,7 @@
       "url": "https://tow.whfb.app/unit/daemon-prince-warriors-of-chaos",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -646,7 +646,7 @@
       "url": "https://tow.whfb.app/unit/daemonic-herald-of-nurgle",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -659,7 +659,7 @@
       "url": "https://tow.whfb.app/unit/daemonic-herald-of-slaanesh",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -672,7 +672,7 @@
       "url": "https://tow.whfb.app/unit/daemonic-herald-of-tzeentch",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -685,7 +685,7 @@
       "url": "https://tow.whfb.app/unit/daemonsmith-sorcerer",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -698,7 +698,7 @@
       "url": "https://tow.whfb.app/unit/damsel",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -740,7 +740,7 @@
       "url": "https://tow.whfb.app/unit/doomwheel",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -767,7 +767,7 @@
       "url": "https://tow.whfb.app/unit/dragon-mage",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -783,7 +783,7 @@
       "url": "https://tow.whfb.app/unit/dwarf-cart",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -826,7 +826,7 @@
       "url": "https://tow.whfb.app/unit/empire-steam-tank",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -850,7 +850,7 @@
       "url": "https://tow.whfb.app/unit/empire-war-wagon",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -877,7 +877,7 @@
       "url": "https://tow.whfb.app/unit/exalted-seeker-chariot-of-slaanesh",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -904,7 +904,7 @@
       "url": "https://tow.whfb.app/unit/exalted-sorcerer",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -917,7 +917,7 @@
       "url": "https://tow.whfb.app/unit/firebelly",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-24T14:59:47.122Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1612,7 +1612,7 @@
       "url": "https://tow.whfb.app/unit/mortis-engine",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1639,7 +1639,7 @@
       "url": "https://tow.whfb.app/unit/mortuary-priest",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1665,7 +1665,7 @@
       "url": "https://tow.whfb.app/unit/necromantic-acolyte",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1678,7 +1678,7 @@
       "url": "https://tow.whfb.app/unit/night-goblin-oddgit",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1691,7 +1691,7 @@
       "url": "https://tow.whfb.app/unit/night-goblin-oddnob",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1704,7 +1704,7 @@
       "url": "https://tow.whfb.app/unit/ogdruz-swampdigga",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1717,7 +1717,7 @@
       "url": "https://tow.whfb.app/unit/orc-boar-chariot",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1744,7 +1744,7 @@
       "url": "https://tow.whfb.app/unit/orc-weirdboy",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1757,7 +1757,7 @@
       "url": "https://tow.whfb.app/unit/orc-weirdnob",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1770,7 +1770,7 @@
       "url": "https://tow.whfb.app/unit/outcast-wizard",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1783,7 +1783,7 @@
       "url": "https://tow.whfb.app/unit/plague-furnace",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1807,7 +1807,7 @@
       "url": "https://tow.whfb.app/unit/plague-priest",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1852,7 +1852,7 @@
       "url": "https://tow.whfb.app/unit/prophetess",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1865,7 +1865,7 @@
       "url": "https://tow.whfb.app/unit/razorgor-chariot",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1895,7 +1895,7 @@
       "url": "https://tow.whfb.app/unit/scourgerunner-chariot",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
@@ -1922,7 +1922,7 @@
       "url": "https://tow.whfb.app/unit/screaming-bell",
       "source": "tow.whfb.app",
       "schemaVersion": 2,
-      "sourceCheckedAt": "2026-11-23T14:57:44.079Z",
+      "sourceCheckedAt": "2026-11-27T14:00:23.747Z",
       "verificationStatus": "source-extracted",
       "models": [
         {
