@@ -16,6 +16,7 @@ import {renderWizardSpellbook} from './wizard-spellbook-ui.js';
 import {renderSpellControls} from './spell-controls.js';
 import {renderUnitEffects,renderEffectRow} from './effects-ui.js';
 import {renderUnitAttackPanel,unitAttackSummary} from './unit-attack-panel.js';
+import {renderCompactWeaponAttacks} from './compact-weapon-attacks.js';
 import {trackingDefinition,readTrackedRemaining,renderUnitCounter} from './unit-wound-tracker.js';
 /**
  * Dedicated, mobile-first Army Roster screen.
@@ -789,6 +790,11 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   vp.append(el(doc,'span','','Victory points'),el(doc,'strong','','Not calculated'));
   content?.append(vp);
  };
+ const appendCompactAttacks=(card,imported,record,fallback,effects,mountRows)=>{
+  const body=card.querySelector(':scope > .game-unit-expandable > .army-unit-card-body');
+  const panel=renderCompactWeaponAttacks(doc,imported,record,fallback,effects,mountRows);
+  if(body&&panel)body.append(panel);
+ };
  const attachTracker=(card,imported,record,fallback,mountRows)=>{
   const spec=trackingDefinition(imported,record,fallback,mountRows);
   const remaining=readTrackedRemaining(army,imported.id,spec);
@@ -899,6 +905,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
   moveLoadoutAfterDefence(card);
   attachTracker(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],mountRows);
   appendMagicToCard(card,imported);
+  appendCompactAttacks(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],effects,mountRows);
   characters.append(card);
  }
  container.append(characters);
@@ -947,6 +954,7 @@ export function renderArmyRosterPage(container,army,records={},fallbackProfiles=
     if(expand)nameLine.insertBefore(manage,expand);
     else nameLine?.append(manage);
    }
+   appendCompactAttacks(card,imported,records[entry.id],fallbackProfiles[imported.reference?.url],effects,mountRows);
    const content=card.querySelector('.game-unit-expandable');
    content.append(renderUnitAttackPanel(doc,imported,records[entry.id],
     fallbackProfiles[imported.reference?.url],effects,mountRows,selectedUnitRecords));
